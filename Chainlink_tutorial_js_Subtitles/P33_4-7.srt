@@ -1,0 +1,230 @@
+4923
+04:50:21,780 --> 04:50:27,990
+And okay, perfect.
+好，完美
+
+4924
+04:50:28,050 --> 04:50:32,280
+If we hit compile a fun meat outsole, 
+如果我们点击编译 FundMe.sol 
+
+4925
+04:50:32,430 --> 04:50:36,900
+we do indeed see that it's passing compliation. 
+我们确实看到它通过了编译
+
+4926
+04:50:36,900 --> 04:50:38,700
+However, there's a bit of an issue here, 
+不过，这里还有一个小问题
+
+4927
+04:50:38,850 --> 04:50:43,530
+right now, anybody can withdraw from this contract. 
+现在，无论是谁都可以从这个合约提款
+
+4928
+04:50:43,620 --> 04:50:46,980
+So anybody can fund, which is what we want. 
+任何人都可以出资，这是我们想要的
+
+4929
+04:50:46,980 --> 04:50:50,220
+But we don't want anyone to be able to withdraw. 
+但我们不希望随便谁都能提款
+
+4930
+04:50:50,220 --> 04:50:53,730
+We only want the person who's collecting the funds to be able to actually withdraw the funds. 
+我们只想让那个募集资金的人能够真正提取资金
+
+4931
+04:50:53,730 --> 04:50:58,290
+So how do we set this up so that the withdraw function is only called by the owner of this contract? 
+所以我们该怎么设置才能够让这个 withdraw 函数只能被合约的拥有者调用呢？
+
+4932
+04:50:58,320 --> 04:51:01,230
+Well, to do that, we're going to set up a couple new functions. 
+为此，我们要建立一组新函数
+
+4933
+04:51:01,230 --> 04:51:05,640
+So when we deploy this contract, 
+所以，当我们部署这个合约时
+
+4934
+04:51:05,670 --> 04:51:09,510
+we want to automatically set it up 
+我们想让它自动进行设置
+
+4935
+04:51:09,540 --> 04:51:12,480
+so that whomever deploys this contract is going to be the owner of this contract. 
+这样，无论是谁部署了这个合约都将成为合约的拥有者
+
+4936
+04:51:12,480 --> 04:51:16,140
+And then we can do some parameters to set it up so that only the owner of this contract can call the withdrawal function. 
+然后我们就可以用一些参数，设定只有合约的拥有者才能调用 withdraw 函数
+
+4937
+04:51:16,140 --> 04:51:18,870
+So how would we do that? 
+所以我们该怎么做呢
+
+4938
+04:51:18,870 --> 04:51:23,490
+Well, maybe we can create a function called like, call me right away. 
+也许我们可以创建一个这样的函数，称为 callMeRightAway
+
+4939
+04:51:23,520 --> 04:51:28,740
+And right after we deploy this contract, we call this call me right away function, 
+然后在我们部署合约后，立刻调用这个 callMeRightAway 函数
+
+4940
+04:51:28,740 --> 04:51:31,980
+which will set up us as the owner. 
+这样我们就能成为合约的拥有者了
+
+4941
+04:51:31,980 --> 04:51:35,070
+Now that's going to take two transactions. 
+不过这样就必须发起两次交易
+
+4942
+04:51:35,070 --> 04:51:38,340
+And that would be really annoying if we had to do that. 
+如果我们不得不这样做的话，那未免也太麻烦了
+
+4943
+04:51:38,550 --> 04:51:44,340
+So instead, solidity has something called a constructor. 
+因此，solidity 提供了一种称为构造函数(constructor)的东西
+
+4944
+04:51:44,340 --> 04:51:46,860
+And if you're familiar with other programming language, 
+如果你熟悉其它编程语言的话，
+
+4945
+04:51:46,860 --> 04:51:50,250
+a constructor is exactly the same as other programming languages.
+这个构造函数与其它编程语言的完全相同
+
+4946
+04:51:50,400 --> 04:51:53,340
+constructor is going to be the function that gets called when,
+构造函数的调用机制是这样的
+
+4947
+04:51:53,490 --> 04:51:57,450
+immediately whenever or you deploy a contract. 
+它会在你部署合约后立即调用一次
+
+4948
+04:51:57,450 --> 04:52:03,270
+So if I were to deploy Funmi, dot Sol, and I were to say, minimum USD equals to 
+所以，如果我要部署 FundMe.sol，并且在这里写下 minimumUsd 等于 2
+
+4949
+04:52:03,360 --> 04:52:08,850
+minimum USD would no longer be 50 times one e to the 18th,
+minimumUsd 就不再是 50 乘 10 的 18 次方了
+
+4950
+04:52:08,880 --> 04:52:12,900
+it would be immediately updated to two. 
+它会立即更新为 2
+
+4951
+04:52:12,900 --> 04:52:16,440
+Because constructor is a function that gets immediately called in the same transaction, that we create this contract, 
+这是因为构造函数在创建合约的那笔交易中被立刻调用了一次
+
+4952
+04:52:16,740 --> 04:52:20,370
+this constructor function is going to be incredibly helpful for us, 
+这个构造函数对我们来说有很大的用处
+
+4953
+04:52:20,370 --> 04:52:23,100
+because it allows us to set up the contract the way we want it to be. 
+因为它允许我们以我们想要的方式设置合约
+
+4954
+04:52:23,100 --> 04:52:26,910
+So for example,
+举个例子
+
+4955
+04:52:27,240 --> 04:52:30,960
+if we want the withdrawal function to only be able to be called by the owner of this contract, 
+如果我们想要 withdraw 函数只能被合约的拥有者调用
+
+4956
+04:52:30,960 --> 04:52:34,050
+we can have the constructor set up who the owner of the contract is. 
+那么我们可以通过构造函数来设置合约的拥有者是谁
+
+4957
+04:52:34,050 --> 04:52:38,070
+So let's create a global variable called address, public owner. 
+所以我来们创建一个全局变量 address public owner
+
+
+4958
+04:52:38,070 --> 04:52:43,860
+And then in our constructor, 
+然后在我们的构造函数内
+
+4959
+04:52:43,860 --> 04:52:47,640
+we'll say the owner is going to be equal to the message dot sender. 
+我们让 owner 等于 msg.sender
+
+4960
+04:52:47,640 --> 04:52:52,650
+The message that sender of the constructor function 
+这个构造函数内的 msg.sender
+
+4961
+04:52:52,650 --> 04:52:56,670
+is going to be whoever is deploying the contract. 
+就是部署这个合约的人
+
+4962
+04:52:56,670 --> 04:53:00,720
+So owner is now going to be whoever deployed this contract. 
+所以 owner 现在就是部署这个合约的人了
+
+4963
+04:53:00,720 --> 04:53:04,200
+And don't worry, we're going to demo all this very soon
+不用担心，我们马上就会进行演示
+
+4964
+04:53:04,200 --> 04:53:07,410
+and show you everything that's going on with ether scan everything, 
+并向你展示 etherscan 上的一切情况
+
+4965
+04:53:07,410 --> 04:53:10,590
+demoing this all right now might take a little bit of time, 
+现在就进行演示可能会比较费时
+
+4966
+04:53:10,590 --> 04:53:13,260
+because we're using a test net. 
+因为要使用测试网络
+
+4967
+04:53:13,260 --> 04:53:16,500
+So if you want to test it all right now, absolutely go for it, 
+如果你现在测试一下的话，完全可以开始了
+
+4968
+04:53:16,500 --> 04:53:21,990
+but just know, it'll take you a little bit longer to do so. 
+但你要知道，这样做会比较费你的时间

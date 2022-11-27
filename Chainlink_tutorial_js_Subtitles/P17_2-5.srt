@@ -1,0 +1,809 @@
+2743
+02:35:31,200 --> 02:35:32,130
+Now our contract is
+现在我们的合约已经
+
+2744
+02:35:32,130 --> 02:35:35,280
+good as it is, it allows us to store a single favorite number.
+很不错了，它允许我们存储单一一个喜欢的数字。
+
+2745
+02:35:35,310 --> 02:35:38,130
+But what if we want to store a range of favorite numbers? Or
+但如果我们想要存储一组喜欢的数字呢？或者
+
+2746
+02:35:38,130 --> 02:35:42,060
+maybe we want to store a whole bunch of different people who
+我们想存储一大批不同的人物，他们
+
+2747
+02:35:42,060 --> 02:35:44,400
+have different favorite numbers? Well, how do we do that there
+都喜欢不同的数字呢？我们该怎么做？有
+
+2748
+02:35:44,400 --> 02:35:46,650
+are several different ways that we can approach this, one of the
+几种不同的方式可以解决这个问题。方法之一是
+
+2749
+02:35:46,650 --> 02:35:48,930
+ways we could start approaching this is by creating what's
+我们可以创建一个
+
+2750
+02:35:48,930 --> 02:35:53,640
+called a struct of people. Or we create a new type. In our
+关于人物的“结构体” (struct)。 或者说，我们在 solidity 中创建一个新的类型。
+
+2751
+02:35:53,640 --> 02:35:57,600
+solidity, we can create a people object that holds both someone's
+我们可以创建一个人物对象，其中包含某人的名字
+
+2752
+02:35:57,600 --> 02:36:02,040
+name, and their favorite number. To do that, we say struct
+以及他们喜欢的数字。为此我们写下 struct, 
+
+2753
+02:36:02,910 --> 02:36:11,850
+people, you went to 56, favorite number, and a string name. Now
+People, uint256, favoriteNumber, 以及 string name。现在
+
+2754
+02:36:11,880 --> 02:36:15,450
+we've created a new type called people kinda like you intuited
+我们已经创建了一个被称为 People 的新类型，就像 uint256
+
+2755
+02:36:15,450 --> 02:36:19,470
+six, or Boolean, or string. Now we have a people type that we
+或 Boolean 或 string。现在就有了一个 People 类型
+
+2756
+02:36:19,470 --> 02:36:23,730
+can use. Now similar to how we created a un 256 public favorite
+供我们使用。就像我们创建 uint256 public favoriteNumber 一样，
+
+2757
+02:36:23,730 --> 02:36:28,290
+number, we can do the exact same thing. But with a people, we
+我们可以对 People 做相同的事情。
+
+2758
+02:36:28,290 --> 02:36:33,510
+could say people public, we call this person, and we can create a
+我们可以写下 People public, 把它命名为 person, 这样我们就创建了一个
+
+2759
+02:36:33,510 --> 02:36:37,260
+new people and assign it to this variable person. So we'll say
+新的 People 并将其分配给这个 person 变量。所以就是
+
+2760
+02:36:37,260 --> 02:36:42,390
+equals people public person, equals, and we'll add
+People public person 等于，我们要在这里添加
+
+2761
+02:36:42,420 --> 02:36:46,170
+parentheses here to signify we're creating a new person. And
+括号，表示我们正在创建一个新的 person。因为
+
+2762
+02:36:46,170 --> 02:36:49,350
+since we made this a struct, we add little curly brackets here
+我们把它做成了一个结构体，所以要在这里添加花括号
+
+2763
+02:36:49,440 --> 02:36:52,380
+to let solidity know that we're going to be grabbing from these
+才能让 solidity 知道我们要使用的是这些
+
+2764
+02:36:52,380 --> 02:36:57,540
+struct variables, we'll say favorite number is going to be
+结构体内的变量，我们接着写下 favoriteNumber，
+
+2765
+02:36:57,540 --> 02:37:04,560
+two, and the name is going to be Patrick semicolon, and then we
+是2，以及 name，是 Patrick，别忘了分号。然后我们按下
+
+2766
+02:37:04,560 --> 02:37:07,950
+can hit Ctrl S, or we can go ahead and compile. Now if we go
+Ctrl+S，或者我们去点击 Compile 按钮。现在如果我们
+
+2767
+02:37:07,950 --> 02:37:15,390
+ahead and deploy this we now have a new person, since this,
+去部署它；我们现在就有了一个新的 person。因为它
+
+2768
+02:37:15,420 --> 02:37:19,230
+again, is a public variable, it has a getter function called
+是一个 public 变量，所以它会有一个被称为 person 的 getter 函数。
+
+2769
+02:37:19,230 --> 02:37:23,880
+person. And if we click person, we see our new object, the
+如果我们点击 person，可以看到我们的新对象，它的
+
+2770
+02:37:23,880 --> 02:37:27,600
+favorite number is two. And then the name is Patrick, you see
+favoriteNumber 是2，以及它的 name 是 Patrick。您可以看到
+
+2771
+02:37:27,600 --> 02:37:31,950
+this zero and this one, because these are showing the index of
+这里有一个 0 和 一个 1，它们表示
+
+2772
+02:37:31,950 --> 02:37:33,900
+the different variables. But those of you new to computer
+不同变量的索引 (Index)。如果您是刚接触计算机科学的新手，
+
+2773
+02:37:33,900 --> 02:37:36,390
+science, typically in computer science, let's start with the
+您需要知道的是，在计算机科学中，计数通常会从数字 0 开始。
+
+2774
+02:37:36,390 --> 02:37:39,810
+number zero. So what are zero with index, we have you in 256,
+所以在索引 0 处我们有一个
+
+2775
+02:37:39,840 --> 02:37:43,470
+called favorite number, which is saved at two. And then at index
+被称为 favoriteNumber 的 uint256 类型的变量，它保存着数字 2。然后在索引 1 处
+
+2776
+02:37:43,470 --> 02:37:47,160
+one, we have a string, which stands for the name of Patrick,
+我们有一个 string 类型的变量 name，它代表 Patrick。
+
+2777
+02:37:47,190 --> 02:37:50,310
+whenever you have a list of variables inside of an object in
+每当您往 solidity 的列表变量中放入对象，
+
+2778
+02:37:50,310 --> 02:37:54,240
+solidity, they get automatically indexed. So favorite number gets
+它们都会被自动编上索引。所以，favoriteNumber 的
+
+2779
+02:37:54,270 --> 02:37:58,680
+indexed to zero, and name gets indexed to one. Interestingly
+索引是 0，name 的索引是 1。有意思的是，
+
+2780
+02:37:58,710 --> 02:38:01,770
+enough, if you have a whole bunch of variables inside your
+如果您的合约里有一大堆变量，
+
+2781
+02:38:01,770 --> 02:38:05,460
+contract, like we have public favorite number, this favorite
+比如我们有 public favoriteNumber，从技术上来说， 
+
+2782
+02:38:05,460 --> 02:38:09,090
+number, actually, technically is getting indexed at the zero with
+实际上这个 favoriteNumber 是放到了存储槽 (storage slot) 的索引 0 处。
+
+2783
+02:38:09,120 --> 02:38:12,360
+storage slot. And if we were to make another one of these, maybe
+如果我们再做一个，
+
+2784
+02:38:12,360 --> 02:38:16,230
+you want to get six public brother's favorite number, this
+比如说 uint256 public brothersFavoriteNumber，
+
+2785
+02:38:16,230 --> 02:38:19,410
+would technically be indexed at the first slot. And then if we
+技术上来说，它就是被放到了索引为 1 的槽位上。
+
+2786
+02:38:19,410 --> 02:38:23,070
+were to make one more, maybe sister's favorite number, this
+如果我们再多做一个，比如 sistersFavoriteNumber，
+
+2787
+02:38:23,070 --> 02:38:25,920
+would be the next add the second slot. So favorite number at
+它就会被添加到索引为 2 的槽位。所以 favoriteNumber 是在 0 处
+
+2788
+02:38:25,920 --> 02:38:29,430
+zero, this add one, and this a two, but we'll learn more about
+这个是 1，然后这个是 2。我们会在之后的课程中
+
+2789
+02:38:29,430 --> 02:38:33,300
+that much later in the course. Similarly, favorite number is
+再进一步学习这方面的知识。同样，这里的 favoriteNumber 的
+
+2790
+02:38:33,300 --> 02:38:37,320
+index zero name is index at one. Now what we have is great, but
+索引是 0，name 的索引是 1。现在我们已经做得很好了，但是
+
+2791
+02:38:37,320 --> 02:38:39,900
+if we want a whole lot of people are we gonna have to keep copy
+如果我们想要一大堆 People，难道我们要不停地复制
+
+2792
+02:38:39,900 --> 02:38:43,560
+pasting and changing the people's name person to their
+粘贴，然后把人物的变量名变成 person2，
+
+2793
+02:38:43,560 --> 02:38:47,760
+favorite one, number one, number three, will name them ally.
+favoriteNumber 是 3，name 是 Ally，
+
+2794
+02:38:48,780 --> 02:38:53,370
+Person three, their favorite number will be seven. Their name
+person3，他的 favoriteNumber 是 7，
+
+2795
+02:38:53,370 --> 02:38:58,110
+will be Chad or something. This obviously isn't great way to
+name 是 Chad 或者其他什么的。这显然不是个
+
+2796
+02:38:58,110 --> 02:39:00,750
+create lists and large number of people's because we have to
+创建大量人物和列表的良好方式，因为我们必须不断
+
+2797
+02:39:00,750 --> 02:39:04,440
+statically keep typing them in. So a much better way to create a
+静态地输入它们。所以更好的创建列表的方法是，
+
+2798
+02:39:04,440 --> 02:39:08,160
+list. And let's actually just go ahead and delete Patrick to a
+让我们先把 Patrick 和 2 删除掉。
+
+2799
+02:39:08,160 --> 02:39:11,580
+much better way to create a list is to use a data structure
+更好的创建列表的方法是使用一种被称为数组 (array) 
+
+2800
+02:39:11,580 --> 02:39:15,720
+called an array. An array is a way to store a list, or a
+的数据结构。数组是储存列表，或者说
+
+2801
+02:39:15,720 --> 02:39:19,470
+sequence of objects, creating an array works the exact same we've
+储存一系列对象的一种方式。创建一个数组的方法和
+
+2802
+02:39:19,470 --> 02:39:22,260
+seen to initialize other different types. Typically, we
+初始化其他类型没什么区别。我们通常要做的就是，
+
+2803
+02:39:22,260 --> 02:39:26,670
+do the type of the object, the visibility of the object, and
+先声明对象的类型，然后是对象的可见性，
+
+2804
+02:39:26,670 --> 02:39:29,040
+then the variable name. We do the exact same thing with
+最后是变量名。我们需要对数组做同样的事情。
+
+2805
+02:39:29,040 --> 02:39:33,030
+arrays. We'll say we want a people array. These little
+现在我们想要一个 People 类型的数组，
+
+2806
+02:39:33,030 --> 02:39:37,350
+brackets represent that we want an array of people. We'll give
+这个方括号表示我们想要一个包含 People 类型的数组。
+
+2807
+02:39:37,350 --> 02:39:42,510
+it a visibility of public and we'll call it people you could
+我们让它的可见性是 public，然后命名为 people。
+
+2808
+02:39:42,510 --> 02:39:45,690
+do the same thing with you and 256 for example, you could say
+对于 uint256 来说也是一样的，举个例子，您可以写下
+
+2809
+02:39:45,690 --> 02:39:48,270
+you went to 56
+uint256  
+
+2810
+02:39:49,290 --> 02:39:54,000
+public favorite numbers list
+public favoriteNumbersList
+
+2811
+02:39:54,120 --> 02:39:57,480
+and just add this little array key here. And now favorite
+您只需要在这里添加一组方括号，现在 favoriteNumbersList
+
+2812
+02:39:57,480 --> 02:40:00,630
+numbers list is going to be an array or a list We're going to
+就是一个数组或者说列表了。我们现在
+
+2813
+02:40:00,630 --> 02:40:03,240
+comment that out for now. Now if I were to go ahead and deploy
+先把这里注释掉。现在，如果我要部署这份合约，
+
+2814
+02:40:03,240 --> 02:40:06,060
+this contract, let's go ahead delete the last one, let's
+让我们先把之前那个删掉，然后重新部署
+
+2815
+02:40:06,060 --> 02:40:11,310
+redeploy. We now have this blue people button here. Remember,
+现在我们就有了一个蓝色的 people 按钮在这里。需要提醒的是，
+
+2816
+02:40:11,340 --> 02:40:14,820
+since it's public, and it's a variable, it automatically is
+因为它是 public 变量，所以它会自动获得一个
+
+2817
+02:40:14,820 --> 02:40:18,270
+given a view function, it's given one of these blue buttons.
+用于查看它的函数，也就是这个蓝色的按钮。
+
+2818
+02:40:18,300 --> 02:40:22,080
+And instead of just having a single button where the value
+并且，现在它不仅仅是一个单独用于显示数值的按钮了，
+
+2819
+02:40:22,080 --> 02:40:25,920
+shows up, it's giving us a form to fill out, it wants to take a
+它还有一个可以填写的空格。它需要一个 uint256 
+
+2820
+02:40:25,920 --> 02:40:30,390
+un 256 as an input parameter. So if I put zero, I get nothing
+作为它的输入参数。现在我输入 0，没什么反应，
+
+2821
+02:40:30,390 --> 02:40:33,660
+back, if I put one, I get nothing back. No matter what you
+输入 1 呢，还是没有反应。其实不管您现在往这个格子里输入什么
+
+2822
+02:40:33,660 --> 02:40:36,120
+put in this box, right? Now we're gonna get nothing back.
+它都没不会有任何反应。
+
+2823
+02:40:36,150 --> 02:40:40,470
+This is because our people array or our people list is currently
+这是因为我们的 people 数组或者说我们的 people 列表，现在还是个空列表。
+
+2824
+02:40:40,470 --> 02:40:43,560
+empty. And the value that it wants is going to be the index
+这里的输入值其实是输入
+
+2825
+02:40:43,590 --> 02:40:47,430
+of the object that you want. So for example, if at index zero, I
+您想要获得的那个对象的索引。比如说，索引 0 处，
+
+2826
+02:40:47,430 --> 02:40:50,370
+had Patrick, it would show Patrick for zero, if it didn't x
+我有 Patrick，就会显示 0 是 Patrick，如果索引 1 处
+
+2827
+02:40:50,370 --> 02:40:54,600
+one I had John, or actually better yet, to Patrick.
+我有 Jon，其实可以写的更好一点，2，Patrick
+
+2828
+02:40:57,000 --> 02:40:58,230
+Seven, John,
+7，Jon，诸如此类
+
+2829
+02:40:59,400 --> 02:41:03,150
+etc. This is what it would show. But since it's empty, it's going
+这样就会显示出结果，不过它现在是空的，
+
+2830
+02:41:03,150 --> 02:41:06,060
+to show nothing. And let's go ahead and remove the public
+所以不会显示出任何结果。现在让我们继续并且删除变量
+
+2831
+02:41:06,060 --> 02:41:09,180
+variable from favorite numbers so that we don't get the
+favoriteNumber 的 public，
+
+2832
+02:41:09,180 --> 02:41:12,090
+duplicate functions at the moment, we'll just get the
+因为我们不需要两个重复功能的函数，
+
+2833
+02:41:12,090 --> 02:41:14,880
+Retrieve function, we'll show you how to add to this array in
+我们留下一个 retrieve 函数就够了。接下来我们展示一下如何给这个数组
+
+2834
+02:41:14,880 --> 02:41:17,910
+just a second. This type of array is what's known as a
+添加内容。这种类型的数组就是所谓的
+
+2835
+02:41:17,940 --> 02:41:22,650
+dynamic array, because the size of the array isn't given at the
+动态数组 (Dynamic Array)，因为我们在初始化这个数组的时候并没有规定
+
+2836
+02:41:22,650 --> 02:41:26,340
+array initialization. If we were to say, a people array and add a
+它的大小。如果我们这样写，给这个 People 数组的方括号里
+
+2837
+02:41:26,340 --> 02:41:29,670
+three in these brackets here, that means that this list, or
+添加一个数字 3，这就意味着这个 People 列表，或者说数组，
+
+2838
+02:41:29,670 --> 02:41:34,020
+this array of people could only be three people big, if we don't
+最多只能放进去三个 People 对象。如果我们不给它设定大小
+
+2839
+02:41:34,020 --> 02:41:37,260
+give it a size, it means it can be any size and the size of the
+那就表明它可以是任意大小，并且数组的大小会随着我们添加和减少 People
+
+2840
+02:41:37,260 --> 02:41:40,530
+array can grow and shrink as we add and subtract people, if I
+而增大和减小。如果我添加上这个数字 3，
+
+2841
+02:41:40,530 --> 02:41:44,340
+add three, it can only have a maximum of three in the array
+那它最多就只能拥有三个对象。
+
+2842
+02:41:44,370 --> 02:41:47,130
+ever, we're going to work with a dynamic array, because we're
+这里我们使用动态数组，因为我们希望
+
+2843
+02:41:47,130 --> 02:41:50,460
+going to want to add a arbitrary number of people to this array.
+可以添加任意数量的 People 到这个数组中去。
+
+2844
+02:41:50,490 --> 02:41:53,130
+So let's go ahead and create a function that's going to add
+所以让我们来创建一个函数，
+
+2845
+02:41:53,130 --> 02:41:58,080
+people who are people array, so we're gonna say function, add
+用于往 people 数组中添加 People。我们来写下这个函数，addPerson。
+
+2846
+02:41:58,080 --> 02:42:04,860
+person. And we're going to take string, memory, name as input
+我们让它接收 string，memory，_name，作为输入参数。
+
+2847
+02:42:04,860 --> 02:42:08,400
+parameter, and I'll explain that in a minute. And a un 256
+我稍后会解释这是什么意思。然后是，uint256，
+
+2848
+02:42:08,520 --> 02:42:13,110
+underscore favorite number, we're going to make this a
+下划线，_favoriteNumber，我们让它成为一个 public 函数。
+
+2849
+02:42:13,110 --> 02:42:17,130
+public function, or we're going to do is we're going to call a
+我们要做的就是
+
+2850
+02:42:17,130 --> 02:42:21,330
+push function that's available on our people object. So we're
+对这个 people 对象调用 push 函数。所以，
+
+2851
+02:42:21,330 --> 02:42:25,110
+gonna say people dot push, and we're going to create a new
+我们写下，people，点，push，然后我们要创建一个新的 person，
+
+2852
+02:42:25,110 --> 02:42:28,470
+person, a new people object, which is going to take in the
+也就是一个新的 People 对象。它将接收
+
+2853
+02:42:28,470 --> 02:42:29,400
+favorite number.
+_favoriteNumber，
+
+2854
+02:42:31,680 --> 02:42:32,400
+And the name.
+和 _name
+
+2855
+02:42:34,050 --> 02:42:36,840
+Now, this might be a little bit tricky to you. So let's break
+这些东西可能会让人感到有些棘手，所以让我们
+
+2856
+02:42:36,840 --> 02:42:40,170
+this down. People here is capitalized. So we know that
+分解一下它们。这里的 People 是大写的，所以我们就能知道，
+
+2857
+02:42:40,170 --> 02:42:43,740
+since capitalize, it's referring to this struct people and not
+这个大写的 People 表示的是这个名为 People 的结构体 (struct)，而不是
+
+2858
+02:42:43,740 --> 02:42:46,740
+our variable people, the lowercase people here is
+people 变量。这里小写的 people 
+
+2859
+02:42:46,740 --> 02:42:51,180
+referring to this lowercase array. So we're saying our array
+指的是这个的数组。所以我们写下的就是，我们的数组，点，push，
+
+2860
+02:42:51,240 --> 02:42:55,110
+dot push, or push is the equivalent of adding basically,
+push 基本上就是添加的意思。
+
+2861
+02:42:55,620 --> 02:42:59,670
+a new people that grabs favorite number and name. Another way
+然后，一个新的 People 获得了 _favoriteNumber 和 _name。
+
+2862
+02:42:59,670 --> 02:43:03,660
+that we could actually do this is we could create a variable of
+其实还有一种方式，就是我们先创建一个 People 类型的变量，
+
+2863
+02:43:03,660 --> 02:43:07,800
+type people and then add it like so. So we could say people, new
+然后再把它添加进去。所以我们可以这样写，People newPerson，
+
+2864
+02:43:07,800 --> 02:43:12,570
+person equals people. And then we put those brackets the same
+等于 People，然后和之前的做法一样把内容放进括号里。
+
+2865
+02:43:12,570 --> 02:43:17,670
+way we did before. You say favorite number is going to be
+favoriteNumber 是这个输入值，
+
+2866
+02:43:18,000 --> 02:43:21,930
+this input value, this parameter, and we could say name
+或者说参数。然后，name
+
+2867
+02:43:22,260 --> 02:43:26,280
+is going to be this parameter. Now if you hit save, you'll get
+是这个参数。如果您试图现在就保存，就会收到这个地方的错误提示，
+
+2868
+02:43:26,280 --> 02:43:29,760
+this error set here, saying data location must be stored in
+这里说的是，变量的数据位置必须是 "storage", "memory", 或者 "calldata"，
+
+2869
+02:43:29,790 --> 02:43:32,850
+memory, or called data for variable but no one's given. For
+但没有任何一个被给出。
+
+2870
+02:43:32,850 --> 02:43:35,160
+now, we're just going to add the memory keyword here, and I'll
+现在我们只需要在此处添加关键字 memory，
+
+2871
+02:43:35,160 --> 02:43:37,710
+explain what it does in a little bit. And then of course, we need
+我稍后会解释这是什么意思。然后理所当然地，我们需要把 newPerson 
+
+2872
+02:43:37,710 --> 02:43:40,950
+to add the new person into our people dot push right here. So
+添加到我们的 people，点，push，这个地方。
+
+2873
+02:43:40,950 --> 02:43:44,580
+this is how we're actually going to push people into our people
+所以这就是我们把 People 对象 push 进 people 数组的方法。
+
+2874
+02:43:44,580 --> 02:43:47,790
+array. And I'll get to this memory keyword in a bit. Now if
+我稍后会介绍一下这个 memory 关键字是什么意思。
+
+2875
+02:43:47,790 --> 02:43:52,320
+we go back to our deploy tab, we delete our last contract. Let's
+现在如果我们回到部署选项，删除之前的合约，然后部署一个新的。
+
+2876
+02:43:52,320 --> 02:43:56,070
+deploy this new one. Right now, if we try to look at the zero
+现在，让我们试着查看一下我们的 people 数组的第 0 个 person，
+
+2877
+02:43:56,070 --> 02:43:59,370
+with person in our people array, we get nothing but let's go
+我们什么都没得到，不过让我们先添加一个 person。
+
+2878
+02:43:59,370 --> 02:44:03,090
+ahead and add a person, we'll call it, Patrick will be the
+我们叫他 Patrick，这就是它的 name，
+
+2879
+02:44:03,090 --> 02:44:07,290
+name, and seven will be the favorite number. So we added
+并且 favoriteNumber 是 7，所以我们就添加了
+
+2880
+02:44:07,290 --> 02:44:11,430
+Patrick, we added seven. Now if we look at people's zero, we
+Patrick 和 7。现在如果我们查看 people 的 0，我们应该可以看到
+
+2881
+02:44:11,430 --> 02:44:14,670
+should see the zeroeth person has a name of Patrick, and a
+第 0 个 person 的 name 是 Patrick， 
+
+2882
+02:44:14,670 --> 02:44:18,420
+favorite number of seven, boom. And that's exactly what we do
+favoriteNumber 是 7。嘭，这正是我们所看到的
+
+2883
+02:44:18,420 --> 02:44:21,570
+see, we see a favorite number of seven, and we see a string name
+我们看到 favoriteNumber 是 7，还看到 string: name 是 
+
+2884
+02:44:21,630 --> 02:44:26,400
+Patrick, we tried to add John and do his 16. We hit Add
+Patrick，我们再来试试添加 Jon, 16，点击 addPerson，
+
+2885
+02:44:26,400 --> 02:44:29,790
+Person, we can see our transaction go through. And now
+可以看到我们的交易通过了。现在，
+
+2886
+02:44:29,790 --> 02:44:33,480
+if we go to people at zero, it's still Patrick with a favorite
+如果我们寻找 people 的 0 处，他仍然是 favoriteNumber 为 7 的 Patrick。
+
+2887
+02:44:33,480 --> 02:44:37,350
+number of seven. But if we look at the people at index one, it's
+但如果我们查看 people 的索引 1，他就是
+
+2888
+02:44:37,350 --> 02:44:40,860
+going to be John with a favorite number of 16. And if we look at
+favoriteNumber 为 16 的 Jon 了。如果我们查看 2，
+
+2889
+02:44:40,860 --> 02:44:44,550
+two, this, of course, should be blank. And we do indeed see
+当然就是空白的了。我们也确实看到这里实际上就是
+
+2890
+02:44:44,580 --> 02:44:47,460
+nothing actually happens here. Perfect. Now there's actually a
+没有任何事情发生。简直完美！这里其实有几种不同的方式
+
+2891
+02:44:47,460 --> 02:44:50,580
+couple of different ways to create this new person here,
+创建 newPerson。
+
+2892
+02:44:50,790 --> 02:44:54,180
+like we showed before, we can use this bracket notation, or
+就像我们之前所展示的那样，我们可以使用这个花括号符号，
+
+2893
+02:44:54,540 --> 02:44:57,540
+what we can do is we can actually just add the parameters
+或者我们还可以这样做，只是按照它们显示的顺序
+
+2894
+02:44:57,570 --> 02:45:01,500
+in the order that they show. So the first parameter for people
+来添加参数。所以，People 的第一个参数
+
+2895
+02:45:01,500 --> 02:45:04,560
+is going to be favorite number. So we can just do favorite
+是 favoriteNumber。所以我们可以把 _favoriteNumber 直接放到这里，
+
+2896
+02:45:04,560 --> 02:45:08,490
+number, comma, and the second one is going to be name, the
+然后是逗号。第二个参数是 name，
+
+2897
+02:45:08,490 --> 02:45:12,330
+second one is going to be name. So if we save this, this, this
+所以第二个位置填上 _name。如果我们保存这个，
+
+2898
+02:45:12,330 --> 02:45:15,420
+line we just created is the exact same as the last line,
+这一行和之前写下的那一行是完全相同的。
+
+2899
+02:45:15,720 --> 02:45:18,270
+we're being a little bit less explicit here. So the other way
+不过这个写法不太明确，所以通常来说
+
+2900
+02:45:18,270 --> 02:45:21,270
+is generally a little bit better because it's more explicit as to
+另一种写法会更好一点，因为那种写法更加明确地表明了
+
+2901
+02:45:21,270 --> 02:45:24,720
+what variables are what or we don't even need to save to this
+这些值具体是哪个变量的值。或者我们甚至不需要把它保存到这个变量里，
+
+2902
+02:45:24,720 --> 02:45:27,780
+variable here, we could take out this whole line, replace new
+我们可以把这行整个去掉，
+
+2903
+02:45:27,780 --> 02:45:32,130
+person with exactly what we just saw, like so now we don't even
+然后把 newPerson 替换成这些，就像这样。现在我们甚至不需要
+
+2904
+02:45:32,130 --> 02:45:37,110
+need the memory keyword. Now, you've probably seen this by
+memory 关键字了。

@@ -1,0 +1,829 @@
+3037
+02:53:39,840 --> 02:53:43,410
+So now we're in a space where 
+所以我们现在处于一个这样的情况
+
+3038
+02:53:43,410 --> 02:53:46,920
+let's say that we really like our simple storage contract. Right now 
+可以说我们真的很喜欢这个 SimpleStorage 合约了
+
+3039
+02:53:46,950 --> 02:53:51,330
+we have a favorite number, a global variable 
+我们有一个全局变量 favoriteNumber
+
+3040
+02:53:51,360 --> 02:53:56,190
+that we can save a favorite number to with our store function, 
+通过使用 store 函数，可以往里面存储一个我们喜欢的数字
+
+3041
+02:53:56,190 --> 02:54:00,210
+we have a mapping of name to favorite numbers, 
+我们还有一个名为 nameToFavoriteNumber 的 mapping
+
+3042
+02:54:00,240 --> 02:54:04,440
+and we have an array 
+并且我们还拥有了一个新类型的数组
+
+3043
+02:54:04,440 --> 02:54:08,370
+of a new type that we created called people, 
+一种我们创建的名为 People 的新类型
+
+3044
+02:54:08,850 --> 02:54:11,730
+we can add to both the array and to the mapping. 
+我们还可以往这些数组和 mapping 中添加新内容
+
+3045
+02:54:11,730 --> 02:54:14,880
+Using this Add Person function that we've created, 
+就用我们创建的这个 addPerson 函数
+
+3046
+02:54:14,880 --> 02:54:17,610
+we're able to save multiple people's favorite numbers 
+这样我们就既能够保存许多个不同的人喜欢的数字
+
+3047
+02:54:17,610 --> 02:54:20,850
+as well as kind of a global favorite number as well. 
+又能够保存单独一个全局的喜欢的数字
+
+3048
+02:54:20,970 --> 02:54:23,400
+Let's say we really love this contract, 
+可以说我们真的很爱这个合约了
+
+3049
+02:54:23,400 --> 02:54:26,670
+and we're ready to send it to a test net to have other people interact with it. 
+现在我们已经准备好把它发送到一个测试网络上，并让其他人与之互动了
+
+3050
+02:54:26,670 --> 02:54:29,730
+Now in future sections, you'll hear me say that you shouldn't do this until you write tests 
+在以后的课程中，也许你会听到我说，直到写完测试前不要部署上去
+
+3051
+02:54:29,730 --> 02:54:34,230
+until you do some really simple auditing. 
+或是直到你做一些非常简单的审核
+
+3052
+02:54:34,260 --> 02:54:36,990
+But for now, let's go ahead and learn how to actually deploy this to a test net or to a real network. 
+不过现在让我们先往下走，学习一下怎么把合约部署到测试网络或者真实网络上
+
+3053
+02:54:36,990 --> 02:54:39,810
+Now remember, test nets are run out of the goodness of people's hearts.
+请牢记，测试网完全是人们出于好心而自发运行的
+
+3054
+02:54:39,810 --> 02:54:43,020
+So if it's a little bit funky, or maybe doesn't work exactly as we show here, 
+所以哪怕它有点异常，或者没有像我们这里演示的那样工作
+
+3055
+02:54:43,020 --> 02:54:46,680
+that's okay. As long as it works with the JavaScript VM, you'll be all set 
+没有关系，只要它能与 JavaScript 虚拟机(VM) 一起工作就行了
+
+3056
+02:54:46,680 --> 02:54:50,460
+but it is good practice to learn how to deploy these to a real test net. 
+但是学习一下如何将这些东西部署到实际的测试网上仍不失为是一次很好的实践活动
+
+3057
+02:54:50,460 --> 02:54:53,970
+Let's go ahead and do that. 
+我们继续吧，动手试试
+
+3058
+02:54:54,180 --> 02:54:57,630
+Our contract is here. Simple Storage dot soul. 
+这里是我们的合约 SimpleStorage.sol
+
+3059
+02:54:57,630 --> 02:55:00,600
+It's compiled, 
+编译好了
+
+3060
+02:55:00,600 --> 02:55:03,480
+compiling is passing we get this little green checkmark here 
+编译通过后，这里会有一个绿色的小对勾
+
+3061
+02:55:03,480 --> 02:55:07,020
+we go to the deploy section. Let's go ahead and do Get this. 
+进入部署选项，先把之前的删除掉
+
+3062
+02:55:07,320 --> 02:55:11,850
+And now we're going to change the environment. 
+现在我们要改变一下环境
+
+3063
+02:55:11,850 --> 02:55:14,670
+So we were working with a JavaScript VM or kind of this fake simulated environment, 
+我们正在使用的是 JavaScript VM 环境，这是一种虚假的模拟环境
+
+3064
+02:55:14,670 --> 02:55:18,360
+we want to now move to either injected web three, or web three provider. 
+我们现在要转移到 Injected Web3 或 Web3 Provider 上 
+
+3065
+02:55:18,360 --> 02:55:22,800
+If you hover over injected web three, there's this really, really small text here. 
+如果你把鼠标悬停在 Injected Web3 上，这里有一段非常非常小的文字
+
+3066
+02:55:22,800 --> 02:55:25,890
+But this basically means we're going to inject our meta mask or our web three wallet into our browser to use 
+大概意思就是说，我们要把我们的 MetaMask 或其他 Web3 钱包注入到浏览器中以便能够使用
+
+3067
+02:55:25,890 --> 02:55:29,010
+similar to what we did with the faucet, 
+就像我们使用水龙头时做的那样
+
+3068
+02:55:29,040 --> 02:55:34,170
+we'll pick our account we want to use. 
+我们选择一个想要使用的账户
+
+3069
+02:55:34,170 --> 02:55:38,700
+So I'm gonna go ahead and pick account one. 
+这里我选择了第一个账户
+
+3070
+02:55:38,700 --> 02:55:42,360
+And now we actually see our account in the Account section of remix, 
+现在我们看到，我们的账户出现在了 Remix 的 ACCOUNT 选项中
+
+3071
+02:55:42,360 --> 02:55:45,690
+injected web three means we're using our meta mask or whatever web three wallet, 
+Injected Web3 意味着我们正在使用 MetaMask 或其他 Web3 钱包
+
+3072
+02:55:45,810 --> 02:55:48,420
+web three provider is, when we a little bit more manually choose an endpoint. 
+Web3 Provider 要求我们进一步手动选择端点
+
+3073
+02:55:48,420 --> 02:55:50,940
+And we're not going to go over this right now. But as we get later into the course, you'll understand what this means. 
+我们现在不打算深入讨论这个，等我们进入到更后面的课程时，你就会明白其中的含义了
+
+3074
+02:55:50,940 --> 02:55:53,730
+So we're picking injected web three, 
+所以我们现在就选择 Injected Web3，
+
+3075
+02:55:53,730 --> 02:55:57,150
+whatever network are injected web three, or in this case, 
+无论 Injected Web3 是哪个网络，或者这样说
+
+3076
+02:55:57,390 --> 02:56:00,240
+our wallet is connected to is going to be the network that we deploy to. 
+我们的钱包连接到了哪个网络上就会部署到那个网络上
+
+3077
+02:56:00,240 --> 02:56:03,120
+So for this section, we're going to be deploying to Rinkeby. 
+在本节教程中，我们选择部署到 Rinkeby 上
+
+3078
+02:56:03,120 --> 02:56:05,670
+But again, depending on whatever the recommended test net and the recommended faucet is, 
+再次强调一下，你可以根据这里的推荐测试网络和推荐水龙头 
+
+3079
+02:56:05,670 --> 02:56:09,300
+that will dictate which test net you should actually deploy to. 
+来决定你要部署到哪个测试网络上
+
+3080
+02:56:09,300 --> 02:56:12,990
+For us, it's going to be Rigby. 
+对我们来说，现在就是 Rinkeby
+
+3081
+02:56:12,990 --> 02:56:15,720
+To deploy to a test that remember, we're going to need gas, 
+为了部署到测试网上，请记住，我们是需要 gas 的
+
+3082
+02:56:15,720 --> 02:56:18,330
+so we're going to need some tested Etherium. 
+所以我们需要一些测试用的以太币
+
+3083
+02:56:18,330 --> 02:56:21,300
+Or if you're deploying to a main net main Aetherium, which you shouldn't be 
+或者你可以部署到以太坊主网上，但你最好别这样做
+
+3084
+02:56:21,300 --> 02:56:23,160
+come to the top of the GitHub repo to make sure you have the most updated faucet, 
+到 GitHub 仓库的顶部，以确保你能获得最新的水龙头
+
+3085
+02:56:23,190 --> 02:56:26,820
+the other place you can go is 
+另一个你可以去的地方是
+
+3086
+02:56:27,240 --> 02:56:31,380
+link token contracts page in the chain link documentation 
+Chainlink 文档中的 LINK Token Contracts 页面
+
+3087
+02:56:31,950 --> 02:56:34,740
+and scroll down 
+往下滑
+
+3088
+02:56:35,040 --> 02:56:38,400
+the ranking. And you can see test that link available here, 
+找到 Rinkeby，你可以在这里查看可用的测试网链接(Testnet LINK)，
+
+3089
+02:56:38,400 --> 02:56:41,670
+test that eath available here. 
+以及在这里查看可用的测试网以太币(Testnet ETH)
+
+3090
+02:56:41,670 --> 02:56:45,120
+So this is the other location, you can always look to find the most up to date faucets, 
+所以这里是另一个你可以随时寻找最新水龙头的地方
+
+3091
+02:56:45,120 --> 02:56:47,670
+and both of them point right back here. 
+它们都指向这里
+
+3092
+02:56:47,670 --> 02:56:53,160
+So now that we're working with injected web three, 
+所以现在我们就使用 Injected Web3 
+
+3093
+02:56:53,280 --> 02:56:56,220
+we can just go through the exact same steps to deploy to a test net as to deploy to a virtual machine.
+我们可以通过完全相同的步骤把合约部署到测试网上，就和部署到虚拟机上同一个道理
+
+3094
+02:56:56,220 --> 02:56:58,800
+And remember, if you run out of gas to deploy this, 
+并且记住，如果你没有足够的 gas 来部署合约，
+
+3095
+02:56:58,800 --> 02:57:00,720
+be sure to check back to the faucets to actually deploy this. 
+那么一定要在部署前来查看一下水龙头
+
+3096
+02:57:00,720 --> 02:57:05,820
+So we're going to do the same thing, we're gonna go ahead and hit Deploy. 
+所以我们要做的就是相同的事，去点击这个 Deploy 按钮
+
+3097
+02:57:05,820 --> 02:57:09,840
+But this time Metamask is going to pop up and ask us if we want to actually deploy this,
+但是这一次 MetaMask 会弹出来并询问我们是否真的要部署这个合约
+
+3098
+02:57:09,840 --> 02:57:13,020
+this is the exact same as what we saw with the blockchain example, where we sign transactions,
+这就是我们之前在区块链示例中看到的，给交易签名
+
+3099
+02:57:13,050 --> 02:57:17,010
+we are signing and sending this transaction, 
+我们现在其实就在签署和发送这个交易
+
+3100
+02:57:17,010 --> 02:57:21,420
+the data of this transaction is this massive, massive data thing here, 
+这个交易的数据量非常非常庞大
+
+3101
+02:57:21,420 --> 02:57:24,630
+which represents the contract that we just created,
+它们就代表着我们刚刚创建的合约
+
+3102
+02:57:24,930 --> 02:57:28,650
+we can see all the payment information for this transaction for deploying this contract, 
+我们可以看到这次交易或者说部署这个合约的所有付款信息
+
+3103
+02:57:28,680 --> 02:57:32,610
+we see it's going to cost around this much Aetherium to deploy.
+我们可以看到，部署这个合约将花费大约这么多以太
+
+3104
+02:57:32,670 --> 02:57:36,030
+But again, we're on the Rinkeby test network. 
+再次强调，我们现在处于 Rinkeby 测试网络上
+
+3105
+02:57:36,030 --> 02:57:38,640
+So this is going to be fake Aetherium. 
+所以这些都是假的以太
+
+3106
+02:57:38,640 --> 02:57:43,110
+We're gonna go ahead, hit Confirm. 
+我们继续，点击确认(Confirm)
+
+3107
+02:57:43,590 --> 02:57:48,750
+And if you pop up a little console, and remix, 
+如果你弹出这个小控制台，在 Remix 里
+
+3108
+02:57:48,750 --> 02:57:51,960
+you'll see that after a slight delay, 
+你会在短暂的延迟后看到
+
+3109
+02:57:51,960 --> 02:57:55,650
+it'll actually say have this green checkmark that it's confirmed that it went actually went through, 
+它会用这个绿色的小对勾表示合约已经确实是被部署上了
+
+3110
+02:57:55,650 --> 02:58:00,270
+we can go ahead right click, open a new tab, 
+我们可以继续右键这里，点击 Open Link in New Tab
+
+3111
+02:58:00,300 --> 02:58:03,450
+and view this on ether scan. 
+并在 etherscan 上查看这笔交易
+
+3112
+02:58:03,630 --> 02:58:06,570
+And after a slight delay, we'll actually be able to see the transaction details here, 
+稍作延迟后，我们就可以看到这里的交易详情
+
+3113
+02:58:06,570 --> 02:58:10,350
+exactly the same as our transaction details for sending Aetherium 
+就和我们之前发送以太币的交易详情一样
+
+3114
+02:58:10,350 --> 02:58:13,560
+we have a hash, we have a status, we have blocked block confirmations, we have timestamp
+我们有一个哈希(Hash)，有一个状态(status)，有区块(Block)，有确认区块数(Block Confirmation)，还有时间戳(Timestamp)，
+
+3115
+02:58:13,560 --> 02:58:16,920
+from which is going to be us two, which is going to be the average of the contract that we just created. 
+From，就是我们自己，To，是我们刚刚创建的合约的地址
+
+3116
+02:58:16,920 --> 02:58:20,070
+We didn't send any value with this. So this is going to be zero ether. 
+我们这次没有发送任何价值(Value)，所以这里是 0 个以太
+
+3117
+02:58:20,070 --> 02:58:22,500
+And then of course, we see the transaction fee, 
+然后当然，我们会看到交易费(Transaction Fee)
+
+3118
+02:58:22,500 --> 02:58:26,880
+and as well as the gas price. 
+还有 gas 价格(Gas Price)
+
+3119
+02:58:26,970 --> 02:58:29,430
+Because again, deploying a contract to the blockchain is modifying the state of the blockchain. 
+因为把合约部署到区块链上会修改区块链的状态
+
+3120
+02:58:29,430 --> 02:58:32,220
+So we have to pay gas, 
+所以我们必须为此支付 gas
+
+3121
+02:58:32,520 --> 02:58:36,330
+and we can see all the different pieces here. 
+其余的部分在这里也都看得到
+
+3122
+02:58:36,330 --> 02:58:39,690
+As we can see, gas limit and gas usage is much higher than just sending Aetherium, 
+正如我们所见，gas 极限(Gas Limit)和 gas 使用(Usage)比单纯发送以太币要高得多
+
+3123
+02:58:39,690 --> 02:58:43,860
+since we are putting a lot of data on chain and adding a lot of computation.
+这是因为我们把大量数据送到了链上进而增加了大量的计算量
+
+3124
+02:58:44,070 --> 02:58:48,210
+So this number is much higher than the 21,000 number of just sending Aetherium.
+所以这个数字远远高于单纯发送以太币所需要的 21000 gas
+
+3125
+02:58:48,240 --> 02:58:51,450
+Now, if we come back to our remix and scroll down, 
+现在让我们回到 Remix 拉到下面
+
+3126
+02:58:51,450 --> 02:58:55,200
+we're able to see our simple storage contract at this address. 
+可以看到我们的 SimpleStorage 合约就在这个地址上
+
+3127
+02:58:55,200 --> 02:58:59,040
+If we hit this copy button, 
+如果我们点击这个 copy 按钮
+
+3128
+02:58:59,040 --> 02:59:03,300
+and we go to the rink be ether scan, we paste it in the search bar, 
+然后去到 Rinkeby etherscan，把地址粘贴到搜索栏里
+
+3129
+02:59:03,330 --> 02:59:06,510
+we will get the contract that we just deployed. 
+我们会得到我们刚刚部署的这个合约
+
+3130
+02:59:06,510 --> 02:59:10,050
+And we see this first transaction is going to be the contract creation transaction.
+并且可以看到它的第一笔交易，也就是这个合约的创建交易
+
+3131
+02:59:10,170 --> 02:59:14,220
+So this contract that we just created one transaction, which is contract created. 
+所以我们刚刚创建的这个合约，有一项交易，它是在合约创建时产生的
+
+3132
+02:59:14,220 --> 02:59:17,310
+So now that we have this contract created,
+所以我们现在已经把这个合约创建出来了
+
+3133
+02:59:17,310 --> 02:59:19,950
+we have all the exact same functions that we saw when working with the JavaScript virtual machine, 
+并且拥有和使用 JavaScript 虚拟机时完全相同的功能
+
+3134
+02:59:19,950 --> 02:59:22,740
+or the our fake environment, or our super fake environment. 
+或者说我们的虚假环境，也可说是超级虚假环境
+
+3135
+02:59:22,770 --> 02:59:25,920
+Now we can do all the exact same things that we did with the JavaScript VM, 
+现在我们就可以做一些之前在 JavaScript VM 上做过的操作了
+
+3136
+02:59:25,920 --> 02:59:28,890
+but on a real test network. 
+只不过这次是在测试网络上
+
+3137
+02:59:28,890 --> 02:59:32,160
+So you'll see if I hit retrieve, Metamask doesn't pop up. 
+你可以看到，如果我点击 retrieve, MetaMask 不会弹出
+
+3138
+02:59:32,460 --> 02:59:36,240
+Because again, this is a blue view function. 
+这是因为这个蓝色按钮是一个 view 函数
+
+3139
+02:59:36,240 --> 02:59:39,240
+If we look people at zero, 
+如果我们看一下 people 在 0 处的值，
+
+3140
+02:59:39,240 --> 02:59:42,480
+this is also a view function and nothing pops up, 
+这也是一个 view 函数所以 MetaMask 同样也没有弹出
+
+3141
+02:59:42,480 --> 02:59:45,540
+named a favorite number should be blank. 
+nameToFavoriteNumber 现在还是空的，
+
+3142
+02:59:45,540 --> 02:59:49,470
+So if I type in Patrick now, 
+所以如果我现在输入 Patrick
+
+3143
+02:59:49,500 --> 02:59:53,910
+absolutely nothing happens, right? 
+当然返回是空了，对吧?
+
+3144
+02:59:53,910 --> 02:59:58,920
+I get I get zero returned 
+其实这里我得到了一个返回值 0，
+
+3145
+02:59:58,920 --> 03:00:01,890
+because mappings initialize every single key with a blank or a null value, 
+这是因为 mapping 初始化每个值的时候使用都是相应的空值
+
+3146
+03:00:01,890 --> 03:00:06,270
+which for you 256 is zero. 
+对 uint256 来说就是 0
+
+3147
+03:00:06,330 --> 03:00:10,020
+Now, we can go ahead and store a favorite number store When your favorite number is going to modify the blockchain, 
+现在我们可以尝试存储一个喜欢的数字，这一操作会导致区块链被修改
+
+3148
+03:00:10,020 --> 03:00:13,500
+so our meta mask should pop up for us to confirm the transaction and sign that transaction 
+所以 MetaMask 会弹出来让我们确认以及签署该笔交易
+
+3149
+03:00:13,500 --> 03:00:18,750
+to modify the blockchain state. 
+从而修改区块链的状态
+
+3150
+03:00:18,750 --> 03:00:21,960
+So I'm going to store my favorite number of 16, 
+现在我要存储一个我喜欢的数字 16
+
+3151
+03:00:21,960 --> 03:00:24,780
+we'll hit store, meta mask will pop up, 
+点击 store，MetaMask 会弹出来
+
+3152
+03:00:24,780 --> 03:00:27,780
+and we're going to go ahead and actually confirm this 
+而接下来我们需要做的就是点击确认(Confirm)
+
+3153
+03:00:27,780 --> 03:00:31,560
+didn't confirm is equivalent to US signing this transaction and sending it to the blockchain to modify the state. 
+点击确认就意味着我们要签署该交易并把它发送到区块链上以修改状态
+
+3154
+03:00:31,920 --> 03:00:34,440
+So we're gonna go ahead and confirm this, 
+所以我们继续，点击确认
+
+3155
+03:00:34,440 --> 03:00:37,770
+we should be able to view this on ether scan. 
+我们现在应该能在 etherscan 上看到这笔交易了
+
+3156
+03:00:37,770 --> 03:00:40,110
+And again, it might take a little bit for it to actually index or actually start working. 
+它可能需要一点时间才能索引或者说实际开始工作
+
+3157
+03:00:40,110 --> 03:00:43,890
+So please be patient with these test nets. 
+所以请耐心等待一下这些测试网络
+
+3158
+03:00:43,890 --> 03:00:47,520
+And again, this is why when building your applications, 
+这也就是为什么你在构建应用程序时
+
+3159
+03:00:47,700 --> 03:00:50,490
+you want the test net piece to absolutely try to be your last step, 
+最好是尽量最后一步再部署到测试网上
+
+3160
+03:00:50,490 --> 03:00:52,920
+because you have to wait a really long time. 
+因为你会在这一步上等待很长时间
+
+3161
+03:00:52,920 --> 03:00:56,460
+And it puts a burden on these people running these tests 
+并且这也为运行这些测试网络的人带来了负担
+
+3162
+03:00:56,460 --> 03:01:00,150
+into running it out of the goodness of their heart. 
+他们纯粹是出于好心才运行这些网络的
+
+3163
+03:01:00,150 --> 03:01:03,510
+So please try to make this the last step of your actual building process. 
+所以请尽量把这一步作为你实际搭建应用时的最后一步
+
+3164
+03:01:03,510 --> 03:01:05,580
+For us learning right here, it's okay. 
+对于在这里学习的我们来说，倒是关系不大
+
+3165
+03:01:05,580 --> 03:01:08,760
+And after a slight delay, once we hit refresh, it looks like it's indexing on ether scan, 
+稍作等待后，我们刷新一下，看起来它正在 etherscan 上建立索引
+
+3166
+03:01:08,790 --> 03:01:10,860
+the ether scan website is still figuring out where the transaction is 
+etherscan 网站仍然在确认这笔交易到底进行到哪里了
+
+3167
+03:01:10,860 --> 03:01:14,880
+going to remix, it looks like on the blockchain, this has actually already gone through. 
+回来看看 Remix，看起来在区块链上，交易其实已经通过了
+
+3168
+03:01:14,880 --> 03:01:17,880
+So now if we hit retrieve, we do indeed see, our favorite number is 16. 
+所以如果我们现在去点击 retrieve，可以看到，我们最喜欢的数字确实就是 16
+
+3169
+03:01:17,880 --> 03:01:20,310
+Of course, these two are still going to be blank. 
+当然了，这两个还是空的
+
+3170
+03:01:20,310 --> 03:01:23,580
+And it looks like that transaction has gone through and ether scan has indexed. 
+看起来这笔交易已经完成了，etherscan 已经把它索引上了
+
+3171
+03:01:23,580 --> 03:01:27,570
+So now let's go ahead and add a person will add Patrick, and my favorite number is going to be 16. 
+现在让我们继续，添加一个人物 Patrick，最喜欢的数字是 16
+
+3172
+03:01:27,570 --> 03:01:30,780
+We'll go ahead and add person. 
+接着我们点击 addPerson
+
+3173
+03:01:30,960 --> 03:01:33,000
+Again, since these are orange transactions gonna pop up 
+这是个橙色按钮，所以交易会弹出来
+
+3174
+03:01:33,000 --> 03:01:36,810
+because we're modifying the blockchain state, 
+因为我们正在修改区块链的状态
+
+3175
+03:01:36,810 --> 03:01:39,270
+we'll go ahead and hit Confirm. 
+我们继续点击确认
+
+3176
+03:01:39,270 --> 03:01:43,200
+And we're going to be a little bit patient here and wait for this transaction to go through. 
+这里需要我们有一点耐心，等待我们的交易通过
+
+3177
+03:01:43,350 --> 03:01:47,190
+And we should see this update. And this update. 
+届时我们应该就能看到这个会更新，还有这个也是
+
+3178
+03:01:47,190 --> 03:01:50,700
+Now if I hit named a favorite number of Patrick, I get 16. 
+如果我点击 nameToFavoriteNumber 输入的是 Patrick，我会得到 16
+
+3179
+03:01:50,730 --> 03:01:54,030
+And if I hit people of zero, I get favorite number 16. And the name is Patrick. 
+如果点击 people 的 0，我会得到 favoriteNumber 是 16，name 是 Patrick
+
+3180
+03:01:54,030 --> 03:01:58,170
+Awesome. So you've actually successfully deployed a contract to an actual test net, 
+太棒了！你现在已经成功地把一个合约部署到了实际的测试网上
+
+3181
+03:01:58,170 --> 03:02:00,750
+and actually seen on ether scan what these transactions look like, 
+并且能够在 etherscan 上看到交易的具体细节
+
+3182
+03:02:00,750 --> 03:02:03,450
+you should be incredibly proud of yourself, be sure to give yourself a high five pat on the back, 
+你确实应该为自己感到无比的自豪，你得给自己击掌叫好一下
+
+3183
+03:02:03,450 --> 03:02:07,050
+send a tweet saying exactly how excited you are. 
+可以发条微博，说一下你到底有多激动
+
+3184
+03:02:07,050 --> 03:02:09,990
+But make sure to celebrate these little wins, 
+不管怎么样，一定要庆祝一下自己的阶段性胜利
+
+3185
+03:02:09,990 --> 03:02:12,930
+celebrating these little wins will give you the motivation to keep going 
+这样的庆祝会让你保持进步的动力
+
+3186
+03:02:12,930 --> 03:02:16,560
+and really excite you for learning each new thing. 
+并且让你在学习每一样新事物时都受到鼓舞
+
+3187
+03:02:16,560 --> 03:02:19,290
+So huge Congratulations. If you got this far, 
+如果你走到了现在，那么非常祝贺你
+
+3188
+03:02:19,290 --> 03:02:22,500
+you've deployed your first contract to a test net, congratulations. 
+你已经成功将你的首个合约部署到了一个测试网上，恭喜你!(O ^ ~ ^ O)
+
+3189
+03:02:22,500 --> 03:02:24,780
+Now if you want to see what it looks like to deploy to a different network,
+现在如果你想看看把它部署到其他网络上是什么样的
+
+3190
+03:02:24,990 --> 03:02:28,650
+all you need to do in your Metamask is switch to a different test net. 
+你只需要在 MetaMask 上切换到其他测试网就行了
+
+3191
+03:02:28,650 --> 03:02:32,160
+See, if we switch to COVID 
+看，如果我们切换到 Kovan
+
+3192
+03:02:32,190 --> 03:02:35,460
+remix automatically updates and says, ah, injected web three is now the COVID test network. 
+Remix 会自动更新并告诉你，啊，Injected Web3 现在是 Kovan 测试网
+
+3193
+03:02:35,490 --> 03:02:39,600
+We could switch again maybe to Grilley,
+我们再切换一次，可以是 Goerli
+
+3194
+03:02:39,810 --> 03:02:42,540
+we say Ah, the injected web three is now at the Grilley.
+我们看到，啊，Injected Web3 现在是 Goerli 了
+
+3195
+03:02:42,570 --> 03:02:45,720
+This is the test net that we'd be deploying to 
+这就是我们打算部署的测试网
+
+3196
+03:02:45,720 --> 03:02:48,840
+of course, we need actual test net Aetherium to do any deploying, 
+当然了，我们需要拥有测试网的以太币才能进行部署
+
+3197
+03:02:48,840 --> 03:02:51,690
+so we wouldn't be able to here. And if we go ahead and hit Deploy right now 
+所以我们不能这样，如果我现在点击部署
+
+3198
+03:02:51,690 --> 03:02:55,740
+Metamask pops up. But we get this little red thing saying insufficient funds. Of course, 
+MetaMask 弹出，但是这里有一小行红字说，资金不足，这是当然的了
+
+3199
+03:02:55,800 --> 03:02:59,550
+later on, we'll learn how to add new networks 
+之后我们会学习如何添加新的网络
+
+3200
+03:02:59,580 --> 03:03:03,180
+like polygon like avalanche like phantom 
+比如 Polygon，比如 Avalanche 比如 Fantom 
+
+3201
+03:03:03,180 --> 03:03:05,640
+into our Metamask. 
+到我们的 MetaMask 中
+
+3202
+03:03:05,640 --> 03:03:06,120
+So we can deploy from any one of them as well.
+到时候我们也可以挑选其中任何一个进行部署

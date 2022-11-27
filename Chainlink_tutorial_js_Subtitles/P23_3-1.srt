@@ -1,0 +1,170 @@
+3246
+03:05:37,290 --> 03:05:37,740
+Awesome.
+太棒了
+
+3247
+03:05:37,800 --> 03:05:41,340
+All right, let's get started on our lesson three, 
+让我们开始第三节课程的学习
+
+3248
+03:05:41,370 --> 03:05:43,920
+remember, everything is in the GitHub repository. 
+记住，完整内容都在 GitHub 的仓库里
+
+3249
+03:05:43,920 --> 03:05:47,550
+And we can scroll down, hit Lesson three and see all the code here. 
+我们往下拉，点击 Lesson 3 可以在这查看所有代码
+
+3250
+03:05:47,550 --> 03:05:50,400
+I'm building up this repo as I film. 
+我在录制的过程中仍在搭建这个仓库
+
+3251
+03:05:50,400 --> 03:05:52,530
+So underneath this lesson three is going to be a lot more information than just the code here, 
+因此当你观看这节课程时这里应该会有更多信息而不是仅仅只有代码
+
+3252
+03:05:52,530 --> 03:05:57,420
+all of our code samples end with dash f f, c, which means dash Free Code Camp. 
+所有我们的代码示例结尾处都有一个 -ffc，意思就是免费的代码训练营(Free Code Camp)
+(译者注：这里应该是 -fcc 而非 Patrick 所说的 -ffc，正下方的英文正是对此的声明)
+
+3253
+03:05:57,420 --> 03:06:00,960
+So if you see a GitHub repo that ends with dash F, F, C, 
+所以如果你看到了一个 GitHub 仓库是以 -ffc 结尾的
+
+3254
+03:06:00,960 --> 03:06:05,370
+know that that repository is associated with this course, 
+你就可以知道该仓库是与本课程有关的
+
+3255
+03:06:05,370 --> 03:06:07,950
+I'm going to do a quick high level walkthrough 
+我会做一个快速而宏观的演示
+
+3256
+03:06:07,950 --> 03:06:10,890
+of what we're going to be building in this lesson.
+以揭示我们在这节课将中构建什么
+
+3257
+03:06:10,890 --> 03:06:14,430
+So you don't need to code right now 
+所以你现在不需要跟着编写代码
+
+3258
+03:06:14,430 --> 03:06:16,860
+just sit back watch and enjoy. 
+只需要坐下来观赏一下就行了
+
+3259
+03:06:16,860 --> 03:06:19,890
+In this lesson, we're actually going to expand to having three different contracts. 
+在本节课程中，我们会扩充三个截然不同的合约
+
+3260
+03:06:19,890 --> 03:06:23,760
+Let's say we want to be able to deploy simple storage contracts from a contract itself. 
+想象一下我们希望通过合约本身来部署 SimpleStorage 合约
+
+3261
+03:06:23,760 --> 03:06:28,230
+Yes, contracts can indeed deploy contracts, 
+你没听错，合约确实是可以用来部署合约的
+
+3262
+03:06:28,230 --> 03:06:31,200
+we are going to create a contract called storage factory dot sole,
+我们会创建一个名为 StorageFactory.sol 的合约
+
+3263
+03:06:31,410 --> 03:06:34,380
+that's going to be able to deploy and interact with other contracts itself. 
+它自身就能够部署其他合约并与之交互
+
+3264
+03:06:34,380 --> 03:06:38,400
+So what we could do 
+所以我们该做些什么
+
+3265
+03:06:38,400 --> 03:06:41,670
+is we could go deploy this to a JavaScript VM, 
+我们可以把它部署到 JavaScript VM 上
+
+3266
+03:06:42,000 --> 03:06:45,120
+we're going to choose storage factory, and we're gonna go ahead and hit Deploy. 
+这里我们选择 StorageFactory，然后点击 Deploy
+
+3267
+03:06:45,120 --> 03:06:48,510
+In our contract down below, we have a number of different functions. 
+在这个合约下面，有几个不同的函数
+
+3268
+03:06:48,510 --> 03:06:52,020
+Our top function is this function called crate simple storage contract,
+最上面这个函数是一个名为 crateSimpleStorageContract 的函数
+
+3269
+03:06:52,230 --> 03:06:56,100
+which we can click and it'll actually create a simple storage contract for us, 
+如果我们点击它，它就会为我们创建一个 SimpleStorage 合约
+
+3270
+03:06:56,100 --> 03:06:59,760
+then we can go ahead and interact with it 
+我们还可以与它做一些其他交互
+
+3271
+03:06:59,760 --> 03:07:04,260
+at an IG zero will save a favorite number of one. 
+在 0 处我们要存在一个喜欢的数字 1
+
+3272
+03:07:04,260 --> 03:07:05,340
+Now, if we hit SF get zero,
+现在，我们点击 sfGet 0
+
+3273
+03:07:06,390 --> 03:07:09,390
+we get one back. 
+可以获得返回值 1
+
+3274
+03:07:09,510 --> 03:07:12,360
+And we can see the address of the simple storage contract that we just deployed. 
+并且我们可以查看刚刚部署的 SimpleStorage 合约的地址
+
+3275
+03:07:12,360 --> 03:07:14,460
+Additionally, we're going to learn about a number of solidity features, 
+此外，我们还将学习 solidity 的一些其他特性
+
+3276
+03:07:14,460 --> 03:07:18,600
+such as importing inheritance, and so much more. 
+比如导入(import)，继承(inheritance)等等
+
+3277
+03:07:18,660 --> 03:07:22,080
+So let's go ahead and jump in. 
+那么让我们继续吧
+
+3278
+03:07:22,080 --> 03:07:25,590
+And remember all the code is available here from the GitHub repository. 
+记住，所有代码都可以在这个 GitHub 仓库中找到
+
+3279
+03:07:25,620 --> 03:07:28,350
+So be sure to refer back to these contracts if you get lost.
+所以你一旦有了任何疑惑，一定要回来参考这些合约代码

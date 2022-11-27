@@ -1,0 +1,212 @@
+3203
+03:03:08,790 --> 03:03:11,190
+Now, I mentioned this term before, 
+我之前提到过的一个说法是
+
+3204
+03:03:11,190 --> 03:03:14,520
+but all this code that we wrote, when we hit this compile button, 
+我们在这里写下的全部代码，当我们点击这个编译(Compile)按钮时
+
+3205
+03:03:14,520 --> 03:03:20,910
+it compiles it down to the EVM or the Ethereum virtual machine. 
+它其实是在 EVM 或者说以太坊虚拟机(Ethereum Virtual Machine)上编译的
+
+3206
+03:03:20,910 --> 03:03:24,930
+Don't worry too much about what this means. 
+暂且不用太纠结它到底是什么意思
+
+3207
+03:03:24,930 --> 03:03:28,950
+EVM is a standard of how to deploy smart contracts to Aetherium like blockchains. 
+EVM 就是如何往以太坊这样的区块链上部署智能合约的一个标准
+
+3208
+03:03:28,950 --> 03:03:32,550
+And any blockchain that implements a type of EVM. You can deploy solidity code to 
+并且任何实现某种 EVM 的区块链，你都可以把 solidity 代码部署上去
+
+3209
+03:03:32,580 --> 03:03:36,780
+some examples of EVM compatible blockchains
+这里举一些与 EVM 兼容的区块链的例子
+
+3210
+03:03:36,810 --> 03:03:41,400
+are going to be avalanche, Phantom, and polygon. 
+比如，Avalanche, Fantom, Polygon
+
+3211
+03:03:41,400 --> 03:03:44,730
+Since these are EVM compatible, 
+它们与 EVM 是兼容的
+
+3212
+03:03:44,730 --> 03:03:48,000
+this means we can write our solidity code, and deploy to these blockchains, 
+意思就是我们可以把编写的 solidity 代码，部署到这些区块链上
+
+3213
+03:03:48,000 --> 03:03:50,490
+which again, I'll show you later on how to add these new networks into your Metamask. 
+不用担心，之后我就会展示如何为你的 MetaMask 添加新的网络
+
+3214
+03:03:50,490 --> 03:03:53,700
+And then how to deploy them. 
+以及如何部署它们
+
+3215
+03:03:53,700 --> 03:03:56,370
+Let's do a quick recap of our first smart contract. 
+让我们快速回顾一下我们的首个智能合约
+
+3216
+03:03:56,370 --> 03:04:00,060
+And then you should actually take a break, maybe get some ice cream or coffee 
+然后你就可以休息一下了，来点冰淇淋或者咖啡
+
+3217
+03:04:00,060 --> 03:04:02,760
+because you absolutely deserve it. Congratulations. 
+你绝对配得上获得这份奖励，再次对你表示祝贺
+
+3218
+03:04:02,760 --> 03:04:06,960
+The first thing you always need to do in your smart contracts is tell solidity, 
+在你的智能合约中你总是要做的第一件事就是告诉 solidity
+
+3219
+03:04:06,960 --> 03:04:09,990
+what version of solidity that you're going to be using. 
+你正在使用的是哪个版本的 solidity
+
+3220
+03:04:09,990 --> 03:04:13,260
+And additionally, you want to add an spdx license identifier, 
+并且你还得添加一个 SPDX-License-Identifier
+
+3221
+03:04:13,260 --> 03:04:16,680
+then you have to create your contract object and name your contract. 
+接着你就要创建你的合约对象并为它命名
+
+3222
+03:04:16,710 --> 03:04:19,410
+The contract in solidity is similar to a class in other programming languages, 
+solidity 中的合约(contract)就类似于其他编程语言中的类(class)
+
+3223
+03:04:19,410 --> 03:04:23,010
+and everything inside the squiggly brackets is a part of that contract. 
+并且花括号里的所有内容都是该合约的组成部分
+
+3224
+03:04:23,040 --> 03:04:26,730
+There are many different types in solidity 
+solidity 有许多不同的数据类型
+
+3225
+03:04:26,760 --> 03:04:32,970
+like unsigned integer 256, Boolean, string, bytes 32, etc. 
+例如无符号256位整型(unsigned integer 256)，布尔值(Boolean)，字符串(string)，32位字节(bytes 32)，等等
+
+3226
+03:04:32,970 --> 03:04:35,130
+If we want to create a new type, we can create what's called a struct in solidity. 
+如果我们想创建一种新类型，我们可以在 solidity 中创建一个所谓的结构体(struct)
+
+3227
+03:04:35,130 --> 03:04:38,760
+You can create arrays or lists in solidity, 
+你可以在 solidity 中创建数组(array)或者说列表(list)
+
+3228
+03:04:38,760 --> 03:04:41,970
+you can create dictionaries, or what's called mappings in solidity or hash tables, 
+你可以创建字典(dictionarie)，或者称为 solidity 中的映射(mapping)，或是叫哈希表(hash table)也可以
+
+3229
+03:04:42,000 --> 03:04:45,750
+which when you give it a key, it'll spit out the value that that key represents. 
+当你给它一个键(key)时，它就会返回与该键对应的值(value)
+
+3230
+03:04:45,750 --> 03:04:49,410
+We can create functions in solidity 
+我们可以在 solidity 中创建函数
+
+3231
+03:04:49,410 --> 03:04:52,530
+that modify the state of the blockchain. 
+以修改区块链的状态
+
+3232
+03:04:52,530 --> 03:04:55,860
+We can also create functions in solidity that don't modify the state of the blockchain 
+我们也可以在 solidity 中创建不修改区块链状态的函数
+
+3233
+03:04:55,860 --> 03:04:58,620
+view in pure functions, don't modify by the state of a blockchain, 
+view 和 pure 函数就是不修改区块链状态的函数
+
+3234
+03:04:58,620 --> 03:05:01,830
+we also can specify different data locations in our functions,
+我们也可以在函数中指定不同的数据位置(data location)
+
+3235
+03:05:01,830 --> 03:05:05,280
+
+
+
+3236
+03:05:05,580 --> 03:05:09,450
+called data and memory mean that that data is only temporary 
+calldata 和 memory 的意思就是该数据只是临时数据
+
+3237
+03:05:09,450 --> 03:05:12,390
+and will only exist for the duration of the function. 
+它们只在函数运行期间存在
+
+3238
+03:05:12,390 --> 03:05:15,150
+Storage variables are permanent and stay there forever. 
+storage 变量则是永久存在的
+
+3239
+03:05:15,150 --> 03:05:17,940
+function parameters can't be stored variables 
+函数的参数不能是 storage 变量
+
+3240
+03:05:17,940 --> 03:05:20,550
+because they're only going to exist for the duration of the function. 
+因为它们只能存在于函数运行期间
+
+3241
+03:05:20,550 --> 03:05:23,610
+All the solidity code that we work with, 
+这就是我们所使用的所有 solidity 代码
+
+3242
+03:05:23,610 --> 03:05:28,080
+when we hit Compile, it actually compiles down to this Aetherium virtual machine specifications.
+当我们点击编译(Compile)时，它就会按照以太坊虚拟机(Ethereum Virtual Machine)的格式进行编译
+
+3243
+03:05:28,170 --> 03:05:30,690
+We'll learn more about those specifications later. 
+我们会在以后学习更多关于这个格式的知识
+
+3244
+03:05:30,690 --> 03:05:33,600
+And last, but not least, another huge congratulations on your first contract here.
+最后，并且十分重要的是，恭喜你完成了你的第一份智能合约
+
+3245
+03:05:33,600 --> 03:05:34,260

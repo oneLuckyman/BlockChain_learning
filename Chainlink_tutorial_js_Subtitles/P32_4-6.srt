@@ -1,0 +1,578 @@
+4808
+04:41:57,720 --> 04:42:03,510
+So instead of looping through the array and deleting objects, 
+这一次我们不再通过循环遍历的方式删除所有数组内的对象
+
+4809
+04:42:03,510 --> 04:42:08,550
+we're just going to say funders equals a new address array, 
+我们可以这样写 funders = new address array 
+
+4810
+04:42:08,550 --> 04:42:13,440
+we're going to completely reset the array by saying this font is variable 
+这样做就会完全重置整个 funders 数组
+
+4811
+04:42:13,440 --> 04:42:19,470
+now equals a brand new address array
+它现在是一个全新的 address 类型数组了
+
+4812
+04:42:19,740 --> 04:42:23,190
+with zero objects in it to start, 
+并且里面没有任何(有 0 个)对象
+
+4813
+04:42:23,190 --> 04:42:26,670
+if we were to put a one here, this would be there'll be one element to start in the array, 
+如果我们把这里改成 1，这个数组就会有 1 个初始元素在里面
+
+4814
+04:42:26,670 --> 04:42:30,690
+two would be two, three would be three, etc, 
+改成 2 就是有两个，改成 3 就是有三个，以此类推
+
+4815
+04:42:30,690 --> 04:42:43,230
+we're just going to start it as a completely blank new array. 
+不过我们在这里想要的就只是一个全新的，空白的数组
+
+4816
+04:42:43,230 --> 04:42:46,410
+So great, we've gone ahead and reset the array. 
+很好，我们已经重置了这个数组
+
+4817
+04:42:46,410 --> 04:42:50,760
+But how do we actually now with draw funds from this contract? 
+但我们现在究竟该如何实际地从这个合约中提取资金呢？
+
+4818
+04:42:50,760 --> 04:42:55,530
+How do we send the funds back to whomever is calling this 
+或者说我们该如何把资金发送给合约的调用者？
+
+4819
+04:42:55,530 --> 04:42:59,460
+now to actually send ether or send native blockchain currency, 
+现在，要想发送以太币或者其他区块链原生货币的话
+
+4820
+04:42:59,460 --> 04:43:02,820
+there are actually three different ways to do this, 
+有三种不同的方式可供使用
+
+4821
+04:43:02,850 --> 04:43:06,300
+we're going to look at all three, and say what the differences between the three of them are, 
+这三种方式我们都会看看，并且会说一下它们之间有什么区别
+
+4822
+04:43:06,300 --> 04:43:09,300
+the three different ways are going to be transfer, send, and call. 
+这三种方式分别是 transfer，send，和 call
+
+4823
+04:43:10,200 --> 04:43:15,240
+Let's go ahead and start with transfer. 
+让我们从 transfer 开始
+
+4824
+04:43:15,240 --> 04:43:19,140
+Since transfer is the simplest and at surface level makes the most sense to us. 
+因为 transfer 是最简单的，使用起来也是最直观的
+
+4825
+04:43:19,140 --> 04:43:23,430
+So if we want to transfer the funds to whomever is calling this withdrawal function, 
+所以如果我们想要转移资金，给调用这个 withdraw 函数的人
+
+4826
+04:43:23,430 --> 04:43:27,120
+we would do we would say message dot sender, dot transfer. 
+我们该这样写，msg.sender.transfer
+
+4827
+04:43:27,120 --> 04:43:32,550
+And then we'd get the balance of our contract here 
+然后我们要得到这个合约的余额
+
+4828
+04:43:32,550 --> 04:43:39,780
+by saying address this, 
+写下 address this
+
+4829
+04:43:39,780 --> 04:43:44,370
+this keyword refers to this whole contract dot balance, 
+关键字 this 指的就是这整个合约本身 .balance 
+
+4830
+04:43:44,370 --> 04:43:46,650
+and we can get the native blockchain currency or the Aetherium currency balance of this address like this. 
+这样我们就可以获得这个地址的区块链原生货币或者说以太币余额了
+
+4831
+04:43:46,650 --> 04:43:49,650
+And we can just do
+只用做这些就够了
+
+4832
+04:43:49,650 --> 04:43:53,670
+that only thing that we need to do is we need to cast 
+我们唯一要再做的一件事就是需要做一下类型转换
+
+4833
+04:43:53,670 --> 04:44:00,840
+we need to typecast message dot sender from an address type to a payable address type. 
+我们要把 msg.sender 从 address 类型转换到 payable address 类型
+
+4834
+04:44:00,870 --> 04:44:07,500
+So message dot sender is of type address.
+所以说 msg.sender 是一个 address 类型
+
+4835
+04:44:08,310 --> 04:44:14,400
+Whereas payable, message that sender is of type, payable address, 
+而 payable(msg.sender) 是 payable address 类型
+
+4836
+04:44:14,400 --> 04:44:17,580
+and in solidity in order to send the native blockchain token like Aetherium, 
+在 solidity 中要想发送区块链原生货币比如以太币
+
+4837
+04:44:17,580 --> 04:44:21,210
+you can only work with payable addresses. To do that, 
+你必须使用 payable address 类型才能做到
+
+4838
+04:44:21,210 --> 04:44:25,110
+we just wrap it in this payable type caster. 
+所以我们把它放到这个 payable 类型转换器里
+
+4839
+04:44:25,110 --> 04:44:29,100
+So this is the first way that we actually send Aetherium
+这就是我们发送以太币的第一种方法
+
+4840
+04:44:29,100 --> 04:44:33,690
+or send tokens from different contracts to each other, 
+这种方法也可以用于不同合约之间互相发送代币
+
+4841
+04:44:33,690 --> 04:44:37,020
+we wrap the address that we want to send it in, in this payable keyword,
+我们只需要把想要发送到的目标地址放到这儿，放到 payable 关键字里
+
+4842
+04:44:37,470 --> 04:44:41,610
+we do dot transfer, and then we say exactly how much we want to transfer. 
+然后写下 .transfer，并且在这里告诉它我们到底要转移多少资金
+
+4843
+04:44:41,610 --> 04:44:45,240
+But there are some issues with transfer. 
+但是 transfer 还存在一些自身的问题
+
+4844
+04:44:45,240 --> 04:44:50,130
+Here we are on solidity by example, for sending ether, 
+现在我们来到这个 solidity-by-example 网址的 sending-ether 页面
+
+4845
+04:44:50,130 --> 04:44:54,540
+which, again is a fantastic resource to refer to, if you get lost, 
+另外，这个网址是一个非常好的参考资料，如果你有疑惑的话
+
+4846
+04:44:54,540 --> 04:44:59,430
+the method that we just looked at was this transfer method. 
+我们刚刚看过的方法就是这个 transfer 方法
+
+4847
+04:44:59,430 --> 04:45:04,260
+Now we saw way earlier in the course, 
+在之前的课程中我们已经知道了
+
+4848
+04:45:04,260 --> 04:45:10,740
+that if I sent Aetherium, from one address to another, 
+如果我要把以太币，从一个地址发送到另一个地址
+
+4849
+04:45:10,740 --> 04:45:16,350
+it cost about 2100 gas or 2100. Gas, 
+这笔交易大约消耗 2100 gas
+
+4850
+04:45:16,350 --> 04:45:19,740
+our transfer function is capped at 2300 gas. 
+我们的 transfer 函数的上限是 2300 gas 
+
+4851
+04:45:19,740 --> 04:45:24,960
+And if more gas is used, it throws an error. 
+如果超出这个上限，它就会报错
+
+4852
+04:45:24,960 --> 04:45:28,740
+The next one that we're using is going to be sent which is also capped at 2300 gas. 
+下一个我们要使用的方法是 send，它的消耗上限同样也是 2300 gas
+
+4853
+04:45:28,770 --> 04:45:32,850
+And if it fails, it'll return a Boolean. 
+而如果它运行失败了，则会返回一个布尔值
+
+4854
+04:45:32,850 --> 04:45:36,420
+So with transfer, if this line fails, it'll air and revert the transaction 
+所以对于 transfer 来说，如果这一行运行失败，它会直接报错并且回滚交易
+
+4855
+04:45:36,420 --> 04:45:41,670
+with send, it won't air, it'll return a boolean of whether or not it was successful. 
+但使用 send，就不会直接报错，而是会返回一个表示运行是否成功的布尔值
+
+4856
+04:45:42,480 --> 04:45:50,490
+So using send will do payable message that sender that send address this balance. 
+所以要想使用 send，我们写下 payable(msg.sender).send(address(this).balance)
+
+4857
+04:45:50,490 --> 04:45:54,360
+But we don't want to finish our call here. 
+但是我们不能就这么结束这一语句
+
+4858
+04:45:54,360 --> 04:45:58,260
+If this were to fail, the contract wouldn't revert the transaction, and we just want to get our money sent. 
+如果这一行运行失败了，合约不会回滚交易，我们就只是单纯没拿到钱而已
+
+4859
+04:45:58,260 --> 04:46:05,400
+So we want to do Boolean send success equals this whole bit here. 
+所以我们这里还得写下 bool sendSuccess 等于整个这一部分
+
+4860
+04:46:05,400 --> 04:46:11,040
+And then we want to require success. 
+然后写下 require sendSuccess
+
+4861
+04:46:11,040 --> 04:46:14,040
+And if this send fails will throw an error saying sin failed.
+如果这里发送失败了就会报一个 "Send failed" 错误
+
+4862
+04:46:15,420 --> 04:46:20,310
+This way, if this fails, we will still revert by adding our require statement here. 
+这样做的话，如果这里运行失败，通过 require 语句我们还是可以回滚交易
+
+4863
+04:46:20,340 --> 04:46:23,790
+Transfer automatically reverts if the transfer fails, 
+如果 transfer 运行失败它会自动回滚交易
+
+4864
+04:46:23,790 --> 04:46:28,680
+send will only revert the transaction if we add this require statement here. 
+而 send 要想回滚交易，我们就必须在这里添加 require 语句
+
+4865
+04:46:28,680 --> 04:46:32,820
+So great. What's the third way that we can actually send Etherium or native currency 
+很好，那么第三种发送以太币或者其他原生货币的方式是什么呢？
+
+4866
+04:46:32,820 --> 04:46:36,330
+wallets with this call command. 
+就是这个 call 命令
+
+4867
+04:46:36,330 --> 04:46:40,110
+Now call is going to be one of the first
+call 将会是我们接触的第一个
+
+4868
+04:46:40,140 --> 04:46:43,950
+lower level commands that we actually use in our solidity code, 
+在 solidity 中实际使用的较为底层的命令
+
+4869
+04:46:43,950 --> 04:46:48,330
+because this call function is actually incredibly powerful.
+call 的功能强大到你难以想象
+
+4870
+04:46:48,540 --> 04:46:53,190
+And we can use it to call virtually any function in all of Aetherium 
+我们可以用它来调用几乎所有 solidity 的函数
+
+4871
+04:46:53,190 --> 04:46:57,090
+without even having to Have the API 
+甚至不需要依赖 ABI 
+
+4872
+04:46:57,090 --> 04:47:00,510
+we'll learn the advanced ways to use this call much later. 
+我们会在以后更深入的学习如何使用这一高级功能
+
+4873
+04:47:00,510 --> 04:47:03,720
+For now, we're just going to learn how to use it to send Aetherium, or your native blockchain currency 
+但是现在，我们只学习一下如何使用它来发送以太币，或者其他区块链原生货币
+
+4874
+04:47:03,720 --> 04:47:07,650
+call is going to look very similar to send, 
+call 和 send 其实也很相似
+
+4875
+04:47:07,740 --> 04:47:14,070
+we're going to do payable, message dot sender, dot call.
+我们写下 payable msg.sender .call
+
+4876
+04:47:14,250 --> 04:47:18,300
+And this is where we will put any function information 
+这个地方就是我们填写任何函数信息
+
+4877
+04:47:18,300 --> 04:47:21,180
+or any information about the function, we want to call on some other contract, 
+或者说，任何我们想调用的某个合约的函数信息
+
+4878
+04:47:21,180 --> 04:47:24,240
+we actually don't want to call a function. 
+我们现在并不打算调用哪个函数
+
+4879
+04:47:24,240 --> 04:47:27,000
+So we're going to leave this blank, 
+所以我们在这里留白就行了
+
+4880
+04:47:27,000 --> 04:47:30,240
+we can show that we're leaving it blank by just putting in these two quotes here, 
+在这里填上两个引号以表明我们在此处留白
+
+4881
+04:47:30,240 --> 04:47:34,920
+we instead want to use this like a transaction. 
+现在我们反而像是要发送一笔交易一样来使用它了
+
+4882
+04:47:34,950 --> 04:47:38,160
+And as we saw in our deployment, there's always this message dot value bid, 
+正如我们在部署界面看到的，这里总是有一个用来提供 msg.value 的位置
+
+4883
+04:47:38,190 --> 04:47:41,940
+we're going to use this call function as if it's a regular transaction, 
+所以我们要把这个 call 函数当做一个普通交易来使用
+
+4884
+04:47:41,970 --> 04:47:45,840
+and we can add stuff like message dot value. 
+并且要为它添加 msg.value 这样的东西
+
+4885
+04:47:45,840 --> 04:47:51,030
+So in here, we're going to add these squiggly brackets. 
+所以在这里，我们要添加一组花括号
+
+4886
+04:47:52,320 --> 04:48:00,060
+And we're going to say, value address this dot balance, 
+这里我们写 value address this .balance 
+
+4887
+04:48:00,060 --> 04:48:03,240
+this call function returns actually two variables. 
+这个 call 函数实际上有两个返回值
+
+4888
+04:48:03,570 --> 04:48:07,110
+And when a function returns two variables, 
+当一个函数有两个返回值时，
+
+4889
+04:48:07,110 --> 04:48:10,290
+we can show that by placing them into parentheses on the left hand side, 
+我们可以把它们放到左边的括号里来表示
+
+4890
+04:48:10,290 --> 04:48:15,840
+the two variables, it returns are going to be a Boolean, that we're going to call call success. 
+这两个返回值的其中之一是布尔值，我们把它称为 callSuccess
+
+4891
+04:48:15,840 --> 04:48:20,580
+And also a bytes object called data returned, 
+另外一个则是 bytes 对象，称之为 dataReturned
+
+4892
+04:48:20,580 --> 04:48:23,670
+since call allows us to actually call different functions. 
+因为 call 允许我们调用不同的函数
+
+4893
+04:48:23,700 --> 04:48:28,020
+If that function returns some data or returns value, 
+如果那个函数本身就返回一些数据或者说有返回值
+
+4894
+04:48:28,050 --> 04:48:32,790
+we're going to save that in the data returned variable. 
+我们就得把这个返回值给保存下来
+
+4895
+04:48:32,820 --> 04:48:36,180
+It also returns call success, where if the function was successfully called this will be true. 
+它还返回 callSuccess，当我们的函数被 call 成功调用时，这个值就是 true
+
+4896
+04:48:36,180 --> 04:48:41,310
+If not, this will be false. 
+反之，就是 false
+
+4897
+04:48:41,400 --> 04:48:46,590
+And since bytes objects are arrays, data returns needs to be in memory. 
+并且因为 bytes 对象是数组，所以 dataReturned 还需要放到 memory 中
+
+4898
+04:48:46,590 --> 04:48:49,980
+Now for our code here, we're actually not calling a function, 
+现在对于我们这里的代码来说，我们实际上没有调用某个函数
+
+4899
+04:48:49,980 --> 04:48:53,640
+so we don't really care about data returned. 
+所以我们其实不用关心 dataReturned
+
+4900
+04:48:53,670 --> 04:48:57,300
+So similar to what we saw with the price contract, 
+所以这就和我们在 price 合约中见到的差不多
+
+4901
+04:48:57,300 --> 04:49:00,570
+we can just go ahead and delete that and leave the comma to tell solidity 
+我们只需要把这里删掉留下逗号，以此来告诉 solidity
+
+4902
+04:49:00,570 --> 04:49:03,930
+Yeah, we know this function returns two variables, but we only care about one. 
+是的，我知道这个函数有两个返回值，但我们只关心其中的一个
+
+4903
+04:49:03,960 --> 04:49:07,590
+And then similar to the centerpiece above, we're going to do require cost access call failed, 
+然后就和上面 send 一样，我们要补上 require, callSuccess, Call failed
+
+4904
+04:49:08,070 --> 04:49:12,690
+meaning that we're requiring cost accesses true. 
+意思就是我们要求 callSuccess 必须为 true
+
+4905
+04:49:12,690 --> 04:49:16,650
+Otherwise, we'll revert with an error that says call failed. 
+否则，我们将回滚交易并抛出一个 Call failed 错误
+
+4906
+04:49:16,650 --> 04:49:19,590
+Now of learning the difference between these three is a little complicated for you right now. 
+如果你现在还不太能搞懂它们三个之间的区别
+
+4907
+04:49:19,620 --> 04:49:22,830
+Don't let that slow you down. 
+不要过于纠结它们以至于拖累你的学习进度
+
+4908
+04:49:22,830 --> 04:49:26,040
+Feel free to come back to this 
+等之后再回过头来重新审视这里
+
+4909
+04:49:26,040 --> 04:49:28,950
+after you've learned more about how some of these lower level functions work. 
+可以是在你学习了更多关于底层函数的工作机制后
+
+4910
+04:49:28,950 --> 04:49:32,040
+And a little bit more about how gasworks 
+也可以是学习了更多 gas 工作机制后
+
+4911
+04:49:32,070 --> 04:49:35,520
+solidity by example, does a fantastic job though of saying what the difference is between all three, 
+solidity-by-example 非常好的解释了这三者之间的区别
+
+4912
+04:49:35,520 --> 04:49:39,450
+our transfer has a maximum of 2300 gas and throws an error if it fails, 
+transfer 最大允许 2300 gas 并且运行失败时会直接报错
+
+4913
+04:49:39,450 --> 04:49:43,920
+send has a maximum of 2300 gas returns a Boolean, if it fails, 
+send 最大也允许 2300 gas 它运行失败时会返回一个布尔值
+
+4914
+04:49:44,220 --> 04:49:48,390
+call forwards all gas so doesn't have a capped gas. 
+call 转移所有 gas 所以它没有 gas 上限
+
+4915
+04:49:48,390 --> 04:49:54,300
+And similar to send returns a Boolean, 
+并且和 send 一样返回一个布尔值
+
+4916
+04:49:54,360 --> 04:49:59,280
+if it is successful, or if it fails, 
+表示其运行成功，或者失败
+
+4917
+04:49:59,280 --> 04:50:04,020
+As of recording right now using call is the recommended way 
+目前来说，call 是最推荐的
+
+4918
+04:50:04,350 --> 04:50:07,650
+to actually send and receive Aetherium or your blockchain native token 
+发送和接收以太币或其他区块链原生货币的方式
+
+4919
+04:50:07,650 --> 04:50:10,440
+for now,  if this part's a little bit confusing for you, for now, just look at this and see 
+现在，如果你对这部分还是有些疑惑，那就只看这里就行
+
+4920
+04:50:10,440 --> 04:50:14,880
+ah, that's how we send and transfer Aetherium or native blockchain currency tokens. 
+啊，这就是我们发送和转移以太币或其他区块链原生货币的方式
+
+4921
+04:50:14,880 --> 04:50:17,880
+And I'm going to delete this part for the video, 
+我会在视频里删除掉这部分内容
+
+4922
+04:50:18,030 --> 04:50:21,780
+but I'll keep those comments in the code repository associated with this course. 
+但会在本课程相关的代码库中保留它们的注释
+
+4923
+04:50:21,780 --> 04:50:27,990
+

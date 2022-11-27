@@ -1,0 +1,254 @@
+4968
+04:53:16,500 --> 04:53:21,990
+Now that we have the owner setup, 
+现在我们已经设置好了合约的拥有者
+
+4969
+04:53:21,990 --> 04:53:25,350
+we can modify our withdrawal function
+现在我们就可以来修改我们的 withdraw 函数
+
+4970
+04:53:25,410 --> 04:53:29,850
+to make it so that only the owner can actually call this withdrawal function. 
+使得只有拥有者才有权调用这个 withdraw 函数
+
+4971
+04:53:29,850 --> 04:53:32,700
+So at the top of the withdrawal function,
+所在在 withdraw 函数的顶部
+
+4972
+04:53:32,850 --> 04:53:37,080
+maybe we want to add a section, 
+或许我们想要添加一部分
+
+4973
+04:53:37,980 --> 04:53:44,010
+maybe we want to say require message dot sender equals the owner, 
+也许可以这样，require msg.sender 等于 owner
+
+4974
+04:53:44,010 --> 04:53:48,000
+a note about double equals versus equals, 
+关于双等号与等号这里说明一下
+
+4975
+04:53:48,000 --> 04:53:53,640
+you can think of this single equals as a set parameter. 
+你可以把这个单等号视作一个设置参数
+
+4976
+04:53:53,640 --> 04:53:58,590
+So when I say owner, is now set to message dot sender, 
+所以这里就是把 owner 设置为 msg.sender
+
+4977
+04:53:58,620 --> 04:54:02,430
+double equals is how you check to see if these two variables are equivalent. 
+双等号则是用来检查这两个变量是否等价
+
+4978
+04:54:02,430 --> 04:54:06,780
+So we're saying is message dot sender, the same as owner. 
+所以这里就是在问 msg.sender 和 owner 是否是一样的
+
+4979
+04:54:06,810 --> 04:54:10,440
+So this is checking to see equivalence. This is setting 
+所以这个是检查是否等价，这个是设置
+
+4980
+04:54:10,590 --> 04:54:14,460
+checking to see equivalence setting. 
+检查是否等价，设置
+
+4981
+04:54:14,460 --> 04:54:18,180
+So we're gonna say require message dot sender is equal to owner, 
+所以我们写下的就是 require msg.sender 是否等于 owner
+
+4982
+04:54:18,330 --> 04:54:23,340
+otherwise, we're gonna throw an error, saying, sender is not owner. Perfect. 
+不是的话，我们抛出一个错误，就说 "Sender is not owner!" 完美！
+
+4983
+04:54:23,340 --> 04:54:28,530
+Now we have a quick way to make sure the withdrawal function is only called by the owner of this contract. 
+现在我们就有了一个快捷的方法来确保 withdraw 函数只能被这个合约的拥有者所调用
+
+4984
+04:54:28,530 --> 04:54:31,500
+Now, let's say that there's a lot of functions that we have in this contract 
+现在我们假设这个合约有很多函数
+
+4985
+04:54:31,500 --> 04:54:35,370
+that are going to be required to be the owner, 
+它们都要求只能由合约的拥有者来调用
+
+4986
+04:54:35,370 --> 04:54:38,340
+maybe there's a lot of functions in this contract
+或者也可能是这个合约有大量函数
+
+4987
+04:54:38,370 --> 04:54:40,740
+that need a whole lot of different requires, 
+它们有着很多各不相同的要求
+
+4988
+04:54:40,740 --> 04:54:43,620
+we don't want to have to copy paste this line to every single one of our functions. 
+我们肯定不想反复复制这一行到所有的函数中去
+
+4989
+04:54:43,620 --> 04:54:46,440
+So what can we do? 
+所以我们该怎么办？
+
+4990
+04:54:46,440 --> 04:54:50,310
+Well, this is where something called modifiers come in. 
+这个时候就需要用到修饰器(modifier)了
+
+4991
+04:54:50,310 --> 04:54:54,090
+So for now, we're gonna go ahead and delete this line. 
+现在我们要删掉这一行
+
+4992
+04:54:54,090 --> 04:54:59,010
+And below, we're going to create something called a modifier, 
+并且在下面，创建一个 modifier 
+
+4993
+04:54:59,010 --> 04:55:03,240
+our modifier is going to be a key word that we can add right in the function declaration. 
+modifier 是一个可以直接在函数声明中添加的关键字
+
+4994
+04:55:03,240 --> 04:55:05,640
+To modify the function with that functionality, 
+从而修饰(modify)给函数某些功能
+
+4995
+04:55:05,640 --> 04:55:10,230
+we're going to create a modifier and call it only owner. 
+我们要创建一个 modifier 并且称之为 onlyOwner
+
+4996
+04:55:10,230 --> 04:55:15,240
+And we're going to paste that line that we just made in withdraw. 
+然后把我们刚刚在 withdraw 里写的那一行粘贴过来
+
+4997
+04:55:15,240 --> 04:55:18,000
+And underneath that, we're going to put a little underscore, 
+在下面我们还要添加一个下划线
+
+4998
+04:55:18,000 --> 04:55:21,900
+what I can do now is I can take this only owner modifier, 
+现在我就可以把这个叫 onlyOwner 的修饰器 
+
+4999
+04:55:21,900 --> 04:55:25,320
+and stick it in the function declaration of my withdrawal function. 
+插入到我的 withdraw 函数的函数声明中
+
+5000
+04:55:25,320 --> 04:55:29,160
+So what's happening with this modifier 
+所以这个修饰器到底有什么用？
+
+5001
+04:55:29,160 --> 04:55:29,970
+with only owner in this function declaration,
+这个函数声明中的 onlyOwner
+
+5002
+04:55:30,060 --> 04:55:33,660
+we're saying, hey, for this withdrawal function, 
+我们可以这么理解，嘿，你这个 withdraw 函数
+
+5003
+04:55:33,660 --> 04:55:37,410
+before you read all this code inside of it, 
+在你读取所有内部代码之前，
+
+5004
+04:55:37,410 --> 04:55:42,510
+look down at the only owner modifier and do whatever is in there first, 
+先看看这个修饰器 onlyOwner 并且优先运行这里的代码
+
+5005
+04:55:42,510 --> 04:55:45,540
+and then do whatever's in the underscore, 
+然后再运行下划线里的东西
+
+5006
+04:55:45,540 --> 04:55:48,330
+this underscore represents doing the rest of the code. 
+这里的下划线表示运行余下的代码
+
+5007
+04:55:48,330 --> 04:55:53,730
+So now, when we go call the withdraw function, 
+此处指的就是调用这个 withdraw 函数
+
+5008
+04:55:53,730 --> 04:55:57,900
+we actually do this require statement first, and then call the rest of the code. 
+实际上，我们就是先运行了这个 require 语句，然后调用余下的代码
+
+5009
+04:55:57,900 --> 04:56:02,100
+If this require statement, we're below the underscore, 
+如果把这个 require 语句，放到下划线的下面
+
+5010
+04:56:02,100 --> 04:56:06,900
+this would tell our function to go ahead and do all this code first. And then run the require. 
+这将告诉我们的函数，先运行这里的全部代码，然后再运行这个 require
+
+5011
+04:56:06,900 --> 04:56:09,690
+Because again, we have this only only keyword, 
+因为我们在这里有一个 onlyOwner 关键字
+
+5012
+04:56:09,690 --> 04:56:12,810
+we're saying, Great, we've got a function, it's withdraw its public, oh, only odor modifier. 
+我们会说，很好，我们获得了一个函数，它叫 withdraw，是 public 的，哦！onlyOwner 修饰器
+
+5013
+04:56:12,810 --> 04:56:16,710
+Let's look at how that works. 
+快去看看它让我们做什么
+
+5014
+04:56:16,710 --> 04:56:19,350
+Okay, it tells us how to do all the code of the original function first. 
+好吧，它告诉我们先运行原函数的所有代码
+
+5015
+04:56:19,350 --> 04:56:22,320
+So let's go ahead and do that. Okay, now we're done. 
+所以我们继续并且运行完这些，好了，已经完成了
+
+5016
+04:56:22,320 --> 04:56:25,800
+Now, what do we do? Okay, now we'll run the require, 
+现在我们要做什么？好吧，现在我们要运行这个 require
+
+5017
+04:56:25,800 --> 04:56:29,670
+we want to go ahead and put the require here first. 
+不过我们还是想把这个 require 放到前面
+
+5018
+04:56:30,030 --> 04:56:35,820
+So this is how modifiers work, and how we can use them to improve our functionality. 
+所以这就是修饰器(modifier)的工作机制，以及我们是如何用它来改进我们的函数的
