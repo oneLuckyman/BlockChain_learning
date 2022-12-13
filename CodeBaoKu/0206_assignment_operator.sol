@@ -1,14 +1,3 @@
-# Solidity 赋值运算符
-
-Solidity 支持的赋值运算符，如下表所示
-
-<!-- 之后会补上表格 -->
-
-示例
-
-下面的代码展示了如何使用赋值运算符。
-
-```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 contract SolidityTest {
@@ -41,10 +30,3 @@ contract SolidityTest {
         return string(bstr);    // 访问局部变量
     }
 }
-```
-
-运行结果：
-
-```solidity
-0: string: 10
-```
