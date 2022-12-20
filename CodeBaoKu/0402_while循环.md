@@ -1,0 +1,60 @@
+# Solidity while 循环
+
+语法
+
+Solidity 中，while 循环的语法如下：
+
+```solidity
+while (表达式) {
+    // 如果表达式的结果为真，就循环执行以下语句
+    ......
+}
+```
+
+示例
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract SolidityTest {
+    uint storedData;
+
+    constructor() {
+        storedData = 10;
+    }
+
+    function getResult() public pure returns(string memory){
+        uint a = 10;
+        uint b = 2;
+        uint result = a + b;
+        return integerToString(result);
+    }
+
+    function integerToString(uint _i) internal pure returns (string memory) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint j = _i;
+        uint len;
+
+        while(j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint k = len - 1;
+
+        while (_i != 0) {   // while 循环
+            bstr[k--] = byte(uint8(48 + _i % 10));
+            _i /= 10;
+        }
+        return string(bstr);
+    }
+}
+```
+
+运行程序的输出结果
+
+```solidity
+0: string: 12
+```
