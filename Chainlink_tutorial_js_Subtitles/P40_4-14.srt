@@ -1,0 +1,233 @@
+5520
+05:27:59,940 --> 05:28:03,390
+We've even learned some advanced sections of solidity. 
+我们甚至学习完了 Solidity 的一些进阶内容
+
+5521
+05:28:03,390 --> 05:28:05,760
+And this is going to be the last time that we start our projects in remix, 
+但这将是我们最后一次在 Remix 中打开我们的项目
+
+5522
+05:28:05,760 --> 05:28:10,080
+we're going to be moving over to a code editor now, 
+现在我们要转而使用代码编辑器了
+
+5523
+05:28:10,080 --> 05:28:13,140
+where we can get even more advanced with our solidity on our setups.
+在那里我们可以获得更多 Solidity 的高级设置
+
+5524
+05:28:13,680 --> 05:28:16,440
+For the most part, you've gone over the vast majority of solidity basics, 
+为了应对大多数情况，你已经学习了绝大多数 Solidity 的基础知识
+
+5525
+05:28:16,440 --> 05:28:19,140
+there are a number of things that we still haven't learned yet. 
+这里还有一些我们没有学到的东西
+
+5526
+05:28:19,140 --> 05:28:21,810
+And the reason we haven't gotten into them is because they get more advanced. 
+没有深入研究这些内容的原因是它们的用法比较高级
+
+5527
+05:28:21,810 --> 05:28:24,180
+
+
+
+5528
+05:28:24,180 --> 05:28:27,060
+And understanding the real use doesn't really make too much sense until a little bit later. 
+稍晚一些再了解它们的用途会更有意义
+
+5529
+05:28:27,060 --> 05:28:30,060
+Some of the things that we're going to go over are 
+要讲的其中一些东西的是
+
+5530
+05:28:30,120 --> 05:28:34,140
+itams events, try catch function selectors, 
+枚举(Enum)，事件(Events)，Try Catch，函数选择器(Function Selector)
+
+5531
+05:28:34,170 --> 05:28:36,480
+abi encoding, hashing, and then you will slash and then you will slash assembly. 
+abi 编码(encode)，哈希(Hashing)，以及 Yul / Assembly
+
+5532
+05:28:36,480 --> 05:28:39,240
+However, if you've gotten this far, 
+不过既然已经走到了这么远
+
+5533
+05:28:39,240 --> 05:28:42,600
+you probably can read most solidity code and understand what's going on,
+你大概已经可以阅读大多数 Solidity 代码并理解其中的意思了
+
+5534
+05:28:42,870 --> 05:28:45,870
+which is absolutely fantastic. 
+这简直棒极了
+
+5535
+05:28:45,870 --> 05:28:48,690
+So you should give yourself a huge round of applause for getting this far. And doing this. 
+所以你应该为自己能走到这一步而鼓掌
+
+5536
+05:28:48,690 --> 05:28:51,900
+Let's do a quick summary of this more advanced section
+让我们快速总结一下这些进阶内容
+
+5537
+05:28:51,930 --> 05:28:54,540
+and make sure we understand what we learned 
+确保我们理解了所学的内容
+
+5538
+05:28:54,540 --> 05:28:58,350
+in solidity there are a couple special functions. 
+在 Solidity 中有一些特殊函数
+
+5539
+05:28:58,950 --> 05:29:03,060
+Some of them are receive fallback, and Constructor. 
+其中几个是 receive fallback 和 constructor
+
+5540
+05:29:03,060 --> 05:29:07,050
+These functions don't need to have the function keyword. And instead it can just be called like so. 
+这些函数不需要 function 关键字，而是只能这样调用
+
+5541
+05:29:07,050 --> 05:29:10,470
+Receive and fallback are two very special functions. 
+receive 和 fallback 是两个非常特殊的函数
+
+5542
+05:29:10,470 --> 05:29:14,670
+If data is sent with a transaction, and no function was specified, 
+如果 data 通过交易发送过来，且没有指定任何函数
+
+5543
+05:29:14,670 --> 05:29:17,220
+the transaction will default to the fallback function if that fallback function exists. 
+交易将默认执行 fallback 函数，如果 fallback 函数存在的话
+
+5544
+05:29:17,220 --> 05:29:20,640
+If data is empty, and there's a receive function, 
+如果 data 为空，并且存在 receive 函数，
+
+5545
+05:29:20,640 --> 05:29:24,480
+it'll call the receive function. 
+就会调用 receive 函数
+
+5546
+05:29:24,480 --> 05:29:28,110
+There are a couple of keywords that can help us save gas in the long run. 
+从长远来看，有几个关键字可以帮助我们节约 gas
+
+5547
+05:29:28,110 --> 05:29:31,200
+Some of those keywords are going to be constant and immutable. 
+其中两个就是 constant 和 immutable
+
+
+5548
+05:29:31,200 --> 05:29:34,290
+Constant and immutable are for variables that can only be declared and updated once. 
+constant 和 immutable 针对的是只能声明和更新一次的变量
+
+5549
+05:29:34,290 --> 05:29:39,420
+Once we say minimum USD is 50 times 118.
+当我们说 MINIMUM_USD 是 50 乘以 1e18 时
+
+5550
+05:29:39,750 --> 05:29:43,470
+This minimum USD can never be changed again. 
+这个 MINIMUM_USD 就不能再被改变了
+
+5551
+05:29:43,500 --> 05:29:47,310
+And this helps us save gas. 
+这有助于我们节省 gas 
+
+5552
+05:29:47,580 --> 05:29:50,940
+Immutable can also save gas similar to constant. 
+immutable 也可以像 constant 一样节省 gas 
+
+5553
+05:29:50,940 --> 05:29:55,110
+However, immutable variables can be declared one time in the constructor, 
+然而，immutable 变量可以在 constructor 中改变一次
+
+5554
+05:29:55,110 --> 05:29:58,770
+once an immutable variable is declared, it can't be changed later on. 
+一旦一个 immutable 变量被声明出来，以后就不能再改变了
+
+5555
+05:29:58,770 --> 05:30:02,700
+In fact, if we even tried to update an immutable variable or constant variable, and we compiled, 
+事实上，如果我们试图更新 immutable 变量或者 constant 变量，然后编译它
+
+5556
+05:30:02,700 --> 05:30:06,390
+a compiler would give us an error saying, Can't write to a mutable here. 
+编译器会抛出一个错误说，不能在此处写入 immutable 变量
+
+5557
+05:30:06,390 --> 05:30:11,250
+Or if we tried to change a constant variable. 
+或者我们可以尝试修改一个 constant 变量
+
+5558
+05:30:11,250 --> 05:30:14,610
+Our compiler would say, Hey, you can't assign to a constant variable, sorry.
+我们的编译器会说，嘿，你不能给一个 constant 变量赋值，抱歉
+
+5559
+05:30:14,820 --> 05:30:17,550
+In remix, if we want to send ether to a contract that's on the JavaScript virtual machine, 
+在 Remix 中如果我们想给一个在 JavaScript 虚拟机上的合约发送以太币
+
+5560
+05:30:17,550 --> 05:30:21,360
+we can deploy that contract. 
+我们可以部署这个合约
+
+5561
+05:30:21,360 --> 05:30:23,790
+And then in the contract, we can just hit the transact button without any call data 
+然后在这个合约里，我们可以只是点击这个 Transact 按钮而不发送任何 CALLDATA
+
+5562
+05:30:24,090 --> 05:30:27,450
+and update the value that we send with the transaction. 
+并更新我们通过交易发送的价值
+
+5563
+05:30:27,450 --> 05:30:30,720
+If call data is blank, it will trigger the receive function if it exists. 
+如果 CALLDATA 为空，它就会触发 receive 函数，如果存在的话
+
+5564
+05:30:30,780 --> 05:30:34,680
+But if there's data that doesn't specify any of the other functions, 
+但如果这里有数据却没有指定任何一个函数的话
+
+5565
+05:30:34,680 --> 05:30:37,590
+it'll trigger the fallback function
+它就会触发 fallback 函数
+
+5566
+05:30:37,590 --> 05:30:38,370
