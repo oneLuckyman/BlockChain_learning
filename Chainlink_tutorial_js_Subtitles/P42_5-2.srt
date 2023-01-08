@@ -1,0 +1,464 @@
+5985
+05:53:48,460 --> 05:53:51,100
+Alright, awesome. So now that we know more about how to get unblocked, we can move on. 
+太好了，现在我们已经知道了该如何解决遇到的问题，可以继续了
+
+5986
+05:53:51,130 --> 05:53:54,160
+The reason it's so important to learn how to get unblocked is because 
+学习如何解决问题如此重要的原因是因为
+
+5987
+05:53:54,160 --> 05:53:57,070
+blockchain and web three is more than just everybody on their own. 
+区块链和 web3 并不仅仅是每个人自己的东西
+
+5988
+05:53:57,310 --> 05:54:00,460
+It is a very collaborative space. 
+它是一个合作化程度很高的空间
+
+5989
+05:54:00,460 --> 05:54:04,120
+So as you get better, and as you learn more 
+所以当你学得更多，学得更好的时候
+
+5990
+05:54:04,120 --> 05:54:07,510
+a massive way to test how much you've learned and give back to the community 
+一个测试你学到了多少并回馈社区的重要方式就是
+
+5991
+05:54:07,510 --> 05:54:09,820
+is to going to Stack Overflow and going to stack exchange them 
+去 Stack Overflow 和 Stack Exchange 
+
+5992
+05:54:09,820 --> 05:54:13,330
+and trying to answer some questions yourself. 
+并尝试自己解答一些问题
+
+5993
+05:54:13,330 --> 05:54:16,630
+So I highly recommend you all go to Stack Overflow,
+所以我强烈推荐你们都去用用 Stack Overflow
+
+5994
+05:54:16,630 --> 05:54:19,450
+and then you go to the GitHub repo associated with the scores,
+然后你可以去与本课程关联的 Github 仓库
+
+5995
+05:54:19,690 --> 05:54:21,970
+you try to answer some discussions, try to answer some issues and help other people out 
+试着回答一些讨论，解答一些问题并帮助其他人
+
+5996
+05:54:22,000 --> 05:54:24,970
+because it's going to help you become a much better software engineer. 
+因为这能帮你成为一个更优秀的软件工程师
+
+5997
+05:54:24,970 --> 05:54:28,210
+The other reason I want to do that part is because 
+我想做这个部分的另一个原因是
+
+5998
+05:54:28,210 --> 05:54:31,480
+when we install some of the tools that I'm about to show you, 
+当我们安装我向你展示的某些工具时
+
+5999
+05:54:31,480 --> 05:54:34,750
+sometimes the installation process is the hardest piece there. 
+有时安装过程反而是最难的部分
+
+6000
+05:54:34,750 --> 05:54:38,020
+Once you get past the install process, 
+一旦完成了安装，
+
+6001
+05:54:38,020 --> 05:54:41,380
+it generally becomes much, much easier. 
+通常就会变得容易许多
+
+6002
+05:54:41,380 --> 05:54:44,410
+But this can often be the hardest part of the course is 
+但往往课程中最难的部分就是
+
+6003
+05:54:44,440 --> 05:54:47,020
+just installing some of these tools that we're going to give you.
+安装好我告诉你的这些工具
+
+6004
+05:54:47,170 --> 05:54:50,080
+And that's what we're going to learn about right now. 
+而这就是我们现在马上要学的东西
+
+6005
+05:54:50,080 --> 05:54:54,460
+So we have been working so far with remix, remix IDE, or integrated development environment. 
+到目前为止我们一直在使用 Remix，Remix IDE，或者说集成开发环境(IDE)
+
+6006
+05:54:54,460 --> 05:54:57,250
+As we've seen, it's this wonderful place 
+正如我们所看到的，这是一个很棒的地方
+
+6007
+05:54:57,250 --> 05:55:00,070
+where we can try out code we can try solidity out, 
+在这里我们可以尝试代码，尝试 solidity
+
+6008
+05:55:00,070 --> 05:55:02,380
+we can compile we can deploy, we can pretty much do everything that we need to do. 
+可以编译，可以部署，我们几乎可以做我们需要做的一切事情
+
+6009
+05:55:02,380 --> 05:55:05,710
+It's web based. It can do testing, debugging, deploying local JavaScript VM, 
+它是以 web 为基础的，可以做测试，调试 bug，部署本地 JavaScript VM
+
+6010
+05:55:05,710 --> 05:55:09,580
+it's very quick and easy to create and test our smart contracts. 
+这一个非常快速且容易地创建和测试我们智能合约的方式
+
+6011
+05:55:09,580 --> 05:55:12,130
+However, it does have some limitations. 
+然而，它也有一些局限性
+
+6012
+05:55:12,130 --> 05:55:15,490
+It can really only deal with smart contract,
+它只能处理智能合约
+
+6013
+05:55:15,520 --> 05:55:18,820
+it can't really integrate with other parts of projects. 
+不能真正地与项目的其他部分集成
+
+6014
+05:55:18,820 --> 05:55:21,580
+It has limited support for tests or custom deployments. 
+它对测试和定制部署的支持有限
+
+6015
+05:55:21,580 --> 05:55:25,120
+And you need an internet connection to even work with remix 
+并且你甚至还需要保持联网才能使用 Remix
+
+6016
+05:55:25,120 --> 05:55:28,240
+and it can be tricky to do a lot more advanced functionality. 
+要想实现更高级的功能也比较麻烦
+
+6017
+05:55:28,240 --> 05:55:30,760
+So it's a phenomenal tool and absolutely if you're looking to do something very quickly, 
+所以，这确实是一个很棒的工具，如果你要快速实现某件事
+
+6018
+05:55:30,760 --> 05:55:32,920
+I absolutely recommend everybody just go to remix to go ahead and try something out 
+那我强烈建议你使用 Remix 进行各种尝试
+
+6019
+05:55:32,920 --> 05:55:35,830
+how are now we're going to move over to 
+然而，我们现在要转而使用
+
+6020
+05:55:35,830 --> 05:55:38,650
+a more professional smart contract developer setup. 
+一种更为专业的智能合约开发者配置
+
+6021
+05:55:38,650 --> 05:55:42,100
+And this is with hard hat. 
+它的名字是 Hardhat
+
+6022
+05:55:42,100 --> 05:55:45,790
+This is known as a smart contract developer framework 
+这就是所谓的智能合约开发框架
+
+6023
+05:55:45,790 --> 05:55:49,180
+similar to brownie or foundry or, and likes, there's a number of these frameworks. 
+它就和 Brownie 或 Foundry 类似，有很多这样的框架
+
+6024
+05:55:49,180 --> 05:55:51,730
+And the reason that we're going to do hard hat is because hard hat is JavaScript based. 
+我们之所以要使用 Hardhat 是因为 Hardhat 是基于 JavaScript 的
+
+6025
+05:55:51,940 --> 05:55:55,540
+It's a JavaScript based development environment. 
+这是一个基于 JavaScript 的开发环境
+
+6026
+05:55:55,570 --> 05:55:58,630
+It's got JavaScript based compilation, environment, deploying, testing, debugging. 
+它有基于 JavaScript 的编译环境，部署，测试，bug 调试
+
+6027
+05:55:58,630 --> 05:56:02,140
+Now, for those of you who love TypeScript, 
+现在，对于那些喜欢 TypeScript 的人来说
+
+6028
+05:56:02,170 --> 05:56:06,010
+we will also have TypeScript editions of every single one of our code examples for you. 
+我们在每一个代码示例中也会为你们添加 TypeScript 版本
+
+6029
+05:56:06,010 --> 05:56:09,280
+So if you love JavaScript, we got you, 
+所以，如果你喜欢 JavaScript，我们为你准备了
+
+6030
+05:56:09,280 --> 05:56:12,880
+if you love TypeScript, we also got you
+如果你喜欢 TypeScript，我们同样为你提供
+
+6031
+05:56:12,910 --> 05:56:16,510
+we're not always going to walk through us doing the TypeScript. But we will sometimes, 
+我们并不总是会完整执行 TypeScript 的流程，但有时会这样做
+
+6032
+05:56:16,930 --> 05:56:20,320
+and all of the code for the TypeScript will be available in the GitHub repo. 
+并且所有 TypeScript 的代码都会放到 Github 仓库里
+
+6033
+05:56:20,350 --> 05:56:23,590
+Now, before we can actually learn hard hat, 
+现在，在我们真正开始学习 Hardhat 之前
+
+6034
+05:56:23,590 --> 05:56:26,860
+we have to learn another package first.
+我们需要先学习一些其他程序包
+
+6035
+05:56:26,890 --> 05:56:30,100
+So we're going to learn how to do everything with ethers. Jas,
+我们要学就是如何使用 ethers.js
+
+6036
+05:56:30,130 --> 05:56:33,130
+which is a JavaScript based library for working with smart contracts. 
+这是一个基于 JavaScript 的库，用于编写智能合约
+
+6037
+05:56:33,130 --> 05:56:36,310
+And it's also what powers the next tool that we're going to be working with, which is hard hat 
+这也是我们要使用的下一个工具的基础，就是 Hardhat
+
+6038
+05:56:36,310 --> 05:56:39,250
+under the hood of hard hat. There's a lot of ethers Jas. 
+Hardhat 的底层使用了很多 ethers.js 的东西
+
+6039
+05:56:39,250 --> 05:56:41,680
+So it's important for us to learn ethers Jas 
+所以对我们来说学习 ethers.js 非常重要
+
+6040
+05:56:41,680 --> 05:56:45,430
+so that we can understand what hard hat is actually doing. 
+这能够让我们理解 Hardhat 实际上是如何工作的
+
+6041
+05:56:45,430 --> 05:56:47,830
+Now for the rest of the course, 
+在接下来的课程中
+
+6042
+05:56:47,830 --> 05:56:51,970
+I'm going to be using a code editor called Visual Studio code. 
+我将使用名为 Visual Studio Code 的代码编辑器
+
+6043
+05:56:51,970 --> 05:56:54,940
+This is one of the most powerful code editors on the planet. 
+这是地球上最强大的代码编辑器之一
+
+6044
+05:56:54,940 --> 05:56:57,400
+And if you've already got it set up, feel free to go ahead and skip this part. 
+如果这部分你已经配置好了，那你可以跳过这里
+
+6045
+05:56:57,400 --> 05:57:00,190
+If you already have a professional coding setup 
+如果你已经做好了某些专业的代码配置
+
+6046
+05:57:00,190 --> 05:57:03,490
+with no GS and VS code, and Git and everything, 
+比如 node.js 和 VS code 还有 Git 等等
+
+6047
+05:57:03,490 --> 05:57:06,820
+feel free to use the timestamps in the GitHub repository. To skip over this setup section. 
+请根据 Github 仓库中的时间戳，按照自己的需要跳过这些配置环节
+
+6048
+05:57:06,850 --> 05:57:11,020
+You'll often hear people refer to this as 
+你经常可以听到别人这样称呼这个工具
+
+6049
+05:57:11,050 --> 05:57:14,230
+VS code, or Visual Studio code or just Visual Studio. 
+VS code 或 Visual Studio Code 或者干脆就是 Visual Studio
+
+6050
+05:57:14,230 --> 05:57:18,490
+However, it's important to note that Visual Studio code this is different than Visual Studio, 
+然而，一个很重要的事是，这个 Visual Studio Code 和 Visual Studio 是不一样的
+
+6051
+05:57:18,700 --> 05:57:22,090
+which you might see look like this. 
+就是你现在看到的这个
+
+6052
+05:57:22,480 --> 05:57:26,620
+So Visual Studio code is what you want, not Visual Studio, 
+所以，你要用的 Visual Studio Code 而不是 Visual Studio
+
+6053
+05:57:26,620 --> 05:57:29,620
+Visual Studio is a different application, 
+Visual Studio 是完全不同的另一个应用
+
+6054
+05:57:29,620 --> 05:57:33,310
+make sure you're on Visual Studio code. 
+请确保你使用的是 Visual Studio Code
+
+6055
+05:57:33,310 --> 05:57:37,120
+Now, if you choose so and you're a total Harto, you can absolutely work just with your terminal, 
+如果你是一个真正的高手并且你想的话，你可以完全只用终端进行工作
+
+6056
+05:57:37,120 --> 05:57:40,660
+or just with PowerShell, or just with whatever coding environment that you want, like atom or Sublime. 
+或者是 PowerShell，或者是任何你想用的代码环境，比如 Atom 或者 Sublime
+
+6057
+05:57:40,660 --> 05:57:44,620
+However, for us, we're going to be working with Visual Studio code. 
+不过，我们要使用的只有 Visual Studio Code
+
+6058
+05:57:44,620 --> 05:57:47,770
+And I'm going to be going through setting up Visual Studio code 
+并且我设置 Visual Studio Code 的时候
+
+6059
+05:57:47,770 --> 05:57:51,040
+the way that I like to set it up, 
+会按照我个人的偏好来进行设置
+
+6060
+05:57:51,040 --> 05:57:54,280
+you can actually set it up whatever way that you feel comfortable. 
+而你完全可以按照自己的偏好来设置
+
+6061
+05:57:54,280 --> 05:57:58,240
+And of course, in our lesson six here, 
+当然，在我们的 Lesson 6 这里
+
+6062
+05:57:58,240 --> 05:58:01,300
+we have a link to installation and setup. 
+我们放了一个指导安装和配置的链接
+
+6063
+05:58:01,300 --> 05:58:04,450
+And I'm going to be adding more links as we go about here. 
+之后这里还会添加更多的链接
+
+6064
+05:58:04,450 --> 05:58:07,990
+And once again, all the code that we're going to be working with is in this GitHub repository down here where it says code. 
+再次提示，我们要处理的所有代码都会放到这个 Github 仓库里，代码就在这下面
+
+6065
+05:58:08,020 --> 05:58:10,900
+Now we're gonna go through three different installation processes 
+现在我们会介绍三种不同的安装流程
+
+6066
+05:58:10,900 --> 05:58:13,720
+and pick the one that's most appropriate for you. 
+选择一个适合你的就好
+
+6067
+05:58:13,750 --> 05:58:17,350
+The first one is going to be for Mac and Linux users. 
+第一种是面向 Mac 和 Linux 用户的
+
+6068
+05:58:17,350 --> 05:58:21,100
+The second one is going to be for Windows users.
+第二种是面向 Windows 用户的
+
+6069
+05:58:21,250 --> 05:58:24,970
+And then our third one is going to be a last ditch effort. 
+而第三种将作为一种最后的手段
+
+6070
+05:58:24,970 --> 05:58:28,270
+If for whatever reason, you can't get Windows or Linux or the Mac instructions to work, 
+无论出于什么原因，如果你无法获得 Windows 或 Linux 或 Mac 系统进行作业的话
+
+6071
+05:58:28,270 --> 05:58:31,390
+we're going to use a Git pod installation. 
+我们将使用 Gitpod 进行安装
+
+6072
+05:58:31,390 --> 05:58:34,840
+Now, I highly, highly recommend that you try to get everything working locally without using Git pod. 
+我非常非常建议你尝试在本地进行所有工作而不是使用 Gitpod
+
+6073
+05:58:34,840 --> 05:58:38,080
+However, if for whatever reason, 
+然而，如果是出于某种原因
+
+6074
+05:58:38,650 --> 05:58:42,010
+you can't get those installation pieces to work, 
+你不能使用那些安装方式的话
+
+6075
+05:58:42,010 --> 05:58:46,240
+we will have Git pod instructions 
+我们会对 Gitpod 进行必要的说明
+
+6076
+05:58:46,240 --> 05:58:48,910
+for all of the repos that we work with here. 
+对于我们这里要使用的所有仓库都是
+
+6077
+05:58:48,910 --> 05:58:51,850
+But to get started, we'll start with the Mac and Linux installation instructions.
+接下来让我们从在 Mac 和 Linux 上安装开始讲起
