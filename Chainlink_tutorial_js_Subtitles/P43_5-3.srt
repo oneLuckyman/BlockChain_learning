@@ -1,0 +1,342 @@
+6078
+05:58:54,430 --> 05:58:57,430
+The first thing you're going to want to do is download the Mac
+你要做的第一件事是下载 Mac 
+
+6079
+05:58:57,490 --> 05:59:01,120
+or if you're working with Linux, download the Linux installation of Visual Studio code. 
+或者如果你用的是 Linux 的话，就下载 Linux 版本的 Visual Studio Code 安装包
+
+6080
+05:59:01,150 --> 05:59:04,780
+Once you have it installed, it'll look a little something like this. 
+一旦你完成了安装，它看起来就是这样的
+
+6081
+05:59:04,780 --> 05:59:08,260
+And if it's a fresh installation,
+如果是新安装的
+
+6082
+05:59:08,470 --> 05:59:11,620
+It'll even give you some tips and tools to actually get started. 
+它还会在你开始使用前提供一些提示和工具
+
+6083
+05:59:11,620 --> 05:59:14,110
+If you've never worked with Visual Studio code before,
+如果你之前从来没使用过 Visual Studio Code
+
+6084
+05:59:14,380 --> 05:59:17,710
+I highly recommend going through any get started or getting instructions tips that come with opening Visual Studio Code.
+我强烈建议你浏览一下 Visual Studio Code 打开时出现的入门和指导技巧
+
+6085
+05:59:17,710 --> 05:59:21,250
+
+
+
+6086
+05:59:21,640 --> 05:59:25,420
+Additionally, we have a Visual Studio Code crash course 
+此外，我们还提供了一个 Visual Studio Code 速成课
+
+6087
+05:59:25,420 --> 05:59:28,480
+in the GitHub repo associated with this course. 
+就在本课程关联的 Github 仓库中
+
+6088
+05:59:28,480 --> 05:59:31,690
+Once you have Visual Studio code installed, 
+安装好 Visual Studio Code 后
+
+6089
+05:59:31,690 --> 05:59:34,930
+the next thing that we're going to want to install is going to be node j s. 
+下一个要安装的东西是 Node.js
+
+6090
+05:59:34,930 --> 05:59:37,720
+And again, we have links to all of these in the GitHub repo associated with this course, 
+重要的事说三遍，所有这些链接我们都放到了课程关联的 Github 仓库里
+
+6091
+05:59:37,720 --> 05:59:40,660
+you can just go ahead and click download for Mac OS or download for Linux, 
+你可以点击下载 Mac OS 版本或者下载 Linux 版本
+
+6092
+05:59:40,660 --> 05:59:45,880
+I recommend using the LTS version. 
+我建议使用这个 LTS 版本
+
+6093
+05:59:45,880 --> 05:59:48,760
+lts stands for long term support, which means that they will be supporting this version for a long time. 
+LTS 表示长期支持(long term support)，意思就是他们会长期支持这个版本
+
+6094
+05:59:48,760 --> 05:59:53,170
+So go ahead and download Node js. I've already downloaded this, 
+我们继续，下载 Node.js，我这里已经下载过了
+
+6095
+05:59:53,170 --> 05:59:55,390
+so I'm not gonna go ahead and redownload this 
+所以我就不重新下载一遍了
+
+6096
+05:59:55,390 --> 05:59:58,480
+now one of the awesome things about Visual Studio code is it has this thing called terminals, 
+Visual Studio Code 一个很棒的地方是它有终端
+
+6097
+05:59:58,480 --> 06:00:01,600
+which are command line prompts that allow us to run scripts, 
+终端就是命令行提示符，能够让我们运行脚本
+
+6098
+06:00:01,600 --> 06:00:05,290
+basically, it's where we're going to be running all of our code 
+基本上来说，它就是我们运行所有代码的地方
+
+6099
+06:00:05,290 --> 06:00:07,630
+where we can open up the terminal is we can go ahead and hit terminal
+我们可以在这里点击“终端” (Terminal)
+
+6100
+06:00:07,630 --> 06:00:10,330
+and select new terminal 
+然后选择 “新建终端” (New Terminal)
+
+6101
+06:00:10,630 --> 06:00:14,110
+and you'll get something like this.
+然后你会得到这样的东西
+
+6102
+06:00:14,230 --> 06:00:18,520
+Now you might have bash or Z ca or some other type of shell 
+现在你可能是 bash 或者 zsh 或是其他类型的某种 shell
+
+6103
+06:00:18,520 --> 06:00:21,370
+type that you have doesn't really matter because on Mac and Linux it's going to be Linux based 
+你拥有的是什么类型并不重要，因为在 Mac 和 Linux 上，终端都是基于 Linux 的
+
+6104
+06:00:21,550 --> 06:00:25,690
+we can now test our no Jess installation 
+我们现在可以测试 node.js 的安装结果
+
+6105
+06:00:25,690 --> 06:00:29,680
+has been done correctly by running Node dash dash version, 
+通过运行 node --version 来确定安装是否正确完成
+
+6106
+06:00:29,680 --> 06:00:33,430
+and you should see something that looks like this.
+你应该能看到类似这样的东西
+
+6107
+06:00:33,490 --> 06:00:37,030
+The exact version of node that you have doesn't really matter here. 
+这里 node 具体是什么版本并不是很重要
+
+6108
+06:00:37,030 --> 06:00:40,720
+But ideally you're at least on Node version 14 or higher. 
+但版本至少要是 14 或者更高才会比较理想
+
+6109
+06:00:40,720 --> 06:00:43,540
+And if something like this doesn't show up, remember to go ahead and start looking at Stack Overflow 
+如果这些输出并没有出现的话，记得去看看 Stack Overflow
+
+6110
+06:00:43,540 --> 06:00:46,810
+
+
+
+6111
+06:00:46,810 --> 06:00:49,960
+looking on the GitHub repo in the discussions tab, looking on the updated section, etc. 
+以及 Github 仓库的讨论区，还有查看里面的章节更新，等等等等
+
+6112
+06:00:49,960 --> 06:00:52,990
+And like I said, sometimes installing this can be the hardest part of this entire course so, 
+就像我说的，有时候安装就是整个课程最难的一部分
+
+6113
+06:00:52,990 --> 06:00:55,840
+so don't get discouraged. 
+所以不要气馁
+
+6114
+06:00:55,840 --> 06:00:58,660
+And please use Stack Overflow Stack Exchange Etherium, and the GitHub repo 
+去 Stack Overflow, Stack Exchange Etherium, 以及 Github 仓库
+
+6115
+06:00:58,660 --> 06:01:01,360
+to move past any issues you run into. 
+来解决你遇到的所有问题
+
+6116
+06:01:01,360 --> 06:01:05,440
+Now, if you're on Mac or Linux, 
+现在，如果你使用的是 Mac 或者 Linux，
+
+6117
+06:01:05,470 --> 06:01:08,860
+you can actually hit Ctrl back tick, to actually toggle your terminal mode, 
+那么你可以按 Ctrl + ` (反引号) 来切换终端模式 (译者注：反引号即 `, Tab 之上 Esc 之下的和波浪线捆绑的按键)
+
+6118
+06:01:08,860 --> 06:01:11,950
+this will pull the terminal up and down for you 
+它可以让你的终端在显示和隐藏两种视图中进行切换
+
+6119
+06:01:11,950 --> 06:01:14,650
+getting familiar with keyboard shortcuts will actually make your life a lot easier.
+熟悉键盘快捷键可以让你的工作生活更加轻松
+
+6120
+06:01:14,650 --> 06:01:17,590
+Because you'll be able to move around Visual Studio code much more effectively, 
+因为这可以让你在使用 Visual Studio Code 时更高效
+
+6121
+06:01:17,590 --> 06:01:21,250
+we have a link to a list of keyboard shortcuts.
+我们有一个键盘快捷键列表的链接
+
+6122
+06:01:21,280 --> 06:01:24,190
+Additionally, in the GitHub repository associated with this section, 
+就在与这一章节关联的 Github 仓库里
+
+6123
+06:01:24,190 --> 06:01:27,070
+as we move along, I'll give tip on different keyboard shortcuts 
+随着我们的深入，我会给出一些不同的键盘快捷键技巧
+
+6124
+06:01:27,070 --> 06:01:29,950
+that you can optionally use otherwise, 
+你可以按需选择使用
+
+6125
+06:01:29,950 --> 06:01:32,530
+you can just go ahead and click as well, 
+你也可以通过点击来实现这些功能
+
+6126
+06:01:32,530 --> 06:01:36,010
+you can click the trash can to delete the terminal, 
+你可以点击这个垃圾桶图标来删除终端
+
+6127
+06:01:36,010 --> 06:01:38,080
+go back up Terminal new terminal to pop it back up. 
+之后再点击“终端” (Terminal) “新建终端” (New Terminal) 来把它弹出来
+
+6128
+06:01:38,080 --> 06:01:39,970
+Now the next thing that we're going to need a little bit later, we're not going to need it for this section, 
+我们之后会用到另一个东西，但不是在现在这个章节
+
+6129
+06:01:39,970 --> 06:01:42,610
+but it's good to install it now is going to be git 
+不过最好还是现在把它给装好，它就是 Git
+
+6130
+06:01:42,610 --> 06:01:46,570
+no jazz is known as a JavaScript runtime. 
+Node.js 被称为 JavaScript runtime
+
+6131
+06:01:46,570 --> 06:01:49,540
+And it's a tool that we're going to use to help run JavaScript code in our Visual Studio Code 
+它是一个我们用来在 Visual Studio Code 中运行 JavaScript 代码的工具
+
+6132
+06:01:49,540 --> 06:01:52,690
+slot exactly JavaScript. 
+它并不完全是 JavaScript
+
+6133
+06:01:52,690 --> 06:01:55,390
+And the difference between no Jas and JavaScript can be a little bit confusing,
+而且 node.js 和 JavaScript 的区别比较混乱
+
+6134
+06:01:55,390 --> 06:01:58,030
+but don't let that stop you for now. 
+但不要因为这个而让你在此止步
+
+6135
+06:01:58,030 --> 06:02:00,580
+Next, we're actually going to go ahead and install Git, 
+接下来我们将继续安装 Git
+
+6136
+06:02:00,580 --> 06:02:03,970
+we will have links to the installation instructions in the GitHub repository, 
+我们在 Github 仓库中提供了安装说明的链接
+
+6137
+06:02:03,970 --> 06:02:06,610
+installing git on Linux, you're going to use one of these two commands
+在 Linux 上安装 Git，你需要使用这两条命令的其中之一
+
+6138
+06:02:06,640 --> 06:02:10,000
+and on macOS, if you just type git on the command line, 
+而在 Mac OS 上，如果你直接在命令行中输入 git
+
+6139
+06:02:10,000 --> 06:02:12,760
+it should go ahead and prompt you to install it. 
+那么它应该就会提示你去安装它
+
+6140
+06:02:12,760 --> 06:02:15,130
+So we're back in our command line, and we just type git, it should prompt you to go ahead and stall it. 
+现在我们回到我们的命令行，然后我们输入 git，它应该就会提示你安装
+
+6141
+06:02:15,130 --> 06:02:18,340
+And if you do get dash dash version,
+如果你输入 git --version
+
+6142
+06:02:18,970 --> 06:02:21,280
+you should get something that looks like this. 
+你应该会得到类似这样的东西
+
+6143
+06:02:21,280 --> 06:02:24,280
+You can also use a Mac OS get installer by clicking this link here and running through the installation process. 
+你也可以在 Mac OS 上从这个链接获得安装包并运行安装过程
+
+6144
+06:02:24,280 --> 06:02:26,860
+Alright, now that you have no JS yet in Visual Studio code installed, 
+好了，现在你已经安装好了 node.js git 和 Visual Studio Code
+
+6145
+06:02:26,860 --> 06:02:31,270
+we can continue on to the next section.
+我们可以继续下一节了
+
+6146
+06:02:31,270 --> 06:02:35,020
