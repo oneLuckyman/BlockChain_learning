@@ -335,8 +335,15 @@ Alright, now that you have no JS yet in Visual Studio code installed,
 
 6145
 06:02:26,860 --> 06:02:31,270
-we can continue on to the next section.
-我们可以继续下一节了
+we can continue on to the next section. Awesome. 
+我们可以继续下一节了，太好了
 
 6146
 06:02:31,270 --> 06:02:35,020
+If you're not planning on using Windows or get pod, 
+如果你不打算使用 Windows 和 Gitpod 的话
+
+6147
+06:02:35,050 --> 06:02:38,800
+feel free to skip the next two sections.
+你可以跳过接下来的两小节
