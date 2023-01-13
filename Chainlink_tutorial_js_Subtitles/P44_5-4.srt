@@ -1,0 +1,865 @@
+6148
+06:02:41,470 --> 06:02:44,920
+I'm running this on Windows 11. 
+我是在 Windows 11 上运行的
+
+6149
+06:02:44,920 --> 06:02:47,470
+However, it should work on most editions of Windows. 
+不过，在大多数版本的 Windows 上应该也都适用
+
+6150
+06:02:47,470 --> 06:02:53,410
+So the first thing that we're going to want to install is Visual Studio Code, which looks something like this, 
+我们要安装的第一个东西是 Visual Studio Code，就是这个
+
+6151
+06:02:53,410 --> 06:02:56,980
+it should auto detect it. And we're gonna go ahead and download this for windows 
+它应该会自动检测，我们继续，点击下载 Windows 版本
+
+6152
+06:02:56,980 --> 06:03:00,250
+in a walk through all the installation process. 
+执行所有的安装步骤
+
+6153
+06:03:00,610 --> 06:03:04,360
+Go ahead and create a desktop item, 
+继续并创建桌面快捷方式
+
+6154
+06:03:04,360 --> 06:03:08,710
+we'll add this just in case we want to open with code. 
+添上这里因为我们想要 “通过code打开”("Open with Code") 功能
+
+6155
+06:03:08,710 --> 06:03:12,220
+And we'll go ahead and install. And then we'll go ahead and finish. 
+我们继续点击安装(Install)，然后就完成了
+
+6156
+06:03:12,220 --> 06:03:14,500
+Once you've installed Visual Studio code, you'll see something that looks a little like this, 
+一旦你完成了 Visual Studio Code 的安装，就可以看到这样的界面
+
+6157
+06:03:14,500 --> 06:03:17,230
+it'll go ahead and give you this get started with VS Code section 
+它会给你一个“开始使用 VS Code”("Get Started with VS Code") 环节
+
+6158
+06:03:17,230 --> 06:03:19,960
+where you can choose some themes, 
+你可以选择一些主题
+
+6159
+06:03:19,960 --> 06:03:22,150
+and you can choose kind of the way it looks  
+还可以选择一些外观
+
+6160
+06:03:22,150 --> 06:03:24,520
+feel free to customize it the way that you want.
+请按照自己的偏好进行自定义吧
+
+6161
+06:03:24,520 --> 06:03:27,700
+If you want to learn a little bit more about Visual Studio code, 
+如果你想了解更多关于 Visual Studio Code 的知识
+
+
+6162
+06:03:27,730 --> 06:03:30,670
+I highly recommend you walk through this section to 
+我强烈建议你浏览这一部分
+
+6163
+06:03:30,670 --> 06:03:33,760
+learn more about the shortcuts and making your development experience more efficient. 
+学习更多关于快捷键的使用以此来让你的开发体验更高效
+
+6164
+06:03:33,760 --> 06:03:36,070
+When you're done, you can just go ahead and close the tabs at the top. 
+当你完成这些之后，你就可以从顶部关闭这些标签页了
+
+6165
+06:03:36,070 --> 06:03:38,740
+And it'll look a little something like this. 
+然后看起来就是现在这样
+
+6166
+06:03:38,740 --> 06:03:41,530
+Once we have Visual Studio code installed. 
+一旦我们完成了 Visual Studio Code 的安装
+
+6167
+06:03:41,530 --> 06:03:44,290
+The next thing that we're going to want to install is node j s. 
+下一个我们要安装的就是 node.js
+
+6168
+06:03:44,290 --> 06:03:46,900
+And of course, we have a link to installing this in the GitHub repository associated with this course, 
+当然了，我们在课程关联的 Github 仓库中放置了安装的链接
+
+6169
+06:03:46,930 --> 06:03:48,970
+what we're going to do is we're going to go ahead and come to node j s.org. 
+我们要做的就是到 nodejs.org 网站
+
+6170
+06:03:48,970 --> 06:03:52,300
+To download this for Windows 
+然后下载它的 Windows 版本
+
+6171
+06:03:52,300 --> 06:03:55,510
+node. JS is a JavaScript runtime environment,
+Node.js 是一个 JavaScript 运行环境
+
+6172
+06:03:55,510 --> 06:03:58,420
+it's not exactly JavaScript. And the distinction can be a little bit confusing, 
+它并不完全是 JavaScript，区分它们会让人有点混乱
+
+6173
+06:03:58,420 --> 06:04:01,090
+but just know it's going to help us run our JavaScript code for our development environment. 
+但只要知道它会帮助我们在开发环境中运行 JavaScript 代码就行了
+
+6174
+06:04:01,090 --> 06:04:03,610
+Let's go ahead 
+让我们继续
+
+6175
+06:04:03,610 --> 06:04:08,170
+and download the LTS or the long term support edition of no GS. 
+下载 node.js 的这个 LTS 或者说长期支持(Long Term Support)版本
+
+6176
+06:04:08,200 --> 06:04:11,260
+We'll go ahead and we'll run through the setup wizard.
+继续，并且运行配置引导
+
+6177
+06:04:15,610 --> 06:04:18,460
+And we'll go ahead and make sure that this is clicked 
+继续，并且点击这个选项
+
+6178
+06:04:18,460 --> 06:04:21,580
+just in case we ever want to use some different tools with our setup.
+以防我们想要在设置中使用一些不同的工具
+
+6179
+06:04:21,610 --> 06:04:24,550
+And then we'll go ahead and click Install, 
+然后继续，点击安装(Install)
+
+6180
+06:04:24,550 --> 06:04:27,220
+you'll get a pop up asking if you really want to install this on your device. 
+会有一个窗口弹出来询问你是否确定要把这个安装到你的设备上
+
+6181
+06:04:27,220 --> 06:04:30,040
+And we'll go ahead and hit yes. And then we'll hit finish, 
+我们继续选择“是”，然后点击“完成”(Finish)
+
+6182
+06:04:30,040 --> 06:04:33,010
+you might get a pop up that looks like this, 
+你可能会弹出一个这样的窗口
+
+6183
+06:04:33,010 --> 06:04:35,830
+go ahead and click any button to go ahead and install the tools, 
+敲击任意键以继续安装工具
+
+6184
+06:04:35,830 --> 06:04:39,280
+go ahead and press any key again. 
+继续并且再次敲击任意键
+
+6185
+06:04:39,280 --> 06:04:42,370
+And you'll likely get a Windows PowerShell screen pop up 
+然后你会弹出一个 Windows PowerShell 窗口
+
+6186
+06:04:42,370 --> 06:04:45,250
+asking you to go ahead and install a whole bunch of different projects and files. 
+要求你继续安装一大堆不同的项目和文件
+
+6187
+06:04:45,280 --> 06:04:47,980
+If you chose not to install this, that's totally okay. 
+如果你选择现在不安装，那也可以
+
+6188
+06:04:47,980 --> 06:04:50,740
+But in the future, this will be really helpful 
+但现在安装好会对未来很有帮助
+
+6189
+06:04:50,740 --> 06:04:54,010
+since we are going to use a lot of tools that this package installs anyways, 
+因为我们要用这个包来安装很多有用的工具
+
+6190
+06:04:54,010 --> 06:04:56,650
+this might take some time to install. So go ahead and be patient. 
+安装可能会花费一些时间，需要耐心等待一下
+
+6191
+06:04:56,650 --> 06:04:59,680
+And if it gets stuck, it might just be waiting for you to go ahead and hit enter. 
+如果你卡住了，它可能只是在等你继续并按回车
+
+6192
+06:04:59,680 --> 06:05:02,440
+So go ahead and hit Enter for any prompts. 
+所以请继续并按回车以获得任何提示
+
+6193
+06:05:02,440 --> 06:05:04,600
+But yes, please be patient with this, it can be a little bit slow to go ahead and install everything. 
+请耐心等待一下，安装完全部这些确实有点慢
+
+6194
+06:05:04,600 --> 06:05:06,880
+Once you have all that installed, you can come back to Visual Studio code. 
+等你安装完全部这些东西，就可以回到 Visual Studio Code 这里
+
+6195
+06:05:06,880 --> 06:05:10,090
+And we're going to go ahead and open up a terminal. 
+我们要继续点击“终端” (Terminal)
+
+6196
+06:05:10,090 --> 06:05:13,870
+To do that we hit terminal and we hit new terminal
+在这里点击“终端” (Terminal) 然后点击 “新建终端”(New Terminal)
+
+6197
+06:05:13,960 --> 06:05:16,480
+terminal is going to be our command line prompt 
+终端就是我们的命令提示符
+
+6198
+06:05:16,480 --> 06:05:19,060
+where we're going to basically run all of our scripts to work with our code. 
+基本上我们所有的脚本和代码都是在这里运行的
+
+6199
+06:05:19,060 --> 06:05:23,260
+And if you run Node dash dash version, 
+如果你运行 "node --version"
+
+6200
+06:05:23,260 --> 06:05:26,230
+you should see something that looks like this 
+那么你应该可以看到类似这样的东西
+
+6201
+06:05:26,260 --> 06:05:30,070
+to know that you've installed Node js correctly. 
+这样就能知道你的 node.js 是否已经正确安装
+
+6202
+06:05:30,100 --> 06:05:33,010
+Now this command line is known as Windows PowerShell. 
+现在这个命令行被称为 Windows PowerShell
+
+6203
+06:05:33,010 --> 06:05:36,010
+If you want to work with Windows PowerShell, you absolutely can. 
+如果你想要直接使用 Windows PowerShell 进行工作，当然没问题
+
+6204
+06:05:36,010 --> 06:05:38,440
+In fact, if you want to be a total Harto, 
+事实上，如果你是个高手
+
+6205
+06:05:38,440 --> 06:05:40,930
+and write all your code through Windows PowerShell, you can absolutely do that as well. 
+甚至想要在 Windows PowerShell 中完成所有的代码编写，当然也都是可以的
+
+6206
+06:05:40,930 --> 06:05:42,790
+However, we're actually not going to be working with PowerShell 
+不过，我们就不使用 PowerShell 进行工作了
+
+6207
+06:05:42,790 --> 06:05:46,150
+We're going to be using a tool that makes our Windows environments more like Linux. 
+我们要使用一个工具让我们的 Windows 环境可以像 Linux 那样工作
+
+6208
+06:05:46,180 --> 06:05:48,670
+The reason that we're doing this is Linux is the standard for most development environments. 
+我们这样做的原因是 Linux 是大多数开发环境的标准
+
+6209
+06:05:48,670 --> 06:05:51,100
+And having everybody work on a very similar setup 
+让所有人都在相似的配置下进行工作
+
+6210
+06:05:51,100 --> 06:05:54,220
+will make the rest of this course a lot easier for everyone to interact with each other, 
+可以让课程的剩余部分更方便大家进行交流
+
+6211
+06:05:54,220 --> 06:05:57,970
+no matter what coding environment, they're working on. 
+不管他们使用什么编码环境
+
+6212
+06:05:57,970 --> 06:06:01,450
+WsL stands for Windows subsystem for Linux, 
+WSL 表示 "Windows 的 Linux 子系统" (Windows subsystem for Linux)
+
+6213
+06:06:01,450 --> 06:06:05,890
+and allows Linux programs to run natively on our Windows environments. 
+它可以让 Linux 程序在 Windows 环境的本机下运行
+
+6214
+06:06:05,920 --> 06:06:09,310
+To get this setup, we're gonna go ahead, go to the WsL install. 
+要想进行此配置，我们需要检索 wsl 安装
+
+6215
+06:06:09,400 --> 06:06:14,560
+And we'll have a link for this as well in our GitHub repository. 
+我们在 Github 仓库中也放置了此链接
+
+6216
+06:06:14,560 --> 06:06:19,090
+So what we're going to do, 
+所以，我们要做什么呢
+
+6217
+06:06:19,090 --> 06:06:23,290
+you must be running a Windows 10, version 2004 or higher, or Windows 11. 
+你必须要使用 Windows 10 2004 版或以上，或者是 Windows 11
+
+6218
+06:06:23,290 --> 06:06:25,990
+If you're using an older version of Windows, 
+如果你使用的是旧版 Windows 
+
+6219
+06:06:25,990 --> 06:06:28,990
+you can absolutely continue with PowerShell. 
+那么你完全可以使用 PowerShell 继续
+
+6220
+06:06:28,990 --> 06:06:31,570
+But you might run into some issues 
+但你可能会遇到一些问题
+
+6221
+06:06:31,570 --> 06:06:34,720
+where all the commands don't work exactly the same. 
+因为所有命令的工作方式不完全相同
+
+6222
+06:06:34,720 --> 06:06:40,510
+So I highly recommend working on a newer version of Windows. 
+所以我强烈建议你在较新的 Windows 版本下进行工作
+
+6223
+06:06:40,510 --> 06:06:43,750
+To install this back in your Visual Studio Code, PowerShell, 
+要安装这个还需要回到你 Visual Studio Code 的 PowerShell
+
+6224
+06:06:43,750 --> 06:06:48,850
+or just the PowerShell app, or running WsL dash dash install. 
+或者直接打开一个 PowerShell 应用，运行 wsl --install 
+
+6225
+06:06:48,850 --> 06:06:52,030
+Now if you get this error, the requested operation requires elevation, 
+如果你遇到了这个错误，“请求的操作需要提升权限”
+
+6226
+06:06:52,030 --> 06:06:55,960
+it means that we have to run our Visual Studio code or our PowerShell application as administrator. 
+它表示我们需要以管理员身份运行 Visual Studio Code 或 PowerShell
+
+6227
+06:06:55,960 --> 06:07:03,160
+We close out our Visual Studio code. 
+关闭我们的 Visual Studio Code
+
+6228
+06:07:03,160 --> 06:07:07,000
+And right click it and say, Run as Administrator, 
+右键点击它，以管理员身份运行
+
+6229
+06:07:07,000 --> 06:07:09,790
+we get a little pop up saying Do you want to allow this app to make changes to your device, 
+会弹出一个窗口询问你：你要允许此应用对你的设备进行更改吗
+
+6230
+06:07:09,790 --> 06:07:13,090
+we'll go ahead and click Yes. And then we'll reopen the terminal. 
+我们选择是，并再次打开终端
+
+6231
+06:07:13,090 --> 06:07:18,250
+And then we can run WsL space dash dash install. 
+接着运行 wsl --install
+
+6232
+06:07:18,280 --> 06:07:23,110
+And we'll go ahead and install WsL. 
+然后就会进行 WSL 的安装
+
+6233
+06:07:23,110 --> 06:07:24,610
+This may take a little bit so please be patient.
+这可能会花费一些时间，所以需要耐心等待一下
+
+6234
+06:07:25,990 --> 06:07:28,300
+Once it's completed, you'll see something that looks like this,
+一旦完成，你就会看到类似这样的输出
+
+6235
+06:07:28,330 --> 06:07:31,060
+we're going to be working with Ubuntu. 
+我们将使用 Ubuntu 进行工作
+
+6236
+06:07:31,060 --> 06:07:34,210
+And we have a list of different commands to change your Linux distribution. If you choose to do so. 
+我们还提供了一系列不同的命令来更改你的 Linux 发行版，如果你需要的话
+
+6237
+06:07:34,210 --> 06:07:36,910
+And you'll see the request set operation is successful changes will not be effective until the system is rebooted. 
+你可以看到：“请求的操作成功，直到重新启动系统前更改将不会生效。”
+
+6238
+06:07:36,910 --> 06:07:40,120
+
+
+
+6239
+06:07:40,120 --> 06:07:43,210
+So you'll want to go ahead and restart your computer.
+所以你要想继续的话就需要重启你的计算机
+
+6240
+06:07:43,300 --> 06:07:46,450
+There's also a troubleshooting guide in the GitHub repository. If you run into issues 
+Github 仓库里还有一个故障排除指南，如果你遇到了问题的话
+
+6241
+06:07:46,450 --> 06:07:49,420
+after you restart your computer, you'll be prompted for a name for your new system and a password. 
+重启计算机后，系统将提示你输入新系统的用户名和密码
+
+6242
+06:07:49,420 --> 06:07:52,810
+This can be different from your Windows name and password, 
+这个可以和你的 Windows 用户名和密码不同
+
+6243
+06:07:52,810 --> 06:07:55,000
+and then just follow through with all the prompts. 
+之后就按照提示一直操作就好
+
+6244
+06:07:55,000 --> 06:07:57,640
+And then once you're done, you'll be dropped into a Ubuntu shell, 
+一旦完成之后，你就会进入一个 Ubuntu shell
+
+6245
+06:07:57,640 --> 06:08:00,880
+and you can run Linux commands. 
+然后你就可以运行 Linux 命令了
+
+6246
+06:08:00,880 --> 06:08:04,720
+Now you'll have a Ubuntu instance, on your machine. 
+现在你的机器上就有了一个 Ubuntu 实体
+
+6247
+06:08:04,720 --> 06:08:07,930
+And you'll be able to run Linux commands in your terminal. 
+并且你可以在终端里运行 Linux 命令了
+
+6248
+06:08:07,930 --> 06:08:11,650
+Now that we have WsL set up correctly, 
+现在我们已经配置好了 WSL
+
+6249
+06:08:11,650 --> 06:08:15,520
+we're going to head back over to Visual Studio code. 
+接着我们要回到 Visual Studio Code
+
+6250
+06:08:15,520 --> 06:08:18,610
+Once we have WsL, we'll want to go ahead and install an extension. 
+拥有了 WSL 之后，我们还需要安装一些扩展
+
+6251
+06:08:18,610 --> 06:08:21,490
+So in our Visual Studio code, we'll go to Extensions, 
+在我们的 Visual Studio Code 中，去到扩展
+
+6252
+06:08:21,970 --> 06:08:28,210
+and we'll look up remote development 
+我们需要搜索 Remote Development 
+
+6253
+06:08:28,210 --> 06:08:33,880
+you can install the whole thing or just remote WsL we're gonna install the whole thing 
+你可以完整安装或是只安装 Remote-WSL，这里我们选择了完整安装
+
+6254
+06:08:33,880 --> 06:08:37,630
+you can follow along to get started with remote WsL if you like, or you can just follow along with me right now. 
+如果你想的话可以直接按照这个引导开始使用 Remote-WSL，或者是跟着我的步骤操作
+
+6255
+06:08:37,630 --> 06:08:40,690
+Right now if I go to the terminal and hit new terminal, 
+现在我要去到“终端” ("Terminal") 并点击“新建终端” ("New Terminal")
+
+6256
+06:08:40,690 --> 06:08:44,770
+I'm still gonna get PowerShell
+我打开的仍然是一个 PowerShell
+
+6257
+06:08:45,220 --> 06:08:48,640
+we actually want this to be our Linux shell. 
+但我们实际上想用的是 Linux shell
+
+6258
+06:08:48,640 --> 06:08:51,880
+So there are a couple ways to open Visual Studio code up in our Linux environment. 
+有几种不同的方式可以在 Linux 环境中打开 Visual Studio Code
+
+6259
+06:08:51,880 --> 06:08:57,520
+One way is you're gonna hit Ctrl, Shift P and type WsL. 
+第一种是按 "Ctrl+Shift+P" 并输入 "wsl"
+
+6260
+06:08:57,520 --> 06:09:03,550
+And then click remote WsL new WsL window, and you'll get a new window that looks like this, 
+然后点击 Remote-WSL: New WSL Window，接着你就会得到一个这样的新窗口
+
+6261
+06:09:03,550 --> 06:09:06,310
+you can also click the bottom left and choose New WsL window. 
+你也可以点击左下角并选择 New WSL Window
+
+6262
+06:09:06,310 --> 06:09:12,190
+Now if we go to our terminal and hit new terminal, 
+现在如果我们去“终端” (Terminal) 并点击“新建终端” ("New Terminal")
+
+6263
+06:09:12,190 --> 06:09:15,280
+we'll be dropped into a bash shell and we can run Linux commands in here. Awesome. 
+我们就会进入一个 bash shell 并且我们可以在这里运行 Linux 命令了，太棒了
+
+6264
+06:09:15,280 --> 06:09:18,670
+Another way we can open up Visual Studio code with WsL on is 
+另一种可以让我们在 WSL 中打开 Visual Studio Code 的方式是
+
+6265
+06:09:18,670 --> 06:09:22,870
+we can go into our your boon to application, 
+我们可以进入我们的 Ubuntu 应用
+
+6266
+06:09:22,870 --> 06:09:28,660
+we can make a folder by typing MK dir folder, 
+我们可以通过输入 "mkdir folder" 来新建一个名为 "folder" 的文件夹
+
+6267
+06:09:29,470 --> 06:09:34,510
+we'll CD or change directory into folder and type code period. 
+使用 cd 将所在的目录更改为 "folder" 下，然后输入 "code ."
+
+6268
+06:09:34,510 --> 06:09:38,470
+We'll go ahead and trust the authors in here. 
+这里我们选择信任此文件夹的作者
+
+6269
+06:09:38,470 --> 06:09:42,100
+And this will open up Visual Studio code already connected to the folder that we're in. 
+这样打开的 Visual Studio Code 已经连接到了我们所在的文件夹
+
+6270
+06:09:42,100 --> 06:09:45,670
+And we can create files in this folder like hi dot txt, 
+我们可以在这个文件夹中创建文件比如说 "hi.txt"
+
+6271
+06:09:45,700 --> 06:09:50,110
+and those will get created inside the folder in our WsL. 
+这个文件就会在我们 WSL 的文件夹中被创建出来
+
+6272
+06:09:50,110 --> 06:09:53,650
+Now that we're inside our WsL environment, 
+现在我们是在 WSL 环境中
+
+6273
+06:09:53,650 --> 06:09:56,890
+you'll notice that node dash dash version doesn't work anymore. 
+你会注意到 "node --version" 不再起作用了
+
+6274
+06:09:56,890 --> 06:10:00,700
+That's because we installed it on our regular Windows machine and not on our WsL or Linux environment. 
+这是因为我们把它安装到了正常 Windows 机器下而不是我们的 WSL 或者说 Linux 环境下
+
+6275
+06:10:00,790 --> 06:10:04,150
+The reason we installed it on a Windows environment first 
+我们选择先在 Windows 环境下安装的原因是
+
+6276
+06:10:04,150 --> 06:10:07,000
+is that just in case you wanted to go ahead and use PowerShell 
+以防万一你想要继续使用 PowerShell
+
+6277
+06:10:07,000 --> 06:10:10,000
+or user Windows environment to run everything you still can 
+或是你想要使用 Windows 环境来运行一切，你仍然可以这样做
+
+6278
+06:10:10,000 --> 06:10:12,880
+just remember if you use the Windows environment and PowerShell 
+但需要记住，如果你使用的是 Windows 环境和 PowerShell
+
+6279
+06:10:12,880 --> 06:10:15,640
+all the commands that we use might not work for you. 
+那么我们使用的所有命令可能并不完全适用于你
+
+6280
+06:10:15,640 --> 06:10:20,320
+So we're gonna go ahead and install Node js on our Linux environment. Now, 
+所以我们现在要继续在我们的 Linux 环境下安装 node.js 
+
+6281
+06:10:20,320 --> 06:10:22,960
+all the commands that we're going to write 
+我们要使用的所有命令
+
+6282
+06:10:22,960 --> 06:10:25,510
+are going to be in the GitHub repo associated with this course. 
+都会放在本课程关联的 Github 仓库中
+
+6283
+06:10:25,510 --> 06:10:30,970
+We're going to do a curl command to the nvm repository,
+我们要使用 curl 命令安装 nvm 仓库
+
+6284
+06:10:31,630 --> 06:10:33,640
+which stands for node version manager.
+它是 node 版本管理器
+
+6285
+06:10:44,229 --> 06:10:47,049
+And we're going to pipe the install script into bash. 
+我们要把安装脚本通过管道(pipe)传输给 bash (译者注：管道命令 pipe 即所输命令中的 "|")
+
+6286
+06:10:47,049 --> 06:10:52,869
+And this will go ahead and install and VM. 
+这样做就可以安装 nvm
+
+6287
+06:10:52,869 --> 06:10:57,879
+After running that, go ahead and trash the terminal, and then reopen it. 
+运行过后，清除这个终端，再重新打开一个
+
+6288
+06:10:57,879 --> 06:11:02,409
+And then we can type MBM dash dash version to see if it actually installed correctly. 
+然后我们可以输入 nvm --version 来查看安装是否正确
+
+6289
+06:11:02,409 --> 06:11:05,529
+Once we've installed nvm, we can go ahead and install no GS using nvm. 
+安装好了 nvm 以后，我们就可以用它来安装 node.js 了
+
+6290
+06:11:05,559 --> 06:11:13,029
+Just type npm install, and we'll do 16 point 14.2 
+只要输入 "nvm install"，我们将选择 16.14.2
+
+6291
+06:11:13,029 --> 06:11:16,899
+Is that same long term support version we installed on our Windows machine. 
+这和我们在 Windows 上安装的长期支持版本是同一个
+
+6292
+06:11:16,899 --> 06:11:20,739
+Once we have it installed, we can type in Node dash S version. 
+安装完毕后，我们可以输入 "node --version"
+
+6293
+06:11:20,739 --> 06:11:24,609
+And now we have no JS installed. 
+现在我们就已经装好了 node.js 了
+
+6294
+06:11:24,609 --> 06:11:27,579
+Now I know there was a lot here, but if you made it this far, this is fantastic. 
+我明白到目前为止的内容有些多，如果你真走到了现在这一步，那你真的很优秀了
+
+6295
+06:11:27,609 --> 06:11:31,029
+You've done a great job to push through to this point 
+你做的非常好，能走到这一步
+
+6296
+06:11:31,029 --> 06:11:34,269
+and get everything set up so you can code in the best environment there is. 
+并配置好了编码所需的最好环境
+
+6297
+06:11:34,269 --> 06:11:36,999
+So if you've made it this far, huge congratulations. 
+你做到了，非常恭喜
+
+6298
+06:11:36,999 --> 06:11:39,429
+Now the next thing that we're going to install is Git. 
+现在我们要安装的下一个东西是 Git
+
+6299
+06:11:39,429 --> 06:11:42,789
+And now we're not going to use Git for this lesson. 
+我们在本节课中暂时不打算使用 Git
+
+6300
+06:11:42,789 --> 06:11:45,369
+However, we will definitely be using it in the future. 
+但我们将来肯定会用到它
+
+6301
+06:11:45,369 --> 06:11:48,879
+See if gets installed type git dash dash version,
+使用 "git --version" 查看它是否已经安装
+
+6302
+06:11:49,029 --> 06:11:51,279
+sometimes Linux will automatically come with Git installed 
+有时 Linux 会自动把 Git 安装好
+
+6303
+06:11:51,279 --> 06:11:54,279
+and you'll see something output like this. 
+并且你会看到类似这样的输出
+
+6304
+06:11:54,279 --> 06:11:58,899
+If you don't have Git, we can just look up the get install. 
+如果你没有 Git，我们可以直接检索 "git install"
+
+6305
+06:11:58,899 --> 06:12:01,869
+Which again, link to this is in the description. 
+再在链接中找到这一处描述
+
+6306
+06:12:01,869 --> 06:12:06,369
+And you'll actually run the installing on Linux. 
+实际上你是要在 Linux 上运行安装
+
+6307
+06:12:06,369 --> 06:12:09,009
+Now again, now if you want to use PowerShell, and you want to do everything with Windows, 
+再提示一下，如果你要使用 PowerShell，并在 Windows 上处理一切的话
+
+6308
+06:12:09,009 --> 06:12:11,769
+you can absolutely follow the installing on Windows instructions here instead, 
+你可以参照此处 Windows 上的安装说明作为代替
+
+6309
+06:12:11,769 --> 06:12:15,519
+when you're working in WsL, 
+当你在 WSL 中工作时
+
+6310
+06:12:15,519 --> 06:12:18,669
+you'll want to use the Linux commands instead of the windows commands, even though you're on a Windows 
+你要使用的是 Linux 命令而非 Windows 命令，即便你是在 Windows 上
+
+6311
+06:12:18,669 --> 06:12:21,789
+because WsL makes it so that you're basically running in a Linux environment. 
+因为 WSL 就是让你在 Linux 环境中进行运行的
+
+6312
+06:12:21,789 --> 06:12:24,579
+And now if you've made it this far, 
+现在，如果你做到了这一步
+
+6313
+06:12:24,579 --> 06:12:27,069
+you should be able to follow along with the Mac and Linux instructions 
+那么你应该就能按照 Mac 和 Linux 的说明进行操作了
+
+6314
+06:12:27,069 --> 06:12:30,099
+as if you're running on a Mac and Linux even though you're running on Windows. 
+这就和你在 Mac 和 Linux 上的运行一样，即便你其实是在 Windows 上运行
+
+6315
+06:12:30,129 --> 06:12:33,729
+Just be sure that whenever you're in your VS code, 
+只要确保每次你在使用 VS Code 的时候
+
+6316
+06:12:33,729 --> 06:12:36,159
+you take a look at the bottom left and make sure you're on WsL Ubuntu. 
+看看左下角并确定你是在 WSL Ubuntu 上
+
+6317
+06:12:36,159 --> 06:12:40,209
+Like I said before, 
+就像我之前说的
+
+6318
+06:12:40,209 --> 06:12:42,789
+if you want to run in PowerShell, or in a Windows environment,
+如果你想在 PowerShell 或是 Windows 环境中运行
+
+6319
+06:12:42,819 --> 06:12:45,549
+you're more than free to do so. 
+当然是完全可以的
+
+6320
+06:12:45,549 --> 06:12:48,549
+But like I said, if you've made it this far, huge congratulations. Awesome work.
+如前所述，如果你成功做到了这一步，非常祝贺，做得很好
