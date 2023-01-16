@@ -1,0 +1,329 @@
+6321
+06:12:51,339 --> 06:12:54,429
+And then finally, our last setup is going to be using a tool called Git pod 
+最后一个我们可选的工具是 Gitpod
+
+6322
+06:12:54,429 --> 06:12:57,399
+starting from Lesson five. The lesson that we're on right now, ethers, jazz, simple storage, 
+从第五章开始，就是我们现在正在进行这一章 "Ethers.js Simple Storage"
+
+6323
+06:12:57,399 --> 06:13:00,279
+all of our code repos are going to come with a button 
+我们所有的代码仓库都会带有一个按钮
+
+6324
+06:13:00,279 --> 06:13:04,509
+in the repo scroll down, 
+在仓库内向下滚动
+
+6325
+06:13:04,509 --> 06:13:08,499
+they'll come with this open in get pod button. 
+它们都会附带一个 "Open in Gitpod"(在 Gitpod 中打开) 按钮
+
+6326
+06:13:08,499 --> 06:13:11,949
+Now git pod is a cloud development environment 
+Gitpod 是一种云开发环境
+
+6327
+06:13:11,949 --> 06:13:16,449
+where you can actually run your code on a remote server, 
+它可以让你在远程服务器上运行你的代码
+
+6328
+06:13:16,449 --> 06:13:20,199
+it's kind of similar to remix IDE, 
+有些类似于 Remix IDE
+
+6329
+06:13:20,199 --> 06:13:25,029
+but it allows you to run Visual Studio code in the browser or connected to another server. 
+不过它只是允许你在浏览器上或是以连接到其他服务器的方式运行 Visual Studio Code
+
+6330
+06:13:25,029 --> 06:13:27,939
+This is good because then you don't have to do any installation on anything.
+这很不错，因为这样你就不用安装各种东西了
+
+6331
+06:13:28,149 --> 06:13:31,089
+Since all the tools that you can want to use are just going to be running on this remote server. 
+因为你要使用的所有工具都会在这个远程服务器上运行
+
+6332
+06:13:31,089 --> 06:13:34,839
+This has its downsides, though, obviously, 
+但是它的缺点也很明显
+
+6333
+06:13:34,839 --> 06:13:39,039
+since you'll only be able to code if git pod is up and working for you. 
+因为你只有在 Gitpod 启动并正常工作时才能编写代码
+
+6334
+06:13:39,039 --> 06:13:41,469
+Additionally, when it comes to private keys, 
+此外，当涉及私钥时
+
+6335
+06:13:41,469 --> 06:13:45,669
+you absolutely do not want to run any code with a private key that has real money in good pop. 
+你肯定不想用一个有真金白银的私钥在 Gitpod 上运行代码
+
+6336
+06:13:45,669 --> 06:13:49,479
+Why? Well, once again, 
+为什么？
+
+6337
+06:13:49,479 --> 06:13:53,259
+since you're running your scripts on a remote server,
+因为你是在远程服务器上运行的你的脚本
+
+6338
+06:13:53,529 --> 06:13:57,519
+those servers have access to your private keys. 
+所以这些服务器可以访问你的私钥
+
+6339
+06:13:57,519 --> 06:14:00,849
+But since you've Pinky promise that for this course, you're not going to be using a meta mask or a private key with actual money in it, 
+但是既然你都向本课程拉钩承诺过，你不会往 MetaMask 或私钥中放真钱
+
+6340
+06:14:00,849 --> 06:14:03,789
+it should be fine. 
+所以这应该也不是什么大问题
+
+6341
+06:14:03,789 --> 06:14:07,119
+The other downside is that these often cost money to use and get pot isn't free. 
+另一个缺点是使用这些工具通常需要花钱，Gitpod 并不是免费的
+
+6342
+06:14:07,119 --> 06:14:11,289
+But it's an option if you absolutely cannot get any of the installation working. 
+但这仍然不失为一种选择，如果你确实没法进行工具的安装
+
+6343
+06:14:11,319 --> 06:14:15,129
+So if you go ahead and you hit this opening get pod button, 
+所以如果你继续并点击了这个 "Open in Gitpod" 按钮
+
+6344
+06:14:15,129 --> 06:14:18,069
+you'll get a welcome to get pods showing up. 
+你就可以看到这个 "Welcome to Gitpod" 的界面
+
+6345
+06:14:18,069 --> 06:14:20,919
+We're gonna go ahead and continue with GitHub. 
+我们继续在这里选择 "Continue with GitHub"
+
+6346
+06:14:20,919 --> 06:14:24,009
+Since you've signed up for GitHub here, 
+因为你已经注册过了 Github
+
+6347
+06:14:24,009 --> 06:14:29,319
+you want to go ahead and authorize get pod. 
+你需要继续并授权给 Gitpod
+
+6348
+06:14:29,319 --> 06:14:32,859
+And it'll go ahead and start creating this workspace for you. 
+接着它就会开始为你创建工作区
+
+6349
+06:14:32,859 --> 06:14:36,939
+And you'll notice it looks exactly like Visual Studio Code. 
+你会发现它看起来和 Visual Studio Code 一模一样
+
+6350
+06:14:36,939 --> 06:14:41,889
+Since I opened the repo up in Git pod, it came with all the code, 
+因为我在 Gitpod 中打开了代码仓库，所以这里附带了所有的代码
+
+6351
+06:14:41,889 --> 06:14:47,049
+and you can even open this workspace up in VS code desktop. 
+你甚至可以在桌面 VS Code 中打开这个工作区
+
+6352
+06:14:47,049 --> 06:14:50,109
+So this is might be a little bit confusing. 
+不过这可能会让人感到有些迷惑
+
+6353
+06:14:50,109 --> 06:14:54,309
+But basically, you can run off of Git pod using your local Visual Studio code.
+不过基本上来说，你是可以用本地的 Visual Studio Code 来运行 Gitpod 的
+
+6354
+06:14:54,519 --> 06:14:57,159
+And if you see git pod here, that's how you know that you're running off of Git pod. 
+如果你在这个地方看到了 gitpod，就表明你是在通过 Gitpod 运行
+
+6355
+06:14:57,159 --> 06:15:00,639
+If you see this pop up, 
+如果你看到了这个弹窗
+
+6356
+06:15:00,639 --> 06:15:04,809
+do you want to open this workspace in VS code desktop, you can hit Open. 
+“你想要使用桌面 VS Code 打开此工作区么”，你可以点击 "Open"
+
+6357
+06:15:04,809 --> 06:15:07,299
+And it'll ask you if you want to open up Visual Studio Code,
+它就会询问你是否想要打开 Visual Studio Code
+
+6358
+06:15:07,569 --> 06:15:10,299
+which I'm going to go ahead and hit yes. 
+我们继续并选择“是的”
+
+6359
+06:15:10,299 --> 06:15:13,239
+And you'll get something that looks like this on your Visual Studio Code.
+接着你就会在你的 Visual Studio Code 里得到类似这样的东西
+
+6360
+06:15:13,449 --> 06:15:16,389
+It'll tell you that it wants to install the Git pod extension, and then open that Git pod URL. 
+它会询问你是否想要安装 Gitpod 扩展并打开 Gitpod 链接
+
+6361
+06:15:16,809 --> 06:15:20,619
+So you can go ahead and install it. 
+所以你可以选择继续并安装它
+
+6362
+06:15:20,619 --> 06:15:25,809
+Reload window and open 
+选择“重新启动窗口并打开”
+
+6363
+06:15:25,809 --> 06:15:29,739
+and it's going to go ahead and start connecting to our the Git pod workspace. 
+然后它就会开始连接到我们的 Gitpod 工作区
+
+6364
+06:15:29,739 --> 06:15:34,419
+And this is going to be the same as running git pod in the browser here. 
+这种方式和在浏览器里运行 Gitpod 是一样
+
+6365
+06:15:34,419 --> 06:15:38,079
+Or you can also do it manually by hitting the Git pod in the bottom left,
+或者你可以手动点击左下角的 Gitpod 按钮
+
+6366
+06:15:38,799 --> 06:15:42,219
+and then type in open in VS code
+然后输入 "Open in VS Code"
+
+6367
+06:15:43,660 --> 06:15:45,820
+And then you should be able to run it in your Visual Studio code. 
+然后你就可以在 Visual Studio Code 中运行它了
+
+6368
+06:15:45,820 --> 06:15:48,430
+For now, I'm going to recommend that if you're using Git pod, just stay in the browser, 
+目前，如果你使用的是 Gitpod，那么我建议你留在浏览器内
+
+6369
+06:15:48,430 --> 06:15:51,670
+just so that you know, okay, 
+这只是为了时刻提醒你
+
+6370
+06:15:51,700 --> 06:15:55,420
+I am running this on a remote server. And just as a reminder for you that you're not actually locally developing. 
+现在是在远程服务器上运行，而不是在本地进行开发
+
+6371
+06:15:55,420 --> 06:15:59,710
+And hopefully, this will be a trigger to not actually put 
+希望这可以提醒你
+
+6372
+06:15:59,710 --> 06:16:02,440
+any special private keys or anything like that. 
+不要往上面放任何私钥之类的东西
+
+6373
+06:16:02,440 --> 06:16:05,380
+But you can make workspaces, you can make new folders, 
+不过你可以新建工作区，新建文件夹
+
+6374
+06:16:05,380 --> 06:16:08,080
+and you should be able to run all the commands on here, 
+并且应该能够运行这里的所有命令
+
+6375
+06:16:08,080 --> 06:16:11,740
+as if you are running locally with Visual Studio code. 
+就好像你在本地运行 Visual Studio Code 一样
+
+6376
+06:16:11,740 --> 06:16:14,980
+To open up the terminal, you can hit this little bar at the top left, 
+要想打开终端，可以点击左上角这个小栏
+
+6377
+06:16:14,980 --> 06:16:20,500
+go to terminal, new terminal, or use CTRL tilde 
+再点击 "Terminal", "New Terminal" 或者使用 CTRL + ~
+
+6378
+06:16:20,530 --> 06:16:25,780
+exact same as Mac OS and Linux keyboard shortcuts
+就和 Mac OS 以及 Linux 的键盘快捷键完全相同
+
+6379
+06:16:25,930 --> 06:16:30,580
+to create a new folder, we can change directory, CD, dot.mk, dir, new folder, 
+要想创建一个新的文件夹，我们可以更改目录 "cd .." "mkdir new_folder"
+
+6380
+06:16:30,580 --> 06:16:36,070
+MK dir makes make directory called New Folder. 
+"mkdir" 就是新建一个文件夹，名为 "new_folder"
+
+6381
+06:16:36,070 --> 06:16:39,490
+And then we're going to change our directory into a new folder, and hit enter. 
+然后我们要改变我们的目录到 new_folder 下，敲击回车
+
+6382
+06:16:39,490 --> 06:16:42,940
+And now we're in that new folder. 
+现在我们就是在 new_folder 里了
+
+6383
+06:16:42,940 --> 06:16:46,270
+For each section, you can either open up the entire source code right into GitHub, 
+对于每个章节，你都可以直接在 Gitpod 中打开整个源代码
+
+6384
+06:16:46,300 --> 06:16:50,200
+or you can create a new folder for each section yourself and start from blank. 
+或者你可以自己为每个章节创建一个新的文件夹并从头开始
+
+6385
+06:16:50,230 --> 06:16:53,770
+And then you would just type code period. 
+你只需要输入 "code ."
+
+6386
+06:16:53,800 --> 06:17:01,480
+And you'd be in a brand new folder.
+然后你就是在一个全新的文件夹里了
