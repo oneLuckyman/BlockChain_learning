@@ -22,7 +22,7 @@ contract FundMe {
 
     // 构造函数可以在合约被部署后自动执行一次
     constructor(){
-        i_owner = msg.sender();
+        i_owner = msg.sender;
     }
 
     function fund() public payable{
