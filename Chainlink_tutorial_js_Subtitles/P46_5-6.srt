@@ -160,77 +160,77 @@ Now to get started,
 
 6419
 06:18:58,060 --> 06:19:00,670
-I'm going to recommend you create a folder where you're
-
+I'm going to recommend you create a folder 
+我建议你新建一个文件夹
 
 6420
 06:19:00,670 --> 06:19:02,740
-going to put all of your projects in it, I'm going to
-
+where you're going to put all of your projects in it, 
+并把你所有的项目都放到这个文件夹里
 
 6421
 06:19:02,740 --> 06:19:07,960
-create a new directory called H H. hyphen, FCC, which stands for
-
+I'm going to create a new directory called H H. hyphen, FCC, 
+我现在就新建一个文件夹名字叫 "hh-fcc" 
 
 6422
 06:19:07,960 --> 06:19:11,110
-hard hat Free Code Camp. And once we run that command, we can
-
+which stands for hard hat Free Code Camp. 
+表示 "Hardhat Free Code Camp" 
 
 6423
 06:19:11,110 --> 06:19:15,520
-cd into hh FCC. And this is where we'll create all of our
-
+And once we run that command, we can cd into hh FCC. 
+运行完这个命令，我们就可以使用 "cd" 进入 "hh-fcc"
 
 6424
 06:19:15,520 --> 06:19:18,430
-projects for this course moving forward, so that we have them
-
+And this is where we'll create all of our projects for this course moving forward, so that we have them all in one place. 
+这里就是我们这门课程用来创建所有项目的地方，它们全部放在这一个地方
 
 6425
 06:19:18,430 --> 06:19:21,640
-all in one place. Now to get started, whenever you create a
-
+Now to get started, whenever you create a new project, 
+现在开始，每当你创建一个新项目时
 
 6426
 06:19:21,640 --> 06:19:25,210
-new project, you always want to create a new folder. So to
-
+you always want to create a new folder. 
+你都要想着创建一个新文件夹
 
 6427
 06:19:25,210 --> 06:19:28,450
-create a new folder, we're going to do MK dir, and we're going to
-
+So to create a new folder, we're going to do MK dir, 
+要想新建一个文件夹，我们输入 "mkdir"
 
 6428
 06:19:28,450 --> 06:19:35,950
-call this ethers, simple storage, like that. And now, if
-
+and we're going to call this ethers, simple storage, like that. 
+并把它叫做 "ethers-simple-storage" 就像这样
 
 6429
 06:19:35,950 --> 06:19:40,900
-you type ls, you'll see that there is one folder named
-
+And now, if you type ls, you'll see that there is one folder named ethers, simple storage. 
+现在，如果你输入 "ls"，你就会看到一个文件夹，名字是 "ethers-simple-storage"
 
 6430
 06:19:40,930 --> 06:19:45,670
-ethers, simple storage. ls is how you list all the contents of
-
+ls is how you list all the contents of your folder. 
+"ls" 就是你用来显示文件夹内所有内容的方法
 
 6431
 06:19:45,850 --> 06:19:49,450
-your folder. You might have a lot of other folders in here, I
-
+You might have a lot of other folders in here, 
+也许你这里还有很多其它文件夹
 
 6432
 06:19:49,450 --> 06:19:52,210
-only have the one since I created this new folder for
-
+I only have the one since I created this new folder for this. 
+而我这只有一个，因为我这里是一个新建的文件夹
 
 6433
 06:19:52,210 --> 06:19:57,490
-this. Now what you can do, you can type code, ethers simple.
+Now what you can do, you can type code, ethers simple.
 
 
 6434
