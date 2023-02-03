@@ -141,7 +141,7 @@ Alright, so now we're gonna start working with ethers.
 6415
 06:18:44,980 --> 06:18:48,670
 And we're going to start learning to code, our transactions and our contract deployments 
-并开始学习代码，交易，合约部署
+我们将开始学习代码，交易，合约部署
 
 6416
 06:18:48,670 --> 06:18:51,730
@@ -226,356 +226,356 @@ You might have a lot of other folders in here,
 6432
 06:19:49,450 --> 06:19:52,210
 I only have the one since I created this new folder for this. 
-而我这只有一个，因为我这里是一个新建的文件夹
+而我这只有一个，因为这是我新建一个的文件夹
 
 6433
 06:19:52,210 --> 06:19:57,490
 Now what you can do, you can type code, ethers simple.
-
+现在你能做的是，可以输入 "code ethers-simp"
 
 6434
 06:19:57,880 --> 06:20:01,690
-And then if you hit tab, it should autocomplete for you. And
-
+And then if you hit tab, it should autocomplete for you. 
+这时如果你按下 "tab" 键，它应该会自动为你补全
 
 6435
 06:20:01,690 --> 06:20:06,940
-if you enter, Visual Studio code should open up a new Visual
-
+And if you enter, Visual Studio code should open up 
+按下回车，Visual Studio Code 就会给你打开
 
 6436
 06:20:06,940 --> 06:20:12,700
-Studio code for you. That is inside of either simple storage
-
+a new Visual Studio code for you. 
+一个新的 Visual Studio Code
 
 6437
 06:20:13,060 --> 06:20:16,060
-if you open up your terminal now, your home directory for
-
+That is inside of either simple storage 
+它位于 "ethers-simple-storage" 里面
 
 6438
 06:20:16,060 --> 06:20:19,240
-this workspace is going to be through simple storage as this
-
+if you open up your terminal now, 
+如果你现在打开终端
 
 6439
 06:20:19,240 --> 06:20:23,020
-is what pops up. If that doesn't work for you, we can also do is
-
+your home directory for this workspace is going to be through simple storage as this is what pops up. 
+你所处的工作区目录就是 "ethers-simple-storage"  就和这里弹出来的这个一样
 
 6440
 06:20:23,020 --> 06:20:28,900
-you can hit File, Open folder and then open the folder that
-
+If that doesn't work for you, we can also do is you can hit File, Open folder 
+如果你的情况不是这样的，我们也可以通过点击 "文件-打开文件夹"
 
 6441
 06:20:28,900 --> 06:20:32,530
-you just created or that you want to open this again we'll
-
+and then open the folder that you just created or that you want to open 
+并打开你刚刚创建的文件夹或是你想打开的其他文件夹
 
 6442
 06:20:32,530 --> 06:20:35,680
-open up VS code. And if we open up our terminal we see we're
-
+this again we'll open up VS code. And if we open up our terminal 
+这将再次打开 VS Code，并且如果我们打开终端
 
 6443
 06:20:35,680 --> 06:20:38,980
-inside of ether simple storage. This is so powerful because as
-
+we see we're inside of ether simple storage. 
+能看到我们就在 "ethers-simple=storage" 里面
 
 6444
 06:20:38,980 --> 06:20:40,030
-we create files
-
+This is so powerful because as we create files
+这一点非常强大，因为当我们创建文件时
 
 6445
 06:20:41,560 --> 06:20:45,760
-we'll be able to See those files in our Explorer here, this
-
+we'll be able to See those files in our Explorer here, 
+我们能在这里的资源管理器中直接看到它们
 
 6446
 06:20:45,760 --> 06:20:48,850
-button here stands for the Explorer. If we click it, we can
-
+this button here stands for the Explorer. 
+这个按钮表示资源管理器
 
 6447
 06:20:48,850 --> 06:20:51,220
-see the different files in here. And I'm going to go ahead and
-
+If we click it, we can see the different files in here. 
+如果我们点击它，可以在这里查看不同的文件
 
 6448
 06:20:51,220 --> 06:20:54,700
-actually delete this file dot txt, because we're not actually
-
+And I'm going to go ahead and actually delete this file dot txt, because we're not actually going to use that. 
+我要把这个 "file.txt" 删除掉，因为我们其实并不会用到它
 
 6449
 06:20:54,700 --> 06:20:57,430
-going to use that. Now it's this part of the course, where we're
-
+Now it's this part of the course, where we're actually going to start jumping into some JavaScript. 
+现在开始的这部分课程，我们要讲一些 JavaScript 的知识
 
 6450
 06:20:57,430 --> 06:21:01,180
-actually going to start jumping into some JavaScript. Since this
-
+Since this course is in JavaScript course, 
+因为本课程是一门基于 JavaScript 的课程
 
 6451
 06:21:01,180 --> 06:21:04,270
-course is in JavaScript course, if you're unfamiliar with
-
+if you're unfamiliar with JavaScript, 
+如果你不太熟悉 JavaScript
 
 6452
 06:21:04,270 --> 06:21:07,630
-JavaScript, it might be a little bit tricky. If you want to come
-
+it might be a little bit tricky. 
+可能会感到有些棘手
 
 6453
 06:21:07,630 --> 06:21:10,000
-into this with a better understanding of JavaScript and
-
+If you want to come into this with a better understanding of JavaScript and Node js, 
+如果你想进一步更好地理解 JavaScript 和 Node.js
 
 6454
 06:21:10,000 --> 06:21:14,230
-Node js, there is a Free Code Camp YouTube video teaching No,
-
+there is a Free Code Camp YouTube video teaching No, Jas for beginners. 
+这里有一个 Free Code Camp 的 YouTube 视频，为初学者教授 Node.js 
 
 6455
 06:21:14,230 --> 06:21:17,530
-Jas for beginners. And a link to this will be in the GitHub repo
-
+And a link to this will be in the GitHub repo associated with this course. 
+链接就在课程关联的 GitHub 仓库内
 
 6456
 06:21:17,530 --> 06:21:20,800
-associated with this course. There's also a JavaScript Free
-
+There's also a JavaScript  video 
+同样还有一个 Free Code Camp 的 JavaScript 视频
 
 6457
 06:21:20,800 --> 06:21:23,680
-Code Camp video that I'm also going to put in the description
-
+that I'm also going to put in the description for this course, 
+我会把它也一并放到本课程的描述中去
 
 6458
 06:21:23,680 --> 06:21:26,770
-for this course, keep in mind that JavaScript and Node js are
-
+keep in mind that JavaScript and Node js are slightly different. 
+请记住 JavaScript 和 Node.js 还是有一些不同的
 
 6459
 06:21:26,770 --> 06:21:29,710
-slightly different. And we are going to go over some of the
-
+And we are going to go over some of the differences as we code along here. 
+我们在写代码的时候会讲到这些不同之处
 
 6460
 06:21:29,710 --> 06:21:33,190
-differences as we code along here. But for the most part,
-
+But for the most part,
+但在绝大多数情况下
 
 6461
 06:21:33,190 --> 06:21:35,680
-learning one means you've learned the majority of the
-
+learning one means you've learned the majority of the other. 
+学会其中一个就意味着你也学会了另一个的绝大部分
 
 6462
 06:21:35,680 --> 06:21:38,590
-other. So if you want to pause and go through these videos,
-
+So if you want to pause and go through these videos, before continuing here, 
+所以你要是打算现在暂停下来，并在继续之前先去看一下这些视频的话
 
 6463
 06:21:38,590 --> 06:21:42,280
-before continuing here, please feel free to do so you don't
-
+please feel free to do so 
+请按照你的需求自行决定吧
 
 6464
 06:21:42,310 --> 06:21:45,910
-have to, you can absolutely continue on with the course as
-
+you don't have to, you can absolutely continue on with the course as is. 
+这也不是必须的，你完全可以接着继续本课程的学习
 
 6465
 06:21:45,910 --> 06:21:50,470
-is. And if you get confused or stuck on some JavaScript piece,
-
+And if you get confused or stuck on some JavaScript piece,
+如果你对某些 JavaScript 的内容感到困惑
 
 6466
 06:21:50,620 --> 06:21:54,100
-feel free to pause, Google it and come back. But just to
-
+feel free to pause, Google it and come back. 
+随时暂停，Google 一下然后再回来
 
 6467
 06:21:54,100 --> 06:21:56,170
-reiterate, you can check out the JavaScript programming full
-
+But just to reiterate, you can check out the JavaScript programming full course. 
+不过重申一下，你可以先查看 JavaScript 编程的完整课程
 
 6468
 06:21:56,170 --> 06:22:00,130
-course. And also the Node js full course, as those are both
-
+And also the Node js full course, as those are both going to help you. 
+当然还有 Node.js 的完整课程，因为它们都能对你有所帮助
 
 6469
 06:22:00,130 --> 06:22:03,400
-going to help you. Like I was saying before, Node js is a
-
+Like I was saying before, Node js is a JavaScript runtime. 
+正如我之前所说的，Node.js 是 JavaScript 运行的 
 
 6470
 06:22:03,400 --> 06:22:08,230
-JavaScript runtime. So it's not exactly JavaScript. But we're
-
+So it's not exactly JavaScript. 
+所以它并不完全是 JavaScript
 
 6471
 06:22:08,230 --> 06:22:10,990
-going to write our code in JavaScript. And if that's
-
+But we're going to write our code in JavaScript. 
+但我们要用 JavaScript 来编写代码
 
 6472
 06:22:10,990 --> 06:22:14,230
-confusing, just don't worry about it right now. And as we go
-
+And if that's confusing, just don't worry about it right now. 
+如果这让你感到困惑，请暂时不要担心这个
 
 6473
 06:22:14,230 --> 06:22:17,110
-through this course, I'll show you where the differences are.
-
+And as we go through this course, I'll show you where the differences are.
+当我们完成这门课时，我会告诉你它们的区别在哪
 
 6474
 06:22:17,440 --> 06:22:20,320
-But basically, you can think of no Jas and JavaScript kind of
-
+But basically, you can think of no Jas and JavaScript kind of being the same thing. 
+但基本上来说，你可以认为 Node.js 和 JavaScript 就是同样的东西
 
 6475
 06:22:20,320 --> 06:22:23,800
-being the same thing. The big thing about Node js is it allows
-
+The big thing about Node js is it allows us to write JavaScript code in the back end, 
+Node.js 最重要的一点是它允许我们在后端编写 JavaScript 代码
 
 6476
 06:22:23,800 --> 06:22:27,970
-us to write JavaScript code in the back end, as opposed to
-
+as opposed to running JavaScript on the front end, 
+而不是在前端运行 JavaScript
 
 6477
 06:22:28,000 --> 06:22:31,090
-running JavaScript on the front end, JavaScript is made to be a
-
+JavaScript is made to be a browser run language, 
+JavaScript 是一种运行在浏览器上的语言
 
 6478
 06:22:31,090 --> 06:22:35,200
-browser run language, like running inside of, you know,
-
+like running inside of, you know, Chrome, brave Firefox, etc. 
+比如说运行于 Chrome，Brave，Firefox 等等
 
 6479
 06:22:35,200 --> 06:22:40,780
-Chrome, brave Firefox, etc. No, Jas allows it to become a a
-
+No, Jas allows it to become a a scripting language, a back end language, 
+Node.js 允许它成为一种脚本语言，后端语言
 
 6480
 06:22:40,780 --> 06:22:43,840
-scripting language, a back end language, which is why the
-
+which is why the syntax between the front end JavaScript and the back end JavaScript 
+这就是为什么前端 JavaScript 和后端 JavaScript
 
 6481
 06:22:43,840 --> 06:22:46,930
-syntax between the front end JavaScript and the back end
-
+or the no JS JavaScript are going to be a little bit different. 
+或 Node.js JavaScript 的语法之间会有一些不同
 
 6482
 06:22:46,930 --> 06:22:49,330
-JavaScript or the no JS JavaScript are going to be a
+
 
 
 6483
 06:22:49,330 --> 06:22:52,120
-little bit different. Additionally, as we go along in
-
+Additionally, as we go along in this code, 
+此外，当我们编写代码的时候
 
 6484
 06:22:52,120 --> 06:22:56,290
-this code, if you're familiar with TypeScript, all of our code
-
+if you're familiar with TypeScript, 
+如果你更熟悉 TypeScript 的话
 
 6485
 06:22:56,290 --> 06:22:59,200
-is going to come with a TypeScript edition. TypeScript
-
+all of our code is going to come with a TypeScript edition. 
+所有的代码都附带了一个 TypeScript 版本
 
 6486
 06:22:59,200 --> 06:23:03,340
-is what's known as a statically typed version of JavaScript. And
-
+TypeScript is what's known as a statically typed version of JavaScript. 
+TypeScript 就是所谓的 JavaScript 的静态类型版本
 
 6487
 06:23:03,340 --> 06:23:05,650
-it'll be it'll be this one. It'll be TypeScript, not
-
+And it'll be it'll be this one. It'll be TypeScript, not TypeScript edition. 
+是 typescript 这个，而不是 typescript-edition 这个
 
 6488
 06:23:05,650 --> 06:23:08,440
-TypeScript edition. I'll go ahead and fix that and remove
-
+I'll go ahead and fix that and remove this one to make it clear. 
+我会修改一下，把这个去掉，让它更清晰一些
 
 6489
 06:23:08,440 --> 06:23:11,260
-this one to make it clear. TypeScript is a type safe
-
+TypeScript is a type safe version of JavaScript, 
+TypeScript 是 JavaScript 的一种安全版本
 
 6490
 06:23:11,290 --> 06:23:14,350
-version of JavaScript, which is that's confusing, don't worry
-
+which is that's confusing, don't worry too much about that. 
+如果你暂时搞不明白，也不要太担心
 
 6491
 06:23:14,350 --> 06:23:17,110
-too much about that. But we are going to do all of our
-
+But we are going to do all of our programming in JavaScript. 
+我们在编程过程中使用的是 JavaScript
 
 6492
 06:23:17,110 --> 06:23:20,170
-programming in JavaScript. And then if the code is different
-
+And then if the code is different enough, 
+但如果代码的差异足够大
 
 6493
 06:23:20,170 --> 06:23:22,600
-enough, I'll show you how to do it in TypeScript as well.
-
+I'll show you how to do it in TypeScript as well.
+我也会展示一下 TypeScript 应该怎么做
 
 6494
 06:23:22,690 --> 06:23:24,460
-However, for most of them, we're not going to show you the
-
+However, for most of them, we're not going to show you the TypeScript editions, 
+然而，它们其中的大多数，我们都不会展示 TypeScript 版本的过程
 
 6495
 06:23:24,460 --> 06:23:26,950
-TypeScript editions, because it's going to be really similar.
-
+because it's going to be really similar.
+因为它们实在是太相似了
 
 6496
 06:23:27,040 --> 06:23:30,250
-But you can always refer back to the GitHub repository to see all
-
+But you can always refer back to the GitHub repository to see all the code for the TypeScript. 
+但你可以随时参考 GitHub 仓库以查看完整的 TypeScript 代码
 
 6497
 06:23:30,250 --> 06:23:32,980
-the code for the TypeScript. Now, if you're new to this
-
+Now, if you're new to this space, 
+如果你是这个领域的新手
 
 6498
 06:23:32,980 --> 06:23:36,850
-space, I actually do recommend you go ahead and start with
-
+I actually do recommend you go ahead and start with JavaScript 
+那我真的非常建议你从 JavaScript 开始学起
 
 6499
 06:23:36,850 --> 06:23:40,180
-JavaScript and learn how to do TypeScript later on. TypeScript
-
+and learn how to do TypeScript later on. 
+并在那之后学习如何使用 TypeScript
 
 6500
 06:23:40,180 --> 06:23:45,430
-actually catches bugs early on, making it a lot easier to code
-
+TypeScript actually catches bugs early on, 
+TypeScript 可以让你更早地捕捉到 bug
 
 6501
 06:23:45,460 --> 06:23:48,820
-your projects in the long run. However, it does take a lot of
-
+making it a lot easier to code your projects in the long run. 
+从长远来看，这使得项目的代码变得更容易编写
 
 6502
 06:23:48,820 --> 06:23:52,330
-extra typing. And it can be a little bit frustrating learning
+However, it does take a lot of extra typing. And it can be a little bit frustrating learning
 
 
 6503
