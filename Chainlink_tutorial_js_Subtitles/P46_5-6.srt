@@ -146,12 +146,12 @@ And we're going to start learning to code, our transactions and our contract dep
 6416
 06:18:48,670 --> 06:18:51,730
 and everything programmatically at a relatively low level. 
-以及一切以编程方式存在的相对底层的东西
+以及一切以编程形式存在的相对底层的东西
 
 6417
 06:18:51,730 --> 06:18:54,460
 And we're gonna learn how to deploy and interact with the contracts using the ethers JS package. 
-我们将学习如何使用 ether.js 包部署合约并与之交互
+我们将学习如何使用 ethers.js 包部署合约并与之交互
 
 6418
 06:18:54,460 --> 06:18:58,030
@@ -571,291 +571,291 @@ TypeScript 可以让你更早地捕捉到 bug
 6501
 06:23:45,460 --> 06:23:48,820
 making it a lot easier to code your projects in the long run. 
-从长远来看，这使得项目的代码变得更容易编写
+从长远来看，这使得项目代码的编写变得更加容易
 
 6502
 06:23:48,820 --> 06:23:52,330
-However, it does take a lot of extra typing. And it can be a little bit frustrating learning
-
+However, it does take a lot of extra typing. 
+然而，它确实需要大量额外的输入
 
 6503
 06:23:52,330 --> 06:23:55,600
-how types work for beginners, JavaScript is a little bit more
-
+And it can be a little bit frustrating learning how types work for beginners, 
+并且对初学者来说，学习 Type 如何运作的过程可能是令人沮丧的
 
 6504
 06:23:55,600 --> 06:23:59,080
-loose as a language and lets us kind of do whatever we want, but
-
+JavaScript is a little bit more loose as a language 
+JavaScript 作为一种语言比较宽松，我们可以做任何想做的事
 
 6505
 06:23:59,080 --> 06:24:01,840
-it can cause a headache later on. So if you do run into some
-
+and lets us kind of do whatever we want, but it can cause a headache later on. 
+但之后会让人头疼
 
 6506
 06:24:01,840 --> 06:24:04,870
-issues, and you do run into some bugs, it might be a good idea to
-
+So if you do run into some issues, and you do run into some bugs, 
+所以如果你确实遇到了一些问题，确实遇到了一些 bug
 
 6507
 06:24:04,870 --> 06:24:08,380
-try TypeScript on for size, and see how that fares. Well. Let's
-
+it might be a good idea to try TypeScript on for size, and see how that fares. 
+那么尝试一下 TypeScript 可能是一个好主意，看看结果如何
 
 6508
 06:24:08,380 --> 06:24:11,290
-go ahead and begin working on our local development
-
+Well. Let's go ahead and begin working on our local development environment 
+好了，让我们开始在我们的本地开发环境中工作
 
 6509
 06:24:11,290 --> 06:24:14,710
-environment and getting set up to do everything in ethers Jas
-
+and getting set up to do everything in ethers Jas and in JavaScript. 
+并准备好在 ethers.js 和 JavaScript 中要做的所有事
 
 6510
 06:24:14,710 --> 06:24:17,710
-and in JavaScript. Oops. And I actually went and renamed this
-
+Oops. And I actually went and renamed this folder to ether symbol storage dash, FCC. 
+哦，其实我把这个文件夹重命名成了 "ethers-simple-storage-fcc"
 
 6511
 06:24:17,710 --> 06:24:22,750
-folder to ether symbol storage dash, FCC. Reason I added this
-
+Reason I added this dash FCC 
+之所以我添加了这个 "-fcc"
 
 6512
 06:24:22,750 --> 06:24:26,500
-dash FCC is all the GitHub repositories associated with
-
+is all the GitHub repositories associated with this course, 
+是因为与本课程关联的所有 Github 仓库
 
 6513
 06:24:26,500 --> 06:24:30,220
-this course, all the GitHub repos that have this dash FCC to
-
+all the GitHub repos that have this dash FCC 
+这些 GitHub 仓库都有这个 "-fcc"
 
 6514
 06:24:30,220 --> 06:24:33,160
-know that it is part of this hard hat JavaScript course.
-
+to know that it is part of this hard hat JavaScript course.
+这是为了让大家知道这是 JavaScript Hardhat 课程的一部分
 
 6515
 06:24:33,250 --> 06:24:36,550
-Awesome. Let's jump in. Let's start working with solidity and
-
+Awesome. Let's jump in. Let's start working with solidity and our smart contracts 
+太棒了，让我们出发吧，让我们开始在我们的智能合约中使用 solidity
 
 6516
 06:24:36,550 --> 06:24:39,970
-our smart contracts locally in Visual Studio code, as you can
-
+locally in Visual Studio code, 
+并且是在本地的 Visual Studio Code 中
 
 6517
 06:24:39,970 --> 06:24:43,870
-probably tell by the name of this folder. And of course, if
-
+as you can probably tell by the name of this folder. 
+可能从这个文件夹的名字就可以看出来
 
 6518
 06:24:43,870 --> 06:24:46,960
-you looked at the code, this project is going to be our
-
+And of course, if you looked at the code, 
+如果你来查看代码
 
 6519
 06:24:46,960 --> 06:24:51,970
-simple storage project, but developed locally using ethers.
-
+this project is going to be our simple storage project, 
+就会发现这个项目就是我们的 "simple storage" 项目
 
 6520
 06:24:52,000 --> 06:24:54,820
-So the first thing that we want to do is want to get in that
-
+but developed locally using ethers. 
+但这次是在本地的 ethers 上开发的
 
 6521
 06:24:54,820 --> 06:24:57,760
-smart contract code. So what we can do is make sure we have the
-
+So the first thing that we want to do is want to get in that smart contract code. 
+所以我们要做的第一件事就是进入智能合约的代码
 
 6522
 06:24:57,760 --> 06:25:01,900
-Explorer selected, we can go ahead and right click and select
-
+So what we can do is make sure we have the Explorer selected, 
+我们要做的就是选中资源管理器
 
 6523
 06:25:01,930 --> 06:25:09,490
-new file and do simple storage. So just close this for now. And
-
+we can go ahead and right click and select new file 
+继续右键单击并选择 "新建文件(New File)"
 
 6524
 06:25:10,270 --> 06:25:13,060
-we can copy paste our simple storage code from our last
-
+and do simple storage. So just close this for now. 
+并输入 "SimpleStorage.sol"，暂时先关闭这个
 
 6525
 06:25:13,060 --> 06:25:14,350
-section into VS code.
-
+And we can copy paste our simple storage code from our last section into VS code.
+然后我们可以把上节课的 simple storage 代码复制到 VS Code 中
 
 6526
 06:25:15,670 --> 06:25:18,640
-If you closed remix or you forgot where it is, you can just
-
+If you closed remix or you forgot where it is, 
+如果你已经把 Remix 关了或是忘记把代码放到哪里了
 
 6527
 06:25:18,640 --> 06:25:23,230
-go to the ethers simple storage FCC repo, it's simple storage
-
+you can just go to the ethers simple storage FCC repo, 
+那你可以去 "ethers-simple-storage-fcc" 仓库
 
 6528
 06:25:23,230 --> 06:25:27,760
-dot Sol, and we can just copy all the code in here and then
-
+it's simple storage dot Sol, and we can just copy all the code in here 
+找到 "SimpleStorage.sol" 并复制这里的所有代码
 
 6529
 06:25:27,760 --> 06:25:31,840
-come back over select Symbol storage that Saul and paste it
-
+and then come back over select Symbol storage that Saul and paste it in. 
+然后返回这里，选中 "SimpleStorage.sol" 粘贴进去
 
 6530
 06:25:31,840 --> 06:25:35,560
-in. Now an important note about Visual Studio code is that when
-
+Now an important note about Visual Studio code 
+现在要讲一个关于 Visual Studio Code 的重要说明
 
 6531
 06:25:35,560 --> 06:25:39,430
-you see this little white.up here, it means that this file
-
+is that when you see this little white.up here, 
+就是当你在这里看到一个小白点时
 
 6532
 06:25:39,460 --> 06:25:45,610
-isn't saved to save your Git file. To save, and it'll go away
-
+it means that this file isn't saved 
+它的意思是这个文件还没有被保存
 
 6533
 06:25:45,610 --> 06:25:50,680
-like that. Or what you can do is you can hit command S or Ctrl S,
-
+to save your Git file. To save, and it'll go away like that. 
+要想保存的话你可以点击 "文件(File)-保存(Save)"，然后它就会消失不见了
 
 6534
 06:25:51,340 --> 06:25:55,840
-depending on if you're on a Windows, Mac, or Linux. Now
-
+Or what you can do is you can hit command S or Ctrl S, depending on if you're on a Windows, Mac, or Linux. 
+或者你可以按 "Command + S" 或 "Ctrl + S"，取决于你用的是 Windows，Mac 或者 Linux
 
 6535
 06:25:55,840 --> 06:25:58,540
-you'll see here that this code is a little bit hard to read the
-
+Now you'll see here that this code is a little bit hard to read the simple storage dot salt, 
+正如你所见的，这个代码有些不便阅读，就是这个 "SimpleStorage.sol"
 
 6536
 06:25:58,540 --> 06:26:01,660
-simple storage dot salt, it doesn't have the syntax
-
+it doesn't have the syntax highlighting that we saw in remix. 
+它并没有我们在 Remix 里见到过的那种语法高亮
 
 6537
 06:26:01,660 --> 06:26:04,420
-highlighting that we saw in remix. So we want to go ahead
-
+So we want to go ahead and add a Visual Studio Code extension 
+所以我们现在要添加 Visual Studio Code 的扩展(Extension)
 
 6538
 06:26:04,420 --> 06:26:08,830
-and add a Visual Studio Code extension to give this syntax
-
+to give this syntax highlighting. 
+以提供语法高亮功能
 
 6539
 06:26:08,830 --> 06:26:11,830
-highlighting. So what we can do is come over to this bar over
-
+So what we can do 
+我们该怎么做呢
 
 6540
 06:26:11,830 --> 06:26:14,830
-here looks like this. And if you don't see it on the left hand
-
+is come over to this bar over here looks like this. 
+到这里的这一栏来，就是这一个
 
 6541
 06:26:14,830 --> 06:26:17,560
-bar, you should click these three dots, and it should be in
-
+And if you don't see it on the left hand bar, 
+如果你在左侧栏里没有看到它
 
 6542
 06:26:17,560 --> 06:26:20,950
-here. But we'll go ahead and click Extensions. And what we're
-
+you should click these three dots, and it should be in here. 
+那你需要点击这三个小点，它应该就在这里
 
 6543
 06:26:20,950 --> 06:26:27,010
-going to do is we're going to look up, solidity plus hard hat.
-
+But we'll go ahead and click Extensions. And what we're going to do is we're going to look up, solidity plus hard hat. 
+继续点击扩展，我们要做的就是向上看，输入 "solidity + hardhat"
 
 6544
 06:26:27,790 --> 06:26:30,940
-And we're going to install this solidity plus hard hat
-
+And we're going to install this solidity plus hard hat extension. For VS code. 
+然后为 VS Code 安装这个 "solidity + hardhat" 扩展
 
 6545
 06:26:30,940 --> 06:26:35,080
-extension. For VS code. Now that we have this installed, if we go
-
+Now that we have this installed, 
+现在我们已经安装好了
 
 6546
 06:26:35,080 --> 06:26:38,830
-back over to our simple storage dot sole, you'll see that all
-
+if we go back over to our simple storage dot sole, 
+如果我们回到我们的 "SimpleStorage.sol"
 
 6547
 06:26:38,830 --> 06:26:42,670
-the highlighting is back in. And now it's much easier to read.
-
+you'll see that all the highlighting is back in. 
+你就会看到所有高亮都已经出现了
 
 6548
 06:26:42,850 --> 06:26:45,220
-Right? So this is good. We have our code in here we have our
-
+And now it's much easier to read. 
+现在明显更容易阅读了
 
 6549
 06:26:45,220 --> 06:26:49,570
-syntax highlighting. Now let's add an auto format or or default
-
+Right? So this is good. We have our code in here we have our syntax highlighting. 
+很好，我们已经有了代码，还有了语法高亮
 
 6550
 06:26:49,570 --> 06:26:52,810
-format or right now our code is pretty good with the way that
-
+Now let's add an auto format or or default format or 
+现在让我们添加一个自动格式化或者说默认格式化的程序
 
 6551
 06:26:52,810 --> 06:26:57,730
-it's formatted. But what if we, we accidentally do some stuff
-
+right now our code is pretty good with the way that it's formatted. 
+现在我们的代码的格式化程度已经很不错了
 
 6552
 06:26:57,730 --> 06:27:05,170
-like this or like this, or maybe even like this, we add a ton of
-
+But what if we, we accidentally do some stuff like this or like this, 
+但如果我们，我们不小心做了一些类似这样或这样的事
 
 6553
 06:27:05,170 --> 06:27:08,830
-new lines, etc, our code can start to look pretty gross. And
-
+or maybe even like this, we add a ton of new lines, etc, 
+甚至可能是这样，我们添加了成吨的空行，等等
 
 6554
 06:27:08,830 --> 06:27:12,610
-even though the code itself is fine, and it'll run the exact
-
+our code can start to look pretty gross. 
+我们的代码现在看起来很恶心
 
 6555
 06:27:12,610 --> 06:27:15,760
-same way, with all this extra whitespace, it doesn't look very
-
+And even though the code itself is fine, 
+即使这个代码本身并没有什么问题
 
 6556
 06:27:15,760 --> 06:27:18,520
-good, right. And due to that, it can be a little bit hard to
-
+and it'll run the exact same way, with all this extra whitespace, 
+它也确实会按照正确的方式运行哪怕是有这些额外的空白区域
 
 6557
 06:27:18,520 --> 06:27:22,660
-read. What we want to do, then, we want to open up our settings
-
+it doesn't look very good, right. 
+但它看起来就是不太好，对吧
 
 6558
 06:27:22,720 --> 06:27:26,230
-and adjust our vias code so that it auto formats whenever we
+And due to that, it can be a little bit hard to read. What we want to do, then, we want to open up our settings and adjust our vias code so that it auto formats whenever we
 
 
 6559
