@@ -855,534 +855,535 @@ it doesn't look very good, right.
 
 6558
 06:27:22,720 --> 06:27:26,230
-And due to that, it can be a little bit hard to read. What we want to do, then, we want to open up our settings and adjust our vias code so that it auto formats whenever we
-
+And due to that, it can be a little bit hard to read. 
+因为这样会有些难以阅读
 
 6559
 06:27:26,230 --> 06:27:30,580
-save, so whenever we save, so that whenever it goes from the
-
+What we want to do, then, we want to open up our settings and adjust our vias code so that it auto formats whenever we save, 
+我们要做的就是，设置 VS Code 让它在我们每次保存的时候自动格式化
 
 6560
 06:27:30,580 --> 06:27:34,120
-little white dot here to no white dot, this whole thing gets
-
+so whenever we save, so that whenever it goes from the little white dot here to no white dot, 
+所以每当我们保存，就是每当它从这个小白点变成没有小白点的时候
 
 6561
 06:27:34,150 --> 06:27:38,740
-automatically formatted to some looks really nice. Okay. So what
-
+this whole thing gets automatically formatted to some looks really nice. 
+所有内容都会自动格式化，这样看起来就会比较不错
 
 6562
 06:27:38,740 --> 06:27:42,970
-we can do is we can open up our command palette to open up our
-
+Okay. So what we can do is we can open up our command palette 
+OK，我们要做的就是打开命令面板
 
 6563
 06:27:42,970 --> 06:27:46,930
-command palette, you can hit View command palette, and we'll
-
+to open up our command palette, you can hit View command palette, 
+要打开它，你可以点击 "查看(View)-命令面板(Command Palette)"
 
 6564
 06:27:46,930 --> 06:27:50,050
-get a little pop up that looks like this. Another way to open
-
+and we'll get a little pop up that looks like this. 
+然后就会弹出一个像这样的小窗口
 
 6565
 06:27:50,050 --> 06:27:52,870
-up your command palette is you're gonna hit Command, Shift
-
+Another way to open up your command palette is you're gonna 
+另一种打开命令面板的方式是
 
 6566
 06:27:52,900 --> 06:27:57,040
-P, or Ctrl, Shift P, depending on your Mac, or Linux or
-
+hit Command, Shift P, or Ctrl, Shift P, depending on your Mac, or Linux or Windows. 
+按 "Command + Shift + P" 或是 "Ctrl + Shift + P"，取决于你是在 Mac 还是 Linux 或 Windows 上
 
 6567
 06:27:57,040 --> 06:28:00,370
-Windows. And what we want to do is we want to type in settings,
-
+And what we want to do is we want to type in settings,
+接着我们要输入 "settings" 
 
 6568
 06:28:00,400 --> 06:28:03,490
-and we're going to open Settings JSON, we don't want to open the
-
+and we're going to open Settings JSON, 
+我们要打开的是这个 "打开设置(Open Settings) (JSON)"
 
 6569
 06:28:03,490 --> 06:28:07,690
-default settings JSON. We don't want to touch these. But we want
-
+we don't want to open the default settings JSON. We don't want to touch these. 
+不要打开这个 "打开默认设置(Open Default Settings) (JSON)"，不要碰这个
 
 6570
 06:28:07,690 --> 06:28:10,360
-to open our JSON settings. You'll also notice there are
-
+But we want to open our JSON settings. 
+我们只打开我们的 "JSON settings"
 
 6571
 06:28:10,360 --> 06:28:13,720
-user settings and workspace settings. These are pieces that
-
+You'll also notice there are user settings and workspace settings. 
+你还可以注意到有 "用户设置(User Settings)" 和 "工作区设置(Workspace Settings)"
 
 6572
 06:28:13,720 --> 06:28:16,960
-we can adjust as well. But we're going to just go right into the
-
+These are pieces that we can adjust as well. 
+这也是我们可以调整的部分
 
 6573
 06:28:16,960 --> 06:28:20,470
-JSON settings. So So I already have some stuff in here, but
-
+But we're going to just go right into the JSON settings. So 
+但我们现在将直接进入 "JSON Settings"
 
 6574
 06:28:20,470 --> 06:28:23,500
-yours might be blank. Or you might have some stuff in here as
-
+So I already have some stuff in here, but yours might be blank. 
+我这里已经有一些东西，但你的可能是空白的
 
 6575
 06:28:23,500 --> 06:28:25,750
-well. So what we're going to do is if you have stuff in here
-
+Or you might have some stuff in here as well. 
+或者你可能也有一些东西在这里
 
 6576
 06:28:25,750 --> 06:28:29,320
-already, we're going to add a comma, then we're going to do
-
+So what we're going to do is if you have stuff in here already, 
+我们要做的就是，如果你在这里已经有一些东西了
 
 6577
 06:28:29,350 --> 06:28:36,820
-quotes, solidity. Close the brackets, we're gonna do a
-
+we're going to add a comma, then we're going to do quotes, solidity. Close the brackets, 
+就添加一个逗号，然后是引号，solidity，用方括号括起来
 
 6578
 06:28:36,820 --> 06:28:39,610
-little colon and something like this. This means that we're
-
+we're gonna do a little colon and something like this. 
+接着是一个冒号，最后是像这样做
 
 6579
 06:28:39,610 --> 06:28:43,000
-going to apply some settings to our Visual Studio Code. Whenever
-
+This means that we're going to apply some settings to our Visual Studio Code. 
+这表示我们要为 Visual Studio Code 应用一些设置
 
 6580
 06:28:43,000 --> 06:28:45,790
-we're working with solidity, one of the things we're going to add
-
+Whenever we're working with solidity, 
+在我们每次使用 solidity 的时候
 
 6581
 06:28:45,790 --> 06:28:50,260
-in here is going to be an editor, Doc's default, for
-
+one of the things we're going to add in here is going to be an editor, Doc's default, for matter. 
+其中一个要添加的内容是 "editor.defaultFormatter"
 
 6582
 06:28:50,260 --> 06:28:55,660
-matter. And you might even get a pop up that tells you some
-
+And you might even get a pop up that tells you 
+你可能会看到一个弹出窗口告诉你
 
 6583
 06:28:55,660 --> 06:28:58,570
-different things that we can use for a default format or our
-
+some different things that we can use for a default format or 
+一些我们可以使用的不同默认格式化程序
 
 6584
 06:28:58,570 --> 06:29:03,670
-default format, or is going to be Nanak, foundation, dot hard
-
+our default format, or is going to be Nanak, foundation, dot hard hat, hyphens solidity. 
+我们的默认格式化程序是 "NomicFoundation.hardhat-solidity"
 
 6585
 06:29:03,670 --> 06:29:09,070
-hat, hyphens solidity. This will mean that any time we go to
-
+This will mean that any time we go to format our code, 
+这就表示任何时候我们格式化我们的代码时
 
 6586
 06:29:09,070 --> 06:29:13,660
-format our code, it'll use the hard hat solidity plug in, as
-
+it'll use the hard hat solidity plug in, as its default format, 
+都会使用 Hardhat-Solidity 插件作为默认的格式化程序
 
 6587
 06:29:13,660 --> 06:29:18,160
-its default format, or the hard hat solidity plugin comes with
-
+or the hard hat solidity plugin comes with some formatting, 
+Hardhat-Solidity 插件带有一些包括格式化
 
 6588
 06:29:18,190 --> 06:29:22,810
-some formatting, and a lot of other really useful tools for us
-
+and a lot of other really useful tools for us writing our code. 
+以及其他一些十分有用的工具供我们编写代码
 
 6589
 06:29:22,810 --> 06:29:26,080
-writing our code. So now that we have this part in, the next
-
+So now that we have this part in, 
+所以我们现在拥有了这部分之后
 
 6590
 06:29:26,080 --> 06:29:29,530
-thing we're going to do is add format on Save. If we haven't
-
+the next thing we're going to do is add format on Save. If we haven't already, 
+下一步要做的是添加在保存时格式化，如果我们还没有做的话
 
 6591
 06:29:29,530 --> 06:29:33,370
-already, we could add it in here in our JSON, but I'm going to
-
+we could add it in here in our JSON, 
+我们可以就在这里添加，在我们的 JSON 里
 
 6592
 06:29:33,370 --> 06:29:36,760
-add it not in the JSON file, I'm going to add it in the overall
-
+but I'm going to add it not in the JSON file, 
+但我并不打算将它添加到 JSON 文件里
 
 6593
 06:29:36,760 --> 06:29:40,930
-file. So if we open that command palette back up, and we type in
-
+I'm going to add it in the overall file. 
+我要把它添加到面向所有文件
 
 6594
 06:29:40,930 --> 06:29:45,280
-settings, open user settings, this is another really good
-
+So if we open that command palette back up, and we type in settings, open user settings, 
+所以我们重新打开命令面板，输入 Settings，选择 "打开用户设置(Open User Settings)"
 
 6595
 06:29:45,280 --> 06:29:48,940
-place where we can look in add settings with the UI. So these
-
+this is another really good place where we can look in add settings with the UI. 
+这是另外一个好地方，我们可以在这里使用用户界面(UI)来查看和添加设置
 
 6596
 06:29:48,940 --> 06:29:51,790
-two do essentially the same thing. It's just that this one
-
+So these two do essentially the same thing. 
+所以这两个基本上做的就是相同的事
 
 6597
 06:29:51,790 --> 06:29:54,730
-has dials and a little bit more context versus settings that
-
+It's just that this one has dials and a little bit more context 
+只是这个有界面和文本
 
 6598
 06:29:54,730 --> 06:29:57,850
-JSON just says Okay, give me the raw code for it. This tells us a
-
+versus settings that JSON just says Okay, give me the raw code for it. This tells us a little bit more. 
+而 settings.json 则会说，OK，给我几行代码，这能告诉我们更多信息
 
 6599
 06:29:57,850 --> 06:30:00,220
-little bit more. So you can use either one. But we're going to
-
+So you can use either one. 
+所以你可以使用任何一个
 
 6600
 06:30:00,220 --> 06:30:05,350
-look for format, on save. And you're going to want this
-
+But we're going to look for format, on save. 
+我们想要找的是 "format on save"
 
 6601
 06:30:05,380 --> 06:30:09,040
-checked if you haven't already. This means that every time we
-
+And you're going to want this checked if you haven't already. 
+然后你需要把这个勾打上，如果没有的话
 
 6602
 06:30:09,040 --> 06:30:14,020
-save VS code is going to try to format our code for us. So now
-
+This means that every time we save VS code is going to try to format our code for us. 
+这就意味着每次我们保存时 VS Code 就会尝试格式化我们的代码
 
 6603
 06:30:14,020 --> 06:30:16,960
-that we have this checked, we have settings dot JSON added in.
-
+So now that we have this checked, we have settings dot JSON added in.
+现在我们已经打上勾了，也已经添加好了 settings.json
 
 6604
 06:30:16,960 --> 06:30:19,270
-And remember, we want to save this. Remember, if you see this
-
+And remember, we want to save this. 
+但是要注意，我们要把这个保存一下
 
 6605
 06:30:19,270 --> 06:30:21,730
-white dot, that means not saved. So you're gonna want to save it
-
+Remember, if you see this white dot, that means not saved. So you're gonna want to save it
+请记住，如果你看到了这个白点，就表示还没有保存，那样的话你需要保存一下
 
 6606
 06:30:22,600 --> 06:30:25,990
-and close it out. Let me close this out too. If we come back in
-
+and close it out. Let me close this out too. 
+我们关掉这个，这个也关掉
 
 6607
 06:30:25,990 --> 06:30:28,870
-here and we add a bunch of random new spaces or whatever,
-
+If we come back in here and we add a bunch of random new spaces 
+如果我们回到这里并随机添加一堆新行
 
 6608
 06:30:28,870 --> 06:30:31,390
-you want to make it look a little bit ugly, and then we
-
+or whatever, you want to make it look a little bit ugly, 
+或执行任何你认为会让它变丑的操作
 
 6609
 06:30:31,390 --> 06:30:36,550
-save it. It should automatically reformat to look much nicer,
-
+and then we save it. 
+然后我们保存它
 
 6610
 06:30:36,580 --> 06:30:40,180
-right. So if we do something like this, we'd save it
-
+It should automatically reformat to look much nicer, right. 
+它应该会自动格式化变得好看一些，对吧
 
 6611
 06:30:40,180 --> 06:30:43,030
-reformats it to look much nicer this one make them more readable
-
+So if we do something like this, 
+如果我们再做一些这样的操作
 
 6612
 06:30:43,030 --> 06:30:46,240
-for you, and more readable for anybody else who looks at your
-
+we'd save it reformats it to look much nicer this one make them more readable for you, 
+可以通过保存来格式化让它变得好看一些，这会让你觉得它们更具可读性
 
 6613
 06:30:46,240 --> 06:30:50,650
-code. And it's just really nice. And this line of code for your
-
+and more readable for anybody else who looks at your code. 
+也会让所有观看你代码的人觉得它们更具可读性
 
 6614
 06:30:50,650 --> 06:30:54,040
-settings dot JSON is located in the full blockchain study
-
+And it's just really nice. 
+这真的让人感觉很好
 
 6615
 06:30:54,040 --> 06:30:57,340
-course.js. So you can also just copy paste it, we are going to
-
+And this line of code for your settings dot JSON is located in the full blockchain study course.js. 
+这一行用于 settings.json 的代码位于 "full-blockchain-solidity-course-js"
 
 6616
 06:30:57,340 --> 06:31:01,870
-end up overriding that default format or with another format
-
+So you can also just copy paste it, 
+所以你也可以从这里复制
 
 6617
 06:31:01,870 --> 06:31:05,770
-are called prettier pretty soon. But it's great to have a default
-
+we are going to end up overriding that default format or with another format are called prettier pretty soon. 
+我们最终会很快把这个默认格式化替代为另一个名为 "Prettier" 的格式化
 
 6618
 06:31:05,770 --> 06:31:08,830
-format or so that if you don't feel like adding the prettier
-
+But it's great to have a default format or so that 
+但是这个默认格式化也不错，所以
 
 6619
 06:31:08,830 --> 06:31:12,130
-code sometime in the future, you can just rely on your default
-
+if you don't feel like adding the prettier code sometime in the future, 
+如果你之后不想使用 "Prettier-Code" 格式化
 
 6620
 06:31:12,130 --> 06:31:16,030
-formatter. Awesome. While we're doing formatting, let's also add
-
+you can just rely on your default formatter. 
+那你也可以就使用现在这个默认格式化
 
 6621
 06:31:16,030 --> 06:31:19,480
-a default format or for our JavaScript code. And just to
-
+Awesome. While we're doing formatting, let's also add a default format or for our JavaScript code. 
+太好了，我们已经做好了这个的格式化，让我们也为 JavaScript 添加一个默认格式化程序
 
 6622
 06:31:19,480 --> 06:31:22,480
-test it out, let's go ahead and create our new file, we'll call
-
+And just to test it out, let's go ahead and create our new file, 
+只是为了测试，让我们创建一个新文件
 
 6623
 06:31:22,480 --> 06:31:27,550
-it deploy dot Jas. And in here, we can do something like
-
+we'll call it deploy dot Jas. 
+命名为 "deploy.js"
 
 6624
 06:31:28,120 --> 06:31:29,470
-function Hi,
-
+And in here, we can do something like function Hi, console dot log, hi, 
+这里我们可以写 "function hi() console.log("hi")"
 
 6625
 06:31:30,910 --> 06:31:37,630
-console dot log, hi, and then just add and then just make it
-
+and then just add and then just make it look kind of gross, 
+然后添加，让它看起来比较恶心的操作
 
 6626
 06:31:37,630 --> 06:31:40,570
-look kind of gross, maybe something like this. If you hit
-
+maybe something like this. 
+差不多就是这样吧
 
 6627
 06:31:40,570 --> 06:31:43,990
-save, and it does some auto formatting, that's great, you
-
+If you hit save, and it does some auto formatting, that's great, 
+如果你点击保存，它就会自动格式化，这很好
 
 6628
 06:31:43,990 --> 06:31:46,390
-can actually turn that off by going back to your command
-
+you can actually turn that off 
+你也可以不进行这样的操作
 
 6629
 06:31:46,390 --> 06:31:51,490
-palette, and saying, Save without formatting. And that way
-
+by going back to your command palette, and saying, Save without formatting. 
+回到命令面板，输入 save 选择 "保存但不格式化(Save Without Formatting)"
 
 6630
 06:31:51,490 --> 06:31:54,190
-it will be saved and not formatted. The way we can add
-
+And that way it will be saved and not formatted. 
+这样它保存之后就不会被格式化
 
 6631
 06:31:54,190 --> 06:31:56,980
-some other formatting here is we're gonna install another
-
+The way we can add some other formatting here is we're gonna install another extension, 
+我们可以添加一些其它格式化方案，这需要我们安装另外一个扩展
 
 6632
 06:31:56,980 --> 06:32:01,330
-extension, this one is going to be called prettier. So we can
-
+this one is going to be called prettier. 
+它的名字是 "prettier"
 
 6633
 06:32:01,330 --> 06:32:04,780
-just look up prettier and extensions here. And you'll want
-
+So we can just look up prettier and extensions here. 
+可以在这里查找 "prettier" 扩展就在这里
 
 6634
 06:32:04,780 --> 06:32:08,260
-to install this prettier code formatter. So we're gonna go
-
+And you'll want to install this prettier code formatter. 
+你需要安装这个 "Prettier - Code formatter"
 
 6635
 06:32:08,260 --> 06:32:11,620
-ahead and install this. And great, now it's installed
-
+So we're gonna go ahead and install this. 
+所以我们继续并安装这个
 
 6636
 06:32:11,680 --> 06:32:15,370
-prettier is a form is a code format, or that works for many
-
+And great, now it's installed 
+很好，现在已经安装好了
 
 6637
 06:32:15,370 --> 06:32:18,790
-languages like Python, JavaScript, and even solidity.
-
+prettier is a form is a code format, or that works for many languages 
+"prettier" 是一个适用于多种语言的代码格式化程序
 
 6638
 06:32:19,000 --> 06:32:22,180
-And pretty soon we're going to use prettier for both JavaScript
-
+like Python, JavaScript, and even solidity. 
+比如 Python, JavaScript, 甚至是 Solidity
 
 6639
 06:32:22,270 --> 06:32:25,240
-and solidity. But for now, we're just going to use prettier for
-
+And pretty soon we're going to use prettier for both JavaScript and solidity. 
+我们很快就会把 JavaScript 和 Solidity 都应用上 prettier
 
 6640
 06:32:25,240 --> 06:32:28,600
-JavaScript, we can enable this by opening back up our command
-
+But for now, we're just going to use prettier for JavaScript, 
+但现在，我们就只在 JavaScript 上使用 prettier
 
 6641
 06:32:28,600 --> 06:32:32,740
-palette, we'll go to preferences, open Settings. And
-
+we can enable this by opening back up our command palette, 
+我们可以通过命令面板启用它
 
 6642
 06:32:32,740 --> 06:32:36,550
-the same way we added a solidity section, we're going to add a
-
+we'll go to preferences, open Settings. 
+选择 "首选项：打开设置(Preferences: Open Settings)"
 
 6643
 06:32:36,550 --> 06:32:41,080
-JavaScript section. So we're going to add a comma here, some
-
+And the same way we added a solidity section, we're going to add a JavaScript section. 
+和我们添加 solidity 这部分一样，我们要添加一个 JavaScript 部分
 
 6644
 06:32:41,080 --> 06:32:45,850
-quotes, brackets, we're going to type in JavaScript, close that
-
+So we're going to add a comma here, some quotes, brackets, we're going to type in JavaScript, close that colon brackets. 
+所以我们在这里添加一个逗号，然后是 "[javascript]: {}"
 
 6645
 06:32:46,750 --> 06:32:50,980
-colon brackets. And we're going to do the same thing at the door
-
+And we're going to do the same thing at the door dot default, or matter. 
+接下来要做的是相同的事 "editor.defaultFormatter"
 
 6646
 06:32:51,010 --> 06:32:58,720
-dot default, or matter. Net we're going to do and then in
-
+Net we're going to do 
+然后我们要输入的是
 
 6647
 06:32:58,720 --> 06:33:04,870
-here, we're going to do e s BENP, that prettier, hyphen VS
-
+and then in here, we're going to do e s BENP, that prettier, hyphen VS code. 
+在这里输入 "esbenp.prettier-vscode"
 
 6648
 06:33:04,870 --> 06:33:08,590
-code. And this will make prettier the default editor for
-
+And this will make prettier the default editor for JavaScript. 
+这会使 prettier 成为 JavaScript 的默认 editor
 
 6649
 06:33:08,590 --> 06:33:11,320
-JavaScript. Now, like I said, pretty soon, we're going to have
-
+Now, like I said, pretty soon, 
+现在，就像我说的，很快
 
 6650
 06:33:11,350 --> 06:33:15,370
-prettier override both of these for solidity and JavaScript. And
-
+we're going to have prettier override both of these for solidity and JavaScript. 
+我们就会把 prettier 都应用于 Solidity 和 JavaScript
 
 6651
 06:33:15,370 --> 06:33:18,040
-we're going to give prettier some parameters so that no
-
+And we're going to give prettier some parameters so that 
+并且我们会给 prettier 一些参数
 
 6652
 06:33:18,040 --> 06:33:21,940
-matter who uses your code, they will always have the exact same
-
+no matter who uses your code, they will always have the exact same formatting. 
+使得无论是谁使用你的代码，他们都会与你保持完全相同的格式
 
 6653
 06:33:21,970 --> 06:33:25,000
-formatting. But now that we have prettier in here as the default
-
+But now that we have prettier in here as the default editor, 
+现在我们就有 prettier 作为默认的 editor 了
 
 6654
 06:33:25,000 --> 06:33:28,990
-editor, if we come back to deploy dot j s, and we hit save,
-
+if we come back to deploy dot j s, and we hit save,
+如果我们回到 "deploy.js" 并点击保存
 
 6655
 06:33:29,410 --> 06:33:32,710
 it should format to look a little something like this. Now,
-
+它现在应该就会格式化成现在这个样子
 
 6656
 06:33:33,100 --> 06:33:36,640
-we go ahead and we do something like this. If we go ahead and do
-
+we go ahead and we do something like this. 
+我们再做一些像是这样的事
 
 6657
 06:33:36,640 --> 06:33:39,370
-something like this, it'll reformat to look like look like
-
+If we go ahead and do something like this, it'll reformat to look like look like that. 
+如果我们继续做这样的操作，它仍然会做这样的格式化
 
 6658
 06:33:39,370 --> 06:33:43,360
-that. And then additionally, if you want to go back to the
-
+And then additionally, if you want to go back to the command palette, 
+另外，如果你想回到命令面板
 
 6659
 06:33:43,360 --> 06:33:47,680
-command palette, open user settings, not in JSON mode, and
-
+open user settings, not in JSON mode, and we go to default format, 
+选择 "Open User Settings" 而不是 JSON 模式，并找到 "Default Formatter "
 
 6660
 06:33:47,680 --> 06:33:52,000
-we go to default format, or you can actually even select the
-
+or you can actually even select the default format or for all languages, 
+你其实可以选择为所有语言应用默认格式化程序
 
 6661
 06:33:52,000 --> 06:33:56,230
-default format or for all languages, if you want to use
-
+if you want to use prettier for all formatters. 
+如果你想的话可以使用 prettier 作为全局格式化程序
 
 6662
 06:33:56,230 --> 06:33:59,560
-prettier for all formatters. Feel free to go ahead. Alright,
-
+Feel free to go ahead. 
+按照你的需要自由选择吧
 
 6663
 06:33:59,560 --> 06:34:02,950
-great, got our JavaScript format, or in as well, let's
-
+Alright, great, got our JavaScript format, or in as well, 
+好了，非常好，我们已经获得了 JavaScript 的格式化
 
 6664
 06:34:02,950 --> 06:34:05,020
-start writing some JavaScript code.
+let's start writing some JavaScript code.
+让我们开始编写一些 JavaScript 的代码吧
