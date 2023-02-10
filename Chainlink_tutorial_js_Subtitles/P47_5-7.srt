@@ -1,0 +1,324 @@
+6665
+06:34:07,870 --> 06:34:10,750
+Awesome. So now that we have our code in here, 
+太棒了，现在我们已经有代码了
+
+6666
+06:34:10,750 --> 06:34:14,920
+it's time for us to learn how to actually deploy our contract using JavaScript.
+是时候来学习一下如何使用 JavaScript 来部署我们的合约了
+
+6667
+06:34:15,220 --> 06:34:17,800
+This is going to teach us a lot about transactions and what's going on under the hood, 
+这将教会我们许多关于交易和底层机制的知识
+
+6668
+06:34:17,800 --> 06:34:21,160
+and even what's going on under the hood in remix, 
+甚至可以让我们明白 Remix 的底层是怎样运行的
+
+6669
+06:34:21,160 --> 06:34:24,820
+and remix, we usually just hit a compile button, 
+在 Remix 中，我们一般只用点击一下编译(Compile)按钮
+
+6670
+06:34:24,820 --> 06:34:28,390
+and then hit a Deploy button. And that's really it. 
+接着再点击部署按钮，就行了
+
+6671
+06:34:28,390 --> 06:34:31,120
+In JavaScript, we're actually going to create our own functions 
+在 JavaScript 中，我们需要自己创建的函数
+
+6672
+06:34:31,120 --> 06:34:33,910
+that are going to help us do both of those. 
+以帮助我们完成这两项工作
+
+6673
+06:34:33,910 --> 06:34:35,830
+And as I mentioned, this is the part of the course we're going to start working with JavaScript, 
+正如我之前提到的，这部分课程我们会使用 JavaScript 开展工作
+
+6674
+06:34:35,830 --> 06:34:39,250
+and optionally, TypeScript if you like. 
+如果你想的话，也可以用 TypeScript
+
+6675
+06:34:39,250 --> 06:34:42,490
+Like I said, all of these sections come with a TypeScript edition as well. 
+就像我说的，这部分所有内容都附带一个 TypeScript 版本
+
+6676
+06:34:42,490 --> 06:34:47,170
+So let's set up our deployed out js script 
+那么让我们开始配置我们的 "deploy.js" 脚本
+
+6677
+06:34:47,170 --> 06:34:50,710
+to actually deploy our simple storage dot soul. 
+以部署我们的 "SimpleStorage.sol"
+
+6678
+06:34:50,740 --> 06:34:53,680
+So how can we get started here? 
+那么我们该从何开始呢？
+
+6679
+06:34:53,740 --> 06:34:57,280
+Well, let's first learn how to run a script using JavaScript and Node J S. 
+首先让我们学习一下如何使用 JavaScript 和 Node.js 来运行一个脚本
+
+6680
+06:34:57,280 --> 06:35:00,580
+So if you want to do a print line, or just print something out to your terminal, 
+如果你想要的打印一行，或者说打印一些东西到你的终端上
+
+6681
+06:35:00,610 --> 06:35:04,450
+we can do something called a console dot log. 
+你可以做的是 "console.log"
+
+6682
+06:35:04,450 --> 06:35:10,270
+And if I do console dot log, hi, I hit Save. And I open up my terminal. 
+如果我在这里输入 "console.log(hi)" 并且保存，接着打开我的终端
+
+6683
+06:35:10,270 --> 06:35:16,750
+I can now run Node deploy.js. And it'll print out high 
+现在我可以运行 "node deploy.js"，然后它就会打印 "hi"
+
+6684
+06:35:16,780 --> 06:35:21,280
+node is how we say hey, we want to run this JavaScript code using Node js. 
+"node" 就像是我们在说：“嘿，我们想要用 Node.js 去运行这个 JavaScript 代码”
+
+6685
+06:35:21,280 --> 06:35:24,400
+Other languages you might be familiar with, 
+其它还有一些你可能熟悉的语言
+
+6686
+06:35:24,400 --> 06:35:30,280
+sometimes we'll do Python, you know, deployed up py, 
+比如有时我们会用 python 运行 "deploy.py"
+
+6687
+06:35:30,280 --> 06:35:34,090
+or Java, C deploy dot Java, you know, etc. 
+或是 javac 运行 "deploy.java"，等等等等
+
+6688
+06:35:34,120 --> 06:35:37,540
+But with JavaScript, since the front end and back end JavaScript are different. 
+但对于 JavaScript 来说，因为前端和后端 JavaScript 是不同的
+
+6689
+06:35:37,750 --> 06:35:40,090
+We run code on the back end with node. 
+所以我们在后端使用 node 来运行代码
+
+6690
+06:35:40,090 --> 06:35:43,030
+And with JavaScript, you can do a lot of things that you'd see in something like solidity 
+在 JavaScript 中，你可以做到很多类似在 solidity 中看到的事
+
+6691
+06:35:43,030 --> 06:35:46,240
+with a little bit looser have a structure. 
+但结构会显得有些松散
+
+6692
+06:35:46,420 --> 06:35:51,220
+If I wanted to create some variable, I could say let variable equals five, 
+如果我要创建一些变量，我可以输入 "let variable = 5;"
+
+6693
+06:35:51,220 --> 06:35:57,640
+this kind of similar into solidity like you and 256, variable equals five. 
+这就像是你在 solidity 中做的 "uint256 variable = 5;"
+
+6694
+06:35:57,640 --> 06:36:01,690
+But in JavaScript, we use let or var or const. 
+不过在 JavaScript 中，我们使用 "let" 或 "var" 或 "const"
+
+6695
+06:36:01,690 --> 06:36:08,890
+And then I can print this out, I can do console dot log variable. And I had saved 
+然后我可以把它打印出来，"console.log(variable);"，保存一下
+
+6696
+06:36:08,920 --> 06:36:11,260
+JavaScript is optional on whether or not you actually want to have semicolons. 
+JavaScript 允许你选择是否带上分号(;)
+
+6697
+06:36:11,260 --> 06:36:14,380
+Here, I think prettier, defaults to putting semicolons. 
+这里我认为默认放上分号会更好看一些
+
+6698
+06:36:14,380 --> 06:36:17,710
+And we'll get rid of those in the near future 
+不过在不久的将来我们就会摆脱这些
+
+6699
+06:36:17,710 --> 06:36:22,060
+in your terminal. Once you start typing the name of a file, if you hit tab, 
+在终端里，只要你输入了文件名字的开头，然后按下 "tab" 键
+
+6700
+06:36:22,090 --> 06:36:26,860
+it could autocomplete the rest of the file name for you 
+它就会为你自动补全你的文件名
+
+6701
+06:36:26,860 --> 06:36:31,030
+node deploy hit Tab, it'll autocomplete 
+"node deploy" 按下 "tab"，它就会自动补全
+
+6702
+06:36:31,090 --> 06:36:34,150
+and if we hit enter, now, we get Hi, and then we get five. 
+现在我们按下回车，就会得到 "hi" 还有 "5"
+
+6703
+06:36:34,150 --> 06:36:37,810
+Since this prints out Hi, and then it prints out five. 
+因为这里就是打印 "hi"，然后打印 "5"
+
+6704
+06:36:37,930 --> 06:36:40,540
+JavaScript automatically starts with whatever code you have at the top of the file. 
+JavaScript 会自动从文件顶部的代码开始运行
+
+6705
+06:36:40,540 --> 06:36:43,720
+So it does console dot log first and variable. And then this one as well. 
+所以它先运行 "console.log" 然后是 "variable"，最后是这一行
+
+6706
+06:36:43,720 --> 06:36:47,500
+However, a good practice is to actually wrap everything you want to do in a main function, 
+然而，一个很好的做法是把你要运行的一切都打包进一个主函数(main function)中
+
+6707
+06:36:47,500 --> 06:36:51,220
+and then run that main function. 
+然后再运行那个 main 函数
+
+6708
+06:36:51,220 --> 06:36:55,300
+But what we could do is up at the top here, 
+我们要做的就是，到顶部这里
+
+6709
+06:36:55,300 --> 06:37:01,570
+we'd say function, mean, add parentheses and some brackets, 
+输入 "function main" 加上括号还有花括号
+
+6710
+06:37:01,570 --> 06:37:05,290
+a closing bracket at the bottom, and hit save for its auto format. 
+底部这里是一个右花括号，然后点击保存让它自动格式化
+
+6711
+06:37:05,290 --> 06:37:07,750
+Right now, if we run this, nothing will happen, 
+如果我们现在就运行它，将不会发生任何事
+
+6712
+06:37:07,750 --> 06:37:11,410
+because we've wrapped all of our code in a main function. 
+因为我们已经把所有代码都打包进了 main 函数中
+
+6713
+06:37:11,410 --> 06:37:15,640
+So if I run it now node deployed to Jess, nothing happens, 
+所以如果我运行 "node deploy.js"，什么都没发生
+
+6714
+06:37:15,640 --> 06:37:19,180
+because I need something to call the main function. 
+因为我还需要一些操作来调用这个 main 函数
+
+6715
+06:37:19,180 --> 06:37:24,220
+So if I then take this, this main function down here, and I call main, 
+如果我选中这部分，把 main 函数放到这里，调用 main 函数
+
+6716
+06:37:24,220 --> 06:37:26,800
+our jobs from code is actually going to say, 
+我们的代码实际上做的就是
+
+6717
+06:37:26,800 --> 06:37:30,040
+ah, the first line of the script is actually this main function here. 
+啊，脚本的第一行实际是这里的这个 main 函数
+
+6718
+06:37:30,040 --> 06:37:33,970
+So now if I do node deploy dot j, s, 
+所以如果我现在再运行 "node deploy.js"
+
+6719
+06:37:33,970 --> 06:37:36,580
+it'll run high and five, which is what we want. 
+它就会运行出 "hi" 和 "5" 了，这正是我们想要的
+
+6720
+06:37:36,580 --> 06:37:39,610
+Now, this is going to be the setup for most of our scripts moving forward, 
+这将是我们大多数脚本的设置
+
+6721
+06:37:39,610 --> 06:37:41,830
+including the scripts that we write, when we get to hard hat, 
+包括我们用 Hardhat 写脚本的时候
+
+6722
+06:37:41,830 --> 06:37:45,580
+however, there is going to be one major difference. 
+但这里还有一个主要区别
+
+6723
+06:37:45,580 --> 06:37:48,370
+Instead of regular functions,  we're actually going to use something called async functions. 
+我们不使用常规函数，而是使用异步函数(async function)
+
+6724
+06:37:48,370 --> 06:37:50,950
+And we're going to do something called asynchronous programming to do this. 
+我们要实现一种被称为异步编程("asynchronous programming")的东西
+
+6725
+06:37:50,980 --> 06:37:54,250
+Now, if what I say next is really confusing for you  
+如果我接下来的话真的让你感到非常困惑的话
+
+6726
+06:37:54,280 --> 06:37:57,040
+don't let it slow you down, 
+别让它阻拦你前进的脚步
+
+6727
+06:37:57,040 --> 06:38:00,400
+feel free to go ahead and watch that JavaScript course to learn more about this. 
+请继续观看 JavaScript 课程以了解更多这方面的知识
+
+6728
+06:38:00,400 --> 06:38:03,880
+But I'll also let you know, hey, this is an async function. 
+但我还是要告诉你一下，嘿，这是一个异步函数
+
+6729
+06:38:03,880 --> 06:38:05,290
+Here's what we need to be aware of when working with it, okay. 
+这就是我们使用它时需要注意的地方，好吧？
