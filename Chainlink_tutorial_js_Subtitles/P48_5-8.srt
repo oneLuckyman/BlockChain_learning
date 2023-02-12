@@ -1,7 +1,7 @@
 6730
 06:38:05,410 --> 06:38:16,660
 But I do want to give you a quick bit background on asynchronous programming. 
-我要给你们简要介绍一下异步编程的背景知识
+我要给你们简要介绍一下异步编程("asynchronous programming")的背景知识
 
 6731
 06:38:16,660 --> 06:38:19,210
@@ -16,7 +16,7 @@ solidity 就是一个同步编程语言的实例
 6733
 06:38:22,480 --> 06:38:25,210
 Synchronous means it just goes one line after another. 
-同步的意思是说它就是一行接着一行往下运行的
+同步的意思就是它只按照顺序一行接着一行往下运行
 
 6734
 06:38:25,210 --> 06:38:28,120
@@ -36,7 +36,7 @@ Then we do console dot log, that variable equals five, and then console dot log.
 6737
 06:38:36,010 --> 06:38:38,650
 this is synchronous programming in JavaScript, 
-这就是 JavaScript 中的同步编程
+这就是 JavaScript 中的同步编程(synchronous programming)
 
 6738
 06:38:38,650 --> 06:38:41,470
@@ -146,7 +146,7 @@ you can just go ahead and pour the drinks right away and then wait for the popco
 6759
 06:39:51,400 --> 06:39:54,280
 So asynchronous programming is way for us to do stuff 
-所以异步编程就是这样一种行事方式
+所以异步编程就是这样一种执行方式
 
 6760
 06:39:54,280 --> 06:39:57,430
@@ -190,524 +190,525 @@ we do have to wait for the popcorn to get out of the microwave.
 
 6768
 06:40:20,620 --> 06:40:24,100
-So even though placing popcorn in the microwave has this wait time we need to be
-
+So even though placing popcorn in the microwave has this wait time 
+所以即使把爆米花放进微波炉之后有这个等待时间
 
 6769
 06:40:24,100 --> 06:40:27,640
-able to tell our code I want you to actually wait for it or No,
-
+we need to be able to tell our code I want you to actually wait for it 
+我们也需要能够告诉我们的代码，我确实想先等着
 
 6770
 06:40:27,640 --> 06:40:31,720
-you're good. You can go on and do another task. So that's kind
-
+or No, you're good. You can go on and do another task. 
+或是，不要干等着，你可以先去做其他任务
 
 6771
 06:40:31,720 --> 06:40:34,360
-of the difference here. And I'll leave some links in the GitHub
-
+So that's kind of the difference here. 
+这就是二者的区别
 
 6772
 06:40:34,360 --> 06:40:36,760
-repo associated with this course to understand this a little bit
-
+And I'll leave some links in the GitHub repo associated with this course to understand this a little bit better 
+我会在课程关联的 GitHub 仓库中留下一些链接以便你更好地理解这一点
 
 6773
 06:40:36,760 --> 06:40:39,730
-better functions that have functions that come with this
-
+functions that have functions that come with this waiting period return something called a problem. 
+这个等待时间中函数可以返回一个被称为承诺("Promise")的东西
 
 6774
 06:40:39,730 --> 06:40:43,450
-waiting period return something called a problem. This, if put
-
+This, if put popcorn in the microwave was a function in JavaScript, 
+如果把“爆米花放进微波炉”看作是 JavaScript 的一个函数
 
 6775
 06:40:43,450 --> 06:40:46,330
-popcorn in the microwave was a function in JavaScript, it would
-
+it would be a promise based function. 
+那么它将是一个基于 "promise" 的函数
 
 6776
 06:40:46,330 --> 06:40:50,620
-be a promise based function. A promise can be either pending,
-
+A promise can be either pending, fulfilled, or rejected. 
+一个 "promise" 可以是“挂起的”(Pending，也可以称为“进行中”)，“已成功”(Fulfilled)或是“已失败”(Rejected)
 
 6777
 06:40:51,100 --> 06:40:55,390
-fulfilled, or rejected. And this is how we know if our popcorn is
-
+And this is how we know if our popcorn is done. 
+这样我们就能知道爆米花是否做好了。
 
 6778
 06:40:55,390 --> 06:40:58,990
-done. If our popcorn was a method, putting popcorn in the
-
+If our popcorn was a method, 
+如果我们的爆米花是一种方法，呃...
 
 6779
 06:40:58,990 --> 06:41:01,930
-microwave, were a function in JavaScript, when we're waiting
-
+putting popcorn in the microwave, were a function in JavaScript, 
+如果把爆米花放进微波炉是 JavaScript 中的一个函数
 
 6780
 06:41:01,930 --> 06:41:04,840
-for the popcorn to finish, it's in a pending state. When it's
-
+when we're waiting for the popcorn to finish, it's in a pending state. 
+当我们在等待爆米花制作完成的时候，它就是处于 "pending" 状态
 
 6781
 06:41:04,870 --> 06:41:08,710
-when the popcorn is finished, it would be fulfilled. And if we
-
+When it's when the popcorn is finished, it would be fulfilled. 
+当爆米花已经做好的时候，它就是 "Fulfilled" 状态
 
 6782
 06:41:08,710 --> 06:41:11,740
-aborted halfway through, and we stopped waiting, it would be
-
+And if we aborted halfway through, and we stopped waiting, it would be rejected. 
+如果我们中途放弃，不再继续等待了，它就是 "Rejected" 的
 
 6783
 06:41:11,770 --> 06:41:14,740
-rejected. So putting the popcorn in the microwave returns a
-
+So putting the popcorn in the microwave returns a promise. 
+所以把爆米花放进微波炉会返回一个 "promise"
 
 6784
 06:41:14,740 --> 06:41:18,670
-promise. With this promise, we have to tell our code, hey, we
-
+With this promise, we have to tell our code, 
+通过这个 "promise" 我们可以告诉代码
 
 6785
 06:41:18,670 --> 06:41:22,180
-want you to wait for the popcorn to finish or you can go ahead
-
+hey, we want you to wait for the popcorn to finish 
+嘿，我需要你先等爆米花做好
 
 6786
 06:41:22,180 --> 06:41:24,610
-and you can just keep doing stuff. So let's put this all
-
+or you can go ahead and you can just keep doing stuff. 
+或者是，你可以继续先去做其他事
 
 6787
 06:41:24,610 --> 06:41:27,970
-together with some JavaScript syntax here. Let's say again,
-
+So let's put this all together with some JavaScript syntax here. 
+现在让我们用一些 JavaScript 语法来实现这些操作
 
 6788
 06:41:27,970 --> 06:41:30,670
-we're going to be setting up this movie night. And we need to
-
+Let's say again, we're going to be setting up this movie night. 
+回顾一下，我们现在要安排一下这个电影之夜
 
 6789
 06:41:30,700 --> 06:41:34,090
-cook popcorn, pour drinks for everybody. And then we need to
-
+And we need to cook popcorn, pour drinks for everybody. And then we need to start a movie. 
+我们需要给大家制作爆米花，并倒一些喝的，接着就可以开始放电影了
 
 6790
 06:41:34,090 --> 06:41:37,300
-start a movie. So let's write some pseudocode to pretend what
-
+So let's write some pseudocode 
+让我们来写一些伪代码("pseudocode")
 
 6791
 06:41:37,300 --> 06:41:40,240
-this code would look like if this was actually a function. So
-
+to pretend what this code would look like if this was actually a function. 
+来假设这一切如果是一个函数
 
 6792
 06:41:40,270 --> 06:41:45,580
-we create some function called setup, Movie Night. And in here,
-
+So we create some function called setup, Movie Night. 
+我们先创建一个函数叫作 "setupMovieNight"
 
 6793
 06:41:45,610 --> 06:41:48,070
-we would say okay, what's the first thing we need to do? Okay,
-
+And in here, we would say okay, what's the first thing we need to do? 
+这里，我们首先要做的是什么呢？
 
 6794
 06:41:48,070 --> 06:41:50,260
-we need to cook popcorn. So let's say we have some cook
-
+Okay, we need to cook popcorn. 
+OK，我们要先来制作爆米花
 
 6795
 06:41:50,260 --> 06:41:54,100
-popcorn function. So we'll say, okay, cook popcorn, then the
-
+So let's say we have some cook popcorn function. So we'll say, okay, cook popcorn, 
+所以假设我们有一些制作爆米花的函数，我们要输入 "cookPopcorn()" 
 
 6796
 06:41:54,100 --> 06:41:55,930
-next thing we're gonna have to do is we're gonna have to pour
-
+then the next thing we're gonna have to do is we're gonna have to pour drinks, or drink. 
+接下来要做的就是倒点喝的
 
 6797
 06:41:55,930 --> 06:42:00,430
-drinks, or drink. So we'll call some pour drinks function. Now
-
+So we'll call some pour drinks function. 
+所以我们要调用 "pourDrinks()" 函数
 
 6798
 06:42:00,430 --> 06:42:03,640
-here's the thing, we only want to start the movie once our
-
+Now here's the thing, we only want to start the movie 
+现在，我们要想开始放电影
 
 6799
 06:42:03,640 --> 06:42:07,690
-popcorn has been cooked. And once our drinks have been
-
+once our popcorn has been cooked. And once our drinks have been poured, 
+就要等爆米花先做好，并且喝的也要倒好
 
 6800
 06:42:07,720 --> 06:42:11,560
-poured, so if either one of these returned a promise, so if
-
+so if either one of these returned a promise, 
+所以如果其中的任何一个返回了 "promise"
 
 6801
 06:42:11,590 --> 06:42:14,680
-either one of these returns a promise, like cook popcorn, for
-
+so if either one of these returns a promise, like cook popcorn, for example, 
+如果其中任何一个返回了 "promise"，比如说 "cookPopcorn()"
 
 6802
 06:42:14,680 --> 06:42:18,550
-example, we would need to tell our code here to actually wait
-
+we would need to tell our code here to actually wait for the popcorn to finish 
+我们就需要告诉这里的代码等待爆米花做好
 
 6803
 06:42:18,730 --> 06:42:21,580
-for the popcorn to finish because cook popcorn is going to
-
+because cook popcorn is going to be a function where we could say 
+因为 "cookPopcorn()" 是一个函数所以我们可以这样
 
 6804
 06:42:21,580 --> 06:42:25,840
-be a function where we could say let status equals cook popcorn.
-
+let status equals cook popcorn.
+"let status = cookPopcorn()"
 
 6805
 06:42:25,900 --> 06:42:29,710
-And while the popcorn is being cooked, the status is going to
-
+And while the popcorn is being cooked, the status is going to be ending. 
+当爆米花正在制作的时，"status" 就是 "pending"
 
 6806
 06:42:29,710 --> 06:42:33,250
-be ending. Once the popcorn gets cooked, it'll be fulfilled. If
-
+Once the popcorn gets cooked, it'll be fulfilled. 
+一旦爆米花做好了，它就会变成 "fulfilled"
 
 6807
 06:42:33,250 --> 06:42:35,890
-the popcorn breaks, the microwave explodes, the status
-
+If the popcorn breaks, the microwave explodes, the status would be rejected. 
+如果爆米花爆了微波炉也会爆炸，"status" 就变成了 "rejected"
 
 6808
 06:42:35,890 --> 06:42:39,130
-would be rejected. But we don't want the status to be in a
-
+But we don't want the status to be in a pending situation. Before we move on, 
+但我们不想还是 "pending" 状态的时候就继续前进
 
 6809
 06:42:39,130 --> 06:42:42,430
-pending situation. Before we move on, we only want to start
-
+we only want to start our movie once these two functions have completed. 
+我们想的是当这两个函数都完成之后再开始我们的电影
 
 6810
 06:42:42,430 --> 06:42:45,580
-our movie once these two functions have completed. And
-
+And let's say both of these return these promises things. 
+让我们假设这两个函数返回的都是 "promise"
 
 6811
 06:42:45,580 --> 06:42:48,700
-let's say both of these return these promises things. So we
-
+So we need to tell our code, hey, you have to wait. 
+所以我们需要告诉代码，嘿，你必须先等着
 
 6812
 06:42:48,700 --> 06:42:52,630
-need to tell our code, hey, you have to wait. Or you have to
-
+Or you have to wait for cook popcorn and for poor drinks to finish. 
+或者说你要先等 "cookPopcorn()" 和 "pourDrinks()" 都执行完
 
 6813
 06:42:52,630 --> 06:42:56,050
-wait for cook popcorn and for poor drinks to finish. So what
-
+So what we can do 
+所以我们该怎么做？
 
 6814
 06:42:56,050 --> 06:42:59,050
-we can do now without getting too deep into the weeds on how
-
+now without getting too deep into the weeds on how all this works, 
+现在，在不深入研究这一切是怎么运作的前提下
 
 6815
 06:42:59,050 --> 06:43:01,840
-all this works, one of the easiest things that we can do
-
+one of the easiest things that we can do
+我们能做的最简单的事情之一
 
 6816
 06:43:01,840 --> 06:43:04,630
-and you'll see us use this syntax quite often is we'll turn
-
+and you'll see us use this syntax quite often 
+你能经常看到我们会使用这个语法
 
 6817
 06:43:04,630 --> 06:43:08,470
-this function into an async function. When our functions are
-
+is we'll turn this function into an async function. 
+就是我们会把这个函数变成一个异步函数("async function")
 
 6818
 06:43:08,500 --> 06:43:12,790
-async, we get access to a keyword called await the await
-
+When our functions are async, we get access to a keyword called await 
+当我们的函数是 "async" 的时候，我们可以访问一个名为 "await" 的关键字
 
 6819
 06:43:12,790 --> 06:43:17,680
-keyword tells any promise based function to wait for that
-
+the await keyword tells any promise based function 
+"await" 关键字告诉任何基于 "promise" 的函数
 
 6820
 06:43:17,680 --> 06:43:20,530
-promise to be fulfilled or rejected. So we say okay, we
-
+to wait for that promise to be fulfilled or rejected.  
+要等待 "promise" 变成 "fulfilled" 或 "rejected"
 
 6821
 06:43:20,530 --> 06:43:24,520
-want to await for our popcorn to cook. And then we want to await
-
+So we say okay, we want to await for our popcorn to cook. 
+所以我们说的就是，我们要先等待爆米花做好
 
 6822
 06:43:24,550 --> 06:43:27,280
-to pour drinks. And then we can just go ahead and start the
-
+And then we want to await to pour drinks. And then we can just go ahead and start the movie. 
+接着再等待喝的都倒好，然后我们就可以开始放电影了
 
 6823
 06:43:27,280 --> 06:43:31,240
-movie. And we only start the movie here once these two have
-
+And we only start the movie here once these two have been completed. 
+我们只有在这二者都完成之后才会开始放电影
 
 6824
 06:43:31,270 --> 06:43:34,450
-been completed. And this is why throughout all of our code,
-
+And this is why throughout all of our code, 
+这就是为什么在我们所有的代码中
 
 6825
 06:43:34,450 --> 06:43:37,330
-you'll see this await keyword used a lot. But it can only be
-
+you'll see this await keyword used a lot. 
+你能看到这个 "await" 关键字会被大量使用
 
 6826
 06:43:37,330 --> 06:43:40,600
-used in async functions. So basically, whenever you see this
-
+But it can only be used in async functions. 
+但它只能在异步函数中使用
 
 6827
 06:43:40,600 --> 06:43:44,230
-await keyword just now Ah, okay, the function that's being called
-
+So basically, whenever you see this await keyword just now 
+基本上，每当你看到这个 "await" 关键字时，你只需要知道
 
 6828
 06:43:44,260 --> 06:43:47,980
-is promise based. And we don't want to move on to the next step
-
+Ah, okay, the function that's being called is promise based. 
+啊，这个被调用的函数是基于 "promise" 的
 
 6829
 06:43:48,010 --> 06:43:50,980
-until that function has completed. So that's a little
-
+And we don't want to move on to the next step until that function has completed. 
+我们不想在这个函数执行完之前就继续下一步
 
 6830
 06:43:50,980 --> 06:43:53,590
-bit more about promises and asynchronous programming.
-
+So that's a little bit more about promises and asynchronous programming.
+所以这就是一些关于 "promise" 和异步编程的背景知识
 
 6831
 06:43:53,620 --> 06:43:56,410
-Hopefully, that's clear. If not, like I said, there's some links
-
+Hopefully, that's clear. If not, like I said, 
+希望我已经讲清楚了，如果还没有的话，正如我之前说的
 
 6832
 06:43:56,410 --> 06:43:58,840
-in the description to learn more about asynchronous programming.
-
+there's some links in the description to learn more about asynchronous programming.
+描述中有一些链接可以学习更多关于异步编程的知识
 
 6833
 06:43:59,050 --> 06:44:01,570
-The reason I wanted to go through this is because most of
-
+The reason I wanted to go through this 
+我之所以会想要讲这些
 
 6834
 06:44:01,570 --> 06:44:03,460
-the functions that we're going to be working with are going to
-
+is because most of the functions that we're going to be working with are going to be asynchronous. 
+是因为大多数我们要使用的函数都是异步的
 
 6835
 06:44:03,460 --> 06:44:07,810
-be asynchronous. For example, when we deploy a contract, what
-
+For example, when we deploy a contract, what do we have to do? 
+举个例子，当我们部署合约的时候，我们要做什么？
 
 6836
 06:44:07,810 --> 06:44:13,240
-do we have to do? Well, we have to wait for it to be deployed.
-
+Well, we have to wait for it to be deployed.
+我们必须要先等待合约部署完成，对吧？
 
 6837
 06:44:14,200 --> 06:44:16,840
-If we don't use synchronous programming, and we just leave
-
+If we don't use synchronous programming, 
+如果我们不使用异步编程，
 
 6838
 06:44:16,840 --> 06:44:20,530
-our function main like this, what would happen is we would
-
+and we just leave our function main like this, what would happen is 
+让 main 函数就保持这样，那么会发生什么？
 
 6839
 06:44:20,530 --> 06:44:24,610
-write some code like contract dot deploy, and we wouldn't wait
-
+we would write some code like contract dot deploy, 
+我们写一些代码例如 "contract.deploy"
 
 6840
 06:44:24,700 --> 06:44:29,620
-for it to finish. Obviously, if we don't wait for it to finish,
-
+and we wouldn't wait for it to finish. 
+然后我们并不会等待它执行完
 
 6841
 06:44:29,710 --> 06:44:32,500
-and we try to run some code on a contract that hasn't finished
-
+Obviously, if we don't wait for it to finish, 
+显然，如果我们不等它执行完
 
 6842
 06:44:32,500 --> 06:44:35,110
-deploying it, it's not going to work. So we want to do this, we
-
+and we try to run some code on a contract that hasn't finished deploying it, it's not going to work. 
+并在它还没部署好的时候就尝试运行合约上的代码，那肯定是行不通的
 
 6843
 06:44:35,110 --> 06:44:38,740
-want to have our main function be an async function, so that we
-
+So we want to do this, we want to have our main function be an async function, 
+所以我们要这么做，把我们的 main 函数写成一个 "async" 函数
 
 6844
 06:44:38,740 --> 06:44:42,010
-can we can wait for our contracts to deploy, we can wait
-
+so that we can we can wait for our contracts to deploy, 
+这样我们就可以等待我们的合约部署完成
 
 6845
 06:44:42,010 --> 06:44:45,310
-for things to happen, we can wait for our popcorn to finish,
-
+we can wait for things to happen, we can wait for our popcorn to finish,
+可以等待某些事已经发生，可以等待我们的爆米花制作完成
 
 6846
 06:44:45,340 --> 06:44:48,550
-we can have the flexibility to tell our code to either wait for
-
+we can have the flexibility to tell our code 
+我们可以灵活地告诉我们的代码
 
 6847
 06:44:48,550 --> 06:44:51,400
-our popcorn to finish or continue on. So now that we have
-
+to either wait for our popcorn to finish or continue on. 
+是等待爆米花完成还是继续下一步
 
 6848
 06:44:51,400 --> 06:44:54,970
-our main function as an async function, we're going to add
-
+So now that we have our main function as an async function, 
+所以现在我们的 main 函数就是一个异步函数了
 
 6849
 06:44:54,970 --> 06:44:57,460
-some code to our main function down here. And the code that's
-
+we're going to add some code to our main function down here. 
+我们要在这里给 main 函数添加一些代码
 
 6850
 06:44:57,460 --> 06:45:00,040
-added here is some syntax for working with asynchronous
-
+And the code that's added here is some syntax for working with asynchronous functions. 
+这里添加的代码用的是一些处理异步函数的语法
 
 6851
 06:45:00,040 --> 06:45:02,590
-functions. And if this part is confusing, I'm just going to say
-
+And if this part is confusing, I'm just going to say for now, absolute, don't worry about this. 
+如果这部分让你感到困惑，那我现在就告诉你，绝对不用担心这个
 
 6852
 06:45:02,590 --> 06:45:05,170
-for now, absolute, don't worry about this. If you want to try
-
+If you want to try to understand that later. That's fine. 
+如果你之后想再尝试理解它，那很好
 
 6853
 06:45:05,170 --> 06:45:07,750
-to understand that later. That's fine. But for those who are
-
+But for those who are following along, 
+不过对于跟着教程走的人来说
 
 6854
 06:45:07,750 --> 06:45:09,580
-following along, we're just going to add an add
-
+we're just going to add an add then catch air air 
+我们暂时就只是添加一个 "then" 和 "catch" 还有 "error"
 
 6855
 06:45:09,610 --> 06:45:25,360
-then catch air air you can follow along typing this
-
+you can follow along typing this yourself 
+你可以跟着自己把这些打出来
 
 6856
 06:45:25,360 --> 06:45:28,300
-yourself or you can just copy paste it into your code.
-
+or you can just copy paste it into your code.
+或是直接复制粘贴到你的代码中也行
 
 6857
 06:45:28,420 --> 06:45:31,900
-Basically what this allows us to do is we have our main function,
-
+Basically what this allows us to do 
+基本上我们做的就是
 
 6858
 06:45:31,930 --> 06:45:34,630
-that's an asynchronous function. So when we call the main
-
+is we have our main function, that's an asynchronous function. 
+我们有一个 main 函数，它是一个异步函数
 
 6859
 06:45:34,630 --> 06:45:37,840
-function, this is some other syntax for waiting for it to
-
+So when we call the main function, this is some other syntax for waiting for it to
+当我们调用 main 函数的时候，这是一些其它语法
 
 6860
 06:45:38,020 --> 06:45:41,020
-basically finish and then printing any errors it gets. And
-
+basically finish and then printing any errors it gets. 
+用于等待它完成并打印其中出的错误
 
 6861
 06:45:41,020 --> 06:45:44,980
-that's why we do this but Again, if this big lump of code, if
-
+And that's why we do this 
+这就是我们写这些东西的用处
 
 6862
 06:45:44,980 --> 06:45:46,690
-you're like what is going on with this big clump of code,
-
+but Again, if this big lump of code, if you're like what is going on with this big clump of code,
+但是，如果这一大块代码，你现在就想搞清楚是怎么回事
 
 6863
 06:45:46,720 --> 06:45:49,180
-honestly, for now, just copy paste it. So great. We have our
-
+honestly, for now, just copy paste it. 
+说真的，现在就先复制粘贴就行了
 
 6864
 06:45:49,180 --> 06:45:52,690
-asynchronous function main, we have some code. And then we have
-
+So great. We have our asynchronous function main, we have some code. 
+很好，我们有了异步函数 main，其中有一些代码
 
 6865
 06:45:52,780 --> 06:45:55,840
-this lump of code, which basically just calls our main
-
+And then we have this lump of code, which basically just calls our main asynchronous function. 
+并且还有这一大块代码，基本上就是用来调用我们的异步 main 函数的
 
 6866
 06:45:55,870 --> 06:45:58,690
-asynchronous function. Okay, great. I'm gonna delete all this
-
+Okay, great. I'm gonna delete all this for now. 
+好了，现在我要把这些都删除掉
 
 6867
 06:45:58,690 --> 06:46:01,810
-for now. But you can still find that common in the GitHub repo
-
+But you can still find that common in the GitHub repo associated with this course. 
+不过你仍然可以在课程关联的 GitHub 仓库中找到这些注释
 
 6868
 06:46:01,840 --> 06:46:04,960
-associated with this course. Awesome. Okay, so now that we
-
+Awesome. Okay, so now that we have our real basic setup, 
+太棒了，现在我们已经有了基本的配置
 
 6869
 06:46:04,960 --> 06:46:07,990
-have our real basic setup, let's go ahead and start coding. And
-
+let's go ahead and start coding. 
+让我们继续编写代码
 
 6870
 06:46:08,020 --> 06:46:11,110
-if this set apart is confusing, and the async await stuff is
-
+And if this set apart is confusing, and the async await stuff is confusing, 
+如果这部分你暂时搞不明白，或是 "async" 和 "await" 让你感到迷惑
 
 6871
 06:46:11,110 --> 06:46:14,020
-confusing, don't worry too much about it. It'll make more sense
-
+don't worry too much about it. 
+不用过于担心这些东西
 
 6872
 06:46:14,020 --> 06:46:19,840
-as we progress. 
+It'll make more sense as we progress. 
+随着我们的进展，它会变得更加清晰合理
