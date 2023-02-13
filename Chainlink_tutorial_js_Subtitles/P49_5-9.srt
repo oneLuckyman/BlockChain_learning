@@ -1,0 +1,683 @@
+6872
+06:46:14,020 --> 06:46:19,840
+as we progress. All of our code basically is going to be inside
+
+
+6873
+06:46:19,840 --> 06:46:22,270
+of this async function main, which is going to be our main
+
+
+6874
+06:46:22,270 --> 06:46:25,900
+script for deploying our simple storage dot soul store deploy
+
+
+6875
+06:46:25,900 --> 06:46:29,350
+script is going to replicate exactly what goes on in remix,
+
+
+6876
+06:46:29,410 --> 06:46:32,320
+in remix, what was the first thing that we always did? Well,
+
+
+6877
+06:46:32,320 --> 06:46:35,830
+the first thing that we would do is actually compile all of our
+
+
+6878
+06:46:35,830 --> 06:46:38,860
+code. So we're going to want to compile our code in our
+
+
+6879
+06:46:38,860 --> 06:46:42,040
+JavaScript project as well. In order for us to compile our
+
+
+6880
+06:46:42,040 --> 06:46:45,520
+simple storage contract, we're going to use a tool called Silk
+
+
+6881
+06:46:45,550 --> 06:46:48,670
+Jas, and JavaScript actually has a way to install projects
+
+
+6882
+06:46:48,670 --> 06:46:52,090
+directly into our setups and into our folders. If we scroll
+
+
+6883
+06:46:52,090 --> 06:46:55,450
+down this silk Jas is exactly what we're looking for. Because
+
+
+6884
+06:46:55,450 --> 06:46:58,390
+it has a way to compile a contract that imports other
+
+
+6885
+06:46:58,390 --> 06:47:02,620
+contracts via relative paths, you can see a section in this
+
+
+6886
+06:47:02,620 --> 06:47:05,080
+readme and most documentation will have something like this,
+
+
+6887
+06:47:05,110 --> 06:47:09,220
+if it's JavaScript compatible. For Node js usage, it says to
+
+
+6888
+06:47:09,220 --> 06:47:11,980
+use the latest stable version of the solidity compiler via Node
+
+
+6889
+06:47:11,980 --> 06:47:17,860
+js, you can install it via NPM npm install. So NPM is what's
+
+
+6890
+06:47:17,860 --> 06:47:22,330
+known as a package manager. And we actually installed NPM just
+
+
+6891
+06:47:22,330 --> 06:47:26,650
+by installing no Jess, right, if we do no dash dash version, you
+
+
+6892
+06:47:26,650 --> 06:47:30,700
+should also be able to do NPM dash dash version. Another tool
+
+
+6893
+06:47:30,700 --> 06:47:33,310
+that it comes with is something called core pack. And you can
+
+
+6894
+06:47:33,310 --> 06:47:36,730
+type core pack dash dash version, now we can install with
+
+
+6895
+06:47:36,730 --> 06:47:40,990
+NPM using npm install silk, however, I like the yarn package
+
+
+6896
+06:47:40,990 --> 06:47:44,590
+manager a little bit better. So we're actually going to install
+
+
+6897
+06:47:44,620 --> 06:47:47,950
+the yarn package manager instead to do all of our package
+
+
+6898
+06:47:47,950 --> 06:47:51,190
+management. If you go to the installation page, the newer way
+
+
+6899
+06:47:51,190 --> 06:47:54,610
+to install yarn is just by running core pack enable. And
+
+
+6900
+06:47:54,640 --> 06:47:58,390
+the older way is to install with NPM. If you go ahead and run
+
+
+6901
+06:47:58,420 --> 06:48:01,600
+core pack enable after that finishes, you should be able to
+
+
+6902
+06:48:01,600 --> 06:48:07,150
+run yarn dash dash version. Alternatively, you can just run
+
+
+6903
+06:48:07,210 --> 06:48:12,850
+NPM i dash g core pack, and then you can run core pack enable.
+
+
+6904
+06:48:13,000 --> 06:48:17,440
+The last option you have is you can run NPM i dash g
+
+
+6905
+06:48:17,860 --> 06:48:21,850
+yarn. This will install yarn globally for your system. But
+
+
+6906
+06:48:21,850 --> 06:48:25,720
+this is considered the outdated way to install yarn. And ideally
+
+
+6907
+06:48:25,720 --> 06:48:29,560
+you run core pack enable. But in any case, after you run those,
+
+
+6908
+06:48:29,590 --> 06:48:31,960
+if you run yarn dash dash version, you should get
+
+
+6909
+06:48:31,960 --> 06:48:35,380
+something that looks like this. Now that we have yarn, we can
+
+
+6910
+06:48:35,380 --> 06:48:39,580
+actually use yarn to install all of our projects, instead of NPM.
+
+
+6911
+06:48:39,940 --> 06:48:44,440
+Back in silk Jas where it says npm install soak, we can do the
+
+
+6912
+06:48:44,440 --> 06:48:48,550
+yarn equivalents of NPM install sock, which is going to be yarn,
+
+
+6913
+06:48:49,240 --> 06:48:55,330
+add sock, this will actually go ahead and install solc to our
+
+
+6914
+06:48:55,330 --> 06:48:58,990
+project. If we open up our folders, you'll actually see
+
+
+6915
+06:48:59,020 --> 06:49:01,930
+that this added a couple of different folders, it first
+
+
+6916
+06:49:01,930 --> 06:49:06,010
+added a package dot JSON package dot JSON is a file that tells us
+
+
+6917
+06:49:06,040 --> 06:49:09,610
+a lot about our project and the dependencies that it works with.
+
+
+6918
+06:49:09,640 --> 06:49:14,920
+For example, we've installed the soap package of 0.8 point 13.
+
+
+6919
+06:49:15,130 --> 06:49:18,880
+Our yarn dot lock tells us the exact version of all the
+
+
+6920
+06:49:18,880 --> 06:49:22,840
+different packages of our project. For example, the reason
+
+
+6921
+06:49:22,840 --> 06:49:25,840
+this is so important too, is solc has a ton of dependencies
+
+
+6922
+06:49:25,840 --> 06:49:29,800
+as well. So yarn dot lock tells us exactly what version of solc
+
+
+6923
+06:49:30,010 --> 06:49:32,380
+and all the different dependencies of solchen. Any
+
+
+6924
+06:49:32,380 --> 06:49:36,310
+other project that we add. This is autogenerated file, don't
+
+
+6925
+06:49:36,340 --> 06:49:39,910
+edit the file directly. The final bit is we got this node
+
+
+6926
+06:49:39,910 --> 06:49:43,960
+modules folder. This node modules folder is going to be
+
+
+6927
+06:49:44,020 --> 06:49:47,950
+where all the installed code that we just downloaded is, for
+
+
+6928
+06:49:47,950 --> 06:49:51,010
+example, if we look at node modules, we can see there's a
+
+
+6929
+06:49:51,010 --> 06:49:55,570
+sock folder. And inside this sock folder is all the code
+
+
+6930
+06:49:55,600 --> 06:49:59,290
+associated with this soap package that we just installed.
+
+
+6931
+06:49:59,350 --> 06:50:03,370
+And since we're working with zero point 8.7 of slowly, we
+
+
+6932
+06:50:03,370 --> 06:50:06,670
+actually want to install that specific version. So we're going
+
+
+6933
+06:50:06,670 --> 06:50:17,230
+to do yarn add solc at zero point 8.7 Dash fixed and you'll
+
+
+6934
+06:50:17,230 --> 06:50:21,910
+see in our package dot JSON you can now see zero point 8.7 Dash
+
+
+6935
+06:50:21,910 --> 06:50:25,780
+fixed in our dependencies section for sulk. Normally you
+
+
+6936
+06:50:25,780 --> 06:50:29,530
+can just add your salt version like yarn add zero point 8.7 But
+
+
+6937
+06:50:29,530 --> 06:50:33,100
+there was an issue with zero point 8.7 So we had to do zero
+
+
+6938
+06:50:33,460 --> 06:50:35,140
+point 8.7 Dash fixed.
+
+
+6939
+06:50:36,430 --> 06:50:38,200
+You can find the different releases and the different
+
+
+6940
+06:50:38,200 --> 06:50:41,740
+versions if you go to sulk Jas releases and then to tags
+
+
+6941
+06:50:42,940 --> 06:50:45,730
+Alright, great. Now that we have sold, we have the ability to
+
+
+6942
+06:50:45,730 --> 06:50:50,590
+actually compile our contracts, we could either compile them in
+
+
+6943
+06:50:50,590 --> 06:50:54,190
+our code and have it automatically run whenever we
+
+
+6944
+06:50:54,190 --> 06:51:00,130
+hit Deploy, or, or we could compile them separately. If you
+
+
+6945
+06:51:00,130 --> 06:51:03,310
+want to go back after this section is an example in the
+
+
+6946
+06:51:03,310 --> 06:51:07,120
+sculpt Jas repository that shows you how to actually compile silk
+
+
+6947
+06:51:07,150 --> 06:51:09,790
+right in your code. We are actually going to compile them
+
+
+6948
+06:51:09,790 --> 06:51:14,020
+separately using a soap Jas command. The yarn command is
+
+
+6949
+06:51:14,020 --> 06:51:17,740
+both used to install dependencies and it can be used
+
+
+6950
+06:51:17,770 --> 06:51:21,910
+to run scripts. If you go to sulk Jas and you scroll down, it
+
+
+6951
+06:51:21,910 --> 06:51:24,370
+says in order to use the command line, you actually need to
+
+
+6952
+06:51:24,370 --> 06:51:27,580
+install it globally. If you want to install this globally using
+
+
+6953
+06:51:27,580 --> 06:51:33,250
+yarn Global Add solc at zero point 8.7 Dash fixed you can
+
+
+6954
+06:51:33,250 --> 06:51:36,850
+absolutely go ahead. However, since we're inside of this
+
+
+6955
+06:51:36,850 --> 06:51:40,450
+folder here, which has the yarn dot lock the package json and
+
+
+6956
+06:51:40,450 --> 06:51:44,230
+the node modules yarn will be smart enough to know i You're
+
+
+6957
+06:51:44,230 --> 06:51:48,250
+looking for the soak in this folder. So we can actually go
+
+
+6958
+06:51:48,250 --> 06:51:52,300
+ahead and compile our contract using yarn and solc Jess if you
+
+
+6959
+06:51:52,300 --> 06:51:55,540
+want to see all the different commands soak Jas allows we can
+
+
+6960
+06:51:55,540 --> 06:52:00,970
+just run yarn. So Jas dash dash help, and you'll see it'll spit
+
+
+6961
+06:52:00,970 --> 06:52:06,340
+out a list of all the different options that soft Jas has. You
+
+
+6962
+06:52:06,340 --> 06:52:11,200
+can also run yarn, so Jas dash dash version to just make sure
+
+
+6963
+06:52:11,200 --> 06:52:14,200
+that we're on the correct version, which is indeed zero
+
+
+6964
+06:52:14,740 --> 06:52:18,130
+point 8.7. Now to actually compile our simple storage at
+
+
+6965
+06:52:18,130 --> 06:52:23,710
+soul, let's run the compliation command we will run yarn, so J
+
+
+6966
+06:52:23,710 --> 06:52:29,380
+S, dash dash bin since we want the binary dash dash ABI since
+
+
+6967
+06:52:29,380 --> 06:52:37,090
+we also want the ABI dash dash include path node modules. Since
+
+
+6968
+06:52:37,150 --> 06:52:41,290
+we want to include any contracts or files in our node modules, we
+
+
+6969
+06:52:41,290 --> 06:52:43,870
+aren't using any for this project, but in the future, you
+
+
+6970
+06:52:43,870 --> 06:52:46,870
+will need to include this dash dash include path node modules
+
+
+6971
+06:52:47,530 --> 06:52:52,330
+do dash dash base path of period, this period means that
+
+
+6972
+06:52:52,330 --> 06:52:56,260
+the base path is going to be this folder dash O period, which
+
+
+6973
+06:52:56,260 --> 06:53:00,640
+means we're going to output the compiled binary and ABI to this
+
+
+6974
+06:53:00,670 --> 06:53:05,410
+folder. And then finally, simple storage dot soul. Since this is
+
+
+6975
+06:53:05,410 --> 06:53:08,680
+the contract that we want to compile, auto completed it from
+
+
+6976
+06:53:08,680 --> 06:53:11,770
+simple storage to simple storage. So by typing simple,
+
+
+6977
+06:53:12,520 --> 06:53:15,310
+and then hitting Tab, but let's go ahead and hit enter, you'll
+
+
+6978
+06:53:15,310 --> 06:53:19,870
+see it's running this command to compile this contract. And
+
+
+6979
+06:53:19,870 --> 06:53:24,370
+you'll see two files get output. One called Simple Storage soul
+
+
+6980
+06:53:24,400 --> 06:53:27,850
+underscore simple storage that API in simple storage Sol
+
+
+6981
+06:53:27,880 --> 06:53:31,660
+underscore simple storage dot bin, the ABI is obviously the
+
+
+6982
+06:53:31,660 --> 06:53:35,920
+ABI of this contract, which will need in the future. And then the
+
+
+6983
+06:53:35,920 --> 06:53:39,670
+bin is going to be the binary, or the really low level of this
+
+
+6984
+06:53:39,670 --> 06:53:42,520
+code back and remix. If you compile simple storage, that
+
+
+6985
+06:53:42,520 --> 06:53:46,570
+soul, you can actually look at compliation details, like the
+
+
+6986
+06:53:46,570 --> 06:53:51,850
+ABI which we just got, or the bytecode, which if you look at
+
+
+6987
+06:53:51,850 --> 06:53:59,080
+this object 60806 That's the same as the binary here 60806.
+
+
+6988
+06:53:59,110 --> 06:54:02,140
+Alright, great. So now we've compiled our contracts here.
+
+
+6989
+06:54:02,320 --> 06:54:05,890
+Now, obviously, now if you hit up on your keyboard, you can
+
+
+6990
+06:54:05,890 --> 06:54:09,640
+actually cycle through your most recent terminal commands. And if
+
+
+6991
+06:54:09,640 --> 06:54:12,520
+you hit up enough, we can see this command that we just ran
+
+
+6992
+06:54:12,550 --> 06:54:15,580
+typing this out or hitting up a whole bunch every single time,
+
+
+6993
+06:54:15,790 --> 06:54:18,820
+it's going to be really annoying to do anytime we want to
+
+
+6994
+06:54:18,850 --> 06:54:22,840
+recompile. So what we can do is we can add a script section in
+
+
+6995
+06:54:22,840 --> 06:54:26,680
+our package dot JSON to shorten some yarn scripts for us. So
+
+
+6996
+06:54:26,680 --> 06:54:29,530
+what we'll do is back in our package, dot JSON, a lot of
+
+
+6997
+06:54:29,530 --> 06:54:33,970
+comma, and we'll add a section called scripts, add the colon
+
+
+6998
+06:54:34,000 --> 06:54:37,000
+and the brackets. And in here, we'll say anytime we say
+
+
+6999
+06:54:37,000 --> 06:54:42,340
+compile, we will run this long command. So I'd compile we'll
+
+
+7000
+06:54:42,340 --> 06:54:46,390
+put some quotes. And we'll paste that in there. So now instead of
+
+
+7001
+06:54:46,390 --> 06:54:49,660
+typing that whole thing out, as long as we're in the same folder
+
+
+7002
+06:54:49,660 --> 06:54:54,340
+that our package json is in, we can run yarn compile. And this
+
+
+7003
+06:54:54,340 --> 06:54:57,880
+will run that whole script for us without us having to type the
+
+
+7004
+06:54:57,880 --> 06:55:00,550
+whole thing out scripts are a really useful way to make it
+
+
+7005
+06:55:00,580 --> 06:55:03,760
+easier for us to run long commands. All right, great. Now
+
+
+7006
+06:55:03,760 --> 06:55:07,270
+we have our code compiled, this is going to be equivalent to US
+
+
+7007
+06:55:07,270 --> 06:55:10,300
+hitting this compile button for us to actually go ahead and
+
+
+7008
+06:55:10,300 --> 06:55:10,780
+deploy.
