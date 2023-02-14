@@ -1,346 +1,346 @@
 6872
 06:46:14,020 --> 06:46:19,840
-as we progress. All of our code basically is going to be inside
-
+All of our code basically is going to be inside of this async function main, 
+我们所有的代码基本上都在这个异步函数 main 中
 
 6873
 06:46:19,840 --> 06:46:22,270
-of this async function main, which is going to be our main
-
+which is going to be our main script for deploying our simple storage dot soul 
+它将成为我们用于部署 "SimpleStorage.sol" 的主要脚本
 
 6874
 06:46:22,270 --> 06:46:25,900
-script for deploying our simple storage dot soul store deploy
-
+store deploy script is going to replicate exactly what goes on in remix,
+storage 部署脚本将精准再现 Remix 中发生的事
 
 6875
 06:46:25,900 --> 06:46:29,350
-script is going to replicate exactly what goes on in remix,
+
 
 
 6876
 06:46:29,410 --> 06:46:32,320
-in remix, what was the first thing that we always did? Well,
-
+in remix, what was the first thing that we always did? 
+在 Remix 中，我们总要做的第一件事是什么？
 
 6877
 06:46:32,320 --> 06:46:35,830
-the first thing that we would do is actually compile all of our
-
+Well, the first thing that we would do is actually compile all of our code. 
+其实就是编译我们所有的代码，对吧？
 
 6878
 06:46:35,830 --> 06:46:38,860
-code. So we're going to want to compile our code in our
-
+So we're going to want to compile our code in our JavaScript project as well. 
+所以我们同样要在这个 JavaScript 项目中先编译我们的代码
 
 6879
 06:46:38,860 --> 06:46:42,040
-JavaScript project as well. In order for us to compile our
-
+In order for us to compile our simple storage contract, 
+为了编译我们的 SimpleStorage 合约
 
 6880
 06:46:42,040 --> 06:46:45,520
-simple storage contract, we're going to use a tool called Silk
-
+we're going to use a tool called Silk Jas, 
+我们将使用一个名为 "solcjs" 的工具
 
 6881
 06:46:45,550 --> 06:46:48,670
-Jas, and JavaScript actually has a way to install projects
-
+and JavaScript actually has a way 
+并且 JavaScript 有一个现成的方法
 
 6882
 06:46:48,670 --> 06:46:52,090
-directly into our setups and into our folders. If we scroll
-
+to install projects directly into our setups and into our folders. 
+可以直接安装项目到我们的配置和文件夹中
 
 6883
 06:46:52,090 --> 06:46:55,450
-down this silk Jas is exactly what we're looking for. Because
-
+If we scroll down this silk Jas is exactly what we're looking for. 
+如果我们往下拉，这个 solcjs 正是我们要找的东西
 
 6884
 06:46:55,450 --> 06:46:58,390
-it has a way to compile a contract that imports other
-
+Because it has a way to compile a contract that imports other contracts via relative paths, 
+因为它有种方法能编译通过相对路径导入其它合约的合约
 
 6885
 06:46:58,390 --> 06:47:02,620
-contracts via relative paths, you can see a section in this
-
+you can see a section in this readme 
+你可以在 "README"(自述文件) 中看到有这么一部分
 
 6886
 06:47:02,620 --> 06:47:05,080
-readme and most documentation will have something like this,
-
+and most documentation will have something like this,
+并且大多数文档都会有这样的内容
 
 6887
 06:47:05,110 --> 06:47:09,220
-if it's JavaScript compatible. For Node js usage, it says to
-
+if it's JavaScript compatible. For Node js usage, 
+只要它与 JavaScript 兼容并且是供 Node.js 使用的
 
 6888
 06:47:09,220 --> 06:47:11,980
-use the latest stable version of the solidity compiler via Node
-
+it says to use the latest stable version of the solidity compiler via Node js, 
+它说的是，为了通过 Node.js 使用最新稳定版本的 Solidity 编译器 
 
 6889
 06:47:11,980 --> 06:47:17,860
-js, you can install it via NPM npm install. So NPM is what's
-
+you can install it via NPM npm install. So 
+你可以通过 npm 来安装它 "npm install solc"
 
 6890
 06:47:17,860 --> 06:47:22,330
-known as a package manager. And we actually installed NPM just
-
+NPM is what's known as a package manager. 
+npm 就是所谓的包管理器("package manager")
 
 6891
 06:47:22,330 --> 06:47:26,650
-by installing no Jess, right, if we do no dash dash version, you
-
+And we actually installed NPM just by installing no Jess, right, 
+其实我们已经在安装 Node.js 的时候安装过 npm 了，是吧？
 
 6892
 06:47:26,650 --> 06:47:30,700
-should also be able to do NPM dash dash version. Another tool
-
+if we do no dash dash version, 
+如果我们可以输出 "node --version"
 
 6893
 06:47:30,700 --> 06:47:33,310
-that it comes with is something called core pack. And you can
-
+you should also be able to do NPM dash dash version. 
+那么就应该也可以输出 "npm --version"
 
 6894
 06:47:33,310 --> 06:47:36,730
-type core pack dash dash version, now we can install with
-
+Another tool that it comes with is something called core pack. 
+另一个要用到的工具名字是 "Corepack"
 
 6895
 06:47:36,730 --> 06:47:40,990
-NPM using npm install silk, however, I like the yarn package
-
+And you can type core pack dash dash version, 
+你可以输入 "corepack --version" 来确认
 
 6896
 06:47:40,990 --> 06:47:44,590
-manager a little bit better. So we're actually going to install
-
+now we can install with NPM using npm install silk, 
+现在我们就可以通过 npm 来执行 "npm install solc" 了
 
 6897
 06:47:44,620 --> 06:47:47,950
-the yarn package manager instead to do all of our package
-
+however, I like the yarn package manager a little bit better. 
+但我其实更喜欢用 "yarn" 包管理器
 
 6898
 06:47:47,950 --> 06:47:51,190
-management. If you go to the installation page, the newer way
-
+So we're actually going to install the yarn package manager instead to do all of our package management. 
+所以我们还需要安装 yarn 包管理器作为我们总的包管理器
 
 6899
 06:47:51,190 --> 06:47:54,610
-to install yarn is just by running core pack enable. And
-
+If you go to the installation page, 
+如果你去到安装页面就可以看到
 
 6900
 06:47:54,640 --> 06:47:58,390
-the older way is to install with NPM. If you go ahead and run
-
+the newer way to install yarn is just by running core pack enable. And the older way is to install with NPM. 
+较新版本的安装只用运行 "corepack enable"，而旧版本还要使用 npm
 
 6901
 06:47:58,420 --> 06:48:01,600
-core pack enable after that finishes, you should be able to
-
+If you go ahead and run core pack enable after that finishes, 
+运行 "corepack enable" 并等待其完成后
 
 6902
 06:48:01,600 --> 06:48:07,150
-run yarn dash dash version. Alternatively, you can just run
-
+you should be able to run yarn dash dash version. 
+你应该就可以运行 "yarn --version" 了
 
 6903
 06:48:07,210 --> 06:48:12,850
-NPM i dash g core pack, and then you can run core pack enable.
-
+Alternatively, you can just run NPM i dash g core pack, and then you can run core pack enable.
+或者，你需要先运行 "npm i -g corepack" 然后再运行 "corepack enable"
 
 6904
 06:48:13,000 --> 06:48:17,440
-The last option you have is you can run NPM i dash g
-
+The last option you have is you can run NPM i dash g yarn. 
+最后一种方法是运行 "npm i -g yarn"
 
 6905
 06:48:17,860 --> 06:48:21,850
-yarn. This will install yarn globally for your system. But
-
+This will install yarn globally for your system. 
+这会为你的系统全局安装 yarn
 
 6906
 06:48:21,850 --> 06:48:25,720
-this is considered the outdated way to install yarn. And ideally
-
+But this is considered the outdated way to install yarn. 
+但这是一种过时的安装 yarn 的方式
 
 6907
 06:48:25,720 --> 06:48:29,560
-you run core pack enable. But in any case, after you run those,
-
+And ideally you run core pack enable. 
+理想情况下你应该运行 "corepack enable"
 
 6908
 06:48:29,590 --> 06:48:31,960
-if you run yarn dash dash version, you should get
-
+But in any case, after you run those, 
+但无论如何，在你运行完那些之后
 
 6909
 06:48:31,960 --> 06:48:35,380
-something that looks like this. Now that we have yarn, we can
-
+if you run yarn dash dash version, you should get something that looks like this. 
+如果你运行 "yarn --version"，都应该得到类似这样的东西
 
 6910
 06:48:35,380 --> 06:48:39,580
-actually use yarn to install all of our projects, instead of NPM.
-
+Now that we have yarn, we can actually use yarn to install all of our projects, instead of NPM.
+现在我们有了 yarn 就能用它来安装所有的项目了，而不是用 npm
 
 6911
 06:48:39,940 --> 06:48:44,440
-Back in silk Jas where it says npm install soak, we can do the
-
+Back in silk Jas where it says npm install soak, 
+回到 solcjs，它说的是 "npm install solc"
 
 6912
 06:48:44,440 --> 06:48:48,550
-yarn equivalents of NPM install sock, which is going to be yarn,
-
+we can do the yarn equivalents of NPM install sock, 
+我们可以用 yarn 达到完全相同的效果
 
 6913
 06:48:49,240 --> 06:48:55,330
-add sock, this will actually go ahead and install solc to our
-
+which is going to be yarn, add sock, 
+具体做法就是 "yarn add solc"
 
 6914
 06:48:55,330 --> 06:48:58,990
-project. If we open up our folders, you'll actually see
-
+this will actually go ahead and install solc to our project. 
+这就能为我们的项目安装 solc 了
 
 6915
 06:48:59,020 --> 06:49:01,930
-that this added a couple of different folders, it first
-
+If we open up our folders, you'll actually see that this added a couple of different folders, 
+打开我们的文件夹，可以看到这里已经添加了一些不同的文件夹
 
 6916
 06:49:01,930 --> 06:49:06,010
-added a package dot JSON package dot JSON is a file that tells us
-
+it first added a package dot JSON 
+首先是这个 "package.json" 文件
 
 6917
 06:49:06,040 --> 06:49:09,610
-a lot about our project and the dependencies that it works with.
-
+package dot JSON is a file that tells us a lot about our project and the dependencies that it works with.
+"package.json" 是一个描述我们的项目以及它的依赖关系的文件
 
 6918
 06:49:09,640 --> 06:49:14,920
 For example, we've installed the soap package of 0.8 point 13.
-
+举个例子，我们安装了 "solc" 包 0.8.13 版本
 
 6919
 06:49:15,130 --> 06:49:18,880
-Our yarn dot lock tells us the exact version of all the
-
+Our yarn dot lock tells us the exact version of all the different packages of our project. 
+而 "yarn.lock" 可以告诉我们项目所使用的所有不同的包的确切版本
 
 6920
 06:49:18,880 --> 06:49:22,840
-different packages of our project. For example, the reason
-
+For example, the reason this is so important too, 
+举个例子，这个东西之所以重要
 
 6921
 06:49:22,840 --> 06:49:25,840
-this is so important too, is solc has a ton of dependencies
-
+is solc has a ton of dependencies as well. 
+是因为 solc 自己也有大量的依赖项
 
 6922
 06:49:25,840 --> 06:49:29,800
-as well. So yarn dot lock tells us exactly what version of solc
-
+So yarn dot lock tells us exactly what version of solc 
+所以 "yarn.lock" 能告诉我们 solc 的确切版本
 
 6923
 06:49:30,010 --> 06:49:32,380
-and all the different dependencies of solchen. Any
-
+and all the different dependencies of solchen. Any other project that we add. 
+以及我们添加的所有 solc 所依赖的项目的版本
 
 6924
 06:49:32,380 --> 06:49:36,310
-other project that we add. This is autogenerated file, don't
-
+This is autogenerated file, don't edit the file directly. 
+这一个自动生成的文件，不要直接编辑本文件
 
 6925
 06:49:36,340 --> 06:49:39,910
-edit the file directly. The final bit is we got this node
-
+The final bit is we got this node modules folder. 
+最后一点是我们得到了这个 "node_modules" 文件夹
 
 6926
 06:49:39,910 --> 06:49:43,960
-modules folder. This node modules folder is going to be
-
+This node modules folder is going to be where all the installed code that we just downloaded is, 
+这个文件夹就存放着我们刚刚下载的所有代码
 
 6927
 06:49:44,020 --> 06:49:47,950
-where all the installed code that we just downloaded is, for
-
+for example, if we look at node modules, we can see there's a sock folder. 
+比如如果我们查看 "node_modules"，能看到一个 solc 文件夹
 
 6928
 06:49:47,950 --> 06:49:51,010
-example, if we look at node modules, we can see there's a
-
+And inside this sock folder 
+而在这个 solc 文件夹里的
 
 6929
 06:49:51,010 --> 06:49:55,570
-sock folder. And inside this sock folder is all the code
-
+is all the code associated with this soap package that we just installed.
+就是我们刚刚下载的这个 solc 包的所有相关代码
 
 6930
 06:49:55,600 --> 06:49:59,290
-associated with this soap package that we just installed.
-
+And since we're working with zero point 8.7 of slowly, 
+因为我们正在使用的是 0.8.7 版本的 Solidity
 
 6931
 06:49:59,350 --> 06:50:03,370
-And since we're working with zero point 8.7 of slowly, we
-
+we actually want to install that specific version. 
+所以我们实际要安装这个的特定版本
 
 6932
 06:50:03,370 --> 06:50:06,670
-actually want to install that specific version. So we're going
-
+So we're going to do yarn add solc at zero point 8.7 Dash fixed 
+我们要做的就是 "yarn add solc@0.8.7-fixed"
 
 6933
 06:50:06,670 --> 06:50:17,230
-to do yarn add solc at zero point 8.7 Dash fixed and you'll
-
+and you'll see in our package dot JSON 
+现在你可以在 "package.json" 里看到
 
 6934
 06:50:17,230 --> 06:50:21,910
-see in our package dot JSON you can now see zero point 8.7 Dash
-
+you can now see zero point 8.7 Dash fixed in our dependencies section for sulk. 
+solc 的依赖项("dependencies")部分变成了 "0.8.0-fixed"
 
 6935
 06:50:21,910 --> 06:50:25,780
-fixed in our dependencies section for sulk. Normally you
-
+Normally you can just add your salt version like yarn add zero point 8.7 
+一般来说你添加的会是 "yarn add 0.8.7" 这样的版本号
 
 6936
 06:50:25,780 --> 06:50:29,530
-can just add your salt version like yarn add zero point 8.7 But
-
+But there was an issue with zero point 8.7 
+但 0.8.7 版本存在一些问题
 
 6937
 06:50:29,530 --> 06:50:33,100
-there was an issue with zero point 8.7 So we had to do zero
-
+So we had to do zero point 8.7 Dash fixed.
+所以我们不得不使用 "0.8.7-fixed" 版本
 
 6938
 06:50:33,460 --> 06:50:35,140
-point 8.7 Dash fixed.
-
+You can find the different releases and the different versions 
+你可以找到不同发行版("Releases")和不同版本
 
 6939
 06:50:36,430 --> 06:50:38,200
-You can find the different releases and the different
-
+if you go to sulk Jas releases and then to tags
+就在 solcjs 的 "Releases" 里接着选择 "Tags"
 
 6940
 06:50:38,200 --> 06:50:41,740
-versions if you go to sulk Jas releases and then to tags
+
 
 
 6941
