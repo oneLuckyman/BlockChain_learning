@@ -246,7 +246,7 @@ For example, the reason this is so important too,
 6921
 06:49:22,840 --> 06:49:25,840
 is solc has a ton of dependencies as well. 
-是因为 solc 自己也有大量的依赖项
+是因为 solc 自己也有大量的依赖项("dependencies")
 
 6922
 06:49:25,840 --> 06:49:29,800
@@ -311,7 +311,7 @@ and you'll see in our package dot JSON
 6934
 06:50:17,230 --> 06:50:21,910
 you can now see zero point 8.7 Dash fixed in our dependencies section for sulk. 
-solc 的依赖项("dependencies")部分变成了 "0.8.0-fixed"
+solc 的依赖项部分变成了 "0.8.0-fixed"
 
 6935
 06:50:21,910 --> 06:50:25,780
@@ -340,344 +340,346 @@ if you go to sulk Jas releases and then to tags
 
 6940
 06:50:38,200 --> 06:50:41,740
-
-
+Alright, great. Now that we have sold, we have the ability to actually compile our contracts, 
+很好，现在我们有了 solc 就能够编译我们的合约了
 
 6941
 06:50:42,940 --> 06:50:45,730
-Alright, great. Now that we have sold, we have the ability to
+
 
 
 6942
 06:50:45,730 --> 06:50:50,590
-actually compile our contracts, we could either compile them in
-
+we could either compile them in our code 
+我们可以在我们的代码中一并编译它们
 
 6943
 06:50:50,590 --> 06:50:54,190
-our code and have it automatically run whenever we
-
+and have it automatically run whenever we hit Deploy, 
+并在部署时自动运行
 
 6944
 06:50:54,190 --> 06:51:00,130
-hit Deploy, or, or we could compile them separately. If you
+or, or we could compile them separately. 
+或者是分别编译它们
 
 
 6945
 06:51:00,130 --> 06:51:03,310
-want to go back after this section is an example in the
-
+If you want to go back after this section 
+如果你想在本节之后进行拓展学习
 
 6946
 06:51:03,310 --> 06:51:07,120
-sculpt Jas repository that shows you how to actually compile silk
-
+is an example in the sculpt Jas repository that shows you how to actually compile silk right in your code. 
+可以参考 solcjs 仓库中的示例，它向你展示了如何在代码中一并编译 solc
 
 6947
 06:51:07,150 --> 06:51:09,790
-right in your code. We are actually going to compile them
-
+We are actually going to compile them separately using a soap Jas command. 
+这里我们选择使用 solcjs 的命令分别编译它们
 
 6948
 06:51:09,790 --> 06:51:14,020
-separately using a soap Jas command. The yarn command is
-
+The yarn command is both used to install dependencies and it can be used to run scripts. 
+yarn 命令既可以用来安装依赖库，也可以用来运行脚本
 
 6949
 06:51:14,020 --> 06:51:17,740
-both used to install dependencies and it can be used
-
+If you go to sulk Jas and you scroll down, 
+如果你去到 solcjs 并往下拉
 
 6950
 06:51:17,770 --> 06:51:21,910
-to run scripts. If you go to sulk Jas and you scroll down, it
-
+it says in order to use the command line, you actually need to install it globally. 
+它提示为了在命令行中使用，你需要进行全局安装
 
 6951
 06:51:21,910 --> 06:51:24,370
-says in order to use the command line, you actually need to
-
+If you want to install this globally 
+如果你要进行全局安装的话
 
 6952
 06:51:24,370 --> 06:51:27,580
-install it globally. If you want to install this globally using
-
+using yarn Global Add solc at zero point 8.7 Dash fixed 
+使用 "yarn global add solc@0.8.7-fixed"
 
 6953
 06:51:27,580 --> 06:51:33,250
-yarn Global Add solc at zero point 8.7 Dash fixed you can
-
+you can absolutely go ahead. 
+当然你可以选择这么做
 
 6954
 06:51:33,250 --> 06:51:36,850
-absolutely go ahead. However, since we're inside of this
-
+However, since we're inside of this folder here, 
+但是，因为我们所在的这个文件夹里
 
 6955
 06:51:36,850 --> 06:51:40,450
-folder here, which has the yarn dot lock the package json and
-
+which has the yarn dot lock the package json and the node modules 
+它已经有了 "yarn.lock", "package.json" 以及 "node_modules"
 
 6956
 06:51:40,450 --> 06:51:44,230
-the node modules yarn will be smart enough to know i You're
-
+yarn will be smart enough to know i You're looking for the soak in this folder. 
+yarn 足够智能因此知道你正在这个文件夹中寻找 solc
 
 6957
 06:51:44,230 --> 06:51:48,250
-looking for the soak in this folder. So we can actually go
-
+So we can actually go ahead and compile our contract using yarn and solc Jess 
+所以我们可以直接继续并使用 yarn 和 solcjs 编译我们的合约
 
 6958
 06:51:48,250 --> 06:51:52,300
-ahead and compile our contract using yarn and solc Jess if you
-
+if you want to see all the different commands soak Jas allows 
+如果你想查看 solcjs 的所有命令
 
 6959
 06:51:52,300 --> 06:51:55,540
-want to see all the different commands soak Jas allows we can
-
+we can just run yarn. So Jas dash dash help, 
+我们可以运行 "yarn solcjs --help"
 
 6960
 06:51:55,540 --> 06:52:00,970
-just run yarn. So Jas dash dash help, and you'll see it'll spit
-
+and you'll see it'll spit out a list of all the different options that soft Jas has. 
+你可以看到它返回了一个包含 solcjs 所有选项的列表
 
 6961
 06:52:00,970 --> 06:52:06,340
-out a list of all the different options that soft Jas has. You
-
+You can also run yarn, so Jas dash dash version 
+你也可以运行 "yarn solcjs --version"
 
 6962
 06:52:06,340 --> 06:52:11,200
-can also run yarn, so Jas dash dash version to just make sure
-
+to just make sure that we're on the correct version, 
+以确保我们是在正确的版本上
 
 6963
 06:52:11,200 --> 06:52:14,200
-that we're on the correct version, which is indeed zero
-
+which is indeed zero point 8.7. 
+版本确实是 0.8.7
 
 6964
 06:52:14,740 --> 06:52:18,130
-point 8.7. Now to actually compile our simple storage at
-
+Now to actually compile our simple storage at soul, 
+现在准备实际编译一下我们的 "SimpleStorage.sol"
 
 6965
 06:52:18,130 --> 06:52:23,710
-soul, let's run the compliation command we will run yarn, so J
-
+let's run the compliation command 
+让我们来运行编译命令
 
 6966
 06:52:23,710 --> 06:52:29,380
-S, dash dash bin since we want the binary dash dash ABI since
-
+we will run yarn, so JS, dash dash bin since we want the binary 
+我们要运行的是 "yarn solcjs --bin" 因为我们想要的是二进制文件
 
 6967
 06:52:29,380 --> 06:52:37,090
-we also want the ABI dash dash include path node modules. Since
-
+dash dash ABI since we also want the ABI 
+"--abi" 因为我们同样想获得 ABI
 
 6968
 06:52:37,150 --> 06:52:41,290
-we want to include any contracts or files in our node modules, we
-
+dash dash include path node modules. 
+"--include-path node_modules/" 
 
 6969
 06:52:41,290 --> 06:52:43,870
-aren't using any for this project, but in the future, you
-
+Since we want to include any contracts or files in our node modules, 
+因为我们想包含 "node_modules" 中的所有合约或文件
 
 6970
 06:52:43,870 --> 06:52:46,870
-will need to include this dash dash include path node modules
-
+we aren't using any for this project, 
+本次项目并没有用到其中的全部
 
 6971
 06:52:47,530 --> 06:52:52,330
-do dash dash base path of period, this period means that
-
+but in the future, you will need to include this dash dash include path node modules 
+但未来，你一定会有需要使用 "--include-path node_modules/" 的时候
 
 6972
 06:52:52,330 --> 06:52:56,260
-the base path is going to be this folder dash O period, which
-
+do dash dash base path of period, this period means that the base path is going to be this folder 
+"--base-path ." 这个句号(".")表示起始路径就是现在这个文件夹
 
 6973
 06:52:56,260 --> 06:53:00,640
-means we're going to output the compiled binary and ABI to this
-
+dash O period, which means we're going to output the compiled binary and ABI to this folder. 
+"-o ." 表示编译出来的二进制文件和 ABI 也输出到现在这个文件夹
 
 6974
 06:53:00,670 --> 06:53:05,410
-folder. And then finally, simple storage dot soul. Since this is
-
+And then finally, simple storage dot soul. Since this is the contract that we want to compile, 
+最后是 "SimpleStorage.sol" 因为这就是我们想要编译的合约
 
 6975
 06:53:05,410 --> 06:53:08,680
-the contract that we want to compile, auto completed it from
-
+auto completed it from simple storage to simple storage. So 
+我把 "SimpleStorage" 自动补全为了 "SimpleStorage.sol"
 
 6976
 06:53:08,680 --> 06:53:11,770
-simple storage to simple storage. So by typing simple,
-
+by typing simple, and then hitting Tab, 
+通过输入 "Simple" 再按 "Tab" 键
 
 6977
 06:53:12,520 --> 06:53:15,310
-and then hitting Tab, but let's go ahead and hit enter, you'll
-
+but let's go ahead and hit enter, 
+让我们继续，敲击回车
 
 6978
 06:53:15,310 --> 06:53:19,870
-see it's running this command to compile this contract. And
-
+you'll see it's running this command to compile this contract. 
+你可以看到它正在运行这个命令来编译这个合约
 
 6979
 06:53:19,870 --> 06:53:24,370
-you'll see two files get output. One called Simple Storage soul
-
+And you'll see two files get output. 
+并且你可以看到有两个文件输出了出来
 
 6980
 06:53:24,400 --> 06:53:27,850
-underscore simple storage that API in simple storage Sol
-
+One called Simple Storage soul underscore simple storage that API 
+其中一个名为 "SimpleStorage_sol_SimpleStorage.abi"
 
 6981
 06:53:27,880 --> 06:53:31,660
-underscore simple storage dot bin, the ABI is obviously the
-
+in simple storage Sol underscore simple storage dot bin, 
+以及 "SimpleStorage_sol_SimpleStorage.bin"
 
 6982
 06:53:31,660 --> 06:53:35,920
-ABI of this contract, which will need in the future. And then the
-
+the ABI is obviously the ABI of this contract, which will need in the future. 
+这个 abi 文件很明显就是这个合约的 ABI，之后我们会用到它
 
 6983
 06:53:35,920 --> 06:53:39,670
-bin is going to be the binary, or the really low level of this
-
+And then the bin is going to be the binary, or the really low level of this code 
+然后 bin 文件就是二进制文件，或者说是这个代码真正的底层文件
 
 6984
 06:53:39,670 --> 06:53:42,520
-code back and remix. If you compile simple storage, that
-
+back and remix. If you compile simple storage, that soul, 
+回到 Remix 如果你编译 "SimpleStorage.sol"
 
 6985
 06:53:42,520 --> 06:53:46,570
-soul, you can actually look at compliation details, like the
-
+you can actually look at compliation details, 
+其实就可以查看这些编译细节
 
 6986
 06:53:46,570 --> 06:53:51,850
-ABI which we just got, or the bytecode, which if you look at
-
+like the ABI which we just got, 
+比如说我们刚刚得到的 ABI 
 
 6987
 06:53:51,850 --> 06:53:59,080
-this object 60806 That's the same as the binary here 60806.
-
+or the bytecode, which if you look at this object 60806 
+或者是字节码，如果你看这个 '"object": "60806"' 
 
 6988
 06:53:59,110 --> 06:54:02,140
-Alright, great. So now we've compiled our contracts here.
-
+That's the same as the binary here 60806. 
+就会发现它和二进制文件里的一样，这里也是 60806
 
 6989
 06:54:02,320 --> 06:54:05,890
-Now, obviously, now if you hit up on your keyboard, you can
-
+Alright, great. So now we've compiled our contracts here. 
+太好了，所以我们在这里已经编译好了我们的合约
 
 6990
 06:54:05,890 --> 06:54:09,640
-actually cycle through your most recent terminal commands. And if
-
+Now, obviously, now if you hit up on your keyboard, you can actually cycle through your most recent terminal commands. 
+现在如果你按键盘上的 "↑"键(上方向键)，可以浏览最近运行的终端命令
 
 6991
 06:54:09,640 --> 06:54:12,520
-you hit up enough, we can see this command that we just ran
-
+And if you hit up enough, we can see this command that we just ran
+如果你按的次数足够，就可以看到我们刚刚运行的这个命令
 
 6992
 06:54:12,550 --> 06:54:15,580
 typing this out or hitting up a whole bunch every single time,
-
+每次重新编译的时候都输入这个或是再次输入这么一大堆东西
 
 6993
 06:54:15,790 --> 06:54:18,820
-it's going to be really annoying to do anytime we want to
-
+it's going to be really annoying to do anytime we want to recompile. 
+真的会让人感觉很烦躁
 
 6994
 06:54:18,850 --> 06:54:22,840
-recompile. So what we can do is we can add a script section in
-
+So what we can do 
+所以我们可以这样做
 
 6995
 06:54:22,840 --> 06:54:26,680
-our package dot JSON to shorten some yarn scripts for us. So
-
+is we can add a script section in our package dot JSON 
+在 "package.json" 里添加一个 "scripts" 部分
 
 6996
 06:54:26,680 --> 06:54:29,530
-what we'll do is back in our package, dot JSON, a lot of
-
+to shorten some yarn scripts for us. 
+以缩短一些 yarn 运行脚本时的命令长度
 
 6997
 06:54:29,530 --> 06:54:33,970
-comma, and we'll add a section called scripts, add the colon
-
+So what we'll do is back in our package, dot JSON, a lot of comma, 
+所以我们要进入 "package.json"，加一个逗号
 
 6998
 06:54:34,000 --> 06:54:37,000
-and the brackets. And in here, we'll say anytime we say
-
+and we'll add a section called scripts, add the colon and the brackets. 
+并且添加一个名为 "scripts" 的部分，别忘了冒号和花括号
 
 6999
 06:54:37,000 --> 06:54:42,340
-compile, we will run this long command. So I'd compile we'll
-
+And in here, we'll say anytime we say compile, we will run this long command. 
+在这里告诉它，每当我们运行 "compile" 时运行的都是这一长段命令
 
 7000
 06:54:42,340 --> 06:54:46,390
-put some quotes. And we'll paste that in there. So now instead of
-
+So I'd compile we'll put some quotes. And we'll paste that in there. 
+所以我们输入引号，并把这些全部粘贴进去
 
 7001
 06:54:46,390 --> 06:54:49,660
-typing that whole thing out, as long as we're in the same folder
-
+So now instead of typing that whole thing out, 
+现在就不用再输入那一大堆东西了
 
 7002
 06:54:49,660 --> 06:54:54,340
-that our package json is in, we can run yarn compile. And this
-
+as long as we're in the same folder that our package json is in, 
+只要我们和这个 "package.json" 处在同一文件夹下就行
 
 7003
 06:54:54,340 --> 06:54:57,880
-will run that whole script for us without us having to type the
-
+we can run yarn compile. And this will run that whole script for us 
+我们可以运行 "yarn compile"，然后它就会运行整个脚本
 
 7004
 06:54:57,880 --> 06:55:00,550
-whole thing out scripts are a really useful way to make it
-
+without us having to type the whole thing out 
+并且我们不用再输入这堆东西了
 
 7005
 06:55:00,580 --> 06:55:03,760
-easier for us to run long commands. All right, great. Now
-
+scripts are a really useful way to make it easier for us to run long commands. 
+"scripts" 是一种非常实用的方法，可以让我们轻松地运行长命令
 
 7006
 06:55:03,760 --> 06:55:07,270
-we have our code compiled, this is going to be equivalent to US
-
+All right, great. Now we have our code compiled, 
+很好，非常棒，现在我们已经编译好了我们的代码
 
 7007
 06:55:07,270 --> 06:55:10,300
-hitting this compile button for us to actually go ahead and
-
+this is going to be equivalent to US hitting this compile button 
+这和我们点击这个 "Compile" 按钮是等价的
 
 7008
 06:55:10,300 --> 06:55:10,780
-deploy.
+for us to actually go ahead and deploy.
+现在来让我们部署一下它
