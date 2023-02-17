@@ -1,0 +1,423 @@
+7009
+06:55:13,570 --> 06:55:16,060
+So now we have our simple storage. That's all compiled,
+现在我们已经把 "SimpleStorage" 编译好了
+
+7010
+06:55:16,330 --> 06:55:19,750
+let's learn how we can actually deploy this thing. 
+现在我们来学习一下如何部署它
+
+7011
+06:55:19,750 --> 06:55:22,780
+Remember, in remix, we actually deployed it to one of two different places,
+在 Remix 里，其实我们可以把它部署到两个不同的地方
+
+7012
+06:55:22,900 --> 06:55:27,250
+we deployed it to either a JavaScript VM, 
+我们可以把它部署到 "JavaScript VM" 
+
+7013
+06:55:27,250 --> 06:55:31,180
+or with our injected web three, with our Metamask. 
+或是 "Injected Web3" ，也就是 Metamask 上
+
+7014
+06:55:31,180 --> 06:55:34,450
+Let's learn first ad, do the JavaScript VM. 
+我们先来学习怎么部署到 "JavaScript VM" 上
+
+7015
+06:55:34,450 --> 06:55:38,410
+And then we'll learn how to use the injected web three, 
+之后再学习如何部署到 "Injected Web3" 上
+
+7016
+06:55:38,410 --> 06:55:41,530
+or a meta mask or some connection to an actual test net. 
+也可以说是 Metamask 或者任何真实的测试网络上
+
+7017
+06:55:41,530 --> 06:55:44,710
+So in order to deploy this to a JavaScript virtual invite I'm in or kind of a fake blockchain, 
+为了部署这个到 JavaScript 虚拟机环境或者说假的区块链上
+
+7018
+06:55:44,710 --> 06:55:48,190
+we're gonna need to get a fake blockchain. 
+我们需要先拥有一个假的区块链
+
+7019
+06:55:48,190 --> 06:55:51,550
+Now in the future, we're going to be using the Hardhead runtime environment 
+未来，我们将会使用 Hardhat 运行环境
+
+7020
+06:55:51,550 --> 06:55:55,810
+as our JavaScript virtual machine or aka our fake blockchain. 
+作为我们的 JavaScript 虚拟机或者说假的区块链
+
+7021
+06:55:55,810 --> 06:55:59,440
+But for this section, I want us to use a tool called ganache. 
+但在本节中，我想用的是一个叫做 "Ganache" 的工具
+
+7022
+06:55:59,440 --> 06:56:02,320
+There's a link to this in the GitHub repository. 
+可以通过 GitHub 仓库中的链接跳转到这里
+
+7023
+06:56:02,320 --> 06:56:06,220
+Ganache is similar to a virtual machine in remix. 
+Ganache 和 Remix 里的虚拟机很相似
+
+7024
+06:56:06,220 --> 06:56:10,390
+It's a fake blockchain that we can run locally 
+这是一个我们可以在本地运行的假区块链
+
+7025
+06:56:10,390 --> 06:56:14,200
+to actually test, deploy and run code. 
+可以供我们进行测试，部署还有运行代码
+
+7026
+06:56:14,200 --> 06:56:17,500
+It's also a nice way to see things that are going on in a blockchain. 
+这也是观察区块链上正在发生的事情的一个好方法。
+
+7027
+06:56:17,500 --> 06:56:20,320
+Let's go ahead and spin up the ganache application after you install it, 
+你需要先安装 Ganache 然后我们就可以启动它了
+
+7028
+06:56:20,320 --> 06:56:24,220
+the ganache application will look a little something like this. 
+应用程序 Ganache 看起来就是这样的
+
+7029
+06:56:24,220 --> 06:56:28,150
+And to spin up a fake blockchain really quickly, ou can just go ahead and click Quickstart. 
+用它启动一个假区块链真的很快，你只需要点击一下 "QUICKSTART"
+
+7030
+06:56:28,150 --> 06:56:31,390
+This will spin up a fake blockchain that's running locally on your computer right here, which is fantastic. 
+它就会在你的计算机本地启动一个假区块链，真是太酷了
+
+7031
+06:56:31,390 --> 06:56:35,170
+It comes with a whole bunch of fake accounts 
+它带有一大堆假账户
+
+7032
+06:56:35,170 --> 06:56:39,370
+exactly like how remix comes with a ton of fake accounts with 100 ether each 
+就和 Remix 上每个带有 100 ETH 的假账户完全一样
+
+7033
+06:56:39,370 --> 06:56:42,940
+ganache comes with a bunch of fake accounts with 100 ether each. 
+Ganache 同样的带有一大堆假账户并且每个也有 100 ETH
+
+7034
+06:56:42,940 --> 06:56:46,750
+They also come with the private keys 
+它们还附有私钥
+
+7035
+06:56:46,750 --> 06:56:50,770
+that we can use in our applications to actually take control of these fake accounts. 
+这可以让我们在应用程序中控制这些假账户
+
+7036
+06:56:50,800 --> 06:56:54,310
+Remember, don't use these private keys on a public blockchain. 
+记住，不要在公共区块链上使用这些私钥
+
+7037
+06:56:54,310 --> 06:56:56,620
+They're for development purposes only 
+它们仅用于开发目的
+
+7038
+06:56:56,620 --> 06:56:59,530
+because a lot of people know these private keys 
+因为很多人都知道这些私钥
+
+7039
+06:56:59,530 --> 06:57:02,710
+in our code. One of the first things that we're going to need to do 
+在我们的代码中，我们首先要做的就是
+
+7040
+06:57:02,710 --> 06:57:05,440
+is actually connect to our blockchain 
+连接到我们的区块链上
+
+7041
+06:57:05,440 --> 06:57:09,100
+remix does this a little bit behind the scenes, 
+Remix 在幕后完成了这一工作
+
+7042
+06:57:09,100 --> 06:57:12,160
+if we're choosing JavaScript virtual machine 
+如果我们选择 JavaScript 虚拟机
+
+7043
+06:57:12,160 --> 06:57:15,760
+remix chooses its own fake blockchain that it runs. 
+Remix 就会选择它自己运行的假区块链
+
+7044
+06:57:15,760 --> 06:57:19,420
+If we choose injected web three, as we know, meta mask pops up, 
+如果我们选择了 "Injected Web3"，如我们所料 Metamask 弹了出来
+
+7045
+06:57:19,420 --> 06:57:22,120
+and it connects to our meta mask, 
+它连接到了我们的 Metamask 上
+
+7046
+06:57:22,120 --> 06:57:25,600
+this connection that remix does, is actually doing something really interesting. 
+Remix 所做的这种连接，其实是一件很有意思的事
+
+7047
+06:57:25,600 --> 06:57:29,140
+It's not just connecting to our meta mask by some magical powers. 
+它不是通过某种魔法力量连接到了我们的 Metamask
+
+7048
+06:57:29,140 --> 06:57:32,530
+It's actually connecting to our meta mask, which has a connection to the blockchain behind the scenes. 
+而是通过在幕后与区块链连接从而连接到了我们的 Metamask 
+
+7049
+06:57:32,560 --> 06:57:36,040
+If you open up your meta mask, 
+如果你打开 Metamask
+
+7050
+06:57:36,040 --> 06:57:39,580
+and you go down to you select the networks and you select ad networks,
+然后打开网络选项("Networks")选择添加网络("Add Network")
+
+7051
+06:57:40,000 --> 06:57:43,570
+you'll get popped up into a UI that looks like this. 
+就会弹出一个像是这样的 UI 界面
+
+7052
+06:57:43,570 --> 06:57:47,530
+If we go back and hit select networks over here, 
+如果你点击这里返回到“网络”("Networks")选项界面
+
+7053
+06:57:47,650 --> 06:57:50,290
+we can actually see information about these different networks. 
+我们就可以看到这些不同网络的一系列信息
+
+7054
+06:57:50,290 --> 06:57:53,230
+One of the main things that we can see 
+我们能看到的主要内容之一是
+
+7055
+06:57:53,260 --> 06:57:58,480
+is that all these networks have something called an RPC URL. 
+所有网络都有一个叫做 "RPC URL" 的东西
+
+7056
+06:57:58,480 --> 06:58:03,820
+RPC stands for remote procedure call. 
+RPC 表示“远程过程调用”("Remote Procedure call") 
+
+7057
+06:58:04,030 --> 06:58:07,750
+And then URL is uniform resource locator. 
+而 URL 则是“统一资源定位符”("Uniform Resource Locator")
+
+7058
+06:58:07,750 --> 06:58:12,370
+This RPC URL stands for a connection to a blockchain node that somebody is running 
+这个 "RPC URL" 代表，到某人正在运行的区块链节点("Blockchain node")的连接
+
+7059
+06:58:12,370 --> 06:58:15,790
+this this URL connects us to make API calls and to interact with a blockchain node. 
+这个 URL 连接我们进行 API 的调用以及与区块链节点的交互
+
+7060
+06:58:15,790 --> 06:58:19,810
+Blockchain nodes run with software, and some of them expose an API call. 
+区块链节点使用软件运行，其中的一些会公开 API 调用
+
+7061
+06:58:19,810 --> 06:58:23,590
+If you look at the NGO Aetherium website, there actually are instructions
+
+
+7062
+06:58:23,620 --> 06:58:26,560
+for you to run your own blockchain node for a real
+
+
+7063
+06:58:26,560 --> 06:58:30,370
+blockchain like Aetherium. Most of these have flags like dash
+
+
+7064
+06:58:30,370 --> 06:58:36,250
+HTTP dot ADR to expose these RPC endpoints. So if you ever want
+
+
+7065
+06:58:36,250 --> 06:58:39,430
+to run your own node, your own real blockchain node, instead of
+
+
+7066
+06:58:39,430 --> 06:58:42,250
+using meta masks or any other the providers that we're going
+
+
+7067
+06:58:42,250 --> 06:58:44,410
+to go through, you can use go Aetherium, or whatever
+
+
+7068
+06:58:44,410 --> 06:58:47,080
+blockchain you're working with software to run your own notes.
+
+
+7069
+06:58:47,110 --> 06:58:50,770
+But it's this RPC URL that allows us to connect to Rinkeby,
+
+
+7070
+06:58:50,800 --> 06:58:54,730
+if on Rinkeby ropsten, if we're on ropsten main net if we're on
+
+
+7071
+06:58:54,730 --> 06:58:57,550
+Main net, etc. And it's going to be the way that we're going to
+
+
+7072
+06:58:57,550 --> 06:59:01,210
+connect to our ganache blockchain that we're running
+
+
+7073
+06:59:01,270 --> 06:59:04,660
+inside of this application. So if you look at the top of your
+
+
+7074
+06:59:04,660 --> 06:59:08,710
+ganache here, there's a section called the RPC server. And this
+
+
+7075
+06:59:08,710 --> 06:59:11,830
+is the endpoint of our ganache node right now. So what we can
+
+
+7076
+06:59:11,830 --> 06:59:16,420
+do is we can copy this and go back to our VS code, and paste
+
+
+7077
+06:59:16,420 --> 06:59:20,110
+it in here to see if we can connect instead of HTTP. With
+
+
+7078
+06:59:20,110 --> 06:59:22,240
+these capitals, we're gonna have a B lowercase instead of the
+
+
+7079
+06:59:22,270 --> 06:59:25,270
+uppercase, because the lowercase is more correct, and it looks
+
+
+7080
+06:59:25,270 --> 06:59:27,910
+nicer. But now we have the endpoint. Hypothetically, with
+
+
+7081
+06:59:27,910 --> 06:59:31,870
+just this, we can start making calls and API calls to this
+
+
+7082
+06:59:31,870 --> 06:59:35,740
+endpoint, go to this JSON RPC specification. Again, link will
+
+
+7083
+06:59:35,740 --> 06:59:38,950
+be in the GitHub repo, we can actually see different calls we
+
+
+7084
+06:59:38,950 --> 06:59:42,310
+can make directly to our node to get different information. eath
+
+
+7085
+06:59:42,310 --> 06:59:45,910
+get blocked by hash eath get blocked by number. And all of
+
+
+7086
+06:59:45,910 --> 06:59:49,450
+these wonderful pieces in here. Making these API calls directly
+
+
+7087
+06:59:49,450 --> 06:59:52,630
+is is a little bit annoying to do ourselves. If you want to do
+
+
+7088
+06:59:52,630 --> 06:59:56,680
+it yourself, you absolutely can using an API endpoint like Axios
+
+
+7089
+06:59:56,770 --> 06:59:59,560
+or fetch. However, we're going to use a rapper to interact with
+
+
+7090
+06:59:59,560 --> 07:00:02,710
+our node and do things like deploy and interact and other
+
+
+7091
+07:00:02,710 --> 07:00:06,280
+such things with our blockchain node. This is finally where
+
+
+7092
+07:00:06,460 --> 07:00:07,420
+ethers comes
+
+
+7093
+07:00:07,420 --> 07:00:13,780
+into play. 
