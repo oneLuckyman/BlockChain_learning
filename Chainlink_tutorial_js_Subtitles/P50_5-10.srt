@@ -251,173 +251,169 @@ This RPC URL stands for a connection to a blockchain node that somebody is runni
 7059
 06:58:12,370 --> 06:58:15,790
 this this URL connects us to make API calls and to interact with a blockchain node. 
-这个 URL 连接我们进行 API 的调用以及与区块链节点的交互
+这个 URL 连接我们对 API 的调用以及我们与区块链节点的交互
 
 7060
 06:58:15,790 --> 06:58:19,810
 Blockchain nodes run with software, and some of them expose an API call. 
-区块链节点使用软件运行，其中的一些会公开 API 调用
+区块链节点使用特定软件运行，其中的一些会公开 API 调用
 
 7061
 06:58:19,810 --> 06:58:23,590
-If you look at the NGO Aetherium website, there actually are instructions
-
+If you look at the NGO Aetherium website, 
+如果你去查看 "Go Ethereum" 网站
 
 7062
 06:58:23,620 --> 06:58:26,560
-for you to run your own blockchain node for a real
-
+there actually are instructions for you to run your own blockchain node 
+上面有说明如何运行一个属于你自己的区块链节点
 
 7063
 06:58:26,560 --> 06:58:30,370
-blockchain like Aetherium. Most of these have flags like dash
-
+for a real blockchain like Aetherium. 
+并且是在一个像以太坊这样的真实的区块链上
 
 7064
 06:58:30,370 --> 06:58:36,250
-HTTP dot ADR to expose these RPC endpoints. So if you ever want
-
+Most of these have flags like dash HTTP dot ADR to expose these RPC endpoints. 
+其中的大多数都会带有 "--http.addr" 字段以公开其 RPC 端点
 
 7065
 06:58:36,250 --> 06:58:39,430
-to run your own node, your own real blockchain node, instead of
-
+So if you ever want to run your own node, your own real blockchain node, 
+如果你想运行属于你自己的节点，一个真实区块链的节点
 
 7066
 06:58:39,430 --> 06:58:42,250
-using meta masks or any other the providers that we're going
-
+instead of using meta masks or any other the providers that we're going to go through, 
+而不是 Metamask 或者其他我们以后会提到的供应商
 
 7067
 06:58:42,250 --> 06:58:44,410
-to go through, you can use go Aetherium, or whatever
-
+you can use go Aetherium, 
+那么你可以使用 "Go Ethereum"
 
 7068
 06:58:44,410 --> 06:58:47,080
-blockchain you're working with software to run your own notes.
-
+or whatever blockchain you're working with software to run your own notes.
+或是任何你正使用的区块链所对应的软件以运行你的节点
 
 7069
 06:58:47,110 --> 06:58:50,770
-But it's this RPC URL that allows us to connect to Rinkeby,
-
+But it's this RPC URL that allows us to connect to Rinkeby, if on Rinkeby 
+正是这个 "RPC URL" 让我们能够连接到 Rinkeby，如果选择的是 Rinkeby
 
 7070
 06:58:50,800 --> 06:58:54,730
-if on Rinkeby ropsten, if we're on ropsten main net if we're on
-
+ropsten, if we're on ropsten 
+如果选择的是 Ropsten，连接的就是 Ropsten
 
 7071
 06:58:54,730 --> 06:58:57,550
-Main net, etc. And it's going to be the way that we're going to
-
+main net if we're on Main net, etc. 
+如果是主网络，那连接的就是主网络，诸如此类
 
 7072
 06:58:57,550 --> 06:59:01,210
-connect to our ganache blockchain that we're running
-
+And it's going to be the way that we're going to connect to our ganache blockchain 
+同理，这就是我们连接到 Ganache 区块链的方式
 
 7073
 06:59:01,270 --> 06:59:04,660
-inside of this application. So if you look at the top of your
-
+that we're running inside of this application. 
+就是我们在这个应用程序里正在运行的这个
 
 7074
 06:59:04,660 --> 06:59:08,710
-ganache here, there's a section called the RPC server. And this
-
+So if you look at the top of your ganache here, there's a section called the RPC server. 
+如果你看一下 Ganache 的顶部，这里有一个名为 "RPC server" 的部分
 
 7075
 06:59:08,710 --> 06:59:11,830
-is the endpoint of our ganache node right now. So what we can
-
+And this is the endpoint of our ganache node right now. 
+这就是 Ganache 节点现在的端点
 
 7076
 06:59:11,830 --> 06:59:16,420
-do is we can copy this and go back to our VS code, and paste
-
+So what we can do is we can copy this and go back to our VS code, 
+现在我们就可以把这个复制下来并回到到我们的 VS Code 里
 
 7077
 06:59:16,420 --> 06:59:20,110
-it in here to see if we can connect instead of HTTP. With
-
+and paste it in here to see if we can connect 
+把它粘贴到这个地方看看我们能不能连接上
 
 7078
 06:59:20,110 --> 06:59:22,240
-these capitals, we're gonna have a B lowercase instead of the
-
+instead of HTTP. With these capitals, we're gonna have a B lowercase instead of the uppercase, 
+这里不是大写的 HTTP 要写成小写的
 
 7079
 06:59:22,270 --> 06:59:25,270
-uppercase, because the lowercase is more correct, and it looks
-
+because the lowercase is more correct, and it looks nicer. 
+因为小写才是正确的写法，而且看起来也更 nice
 
 7080
 06:59:25,270 --> 06:59:27,910
-nicer. But now we have the endpoint. Hypothetically, with
-
+But now we have the endpoint. 
+现在我们有了这个端点
 
 7081
 06:59:27,910 --> 06:59:31,870
-just this, we can start making calls and API calls to this
-
+Hypothetically, with just this, we can start making calls and API calls to this endpoint, 
+假设我们只要有它，就可以开始对这个端点进行 API 调用了
 
 7082
 06:59:31,870 --> 06:59:35,740
-endpoint, go to this JSON RPC specification. Again, link will
-
+go to this JSON RPC specification. Again, link will be in the GitHub repo, 
+你可以去看看这个 "JSON-RPC Specification"，链接就在 GitHub 仓库里
 
 7083
 06:59:35,740 --> 06:59:38,950
-be in the GitHub repo, we can actually see different calls we
-
+we can actually see different calls we can make directly to our node to get different information. 
+可以看到我们能够直接对我们的节点发起不同的调用以获得不同的信息
 
 7084
 06:59:38,950 --> 06:59:42,310
-can make directly to our node to get different information. eath
-
+eath get blocked by hash eath get blocked by number. 
+比如 "eth_getBlockByHash" 还有 "eth_getBlockByNumber" 
 
 7085
 06:59:42,310 --> 06:59:45,910
-get blocked by hash eath get blocked by number. And all of
-
+And all of these wonderful pieces in here. 
+以及这里所有有用的信息
 
 7086
 06:59:45,910 --> 06:59:49,450
-these wonderful pieces in here. Making these API calls directly
-
+Making these API calls directly is is a little bit annoying to do ourselves. 
+直接亲自对这些 API 进行调用会令人有些烦躁
 
 7087
 06:59:49,450 --> 06:59:52,630
-is is a little bit annoying to do ourselves. If you want to do
-
+If you want to do it yourself, 
+如果你要自己亲自上，
 
 7088
 06:59:52,630 --> 06:59:56,680
-it yourself, you absolutely can using an API endpoint like Axios
-
+you absolutely can using an API endpoint like Axios or fetch. 
+那你可以使用某个 API 端点比如 "axios" 或是 "fetch"
 
 7089
 06:59:56,770 --> 06:59:59,560
-or fetch. However, we're going to use a rapper to interact with
-
+However, we're going to use a rapper to interact with our node 
+不过我们会使用封装库("wrapper")来与我们的节点进行交互
 
 7090
 06:59:59,560 --> 07:00:02,710
-our node and do things like deploy and interact and other
-
+and do things like deploy and interact and other such things with our blockchain node. 
+以便在我们的区块链节点上进行部署，交互以及执行其他操作
 
 7091
 07:00:02,710 --> 07:00:06,280
-such things with our blockchain node. This is finally where
+
 
 
 7092
 07:00:06,460 --> 07:00:07,420
-ethers comes
-
-
-7093
-07:00:07,420 --> 07:00:13,780
-into play. 
+This is finally where ethers comes into play. 
+终于是到了 ethers 发挥作用的地方了
