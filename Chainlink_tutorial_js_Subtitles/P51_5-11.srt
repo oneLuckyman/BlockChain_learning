@@ -1,0 +1,658 @@
+7093
+07:00:07,420 --> 07:00:13,780
+Ethers js is one of the most popular JavaScript based tooling kits, 
+Ethers.js 是最流行的 JavaScript 工具包之一
+
+7094
+07:00:13,780 --> 07:00:16,840
+that allows us to interact with different blockchains 
+它能让我们与不同的区块链进行交互
+
+7095
+07:00:16,840 --> 07:00:20,590
+and has all these rappers that make all these API calls 
+并且有许多封装函数可以进行 API 调用
+
+7096
+07:00:20,590 --> 07:00:24,190
+and do all these things with Aetherium, and polygon and avalanche and any EVM compatible chain. 
+它可以在以太坊，Polygon，Avalanche 等一切兼容 EVM 的区块链上使用
+
+7097
+07:00:24,190 --> 07:00:27,430
+The other incredibly popular package 
+还有一个同样受欢迎的包
+
+7098
+07:00:27,430 --> 07:00:30,100
+that does the same thing is going to be web three.js. 
+名字是 web3.js 它也可以做到前面说到的那些事
+
+7099
+07:00:30,100 --> 07:00:32,500
+And you've probably heard about this 
+你可能之前就听说过这个东西
+
+7100
+07:00:32,500 --> 07:00:34,840
+and you'll probably see it a little bit more throughout this course and throughout your web three journey. 
+并且在本课程和你的 Web3 之旅中，你可能会经常见到它
+
+7101
+07:00:34,840 --> 07:00:36,940
+The reason that we're using ethers is that 
+我们使用 ethers 的原因是
+
+7102
+07:00:36,940 --> 07:00:40,540
+ethers is the main tool that powers the hard hat environment 
+ethers 是支撑 Hardhat 环境的主要工具
+
+7103
+07:00:40,540 --> 07:00:43,780
+and I really enjoy it myself. 
+而且我个人也非常喜欢使用
+
+7104
+07:00:43,780 --> 07:00:46,060
+And remember, if you ever get lost with any of this, you can always come back to their documentation 
+一旦你有什么搞不明白的，可以随时查看他们的文档
+
+7105
+07:00:46,060 --> 07:00:49,360
+to install it. As you can see here, 
+要安装它，可以看这里
+
+7106
+07:00:49,360 --> 07:00:52,480
+you can just run npm install ethers, 
+你只需要运行 "npm install ethers"
+
+7107
+07:00:52,480 --> 07:00:55,330
+we're just going to do yarn, add ethers.
+但我们的做法是 "yarn add ethers"
+
+7108
+07:00:56,950 --> 07:01:01,030
+And now you should see in your package json, 
+现在你应该就能在 package.json 里看到
+
+7109
+07:01:01,030 --> 07:01:04,150
+we now have ethers added in here. Awesome. 
+我们已经把 ethers 添加到了这里，很好
+
+7110
+07:01:04,150 --> 07:01:07,090
+Now back in our code, we're going to import ethers into our deployed.js script 
+现在回到我们的代码，我们要把 ethers 导入进脚本 deploy.js
+
+7111
+07:01:07,090 --> 07:01:09,640
+so that we can use all the wonderful tools that comes with 
+这样我们就能够使用里面所有的奇妙工具了
+
+7112
+07:01:09,640 --> 07:01:16,090
+so we'll say const ethers equals require ethers. 
+我们输入 "const ethers = require("ethers")"
+
+7113
+07:01:16,090 --> 07:01:18,730
+For those of you doing the TypeScript edition of this course, 
+如果你使用的是 TypeScript
+
+7114
+07:01:18,730 --> 07:01:21,430
+this will be import instead of require 
+那这里就不是 "require" 而是 "import"
+
+7115
+07:01:21,430 --> 07:01:25,390
+now that we have ethers in here, we can create our provider object in our main function. 
+现在这里已经有了 ethers ，可以为我们的 main 函数创建 provider 对象了
+
+7116
+07:01:25,420 --> 07:01:28,270
+The reason we we pull ethers outside of the main function 
+我们把 ethers 放到 main 函数之外的原因是
+
+7117
+07:01:28,270 --> 07:01:32,080
+is because we do want to pull our package into our script. Before we call main,
+我们想在调用 main 函数之前就把这个包导入进脚本中
+
+7118
+07:01:32,110 --> 07:01:35,260
+we want to make sure all of this is done first. 
+我们要确保这件事首先完成
+
+7119
+07:01:35,290 --> 07:01:38,560
+So you'll see this is kind of the the normal setup of our scripts. 
+现在你看到的这些就是我们脚本的一般配置
+
+7120
+07:01:38,560 --> 07:01:42,310
+At the top, we import any dependencies or external packages, 
+在顶部，我们先把依赖库或外部包都导入进来
+
+7121
+07:01:42,310 --> 07:01:45,220
+we'll have our main function, and then we'll call our main function at the bottom. 
+我们还会有一个 main 函数，并且我们会在底部调用这个 main 函数
+
+7122
+07:01:45,220 --> 07:01:49,270
+const is a keyword similar to let 
+"const" 是一个与 "let" 类似的关键字
+
+7123
+07:01:49,300 --> 07:01:52,690
+the const keyword makes it so that ethers can't be changed. 
+"const" 关键字能够使得 "ethers" 无法被更改
+
+7124
+07:01:52,690 --> 07:01:56,440
+So we can't change this. Our ethers variable, anytime we use const 
+所以一旦我们使用了 "const" 就再也不能更改 "ethers" 这个变量了
+
+7125
+07:01:56,440 --> 07:01:59,620
+require is a function for us to import the ethers package. 
+而 "require" 是一个函数，它负责导入 ethers 包
+
+7126
+07:01:59,650 --> 07:02:02,170
+Now remix does all this behind the scenes. 
+Remix 把所有事都放到了幕后完成
+
+7127
+07:02:02,170 --> 07:02:07,780
+But the way we're going to do it in our code here is we're going to say const provider equals new
+
+
+7128
+07:02:08,320 --> 07:02:15,040
+ethers dot providers dot JSON RPC provider. And then we're
+
+
+7129
+07:02:15,040 --> 07:02:20,440
+going to pass this string as our provider. So we're saying hey,
+
+
+7130
+07:02:20,470 --> 07:02:24,520
+we're going to connect to this URL right here. Awesome. So this
+
+
+7131
+07:02:24,520 --> 07:02:27,850
+is the way that our script is going to connect to our
+
+
+7132
+07:02:27,850 --> 07:02:30,580
+blockchain, our local blockchain. Now let's get an
+
+
+7133
+07:02:30,580 --> 07:02:33,730
+actual wallet here. With a private key and a balance and
+
+
+7134
+07:02:33,730 --> 07:02:37,720
+everything, we can see all of our wallets and private keys in
+
+
+7135
+07:02:37,720 --> 07:02:40,960
+our ganache here. So the way to get this set up is we can say
+
+
+7136
+07:02:40,960 --> 07:02:47,650
+const. Wallet equals new ethers dot wallet. And this wallet
+
+
+7137
+07:02:47,650 --> 07:02:50,890
+function takes in a couple of input parameters, like a private
+
+
+7138
+07:02:50,890 --> 07:02:55,210
+key, and a provider, the private key will go to Kenosha and just
+
+
+7139
+07:02:55,210 --> 07:02:57,580
+choose one of these private keys. And we're going to paste
+
+
+7140
+07:02:57,580 --> 07:03:00,670
+this right into our code. And then we're gonna do comma
+
+
+7141
+07:03:00,880 --> 07:03:04,930
+provider and save that. Now pasting your private key
+
+
+7142
+07:03:04,960 --> 07:03:08,170
+directly into your code is a huge nono. And we're going to
+
+
+7143
+07:03:08,170 --> 07:03:11,410
+learn how to avoid this in the future. It's okay right now,
+
+
+7144
+07:03:11,440 --> 07:03:14,440
+since we're just using one of the ganache private keys, and
+
+
+7145
+07:03:14,470 --> 07:03:17,290
+you have no risk of having any money associated with this
+
+
+7146
+07:03:17,290 --> 07:03:20,950
+account. These two lines alone give us everything that we need
+
+
+7147
+07:03:20,980 --> 07:03:24,340
+to interact with smart contract, they give us our connection to
+
+
+7148
+07:03:24,340 --> 07:03:28,060
+the blockchain, and they give us a wallet with a private key so
+
+
+7149
+07:03:28,060 --> 07:03:30,640
+we can sign different transactions. If you remember
+
+
+7150
+07:03:30,640 --> 07:03:34,090
+back to our blockchain basics section. This is the private key
+
+
+7151
+07:03:34,270 --> 07:03:37,720
+that we're using to sign all of our transactions to encrypt our
+
+
+7152
+07:03:37,720 --> 07:03:40,960
+transactions. Now that we have a provider and a wallet, let's go
+
+
+7153
+07:03:40,960 --> 07:03:44,830
+ahead and grab our contract objects from these two files
+
+
+7154
+07:03:44,830 --> 07:03:47,800
+here. In order to deploy our contract, we're gonna need the
+
+
+7155
+07:03:47,800 --> 07:03:52,300
+ABI and we're going to need the binary compiled code of the
+
+
+7156
+07:03:52,300 --> 07:03:55,630
+contract. So we're going to need to read from these two files to
+
+
+7157
+07:03:55,630 --> 07:03:58,360
+read from these two files, we're going to need to use a package
+
+
+7158
+07:03:58,360 --> 07:04:03,280
+called Fs. So back at the top, we're gonna do const Fs equals
+
+
+7159
+07:04:03,280 --> 07:04:08,290
+require Fs extra I autosave, all the time, you'll see like, I'll
+
+
+7160
+07:04:08,290 --> 07:04:11,800
+do something and then my white dot will go away a lot. It's
+
+
+7161
+07:04:11,800 --> 07:04:14,920
+because my fingers have a habit of pretty much anytime I stop
+
+
+7162
+07:04:14,920 --> 07:04:18,910
+typing I save so so please remember to save early and
+
+
+7163
+07:04:18,910 --> 07:04:22,600
+often, this Fs extra should come directly with your node project.
+
+
+7164
+07:04:22,600 --> 07:04:26,920
+But if not, you can always add it with yarn, add Fs extra, and
+
+
+7165
+07:04:26,920 --> 07:04:31,510
+you should see it in our package dot JSON. Now we can get the ABI
+
+
+7166
+07:04:31,510 --> 07:04:37,900
+and the binary, we can say const, abi equals Fs dot read
+
+
+7167
+07:04:38,620 --> 07:04:42,880
+file sync, which means we're going to synchronously read from
+
+
+7168
+07:04:42,880 --> 07:04:46,240
+this file, we could do it asynchronously. But we want to
+
+
+7169
+07:04:46,240 --> 07:04:48,790
+wait for this file to get done. So we're gonna say read file
+
+
+7170
+07:04:48,790 --> 07:04:52,330
+sync. And depending on your VS code, if you scroll over, you
+
+
+7171
+07:04:52,330 --> 07:04:55,900
+might even get some information about this function popup like
+
+
+7172
+07:04:55,900 --> 07:04:58,450
+this, which can be really helpful, we can see that we need
+
+
+7173
+07:04:58,450 --> 07:05:01,810
+the path for the file we want to read. And then any options as
+
+
+7174
+07:05:01,810 --> 07:05:04,930
+well path the file that we want to read the at the ABI located
+
+
+7175
+07:05:04,930 --> 07:05:11,140
+at dot slash simple storage, underscore soul underscore
+
+
+7176
+07:05:11,170 --> 07:05:17,980
+simple storage dot AVI and then we're going to do a comma of U
+
+
+7177
+07:05:18,070 --> 07:05:22,270
+T, F eight is UTF. Eight is the encoding that we do for this
+
+
+7178
+07:05:22,270 --> 07:05:24,940
+file here. Don't worry too much about what that means for now.
+
+
+7179
+07:05:24,970 --> 07:05:29,860
+So we need the ABI. And we also need the binary, which is in
+
+
+7180
+07:05:29,980 --> 07:05:34,300
+this second file. Simple Storage underscore soul underscore
+
+
+7181
+07:05:34,300 --> 07:05:38,710
+simple storage dot bin. So we're gonna say const binary equals Fs
+
+
+7182
+07:05:38,740 --> 07:05:43,150
+dot read file sync. We're gonna give it the path Hear, which is
+
+
+7183
+07:05:43,150 --> 07:05:51,100
+going to be dot slash, simple storage soul, simple storage dot
+
+
+7184
+07:05:51,100 --> 07:05:54,280
+bin, and then the encoding option, which again is going to
+
+
+7185
+07:05:54,280 --> 07:05:57,100
+be, and it should look like this. Now that we have the
+
+
+7186
+07:05:57,100 --> 07:06:00,820
+binary, we have the ABI, we can create something called a
+
+
+7187
+07:06:00,820 --> 07:06:04,090
+contract factory, which is not to be confused with the factory
+
+
+7188
+07:06:04,090 --> 07:06:07,720
+pattern in ethers. A contract factory is just an object that
+
+
+7189
+07:06:07,720 --> 07:06:10,900
+you can use to deploy contracts. So we're gonna say const,
+
+
+7190
+07:06:11,530 --> 07:06:20,800
+contract factory equals new ethers dot contract, factory.
+
+
+7191
+07:06:21,670 --> 07:06:28,300
+And we're going to pass it, the API binary. And the wallet, we
+
+
+7192
+07:06:28,300 --> 07:06:31,420
+pass the ABI so that our code knows how to interact with the
+
+
+7193
+07:06:31,420 --> 07:06:34,180
+contract the binary, obviously, because this is the main
+
+
+7194
+07:06:34,180 --> 07:06:37,690
+compiled code in our wallet so that we have a private key we
+
+
+7195
+07:06:37,690 --> 07:06:41,200
+can use to sign deploying this contract, then I usually like to
+
+
+7196
+07:06:41,200 --> 07:06:44,890
+write a little console dot log, saying something like deploying
+
+
+7197
+07:06:45,190 --> 07:06:50,890
+these wait. And we can actually deploy this contract with ethers
+
+
+7198
+07:06:50,950 --> 07:06:59,020
+by doing const. Contract equals await, contract factory dot
+
+
+7199
+07:06:59,020 --> 07:07:02,770
+deploy. Now, this is the first time we've seen this await
+
+
+7200
+07:07:02,770 --> 07:07:06,820
+keyword and you can only use the await keyword inside of an async
+
+
+7201
+07:07:06,850 --> 07:07:10,030
+function. The reason we want this await keyword we're telling
+
+
+7202
+07:07:10,030 --> 07:07:16,270
+our code to stop here, wait for contract to deploy. And this
+
+
+7203
+07:07:16,270 --> 07:07:19,840
+await keyword means that this will resolve the promise
+
+
+7204
+07:07:19,870 --> 07:07:22,600
+contract in this contract factory dot deploy with the
+
+
+7205
+07:07:22,600 --> 07:07:26,050
+await here returns a contract object. So now I could do
+
+
+7206
+07:07:26,050 --> 07:07:30,580
+something like console dot log contract. Let's see what happens
+
+
+7207
+07:07:30,580 --> 07:07:37,810
+when we run this code node deploy dot j s, we scroll up, we
+
+
+7208
+07:07:37,810 --> 07:07:42,400
+see deploying, please wait. And then we see this massive object
+
+
+7209
+07:07:42,400 --> 07:07:45,970
+that gets printed out. This is the contract object that we just
+
+
+7210
+07:07:45,970 --> 07:07:50,830
+deployed. And in fact, if we go over to our ganache, we can see
+
+
+7211
+07:07:50,920 --> 07:07:54,100
+that the address that we're used for our wallet has a little bit
+
+
+7212
+07:07:54,100 --> 07:07:57,820
+less balance and has a transaction count of one. If we
+
+
+7213
+07:07:57,820 --> 07:08:00,550
+were working with truffle, we'd be able to see the contracts
+
+
+7214
+07:08:00,550 --> 07:08:02,920
+here we're working with hard hat, so you won't be able to see
+
+
+7215
+07:08:02,920 --> 07:08:05,950
+the contracts in here. But if you go to transactions, we can
+
+
+7216
+07:08:05,950 --> 07:08:09,160
+indeed see the transaction that we just created. This is similar
+
+
+7217
+07:08:09,160 --> 07:08:12,550
+to ether scan. But for our local blockchain, we can see the
+
+
+7218
+07:08:12,550 --> 07:08:15,970
+sender address, the creation address, the value, gas price,
+
+
+7219
+07:08:16,000 --> 07:08:19,840
+all this stuff associated with this contract. You can also see
+
+
+7220
+07:08:19,870 --> 07:08:22,480
+the different blocks. Since we've only made one transaction
+
+
+7221
+07:08:22,510 --> 07:08:25,900
+only one block has been mined. And this is awesome. We have all
+
+
+7222
+07:08:25,900 --> 07:08:30,100
+this other stuff associated with it. Great job. You just deployed
+
+
+7223
+07:08:30,340 --> 07:08:35,170
+a contract to your own local blockchain with ethers. Jas.
+
+
+7224
+07:08:35,200 --> 07:08:41,680
+This is fantastic, Awesome work. Now let me show you what happens

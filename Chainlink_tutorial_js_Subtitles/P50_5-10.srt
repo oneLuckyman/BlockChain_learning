@@ -286,7 +286,7 @@ So if you ever want to run your own node, your own real blockchain node,
 7066
 06:58:39,430 --> 06:58:42,250
 instead of using meta masks or any other the providers that we're going to go through, 
-而不是 Metamask 或者其他我们以后会提到的供应商
+而不是 Metamask 或是以后我们会提到的其他提供者
 
 7067
 06:58:42,250 --> 06:58:44,410
@@ -371,7 +371,7 @@ go to this JSON RPC specification. Again, link will be in the GitHub repo,
 7083
 06:59:35,740 --> 06:59:38,950
 we can actually see different calls we can make directly to our node to get different information. 
-可以看到我们能够直接对我们的节点发起不同的调用以获得不同的信息
+可以看到我们能够直接对我们的节点发起不同的调用以获取不同的信息
 
 7084
 06:59:38,950 --> 06:59:42,310
@@ -416,4 +416,4 @@ and do things like deploy and interact and other such things with our blockchain
 7092
 07:00:06,460 --> 07:00:07,420
 This is finally where ethers comes into play. 
-终于是到了 ethers 发挥作用的地方了
+终于是到了 ethers 的用武之地了
