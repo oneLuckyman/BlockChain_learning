@@ -170,247 +170,247 @@ Remix 把所有事都放到了幕后完成
 
 7127
 07:02:02,170 --> 07:02:07,780
-But the way we're going to do it in our code here is we're going to say const provider equals new
-
+But the way we're going to do it in our code here 
+但我们需要在我们的代码这里完成
 
 7128
 07:02:08,320 --> 07:02:15,040
-ethers dot providers dot JSON RPC provider. And then we're
-
+is we're going to say const provider equals new ethers dot providers dot JSON RPC provider. 
+我们要输入 "const provider = new ethers.providers.JsonRpcProvider"
 
 7129
 07:02:15,040 --> 07:02:20,440
-going to pass this string as our provider. So we're saying hey,
-
+And then we're going to pass this string as our provider. 
+然后我们要将这个字符串作为我们的 provider
 
 7130
 07:02:20,470 --> 07:02:24,520
-we're going to connect to this URL right here. Awesome. So this
-
+So we're saying hey, we're going to connect to this URL right here. 
+我们写的意思就是，嘿，我们要连接到这个 URL 去
 
 7131
 07:02:24,520 --> 07:02:27,850
-is the way that our script is going to connect to our
-
+Awesome. So this is the way that our script is going to connect to our blockchain, our local blockchain. 
+非常好，这就是我们的脚本连接到区块链的方法，本地区块链
 
 7132
 07:02:27,850 --> 07:02:30,580
-blockchain, our local blockchain. Now let's get an
-
+Now let's get an actual wallet here. 
+现在让我们获得一个钱包
 
 7133
 07:02:30,580 --> 07:02:33,730
-actual wallet here. With a private key and a balance and
-
+With a private key and a balance and everything, 
+它具有私钥和余额以及所有其他必要的东西
 
 7134
 07:02:33,730 --> 07:02:37,720
-everything, we can see all of our wallets and private keys in
-
+we can see all of our wallets and private keys in our ganache here. 
+可以看到我们所有的钱包和私钥都在 Ganache 这里
 
 7135
 07:02:37,720 --> 07:02:40,960
-our ganache here. So the way to get this set up is we can say
-
+So the way to get this set up is we can say
+获取钱包的具体方法是
 
 7136
 07:02:40,960 --> 07:02:47,650
-const. Wallet equals new ethers dot wallet. And this wallet
-
+const. Wallet equals new ethers dot wallet. 
+"const wallet = new ethers.Wallet()"
 
 7137
 07:02:47,650 --> 07:02:50,890
-function takes in a couple of input parameters, like a private
-
+And this wallet function takes in a couple of input parameters, like a private key, and a provider, 
+这个 "Wallet" 函数需要接收几个参数，比如私钥和 provider
 
 7138
 07:02:50,890 --> 07:02:55,210
-key, and a provider, the private key will go to Kenosha and just
-
+the private key will go to Kenosha 
+获得私钥的方法是来到 Ganache 这里
 
 7139
 07:02:55,210 --> 07:02:57,580
-choose one of these private keys. And we're going to paste
-
+and just choose one of these private keys. 
+从这些私钥中选择其中一个
 
 7140
 07:02:57,580 --> 07:03:00,670
-this right into our code. And then we're gonna do comma
-
+And we're going to paste this right into our code. 
+我们要把它粘贴到我们的代码里
 
 7141
 07:03:00,880 --> 07:03:04,930
-provider and save that. Now pasting your private key
-
+And then we're gonna do comma provider and save that. 
+接着是逗号 "provider"，并且保存
 
 7142
 07:03:04,960 --> 07:03:08,170
-directly into your code is a huge nono. And we're going to
-
+Now pasting your private key directly into your code is a huge nono. 
+注意，直接把私钥粘贴进你的代码里其实是一个大忌
 
 7143
 07:03:08,170 --> 07:03:11,410
-learn how to avoid this in the future. It's okay right now,
-
+And we're going to learn how to avoid this in the future. 
+之后我们会学习如何避免这一点
 
 7144
 07:03:11,440 --> 07:03:14,440
-since we're just using one of the ganache private keys, and
-
+It's okay right now, since we're just using one of the ganache private keys, 
+不过现在没事，因为我们用的只是 Ganache 上的私钥
 
 7145
 07:03:14,470 --> 07:03:17,290
-you have no risk of having any money associated with this
-
+and you have no risk of having any money associated with this account. 
+所以并不存在任何与此账户关联的资金风险
 
 7146
 07:03:17,290 --> 07:03:20,950
-account. These two lines alone give us everything that we need
-
+These two lines alone give us everything that we need to interact with smart contract, 
+这两行代码就足以提供我们与智能合约交互所需要的一切。
 
 7147
 07:03:20,980 --> 07:03:24,340
-to interact with smart contract, they give us our connection to
-
+they give us our connection to the blockchain, 
+它们提供了我们与区块链的连接
 
 7148
 07:03:24,340 --> 07:03:28,060
-the blockchain, and they give us a wallet with a private key so
-
+and they give us a wallet with a private key 
+并提供了一个带有私钥的钱包
 
 7149
 07:03:28,060 --> 07:03:30,640
-we can sign different transactions. If you remember
-
+so we can sign different transactions. 
+以使我们可以对不同的交易进行签名
 
 7150
 07:03:30,640 --> 07:03:34,090
-back to our blockchain basics section. This is the private key
-
+If you remember back to our blockchain basics section. 
+如果你还记得我们的“区块链基础部分”
 
 7151
 07:03:34,270 --> 07:03:37,720
-that we're using to sign all of our transactions to encrypt our
-
+This is the private key that we're using to sign all of our transactions to encrypt our transactions. 
+这个就是我们用来签署和加密我们交易的私钥
 
 7152
 07:03:37,720 --> 07:03:40,960
-transactions. Now that we have a provider and a wallet, let's go
-
+Now that we have a provider and a wallet, 
+现在我们有了 provider 和 钱包
 
 7153
 07:03:40,960 --> 07:03:44,830
-ahead and grab our contract objects from these two files
-
+let's go ahead and grab our contract objects from these two files here. 
+让我们继续从这两个文件中获取我们的合约对象
 
 7154
 07:03:44,830 --> 07:03:47,800
-here. In order to deploy our contract, we're gonna need the
-
+In order to deploy our contract, 
+为了部署我们的合约
 
 7155
 07:03:47,800 --> 07:03:52,300
-ABI and we're going to need the binary compiled code of the
-
+we're gonna need the ABI and we're going to need the binary compiled code of the contract. 
+我们需要智能合约的 ABI 以及编译后的二进制代码
 
 7156
 07:03:52,300 --> 07:03:55,630
-contract. So we're going to need to read from these two files to
-
+So we're going to need to read from these two files
+所以我们需要读取这两个文件的内容
 
 7157
 07:03:55,630 --> 07:03:58,360
-read from these two files, we're going to need to use a package
-
+to read from these two files, we're going to need to use a package called Fs. 
+为了读取这两个文件，我们需要使用一个叫做 "fs" 的包
 
 7158
 07:03:58,360 --> 07:04:03,280
-called Fs. So back at the top, we're gonna do const Fs equals
-
+So back at the top, we're gonna do const Fs equals require Fs extra 
+回到代码顶部，定义 "const fs = require("fs-extra")"
 
 7159
 07:04:03,280 --> 07:04:08,290
-require Fs extra I autosave, all the time, you'll see like, I'll
-
+I autosave, all the time, you'll see like, I'll do something 
+在你看来我几乎是一直在自动保存，每次我做完一些事
 
 7160
 07:04:08,290 --> 07:04:11,800
-do something and then my white dot will go away a lot. It's
-
+and then my white dot will go away a lot. 
+我的小白点就会消失
 
 7161
 07:04:11,800 --> 07:04:14,920
-because my fingers have a habit of pretty much anytime I stop
-
+It's because my fingers have a habit of pretty much anytime I stop typing I save 
+这是因为我有个习惯，每当我停止输入的时候我就会保存一下
 
 7162
 07:04:14,920 --> 07:04:18,910
-typing I save so so please remember to save early and
-
+so so please remember to save early and often, 
+所以请记得经常保存，尽早保存
 
 7163
 07:04:18,910 --> 07:04:22,600
-often, this Fs extra should come directly with your node project.
-
+this Fs extra should come directly with your node project.
+这个 "fs-extra" 应该是随着你的 "Node(.js)" 项目直接提供的
 
 7164
 07:04:22,600 --> 07:04:26,920
-But if not, you can always add it with yarn, add Fs extra, and
-
+But if not, you can always add it with yarn, add Fs extra, 
+但如果没有，你总可以通过 "yarn add fs-extra" 添加它
 
 7165
 07:04:26,920 --> 07:04:31,510
-you should see it in our package dot JSON. Now we can get the ABI
-
+and you should see it in our package dot JSON. 
+然后你应该就能在 "package.json" 文件中看到它
 
 7166
 07:04:31,510 --> 07:04:37,900
-and the binary, we can say const, abi equals Fs dot read
-
+Now we can get the ABI and the binary, 
+现在我们就可以获取 ABI 和二进制文件了
 
 7167
 07:04:38,620 --> 07:04:42,880
-file sync, which means we're going to synchronously read from
-
+we can say const, abi equals Fs dot read file sync, 
+输入 "const abi = fs.readFileSync()"
 
 7168
 07:04:42,880 --> 07:04:46,240
-this file, we could do it asynchronously. But we want to
-
+which means we're going to synchronously read from this file, 
+这意味着我们将同步读取这个文件
 
 7169
 07:04:46,240 --> 07:04:48,790
-wait for this file to get done. So we're gonna say read file
-
+we could do it asynchronously. But we want to wait for this file to get done. 
+我们可以采用异步处理，但这里我们想等待文件读取完成
 
 7170
 07:04:48,790 --> 07:04:52,330
-sync. And depending on your VS code, if you scroll over, you
-
+So we're gonna say read file sync. 
+所以我们使用的是 "readFileSync"
 
 7171
 07:04:52,330 --> 07:04:55,900
-might even get some information about this function popup like
-
+And depending on your VS code, if you scroll over, 
+取决于你是否使用 VS Code，如果你悬停鼠标
 
 7172
 07:04:55,900 --> 07:04:58,450
-this, which can be really helpful, we can see that we need
-
+you might even get some information about this function popup like this, which can be really helpful, 
+可能会看到弹出这么一个显示函数信息的窗口，这个东西很有用
 
 7173
 07:04:58,450 --> 07:05:01,810
-the path for the file we want to read. And then any options as
-
+we can see that we need the path for the file we want to read. 
+可以看到，我们需要提供想要读取的文件所在的路径("path")
 
 7174
 07:05:01,810 --> 07:05:04,930
-well path the file that we want to read the at the ABI located
-
+And then any options as well 
+以及一些其他选项
 
 7175
 07:05:04,930 --> 07:05:11,140
-at dot slash simple storage, underscore soul underscore
+path the file that we want to read the at the ABI located at dot slash simple storage, underscore soul underscore
 
 
 7176

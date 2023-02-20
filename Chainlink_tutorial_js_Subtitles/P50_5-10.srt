@@ -286,7 +286,7 @@ So if you ever want to run your own node, your own real blockchain node,
 7066
 06:58:39,430 --> 06:58:42,250
 instead of using meta masks or any other the providers that we're going to go through, 
-而不是 Metamask 或是以后我们会提到的其他提供者
+而不是 Metamask 或是以后我们会提到的其他提供者("Provider")
 
 7067
 06:58:42,250 --> 06:58:44,410
