@@ -311,7 +311,7 @@ In order to deploy our contract,
 7155
 07:03:47,800 --> 07:03:52,300
 we're gonna need the ABI and we're going to need the binary compiled code of the contract. 
-我们需要智能合约的 ABI 以及编译后的二进制代码
+我们需要智能合约的 ABI 以及编译后的二进制("binary")代码
 
 7156
 07:03:52,300 --> 07:03:55,630
@@ -410,249 +410,250 @@ And then any options as well
 
 7175
 07:05:04,930 --> 07:05:11,140
-path the file that we want to read the at the ABI located at dot slash simple storage, underscore soul underscore
-
+path the file that we want to read the at the ABI located at 
+我们要读取的 ABI 文件位于
 
 7176
 07:05:11,170 --> 07:05:17,980
-simple storage dot AVI and then we're going to do a comma of U
-
+dot slash simple storage, underscore soul underscore simple storage dot AVI 
+"./SimpleStorage_sol_SimpleStorage.abi"
 
 7177
 07:05:18,070 --> 07:05:22,270
-T, F eight is UTF. Eight is the encoding that we do for this
-
+and then we're going to do a comma of U T, F eight 
+然后我们输入一个逗后面是 "UTF-8"
 
 7178
 07:05:22,270 --> 07:05:24,940
-file here. Don't worry too much about what that means for now.
-
+is UTF. Eight is the encoding that we do for this file here. 
+"UTF-8" 是我们用来对这个文件进行编码的方式。
 
 7179
 07:05:24,970 --> 07:05:29,860
-So we need the ABI. And we also need the binary, which is in
-
+Don't worry too much about what that means for now. 
+现在不用担心它的含义是什么
 
 7180
 07:05:29,980 --> 07:05:34,300
-this second file. Simple Storage underscore soul underscore
-
+So we need the ABI. And we also need the binary, which is in this second file. 
+除了 ABI 我们还需要二进制文件，它是第二个文件
 
 7181
 07:05:34,300 --> 07:05:38,710
-simple storage dot bin. So we're gonna say const binary equals Fs
-
+Simple Storage underscore soul underscore simple storage dot bin. 
+"SimpleStorage_sol_SimpleStorage.bin"
 
 7182
 07:05:38,740 --> 07:05:43,150
-dot read file sync. We're gonna give it the path Hear, which is
-
+So we're gonna say const binary equals Fs dot read file sync. We're gonna give it the path Hear, 
+输入 "const binary = fs.readFileSync()"，把路径给它
 
 7183
 07:05:43,150 --> 07:05:51,100
-going to be dot slash, simple storage soul, simple storage dot
-
+which is going to be dot slash, simple storage soul, simple storage dot bin, 
+就是 "./SimpleStorage_sol_SimpleStorage.bin"
 
 7184
 07:05:51,100 --> 07:05:54,280
-bin, and then the encoding option, which again is going to
-
+and then the encoding option, which again is going to be, and it should look like this. 
+编码方式还是和前面一样，最后的效果就是这样
 
 7185
 07:05:54,280 --> 07:05:57,100
-be, and it should look like this. Now that we have the
-
+Now that we have the binary, we have the ABI, 
+现在二进制文件和 ABI 都读取好了
 
 7186
 07:05:57,100 --> 07:06:00,820
-binary, we have the ABI, we can create something called a
-
+we can create something called a contract factory, 
+接着就可以创建合约工厂("contract factory") 了
 
 7187
 07:06:00,820 --> 07:06:04,090
-contract factory, which is not to be confused with the factory
-
+which is not to be confused with the factory pattern 
+不要把它和工厂模式("Factory Pattern")混淆
 
 7188
 07:06:04,090 --> 07:06:07,720
-pattern in ethers. A contract factory is just an object that
-
+in ethers. A contract factory is just an object that you can use to deploy contracts. 
+在 ethers 中，合约工厂只是一个用来部署合约的对象
 
 7189
 07:06:07,720 --> 07:06:10,900
-you can use to deploy contracts. So we're gonna say const,
-
+So we're gonna say const, contract factory equals new ethers dot contract, factory.
+具体写法是 "const contractFactory = new ethers.ContractFactory()"
 
 7190
 07:06:11,530 --> 07:06:20,800
-contract factory equals new ethers dot contract, factory.
-
+And we're going to pass it, the API binary. And the wallet, 
+接着输入 "abi, binary" 以及 "wallet"
 
 7191
 07:06:21,670 --> 07:06:28,300
-And we're going to pass it, the API binary. And the wallet, we
-
+we pass the ABI so that our code knows how to interact with the contract 
+我们提供了 ABI 所以我们的代码知道如何与合约进行交互
 
 7192
 07:06:28,300 --> 07:06:31,420
-pass the ABI so that our code knows how to interact with the
-
+the binary, obviously, because this is the main compiled code 
+"binary" 显然就是我们编译后的主代码
 
 7193
 07:06:31,420 --> 07:06:34,180
-contract the binary, obviously, because this is the main
-
+in our wallet so that we have a private key we can use to sign deploying this contract, 
+而 "wallet" 则提供了一个私钥使我们能够用它签名并部署这个合约
 
 7194
 07:06:34,180 --> 07:06:37,690
-compiled code in our wallet so that we have a private key we
-
+then I usually like to write a little console dot log, 
+接着，我通常喜欢写一个 "console.log"
 
 7195
 07:06:37,690 --> 07:06:41,200
-can use to sign deploying this contract, then I usually like to
-
+saying something like deploying these wait. 
+说一些诸如 "Deploying, please wait..." 之类的话
 
 7196
 07:06:41,200 --> 07:06:44,890
-write a little console dot log, saying something like deploying
-
+And we can actually deploy this contract with ethers
+然后，我们就可以用 ethers 部署这个合约了
 
 7197
 07:06:45,190 --> 07:06:50,890
-these wait. And we can actually deploy this contract with ethers
-
+by doing const. Contract equals await, contract factory dot deploy. 
+做法就是 "const contract = await contractFactory.deploy()"
 
 7198
 07:06:50,950 --> 07:06:59,020
-by doing const. Contract equals await, contract factory dot
-
+Now, this is the first time we've seen this await keyword 
+这是我们第一次见到这个 "await" 关键字
 
 7199
 07:06:59,020 --> 07:07:02,770
-deploy. Now, this is the first time we've seen this await
-
+and you can only use the await keyword inside of an async function. 
+并且你只能在异步("async")函数中使用 await 关键字
 
 7200
 07:07:02,770 --> 07:07:06,820
-keyword and you can only use the await keyword inside of an async
+
 
 
 7201
 07:07:06,850 --> 07:07:10,030
-function. The reason we want this await keyword we're telling
-
+The reason we want this await keyword 
+使用 await 关键字的原因是
 
 7202
 07:07:10,030 --> 07:07:16,270
-our code to stop here, wait for contract to deploy. And this
-
+we're telling our code to stop here, wait for contract to deploy. 
+我们要告诉代码，在这里停下来，等待合约部署完成
 
 7203
 07:07:16,270 --> 07:07:19,840
-await keyword means that this will resolve the promise
-
+And this await keyword means that this will resolve the promise
+await 关键字意味着这里将处理 promise
 
 7204
 07:07:19,870 --> 07:07:22,600
-contract in this contract factory dot deploy with the
-
+contract in this contract factory dot deploy with the await here returns a contract object. 
+而 "contractFactory.deploy" 就会在这里等待返回一个 "contract" 对象
 
 7205
 07:07:22,600 --> 07:07:26,050
-await here returns a contract object. So now I could do
-
+So now I could do something like console dot log contract. 
+现在我们就可以 "console.log(contract)"
 
 7206
 07:07:26,050 --> 07:07:30,580
-something like console dot log contract. Let's see what happens
-
+Let's see what happens when we run this code 
+让我们看看运行这段代码会发生什么
 
 7207
 07:07:30,580 --> 07:07:37,810
-when we run this code node deploy dot j s, we scroll up, we
-
+node deploy dot j s, we scroll up, 
+"node deploy.js"，往上面翻
 
 7208
 07:07:37,810 --> 07:07:42,400
-see deploying, please wait. And then we see this massive object
-
+we see deploying, please wait. 
+可以看到 "Deploying, please wait..."
 
 7209
 07:07:42,400 --> 07:07:45,970
-that gets printed out. This is the contract object that we just
-
+And then we see this massive object that gets printed out. 
+然后是这个被打印出来的巨型对象
 
 7210
 07:07:45,970 --> 07:07:50,830
-deployed. And in fact, if we go over to our ganache, we can see
-
+This is the contract object that we just deployed. 
+它其实就是我们刚刚部署的合约对象
 
 7211
 07:07:50,920 --> 07:07:54,100
-that the address that we're used for our wallet has a little bit
-
+And in fact, if we go over to our ganache, we can see 
+事实上，如果我们回到 Ganache 就可以看到
 
 7212
 07:07:54,100 --> 07:07:57,820
-less balance and has a transaction count of one. If we
-
+that the address that we're used for our wallet 
+刚才我们用作钱包的地址
 
 7213
 07:07:57,820 --> 07:08:00,550
-were working with truffle, we'd be able to see the contracts
-
+has a little bit less balance and has a transaction count of one. 
+它的余额("BALANCE")少了一点并且交易数("TX COUNT")变成了 1
 
 7214
 07:08:00,550 --> 07:08:02,920
-here we're working with hard hat, so you won't be able to see
-
+If we were working with truffle, we'd be able to see the contracts here 
+如果我们使用的是 "Truffle" 就能在这里看到合约
 
 7215
 07:08:02,920 --> 07:08:05,950
-the contracts in here. But if you go to transactions, we can
-
+we're working with hard hat, so you won't be able to see the contracts in here. 
+但我们使用的是 "Hardhat" 所以无法在这里看到合约
 
 7216
 07:08:05,950 --> 07:08:09,160
-indeed see the transaction that we just created. This is similar
-
+But if you go to transactions, 
+但如果你切换到 "TRANSACTIONS" 界面
 
 7217
 07:08:09,160 --> 07:08:12,550
-to ether scan. But for our local blockchain, we can see the
-
+we can indeed see the transaction that we just created. 
+就能看到我们刚刚创建的这个交易
 
 7218
 07:08:12,550 --> 07:08:15,970
-sender address, the creation address, the value, gas price,
-
+This is similar to ether scan. But for our local blockchain, 
+这个就有些类似于 etherscan 了，不过我们是在本地区块链上
 
 7219
 07:08:16,000 --> 07:08:19,840
-all this stuff associated with this contract. You can also see
-
+we can see the sender address, the creation address, 
+我们可以看到发送者地址("SENDER ADDRESS")，所创建的地址
 
 7220
 07:08:19,870 --> 07:08:22,480
-the different blocks. Since we've only made one transaction
-
+the value, gas price, all this stuff associated with this contract. 
+价值("VALUE")，gas 价格("GAS PRICE") 等一切与这个合约相关的东西
 
 7221
 07:08:22,510 --> 07:08:25,900
-only one block has been mined. And this is awesome. We have all
-
+You can also see the different blocks. 
+你还可以看到不同的区块
 
 7222
 07:08:25,900 --> 07:08:30,100
-this other stuff associated with it. Great job. You just deployed
-
+Since we've only made one transaction only one block has been mined. 
+因为我们只进行了一次交易，所以只有一个区块被挖了出来 
 
 7223
 07:08:30,340 --> 07:08:35,170
-a contract to your own local blockchain with ethers. Jas.
-
+And this is awesome. We have all this other stuff associated with it. Great job. 
+真是太棒了，我们已经拥有了与之相关的一切，干得漂亮
 
 7224
 07:08:35,200 --> 07:08:41,680
-This is fantastic, Awesome work. Now let me show you what happens
+You just deployed a contract to your own local blockchain with ethers. Jas. This is fantastic, Awesome work. 
+你刚刚使用了 "ethers.js" 在你自己的本地区块链上成功部署了一个合约，做的非常好
