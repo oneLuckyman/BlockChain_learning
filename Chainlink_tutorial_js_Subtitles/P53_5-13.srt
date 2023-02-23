@@ -1,0 +1,209 @@
+7284
+07:12:12,160 --> 07:12:18,490
+Well, what else can we do? 
+好了，现在我们还可以做些什么
+
+7285
+07:12:18,490 --> 07:12:21,670
+Well, we can wait for a certain number of blocks for our contract finish with 
+我们可以等待一定数量的区块，直到我们的合约完成
+
+7286
+07:12:21,670 --> 07:12:25,120
+so we've deployed the contract. 
+现在我们已经部署好了合约
+
+7287
+07:12:25,120 --> 07:12:28,960
+But maybe we want to wait one block to make sure it actually gets attached to the chain. 
+但我们也可能会想要等待一个区块以确保它确实已经上链了
+
+7288
+07:12:28,960 --> 07:12:32,290
+So we can say 
+所以我们可以写 
+
+7289
+07:12:33,010 --> 07:12:39,850
+const.Deployment received equals await, contract dot deploy transaction dot Wait, 
+"const deploymentReceipt = await contract.deployTransaction.wait()"
+
+7290
+07:12:40,240 --> 07:12:43,570
+and specify the number of confirmations that we want to actually wait. 
+并且需要指定我们想要等待确认的确切数量
+
+7291
+07:12:43,570 --> 07:12:46,780
+So we'll wait one block confirmation to make sure that this happened. 
+所以我们将等待一个区块确认以确保该做的都做好了
+
+7292
+07:12:46,780 --> 07:12:50,140
+And then we can do console dot log, 
+然后我们可以 "console.log()"
+
+7293
+07:12:50,140 --> 07:12:55,420
+this deployment receipt option. 
+里面填上这个 "deploymentReceipt" 选项
+
+7294
+07:12:55,420 --> 07:13:01,030
+So if we run the code now, we can see all this information about our transaction, 
+如果我们现在运行代码，可以看到有关我们交易的所有信息
+
+7295
+07:13:01,060 --> 07:13:04,840
+and we can see exactly what our transaction looks like, 
+可以精确地看到我们的交易是什么样的
+
+7296
+07:13:04,840 --> 07:13:09,130
+we can see there's two is no because we're creating a contract 
+可以看到 "to" 是 "null" 因为我们是在创建合约
+
+7297
+07:13:09,130 --> 07:13:13,630
+from is going to be this ganache address that we got the private key for, 
+"from" 是我们使用的那个私钥所对应的 Ganache 地址
+
+7298
+07:13:13,630 --> 07:13:17,110
+we see the contract address that we created
+"contractAddress" 就是我们创建的这个合约
+
+7299
+07:13:17,140 --> 07:13:21,250
+transaction index, we can see gas use gas use log bloom block hash transaction, 
+还有 "transactionIndex", "gasUsed", "logsBloom", "blockHash", "transactionHash"
+
+7300
+07:13:21,250 --> 07:13:24,850
+and we can see all this information about our transaction, 
+总之我们能看到有关我们交易的所有信息
+
+7301
+07:13:24,850 --> 07:13:27,550
+something I want you to take note of is the deployment receipt and the deployment transaction, 
+我想让你注意的是这个 "deploymentReceipt" 以及 "deployTransaction"
+
+7302
+07:13:27,550 --> 07:13:31,480
+I want you to separate these two because it's going to make your life a lot easier. 
+我希望你能把这两个东西区分开，这样可以让你舒服很多
+
+7303
+07:13:31,480 --> 07:13:33,550
+So we're going to do quick console dot log, 
+我们来快速处理一下 "console.log"
+
+7304
+07:13:33,550 --> 07:13:36,640
+here is the deployment transaction. 
+"Here is the deployment transaction: "
+
+7305
+07:13:36,640 --> 07:13:43,990
+And then we'll do console dot log 
+接着是 "console.log"
+
+7306
+07:13:43,990 --> 07:13:50,620
+contract, dot deploy transaction. 
+"contract.deployTransaction"
+
+7307
+07:13:50,620 --> 07:13:54,370
+And then I'm going to copy this whole line by just typing Command C or Ctrl. C right there. 
+然后我要复制这一整行，使用 "Command C" 或是 "Ctrl C"
+
+7308
+07:13:54,370 --> 07:13:59,890
+And then here is the deployment. Here is the transaction receipt. 
+这里把 "Here is the deployment" 改成 "Here is the transaction receipt"
+
+7309
+07:13:59,920 --> 07:14:04,690
+And then this deployment is receipt is the transaction receipt. 
+这里写的是 "deploymentReceipt" 而这里是 "transaction receipt"
+
+7310
+07:14:04,690 --> 07:14:07,120
+So I'm just going to rename this to transaction receipt. 
+所以我要把这里重命名成 "transactionReceipt"
+
+7311
+07:14:07,120 --> 07:14:10,960
+To make it a little bit clearer, which ones which, 
+为了让它更清晰，哪个是哪个
+
+7312
+07:14:10,960 --> 07:14:15,040
+and we'll run this one more time. 
+我们再运行一次
+
+7313
+07:14:15,040 --> 07:14:19,090
+You only get a transaction receipt, when you wait for a block confirmation.
+你只有在等待区块确认时才能获得交易回执("transaction receipt")
+
+7314
+07:14:19,150 --> 07:14:21,880
+Otherwise, you're gonna get the contract object, which has the deploy transaction with it, 
+否则，你得到的就只有合约对象，以及它包含的部署交易("deploy transaction")信息
+
+7315
+07:14:21,880 --> 07:14:24,610
+this distinction will be more important later on. 
+这种区分以后会显得更加重要
+
+7316
+07:14:24,610 --> 07:14:27,460
+But I wanted you to know what the difference between the two 
+现在我想让你知道这二者的区别
+
+7317
+07:14:27,460 --> 07:14:30,850
+transaction receipt is what you get when you wait for a block confirmation, 
+交易回执是你等待区块确认时获得的
+
+7318
+07:14:30,850 --> 07:14:34,240
+the deployment transaction or the transaction response, transaction response 
+而部署交易或者说是交易响应("transaction response")
+
+7319
+07:14:34,240 --> 07:14:38,650
+is what you get just when you create your transaction. 
+则是在你创建交易时获得的
+
+7320
+07:14:38,650 --> 07:14:41,680
+So transaction receipts transactional response, they're different 
+所以这个是交易回执，这个是交易响应，它们是不同的
+
+7321
+07:14:41,680 --> 07:14:44,560
+receipt is what you get when you wait for a transaction to finish. 
+回执是你的等待交易完成时获得的东西
+
+7322
+07:14:44,560 --> 07:14:47,140
+And then response is just what you initially get. 
+而响应则是你一开始就会获得东西
+
+7323
+07:14:47,140 --> 07:14:49,990
+Make sense? Okay, great. 
+讲清楚了吧？OK 很好
+
+7324
+07:14:49,990 --> 07:14:52,600
+We're gonna go ahead and delete those. 
+我们要把这些东西删掉
+
+7325
+07:14:52,600 --> 07:14:58,570
+But those lines will be in the code associated with the GitHub. 
+不过它们仍然会在课程关联的 GitHub 中显示出来
