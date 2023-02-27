@@ -1,0 +1,663 @@
+8644
+08:33:05,830 --> 08:33:11,710
+So now that we have some of the basics of hard head down, 
+现在我们已经掌握了 Hardhat 的一些基础知识
+
+8645
+08:33:11,710 --> 08:33:14,320
+let's go ahead and try doing some of the same things we did with ethers before but with hard hat. 
+让我们继续使用 Hardhat 来做一些之前用 ethers 做过的相同的事
+
+8646
+08:33:14,320 --> 08:33:16,960
+So one of the first things we want to do is 
+我们首先要做的一件事就是
+
+8647
+08:33:16,990 --> 08:33:20,170
+we want to write and interact with our smart contracts. 
+编写我们的智能合约并与之交互
+
+8648
+08:33:20,170 --> 08:33:23,170
+So let's go ahead and rename greeter dot soul to simple storage dot soul, 
+所以让我们把 "Greeter.sol" 重命名为 "SimpleStorage.sol"
+
+8649
+08:33:23,170 --> 08:33:28,240
+you can click on the file and hit enter
+你可以选中文件并按下回车
+
+8650
+08:33:28,600 --> 08:33:33,100
+and should be able to rename it. 
+然后你就能重命名它了(译者注：在 Windows 和 Linux 系统中通常是按 F2)
+
+8651
+08:33:33,160 --> 08:33:35,980
+Otherwise, you can go ahead and right click, delete it, 
+不然，你也可以右键选中，选择删除
+
+8652
+08:33:35,980 --> 08:33:39,790
+and then create a new file and call it simple storage dot soul. 
+然后创建一个新文件命名为 "SimpleStorage.sol"
+
+8653
+08:33:39,790 --> 08:33:43,390
+We're going to copy paste 
+我们要复制粘贴
+
+8654
+08:33:43,390 --> 08:33:46,930
+all of our code from our previous simple storage that saw into this file,
+之前的 "SimpleStorage.sol" 里的所有代码到这个文件中
+
+8655
+08:33:47,320 --> 08:33:50,140
+we can make sure that our simple storage is compiling correctly
+我们要确保 "SimpleStorage" 正确编译
+
+8656
+08:33:50,170 --> 08:33:55,600
+by running yarn hardhat compile. 
+使用 "yarn hardhat compile"
+
+8657
+08:33:55,600 --> 08:33:59,230
+Whoa, it looks like we ran into an issue 
+哇，看来我们遇到了问题
+
+8658
+08:33:59,230 --> 08:34:01,750
+project cannot be compiled. See reasons below 
+项目无法被编译，看看下面的原因
+
+8659
+08:34:01,750 --> 08:34:05,530
+the solidity pragma version of the file. It doesn't match any of the configured compilers in your config. 
+文件中的 Solidity pragma 版本无法匹配您配置中的任何编译器
+
+8660
+08:34:05,530 --> 08:34:09,310
+Hmm, well, what's going on 
+好吧，到底是什么问题
+
+8661
+08:34:09,310 --> 08:34:13,480
+contracts slash symbol storage that's Sol zero point 8.8. 
+"contracts/SimpleStorage.sol(0.8.8)"
+
+8662
+08:34:13,570 --> 08:34:17,020
+Ah, okay, let's go ahead and fix them. 
+行吧，让我们解决一下这个问题
+
+8663
+08:34:17,020 --> 08:34:21,220
+So we can open up our hard hat dot config dot j s. 
+打开我们的 "hardhat.config.js"
+
+8664
+08:34:21,220 --> 08:34:24,550
+Now a quick note on opening files. If you're on Mac and you hit Command P, 
+现在要说一个打开文件的快速说明，如果你在 Mac 上按下 "Command P" 
+
+8665
+08:34:24,550 --> 08:34:28,840
+you can actually start typing in the names of files to get them to them quicker. 
+那么你可以输入文件的名字以快速打开它们
+
+8666
+08:34:29,200 --> 08:34:32,080
+Or if you're on Linux or Windows, you can type Ctrl p, 
+或者如果你用的是 Linux 或 Windows，那么按下的是 "Ctrl P"
+
+8667
+08:34:32,080 --> 08:34:36,160
+this will bring up and interestingly if you type man P or ctrl p and then you hit the greater than key. 
+有意思的是，如果你按下 "Command P" 或 "Ctrl P" 并输入“大于键”(">")
+
+8668
+08:34:36,160 --> 08:34:39,430
+This will drop you into the command palette, 
+它就会把你带到命令面板
+
+8669
+08:34:39,430 --> 08:34:43,360
+know command palette, command palette, 
+不是命令面板，是命令面板
+
+8670
+08:34:43,360 --> 08:34:46,420
+search for files, search for commands 
+查找文件，查找命令
+
+8671
+08:34:46,420 --> 08:34:52,090
+in our Hardhead dot config. Jas, I'm gonna scroll down to module dot exports and change this to zero point 8.8. 
+在我们的 "hardhat.config.js" 里，向下滚动到 "module.exports" 并把这里改成 "0.8.8"
+
+8672
+08:34:52,090 --> 08:34:54,670
+So that the version that we're going to compile 
+这样我们用于编译的版本
+
+8673
+08:34:54,670 --> 08:34:58,030
+for simple storage, it's gonna be the same version and that hard hat is looking for. 
+就和 "SimpleStorage" 要在 Hardhat 中寻找的版本相同了
+
+8674
+08:34:58,030 --> 08:35:00,670
+Let's run that same command by just hitting up yarn Hardhead compile, 
+让我们再次运行相同的命令 "yarn hardhat compile"
+
+8675
+08:35:00,670 --> 08:35:03,910
+and awesome we see compiled one solidity file successfully. 
+很好，我们看到“成功编译 1 个 Solidity 文件”
+
+8676
+08:35:03,910 --> 08:35:07,300
+We should now see this in artifacts. 
+现在我们应该就能在 "artifacts" 中看到它了
+
+8677
+08:35:07,300 --> 08:35:10,660
+If we go to artifacts and contracts. 
+如果我们进入 "artifacts" 以及 "contracts"
+
+8678
+08:35:10,990 --> 08:35:13,630
+We now see two contracts in here, greater and simple storage 
+可以看到这里现在有两个合约了 "Greeter" 和 "SimpleStorage"
+
+8679
+08:35:13,630 --> 08:35:16,960
+and we can see a ton of the information about simple storage 
+我们可以看到有关 "SimpleStorage" 的大量信息
+
+8680
+08:35:16,960 --> 08:35:19,690
+we can also see some more lower level in Information and build info. 
+还可以在 "build-info" 中看到一些更底层的信息
+
+8681
+08:35:19,690 --> 08:35:22,330
+Alright, so now that we have our simple storage contract in here, 
+好了，现在我们这里就已经有了 "SimpleStorage" 合约
+
+8682
+08:35:22,330 --> 08:35:24,790
+the next thing we probably want to do is learn how to deploy it. 
+下一件事就是要学习如何部署它了
+
+8683
+08:35:24,790 --> 08:35:28,150
+This is where we're going to write our deploy script. 
+这里就是我们编写部署脚本的地方
+
+8684
+08:35:28,150 --> 08:35:30,730
+Now, for this section, I'm going to be showing you how to write a deploy script. 
+现在这一节，我会向你展示如何编写部署脚本
+
+8685
+08:35:30,730 --> 08:35:33,100
+But in the next section, we're going to do it a little bit differently.
+但下一节，我们会采用一些不同的方案
+
+8686
+08:35:33,100 --> 08:35:35,650
+But this is still going to teach you how to write scripts and worked with scripts in heart app. 
+不过这仍然能教会你如何在 Hardhat 中编写和使用脚本
+
+8687
+08:35:35,650 --> 08:35:38,380
+So we're going to come to our sample script dot j s, 
+所以来到我们的 "sample-script.js"
+
+8688
+08:35:38,380 --> 08:35:41,050
+and we're gonna go ahead and hit enter and renamed it to deploy dot j s. 
+然后按回车把它重命名为 "deploy.js"
+
+8689
+08:35:41,050 --> 08:35:46,030
+And if you want to read all the comments in here, you absolutely can, 
+如果你想阅读这里的所有注释的话，当然也可以
+
+8690
+08:35:46,030 --> 08:35:48,910
+we're just gonna go ahead and delete them all. 
+但我们这里就把它们都直接删掉了
+
+8691
+08:35:48,910 --> 08:35:52,300
+A quick keyboard shortcut is if
+
+
+8692
+08:35:52,300 --> 08:35:56,890
+you hit Command A or Ctrl, a, you'll highlight all the text in
+
+
+8693
+08:35:56,890 --> 08:36:00,070
+your file, and we're going to go ahead and delete it all. So now
+
+
+8694
+08:36:00,070 --> 08:36:02,320
+we're just going to start from scratch here. Now the setup for
+
+
+8695
+08:36:02,320 --> 08:36:04,720
+our deploy script in here is going to look really similar to
+
+
+8696
+08:36:04,720 --> 08:36:07,810
+the setup of our deploy script. From our previous section, we're
+
+
+8697
+08:36:07,810 --> 08:36:10,600
+going to do imports at the top, we're going to have our async
+
+
+8698
+08:36:10,600 --> 08:36:13,600
+main function, and then we're going to call the main function.
+
+
+8699
+08:36:13,930 --> 08:36:16,840
+So let's go ahead and define our main function, we'll call it
+
+
+8700
+08:36:16,870 --> 08:36:20,680
+async. function main, like that, and then we'll call our main
+
+
+8701
+08:36:20,680 --> 08:36:23,170
+function. And if you want to just copy paste this from the
+
+
+8702
+08:36:23,170 --> 08:36:27,430
+last section, you absolutely can. So we'll domain that then.
+
+
+8703
+08:36:42,190 --> 08:36:45,160
+Boom, just like that. And because of these semicolons are
+
+
+8704
+08:36:45,160 --> 08:36:48,040
+going to drive me absolutely insane. We're also going to add
+
+
+8705
+08:36:48,040 --> 08:36:52,090
+prettier, and our solidity prettier plugins. So we'll do
+
+
+8706
+08:36:52,150 --> 08:37:01,660
+yarn, add dash dash Dev, prettier and prettier, plug in
+
+
+8707
+08:37:02,680 --> 08:37:09,730
+solidity. Then we can go ahead and create our dot prettier, rc
+
+
+8708
+08:37:09,730 --> 08:37:18,850
+file, we're going to add tab with four, use tabs, false, semi
+
+
+8709
+08:37:19,210 --> 08:37:24,310
+false, and then single quote, also false. Now we're going to
+
+
+8710
+08:37:24,310 --> 08:37:28,360
+be using this prettier rc file setup a lot. So in future
+
+
+8711
+08:37:28,360 --> 08:37:30,310
+sections, if you want to just copy paste it, you can
+
+
+8712
+08:37:30,310 --> 08:37:33,400
+absolutely do that as well. We're also going to add a dot
+
+
+8713
+08:37:33,400 --> 08:37:37,450
+prettier, ignore, which tells prettier not to format some
+
+
+8714
+08:37:37,450 --> 08:37:40,300
+files, which we want, we don't want prettier to spend a ton of
+
+
+8715
+08:37:40,300 --> 08:37:42,940
+time formatting all of our files, I'm just going to copy
+
+
+8716
+08:37:42,940 --> 08:37:46,120
+paste from the GitHub repo. So feel free to copy paste from the
+
+
+8717
+08:37:46,120 --> 08:37:48,970
+GitHub repo as well, you'd find all the code for this section,
+
+
+8718
+08:37:49,000 --> 08:37:51,850
+like I said, in the GitHub repo associated with this course.
+
+
+8719
+08:37:51,940 --> 08:37:54,520
+Now, unlike in our last section, where we had to grab our
+
+
+8720
+08:37:54,520 --> 08:37:58,240
+contract code a little bit more manually, with hard hat, it's
+
+
+8721
+08:37:58,240 --> 08:38:00,850
+actually a number of different ways to grab compiled contracts.
+
+
+8722
+08:38:00,880 --> 08:38:02,860
+The first way we're going to do it, we're actually going to use
+
+
+8723
+08:38:03,310 --> 08:38:06,040
+ethers. And now this is where one of the first confusing
+
+
+8724
+08:38:06,040 --> 08:38:11,530
+changes actually comes in. Previously, we did const ethers
+
+
+8725
+08:38:11,770 --> 08:38:16,540
+equals require ethers. And that was how we went ahead and worked
+
+
+8726
+08:38:16,540 --> 08:38:20,890
+with ethers. However, you'll notice in our dev dependencies,
+
+
+8727
+08:38:21,280 --> 08:38:24,820
+we have this dependency called Hard Hat ethers. Hard Hat ethers
+
+
+8728
+08:38:24,820 --> 08:38:28,480
+is a package that actually wraps hard hat with its own built in
+
+
+8729
+08:38:28,510 --> 08:38:31,030
+ethers. This is really advantageous because it allows
+
+
+8730
+08:38:31,030 --> 08:38:33,760
+hard hat to keep track of different deployments at
+
+
+8731
+08:38:33,760 --> 08:38:36,610
+different scripts and all these other things for us. So instead
+
+
+8732
+08:38:36,610 --> 08:38:39,730
+of importing ethers directly from ethers, we're actually
+
+
+8733
+08:38:39,730 --> 08:38:43,750
+going to import ethers directly from hard hat instead. This
+
+
+8734
+08:38:43,750 --> 08:38:46,570
+might seem a little confusing at first, but just know if we want
+
+
+8735
+08:38:46,570 --> 08:38:49,210
+to work with ethers and heart it, it's usually much better to
+
+
+8736
+08:38:49,210 --> 08:38:52,690
+pull it in from heart and you can still do this and ethers
+
+
+8737
+08:38:52,690 --> 08:38:56,140
+will still work the same. But hard hat won't necessarily know
+
+
+8738
+08:38:56,170 --> 08:38:58,570
+about different contract factories in different pieces
+
+
+8739
+08:38:58,570 --> 08:39:00,850
+and, and you'll see that in action in a second. Now that
+
+
+8740
+08:39:00,850 --> 08:39:04,360
+we're pulling in ethers, we can actually immediately grab a
+
+
+8741
+08:39:04,360 --> 08:39:10,480
+contract factory using ethers. We can say const simple storage
+
+
+8742
+08:39:10,480 --> 08:39:22,240
+factory equals await ethers dot get contract. Factory simple
+
+
+8743
+08:39:22,780 --> 08:39:26,500
+storage. So in order to get a simple storage, contract
+
+
+8744
+08:39:26,500 --> 08:39:29,800
+factory, we can just do await ethers dot get contract factory.
+
+
+8745
+08:39:29,950 --> 08:39:33,250
+Now if we pulled right from ethers, the package ethers
+
+
+8746
+08:39:33,280 --> 08:39:35,740
+doesn't know about this contracts folder and ethers
+
+
+8747
+08:39:35,740 --> 08:39:38,620
+doesn't know we've already compiled simple storage dot
+
+
+8748
+08:39:38,620 --> 08:39:42,400
+soul. And it's in our artifacts. Hard Hat, on the other hand,
+
+
+8749
+08:39:42,490 --> 08:39:45,310
+does know about the contracts folder and does know that it's
+
+
+8750
+08:39:45,310 --> 08:39:48,760
+already compiled, which is why this simple storage factory
+
+
+8751
+08:39:48,760 --> 08:39:51,910
+grabbing work so well. Once we have our factory here, we can do
+
+
+8752
+08:39:51,910 --> 08:39:54,730
+the same thing that we did in our previous section and deploy
+
+
+8753
+08:39:54,730 --> 08:39:59,320
+the contract. So we'll do a quick console dot log. Deploy
+
+
+8754
+08:40:00,460 --> 08:40:06,130
+flooring, contract done, and then we'll do Kant's simple
+
+
+8755
+08:40:06,130 --> 08:40:16,240
+storage equals await simple store edge factory dot deploy
+
+
+8756
+08:40:17,320 --> 08:40:20,950
+And boom, with that little bit of code, we're already able to
+
+
+8757
+08:40:20,950 --> 08:40:25,090
+deploy our simple storage contract, then to wait to make
+
+
+8758
+08:40:25,090 --> 08:40:30,010
+sure it gets deployed, we can do await, simple storage, deployed.
+
+
+8759
+08:40:30,640 --> 08:40:33,880
+And that's it. Now let's see what happens when we go ahead
+
+
+8760
+08:40:33,880 --> 08:40:37,000
+and run this deploy script. As you know, in our last section,
+
+
+8761
+08:40:37,030 --> 08:40:40,030
+we had to put in a private key, and we had to put an RPC URL.
+
+
+8762
+08:40:40,420 --> 08:40:44,020
+Right now, we don't have either one of those defined. So what do
+
+
+8763
+08:40:44,020 --> 08:40:46,660
+you think should the script actually work? Or do you think
+
+
+8764
+08:40:46,660 --> 08:40:49,930
+it'll break because we, we didn't define what blockchain
+
+
+8765
+08:40:49,930 --> 08:40:52,660
+we're going to deploy you. We also didn't find a private key.
+
+
+8766
+08:40:52,960 --> 08:40:56,200
+Well, let's go ahead and try this out. We can run the script
+
+
+8767
+08:40:56,230 --> 08:41:03,430
+in our terminal by running yarn, hard hat, run, scripts slash
+
+
+8768
+08:41:04,120 --> 08:41:07,510
+deploy dot j, s. And again, I'm hitting tab here to do a little
+
+
+8769
+08:41:07,510 --> 08:41:11,410
+auto completion and see what happens. Well, we got deploying
+
+
+8770
+08:41:11,410 --> 08:41:15,460
+contract, it says done, but that's really it. So what really
+
+
+8771
+08:41:15,460 --> 08:41:18,160
+happened? Well, let's add one more line in here.
+
+
+8772
+08:41:18,339 --> 08:41:23,079
+Let's do console dot log. We'll do some string interpolation
+
+
+8773
+08:41:24,399 --> 08:41:31,569
+deployed, contract to. And then we'll add simple storage. That
+
+
+8774
+08:41:31,569 --> 08:41:36,219
+address. Let's run this now. We get deployed contract, and then
+
+
+8775
+08:41:36,219 --> 08:41:40,179
+we get deployed contract to, and then we get a contract address.
+
+
+8776
+08:41:40,539 --> 08:41:47,769
+Hmm, what's going on here. 

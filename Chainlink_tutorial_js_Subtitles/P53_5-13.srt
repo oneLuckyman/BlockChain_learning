@@ -156,12 +156,12 @@ Otherwise, you're gonna get the contract object, which has the deploy transactio
 7315
 07:14:21,880 --> 07:14:24,610
 this distinction will be more important later on. 
-这种区分以后会显得更加重要
+这种差异之后才会显得比较重要
 
 7316
 07:14:24,610 --> 07:14:27,460
 But I wanted you to know what the difference between the two 
-现在我想让你知道这二者的区别
+但我现在就想让你们知道这二者的区别
 
 7317
 07:14:27,460 --> 07:14:30,850
