@@ -235,232 +235,232 @@ we're just gonna go ahead and delete them all.
 
 8691
 08:35:48,910 --> 08:35:52,300
-A quick keyboard shortcut is if
-
+A quick keyboard shortcut is if you hit Command A or Ctrl, a, 
+有一个快捷键，如果你按下 "Command A" 或者 "Ctrl A"
 
 8692
 08:35:52,300 --> 08:35:56,890
-you hit Command A or Ctrl, a, you'll highlight all the text in
-
+you'll highlight all the text in your file, 
+就可以选中文件内的全部文本
 
 8693
 08:35:56,890 --> 08:36:00,070
-your file, and we're going to go ahead and delete it all. So now
-
+and we're going to go ahead and delete it all. 
+然后我们把它们全部删除
 
 8694
 08:36:00,070 --> 08:36:02,320
-we're just going to start from scratch here. Now the setup for
-
+So now we're just going to start from scratch here. 
+现在我们要从头开始
 
 8695
 08:36:02,320 --> 08:36:04,720
-our deploy script in here is going to look really similar to
-
+Now the setup for our deploy script in here is going to look really similar to the setup of our deploy script. From our previous section, 
+现在我们要配置的部署脚本和我们上一节配置的部署脚本很相似
 
 8696
 08:36:04,720 --> 08:36:07,810
-the setup of our deploy script. From our previous section, we're
-
+we're going to do imports at the top, 
+我们要在顶部进行导入
 
 8697
 08:36:07,810 --> 08:36:10,600
-going to do imports at the top, we're going to have our async
-
+we're going to have our async main function, 
+这里有一个异步的 main 函数
 
 8698
 08:36:10,600 --> 08:36:13,600
-main function, and then we're going to call the main function.
-
+and then we're going to call the main function.
+最后是调用这个 main 函数
 
 8699
 08:36:13,930 --> 08:36:16,840
-So let's go ahead and define our main function, we'll call it
-
+So let's go ahead and define our main function, 
+让我们继续，来定义我们的 main 函数
 
 8700
 08:36:16,870 --> 08:36:20,680
-async. function main, like that, and then we'll call our main
-
+we'll call it async. function main, like that, 
+输入 "async function main()" 就像这样
 
 8701
 08:36:20,680 --> 08:36:23,170
-function. And if you want to just copy paste this from the
-
+and then we'll call our main function. 
+然后我们要调用我们的 main 函数
 
 8702
 08:36:23,170 --> 08:36:27,430
-last section, you absolutely can. So we'll domain that then.
-
+And if you want to just copy paste this from the last section, you absolutely can. 
+如果你想的话，复制粘贴我们上一节的内容也是可以的
 
 8703
 08:36:42,190 --> 08:36:45,160
-Boom, just like that. And because of these semicolons are
-
+So we'll domain that then. Boom, 
+我们输入 "main().then()" 
 
 8704
 08:36:45,160 --> 08:36:48,040
-going to drive me absolutely insane. We're also going to add
-
+just like that. 
+就像这样
 
 8705
 08:36:48,040 --> 08:36:52,090
-prettier, and our solidity prettier plugins. So we'll do
-
+And because of these semicolons are going to drive me absolutely insane. 
+这堆分号会让我彻底疯掉
 
 8706
 08:36:52,150 --> 08:37:01,660
-yarn, add dash dash Dev, prettier and prettier, plug in
-
+We're also going to add prettier, and our solidity prettier plugins. 
+因此我们要添加 "prettier" 和 "solidity prettier" 插件
 
 8707
 08:37:02,680 --> 08:37:09,730
-solidity. Then we can go ahead and create our dot prettier, rc
-
+So we'll do yarn, add dash dash Dev, prettier and prettier, plug in solidity. 
+所以我们要 "yarn add --dev prettier" 以及 "prettier-plugin-solidity"
 
 8708
 08:37:09,730 --> 08:37:18,850
-file, we're going to add tab with four, use tabs, false, semi
-
+Then we can go ahead and create our dot prettier, rc file, 
+接着创建我们的 ".prettierrc" 文件
 
 8709
 08:37:19,210 --> 08:37:24,310
-false, and then single quote, also false. Now we're going to
-
+we're going to add tab with four, use tabs, false, 
+我们要添加 "tabWidth: 4" 还有 "useTabs: false" 
 
 8710
 08:37:24,310 --> 08:37:28,360
-be using this prettier rc file setup a lot. So in future
-
+semi false, and then single quote, also false. 
+"semi: false" 最后是 "singleQuote: false"
 
 8711
 08:37:28,360 --> 08:37:30,310
-sections, if you want to just copy paste it, you can
-
+Now we're going to be using this prettier rc file setup a lot. 
+现在我们用这个 prettierrc 文件设置了很多东西
 
 8712
 08:37:30,310 --> 08:37:33,400
-absolutely do that as well. We're also going to add a dot
-
+So in future sections, if you want to just copy paste it, you can absolutely do that as well. 
+在之后的章节中，你可以直接从这复制粘贴
 
 8713
 08:37:33,400 --> 08:37:37,450
-prettier, ignore, which tells prettier not to format some
-
+We're also going to add a dot prettier, ignore, 
+我们还要添加一个 ".prettierignore"
 
 8714
 08:37:37,450 --> 08:37:40,300
-files, which we want, we don't want prettier to spend a ton of
-
+which tells prettier not to format some files, which we want, 
+它告诉 prettier 不要格式化哪些文件，只要我们想的话
 
 8715
 08:37:40,300 --> 08:37:42,940
-time formatting all of our files, I'm just going to copy
-
+we don't want prettier to spend a ton of time formatting all of our files, 
+我们不想让 prettier 花费过多的时间去格式化所有的文件
 
 8716
 08:37:42,940 --> 08:37:46,120
-paste from the GitHub repo. So feel free to copy paste from the
-
+I'm just going to copy paste from the GitHub repo. 
+我直接从 GitHub 仓库中复制粘贴了这些过来
 
 8717
 08:37:46,120 --> 08:37:48,970
-GitHub repo as well, you'd find all the code for this section,
-
+So feel free to copy paste from the GitHub repo as well, 
+你也可以这样，从 GitHub 仓库中直接复制粘贴过来
 
 8718
 08:37:49,000 --> 08:37:51,850
-like I said, in the GitHub repo associated with this course.
-
+you'd find all the code for this section, like I said, in the GitHub repo associated with this course.
+你可以在课程关联的 GitHub 仓库中找到本章节的全部代码
 
 8719
 08:37:51,940 --> 08:37:54,520
-Now, unlike in our last section, where we had to grab our
-
+Now, unlike in our last section, 
+现在，与上一节不同的地方是
 
 8720
 08:37:54,520 --> 08:37:58,240
-contract code a little bit more manually, with hard hat, it's
-
+where we had to grab our contract code a little bit more manually, 
+我们不再需要手动获取我们的代码
 
 8721
 08:37:58,240 --> 08:38:00,850
-actually a number of different ways to grab compiled contracts.
-
+with hard hat, it's actually a number of different ways to grab compiled contracts.
+Hardhat 有多种不同的方法可以获取已编译的合约
 
 8722
 08:38:00,880 --> 08:38:02,860
-The first way we're going to do it, we're actually going to use
-
+The first way we're going to do it, we're actually going to use ethers. 
+第一件要做的事，是使用 ethers
 
 8723
 08:38:03,310 --> 08:38:06,040
-ethers. And now this is where one of the first confusing
-
+And now this is where one of the first confusing changes actually comes in. 
+那么第一个容易让人感到困惑的变化来了
 
 8724
 08:38:06,040 --> 08:38:11,530
-changes actually comes in. Previously, we did const ethers
-
+Previously, we did const ethers equals require ethers. 
+之前我们的做法是 "const {ethers} = require("ethers")"
 
 8725
 08:38:11,770 --> 08:38:16,540
-equals require ethers. And that was how we went ahead and worked
-
+And that was how we went ahead and worked with ethers. 
+这就是我们使用 ethers 的方法
 
 8726
 08:38:16,540 --> 08:38:20,890
-with ethers. However, you'll notice in our dev dependencies,
-
+However, you'll notice in our dev dependencies,
+然而，你会注意到在我们的 "devDependencies" 中
 
 8727
 08:38:21,280 --> 08:38:24,820
-we have this dependency called Hard Hat ethers. Hard Hat ethers
-
+we have this dependency called Hard Hat ethers. 
+有一个依赖项是 "hardhat-ethers"
 
 8728
 08:38:24,820 --> 08:38:28,480
-is a package that actually wraps hard hat with its own built in
-
+Hard Hat ethers is a package that actually wraps hard hat with its own built in ethers. 
+"Hardhat-ethers" 是一个将 ethers 内置进了 Hardhat 的一个封装包
 
 8729
 08:38:28,510 --> 08:38:31,030
-ethers. This is really advantageous because it allows
-
+This is really advantageous 
+这种做法很有优势
 
 8730
 08:38:31,030 --> 08:38:33,760
-hard hat to keep track of different deployments at
-
+because it allows hard hat to keep track of different deployments at different scripts and all these other things for us. 
+因为它允许 Hardhat 在不同脚本和其它情况下追踪不同的部署
 
 8731
 08:38:33,760 --> 08:38:36,610
-different scripts and all these other things for us. So instead
-
+So instead of importing ethers directly from ethers, 
+所以不要直接从 ethers 中导入 ethers
 
 8732
 08:38:36,610 --> 08:38:39,730
-of importing ethers directly from ethers, we're actually
-
+we're actually going to import ethers directly from hard hat instead. 
+而是要从 "hardhat" 中导入 ethers
 
 8733
 08:38:39,730 --> 08:38:43,750
-going to import ethers directly from hard hat instead. This
-
+This might seem a little confusing at first, 
+可能一开始会让人感到有些疑惑
 
 8734
 08:38:43,750 --> 08:38:46,570
-might seem a little confusing at first, but just know if we want
-
+but just know if we want to work with ethers and heart it, 
+但现在只用知道，如果我们要同时使用 ethers 和 Hardhat
 
 8735
 08:38:46,570 --> 08:38:49,210
-to work with ethers and heart it, it's usually much better to
-
+it's usually much better to pull it in from heart and 
+那么通常从 Hardhat 中导入会是更好的选择
 
 8736
 08:38:49,210 --> 08:38:52,690
-pull it in from heart and you can still do this and ethers
+you can still do this and ethers
 
 
 8737
