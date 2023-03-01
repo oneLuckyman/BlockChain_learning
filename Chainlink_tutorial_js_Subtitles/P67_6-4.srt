@@ -460,204 +460,205 @@ it's usually much better to pull it in from heart and
 
 8736
 08:38:49,210 --> 08:38:52,690
-you can still do this and ethers
-
+you can still do this and ethers will still work the same. 
+你仍然可以这样做，ethers 同样可以正常工作
 
 8737
 08:38:52,690 --> 08:38:56,140
-will still work the same. But hard hat won't necessarily know
-
+But hard hat won't necessarily know about different contract factories in different pieces
+但 Hardhat 就无法知道不同的代码中有不同的合约工厂了
 
 8738
 08:38:56,170 --> 08:38:58,570
-about different contract factories in different pieces
-
+and, and you'll see that in action in a second. 
+你很快就会看到这种情况
 
 8739
 08:38:58,570 --> 08:39:00,850
-and, and you'll see that in action in a second. Now that
-
+Now that we're pulling in ethers, 
+现在我们已经导入了 ethers
 
 8740
 08:39:00,850 --> 08:39:04,360
-we're pulling in ethers, we can actually immediately grab a
-
+we can actually immediately grab a contract factory using ethers. 
+我们可以立即使用 ethers 获取一个合约工厂
 
 8741
 08:39:04,360 --> 08:39:10,480
-contract factory using ethers. We can say const simple storage
-
+We can say const simple storage factory 
+我们写下 "const SimpleStorageFactory "
 
 8742
 08:39:10,480 --> 08:39:22,240
-factory equals await ethers dot get contract. Factory simple
-
+equals await ethers dot get contract. Factory simple storage. 
+"= await ethers.getContractFactory('SimpleStorage')"
 
 8743
 08:39:22,780 --> 08:39:26,500
-storage. So in order to get a simple storage, contract
-
+So in order to get a simple storage, contract factory, 
+所以为了获取一个 "SimpleStorage" 合约工厂
 
 8744
 08:39:26,500 --> 08:39:29,800
-factory, we can just do await ethers dot get contract factory.
-
+we can just do await ethers dot get contract factory.
+我们就可以这样做 "await ethers.getContractFactory"
 
 8745
 08:39:29,950 --> 08:39:33,250
-Now if we pulled right from ethers, the package ethers
-
+Now if we pulled right from ethers, 
+现在如果我们直接从 ethers 中导入
 
 8746
 08:39:33,280 --> 08:39:35,740
-doesn't know about this contracts folder and ethers
-
+the package ethers doesn't know about this contracts folder 
+ethers 包并不知道有这个 "contracts" 文件夹
 
 8747
 08:39:35,740 --> 08:39:38,620
-doesn't know we've already compiled simple storage dot
-
+and ethers doesn't know we've already compiled simple storage dot soul. 
+它也不知道我们已经把 "SimpleStorage.sol" 编译好了
 
 8748
 08:39:38,620 --> 08:39:42,400
-soul. And it's in our artifacts. Hard Hat, on the other hand,
-
+And it's in our artifacts. 
+就放在 "artifacts" 文件夹内
 
 8749
 08:39:42,490 --> 08:39:45,310
-does know about the contracts folder and does know that it's
-
+Hard Hat, on the other hand, does know about the contracts folder 
+另一方面 Hardhat 却知道 "contracts" 文件夹的存在
 
 8750
 08:39:45,310 --> 08:39:48,760
-already compiled, which is why this simple storage factory
-
+and does know that it's already compiled, 
+也知道它已经被编译好了
 
 8751
 08:39:48,760 --> 08:39:51,910
-grabbing work so well. Once we have our factory here, we can do
-
+which is why this simple storage factory grabbing work so well. 
+这就是为什么这个 "SimpleStorageFactory" 的获取工作能做得如此出色
 
 8752
 08:39:51,910 --> 08:39:54,730
-the same thing that we did in our previous section and deploy
-
+Once we have our factory here, 
+一旦我们拥有了这个工厂
 
 8753
 08:39:54,730 --> 08:39:59,320
-the contract. So we'll do a quick console dot log. Deploy
-
+we can do the same thing that we did in our previous section and deploy the contract. 
+我们就可以重复上一节中做过的事并部署合约
 
 8754
 08:40:00,460 --> 08:40:06,130
-flooring, contract done, and then we'll do Kant's simple
-
+So we'll do a quick console dot log. Deploy flooring, contract done, 
+我们快速写一下 "console.log('Deploying contract...')"
 
 8755
 08:40:06,130 --> 08:40:16,240
-storage equals await simple store edge factory dot deploy
-
+and then we'll do Kant's simple storage equals await simple store edge factory dot deploy
+接着是 "const simpleStorage = await SimpleStorageFactory.deploy()"
 
 8756
 08:40:17,320 --> 08:40:20,950
-And boom, with that little bit of code, we're already able to
-
+And boom, with that little bit of code, we're already able to deploy our simple storage contract, 
+Boom 有了这些代码，我们就已经可以部署我们的 "SimpleStorage" 合约了
 
 8757
 08:40:20,950 --> 08:40:25,090
-deploy our simple storage contract, then to wait to make
-
+then to wait to make sure it gets deployed, 
+然后需要等待以确保它部署成功
 
 8758
 08:40:25,090 --> 08:40:30,010
-sure it gets deployed, we can do await, simple storage, deployed.
-
+we can do await, simple storage, deployed. And that's it. 
+我们可以输入 "await simpleStorage.deployed()" 就是这样
 
 8759
 08:40:30,640 --> 08:40:33,880
-And that's it. Now let's see what happens when we go ahead
-
+Now let's see what happens when we go ahead and run this deploy script. 
+现在让我们看一下运行这个部署脚本时会发生什么
 
 8760
 08:40:33,880 --> 08:40:37,000
-and run this deploy script. As you know, in our last section,
-
+As you know, in our last section,
+如你所知，在上一节中
 
 8761
 08:40:37,030 --> 08:40:40,030
 we had to put in a private key, and we had to put an RPC URL.
-
+我们需要输入一个私钥和一个 "RPC URL"
 
 8762
 08:40:40,420 --> 08:40:44,020
-Right now, we don't have either one of those defined. So what do
-
+Right now, we don't have either one of those defined. 
+但现在我们没有定义二者中的任何一个
 
 8763
 08:40:44,020 --> 08:40:46,660
-you think should the script actually work? Or do you think
-
+So what do you think should the script actually work? 
+那么你认为这个脚本能正常工作么？
 
 8764
 08:40:46,660 --> 08:40:49,930
-it'll break because we, we didn't define what blockchain
-
+Or do you think it'll break 
+还是说你认为它会报错？
 
 8765
 08:40:49,930 --> 08:40:52,660
-we're going to deploy you. We also didn't find a private key.
-
+because we, we didn't define what blockchain we're going to deploy you. We also didn't find a private key.
+因为我们没有定义要部署到哪个区块链上，也没有定义私钥
 
 8766
 08:40:52,960 --> 08:40:56,200
-Well, let's go ahead and try this out. We can run the script
-
+Well, let's go ahead and try this out. 
+好吧，让我们来试试看吧
 
 8767
 08:40:56,230 --> 08:41:03,430
-in our terminal by running yarn, hard hat, run, scripts slash
-
+We can run the script in our terminal by running yarn, hard hat, run, scripts slash deploy dot j, s. 
+我们在终端中运行这个脚本，用 "yarn hardhat run scripts/deploy.js"
 
 8768
 08:41:04,120 --> 08:41:07,510
-deploy dot j, s. And again, I'm hitting tab here to do a little
-
+And again, I'm hitting tab here to do a little auto completion 
+这里我再一次使用了 tab 键进行了补全操作
 
 8769
 08:41:07,510 --> 08:41:11,410
-auto completion and see what happens. Well, we got deploying
-
+and see what happens. 
+让我们看看发生了什么
 
 8770
 08:41:11,410 --> 08:41:15,460
-contract, it says done, but that's really it. So what really
-
+Well, we got deploying contract, it says done, but that's really it. 
+好了，我们已经把合约部署好了，它说已经完成了，事实就是如此
 
 8771
 08:41:15,460 --> 08:41:18,160
-happened? Well, let's add one more line in here.
-
+So what really happened? Well, let's add one more line in here.
+所以它到底是怎么做到的？让我们在这里再添加一行
 
 8772
 08:41:18,339 --> 08:41:23,079
-Let's do console dot log. We'll do some string interpolation
-
+Let's do console dot log. We'll do some string interpolation deployed, contract to. 
+内容是 "console.log()"，再插入一些字符串 "Deployed contract to"
 
 8773
 08:41:24,399 --> 08:41:31,569
-deployed, contract to. And then we'll add simple storage. That
-
+And then we'll add simple storage. That address. 
+并且添加 "simpleStorage.address"
 
 8774
 08:41:31,569 --> 08:41:36,219
-address. Let's run this now. We get deployed contract, and then
-
+Let's run this now. We get deployed contract, 
+现在再运行一次，我们已经成功部署了合约
 
 8775
 08:41:36,219 --> 08:41:40,179
-we get deployed contract to, and then we get a contract address.
-
+and then we get deployed contract to, and then we get a contract address.
+并且得到了 "Deploy contract to" 还有一个合约地址
 
 8776
 08:41:40,539 --> 08:41:47,769
 Hmm, what's going on here. 
+哈！到底是发生了什么？
