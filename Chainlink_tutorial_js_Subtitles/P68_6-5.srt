@@ -1,0 +1,758 @@
+8776
+08:41:40,539 --> 08:41:47,769
+Hardhead has this fantastic tool built in called The Hard Hat Network 
+Hardhat 内置了一个很棒的工具叫做 "Hardhat Network"
+
+8777
+08:41:47,769 --> 08:41:51,639
+hard hat comes built in with Hard Hat Network, 
+Hardhat 内置 Hardhat Network
+
+8778
+08:41:51,639 --> 08:41:54,819
+a local Aetherium network node designed for development, 
+它是一个专为开发而设计的本地以太坊网络节点
+
+8779
+08:41:54,819 --> 08:41:58,149
+akin to ganache, that allows you to deploy your contracts and run your tests and debug your code.
+与 Ganache 相似，它允许你部署合约，运行测试以及调试代码
+
+8780
+08:41:58,149 --> 08:42:00,789
+Whenever we run a command in hard hat, or a script and hard hat or a task and hard hat, 
+每当我们在 Hardhat 中运行命令、脚本或者任务时
+
+8781
+08:42:00,879 --> 08:42:04,839
+we by default deploy to this fake Hard Hat Network. 
+我们都是默认部署到这个虚拟的 Hardhat Network
+
+8782
+08:42:04,839 --> 08:42:08,349
+This Hard Hat Network is very similar to ganache, 
+这个 Hardhat Network 与 Ganache 十分相似
+
+8783
+08:42:08,379 --> 08:42:11,439
+except for instead of having this UI, 
+除了没有这个 UI 界面
+
+8784
+08:42:11,469 --> 08:42:15,039
+it runs in the background for our scripts. 
+它在我们脚本的后台中运行
+
+8785
+08:42:15,039 --> 08:42:18,549
+In fact, if we go to our hard hat.config.js, 
+事实上，如果我们打开 "hardhat.config.js" 
+
+8786
+08:42:18,549 --> 08:42:22,509
+we can scroll down to the bottom to this module that exports section 
+我们可以滑倒底部找到这个 "module.exports" 部分
+
+8787
+08:42:22,509 --> 08:42:26,409
+and add more information about our default networks. 
+并添加有关默认网络的更多信息
+
+8788
+08:42:26,409 --> 08:42:29,709
+So right now, if we don't have anything in this module that export, 
+现在，如果我们在 "module.exports" 中没有任何相关信息
+
+8789
+08:42:29,709 --> 08:42:32,739
+by default, it adds this piece called default network hardhat. 
+那么默认情况下，它就会添加 "defaultNetwork: 'hardhat'"
+
+8790
+08:42:32,739 --> 08:42:39,129
+So anytime we run a script,
+所以无论我们什么时候运行脚本
+
+8791
+08:42:39,249 --> 08:42:42,459
+without specifying a network, it automatically uses this fake Hard Hat Network. 
+只要没有特别指定某个网络，它都会自动使用这个虚拟的 Hardhat Network
+
+8792
+08:42:42,459 --> 08:42:45,399
+And this fake Hard Hat Network 
+并且这个虚拟的 Hardhat Network
+
+8793
+08:42:45,429 --> 08:42:49,509
+comes automatically with an RPC URL and a private key for you. 
+会自动为你提供一个 "RPC URL" 和一个私钥
+
+8794
+08:42:49,509 --> 08:42:52,959
+So you don't even have to add one in. 
+所以你不必再额外添加一个了
+
+8795
+08:42:52,959 --> 08:42:56,049
+This is one of the major advantages of working with Hardhead. 
+这是使用 Hardhat 工作的主要优势之一
+
+8796
+08:42:56,049 --> 08:42:59,829
+It just automatically gives you this fake blockchain. And these fake private keys, 
+它会自动为你提供一个虚拟区块链以及虚拟私钥
+
+8797
+08:42:59,829 --> 08:43:02,349
+if you want to be a little bit more explicit. And I always recommend being more explicit, 
+如果你想让这里更明确一些，并且我也认为明确一点会比较好
+
+8798
+08:43:02,349 --> 08:43:06,369
+we can add the default network in to the module that are experts. 
+那么可以在 "module.exports" 中添加一下 "defaultNetwork" 
+
+8799
+08:43:06,369 --> 08:43:09,909
+So now our default network is explicitly stated as hard hat. 
+所以现在我们的 "defaultNetwork" 被明确指定为 "hardhat"
+
+8800
+08:43:09,939 --> 08:43:13,569
+However, in any script, you run,
+不过，无论任何脚本，你都可以在运行时
+
+8801
+08:43:13,599 --> 08:43:16,629
+you can choose whatever network you want to work with. 
+选择你想要使用的任意网络
+
+8802
+08:43:16,629 --> 08:43:20,349
+So if I want to explicitly say 
+所以如果我想明确指定
+
+8803
+08:43:20,349 --> 08:43:25,479
+I want to run our deploy script on our fake Hard Hat Network, 
+我想在虚拟的 Hardhat Network 上运行我们的部署脚本的话
+
+8804
+08:43:25,899 --> 08:43:31,689
+I can do yarn, hard hat, run scripts, deploy dot j s, dash dash network, hard hat, 
+我可以这么做 "yarn hardhat run scripts/deploy.js --network hardhat"
+
+8805
+08:43:31,689 --> 08:43:34,719
+this is us telling her that, 
+这就是我们在告诉 Hardhat
+
+8806
+08:43:34,719 --> 08:43:37,119
+hey, we want to run this script on the Hard Hat Network. 
+嘿，我们要在 Hardhat Network 上运行这个脚本
+
+8807
+08:43:37,119 --> 08:43:41,289
+Hopefully, you might be able to see where this is going. 
+希望你已经看明白这是怎么一回事了
+
+8808
+08:43:41,289 --> 08:43:44,469
+Having this network flag 
+有了这个网络标识之后
+
+8809
+08:43:44,469 --> 08:43:48,039
+makes it incredibly easy to switch across different chains, different block chains, different private keys, etc. 
+在不同链，不同区块链，不同私钥等等之间的切换就会变得非常容易
+
+8810
+08:43:48,039 --> 08:43:51,489
+So we have our default network set the hard hat here, 
+现在我们把这里的 defaultNetwork 设置为了 hardhat
+
+8811
+08:43:51,489 --> 08:43:56,349
+we can add other networks in here as well. 
+我们也可以在这里添加其它网络
+
+8812
+08:43:56,379 --> 08:43:58,659
+The way we do that is we're going to add a networks section. 
+方法就是添加一个 "network" 部分
+
+8813
+08:43:58,659 --> 08:44:01,539
+And we're going to define any of the network sections that we want. 
+并按照我们的需要定义它
+
+8814
+08:44:01,539 --> 08:44:04,269
+And remember to put a comment there so that your Visual Studio code doesn't get mad at you. 
+记得这里要加个逗号，这样你的 Visual Studio Code 就不会向你报错了
+
+8815
+08:44:04,269 --> 08:44:08,829
+So recently, we worked with Rigby so let's go ahead and add a Rinkeby network in here. 
+就近期来说，我们使用的是 Rinkeby，所以我们来添加一个 Rinkeby 网络
+
+8816
+08:44:08,829 --> 08:44:12,159
+So we're gonna say another network is gonna be really 
+所以我要指定另外的网络是 "rinkeby"
+
+8817
+08:44:12,489 --> 08:44:16,119
+cool. So I should just be able to change the network flag to Rigby now, right? 
+酷！所以我现在应该能够切换网络标识为 Rinkeby 了，对吧？
+
+8818
+08:44:16,119 --> 08:44:24,429
+Well, not quite. 
+好吧，并不是
+
+8819
+08:44:24,699 --> 08:44:28,179
+If you try to run that, 
+如果你尝试运行，
+
+8820
+08:44:28,239 --> 08:44:32,259
+you're gonna get invalid value undefined for hardhat config networks. Rigby, that URL, 
+就会得到 “无效的未定义值 HardhatConfig.networks.rinkeby.url”
+
+8821
+08:44:32,289 --> 08:44:35,619
+it's expecting you to tell it, hey, what the URL is, 
+它希望你能告诉它，嘿，这是什么 URL
+
+8822
+08:44:35,619 --> 08:44:38,619
+since this isn't the hard hat network, 
+因为这并不是 Hardhat Network
+
+8823
+08:44:38,619 --> 08:44:41,739
+we need to tell hard hat exactly how we're going to connect to rink B. 
+所以我们需要告诉 hardhat 如何链接到 Rinkeby
+
+8824
+08:44:41,739 --> 08:44:44,439
+And this is where a lot of what we learned before is going to come in handy, again, 
+这就是我们之前学到的许多知识再次派上用场的地方了
+
+8825
+08:44:44,439 --> 08:44:48,279
+exactly the same as what we did before. 
+就和我们之前做的完全一样
+
+8826
+08:44:48,279 --> 08:44:52,749
+We're going to create a new Dotty v file, and we're going to add our Rigby URL in this dot env file. Just
+
+
+8827
+08:44:52,749 --> 08:44:56,199
+remember, dot env is an r dot get ignore just in case. So in
+
+
+8828
+08:44:56,199 --> 08:44:59,979
+our Dotty env, we're going to add that RPC URL from alcmi back
+
+
+8829
+08:44:59,979 --> 08:45:04,449
+in here before we just said RPC URL. But since we might want to
+
+
+8830
+08:45:04,449 --> 08:45:07,359
+work across multiple networks, it's usually good to specify
+
+
+8831
+08:45:07,389 --> 08:45:11,409
+exactly what network each URL stands for. So we're gonna say
+
+
+8832
+08:45:12,249 --> 08:45:18,699
+Rynkeby RPC URL equals and then paste that URL in here. Now, as
+
+
+8833
+08:45:18,699 --> 08:45:22,059
+you probably have guessed, we can add our URL to our Rinkeby
+
+
+8834
+08:45:22,059 --> 08:45:25,719
+network here. for readability, I usually like to add them as
+
+
+8835
+08:45:25,719 --> 08:45:29,679
+variables right above the module that experts. So I'll say const
+
+
+8836
+08:45:29,979 --> 08:45:40,269
+Rynkeby. RPC URL equals process dot E and V dot Rynkeby RPC URL.
+
+
+8837
+08:45:40,719 --> 08:45:43,869
+And once again, we're going to be pulling that Rinckey RPC URL
+
+
+8838
+08:45:44,079 --> 08:45:47,679
+from our environment variable. Of course, in order to pull that
+
+
+8839
+08:45:47,679 --> 08:45:50,709
+environment variable in, we're going to need to use that dot
+
+
+8840
+08:45:50,709 --> 08:45:54,789
+env package again. So to add that in, we're going to yarn add
+
+
+8841
+08:45:54,789 --> 08:46:00,609
+dash dash dev dot EMV. And at the top of our Hardhead config,
+
+
+8842
+08:46:00,909 --> 08:46:08,649
+we're going to add require dot EMV, and then do dot config to
+
+
+8843
+08:46:08,649 --> 08:46:11,769
+enable the config. Now this means we should be able to pull
+
+
+8844
+08:46:11,769 --> 08:46:15,849
+our rink the RPC URL from our dot env. Now that we have that
+
+
+8845
+08:46:15,879 --> 08:46:20,829
+in our Rinkeby network, we can add URL Rinckey RPC URL.
+
+
+8846
+08:46:21,489 --> 08:46:24,999
+Awesome. So we have an RPC URL for different network. But what
+
+
+8847
+08:46:24,999 --> 08:46:27,969
+else do we usually need? Well, we usually need a private key to
+
+
+8848
+08:46:27,969 --> 08:46:30,909
+work with an actual network, or that doesn't automatically give
+
+
+8849
+08:46:30,909 --> 08:46:33,939
+us a private key for rugby, because Hardhead can't just give
+
+
+8850
+08:46:33,939 --> 08:46:36,729
+us test and the Etherium, we need to have an actual account
+
+
+8851
+08:46:36,849 --> 08:46:40,089
+an actual test nets. Hardhead doesn't control those. So we
+
+
+8852
+08:46:40,089 --> 08:46:43,749
+have to actually give it a real URL and a real private key. So
+
+
+8853
+08:46:43,749 --> 08:46:46,089
+to add private keys, you actually add something called
+
+
+8854
+08:46:46,119 --> 08:46:50,259
+accounts, you add a list of accounts that you want to give
+
+
+8855
+08:46:50,259 --> 08:46:53,169
+to hard hat for us, we're only going to add one, which is going
+
+
+8856
+08:46:53,169 --> 08:46:55,629
+to be our private key. And for our private key, we're going to
+
+
+8857
+08:46:55,629 --> 08:46:59,199
+do the exact same thing. We're gonna say const private key
+
+
+8858
+08:46:59,859 --> 08:47:05,949
+equals process dot e NV dot private key. And since this
+
+
+8859
+08:47:05,949 --> 08:47:09,159
+private key is going to be a real private key for a real test
+
+
+8860
+08:47:09,159 --> 08:47:12,339
+net, again, we are going to have to grab this from our meta mask.
+
+
+8861
+08:47:12,369 --> 08:47:15,939
+So it will go to our meta mask, three dots, account details,
+
+
+8862
+08:47:15,969 --> 08:47:18,639
+export private key, and we'll add our password in here.
+
+
+8863
+08:47:20,710 --> 08:47:25,720
+And then in our dot env will add private key equals and then add
+
+
+8864
+08:47:25,720 --> 08:47:28,870
+our private key. Now I know I've said this 100 times, but please,
+
+
+8865
+08:47:28,870 --> 08:47:33,700
+please, please, for learning this, do not use a real key that
+
+
+8866
+08:47:33,700 --> 08:47:37,270
+is connected to any real money just in case, please use a new
+
+
+8867
+08:47:37,270 --> 08:47:40,180
+meta mask. I've know I've said it a bunch. But some people go
+
+
+8868
+08:47:40,180 --> 08:47:43,630
+no, I'm going to be okay, I'll be safe. Just to be super, super
+
+
+8869
+08:47:43,630 --> 08:47:47,020
+safe here, please use a brand new meta mask. So now that we
+
+
+8870
+08:47:47,020 --> 08:47:49,870
+have a private key, we're going to add it in here account
+
+
+8871
+08:47:50,260 --> 08:47:53,650
+private key. And now we have an account here. One more thing I
+
+
+8872
+08:47:53,650 --> 08:47:58,390
+like to do is I like to give the chain ID of the network, which
+
+
+8873
+08:47:58,390 --> 08:48:02,890
+for Rigby is going to be for every single EVM base network as
+
+
+8874
+08:48:02,920 --> 08:48:06,700
+a new chain ID and EVM network basically just means solidity
+
+
+8875
+08:48:06,700 --> 08:48:10,390
+works on it. This includes all test nets, there's a good site
+
+
+8876
+08:48:10,390 --> 08:48:13,510
+called chainless.org, which may or may not be going down at some
+
+
+8877
+08:48:13,510 --> 08:48:16,780
+point, it has a list of all these different networks. For
+
+
+8878
+08:48:16,780 --> 08:48:19,630
+example, you can see on here a theory main net has a chain ID
+
+
+8879
+08:48:19,630 --> 08:48:24,760
+of one byte and smart chain is 56, avalanches, 4311 for
+
+
+8880
+08:48:24,790 --> 08:48:29,830
+Phantom, opera 250, Polygon, 137, etc. Each one of these EVM
+
+
+8881
+08:48:29,830 --> 08:48:33,850
+compatible chains has their own chain ID, rank V, the chain ID
+
+
+8882
+08:48:33,850 --> 08:48:38,020
+is for adding the chain ID is helpful here for later on. And
+
+
+8883
+08:48:38,020 --> 08:48:40,390
+we'll get to that in the future. But for now, just go ahead and
+
+
+8884
+08:48:40,390 --> 08:48:43,510
+make sure to add your chain IDs. Okay, now that we have the RPC
+
+
+8885
+08:48:43,510 --> 08:48:47,050
+URL, we have the private key, we can go ahead and test deploying
+
+
+8886
+08:48:47,050 --> 08:48:51,040
+this to an actual test net, and actually did something incorrect
+
+
+8887
+08:48:51,040 --> 08:48:54,220
+here. And we're gonna get an error here. And I want you to go
+
+
+8888
+08:48:54,220 --> 08:48:57,970
+ahead and try to figure out and debug this error yourself.
+
+
+8889
+08:48:58,030 --> 08:49:03,610
+You're ready. Alright, let's do it. We'll do yarn, hard hat, run
+
+
+8890
+08:49:03,610 --> 08:49:11,470
+scripts, deploy dot j s, dash dash network Rinkeby. And we get
+
+
+8891
+08:49:11,470 --> 08:49:16,240
+this wonderfully weird error, which we see we have deployed
+
+
+8892
+08:49:16,240 --> 08:49:20,200
+contract. So we know that in our deploy script, we get to at
+
+
+8893
+08:49:20,200 --> 08:49:23,680
+least this line, but then we're getting an error, I highly
+
+
+8894
+08:49:23,680 --> 08:49:26,890
+likely hear what's going on saying cannot read properties
+
+
+8895
+08:49:26,890 --> 08:49:30,280
+have no reading send transaction, if you want, you
+
+
+8896
+08:49:30,280 --> 08:49:33,340
+can absolutely go to this spot. But it basically it looks like
+
+
+8897
+08:49:33,340 --> 08:49:36,340
+it's having a hard time understanding what the private
+
+
+8898
+08:49:36,340 --> 08:49:40,540
+key or what the account of this is. And what do you think I'm
+
+
+8899
+08:49:40,540 --> 08:49:43,630
+going to recommend we do? Well, if it's not clear, after doing a
+
+
+8900
+08:49:43,630 --> 08:49:46,090
+little bit of triaging and debugging, we're going to copy
+
+
+8901
+08:49:46,090 --> 08:49:49,600
+this air. And we're going to come on over to Google and paste
+
+
+8902
+08:49:49,600 --> 08:49:54,250
+that right in. It looks like we do get a question here from
+
+
+8903
+08:49:54,250 --> 08:49:57,520
+stackexchange Etherium. And it looks like it's really similar
+
+
+8904
+08:49:57,790 --> 08:50:01,660
+to what we're doing. We scroll down. They're running nearly the
+
+
+8905
+08:50:01,660 --> 08:50:04,180
+exact same script that we're running, they're using MPX
+
+
+8906
+08:50:04,180 --> 08:50:08,440
+instead of yarn. They've got a pretty minimalistic deploy file.
+
+
+8907
+08:50:08,740 --> 08:50:11,380
+Let's scroll down and see what the answers have to say. I've
+
+
+8908
+08:50:11,380 --> 08:50:14,950
+seen this error where my private key wasn't properly populated. I
+
+
+8909
+08:50:14,950 --> 08:50:17,500
+would also use an environment variable I'm pretty sure Are
+
+
+8910
+08:50:17,500 --> 08:50:20,560
+environment variables good. But we have a second one saying in
+
+
+8911
+08:50:20,560 --> 08:50:24,010
+your heart head, I can think that Jas, it should be accounts
+
+
+8912
+08:50:24,040 --> 08:50:27,820
+instead of account, it works for me, let's go back to our head
+
+
+8913
+08:50:27,820 --> 08:50:31,870
+config and see if that's what's going on. Uh huh, we put account
+
+
+8914
+08:50:32,260 --> 08:50:34,570
+in this should be accounts. So let's swap that over to
+
+
+8915
+08:50:34,570 --> 08:50:37,870
+accounts. We'll clear our terminal. And we'll run this
+
+
+8916
+08:50:37,870 --> 08:50:41,620
+again. Uh huh. And now it's reading a little bit longer,
+
+
+8917
+08:50:41,950 --> 08:50:44,590
+which is good. This means that we're probably deploying this to
+
+
+8918
+08:50:44,590 --> 08:50:47,740
+rink B, which is what we want to see. Awesome. And now we can see
+
+
+8919
+08:50:47,740 --> 08:50:51,250
+deployed contract to, and we have a contract address here. So
+
+
+8920
+08:50:51,250 --> 08:50:54,400
+we'll grab this contract. And we'll pop on over to bring the
+
+
+8921
+08:50:54,400 --> 08:50:57,580
+ether scan, that's numbering the ether scan. And we'll go ahead
+
+
+8922
+08:50:57,580 --> 08:51:00,610
+and we'll paste this in. Awesome. And we see our contract
+
+
+8923
+08:51:00,610 --> 08:51:04,690
+was created about 26 seconds ago. Perfect. Now for this part,
+
+
+8924
+08:51:04,720 --> 08:51:07,600
+you don't have to deploy this to rink be with me, if you follow
+
+
+8925
+08:51:07,600 --> 08:51:10,630
+along here. That's good enough. So remember, the flying to test
+
+
+8926
+08:51:10,630 --> 08:51:13,960
+that's can take a long time. So for this one, you don't have to
+
+
+8927
+08:51:13,960 --> 08:51:19,720
+deploy with me. 
