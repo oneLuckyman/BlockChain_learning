@@ -250,152 +250,153 @@ exactly the same as what we did before.
 
 8826
 08:44:48,279 --> 08:44:52,749
-We're going to create a new Dotty v file, and we're going to add our Rigby URL in this dot env file. Just
-
+We're going to create a new Dotty v file, and we're going to add our Rigby URL in this dot env file. 
+我们要创建一个新的 ".env" 文件，并在其中添加 "rinkeby URL"
 
 8827
 08:44:52,749 --> 08:44:56,199
-remember, dot env is an r dot get ignore just in case. So in
-
+Just remember, dot env is an r dot get ignore just in case. 
+记住 ".env" 要放到 ".gitignore" 里以防万一
 
 8828
 08:44:56,199 --> 08:44:59,979
-our Dotty env, we're going to add that RPC URL from alcmi back
-
+So in our Dotty env, we're going to add that RPC URL from alcmi back in here 
+所以在 ".env" 里，我们要从 alchemy 添加相应的 "RPC URL" 
 
 8829
 08:44:59,979 --> 08:45:04,449
-in here before we just said RPC URL. But since we might want to
-
+before we just said RPC URL. But since we might want to work across multiple networks, 
+在指定 "RPC URL" 之前，由于我们可能要在多个网络上工作
 
 8830
 08:45:04,449 --> 08:45:07,359
-work across multiple networks, it's usually good to specify
-
+it's usually good to specify exactly what network each URL stands for. 
+所以通常最好是确切指定每个 URL 对应的具体网络
 
 8831
 08:45:07,389 --> 08:45:11,409
-exactly what network each URL stands for. So we're gonna say
-
+So we're gonna say Rynkeby RPC URL equals and then paste that URL in here. 
+所以我们要输入 "RINKEBY_RPC_URL = " 然后把 URL 粘贴到这里
 
 8832
 08:45:12,249 --> 08:45:18,699
-Rynkeby RPC URL equals and then paste that URL in here. Now, as
-
+Now, as you probably have guessed, 
+现在，你可能已经猜到了
 
 8833
 08:45:18,699 --> 08:45:22,059
-you probably have guessed, we can add our URL to our Rinkeby
-
+we can add our URL to our Rinkeby network here. 
+我们要把 URL 添加给这里的 rinkeby 网络
 
 8834
 08:45:22,059 --> 08:45:25,719
-network here. for readability, I usually like to add them as
-
+for readability, I usually like to add them as variables right above the module that experts. 
+为了可读性，我通常喜欢把它们添加为变量，放到 "module.exports" 上方
 
 8835
 08:45:25,719 --> 08:45:29,679
-variables right above the module that experts. So I'll say const
-
+So I'll say const Rynkeby. RPC URL equals process dot E and V dot Rynkeby RPC URL.
+所以就是 "const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL"
 
 8836
 08:45:29,979 --> 08:45:40,269
-Rynkeby. RPC URL equals process dot E and V dot Rynkeby RPC URL.
-
+And once again, we're going to be pulling that Rinckey RPC URL from our environment variable. 
+再次提醒一下，我们将从环境变量中获取 "RINKEBY_RPC_URL"
 
 8837
 08:45:40,719 --> 08:45:43,869
-And once again, we're going to be pulling that Rinckey RPC URL
-
+Of course, in order to pull that environment variable in, 
+当然，为了获取这个环境变量
 
 8838
 08:45:44,079 --> 08:45:47,679
-from our environment variable. Of course, in order to pull that
-
+we're going to need to use that dot env package again. 
+我们需要再次调用那个 "dotenv" 包
 
 8839
 08:45:47,679 --> 08:45:50,709
-environment variable in, we're going to need to use that dot
-
+So to add that in, we're going to yarn add dash dash dev dot EMV. 
+所以要想添加它，我们要做的就是 "yarn add --dev dotenv"
 
 8840
 08:45:50,709 --> 08:45:54,789
-env package again. So to add that in, we're going to yarn add
+And at the top of our Hardhead config, 
+然后在 "hardhat.config.js" 的顶部
 
 
 8841
 08:45:54,789 --> 08:46:00,609
-dash dash dev dot EMV. And at the top of our Hardhead config,
-
+we're going to add require dot EMV, 
+我们要添加 "require("dotenv")"
 
 8842
 08:46:00,909 --> 08:46:08,649
-we're going to add require dot EMV, and then do dot config to
-
+and then do dot config to enable the config. 
+然后加上 ".config()" 以启动配置
 
 8843
 08:46:08,649 --> 08:46:11,769
-enable the config. Now this means we should be able to pull
+Now this means we should be able to pull our rink the RPC URL from our dot env. 
 
 
 8844
 08:46:11,769 --> 08:46:15,849
-our rink the RPC URL from our dot env. Now that we have that
-
+Now that we have that in our Rinkeby network, 
+现在我们已经有了 Rinkeby 网络
 
 8845
 08:46:15,879 --> 08:46:20,829
-in our Rinkeby network, we can add URL Rinckey RPC URL.
-
+we can add URL Rinckey RPC URL. Awesome. 
+我们就可以添加 "url: RINKEBY_RPC_URL"
 
 8846
 08:46:21,489 --> 08:46:24,999
-Awesome. So we have an RPC URL for different network. But what
-
+So we have an RPC URL for different network. 
+所以现在我们就有了一个不同网络的 "RPC URL"
 
 8847
 08:46:24,999 --> 08:46:27,969
-else do we usually need? Well, we usually need a private key to
-
+But what else do we usually need? 
+但我们还需要什么？
 
 8848
 08:46:27,969 --> 08:46:30,909
-work with an actual network, or that doesn't automatically give
-
+Well, we usually need a private key to work with an actual network, 
+通常来说我们还需要为真实的网络提供一个私钥
 
 8849
 08:46:30,909 --> 08:46:33,939
-us a private key for rugby, because Hardhead can't just give
-
+or that doesn't automatically give us a private key for rugby, 
+Hardhat 不会自动为我们提供用于 Rinkeby 的私钥
 
 8850
 08:46:33,939 --> 08:46:36,729
-us test and the Etherium, we need to have an actual account
-
+because Hardhead can't just give us test and the Etherium, 
+因为 Hardhat 不能直接提供测试网的以太币
 
 8851
 08:46:36,849 --> 08:46:40,089
-an actual test nets. Hardhead doesn't control those. So we
-
+we need to have an actual account an actual test nets. 
+我们需要在真实的测试网络上有一个实际的账户
 
 8852
 08:46:40,089 --> 08:46:43,749
-have to actually give it a real URL and a real private key. So
-
+Hardhead doesn't control those. So we have to actually give it a real URL and a real private key. 
+Hardhat 不能提供这些，所以我们要为它提供一个真实的 URL 以及私钥
 
 8853
 08:46:43,749 --> 08:46:46,089
-to add private keys, you actually add something called
-
+So to add private keys, you actually add something called accounts, 
+要添加私钥，你需要添加一个 "account"
 
 8854
 08:46:46,119 --> 08:46:50,259
-accounts, you add a list of accounts that you want to give
-
+you add a list of accounts that you want to give to hard hat 
+并添加一个你想提供给 Hardhat 的一个账户列表
 
 8855
 08:46:50,259 --> 08:46:53,169
-to hard hat for us, we're only going to add one, which is going
+for us, we're only going to add one, which is going
 
 
 8856
