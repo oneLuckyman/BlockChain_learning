@@ -316,7 +316,7 @@ we're going to need to use that dot env package again.
 8839
 08:45:47,679 --> 08:45:50,709
 So to add that in, we're going to yarn add dash dash dev dot EMV. 
-所以要想添加它，我们要做的就是 "yarn add --dev dotenv"
+要想添加它，我们要做的就是 "yarn add --dev dotenv"
 
 8840
 08:45:50,709 --> 08:45:54,789
@@ -396,162 +396,162 @@ you add a list of accounts that you want to give to hard hat
 
 8855
 08:46:50,259 --> 08:46:53,169
-for us, we're only going to add one, which is going
-
+for us, we're only going to add one, which is going to be our private key. 
+对我们来说，只添加一个就好，这就是我们的私钥
 
 8856
 08:46:53,169 --> 08:46:55,629
-to be our private key. And for our private key, we're going to
-
+And for our private key, we're going to do the exact same thing. 
+对于私钥，我们要做的事情完全相同
 
 8857
 08:46:55,629 --> 08:46:59,199
-do the exact same thing. We're gonna say const private key
-
+We're gonna say const private key equals process dot e NV dot private key. 
+就是 "const PRIVATE_KEY = process.env.PRIVATE_KEY"
 
 8858
 08:46:59,859 --> 08:47:05,949
-equals process dot e NV dot private key. And since this
-
+And since this private key is going to be a real private key for a real test net, 
+因为这个私钥是一个存在于真实测试网络上的一个真正的私钥
 
 8859
 08:47:05,949 --> 08:47:09,159
-private key is going to be a real private key for a real test
-
+again, we are going to have to grab this from our meta mask.
+所以我们必须要从 MetaMask 中获取它
 
 8860
 08:47:09,159 --> 08:47:12,339
-net, again, we are going to have to grab this from our meta mask.
-
+So it will go to our meta mask, three dots, account details, export private key, 
+所以我们打开 MetaMask，点这三个点，账户详情，导出私钥
 
 8861
 08:47:12,369 --> 08:47:15,939
-So it will go to our meta mask, three dots, account details,
-
+and we'll add our password in here.
+在这里输入我们的密码
 
 8862
 08:47:15,969 --> 08:47:18,639
-export private key, and we'll add our password in here.
-
+And then in our dot env will add private key 
+接着在 ".env" 里添加 "PRIVATE_KEY = "
 
 8863
 08:47:20,710 --> 08:47:25,720
-And then in our dot env will add private key equals and then add
-
+equals and then add our private key. 
+最后添加我们的私钥
 
 8864
 08:47:25,720 --> 08:47:28,870
-our private key. Now I know I've said this 100 times, but please,
-
+Now I know I've said this 100 times, but please, please, please, 
+我知道我已经说了 100 遍了，但是请，请，请
 
 8865
 08:47:28,870 --> 08:47:33,700
-please, please, for learning this, do not use a real key that
-
+for learning this, do not use a real key that is connected to any real money 
+在学习这个的时候，不要使用任何与真钱有关联的私钥
 
 8866
 08:47:33,700 --> 08:47:37,270
-is connected to any real money just in case, please use a new
-
+just in case, please use a new meta mask. 
+以防万一，请使用一个新的 MetaMask
 
 8867
 08:47:37,270 --> 08:47:40,180
-meta mask. I've know I've said it a bunch. But some people go
-
+I've know I've said it a bunch. But some people go no, I'm going to be okay, I'll be safe. 
+我知道我说过很多遍了，但还是有些人会说，我没事，我很安全
 
 8868
 08:47:40,180 --> 08:47:43,630
-no, I'm going to be okay, I'll be safe. Just to be super, super
-
+Just to be super, super safe here, please use a brand new meta mask. 
+但为了确保绝对安全，请使用一个全新的 MetaMask
 
 8869
 08:47:43,630 --> 08:47:47,020
-safe here, please use a brand new meta mask. So now that we
-
+So now that we have a private key, 
+所以现在我们有了一个私钥
 
 8870
 08:47:47,020 --> 08:47:49,870
-have a private key, we're going to add it in here account
-
+we're going to add it in here account private key. 
+我们要把它放到这里 "account: [PRIVATE_KEY]"
 
 8871
 08:47:50,260 --> 08:47:53,650
-private key. And now we have an account here. One more thing I
-
+And now we have an account here. 
+现在我们在这里就有了一个账户了
 
 8872
 08:47:53,650 --> 08:47:58,390
-like to do is I like to give the chain ID of the network, which
-
+One more thing I like to do is I like to give the chain ID of the network, 
+还有一件我常做的事是，我喜欢提供网络的 "chainID"
 
 8873
 08:47:58,390 --> 08:48:02,890
-for Rigby is going to be for every single EVM base network as
-
+which for Rigby is going to be for 
+对 Rinkeby 来说就是 4
 
 8874
 08:48:02,920 --> 08:48:06,700
-a new chain ID and EVM network basically just means solidity
-
+every single EVM base network as a new chain ID 
+每一个 EVM 基础网络都有一个新的 chainID
 
 8875
 08:48:06,700 --> 08:48:10,390
-works on it. This includes all test nets, there's a good site
-
+and EVM network basically just means solidity works on it. This includes all test nets, 
+EVM 网络的意思就是 Solidity 可以在其上面运行，这包括了所有的测试网络
 
 8876
 08:48:10,390 --> 08:48:13,510
-called chainless.org, which may or may not be going down at some
-
+there's a good site called chainless.org, which may or may not be going down at some point, 
+有一个很好用的网站叫做 "chainlist.org"，有的时候可能会上不去
 
 8877
 08:48:13,510 --> 08:48:16,780
-point, it has a list of all these different networks. For
-
+it has a list of all these different networks. 
+它在列表中列出了所有这些不同的网络
 
 8878
 08:48:16,780 --> 08:48:19,630
-example, you can see on here a theory main net has a chain ID
-
+For example, you can see on here a theory main net has a chain ID of one 
+比如说，你可以看到以太网主网络的 chainID 是 1
 
 8879
 08:48:19,630 --> 08:48:24,760
-of one byte and smart chain is 56, avalanches, 4311 for
-
+byte and smart chain is 56, avalanches, 4311 for
+"Binance Smart Chain" 是 56，"Avalanche" 是 43114
 
 8880
 08:48:24,790 --> 08:48:29,830
-Phantom, opera 250, Polygon, 137, etc. Each one of these EVM
-
+Phantom, opera 250, Polygon, 137, etc. 
+"Fantom Opera" 是 250，"Polygon" 是 137 等等等等
 
 8881
 08:48:29,830 --> 08:48:33,850
-compatible chains has their own chain ID, rank V, the chain ID
-
+Each one of these EVM compatible chains has their own chain ID, rank V, the chain ID is for 
+每个 EVM 兼容链都有自己的 chainID，Rinkeby 的 chainID 是 4
 
 8882
 08:48:33,850 --> 08:48:38,020
-is for adding the chain ID is helpful here for later on. And
-
+adding the chain ID is helpful here for later on. And we'll get to that in the future. 
+添加 chainID 有助于之后的一些操作，将来我们会涉及到这一点
 
 8883
 08:48:38,020 --> 08:48:40,390
-we'll get to that in the future. But for now, just go ahead and
-
+But for now, just go ahead and make sure to add your chain IDs. 
+但现在只需要确保添加你的 chainID 即可。
 
 8884
 08:48:40,390 --> 08:48:43,510
-make sure to add your chain IDs. Okay, now that we have the RPC
-
+Okay, now that we have the RPC URL, we have the private key, 
+好了，现在我们有了 "RPC URL" 和私钥
 
 8885
 08:48:43,510 --> 08:48:47,050
-URL, we have the private key, we can go ahead and test deploying
-
+we can go ahead and test deploying this to an actual test net, 
+就可以继续在实际的测试网上测试部署了
 
 8886
 08:48:47,050 --> 08:48:51,040
-this to an actual test net, and actually did something incorrect
+and actually did something incorrect
 
 
 8887
