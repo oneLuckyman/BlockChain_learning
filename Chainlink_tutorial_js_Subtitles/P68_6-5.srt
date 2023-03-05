@@ -551,209 +551,205 @@ we can go ahead and test deploying this to an actual test net,
 
 8886
 08:48:47,050 --> 08:48:51,040
-and actually did something incorrect
-
+and actually did something incorrect here. 
+其实我这里有些不正确的做法
 
 8887
 08:48:51,040 --> 08:48:54,220
-here. And we're gonna get an error here. And I want you to go
-
+And we're gonna get an error here. 
+这里会产生一个报错
 
 8888
 08:48:54,220 --> 08:48:57,970
-ahead and try to figure out and debug this error yourself.
-
+And I want you to go ahead and try to figure out and debug this error yourself.
+我希望你可以自己尝试一下找到并解决这个错误
 
 8889
 08:48:58,030 --> 08:49:03,610
-You're ready. Alright, let's do it. We'll do yarn, hard hat, run
-
+You're ready. Alright, let's do it. 
+准备好了么，让我们一起来看一下吧
 
 8890
 08:49:03,610 --> 08:49:11,470
-scripts, deploy dot j s, dash dash network Rinkeby. And we get
-
+We'll do yarn, hard hat, run scripts, deploy dot j s, dash dash network Rinkeby. 
+输入 "yarn hardhat run scripts/deploy.js -- network rinkeby"
 
 8891
 08:49:11,470 --> 08:49:16,240
-this wonderfully weird error, which we see we have deployed
-
+And we get this wonderfully weird error, 
+我们得到了这个非常奇怪的报错
 
 8892
 08:49:16,240 --> 08:49:20,200
-contract. So we know that in our deploy script, we get to at
-
+which we see we have deployed contract. 
+仔细看一下，可以发现有 "Deploying contract..."
 
 8893
 08:49:20,200 --> 08:49:23,680
-least this line, but then we're getting an error, I highly
-
+So we know that in our deploy script, we get to at least this line, 
+所以可以知道我们的部署脚本至少运行到了这一行
 
 8894
 08:49:23,680 --> 08:49:26,890
-likely hear what's going on saying cannot read properties
-
+but then we're getting an error, I highly likely hear what's going on 
+但之后我们就遇到了错误，我认为很可能是在这里发生的，所以到底怎么回事
 
 8895
 08:49:26,890 --> 08:49:30,280
-have no reading send transaction, if you want, you
-
+saying cannot read properties have no reading send transaction, 
+它说的是“无法读取 null 对象 'sendTransaction' 的属性”
 
 8896
 08:49:30,280 --> 08:49:33,340
-can absolutely go to this spot. But it basically it looks like
-
+if you want, you can absolutely go to this spot. 
+如果你想的话，完全可以去检查这个地方
 
 8897
 08:49:33,340 --> 08:49:36,340
-it's having a hard time understanding what the private
-
+But it basically it looks like it's having a hard time understanding what the private key or what the account of this is. 
+但看起来好像很难理解清楚这个的私钥或账户究竟是什么
 
 8898
 08:49:36,340 --> 08:49:40,540
-key or what the account of this is. And what do you think I'm
-
+And what do you think I'm going to recommend we do? 
+你认为我会建议我们怎么做？
 
 8899
 08:49:40,540 --> 08:49:43,630
-going to recommend we do? Well, if it's not clear, after doing a
-
+Well, if it's not clear, after doing a little bit of triaging and debugging, 
+好吧，如果在排错和调试之后仍然搞不清楚的话
 
 8900
 08:49:43,630 --> 08:49:46,090
-little bit of triaging and debugging, we're going to copy
-
+we're going to copy this air. 
+我们就把这段报错信息复制下来
 
 8901
 08:49:46,090 --> 08:49:49,600
-this air. And we're going to come on over to Google and paste
-
+And we're going to come on over to Google and paste that right in. 
+然后转到 Google 并将其粘贴进来
 
 8902
 08:49:49,600 --> 08:49:54,250
-that right in. It looks like we do get a question here from
-
+It looks like we do get a question here from stackexchange Etherium. 
+看起来我们从 StackExchange Ethereum 上找到了一个提问
 
 8903
 08:49:54,250 --> 08:49:57,520
-stackexchange Etherium. And it looks like it's really similar
-
+And it looks like it's really similar to what we're doing. 
+并且它看起来和我们正在做的事情非常相似
 
 8904
 08:49:57,790 --> 08:50:01,660
-to what we're doing. We scroll down. They're running nearly the
-
+We scroll down. They're running nearly the exact same script that we're running, 
+往下拉，我们和他们运行了一个几乎一模一样的脚本
 
 8905
 08:50:01,660 --> 08:50:04,180
-exact same script that we're running, they're using MPX
-
+they're using MPX instead of yarn. 
+他们用的是 npx 而不是 yarn
 
 8906
 08:50:04,180 --> 08:50:08,440
-instead of yarn. They've got a pretty minimalistic deploy file.
-
+They've got a pretty minimalistic deploy file.
+他们提供了一个非常简短的部署文件
 
 8907
 08:50:08,740 --> 08:50:11,380
-Let's scroll down and see what the answers have to say. I've
-
+Let's scroll down and see what the answers have to say. 
+我们往下拉，看看答案是怎么说的
 
 8908
 08:50:11,380 --> 08:50:14,950
-seen this error where my private key wasn't properly populated. I
-
+I've seen this error where my private key wasn't properly populated. 
+“这个问题我曾经遇到过，那个时候我没有正确填充自己的私钥”
 
 8909
 08:50:14,950 --> 08:50:17,500
-would also use an environment variable I'm pretty sure Are
-
+I would also use an environment variable 
+“我使用的也是环境变量”
 
 8910
 08:50:17,500 --> 08:50:20,560
-environment variables good. But we have a second one saying in
-
+I'm pretty sure Are environment variables good. 
+我十分确定我们的环境变量没问题
 
 8911
 08:50:20,560 --> 08:50:24,010
-your heart head, I can think that Jas, it should be accounts
-
+But we have a second one saying in your heart head, I can think that Jas, it should be accounts instead of account, 
+但这里还有第二个回答说，“hardhat.config.js 里应该是 accounts 而不是 account”
 
 8912
 08:50:24,040 --> 08:50:27,820
-instead of account, it works for me, let's go back to our head
-
+it works for me, 
+“我是这么解决的”
 
 8913
 08:50:27,820 --> 08:50:31,870
-config and see if that's what's going on. Uh huh, we put account
-
+let's go back to our head config and see if that's what's going on. 
+让我们回到我们的 hardhat 配置文件里看看是不是这个问题
 
 8914
 08:50:32,260 --> 08:50:34,570
-in this should be accounts. So let's swap that over to
-
+Uh huh, we put account in this should be accounts. So let's swap that over to accounts. 
+啊哈，我们写的是 "account" 其实应该是 "accounts"，所以我们把它换成 "accounts"
 
 8915
 08:50:34,570 --> 08:50:37,870
-accounts. We'll clear our terminal. And we'll run this
-
+We'll clear our terminal. And we'll run this again. 
+清空我们的终端，并再次运行它
 
 8916
 08:50:37,870 --> 08:50:41,620
-again. Uh huh. And now it's reading a little bit longer,
-
+Uh huh. And now it's reading a little bit longer,
+啊哈，现在它的等待时间变长了
 
 8917
 08:50:41,950 --> 08:50:44,590
-which is good. This means that we're probably deploying this to
-
+which is good. This means that we're probably deploying this to rink B, which is what we want to see. 
+这很好，因为这意味着我们很可能正在把它部署到 Rinkeby 上，这正是我们想看到的
 
 8918
 08:50:44,590 --> 08:50:47,740
-rink B, which is what we want to see. Awesome. And now we can see
-
+Awesome. And now we can see deployed contract to, 
+太好了，现在我们可以看到“合约部署到”("Deployed contract to:")
 
 8919
 08:50:47,740 --> 08:50:51,250
-deployed contract to, and we have a contract address here. So
-
+and we have a contract address here. 
+后面就是一个合约地址
 
 8920
 08:50:51,250 --> 08:50:54,400
-we'll grab this contract. And we'll pop on over to bring the
-
+So we'll grab this contract. And we'll pop on over to bring the ether scan, 
+获取这个合约，然后前往 "rinkeby etherscan"
 
 8921
 08:50:54,400 --> 08:50:57,580
-ether scan, that's numbering the ether scan. And we'll go ahead
-
+that's numbering the ether scan. And we'll go ahead and we'll paste this in. 
+这就是 Rinkeby 的 etherscan 把合约地址粘贴进去
 
 8922
 08:50:57,580 --> 08:51:00,610
-and we'll paste this in. Awesome. And we see our contract
-
+Awesome. And we see our contract was created about 26 seconds ago. Perfect. 
+非常好，可以看到我们的合约创建于大概 26 秒前，完美！
 
 8923
 08:51:00,610 --> 08:51:04,690
-was created about 26 seconds ago. Perfect. Now for this part,
-
+Now for this part, you don't have to deploy this to rink be with me, 
+在这一节中，你不必跟我一样把合约部署到 Rinkeby 上
 
 8924
 08:51:04,720 --> 08:51:07,600
-you don't have to deploy this to rink be with me, if you follow
-
+if you follow along here. That's good enough. 
+你只要思路能跟得上就行了
 
 8925
 08:51:07,600 --> 08:51:10,630
-along here. That's good enough. So remember, the flying to test
-
+So remember, the flying to test that's can take a long time. 
+记住，实际发到测试网上会花费很长的时间
 
 8926
 08:51:10,630 --> 08:51:13,960
-that's can take a long time. So for this one, you don't have to
-
-
-8927
-08:51:13,960 --> 08:51:19,720
-deploy with me. 
+So for this one, you don't have to deploy with me. 
+所以在这一点上，你不必非要跟我一样把它部署出来
