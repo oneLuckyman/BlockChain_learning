@@ -1,0 +1,1223 @@
+8927
+08:51:13,960 --> 08:51:19,720
+Alright, great. So we've deployed to rink be using hard hat. This is fantastic. 
+很好，我们已经用 Hardhat 把合约部署到了 Rinkeby 上，真是太棒了
+
+8928
+08:51:19,750 --> 08:51:22,540
+Now something that we notice, once again is oof, 
+现在我们会注意到，又一次，哦
+
+8929
+08:51:22,540 --> 08:51:26,740
+our contract isn't verified? 
+我们的合约没有被验证
+
+8930
+08:51:26,740 --> 08:51:29,890
+Do we have to go back through and do this verify and publish and all that stuff again? 
+我们需要回去重新验证，发布以及执行其他相关操作么？
+
+8931
+08:51:29,890 --> 08:51:33,490
+Luckily for us, we actually don't need to do that. 
+幸运的是，我们不需要做这些
+
+8932
+08:51:33,490 --> 08:51:36,790
+So what can we do? 
+那我们要做的是什么？
+
+8933
+08:51:36,790 --> 08:51:40,030
+Well, back in our deploy script, we can add some code to automatically verify right after we deploy. 
+回到部署脚本，我们可以添加一些代码以使合约在部署后可以立即自动验证
+
+8934
+08:51:40,030 --> 08:51:43,510
+So let's go ahead and do that. 
+让我们来试着做一下
+
+8935
+08:51:43,510 --> 08:51:47,050
+Right below our main function, we're gonna create a new function called verify,
+在我们的 main 函数下面，我们将创建一个新函数，名为 "verify"
+
+8936
+08:51:47,200 --> 08:51:52,810
+we're gonna say async function, verify. 
+我们要输入 "async function verify"
+
+8937
+08:51:52,810 --> 08:51:55,390
+And we're gonna have this function get past some arguments, 
+并且我们要让这个函数接收一些参数
+
+8938
+08:51:55,390 --> 08:52:00,580
+we're gonna have to get past a contract, address, and some arguments or the contract. 
+我们要提供 "contractAddress" 以及合约所需要的一些参数
+
+8939
+08:52:00,580 --> 08:52:02,740
+Since our simple storage doesn't have a constructor, 
+因为我们的 "SimpleStorage" 没有构造函数
+
+8940
+08:52:02,740 --> 08:52:05,860
+the arguments for simple storage are just gonna be blank. 
+所以提供给 "SimpleStorage" 的参数为空
+
+8941
+08:52:05,860 --> 08:52:09,070
+But in the future, when we have contracts that do have constructors, 
+但是在将来，当我们拥有具有构造函数的合约时
+
+8942
+08:52:09,070 --> 08:52:12,670
+the arguments are going to be populated. 
+这个参数就不再是空的了
+
+8943
+08:52:12,670 --> 08:52:15,100
+And when we get there, you'll see what I mean, 
+到那时你就明白我的意思了
+
+8944
+08:52:15,100 --> 08:52:17,740
+we need at least the contract address, and we're going to add some code in here 
+我们至少要提供 "contractAddress"，并且还要在这里添加一些代码，
+
+8945
+08:52:18,040 --> 08:52:20,770
+to automatically verify our contracts after they've been deployed. 
+才可以在部署完成后自动验证我们的合约
+
+8946
+08:52:20,770 --> 08:52:25,840
+This auto verification process works on block explorers
+
+
+8947
+08:52:25,870 --> 08:52:28,720
+like ether scan, it might not work on block explorers like
+
+
+8948
+08:52:28,750 --> 08:52:31,480
+eath, pler, or other block explorers. But if you want to
+
+
+8949
+08:52:31,480 --> 08:52:33,790
+verify on these other block explorers, I'm sure they have an
+
+
+8950
+08:52:33,790 --> 08:52:37,150
+API to allow you to do that as well. Now, ether scan in most
+
+
+8951
+08:52:37,150 --> 08:52:41,680
+other block explorers have a section on their website called
+
+
+8952
+08:52:41,710 --> 08:52:45,610
+API documentation, or something to do with API's. These are ways
+
+
+8953
+08:52:45,640 --> 08:52:48,790
+for us to programmatically interact with ether scan, and do
+
+
+8954
+08:52:48,790 --> 08:52:51,550
+stuff with them. One of the main things that we can do is we can
+
+
+8955
+08:52:51,550 --> 08:52:56,800
+actually verify our contracts through this API. Ether scan
+
+
+8956
+08:52:56,830 --> 08:52:59,500
+even has a tutorial in here called verifying contracts
+
+
+8957
+08:52:59,500 --> 08:53:01,780
+programmatically. And the link to this will be in the GitHub
+
+
+8958
+08:53:01,780 --> 08:53:04,720
+repo, they have an API endpoint that we can make some requests
+
+
+8959
+08:53:04,720 --> 08:53:08,860
+to to go ahead and verify our contracts. Now, we could
+
+
+8960
+08:53:08,860 --> 08:53:11,980
+absolutely make the raw API calls and follow the tutorial
+
+
+8961
+08:53:11,980 --> 08:53:14,980
+here. But there's actually an easier way than even going
+
+
+8962
+08:53:14,980 --> 08:53:17,800
+through this tutorial here. Hardhead is an extensible
+
+
+8963
+08:53:17,800 --> 08:53:21,430
+framework, meaning you can add something called plugins to it.
+
+
+8964
+08:53:21,670 --> 08:53:24,670
+There's even an advanced section in the documentation called
+
+
+8965
+08:53:24,670 --> 08:53:27,910
+Building plugins. If we scroll down to the bottom, we can see
+
+
+8966
+08:53:27,910 --> 08:53:31,030
+some popular plugins that the nomic labs team or the Hardhead
+
+
+8967
+08:53:31,030 --> 08:53:34,240
+team has created. And also a number of community plugins as
+
+
+8968
+08:53:34,240 --> 08:53:36,760
+well. One of the most used Hardhead plugins is going to be
+
+
+8969
+08:53:36,760 --> 08:53:40,420
+this hard hat ether scan plugin that makes this verification
+
+
+8970
+08:53:40,420 --> 08:53:44,350
+process much, much easier. Install it, you can just run npm
+
+
+8971
+08:53:44,350 --> 08:53:48,130
+install bash, just save dev at nomic labs harden ether scan,
+
+
+8972
+08:53:48,400 --> 08:53:51,250
+and then add it to our hard hat dot config. Since we're using
+
+
+8973
+08:53:51,250 --> 08:53:54,670
+yarn, we're just going to go ahead and use yarn. So back in
+
+
+8974
+08:53:54,670 --> 08:54:00,970
+our code, we'll do yarn, add dash dash Dev, at nomic, labs,
+
+
+8975
+08:54:02,350 --> 08:54:08,620
+slash hard hat slash hyphen, ether scan. Now that we have
+
+
+8976
+08:54:08,620 --> 08:54:12,460
+this plugin, we can go to our hard hat dot config, scroll to
+
+
+8977
+08:54:12,460 --> 08:54:22,270
+the top and add this plugin do require at nomic labs slash hard
+
+
+8978
+08:54:22,270 --> 08:54:26,560
+hat, ether scan. Now that we have this plugin, the hard hat
+
+
+8979
+08:54:26,560 --> 08:54:29,890
+documentation has some more information about the usage, how
+
+
+8980
+08:54:29,890 --> 08:54:33,460
+to actually use this plugin, and how to run different commands
+
+
+8981
+08:54:33,460 --> 08:54:36,490
+with it. In order for us to use this verification, we actually
+
+
+8982
+08:54:36,490 --> 08:54:40,660
+need an API key from ether scan. This is basically a password for
+
+
+8983
+08:54:40,780 --> 08:54:44,320
+allowing us to use the ether scan API. So we're going to come
+
+
+8984
+08:54:44,320 --> 08:54:47,500
+to ether scan. And we're going to go ahead and sign in. And
+
+
+8985
+08:54:47,500 --> 08:54:50,050
+actually we're going to click to sign up and create an account.
+
+
+8986
+08:54:51,820 --> 08:54:54,280
+And we'll go ahead and create an account. We'll go ahead and
+
+
+8987
+08:54:54,280 --> 08:54:57,190
+verify our registration by clicking the verification link.
+
+
+8988
+08:54:57,490 --> 08:55:00,190
+And we'll click the Login. Now that we're logged in. On the
+
+
+8989
+08:55:00,190 --> 08:55:03,760
+left hand side, we can scroll down to API keys. And we can go
+
+
+8990
+08:55:03,760 --> 08:55:09,370
+ahead and create a new API key. We call this H H hyphen sec,
+
+
+8991
+08:55:09,400 --> 08:55:12,400
+which stands for hardhat Free Code Camp. Great, this new API
+
+
+8992
+08:55:12,400 --> 08:55:16,120
+key will copy this and we'll go back to our code and we'll add
+
+
+8993
+08:55:16,120 --> 08:55:18,970
+this somewhere since the API keys basically considered a
+
+
+8994
+08:55:18,970 --> 08:55:21,700
+password. Where do you think we should add this? That's right in
+
+
+8995
+08:55:21,700 --> 08:55:25,990
+our dot env. So in our dot env, we're going to add a new entry
+
+
+8996
+08:55:25,990 --> 08:55:31,480
+called ether scan API key. And we're going to add that API key
+
+
+8997
+08:55:31,480 --> 08:55:34,870
+that we just got. Now that we have our API key, back in our
+
+
+8998
+08:55:34,870 --> 08:55:38,410
+Hardhead, config, we're going to create a new section in a module
+
+
+8999
+08:55:38,410 --> 08:55:42,520
+dot exports, tell hardhat that we have this ether scan API key,
+
+
+9000
+08:55:42,910 --> 08:55:44,770
+or new section is going to be called ether scan.
+
+
+9001
+08:55:46,390 --> 08:55:50,350
+And in here, we're gonna say API key is going to be ether scan
+
+
+9002
+08:55:50,980 --> 08:55:55,870
+API key that we're going to define up here the same way we
+
+
+9003
+08:55:55,870 --> 08:55:59,680
+define these other keys. So we'll say const, ether scan API
+
+
+9004
+08:55:59,680 --> 08:56:05,950
+key equals process dot e NV dot ether scan API key. And if
+
+
+9005
+08:56:05,950 --> 08:56:08,530
+something like this pops up, you can generally just hit enter,
+
+
+9006
+08:56:08,560 --> 08:56:12,130
+and it will autocomplete it for you, which is awesome. Great. So
+
+
+9007
+08:56:12,130 --> 08:56:14,980
+now we have an ether scan API key back in the heart had
+
+
+9008
+08:56:14,980 --> 08:56:18,010
+documentation, it tells us by adding this, we actually get a
+
+
+9009
+08:56:18,010 --> 08:56:22,840
+new task called verify. Let's try that out. So open our
+
+
+9010
+08:56:22,840 --> 08:56:27,880
+terminal back up. And we'll do yarn, RT hat. Let's see what
+
+
+9011
+08:56:27,880 --> 08:56:32,110
+pops up. Wow, we did get a new verification here. When we run
+
+
+9012
+08:56:32,140 --> 08:56:35,590
+yarn hard hat harder, it actually looks into our hard
+
+
+9013
+08:56:35,590 --> 08:56:38,980
+hat.config.js and checks for any plugins. If there are new
+
+
+9014
+08:56:38,980 --> 08:56:42,850
+plugins there, it'll add them as a new task that we can do. You
+
+
+9015
+08:56:42,850 --> 08:56:46,630
+can manually verify your contract by doing yarn or MPX
+
+
+9016
+08:56:46,660 --> 08:56:50,230
+Harnett verify dash dash network, the deployed contract
+
+
+9017
+08:56:50,230 --> 08:56:53,890
+address and any constructor arguments yourself. But we want
+
+
+9018
+08:56:53,890 --> 08:56:56,440
+to be a little bit more programmatic than this. So what
+
+
+9019
+08:56:56,440 --> 08:56:58,600
+we're going to do is we're going to go back and create this
+
+
+9020
+08:56:58,630 --> 08:57:01,570
+verification function, it is good to know how to do it via
+
+
+9021
+08:57:01,570 --> 08:57:03,670
+command line so that if you want to verify something in the
+
+
+9022
+08:57:03,670 --> 08:57:07,420
+future, manually, you can, let's build this verify function
+
+
+9023
+08:57:07,420 --> 08:57:10,120
+though. So we're going to take the our contract address and
+
+
+9024
+08:57:10,120 --> 08:57:13,090
+some arguments. And for our sake, we're going to do console
+
+
+9025
+08:57:13,660 --> 08:57:18,970
+dot log verifying contract that that just so that we know we
+
+
+9026
+08:57:18,970 --> 08:57:22,090
+might have to wait for a little bit. And in our code, we can
+
+
+9027
+08:57:22,090 --> 08:57:28,210
+actually run any task from hard hat using a run package. So up
+
+
+9028
+08:57:28,210 --> 08:57:32,410
+at the top, we're actually going to import run from hard hat as
+
+
+9029
+08:57:32,410 --> 08:57:37,690
+well run allows us to run any hard hat task. So in our code
+
+
+9030
+08:57:37,690 --> 08:57:42,940
+here, we're going to do a wait to run. And then we can do there
+
+
+9031
+08:57:43,090 --> 08:57:46,810
+it thought. Now part of that allows you to add different
+
+
+9032
+08:57:46,810 --> 08:57:49,420
+parameters as well in this run. And it's usually best that you
+
+
+9033
+08:57:49,420 --> 08:57:52,750
+go ahead and add them in here so that we're really specific with
+
+
+9034
+08:57:52,750 --> 08:57:57,970
+what we're doing. If we do yarn hardhat verify dash dash help,
+
+
+9035
+08:57:58,120 --> 08:58:01,060
+we can see what parameters we can actually pass. Well, it
+
+
+9036
+08:58:01,060 --> 08:58:04,330
+looks like we can pass the Verify parameter. So we'll do
+
+
+9037
+08:58:04,540 --> 08:58:08,800
+colon, verify. If you go to the actual GitHub for the
+
+
+9038
+08:58:08,800 --> 08:58:11,200
+verification tasks, you can actually see you can do more
+
+
+9039
+08:58:11,200 --> 08:58:14,290
+than just verify, you can do verify, get minimum build,
+
+
+9040
+08:58:14,500 --> 08:58:17,770
+verify, get constructor arguments, verify, verify, which
+
+
+9041
+08:58:17,770 --> 08:58:19,720
+is what we're going to be working with, and a couple of
+
+
+9042
+08:58:19,720 --> 08:58:23,050
+other subtasks as well. The second parameter that goes
+
+
+9043
+08:58:23,050 --> 08:58:26,110
+inside run is going to be a list of actual parameters. This
+
+
+9044
+08:58:26,140 --> 08:58:28,720
+second parameter here is just kind of the sub task, if you
+
+
+9045
+08:58:28,720 --> 08:58:32,500
+will, of our verify task. And this is going to be an object
+
+
+9046
+08:58:32,500 --> 08:58:34,990
+that contains the actual parameters. And this is where we
+
+
+9047
+08:58:34,990 --> 08:58:40,480
+pass in an address, which is going to be our contract
+
+
+9048
+08:58:40,480 --> 08:58:47,770
+address, and then our construct or arguments, which is going to
+
+
+9049
+08:58:47,770 --> 08:58:52,330
+be arcs. Now normally just this right here should be enough for
+
+
+9050
+08:58:52,330 --> 08:58:55,540
+us to go ahead and use this verify contract in our main
+
+
+9051
+08:58:55,540 --> 08:58:58,330
+function, but we're going to add one additional thing to it.
+
+
+9052
+08:58:58,330 --> 08:59:00,940
+Because in practice, sometimes there's some errors that can
+
+
+9053
+08:59:00,940 --> 08:59:03,250
+come up. One of the errors that often comes up when running a
+
+
+9054
+08:59:03,250 --> 08:59:05,770
+wait is that the contract has already been verified. And
+
+
+9055
+08:59:05,920 --> 08:59:08,740
+you'll actually likely run into this, because ether scan will
+
+
+9056
+08:59:08,740 --> 08:59:11,680
+get smart enough by seeing enough bytecode that is exactly
+
+
+9057
+08:59:11,680 --> 08:59:14,350
+simple storage that it will start to just automatically
+
+
+9058
+08:59:14,350 --> 08:59:17,470
+verify any bytecode that looks like simple storage. And then
+
+
+9059
+08:59:17,470 --> 08:59:21,070
+this await will throw an error, which we want to avoid. So what
+
+
+9060
+08:59:21,070 --> 08:59:27,340
+we can do is we can add a try catch onto this await. So
+
+
+9061
+08:59:27,340 --> 08:59:30,550
+outside of the way, we're going to add a try. And we're going to
+
+
+9062
+08:59:30,550 --> 08:59:34,540
+add these little brackets that wrap around our weight. And then
+
+
+9063
+08:59:34,540 --> 08:59:40,270
+we're going to put a catch. This is known as a try, catch and
+
+
+9064
+08:59:40,270 --> 08:59:44,380
+solidity also has tried catches. But basically, this e is going
+
+
+9065
+08:59:44,380 --> 08:59:47,620
+to be any error that this section throws. So we're going
+
+
+9066
+08:59:47,620 --> 08:59:51,160
+to do is we're going to say if this message is already
+
+
+9067
+08:59:51,160 --> 08:59:53,920
+verified, then we're just going to continue. So we're gonna say
+
+
+9068
+08:59:53,950 --> 09:00:00,460
+if e.message.to lowercase, we're going to make sure it's to
+
+
+9069
+09:00:00,460 --> 09:00:06,850
+lowercase that includes already there. If five, then we're just
+
+
+9070
+09:00:06,850 --> 09:00:10,450
+going to console dot log already verified
+
+
+9071
+09:00:11,500 --> 09:00:16,810
+like that. Otherwise, we're just going to console dot log e. The
+
+
+9072
+09:00:16,810 --> 09:00:20,650
+reason we do This is because of this errors, our verification
+
+
+9073
+09:00:20,650 --> 09:00:23,110
+function will break, and our whole script will end. And we
+
+
+9074
+09:00:23,110 --> 09:00:25,690
+don't want our whole script to end, we want our script to keep
+
+
+9075
+09:00:25,690 --> 09:00:28,480
+continuing if the verification doesn't work, because it's not
+
+
+9076
+09:00:28,480 --> 09:00:30,940
+really a big deal. So I know this might seem like a lot of
+
+
+9077
+09:00:30,940 --> 09:00:34,450
+code, feel free to copy and paste it from the GitHub repo to
+
+
+9078
+09:00:34,450 --> 09:00:38,170
+just move along. But awesome. So we now have a verify function
+
+
+9079
+09:00:38,200 --> 09:00:42,040
+using the Verify task in hardhat. Let's go ahead and use
+
+
+9080
+09:00:42,040 --> 09:00:45,730
+this now in our main function, right below our deploy, we'll do
+
+
+9081
+09:00:45,730 --> 09:00:48,490
+console dot log deployed contract two, and then the
+
+
+9082
+09:00:48,490 --> 09:00:51,940
+contract address. But before we call this main function, let's
+
+
+9083
+09:00:51,970 --> 09:00:57,580
+think for a quick second. What happens when we deploy to our RT
+
+
+9084
+09:00:57,580 --> 09:01:01,090
+Hat Network? Well, remember, if we deploy to our Hard Hat
+
+
+9085
+09:01:01,090 --> 09:01:04,480
+Network, will our contract need to be verified I need to scan?
+
+
+9086
+09:01:04,720 --> 09:01:08,110
+Well, we know there's a we know there's a rink ether scan, we
+
+
+9087
+09:01:08,110 --> 09:01:10,450
+know there's a COVID ether scan, we know there's a main net easy
+
+
+9088
+09:01:10,450 --> 09:01:14,680
+scan. But is there a Hardhead ether scan? No, of course not.
+
+
+9089
+09:01:14,740 --> 09:01:18,070
+Right? The hard at runtime environment is a network local
+
+
+9090
+09:01:18,070 --> 09:01:21,580
+to our machine. So it doesn't make sense for us to verify a
+
+
+9091
+09:01:21,580 --> 09:01:24,880
+hard hat network deployed contract on ether scan. So we
+
+
+9092
+09:01:24,880 --> 09:01:28,690
+actually don't want to call this verify function, when we're
+
+
+9093
+09:01:28,690 --> 09:01:31,750
+working with our local network. This is where these chain IDs
+
+
+9094
+09:01:31,750 --> 09:01:34,180
+are going to come in quite useful. What we can do is we can
+
+
+9095
+09:01:34,180 --> 09:01:37,270
+check to see if the network that we're running on is a live
+
+
+9096
+09:01:37,300 --> 09:01:40,120
+network or it's a test net, or it's a network that actually can
+
+
+9097
+09:01:40,120 --> 09:01:42,580
+be verified, we can actually get network configuration
+
+
+9098
+09:01:42,580 --> 09:01:48,640
+information by importing a network like this. And we can do
+
+
+9099
+09:01:49,240 --> 09:01:56,260
+something like console dot log network dot config. Now, if I
+
+
+9100
+09:01:56,260 --> 09:02:01,930
+run yarn, art, hit run scripts deploy.js. On our Hard Hat
+
+
+9101
+09:02:01,930 --> 09:02:05,890
+Network, since I'm not passing a network flag, we get this
+
+
+9102
+09:02:05,890 --> 09:02:09,460
+massive output that looks like this. Our network dot config
+
+
+9103
+09:02:09,490 --> 09:02:12,460
+contains a ton of information about the current network that
+
+
+9104
+09:02:12,460 --> 09:02:15,310
+we're on, you'll see here that the chain ID of the Hardhead
+
+
+9105
+09:02:15,310 --> 09:02:20,080
+network is actually 31337 gas price, which gets set to auto
+
+
+9106
+09:02:20,440 --> 09:02:23,770
+block gas limit the current fork of Aetherium that we're working
+
+
+9107
+09:02:23,770 --> 09:02:27,490
+with, and all these other pieces here. This chain ID is really
+
+
+9108
+09:02:27,490 --> 09:02:30,880
+important. Because we can use this chain ID to figure out
+
+
+9109
+09:02:31,000 --> 09:02:33,700
+which one is a test net, or which one is a live network. And
+
+
+9110
+09:02:33,700 --> 09:02:36,550
+remember, running the script is going to be the same as doing
+
+
+9111
+09:02:36,580 --> 09:02:39,310
+dash dash network, hard hat,
+
+
+9112
+09:02:40,720 --> 09:02:44,530
+you'll see our channel ID is still 31337. Again, that's
+
+
+9113
+09:02:44,530 --> 09:02:47,800
+because the default network in our heart had config, it's hard
+
+
+9114
+09:02:47,800 --> 09:02:51,190
+hat, which is the same as saying every single time we run a
+
+
+9115
+09:02:51,190 --> 09:02:54,190
+script, we're secretly running it with dash dash network hard
+
+
+9116
+09:02:54,190 --> 09:02:57,730
+hat. So now we only want to verify on our test net. So what
+
+
+9117
+09:02:57,730 --> 09:03:02,110
+we can do is we can say if network dot config, that chain
+
+
+9118
+09:03:02,110 --> 09:03:07,570
+ID equals equals equals four, which is going to be rank B, ad.
+
+
+9119
+09:03:08,320 --> 09:03:12,040
+And a JavaScript equals equals equals is nearly the same as
+
+
+9120
+09:03:12,040 --> 09:03:15,910
+equals equals, except no type conversion is done, which just
+
+
+9121
+09:03:15,910 --> 09:03:21,820
+means in JavaScript, four equals four, and four equals equals the
+
+
+9122
+09:03:21,820 --> 09:03:26,110
+string of four, but four, but if you were to use four equals
+
+
+9123
+09:03:26,110 --> 09:03:30,910
+equals equals four, this is false. This is true equals
+
+
+9124
+09:03:30,910 --> 09:03:34,990
+equals four equals equals would be true, four equals equals to
+
+
+9125
+09:03:34,990 --> 09:03:38,050
+the string of four would also be true, but four equals equals
+
+
+9126
+09:03:38,110 --> 09:03:41,200
+equals to the string of four is going to be false. So you can
+
+
+9127
+09:03:41,200 --> 09:03:43,540
+kind of do whatever you want here equals equals or equals
+
+
+9128
+09:03:43,540 --> 09:03:46,870
+equals equals. So we want to say if the network dot config dot
+
+
+9129
+09:03:46,870 --> 09:03:52,030
+Trinity is four, so if we're on Rinkeby, then we can go ahead
+
+
+9130
+09:03:52,030 --> 09:03:57,100
+and actually verify. But we also want to make sure we only verify
+
+
+9131
+09:03:57,130 --> 09:04:01,570
+if our ether scan API key exists. So we can also in here
+
+
+9132
+09:04:01,570 --> 09:04:05,890
+is site and this double ampersand means and we can say
+
+
+9133
+09:04:05,920 --> 09:04:12,670
+process dot e NV dot ether scan API key. This is some Boolean
+
+
+9134
+09:04:12,670 --> 09:04:15,040
+tricks that we're doing here, basically, so our first
+
+
+9135
+09:04:15,070 --> 09:04:18,190
+conditional we're saying if network dot config chinati
+
+
+9136
+09:04:18,310 --> 09:04:22,000
+equals equals equals four, this section can be true or false,
+
+
+9137
+09:04:22,030 --> 09:04:25,060
+obviously, right? The chain ID that we're running on can be the
+
+
+9138
+09:04:25,060 --> 09:04:28,660
+hardest network, which would mean this doesn't equal four, or
+
+
+9139
+09:04:28,660 --> 09:04:31,360
+it would be Rinckey, which means this does equal four. But
+
+
+9140
+09:04:31,390 --> 09:04:34,120
+there's no conditional on this side. So how does this side
+
+
+9141
+09:04:34,120 --> 09:04:37,360
+work? In JavaScript, if an object exists, and you try to
+
+
+9142
+09:04:37,360 --> 09:04:41,380
+cast it as a Boolean, it will be converted to true. If it doesn't
+
+
+9143
+09:04:41,380 --> 09:04:44,320
+exist, it will be converted to false. So in JavaScript,
+
+
+9144
+09:04:44,320 --> 09:04:49,690
+basically, if either scan API key exists, if we have this in
+
+
+9145
+09:04:49,690 --> 09:04:53,680
+our data in VI, this will be true. And if not, this will be
+
+
+9146
+09:04:53,680 --> 09:04:57,130
+false. So another way to read this line here is saying if
+
+
+9147
+09:04:57,190 --> 09:05:01,480
+network dot config that Trinity is for AKA, if we're on rink B,
+
+
+9148
+09:05:01,960 --> 09:05:07,150
+and our ether scan API key exists, then do some stuff. And
+
+
+9149
+09:05:07,180 --> 09:05:09,790
+that's what we're going to do here. So in here, we'd want to
+
+
+9150
+09:05:09,790 --> 09:05:15,910
+run verify, or verify function and pass it the contract address
+
+
+9151
+09:05:15,970 --> 09:05:20,170
+which is going to be Simple Storage dot address and the
+
+
+9152
+09:05:20,170 --> 09:05:23,350
+constructor arguments which we know are going to be blank. And
+
+
+9153
+09:05:23,350 --> 09:05:27,370
+since our verify function is an async function, and it deals
+
+
+9154
+09:05:27,370 --> 09:05:31,120
+with promises and stuff, we want to add the await keyword here.
+
+
+9155
+09:05:31,510 --> 09:05:34,810
+Awesome. So we've added a way to actually verify our contract.
+
+
+9156
+09:05:34,810 --> 09:05:38,740
+But we're not quite done. See on ether scan and all these block
+
+
+9157
+09:05:38,740 --> 09:05:42,430
+explorers the instant we deploy the contract and the instant we
+
+
+9158
+09:05:42,430 --> 09:05:46,210
+send the contract, ether scan might not know about the
+
+
+9159
+09:05:46,210 --> 09:05:50,260
+transaction yet, it might take a hot second for ether scan to be
+
+
+9160
+09:05:50,260 --> 09:05:53,020
+up to speed with where the blockchain is. So it's usually
+
+
+9161
+09:05:53,020 --> 09:05:57,220
+best practice to wait for a few blocks to be mined, until you
+
+
+9162
+09:05:57,220 --> 09:06:00,280
+actually run your verification process. We've actually learned
+
+
+9163
+09:06:00,280 --> 09:06:04,000
+how to do this already with the deploy transaction. So before we
+
+
+9164
+09:06:04,000 --> 09:06:09,640
+actually verify we run, we want to run a weight, simple storage.
+
+
+9165
+09:06:10,900 --> 09:06:19,180
+Deploy transaction Wait, six. So we will wait six blocks, and
+
+
+9166
+09:06:19,180 --> 09:06:22,360
+then we'll run our verification process. Now, if you want to go
+
+
+9167
+09:06:22,360 --> 09:06:25,450
+and test this out right now, you absolutely can. I'm going to
+
+
+9168
+09:06:25,450 --> 09:06:28,480
+keep going, though, because again, testing all these on a
+
+
+9169
+09:06:28,480 --> 09:06:31,840
+test net takes a little bit of extra time. So I'm going to
+
+
+9170
+09:06:31,840 --> 09:06:34,120
+finish the rest of our main function, and then I'm going to
+
+
+9171
+09:06:34,120 --> 09:06:39,820
+run everything all together. 
