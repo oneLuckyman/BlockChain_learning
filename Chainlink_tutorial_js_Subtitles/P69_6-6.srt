@@ -95,87 +95,87 @@ to automatically verify our contracts after they've been deployed.
 
 8946
 08:52:20,770 --> 08:52:25,840
-This auto verification process works on block explorers
-
+This auto verification process works on block explorers like ether scan, 
+这个自动验证过程适用于像 etherscan 这样的区块链浏览器
 
 8947
 08:52:25,870 --> 08:52:28,720
-like ether scan, it might not work on block explorers like
-
+it might not work on block explorers like eath, pler, or other block explorers. 
+但可能无法在 "ethplorer" 或其它区块链浏览器上工作
 
 8948
 08:52:28,750 --> 08:52:31,480
-eath, pler, or other block explorers. But if you want to
-
+But if you want to verify on these other block explorers, 
+如果你想要在其它区块链浏览器上进行验证
 
 8949
 08:52:31,480 --> 08:52:33,790
-verify on these other block explorers, I'm sure they have an
-
+I'm sure they have an API to allow you to do that as well. 
+我相信它们也会有自己相应的 API 供你使用
 
 8950
 08:52:33,790 --> 08:52:37,150
-API to allow you to do that as well. Now, ether scan in most
-
+Now, ether scan in most other block explorers have a section on their website  
+现如今 etherscan 和其它大多数区块链浏览器在它们的网站上都有一个
 
 8951
 08:52:37,150 --> 08:52:41,680
-other block explorers have a section on their website called
-
+called API documentation, or something to do with API's. 
+名为 API 文档("API Documentation") 或是其它与 API 有关的部分
 
 8952
 08:52:41,710 --> 08:52:45,610
-API documentation, or something to do with API's. These are ways
-
+These are ways for us to programmatically interact with ether scan, and do stuff with them. 
+它们是我们通过编程与 etherscan 进行交互和操作的方式
 
 8953
 08:52:45,640 --> 08:52:48,790
-for us to programmatically interact with ether scan, and do
-
+One of the main things that we can do 
+其中一件我们要做的主要的事情就是
 
 8954
 08:52:48,790 --> 08:52:51,550
-stuff with them. One of the main things that we can do is we can
-
+is we can actually verify our contracts through this API. 
+通过这些 API 验证我们的合约
 
 8955
 08:52:51,550 --> 08:52:56,800
-actually verify our contracts through this API. Ether scan
-
+Ether scan even has a tutorial in here 
+etherscan 甚至还提供了一个教程
 
 8956
 08:52:56,830 --> 08:52:59,500
-even has a tutorial in here called verifying contracts
-
+called verifying contracts programmatically. 
+就叫做“程序化验证合约”("Verifying Contracts Programmatically")
 
 8957
 08:52:59,500 --> 08:53:01,780
-programmatically. And the link to this will be in the GitHub
-
+And the link to this will be in the GitHub repo, 
+这个网页的链接会放到 GitHub 仓库里
 
 8958
 08:53:01,780 --> 08:53:04,720
-repo, they have an API endpoint that we can make some requests
-
+they have an API endpoint that we can make some requests to 
+他们有一个 API 端点可以让我们向其发送请求
 
 8959
 08:53:04,720 --> 08:53:08,860
-to to go ahead and verify our contracts. Now, we could
-
+to go ahead and verify our contracts. 
+以验证我们的合约
 
 8960
 08:53:08,860 --> 08:53:11,980
-absolutely make the raw API calls and follow the tutorial
-
+Now, we could absolutely make the raw API calls and follow the tutorial here. 
+现在我们完全可以按着教程进行原始的 API 调用 
 
 8961
 08:53:11,980 --> 08:53:14,980
-here. But there's actually an easier way than even going
-
+But there's actually an easier way than even going through this tutorial here. 
+但实际上有一种甚至是比这个教程更简单的方式
 
 8962
 08:53:14,980 --> 08:53:17,800
-through this tutorial here. Hardhead is an extensible
+Hardhead is an extensible
 
 
 8963
