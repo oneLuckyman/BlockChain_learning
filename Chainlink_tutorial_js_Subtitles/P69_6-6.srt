@@ -655,296 +655,296 @@ that it will start to just automatically verify any bytecode that looks like sim
 9058
 08:59:14,350 --> 08:59:17,470
 And then this await will throw an error, which we want to avoid. 
-这时 "await" 就会抛出一个错误，这是我们想要避免的
+这时 "await" 就会抛出一个错误，这正是我们想要避免的
 
 9059
 08:59:17,470 --> 08:59:21,070
 So what we can do is we can add a try catch onto this await. 
-
+我们可以做的是在 await 这里添加一个 "try catch"
 
 9060
 08:59:21,070 --> 08:59:27,340
-So
-
+So outside of the way, we're going to add a try. 
+所以在 await 外面，我们要添加一个 try
 
 9061
 08:59:27,340 --> 08:59:30,550
-outside of the way, we're going to add a try. And we're going to
-
+And we're going to add these little brackets that wrap around our weight. 
+还要添上这些括号包住我们的 await
 
 9062
 08:59:30,550 --> 08:59:34,540
-add these little brackets that wrap around our weight. And then
-
+And then we're going to put a catch. 
+接着在这里放一个 "catch(e)"
 
 9063
 08:59:34,540 --> 08:59:40,270
-we're going to put a catch. This is known as a try, catch and
-
+This is known as a try, catch and solidity also has tried catches. 
+这就是所谓的 "try catch"，Solidity 也有 "try catch"
 
 9064
 08:59:40,270 --> 08:59:44,380
-solidity also has tried catches. But basically, this e is going
-
+But basically, this e is going to be any error that this section throws. 
+基本上来说，这个 "e" 指的就是这部分抛出的任何错误
 
 9065
 08:59:44,380 --> 08:59:47,620
-to be any error that this section throws. So we're going
-
+So we're going to do is we're going to say if this message is already verified, 
+所以我们要做的就是，如果这段消息已经被验证过了
 
 9066
 08:59:47,620 --> 08:59:51,160
-to do is we're going to say if this message is already
-
+then we're just going to continue. 
+那么就继续运行其余的代码
 
 9067
 08:59:51,160 --> 08:59:53,920
-verified, then we're just going to continue. So we're gonna say
-
+So we're gonna say if e.message.to lowercase, 
+所以就是 "if (e.message.toLowerCase())"
 
 9068
 08:59:53,950 --> 09:00:00,460
-if e.message.to lowercase, we're going to make sure it's to
-
+we're going to make sure it's to lowercase 
+这里要确保它变成全小写的
 
 9069
 09:00:00,460 --> 09:00:06,850
-lowercase that includes already there. If five, then we're just
-
+that includes already there. If five, 
+".includes("already verified")"
 
 9070
 09:00:06,850 --> 09:00:10,450
-going to console dot log already verified
-
+then we're just going to console dot log already verified like that. 
+接着是 "console.log("Already Verified!")"
 
 9071
 09:00:11,500 --> 09:00:16,810
-like that. Otherwise, we're just going to console dot log e. The
-
+Otherwise, we're just going to console dot log e. 
+否则，我们要运行 "console.log(e)"
 
 9072
 09:00:16,810 --> 09:00:20,650
-reason we do This is because of this errors, our verification
-
+The reason we do This is because of this errors, our verification function will break, 
+之所以要这么做是因为这个错误会导致我们的验证过程中断
 
 9073
 09:00:20,650 --> 09:00:23,110
-function will break, and our whole script will end. And we
-
+and our whole script will end. 
+并且我们的整个脚本都会终止运行
 
 9074
 09:00:23,110 --> 09:00:25,690
-don't want our whole script to end, we want our script to keep
-
+And we don't want our whole script to end, 
+我们当然不希望整个脚本就此终止
 
 9075
 09:00:25,690 --> 09:00:28,480
-continuing if the verification doesn't work, because it's not
-
+we want our script to keep continuing if the verification doesn't work, because it's not really a big deal. 
+我们想要的是即便验证过程中断，脚本也要继续运行，因为这并不是什么大问题
 
 9076
 09:00:28,480 --> 09:00:30,940
-really a big deal. So I know this might seem like a lot of
-
+So I know this might seem like a lot of code, 
+我知道这一段代码确实显得有些多
 
 9077
 09:00:30,940 --> 09:00:34,450
-code, feel free to copy and paste it from the GitHub repo to
-
+feel free to copy and paste it from the GitHub repo to just move along. 
+所以你可以从 GitHub 仓库中复制粘贴这一段以继续前进
 
 9078
 09:00:34,450 --> 09:00:38,170
-just move along. But awesome. So we now have a verify function
-
+But awesome. So we now have a verify function using the Verify task in hardhat. 
+很好，现在我们有了一个可以使用 Hardhat 进行验证任务的 "verify" 函数
 
 9079
 09:00:38,200 --> 09:00:42,040
-using the Verify task in hardhat. Let's go ahead and use
-
+Let's go ahead and use this now in our main function, 
+让我们继续，在 main 函数中实际使用一下它
 
 9080
 09:00:42,040 --> 09:00:45,730
-this now in our main function, right below our deploy, we'll do
-
+right below our deploy, 
+在我们的 "deploy()" 下方
 
 9081
 09:00:45,730 --> 09:00:48,490
-console dot log deployed contract two, and then the
-
+we'll do console dot log deployed contract two, and then the contract address. 
+我们运行了 "console.log('Deploy contract to: ')" 然后是合约地址
 
 9082
 09:00:48,490 --> 09:00:51,940
-contract address. But before we call this main function, let's
-
+But before we call this main function, let's think for a quick second. 
+但在我们调用这个 main 函数之前，让我们再次快速思考一下
 
 9083
 09:00:51,970 --> 09:00:57,580
-think for a quick second. What happens when we deploy to our RT
-
+What happens when we deploy to our RT Hat Network? 
+在我们部署到 Hardhat 网络时到底发生了什么？
 
 9084
 09:00:57,580 --> 09:01:01,090
-Hat Network? Well, remember, if we deploy to our Hard Hat
-
+Well, remember, if we deploy to our Hard Hat Network, 
+如果我们部署到的是 Hardhat 网络
 
 9085
 09:01:01,090 --> 09:01:04,480
-Network, will our contract need to be verified I need to scan?
-
+will our contract need to be verified I need to scan?
+那么我们的合约还需要 etherscan 的验证么
 
 9086
 09:01:04,720 --> 09:01:08,110
-Well, we know there's a we know there's a rink ether scan, we
-
+Well, we know there's a we know there's a rink ether scan, 
+我们知道，有一个 "Rinkeby etherscan" 
 
 9087
 09:01:08,110 --> 09:01:10,450
-know there's a COVID ether scan, we know there's a main net easy
-
+we know there's a COVID ether scan, we know there's a main net easy scan. 
+我们还知道除了这个 etherscan 还有主网络的 etherscan
 
 9088
 09:01:10,450 --> 09:01:14,680
-scan. But is there a Hardhead ether scan? No, of course not.
-
+But is there a Hardhead ether scan? No, of course not. Right? 
+但是有 "Hardhat etherscan" 么？没有，当然没有了，对吧？
 
 9089
 09:01:14,740 --> 09:01:18,070
-Right? The hard at runtime environment is a network local
-
+The hard at runtime environment is a network local to our machine. 
+Hardhat 运行环境是一个位于我们本地机器上的网络
 
 9090
 09:01:18,070 --> 09:01:21,580
-to our machine. So it doesn't make sense for us to verify a
-
+So it doesn't make sense for us to verify a hard hat network deployed contract on ether scan. 
+因此对部署到 Hardhat 网络的合约进行 etherscan 验证是毫无意义的
 
 9091
 09:01:21,580 --> 09:01:24,880
-hard hat network deployed contract on ether scan. So we
-
+So we actually don't want to call this verify function, 
+所以我们并不打算实际调用这个 "verify" 函数
 
 9092
 09:01:24,880 --> 09:01:28,690
-actually don't want to call this verify function, when we're
-
+when we're working with our local network. 
+在我们使用本地网络进行工作时
 
 9093
 09:01:28,690 --> 09:01:31,750
-working with our local network. This is where these chain IDs
-
+This is where these chain IDs are going to come in quite useful. 
+这就是这些 "chainID" 的有用之处了
 
 9094
 09:01:31,750 --> 09:01:34,180
-are going to come in quite useful. What we can do is we can
-
+What we can do is we can check to see if the network that we're running on 
+我们可以检查一下我们运行的网络
 
 9095
 09:01:34,180 --> 09:01:37,270
-check to see if the network that we're running on is a live
-
+is a live network or it's a test net, or it's a network that actually can be verified, 
+究竟是一个实时网络还是一个测试网络，或者说是一个可以验证的网络
 
 9096
 09:01:37,300 --> 09:01:40,120
-network or it's a test net, or it's a network that actually can
-
+we can actually get network configuration information by importing a network like this. 
+我们可以通过导入一个 "network" 包来获取网络配置信息，就像这样
 
 9097
 09:01:40,120 --> 09:01:42,580
-be verified, we can actually get network configuration
-
+And we can do something like console dot log network dot config. 
+然后我们就可以执行 "console.log(network.config)"
 
 9098
 09:01:42,580 --> 09:01:48,640
-information by importing a network like this. And we can do
-
+Now, if I run yarn, art, hit run scripts deploy.js. 
+现在，如果我运行 "yarn hardhat run scripts/deploy.js"
 
 9099
 09:01:49,240 --> 09:01:56,260
-something like console dot log network dot config. Now, if I
-
+On our Hard Hat Network, 
+在我们的 Hardhat network 上
 
 9100
 09:01:56,260 --> 09:02:01,930
-run yarn, art, hit run scripts deploy.js. On our Hard Hat
-
+since I'm not passing a network flag, 
+由于我没有传入任何网络标识
 
 9101
 09:02:01,930 --> 09:02:05,890
-Network, since I'm not passing a network flag, we get this
-
+we get this massive output that looks like this. 
+我们得到了这么一大堆输出，看起来就像这样
 
 9102
 09:02:05,890 --> 09:02:09,460
-massive output that looks like this. Our network dot config
-
+Our network dot config contains a ton of information about the current network that we're on, 
+"network.config" 中包含了有关我们当前所在网络的大量信息
 
 9103
 09:02:09,490 --> 09:02:12,460
-contains a ton of information about the current network that
-
+you'll see here that the chain ID of the Hardhead network is actually 31337 
+这里可以看到 "Hardhat network" 的 "chainID" 是 31337
 
 9104
 09:02:12,460 --> 09:02:15,310
-we're on, you'll see here that the chain ID of the Hardhead
-
+gas price, which gets set to auto
+gasPrice 被设置为了 "auto"
 
 9105
 09:02:15,310 --> 09:02:20,080
-network is actually 31337 gas price, which gets set to auto
-
+block gas limit the current fork of Aetherium that we're working with, 
+"blockGasLimit" 还有当前我们所使用的以太坊分支
 
 9106
 09:02:20,440 --> 09:02:23,770
-block gas limit the current fork of Aetherium that we're working
-
+and all these other pieces here. 
+以及其它所有有关的信息
 
 9107
 09:02:23,770 --> 09:02:27,490
-with, and all these other pieces here. This chain ID is really
-
+This chain ID is really important. 
+这个 "chainID" 真的非常重要
 
 9108
 09:02:27,490 --> 09:02:30,880
-important. Because we can use this chain ID to figure out
-
+Because we can use this chain ID to figure out
+因为我们可以用这个 "chainID" 来确定
 
 9109
 09:02:31,000 --> 09:02:33,700
-which one is a test net, or which one is a live network. And
-
+which one is a test net, or which one is a live network. 
+哪一个是测试网络，哪一个是实时网络
 
 9110
 09:02:33,700 --> 09:02:36,550
-remember, running the script is going to be the same as doing
-
+And remember, running the script is going to be the same as doing dash dash network, hard hat,
+并且记住，运行这个脚本等同于执行 "--network hardhat"
 
 9111
 09:02:36,580 --> 09:02:39,310
-dash dash network, hard hat,
-
+you'll see our channel ID is still 31337. 
+可以看到我们的 "chainID" 仍然是 31337
 
 9112
 09:02:40,720 --> 09:02:44,530
-you'll see our channel ID is still 31337. Again, that's
-
+Again, that's because the default network in our heart had config, it's hard hat, 
+这是因为 "hardhat.config" 中的 "defaultNetwork" 仍然是 "hardhat"
 
 9113
 09:02:44,530 --> 09:02:47,800
-because the default network in our heart had config, it's hard
-
+which is the same as saying every single time we run a script, 
+这就是说每次我们运行这个脚本的时候
 
 9114
 09:02:47,800 --> 09:02:51,190
-hat, which is the same as saying every single time we run a
-
+we're secretly running it with dash dash network hard hat. 
+都相当于在后台使用了一次 "--network hardhat"
 
 9115
 09:02:51,190 --> 09:02:54,190
-script, we're secretly running it with dash dash network hard
+
 
 
 9116
 09:02:54,190 --> 09:02:57,730
-hat. So now we only want to verify on our test net. So what
+So now we only want to verify on our test net. So what
 
 
 9117
