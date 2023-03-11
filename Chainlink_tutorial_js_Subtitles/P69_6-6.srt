@@ -939,284 +939,280 @@ we're secretly running it with dash dash network hard hat.
 
 9115
 09:02:51,190 --> 09:02:54,190
-
-
+So now we only want to verify on our test net. 
+现在我们只想在测试网络上进行验证
 
 9116
 09:02:54,190 --> 09:02:57,730
-So now we only want to verify on our test net. So what
-
+So what we can do 
+可以这样做
 
 9117
 09:02:57,730 --> 09:03:02,110
-we can do is we can say if network dot config, that chain
-
+is we can say if network dot config, that chain ID equals equals equals four, 
+"if (network.config.chainID === 4)"
 
 9118
 09:03:02,110 --> 09:03:07,570
-ID equals equals equals four, which is going to be rank B, ad.
-
+which is going to be rank B, ad.
+它表示 Rinkeby
 
 9119
 09:03:08,320 --> 09:03:12,040
-And a JavaScript equals equals equals is nearly the same as
-
+And a JavaScript equals equals equals is nearly the same as equals equals, 
+在 JavaScript 中 "==="  和 "==" 几乎相同
 
 9120
 09:03:12,040 --> 09:03:15,910
-equals equals, except no type conversion is done, which just
-
+except no type conversion is done, 
+唯一的区别是它不进行类型转换
 
 9121
 09:03:15,910 --> 09:03:21,820
-means in JavaScript, four equals four, and four equals equals the
-
+which just means in JavaScript, four equals four, and four equals equals the string of four, 
+这意味着在 JavaScript 中 “4 == 4” 和 “4 == "4"”
 
 9122
 09:03:21,820 --> 09:03:26,110
-string of four, but four, but if you were to use four equals
-
+but four, but if you were to use four equals equals equals four, this is false. 
+但如果你用的是 “4 === "4"” 这个输出的是 false
 
 9123
 09:03:26,110 --> 09:03:30,910
-equals equals four, this is false. This is true equals
-
+This is true 
+这个是 true
 
 9124
 09:03:30,910 --> 09:03:34,990
-equals four equals equals would be true, four equals equals to
-
+equals equals four equals equals would be true, four equals equals to the string of four would also be true, 
+“== 4” 是 true，“4 == "4"” 也是 true
 
 9125
 09:03:34,990 --> 09:03:38,050
-the string of four would also be true, but four equals equals
-
+but four equals equals equals to the string of four is going to be false. 
+但 “4 === "4"” 则是 false
 
 9126
 09:03:38,110 --> 09:03:41,200
-equals to the string of four is going to be false. So you can
-
+So you can kind of do whatever you want here 
+你可以在这里采取你想用的方式
 
 9127
 09:03:41,200 --> 09:03:43,540
-kind of do whatever you want here equals equals or equals
-
+equals equals or equals equals equals. 
+"==" 或是 "===" 都可以
 
 9128
 09:03:43,540 --> 09:03:46,870
-equals equals. So we want to say if the network dot config dot
-
+So we want to say if the network dot config dot Trinity is four, 
+所以我们做的就是，如果 "network.config.chainID" 是 4
 
 9129
 09:03:46,870 --> 09:03:52,030
-Trinity is four, so if we're on Rinkeby, then we can go ahead
-
+so if we're on Rinkeby, 
+即，如果我们是在 Rinkeby 上
 
 9130
 09:03:52,030 --> 09:03:57,100
-and actually verify. But we also want to make sure we only verify
-
+then we can go ahead and actually verify. 
+那么，我们就进行验证
 
 9131
 09:03:57,130 --> 09:04:01,570
-if our ether scan API key exists. So we can also in here
-
+But we also want to make sure we only verify if our ether scan API key exists. 
+但我们还要确保只有当我们的 "ETHERSCAN_API_KEY" 存在的情况下才进行验证
 
 9132
 09:04:01,570 --> 09:04:05,890
-is site and this double ampersand means and we can say
-
+So we can also in here is site and this double ampersand means and 
+所以我们可以在这里添加一个“与”判断，这个 "&&" 的意思就是“(逻辑)与”
 
 9133
 09:04:05,920 --> 09:04:12,670
-process dot e NV dot ether scan API key. This is some Boolean
-
+we can say process dot e NV dot ether scan API key. 
+我们要写的是 "process.env.ETHERSCAN_API_KEY" 
 
 9134
 09:04:12,670 --> 09:04:15,040
-tricks that we're doing here, basically, so our first
-
+This is some Boolean tricks that we're doing here, basically, 
+这里我们使用了一些布尔值运算技巧
 
 9135
 09:04:15,070 --> 09:04:18,190
-conditional we're saying if network dot config chinati
-
+so our first conditional we're saying if network dot config chinati equals equals equals four, 
+我们的第一个条件是判断 "network.config.chainID === 4"
 
 9136
 09:04:18,310 --> 09:04:22,000
-equals equals equals four, this section can be true or false,
-
+this section can be true or false, obviously, right? 
+这一段可以是真也可以是假，很明显，对吧？
 
 9137
 09:04:22,030 --> 09:04:25,060
-obviously, right? The chain ID that we're running on can be the
-
+The chain ID that we're running on can be the hardest network, 
+我们现在是在 "Hardhat network" 上运行的
 
 9138
 09:04:25,060 --> 09:04:28,660
-hardest network, which would mean this doesn't equal four, or
-
+which would mean this doesn't equal four, 
+这意味着 "chainID" 不等于 4
 
 9139
 09:04:28,660 --> 09:04:31,360
-it would be Rinckey, which means this does equal four. But
-
+or it would be Rinckey, which means this does equal four. 
+如果我们是在 Rinkeby 上的话，它就等于 4 了
 
 9140
 09:04:31,390 --> 09:04:34,120
-there's no conditional on this side. So how does this side
-
+But there's no conditional on this side. So how does this side work? 
+但这一边并不是一个条件，那么它是如何工作的呢？
 
 9141
 09:04:34,120 --> 09:04:37,360
-work? In JavaScript, if an object exists, and you try to
-
+In JavaScript, if an object exists, 
+在 JavaScript 中，如果一个对象存在
 
 9142
 09:04:37,360 --> 09:04:41,380
-cast it as a Boolean, it will be converted to true. If it doesn't
-
+and you try to cast it as a Boolean, it will be converted to true. 
+并且你要试图把它转换为布尔值，那么它就会被转换为 true
 
 9143
 09:04:41,380 --> 09:04:44,320
-exist, it will be converted to false. So in JavaScript,
-
+If it doesn't exist, it will be converted to false. 
+如果它不存在，就会被转换为 false
 
 9144
 09:04:44,320 --> 09:04:49,690
-basically, if either scan API key exists, if we have this in
-
+So in JavaScript, basically, if either scan API key exists, 
+所以在 JavaScript 中，如果 "ETHERSCAN_API_KEY" 存在
 
 9145
 09:04:49,690 --> 09:04:53,680
-our data in VI, this will be true. And if not, this will be
-
+if we have this in our data in VI, this will be true. 
+即，我们在 ".env" 中有这个值的话，它就是 true
 
 9146
 09:04:53,680 --> 09:04:57,130
-false. So another way to read this line here is saying if
-
+And if not, this will be false. 
+如果没有，它就是 false
 
 9147
 09:04:57,190 --> 09:05:01,480
-network dot config that Trinity is for AKA, if we're on rink B,
-
+So another way to read this line here is saying 
+因此这一行的的另一种理解方式就是
 
 9148
 09:05:01,960 --> 09:05:07,150
-and our ether scan API key exists, then do some stuff. And
-
+if network dot config that Trinity is for AKA, if we're on rink B, 
+如果 "network.config.chainID" 是 4，也就是说如果我们是在 Rinkeby 上
 
 9149
 09:05:07,180 --> 09:05:09,790
-that's what we're going to do here. So in here, we'd want to
-
+and our ether scan API key exists, then do some stuff. 
+并且 "ETHERSCAN_API_KEY" 也存在，则执行以下操作
 
 9150
 09:05:09,790 --> 09:05:15,910
-run verify, or verify function and pass it the contract address
-
+And that's what we're going to do here. 
+这就是我们正在做的事情
 
 9151
 09:05:15,970 --> 09:05:20,170
-which is going to be Simple Storage dot address and the
-
+So in here, we'd want to run verify, or verify function 
+这里面，我们要运行 "verify()" 或者说 "verify" 函数
 
 9152
 09:05:20,170 --> 09:05:23,350
-constructor arguments which we know are going to be blank. And
-
+and pass it the contract address which is going to be Simple Storage dot address and the constructor arguments 
+并传入合约地址，就是 "SimpleStorage.address" 以及构造函数参数
 
 9153
 09:05:23,350 --> 09:05:27,370
-since our verify function is an async function, and it deals
-
+which we know are going to be blank. 
+不过我们知道它是空白的
 
 9154
 09:05:27,370 --> 09:05:31,120
-with promises and stuff, we want to add the await keyword here.
-
+And since our verify function is an async function, and it deals with promises and stuff, 
+由于我们的 "verify" 函数是一个异步函数，并且涉及 Promise 等内容
 
 9155
 09:05:31,510 --> 09:05:34,810
-Awesome. So we've added a way to actually verify our contract.
-
+we want to add the await keyword here. 
+所以我们要在这里添上 await 关键字
 
 9156
 09:05:34,810 --> 09:05:38,740
-But we're not quite done. See on ether scan and all these block
-
+Awesome. So we've added a way to actually verify our contract. But we're not quite done. 
+太好了，我们已经添加了一个验证合约的方法，但到此可并没完呢
 
 9157
 09:05:38,740 --> 09:05:42,430
-explorers the instant we deploy the contract and the instant we
-
+See on ether scan and all these block explorers the instant we deploy the contract and the instant we send the contract, 
+在 etherscan 和所有的区块浏览器上，当我们部署并发送合约的时候
 
 9158
 09:05:42,430 --> 09:05:46,210
-send the contract, ether scan might not know about the
-
+ether scan might not know about the transaction yet, 
+etherscan 可能还并不知道有这个交易
 
 9159
 09:05:46,210 --> 09:05:50,260
-transaction yet, it might take a hot second for ether scan to be
-
+it might take a hot second for ether scan to be up to speed with where the blockchain is.  
+etherscan 可能还需要一小段时间才能跟上区块链的变化
 
 9160
 09:05:50,260 --> 09:05:53,020
-up to speed with where the blockchain is. So it's usually
-
+So it's usually best practice to wait for a few blocks to be mined, until you actually run your verification process. 
+所以实践中最好是先等几个区块被挖出来，然后再进行你的验证操作
 
 9161
 09:05:53,020 --> 09:05:57,220
-best practice to wait for a few blocks to be mined, until you
-
+We've actually learned how to do this already with the deploy transaction. 
+我们实际上已经在部署交易时学过怎么实现这个操作了
 
 9162
 09:05:57,220 --> 09:06:00,280
-actually run your verification process. We've actually learned
-
+So before we actually verify 
+所以在我们进行验证之前
 
 9163
 09:06:00,280 --> 09:06:04,000
-how to do this already with the deploy transaction. So before we
-
+we run, we want to run a weight, simple storage. Deploy transaction Wait, six. 
+我们要运行 "await SimpleStorage.deployTransaction.wait(6)"
 
 9164
 09:06:04,000 --> 09:06:09,640
-actually verify we run, we want to run a weight, simple storage.
-
+So we will wait six blocks, 
+所以我们将等待六个区块
 
 9165
 09:06:10,900 --> 09:06:19,180
-Deploy transaction Wait, six. So we will wait six blocks, and
-
+and then we'll run our verification process. 
+随后再执行我们的验证过程
 
 9166
 09:06:19,180 --> 09:06:22,360
-then we'll run our verification process. Now, if you want to go
-
+Now, if you want to go and test this out right now, you absolutely can. 
+现在，如果你想要立即测试一下的话，也可以
 
 9167
 09:06:22,360 --> 09:06:25,450
-and test this out right now, you absolutely can. I'm going to
-
+I'm going to keep going, though, 
+但我会先接着往下走
 
 9168
 09:06:25,450 --> 09:06:28,480
-keep going, though, because again, testing all these on a
-
+because again, testing all these on a test net takes a little bit of extra time. 
+还是因为，在测试网上测试这些东西，实在是比较费时间
 
 9169
 09:06:28,480 --> 09:06:31,840
-test net takes a little bit of extra time. So I'm going to
-
+So I'm going to finish the rest of our main function, 
+所以我要先完成 main 函数的剩余部分
 
 9170
 09:06:31,840 --> 09:06:34,120
-finish the rest of our main function, and then I'm going to
-
-
-9171
-09:06:34,120 --> 09:06:39,820
-run everything all together. 
+and then I'm going to run everything all together. 
+然后再一并运行它们
