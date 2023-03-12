@@ -1,0 +1,199 @@
+9171
+09:06:34,120 --> 09:06:39,820
+Okay, cool. So we've deployed our contract, 
+OK 酷，我们已经部署好了合约
+
+9172
+09:06:39,820 --> 09:06:42,730
+we've automatically programmatically verified our contract. 
+并且使用自动化程序验证了我们的合约
+
+9173
+09:06:42,760 --> 09:06:46,300
+What's next? Well, what did we do last time, 
+下一步是什么？好吧，我们上次做了什么？
+
+9174
+09:06:46,300 --> 09:06:50,320
+we started interacting with the contract. 
+上一次是要开始与合约进行交互了
+
+9175
+09:06:50,710 --> 09:06:56,980
+So let's do const. Current Value equals await simple storage dot retrieve. 
+所以我们要执行 "const currentValue = await simpleStorage.retrieve()"
+
+9176
+09:06:56,980 --> 09:07:01,780
+To get the current value, 
+以此来获取当前值
+
+9177
+09:07:01,780 --> 09:07:05,650
+simple storage, that's all. We have a retrieve function, which returns the favorite number, 
+"SimpleStorage.sol" 中，有一个 "retrieve" 函数，返回的是 "favoriteNumber"
+
+9178
+09:07:05,650 --> 09:07:09,430
+so let's get the current value. 
+所以让我们来获取当前值
+
+9179
+09:07:09,460 --> 09:07:18,730
+And we'll do console dot log, 
+要做的就是 "console.log()"
+
+9180
+09:07:18,730 --> 09:07:23,230
+the current value is and then some string interpolation, current value. 
+"Current Value is:" 后面是一些字符串插值 "currentValue"
+
+9181
+09:07:23,230 --> 09:07:31,780
+And then we'll go ahead and update the current value 
+接下来要做的是更新当前值
+
+9182
+09:07:31,870 --> 09:07:39,040
+by doing cons. Transaction response equals await simple storage, that store 
+做法是 "const transactionResponse = await simpleStorage.store()"
+
+9183
+09:07:39,040 --> 09:07:45,580
+will store the number seven, and then we'll await transaction response dot Wait,
+我们要存储的值是 7，然后是 "await transactionResponse.wait()"
+
+9184
+09:07:45,760 --> 09:07:49,810
+we'll wait one block for that transaction to go through. 
+我们将等待一个区块以确保交易被确认
+
+9185
+09:07:49,810 --> 09:07:53,980
+And we'll grab the updated value by saying const updated value equals await simple storage dot retrieve. 
+获取更新值的方法是 "const updatedValue = await simpleStorage.retrieve()"
+
+9186
+09:07:54,730 --> 09:07:57,700
+Then we'll do console log. 
+接着就是 "console.log()"
+
+9187
+09:07:58,960 --> 09:08:10,030
+The added value is updated value. 
+"Updated Value is: ${updatedValue}" 
+
+9188
+09:08:11,200 --> 09:08:14,980
+Awesome. And this is going to be our whole script.
+很好，这就是我们完整的脚本了
+
+9189
+09:08:15,370 --> 09:08:17,920
+So if I can zoom out for a little bit, I know it will be a little bit small here, 
+我可以把视角放大一点，我知道这样窗口可能会有些小
+
+9190
+09:08:17,920 --> 09:08:22,360
+we've got this huge main function, which does what? 
+我们现在有了一个巨大的 main 函数，它做了什么
+
+9191
+09:08:22,390 --> 09:08:26,230
+Well it deploys our contract. If we're on a test net, it then verifies our contract. 
+它部署了我们的合约，如果是在测试网上，它还会验证我们的合约
+
+9192
+09:08:26,230 --> 09:08:29,560
+And then it updates the value to seven. 
+接着它把值更新为 7 
+
+9193
+09:08:29,590 --> 09:08:33,670
+And we have our verify function down here.
+我们在这里还有一个 "verify" 函数
+
+9194
+09:08:33,970 --> 09:08:37,180
+And we have a section of our code that calls our main function. 
+并且还有一部分调用 main 函数的代码
+
+9195
+09:08:37,180 --> 09:08:40,240
+Now for run this on the hard hat network. 
+现在我们要在 "Hardhat network" 上运行一下它
+
+9196
+09:08:40,240 --> 09:08:44,260
+What do you think will happen? Well, let's try 
+你觉得会发生什么？好，让我们来试一下
+
+9197
+09:08:44,350 --> 09:08:48,760
+yarn, or net run scripts. Deploy dot j s. 
+"yarn hardhat run scripts/deploy.js"
+
+9198
+09:08:48,760 --> 09:08:52,210
+Alright, awesome, we get exactly what we saw before 
+非常好，我们得到了和之前完全一样的结果
+
+9199
+09:08:52,210 --> 09:08:56,110
+we get deploying contract deployed contract to 
+我们得到了 "Deploying contract" 还有 "Deployed contract to"
+
+9200
+09:08:56,110 --> 09:08:58,630
+current value is zero, update value seven. 
+"Current Value" 是 0, "Updated Value" 是 7 
+
+9201
+09:08:58,630 --> 09:09:02,590
+And there's nothing in here about verification. That's exactly what we want. 
+并且这里没有任何关于验证的信息，这正是我们想要看到的
+
+9202
+09:09:02,620 --> 09:09:08,290
+Now, moment of truth. Let's try this on Rinkeby. 
+现在，关键时刻来了，让我们在 Rinkeby 上试一下
+
+9203
+09:09:08,770 --> 09:09:16,540
+We'll do yarn, RT hat run scripts, deploy dot j s, dash dash network Rinkeby. 
+我们要运行 "yarn hardhat run scripts/deploy.js --network rinkeby"
+
+9204
+09:09:16,570 --> 09:09:19,330
+And it's gonna go a lot slower, because obviously now we're deploying to an actual test net,
+这个过程会比较慢，因为我们正在部署到一个真正的测试网上
+
+9205
+09:09:19,360 --> 09:09:21,970
+where the blocks actually need to be mined. 
+那里要有实际的区块被挖出来
+
+9206
+09:09:21,970 --> 09:09:24,580
+And we see we haven't deployed the contract. Now that our contract is deployed. 
+可以看到我们确实已经部署了合约，现在我们的合约已经部署好了
+
+9207
+09:09:24,580 --> 09:09:27,610
+We know that we're currently waiting six block confirmations for us to go ahead and verify. 
+目前我们需要等待六个区块确认才能进行验证
+
+9208
+09:09:27,610 --> 09:09:30,610
+And actually I should add console dot log, 
+其实我应该添加一段 "console.log()"
+
+9209
+09:09:30,610 --> 09:09:37,210
+waiting for block the x's 
+"Waiting for block txes..."
+
+9210
+09:09:37,210 --> 09:09:40,060
+so that we don't get campus weird. Oh, wait, what are we doing now?
+这样我们就不会因此感到奇怪，“哦，等等，我们现在在干什么?”
