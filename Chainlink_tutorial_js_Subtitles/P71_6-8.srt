@@ -1,0 +1,99 @@
+9211
+09:09:42,970 --> 09:09:45,550
+That it looks like we ran into this error, no such file or directory, 
+啊，看来我们遇到了报错，“没有这样的文件或目录”
+
+9212
+09:09:45,550 --> 09:09:48,610
+it looks like our code might not have compiled correctly here. 
+看起来我们的代码可能没有正确编译
+
+9213
+09:09:48,610 --> 09:09:51,430
+So here's what I'm gonna do. 
+这里我打算这么做
+
+9214
+09:09:51,430 --> 09:09:55,180
+We're gonna go ahead and delete our artifacts to trash. 
+我要删除我们的 "artifacts"，移动到回收站
+
+9215
+09:09:55,180 --> 09:09:58,810
+We're gonna delete our cache as well. 
+同时也删除我们的 "cache"
+
+9216
+09:09:58,810 --> 09:10:01,540
+And we're going to try rerunning this 
+接着我会尝试重新运行一下这个
+
+9217
+09:10:01,540 --> 09:10:04,870
+whenever you run a script with the hard drive command Hardhead will automatically recompile it for you, 
+每当你使用 Hardhat 命令运行脚本时，Hardhat 都会自动为你重新编译一次
+
+9218
+09:10:04,870 --> 09:10:08,170
+especially if there's no artifacts folder. 
+尤其是没有 "artifacts" 文件夹的时候
+
+9219
+09:10:08,170 --> 09:10:11,050
+So we're going to rerun this command and heartbeat, it's going to compile first 
+所以我们要重新运行一下这个命令，并且 Hardhat 会首先进行编译
+
+9220
+09:10:11,050 --> 09:10:14,320
+and we can see that it does exactly that. 
+可以看到它确实是这样的
+
+9221
+09:10:15,010 --> 09:10:17,830
+And then it's going to go ahead and redeploy. 
+接着它就会继续重新部署
+
+9222
+09:10:17,830 --> 09:10:26,170
+Hopefully this time, it should be able to find the contract that had just compiled 
+希望这一次，它能找到刚刚编译好的合约
+
+9223
+09:10:26,170 --> 09:10:29,200
+looks like this time after I deleted the artifacts folder, 
+看来这一次，在我删掉 "artifacts" 文件夹后
+
+9224
+09:10:29,200 --> 09:10:32,680
+we actually did indeed get some successful compilation. 
+我们确实成功完成了编译
+
+9225
+09:10:32,680 --> 09:10:35,770
+And we can see here successfully submitted source code for contract 
+并且我们可以看到，“成功提交了合约的源代码”
+
+9226
+09:10:35,770 --> 09:10:38,290
+or verification on the block explore waiting for verification results,
+于区块浏览器上进行验证，正在等待验证结果
+
+9227
+09:10:38,800 --> 09:10:41,590
+successfully verified contracts simple storage on ether scan,
+成功在 etherscan 上验证了 SimpleStorage 合约
+
+9228
+09:10:41,890 --> 09:10:45,040
+and even gives us a link that we can go ahead and Command click or control click into. 
+它甚至还给了我们一个链接，使用 "Command" 点击或 "Ctrl" 点击以进入
+
+9229
+09:10:45,040 --> 09:10:48,400
+And we can see the contract indeed being verified. 
+并且我们可以看到合约确实已经被验证了
+
+9230
+09:10:48,400 --> 09:10:55,360
+This is awesome. 
+真是太棒了

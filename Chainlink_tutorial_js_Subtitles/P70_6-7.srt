@@ -196,4 +196,4 @@ waiting for block the x's
 9210
 09:09:37,210 --> 09:09:40,060
 so that we don't get campus weird. Oh, wait, what are we doing now?
-这样我们就不会因此感到奇怪，“哦，等等，我们现在在干什么?”
+这样我们就不会感到诸如 “哦等等，我们现在在干什么?” 这种困惑
