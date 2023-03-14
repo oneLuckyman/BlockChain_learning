@@ -1,0 +1,548 @@
+9230
+09:10:48,400 --> 09:10:55,360
+This is perfect. We've now got a successful deploy dot j s script 
+简直完美，现在我们有了一个成功的 "deploy.js" 脚本
+
+9231
+09:10:55,360 --> 09:11:00,700
+that can deploy, verify, and then interact with our code. This is fantastic. 
+它可以部署，验证并与我们的代码进行交互，真是太棒了
+
+9232
+09:11:00,700 --> 09:11:04,300
+This hard hat thing seems pretty cool. What else can we do with hard hat
+Hardhat 真是太酷了，它还能做哪些事呢？
+
+9233
+09:11:04,300 --> 09:11:06,760
+like I showed you before. 
+就像我之前向你们展示的
+
+9234
+09:11:06,820 --> 09:11:11,650
+Hard Hat comes with these tasks. 
+Hardhat 自带的任务有这些
+
+9235
+09:11:11,650 --> 09:11:13,900
+And the number of tasks that Hardhead can come with can be extended by us writing plugins, 
+并且 Hardhat 可执行的任务数可以通过我们编写的插件进行扩展
+
+9236
+09:11:13,900 --> 09:11:17,620
+we can actually write our own tasks in hardhat. 
+我们实际上可以在 Hardhat 中编写我们自己的任务
+
+9237
+09:11:17,620 --> 09:11:21,190
+And in our Hardhead dot config, it can
+
+
+9238
+09:11:21,190 --> 09:11:24,250
+defaulted with this task account, we can see task
+
+
+9239
+09:11:24,280 --> 09:11:28,510
+accounts, prints the list of accounts, and just prints a list
+
+
+9240
+09:11:28,510 --> 09:11:31,960
+of accounts here actually go to the heart had documentation to
+
+
+9241
+09:11:31,960 --> 09:11:34,690
+learn more about creating our own tasks, one of the ways that
+
+
+9242
+09:11:34,690 --> 09:11:39,640
+you can define tasks is directly in our heart head.config.js. But
+
+
+9243
+09:11:39,640 --> 09:11:43,450
+typically, what people do is they have a new folder called
+
+
+9244
+09:11:43,480 --> 09:11:47,530
+tasks where they put all their tasks. So for now, I'm gonna go
+
+
+9245
+09:11:47,530 --> 09:11:49,900
+ahead and delete this section here. And we're going to create
+
+
+9246
+09:11:49,930 --> 09:11:52,840
+our own task. You'll notice that now that we've deleted that
+
+
+9247
+09:11:52,840 --> 09:11:58,750
+section, if we run yarn RDAP, we no longer see the accounts task
+
+
+9248
+09:11:58,750 --> 09:12:01,660
+in here, because we've just deleted that task. So let's
+
+
+9249
+09:12:01,660 --> 09:12:08,140
+create our own new task. We'll call this block number.js. And
+
+
+9250
+09:12:08,140 --> 09:12:10,900
+we'll use this to get the current block number or whatever
+
+
+9251
+09:12:10,900 --> 09:12:13,810
+blockchain that we're working with. So let's create this task.
+
+
+9252
+09:12:14,080 --> 09:12:17,320
+First, we need to import the task function, we can get it by
+
+
+9253
+09:12:17,320 --> 09:12:24,730
+saying const task equals require arhat slash config. The hard hat
+
+
+9254
+09:12:24,730 --> 09:12:28,870
+slash config has the task function. To define a task, we
+
+
+9255
+09:12:28,870 --> 09:12:33,460
+can now just say task, give it a name and a description, the name
+
+
+9256
+09:12:33,490 --> 09:12:34,630
+is going to be blocked number.
+
+
+9257
+09:12:36,010 --> 09:12:39,550
+And then the description is going to be prints the current
+
+
+9258
+09:12:40,930 --> 09:12:45,700
+block number. Now that we have this task, there's a couple of
+
+
+9259
+09:12:45,700 --> 09:12:48,040
+things we can actually do with it, we can add different
+
+
+9260
+09:12:48,040 --> 09:12:51,280
+parameters to it by using the dot add command, which allow us
+
+
+9261
+09:12:51,280 --> 09:12:54,400
+to pass parameters to the task. And then we could also set
+
+
+9262
+09:12:54,400 --> 09:12:58,180
+actions which define what the task should actually do for us,
+
+
+9263
+09:12:58,210 --> 09:13:03,340
+we're just going to do dot set action. And define what we want
+
+
+9264
+09:13:03,340 --> 09:13:07,660
+this function to do. So we're going to make this an async
+
+
+9265
+09:13:07,660 --> 09:13:11,620
+function, that's going to take as an input, the task arguments,
+
+
+9266
+09:13:11,650 --> 09:13:15,790
+which are going to be blank for us, and the HR E, which I'll
+
+
+9267
+09:13:15,790 --> 09:13:19,570
+define in a second. Now, let me explain the syntax really
+
+
+9268
+09:13:19,570 --> 09:13:22,570
+quickly. This might look a little bit weird, but this is
+
+
+9269
+09:13:22,570 --> 09:13:26,110
+what's known as a JavaScript arrow function. In JavaScript,
+
+
+9270
+09:13:26,140 --> 09:13:29,170
+you can actually define functions without even using the
+
+
+9271
+09:13:29,170 --> 09:13:32,140
+function keyword. For example, if we go back to our deploy
+
+
+9272
+09:13:32,140 --> 09:13:36,670
+function, we have our async function verify down here.
+
+
+9273
+09:13:37,090 --> 09:13:40,330
+However, another way we could have defined this is is without
+
+
+9274
+09:13:40,330 --> 09:13:43,420
+using the function word at all, and actually turning this whole
+
+
+9275
+09:13:43,420 --> 09:13:47,560
+thing into a variable, we could have said instead, we could say
+
+
+9276
+09:13:48,070 --> 09:13:54,370
+const verify is going to be an async function that takes
+
+
+9277
+09:13:54,370 --> 09:14:00,010
+contract addresses and arguments. And here's the
+
+
+9278
+09:14:00,010 --> 09:14:03,700
+function definition. These two lines are essentially
+
+
+9279
+09:14:03,730 --> 09:14:07,900
+equivalent. There's some slight differences between between
+
+
+9280
+09:14:07,900 --> 09:14:10,630
+using the function keyword and having your function be a
+
+
+9281
+09:14:10,630 --> 09:14:13,060
+variable. But for the purposes of this course, they're
+
+
+9282
+09:14:13,060 --> 09:14:17,860
+basically the same. Which means though, that this by itself is a
+
+
+9283
+09:14:17,860 --> 09:14:21,340
+function, just not assigned to a variable. But essentially, the
+
+
+9284
+09:14:21,340 --> 09:14:24,760
+two of these do are exactly the same. And that's the syntax that
+
+
+9285
+09:14:24,760 --> 09:14:27,940
+we're doing here. You can imagine this sort of being like
+
+
+9286
+09:14:27,940 --> 09:14:35,440
+const block task equals async function, which takes the params
+
+
+9287
+09:14:35,920 --> 09:14:39,010
+and then runs that arrow function. Or you can think of it
+
+
+9288
+09:14:39,010 --> 09:14:45,880
+as async. Function, block task parameters, and then the
+
+
+9289
+09:14:45,880 --> 09:14:49,450
+function definition, these are all essentially the same. The
+
+
+9290
+09:14:49,450 --> 09:14:53,290
+major difference is that we're never giving our function a
+
+
+9291
+09:14:53,290 --> 09:14:56,170
+name, we never give it this block task variable. This is
+
+
+9292
+09:14:56,170 --> 09:14:59,650
+known as an anonymous function in JavaScript, because it
+
+
+9293
+09:14:59,650 --> 09:15:02,920
+doesn't have a name. Now that we have our function in here, we
+
+
+9294
+09:15:02,920 --> 09:15:06,940
+can now call some function to get the block number. Well, how
+
+
+9295
+09:15:06,940 --> 09:15:10,150
+can we get the block number when we run tasks, we automatically
+
+
+9296
+09:15:10,150 --> 09:15:13,480
+pass our anonymous functions, the task arguments, which in
+
+
+9297
+09:15:13,480 --> 09:15:18,040
+this one, we don't have any, but we also pass this HR II object.
+
+
+9298
+09:15:18,550 --> 09:15:23,560
+This HRV is the heart hat runtime environment. Back in our
+
+
+9299
+09:15:23,560 --> 09:15:27,820
+deploy script, this is basically the same as this require hard
+
+
+9300
+09:15:27,820 --> 09:15:32,320
+hat in here. So this HRV can access a lot of the same, this
+
+
+9301
+09:15:32,320 --> 09:15:36,940
+HRV can access a lot of the same packages that the hard hat
+
+
+9302
+09:15:37,060 --> 09:15:41,920
+package can. So we can do Hae dot ethers, just like how you
+
+
+9303
+09:15:41,920 --> 09:15:45,100
+can import ethers from hard hat. And in our ethers package,
+
+
+9304
+09:15:45,100 --> 09:15:47,740
+there's actually a number of functions we can use like dot
+
+
+9305
+09:15:47,740 --> 09:15:54,520
+Pro, biter dot get block number. Let's save this to a variable
+
+
+9306
+09:15:54,970 --> 09:15:59,890
+const blocked number equals, and this is going to be a
+
+
+9307
+09:15:59,890 --> 09:16:02,500
+synchronous, so we're going to want to add a weight here. And
+
+
+9308
+09:16:02,500 --> 09:16:06,940
+then let's do console dot log block number. Or better yet,
+
+
+9309
+09:16:07,540 --> 09:16:11,740
+we'll string interpolate this and say current block number
+
+
+9310
+09:16:12,760 --> 09:16:17,740
+like this. Now though, if I try to run this task, you'll notice
+
+
+9311
+09:16:17,770 --> 09:16:21,790
+it doesn't show up in the heart Atlas of tasks, let's do yarn.
+
+
+9312
+09:16:22,330 --> 09:16:26,920
+Art app. Hmm, I don't see block number in here. Well, this is
+
+
+9313
+09:16:26,920 --> 09:16:31,600
+because we need to add it to our config dot config will add
+
+
+9314
+09:16:31,990 --> 09:16:38,590
+require dot slash tasks slash block number.
+
+
+9315
+09:16:39,970 --> 09:16:43,420
+And in order for us to import it, and let's add a module that
+
+
+9316
+09:16:43,420 --> 09:16:47,080
+exports I'll explain what this does a little bit later. But now
+
+
+9317
+09:16:47,080 --> 09:16:50,890
+that we've required it, if I run yarn hard hat, and now see
+
+
+9318
+09:16:50,950 --> 09:16:54,490
+blocked over is one of the tasks that I can use. Now for a run
+
+
+9319
+09:16:54,490 --> 09:16:59,740
+yarn, art hat block number, we get current block number is
+
+
+9320
+09:16:59,740 --> 09:17:03,730
+zero. And this makes sense because this is defaulting to
+
+
+9321
+09:17:03,730 --> 09:17:08,230
+our Hard Hat Network, which gets reset every time we run it. But
+
+
+9322
+09:17:08,230 --> 09:17:11,770
+if I run yarn, hard hat block number A dash dash network
+
+
+9323
+09:17:11,770 --> 09:17:15,430
+Rinkeby, what do you think I'm gonna get? Again, a much larger
+
+
+9324
+09:17:15,430 --> 09:17:19,120
+number, current block number is right here. Because this is the
+
+
+9325
+09:17:19,120 --> 09:17:23,830
+actual block number of Rigby versus the block number of our
+
+
+9326
+09:17:23,830 --> 09:17:27,550
+heart ad network is going to be zero because it gets reset every
+
+
+9327
+09:17:27,550 --> 09:17:31,660
+single time, we run one of these scripts now scripts and tasks
+
+
+9328
+09:17:31,660 --> 09:17:35,500
+both can basically do the same thing. They both can interact
+
+
+9329
+09:17:35,500 --> 09:17:38,080
+with contracts, they both can deploy smart contracts, they can
+
+
+9330
+09:17:38,080 --> 09:17:41,830
+both pretty much do everything. I prefer scripts just as a
+
+
+9331
+09:17:41,830 --> 09:17:45,160
+general rule of thumb, because I don't always think adding a
+
+
+9332
+09:17:45,160 --> 09:17:48,310
+special thing from the command line makes sense. So I prefer
+
+
+9333
+09:17:48,310 --> 09:17:51,400
+scripts, but you'll see a ton of tasks and examples out there as
+
+
+9334
+09:17:51,400 --> 09:17:55,270
+well. I think tasks are really nice for specific use cases. But
+
+
+9335
+09:17:55,510 --> 09:17:58,270
+for the most part, we're pretty much going to use exclusively
+
+
+9336
+09:17:58,270 --> 09:18:01,960
+scripts, but it is good to know what a task looks like and how
+
+
+9337
+09:18:01,960 --> 09:18:05,260
+to use it. I think tasks are better for plugins and scripts
+
+
+9338
+09:18:05,290 --> 09:18:08,410
+are better for your own local development environment. But if
+
+
+9339
+09:18:08,410 --> 09:18:14,380
+you want to do everything with tasks, you absolutely can. 
