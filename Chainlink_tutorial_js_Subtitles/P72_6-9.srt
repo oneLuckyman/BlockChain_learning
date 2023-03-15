@@ -26,7 +26,7 @@ Hardhat 自带的任务有这些
 9235
 09:11:11,650 --> 09:11:13,900
 And the number of tasks that Hardhead can come with can be extended by us writing plugins, 
-并且 Hardhat 可执行的任务数可以通过我们编写的插件进行扩展
+并且 Hardhat 的可执行任务数可以通过我们编写的插件进行扩展
 
 9236
 09:11:13,900 --> 09:11:17,620
@@ -35,287 +35,287 @@ we can actually write our own tasks in hardhat.
 
 9237
 09:11:17,620 --> 09:11:21,190
-And in our Hardhead dot config, it can
-
+And in our Hardhead dot config, it can defaulted with this task account, 
+在我们的 "hardhat.config" 中，默认有一个任务是 "accounts"
 
 9238
 09:11:21,190 --> 09:11:24,250
-defaulted with this task account, we can see task
-
+we can see task accounts, prints the list of accounts, 
+可以看到 "task("accounts", "Prints the list of accounts")"
 
 9239
 09:11:24,280 --> 09:11:28,510
-accounts, prints the list of accounts, and just prints a list
-
+and just prints a list of accounts here 
+功能就是打印 accounts 的列表
 
 9240
 09:11:28,510 --> 09:11:31,960
-of accounts here actually go to the heart had documentation to
-
+actually go to the heart had documentation to learn more about creating our own tasks, 
+实际上，我们可以前往 Hardhat 的文档学习更多有关创建自己任务的内容
 
 9241
 09:11:31,960 --> 09:11:34,690
-learn more about creating our own tasks, one of the ways that
-
+one of the ways that you can define tasks is directly in our heart head.config.js. 
+其中一种定义任务的方式就是直接在我们的 "hardhat.config.js" 中定义
 
 9242
 09:11:34,690 --> 09:11:39,640
-you can define tasks is directly in our heart head.config.js. But
-
+But typically, what people do 
+但通常，人们采取的做法更多是
 
 9243
 09:11:39,640 --> 09:11:43,450
-typically, what people do is they have a new folder called
-
+is they have a new folder called tasks where they put all their tasks. 
+创建一个名为 "tasks" 的新文件夹，将所有任务放在这里面
 
 9244
 09:11:43,480 --> 09:11:47,530
-tasks where they put all their tasks. So for now, I'm gonna go
-
+So for now, I'm gonna go ahead and delete this section here. 
+所以现在，我会把这部分内容删掉
 
 9245
 09:11:47,530 --> 09:11:49,900
-ahead and delete this section here. And we're going to create
-
+And we're going to create our own task. 
+并创建一个属于我们自己的任务
 
 9246
 09:11:49,930 --> 09:11:52,840
-our own task. You'll notice that now that we've deleted that
-
+You'll notice that now that we've deleted that section, 
+你会发现，现在我们删掉了这部分
 
 9247
 09:11:52,840 --> 09:11:58,750
-section, if we run yarn RDAP, we no longer see the accounts task
-
+if we run yarn RDAP, we no longer see the accounts task in here, 
+如果我们运行 "yarn hardhat"，就不会在这里再看到 "accounts" 任务了
 
 9248
 09:11:58,750 --> 09:12:01,660
-in here, because we've just deleted that task. So let's
-
+because we've just deleted that task. 
+因为我们刚刚删除了那个任务
 
 9249
 09:12:01,660 --> 09:12:08,140
-create our own new task. We'll call this block number.js. And
-
+So let's create our own new task. We'll call this block number.js. 
+让我们开始创建属于我们自己的新任务，把它命名为 "block-number.js"
 
 9250
 09:12:08,140 --> 09:12:10,900
-we'll use this to get the current block number or whatever
-
+And we'll use this to get the current block number or whatever blockchain that we're working with. 
+我们会用它来获取当前的区块编号，无论我们是在使用哪个区块链
 
 9251
 09:12:10,900 --> 09:12:13,810
-blockchain that we're working with. So let's create this task.
-
+So let's create this task.
+让我们来创建这个任务
 
 9252
 09:12:14,080 --> 09:12:17,320
-First, we need to import the task function, we can get it by
-
+First, we need to import the task function, 
+首先，我们需要导入 "task" 函数
 
 9253
 09:12:17,320 --> 09:12:24,730
-saying const task equals require arhat slash config. The hard hat
-
+we can get it by saying const task equals require arhat slash config. 
+可以这样做 "const { task } = require("hardhat/config")"
 
 9254
 09:12:24,730 --> 09:12:28,870
-slash config has the task function. To define a task, we
-
+The hard hat slash config has the task function. 
+"hardhat/config" 中有这个 "task" 函数
 
 9255
 09:12:28,870 --> 09:12:33,460
-can now just say task, give it a name and a description, the name
-
+To define a task, we can now just say task, give it a name and a description, 
+要定义一个任务，可以这样做 "task()"，并给它一个名称和描述
 
 9256
 09:12:33,490 --> 09:12:34,630
-is going to be blocked number.
-
+the name is going to be blocked number.
+名称就是 "block-number"
 
 9257
 09:12:36,010 --> 09:12:39,550
-And then the description is going to be prints the current
-
+And then the description is going to be prints the current block number. 
+而描述就是 "Prints the current block number"
 
 9258
 09:12:40,930 --> 09:12:45,700
-block number. Now that we have this task, there's a couple of
-
+Now that we have this task, 
+现在我们有了这个任务，
 
 9259
 09:12:45,700 --> 09:12:48,040
-things we can actually do with it, we can add different
-
+there's a couple of things we can actually do with it, 
+就可以来做这么几件事
 
 9260
 09:12:48,040 --> 09:12:51,280
-parameters to it by using the dot add command, which allow us
-
+we can add different parameters to it by using the dot add command, 
+我们可以使用 ".add" 命令来向它添加不同的参数
 
 9261
 09:12:51,280 --> 09:12:54,400
-to pass parameters to the task. And then we could also set
-
+which allow us to pass parameters to the task. 
+它允许我们可以向任务传递参数
 
 9262
 09:12:54,400 --> 09:12:58,180
-actions which define what the task should actually do for us,
-
+And then we could also set actions which define what the task should actually do 
+接着我们还可以设置 "setAction"，它定义了这个任务实际应该执行什么
 
 9263
 09:12:58,210 --> 09:13:03,340
-we're just going to do dot set action. And define what we want
-
+for us, we're just going to do dot set action. 
+对我们来说，要做的就是 ".setAction"
 
 9264
 09:13:03,340 --> 09:13:07,660
-this function to do. So we're going to make this an async
-
+And define what we want this function to do. 
+并定义我们想让这个函数做的事
 
 9265
 09:13:07,660 --> 09:13:11,620
-function, that's going to take as an input, the task arguments,
-
+So we're going to make this an async function, 
+我们要创建一个 "async" 函数
 
 9266
 09:13:11,650 --> 09:13:15,790
-which are going to be blank for us, and the HR E, which I'll
-
+that's going to take as an input, the task arguments, which are going to be blank for us, 
+它的输入是 "taskArgs"，对我们来说是空白的
 
 9267
 09:13:15,790 --> 09:13:19,570
-define in a second. Now, let me explain the syntax really
-
+and the HR E, which I'll define in a second. 
+还有 "hre"，接下来就定义它
 
 9268
 09:13:19,570 --> 09:13:22,570
-quickly. This might look a little bit weird, but this is
-
+Now, let me explain the syntax really quickly. This might look a little bit weird, 
+现在我来快速解释一下这些语法，这些东西看起来可能有些怪
 
 9269
 09:13:22,570 --> 09:13:26,110
-what's known as a JavaScript arrow function. In JavaScript,
-
+but this is what's known as a JavaScript arrow function. 
+但这就是所谓的 JavaScript 箭头函数
 
 9270
 09:13:26,140 --> 09:13:29,170
-you can actually define functions without even using the
-
+In JavaScript, you can actually define functions without even using the function keyword. 
+在 JavaScript 中，定义一个函数甚至可以不需要使用 "function" 关键字
 
 9271
 09:13:29,170 --> 09:13:32,140
-function keyword. For example, if we go back to our deploy
-
+For example, if we go back to our deploy function, 
+比如说，如果我们回到 "deploy"
 
 9272
 09:13:32,140 --> 09:13:36,670
-function, we have our async function verify down here.
-
+we have our async function verify down here.
+这里有一个叫 "verify" 的异步函数
 
 9273
 09:13:37,090 --> 09:13:40,330
-However, another way we could have defined this is is without
-
+However, another way we could have defined this is 
+然而，有另一种定义方式是
 
 9274
 09:13:40,330 --> 09:13:43,420
-using the function word at all, and actually turning this whole
-
+is without using the function word at all, 
+完全不使用 "function" 关键字
 
 9275
 09:13:43,420 --> 09:13:47,560
-thing into a variable, we could have said instead, we could say
-
+and actually turning this whole thing into a variable, 
+这下这堆东西就变成了一个变量
 
 9276
 09:13:48,070 --> 09:13:54,370
-const verify is going to be an async function that takes
-
+we could have said instead, we could say const verify is going to be an async function 
+取而代之的是，我们可以 "const verify" 它是一个 "async" 函数
 
 9277
 09:13:54,370 --> 09:14:00,010
-contract addresses and arguments. And here's the
-
+that takes contract addresses and arguments. 
+获取 "contractAddress" 还有 "args"
 
 9278
 09:14:00,010 --> 09:14:03,700
-function definition. These two lines are essentially
-
+And here's the function definition. 
+以及，这里就是函数定义的内容
 
 9279
 09:14:03,730 --> 09:14:07,900
-equivalent. There's some slight differences between between
-
+These two lines are essentially equivalent. 
+这两行本质上是等价的
 
 9280
 09:14:07,900 --> 09:14:10,630
-using the function keyword and having your function be a
-
+There's some slight differences between between using the function keyword and having your function be a variable. 
+只有一点微小的区别就是，使用 "function" 关键字或是把函数变成一个变量
 
 9281
 09:14:10,630 --> 09:14:13,060
-variable. But for the purposes of this course, they're
-
+But for the purposes of this course, they're basically the same. 
+但在本课程中，它们基本上就是相同的
 
 9282
 09:14:13,060 --> 09:14:17,860
-basically the same. Which means though, that this by itself is a
-
+Which means though, that this by itself is a function, 
+这意味着，这个语句本身就是一个函数
 
 9283
 09:14:17,860 --> 09:14:21,340
-function, just not assigned to a variable. But essentially, the
-
+just not assigned to a variable. 
+只是没有被分配给某个变量
 
 9284
 09:14:21,340 --> 09:14:24,760
-two of these do are exactly the same. And that's the syntax that
-
+But essentially, the two of these do are exactly the same. 
+但本质上讲，这二者就是完全相同的
 
 9285
 09:14:24,760 --> 09:14:27,940
-we're doing here. You can imagine this sort of being like
-
+And that's the syntax that we're doing here. 
+这就是我们在这里所使用的语法
 
 9286
 09:14:27,940 --> 09:14:35,440
-const block task equals async function, which takes the params
-
+You can imagine this sort of being like const block task equals async function, 
+你可以想象这个就是 "const blockTask = async function()"
 
 9287
 09:14:35,920 --> 09:14:39,010
-and then runs that arrow function. Or you can think of it
-
+which takes the params and then runs that arrow function. 
+获取一些参数，然后运行箭头函数
 
 9288
 09:14:39,010 --> 09:14:45,880
-as async. Function, block task parameters, and then the
-
+Or you can think of it as async. Function, block task parameters, and then the function definition, 
+或是你可以把它想成 "async function blockTask" 输入参数，然后是函数定义
 
 9289
 09:14:45,880 --> 09:14:49,450
-function definition, these are all essentially the same. The
-
+these are all essentially the same. 
+本质上来说它们是相同的
 
 9290
 09:14:49,450 --> 09:14:53,290
-major difference is that we're never giving our function a
-
+The major difference is that we're never giving our function a name, 
+主要区别就是，我们没有给我们的函数命名
 
 9291
 09:14:53,290 --> 09:14:56,170
-name, we never give it this block task variable. This is
-
+we never give it this block task variable. 
+也没有把它赋给一个叫做 "blockTask" 的变量
 
 9292
 09:14:56,170 --> 09:14:59,650
-known as an anonymous function in JavaScript, because it
-
+This is known as an anonymous function in JavaScript, because it doesn't have a name. 
+这就是 JavaScript 中的匿名函数("anonymous function")，因为它没有名称
 
 9293
 09:14:59,650 --> 09:15:02,920
-doesn't have a name. Now that we have our function in here, we
+Now that we have our function in here, we
 
 
 9294
