@@ -315,234 +315,235 @@ This is known as an anonymous function in JavaScript, because it doesn't have a 
 
 9293
 09:14:59,650 --> 09:15:02,920
-Now that we have our function in here, we
-
+Now that we have our function in here, 
+现在我们有了这个函数
 
 9294
 09:15:02,920 --> 09:15:06,940
-can now call some function to get the block number. Well, how
-
+we can now call some function to get the block number. 
+就可以调用某些函数来获取区块编号了
 
 9295
 09:15:06,940 --> 09:15:10,150
-can we get the block number when we run tasks, we automatically
-
+Well, how can we get the block number 
+那么我们该如何获取区块编号呢？
 
 9296
 09:15:10,150 --> 09:15:13,480
-pass our anonymous functions, the task arguments, which in
-
+when we run tasks, we automatically pass our anonymous functions, the task arguments, 
+每当我们运行任务时，都会自动向匿名函数传入 "taskArgs"
 
 9297
 09:15:13,480 --> 09:15:18,040
-this one, we don't have any, but we also pass this HR II object.
-
+which in this one, we don't have any, 
+但在这个任务中，并没有什么参数
 
 9298
 09:15:18,550 --> 09:15:23,560
-This HRV is the heart hat runtime environment. Back in our
-
+but we also pass this HR II object. This HRV is the heart hat runtime environment. 
+同时我们还传入了一个 "hre" 对象，这个 "hre" 就是 "HardhatRuntimeEnvironment"(Hardhat 运行环境)
 
 9299
 09:15:23,560 --> 09:15:27,820
-deploy script, this is basically the same as this require hard
-
+Back in our deploy script, this is basically the same as this require hard hat in here. 
+回到我们的 "deploy" 脚本，它基本就相当于这里的 "require("hardhat")"
 
 9300
 09:15:27,820 --> 09:15:32,320
-hat in here. So this HRV can access a lot of the same, this
-
+So this HRV can access a lot of the same, 
+所以所以这个 "hre" 可以访问许多...
 
 9301
 09:15:32,320 --> 09:15:36,940
-HRV can access a lot of the same packages that the hard hat
-
+this HRV can access a lot of the same packages that the hard hat package can. 
+这个 "hre" 可以访问许多 hardhat 可以访问的包
 
 9302
 09:15:37,060 --> 09:15:41,920
-package can. So we can do Hae dot ethers, just like how you
-
+So we can do Hae dot ethers, just like how you can import ethers from hard hat. 
+所以我们可以这样做 "hre.ethers"，就像你可以从 "hardhat" 中导入 "ethers" 一样
 
 9303
 09:15:41,920 --> 09:15:45,100
-can import ethers from hard hat. And in our ethers package,
-
+And in our ethers package, there's actually a number of functions we can use 
+在 "ethers" 包中就有许多函数可以用了
 
 9304
 09:15:45,100 --> 09:15:47,740
-there's actually a number of functions we can use like dot
-
+like dot Pro, biter dot get block number. 
+比如 ".provider.getBlockNumber"
 
 9305
 09:15:47,740 --> 09:15:54,520
-Pro, biter dot get block number. Let's save this to a variable
-
+Let's save this to a variable
+让我们把它保存成一个变量
 
 9306
 09:15:54,970 --> 09:15:59,890
-const blocked number equals, and this is going to be a
-
+const blocked number equals, and this is going to be a synchronous, 
+"const blockNumber = "，这是一个异步的
 
 9307
 09:15:59,890 --> 09:16:02,500
-synchronous, so we're going to want to add a weight here. And
-
+so we're going to want to add a weight here. 
+所以我们要在这里添加一个 "await"
 
 9308
 09:16:02,500 --> 09:16:06,940
-then let's do console dot log block number. Or better yet,
-
+And then let's do console dot log block number. 
+接着我们要做的是 "console.log(blockNumber)"
 
 9309
 09:16:07,540 --> 09:16:11,740
-we'll string interpolate this and say current block number
-
+Or better yet, we'll string interpolate this and say current block number like this. 
+或者更好的是，使用字符串插值 "Current block number" 就像这样
 
 9310
 09:16:12,760 --> 09:16:17,740
-like this. Now though, if I try to run this task, you'll notice
-
+Now though, if I try to run this task, 
+现在，如果我尝试运行这个任务
 
 9311
 09:16:17,770 --> 09:16:21,790
-it doesn't show up in the heart Atlas of tasks, let's do yarn.
-
+you'll notice it doesn't show up in the heart Atlas of tasks, 
+你就会发现它并没有出现在 hardhat 的任务列表中
 
 9312
 09:16:22,330 --> 09:16:26,920
-Art app. Hmm, I don't see block number in here. Well, this is
-
+let's do yarn. Art app. Hmm, I don't see block number in here. 
+让我们运行 "yarn hardhat"，哈，这里并没有看到 "block-number"
 
 9313
 09:16:26,920 --> 09:16:31,600
-because we need to add it to our config dot config will add
-
+Well, this is because we need to add it to our config 
+这是因为我们还需要把它添加进我们的 ".config" 文件
 
 9314
 09:16:31,990 --> 09:16:38,590
-require dot slash tasks slash block number.
-
+dot config will add require dot slash tasks slash block number.
+在我们的 ".config" 中添加 "require("./tasks/block-number")"
 
 9315
 09:16:39,970 --> 09:16:43,420
-And in order for us to import it, and let's add a module that
-
+And in order for us to import it, and let's add a module that exports 
+为了导入它，让我们添加一个 "module.exports"
 
 9316
 09:16:43,420 --> 09:16:47,080
-exports I'll explain what this does a little bit later. But now
-
+I'll explain what this does a little bit later. 
+我会稍后解释一下它的用处
 
 9317
 09:16:47,080 --> 09:16:50,890
-that we've required it, if I run yarn hard hat, and now see
-
+But now that we've required it, if I run yarn hard hat, 
+现在我们已经把它 "require" 进来了，如果我运行 "yarn hardhat"
 
 9318
 09:16:50,950 --> 09:16:54,490
-blocked over is one of the tasks that I can use. Now for a run
-
+and now see blocked over is one of the tasks that I can use. 
+现在就可以看到 "block-number" 是一个可用的任务了
 
 9319
 09:16:54,490 --> 09:16:59,740
-yarn, art hat block number, we get current block number is
-
+Now for a run yarn, art hat block number, 
+现在运行 "yarn hardhat block-number"
 
 9320
 09:16:59,740 --> 09:17:03,730
-zero. And this makes sense because this is defaulting to
-
+we get current block number is zero. 
+可以获得当前区块编号为 0
 
 9321
 09:17:03,730 --> 09:17:08,230
-our Hard Hat Network, which gets reset every time we run it. But
-
+And this makes sense because this is defaulting to our Hard Hat Network, 
+这是正确的，因为我们使用的是默认的 "Hardhat Network"
 
 9322
 09:17:08,230 --> 09:17:11,770
-if I run yarn, hard hat block number A dash dash network
-
+which gets reset every time we run it. 
+它每次运行后都会重置
 
 9323
 09:17:11,770 --> 09:17:15,430
-Rinkeby, what do you think I'm gonna get? Again, a much larger
-
+But if I run yarn, hard hat block number A dash dash network Rinkeby, 
+但如果我运行 "yarn hardhat block-number --network rinkeby "
 
 9324
 09:17:15,430 --> 09:17:19,120
-number, current block number is right here. Because this is the
-
+what do you think I'm gonna get? Again, a much larger number, current block number is right here. 
+你觉得会获得什么？是一个很大的数字，当前区块编号就在这里
 
 9325
 09:17:19,120 --> 09:17:23,830
-actual block number of Rigby versus the block number of our
-
+Because this is the actual block number of Rigby 
+因为这就是 Rinkeby 的真实区块编号
 
 9326
 09:17:23,830 --> 09:17:27,550
-heart ad network is going to be zero because it gets reset every
-
+versus the block number of our heart ad network is going to be zero 
+而我们 "Hardhat Network" 的区块编号仍然是 0
 
 9327
 09:17:27,550 --> 09:17:31,660
-single time, we run one of these scripts now scripts and tasks
-
+because it gets reset every single time, we run one of these scripts 
+因为每次运行这些脚本时，它都会被重置
 
 9328
 09:17:31,660 --> 09:17:35,500
-both can basically do the same thing. They both can interact
-
+now scripts and tasks both can basically do the same thing. 
+现在脚本和任务基本可以做到相同的事了
 
 9329
 09:17:35,500 --> 09:17:38,080
-with contracts, they both can deploy smart contracts, they can
-
+They both can interact with contracts, they both can deploy smart contracts, 
+它们都可以与合约交互，都可以部署智能合约
 
 9330
 09:17:38,080 --> 09:17:41,830
-both pretty much do everything. I prefer scripts just as a
-
+they can both pretty much do everything. 
+它们几乎可以做到任何事
 
 9331
 09:17:41,830 --> 09:17:45,160
-general rule of thumb, because I don't always think adding a
-
+I prefer scripts just as a general rule of thumb, 
+通常来说，我更喜欢使用脚本
 
 9332
 09:17:45,160 --> 09:17:48,310
-special thing from the command line makes sense. So I prefer
-
+because I don't always think adding a special thing from the command line makes sense. 
+因为我不想总是在命令行上添加特定的东西
 
 9333
 09:17:48,310 --> 09:17:51,400
-scripts, but you'll see a ton of tasks and examples out there as
-
+So I prefer scripts, but you'll see a ton of tasks and examples out there as well. 
+所以我更喜欢使用脚本，但你同时也会看到有很多任务和示例
 
 9334
 09:17:51,400 --> 09:17:55,270
-well. I think tasks are really nice for specific use cases. But
-
+I think tasks are really nice for specific use cases. 
+我认为任务在某些特定情形下很有用
 
 9335
 09:17:55,510 --> 09:17:58,270
-for the most part, we're pretty much going to use exclusively
-
+But for the most part, we're pretty much going to use exclusively scripts, 
+但大多数情况下，我们几乎只会使用脚本
 
 9336
 09:17:58,270 --> 09:18:01,960
-scripts, but it is good to know what a task looks like and how
-
+but it is good to know what a task looks like and how to use it. 
+但知道任务是什么样并且如何使用，仍然很有好处
 
 9337
 09:18:01,960 --> 09:18:05,260
-to use it. I think tasks are better for plugins and scripts
-
+I think tasks are better for plugins 
+我认为任务更适合用于插件
 
 9338
 09:18:05,290 --> 09:18:08,410
-are better for your own local development environment. But if
-
+and scripts are better for your own local development environment. 
+而脚本更适合用于你自己的本地开发环境
 
 9339
 09:18:08,410 --> 09:18:14,380
-you want to do everything with tasks, you absolutely can. 
+But if you want to do everything with tasks, you absolutely can. 
+不过如果你想用任务来完成所有事情，当然也可以了
