@@ -1,0 +1,394 @@
+9339
+09:18:08,410 --> 09:18:14,380
+As you're starting to see, 
+正如你开始看到的
+
+9340
+09:18:14,380 --> 09:18:18,160
+this config piece is pretty powerful.
+这个 config 部分非常强大
+
+9341
+09:18:18,550 --> 09:18:21,970
+And we can use it to modify our entire code base and our entire project 
+我们可以使用它来修改整个代码库和项目
+
+9342
+09:18:21,970 --> 09:18:25,330
+to give our project more functionality. 
+从而为我们的项目提供更多的功能
+
+9343
+09:18:25,330 --> 09:18:28,510
+What else can this do? 
+它还能做些什么？
+
+9344
+09:18:28,510 --> 09:18:31,360
+Well, right now, as you can see, every time we work with a hard hat network, every time we run a script, 
+正如你看到的，每次我们使用 "Hardhat Network" 运行脚本
+
+9345
+09:18:31,360 --> 09:18:34,270
+we run that script, and then the Hard Hat Network is deleted, right? 
+运行完之后，那个 "Hardhat Network" 就会被删除，对吧？
+
+9346
+09:18:34,270 --> 09:18:36,760
+We can't interact with our contracts anymore. 
+这样我们就不能再与我们的合约做进一步的交互了
+
+9347
+09:18:36,760 --> 09:18:40,840
+Well, there's actually a way for us to run 
+其实有一种方法可以让我们运行一个 
+
+9348
+09:18:40,840 --> 09:18:44,530
+a hard hat network. Similar to how we ran a ganache network with a user interface. 
+类似于使用用户界面运行的 "Ganache Network" 那样的 "Hardhat Network"
+
+9349
+09:18:44,530 --> 09:18:51,430
+What we can do in hard hat is run yarn, RT hat node. 
+我们可以这样做 "yarn hardhat node"
+
+9350
+09:18:51,430 --> 09:18:55,990
+And what this will do is it'll spin up a node on a local network, 
+这样做的效果就是在本地网络上启动一个节点
+
+9351
+09:18:55,990 --> 09:19:00,460
+exactly the same as ganache but in our terminal. 
+并且它与 Ganache 完全相同，只不过是运行于我们的终端里
+
+9352
+09:19:00,460 --> 09:19:04,930
+So you see here started HTTP and WebSocket. JSON RPC server at this address. 
+所以你可以看到“启动 HTTP 以及 WebSocket JSON-RPC 服务于”，这个地址
+
+9353
+09:19:04,930 --> 09:19:08,320
+And just like nosh, it comes packed with all these different accounts and private keys, which is awesome. 
+并且和 Ganache 一样，它打包了这么多不同的账户和私钥，真是太好了
+
+9354
+09:19:08,320 --> 09:19:11,650
+You'll notice though, interestingly enough that this node that we're running 
+你可能会注意到，有趣的是这个节点
+
+9355
+09:19:11,890 --> 09:19:16,540
+isn't on the Hard Hat Network, 
+并没有运行于 "Hardhat Network"
+
+9356
+09:19:16,540 --> 09:19:18,910
+well, we can actually create a new terminal to try to interact with this 
+我们可以创建一个新的终端尝试与之交互
+
+9357
+09:19:18,910 --> 09:19:22,510
+just by hitting this little plus button 
+只要点击这边的这个小加号
+
+9358
+09:19:22,510 --> 09:19:26,650
+and creating a new terminal. 
+就可以创建一个新的终端
+
+9359
+09:19:26,650 --> 09:19:29,740
+Again, I'm using bash, 
+再次强调，我正在使用的是 bash
+
+9360
+09:19:29,740 --> 09:19:33,130
+but based off of whatever your operating system is, you can be using a different shell. 
+但根据你所使用的操作系统，你使用的可能是不同的 shell(命令解释器)
+
+9361
+09:19:33,130 --> 09:19:39,100
+And here, let's go ahead and run yarn arhat run scripts, deploy dot j s, and see what happens.
+让我们继续运行 "yarn hardhat run scripts/deploy.js" 看看会发生什么
+
+9362
+09:19:39,250 --> 09:19:42,700
+Well, our typical setup happens, we deploy a contract, we get a contract address, we update the value. 
+恩，出现了我们的经典结果，我们部署了合约，获取了合约地址，更新了值
+
+9363
+09:19:42,700 --> 09:19:46,600
+But if we look at our node, 
+但如果查看我们的节点
+
+9364
+09:19:46,600 --> 09:19:49,840
+it doesn't look like any transactions went through what
+看起来并没有任何交易发生
+
+9365
+09:19:49,870 --> 09:19:53,770
+we don't see any locking here. 
+我们在这里没有看到任何日志出现
+
+9366
+09:19:53,770 --> 09:19:58,060
+So what's going on? 
+所以这是怎么回事？
+
+9367
+09:19:58,060 --> 09:20:02,110
+Well, our Hard Hat Network is actually different from this locally running network here. 
+我们的 "Hardhat Network" 与这个本地运行的网络其实是不同的
+
+9368
+09:20:02,110 --> 09:20:05,590
+This locally running network we often want to refer to as our local host. 
+这个本地运行的网络我们通常称之为本地主机(localhost)
+
+9369
+09:20:05,590 --> 09:20:08,500
+So it's slightly different than the Hard Hat Network. 
+因此它与 "Hardhat Network" 略有不同
+
+9370
+09:20:08,500 --> 09:20:11,380
+It's still using the hard hat runtime environment, but it's just not this default Hard Hat Network.
+它仍然在使用 Hardhat 运行环境，只不过不是这个默认的 "Hardhat Network" 了
+
+9371
+09:20:11,380 --> 09:20:15,040
+It's considered its own separate network 
+它可以被认为是一个独立的网络
+
+9372
+09:20:15,040 --> 09:20:19,360
+when we're running a node hat it's going to live. of past the duration of a script.
+并且运行的这个节点会在脚本运行结束之后持续存在
+
+9373
+09:20:19,540 --> 09:20:23,410
+So we can actually interact with this by adding a new network to our hardhead.config.js, 
+我们可以在 "hardhat.config.js" 中添加一个新的网络来与它进行交互
+
+9374
+09:20:23,410 --> 09:20:27,280
+we'll create a new network and call it local host.
+创建一个新的网络并命名为 "localhost"
+
+9375
+09:20:27,820 --> 09:20:28,690
+And exactly as we did up here, we'll give it a URL accounts and a chain ID. 
+并且就和我们这里做的一样，我们会给它一个 "URL", "accounts" 还有 "chainId"
+
+9376
+09:20:30,369 --> 09:20:35,139
+So for URL, we can get that URL right from our terminal, 
+对于 "URL"，我们可以从终端获取这个 "URL"
+
+9377
+09:20:35,139 --> 09:20:40,929
+I'll put a running yarn hard hat node. 
+就是运行 "yarn hardhat node" 的输出
+
+9378
+09:20:40,929 --> 09:20:44,319
+by copying that and pasting it in here, 
+复制，然后粘贴到这里
+
+9379
+09:20:44,319 --> 09:20:48,399
+we can then do a comma, we'll give it a chain ID of 31337. 
+接着输入一个逗号，并给它一个 "chainId: 31337"
+
+9380
+09:20:48,399 --> 09:20:55,899
+Because even though it's considered a different network, 
+因为即使它可以被认为是一个不同的网络
+
+9381
+09:20:55,899 --> 09:20:58,809
+it actually has the same chain ID as hard hat. 
+它也仍然和 Hardhat 是一样的 "chainId"
+
+9382
+09:20:58,809 --> 09:21:01,449
+Interestingly enough, I know I just said we were going to give it accounts, 
+有趣的是，虽然我刚刚说了要给它一个 "accounts"
+
+9383
+09:21:01,449 --> 09:21:03,549
+but we actually don't need to give it accounts. 
+但实际上并不需要
+
+9384
+09:21:03,549 --> 09:21:07,269
+Because when we run with this localhost 
+因为当我们使用本地主机运行时
+
+9385
+09:21:07,269 --> 09:21:11,019
+hard hat will automatically give us these 10 fake accounts for us. 
+Hardhat 会自动提供给我们 10 个假账户
+
+9386
+09:21:11,019 --> 09:21:14,199
+So you can kind of think of the accounts here for this localhost as, 
+所以你可以把这里的 "accounts" 视为本地主机的账户
+
+9387
+09:21:14,199 --> 09:21:19,359
+as hard had already placing them in 
+因为 Hardhat 已经把它们放进去了
+
+9388
+09:21:19,359 --> 09:21:23,529
+thanks, hard hat. 
+谢了，Hardhat！
+
+9389
+09:21:23,949 --> 09:21:28,659
+But now, if we go back to our bash here, let's clear the terminal. 
+但现在，如果我们返回这个 bash 让我们清除这个终端
+
+9390
+09:21:28,659 --> 09:21:33,369
+Let's rerun the script. And we'll do dash dash network local host. 
+让我们重新运行这个脚本，并且这次加上 "--network localhost"
+
+9391
+09:21:33,369 --> 09:21:38,139
+Now we should be pointing to this node. 
+现在我们应该就指向这个节点了
+
+9392
+09:21:38,139 --> 09:21:42,369
+And when I run this script, we should see some logging output at the end of this node. 
+并且当我运行这个脚本时，我们应该就可以在这个节点的末尾看到一些日志输出了
+
+9393
+09:21:42,369 --> 09:21:46,089
+So let's go ahead and hit enter. 
+让我们继续，按下回车
+
+9394
+09:21:46,119 --> 09:21:50,979
+Well, we see our normal stuff on our deploy script, we flip back to our node 
+好了，我们看到了一些 "deploy" 脚本的正常输出，回到我们的节点
+
+9395
+09:21:50,979 --> 09:21:53,739
+Wow, we see a ton of logging here. 
+哇，我们在这里看到了一大堆日志记录
+
+9396
+09:21:53,739 --> 09:21:56,439
+Similar to ganache, we can see a whole bunch of different logs on what just happened, 
+与 Ganache 相似，我们可以看到一大堆刚刚发生的事的不同日志
+
+9397
+09:21:56,439 --> 09:22:00,579
+we can see a contract was deployed, 
+我们可以看到部署好的合约
+
+9398
+09:22:00,579 --> 09:22:05,289
+we can see the address the transaction hash from value, gas, and the block number and everything. 
+还有它的 "address"，"Transaction" 哈希，"From"，"Value"，"Gas"，以及 "Block" 编号和其他的一切
+
+9399
+09:22:05,289 --> 09:22:09,639
+We can also see our contract call calling the store function to update the value of our favorite number. 
+我们还可以看到我们的合约调用了 "store" 函数更新了 "favoriteNumber" 的值
+
+9400
+09:22:09,639 --> 09:22:13,689
+This is incredibly powerful for quickly testing and working with things on a local JavaScript VM or hard hat network 
+这对于在本地 "JavaScript VM" 或 "Hardhat Network" 上快速测试和处理事务
+
+9401
+09:22:13,689 --> 09:22:17,349
+to be able to see how your contracts will interact on a real test net. 
+以及查看你的合约如何与真正的测试网络交互而言，非常强大
+
+9402
+09:22:17,409 --> 09:22:20,769
+And this is much quicker than working with a real test net. 
+并且这比使用真正的测试网络要快得多
+
+9403
+09:22:20,769 --> 09:22:24,759
+Now additionally, same as what we said before, 
+另外，就和我之前说的一样
+
+9404
+09:22:24,849 --> 09:22:27,999
+any process that's running in the terminal, we can kill it with Ctrl C. 
+任何在终端中运行的进程，我们都可以通过 "Ctrl C" 来杀死它
+
+9405
+09:22:27,999 --> 09:22:32,019
+So if you want to stop your node and then restart it, 
+所以如果你想要停止你的节点并重新启动它的话
+
+9406
+09:22:32,019 --> 09:22:37,569
+you can hit Ctrl. C, to stop it,
+你可以按 "Ctrl C" 来停止它
+
+9407
+09:22:37,599 --> 09:22:41,349
+and then just up and then rerun that same command to re spin up your node 
+然后按上键("↑")再次运行相同的命令来重新启动你的节点
+
+9408
+09:22:41,349 --> 09:22:45,639
+Ctrl C stops it. And then you can up to start again.
+"Ctrl C" 停止，接着按 "↑" 键来再次启动
+
+9409
+09:22:45,909 --> 09:22:47,949
+Another way you can stop it, of course, 
+当然了，还有另一种方法可以终止它
+
+9410
+09:22:47,949 --> 09:22:50,619
+is if you hit the trashcan, which deletes the whole terminal, 
+如果你点击这个“垃圾桶”，就会删除整个终端
+
+9411
+09:22:50,619 --> 09:22:55,449
+we pulled a terminal back up, we can run it again. 
+重新拉起一个终端，就可以再次运行了
+
+9412
+09:22:55,449 --> 09:22:58,869
+And just remember, if you hit the X that actually doesn't delete the terminal, that just hides it. 
+并且要记住，如果你点击的是 "X"，那么它其实并没有删除这个终端，而只是暂时隐藏了
+
+9413
+09:22:58,869 --> 09:23:02,139
+So our hard hat node right now is still running
+所以我们的 Hardhat 节点现在仍然在运行中
+
+9414
+09:23:02,139 --> 09:23:04,629
+because I just hit it. So I pull it back up, 
+因为我只是隐藏了它，把它重新拉起
+
+9415
+09:23:04,629 --> 09:23:07,149
+I can see that it is indeed still running. 
+就可以看到确实是仍然在运行
+
+9416
+09:23:07,149 --> 09:23:09,369
+But if I trashed candidate, and then it pulled the terminal back up, 
+但如果我点击的是“垃圾桶”，接着再把终端重新拉起来
+
+9417
+09:23:09,369 --> 09:23:15,729
+I can see that it is no longer running. 
+就可以看到它已经不再运行了
