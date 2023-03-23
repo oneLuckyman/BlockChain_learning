@@ -2,18 +2,17 @@
 from dotenv.main import load_dotenv
 import openai
 import os
+from itertools import islice
 
 load_dotenv()
-os.environ["http_proxy"] = os.environ["PROXY_PORT1"]
-os.environ["https_proxy"] = os.environ["PROXY_PORT1"]
+os.environ["http_proxy"] = os.environ["PROXY_PORT2"]
+os.environ["https_proxy"] = os.environ["PROXY_PORT2"]
 openai.api_key = os.environ["OPENAI_API_KEY1"]
 
+with open('./Learn Blockchain, Solidity, and Full Stack Web3 Development with JavaScript – 32-Hour Course - 英语.txt', 'r') as f:
+    lines = [line.strip() for line in islice(f, 0, 50) if line.strip()]
 
-question = "Now, there's a couple other tasks that are really helpful.\
-You'll see before I went ahead and just\
-deleted artifacts and deleted the cache manually. Well, to do\
-that yourself, you can also just run yarn Hardhead, clean. And\
-that'll delete the artifacts folder and clear out your cache."
+question = ''.join(lines)
 
 response = openai.ChatCompletion.create(
     model = "gpt-3.5-turbo",
