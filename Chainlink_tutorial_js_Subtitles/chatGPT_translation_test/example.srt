@@ -1,0 +1,214 @@
+9417
+09:23:09,369 --> 09:23:15,729
+So running scripts is great. 
+使用脚本是一种很好的方式
+
+9418
+09:23:15,729 --> 09:23:19,449
+But what if I don't want to have to code an entire script to do some things? 
+但如果我不想编写一个完整的脚本来做某些事呢？
+
+9419
+09:23:19,449 --> 09:23:23,079
+What if I want to just tinker around with the blockchain? 
+比如我只是想用区块链做一个测试？
+
+9420
+09:23:23,079 --> 09:23:26,499
+Well, hard hat comes packed with this thing called the console. 
+Hardhat 有一个自带的功能叫做“控制台”("console")
+
+9421
+09:23:26,499 --> 09:23:29,979
+The console is a JavaScript environment. For us to run JavaScript commands to interact with any blockchain, 
+控制台是一个 JavaScript 环境，用于运行 JavaScript 命令来和任何区块链进行交互
+
+9422
+09:23:29,979 --> 09:23:33,579
+we can jump to the console by running 
+我们可以通过以下命令跳转到控制台
+
+9423
+09:23:33,579 --> 09:23:38,709
+yarn, hardhat, console, and then whatever network flag
+"yarn hardhat console" 后面可以是任何网络标识
+
+9424
+09:23:38,739 --> 09:23:41,739
+if we want to work on rink B, main net polygon, avalanche, etc. 
+比如说 Rinkeby, 主网络, polygon, avalanche 等等
+
+9425
+09:23:41,739 --> 09:23:45,759
+That's just network local host. 
+"-- network localhost"
+
+9426
+09:23:45,759 --> 09:23:49,599
+And now we're dropped into a shell him 
+现在我们就进入了一个 shell
+
+9427
+09:23:49,599 --> 09:23:52,809
+in the shell, we can do everything that we do in a deploy script. 
+在这个 shell 里，我们可以做在 deploy 脚本里做的所有事
+
+9428
+09:23:52,809 --> 09:23:55,929
+And we don't even have to run these imports, 
+我们甚至不需要运行这些导入操作
+
+9429
+09:23:55,929 --> 09:23:59,169
+because everything with hard hat is automatically imported into our console. 
+因为 Hardhat 里的所有东西都已经在控制台里被自动导入了
+
+9430
+09:23:59,169 --> 09:24:02,889
+So for example, let's say I wanted to get a simple storage contract factory. 
+举个例子，假设我要获取一个 "SimpleStorage" 的合约工厂
+
+9431
+09:24:02,889 --> 09:24:08,109
+Well, I could run exactly this line here. 
+那么我可以运行和这一行完全一样的内容
+
+9432
+09:24:08,139 --> 09:24:15,939
+I could say const, simple storage, factory equals await ethers dot get contract factory, have simple storage.
+就是 "const SimpleStorageFactory = await ethers.getContractFactory("SimpleStorage")"
+
+9433
+09:24:16,239 --> 09:24:19,929
+And now I can go ahead and even deploy this. 
+现在，我甚至还要部署它
+
+9434
+09:24:19,929 --> 09:24:25,029
+So I can even just copy this line, paste it. 
+所以我可以直接复制这一行，粘贴
+
+9435
+09:24:25,029 --> 09:24:28,539
+And if we flip back to our node, we'll see that we just deployed a nother simple storage. 
+然后回到我们的节点，就可以看到我们刚刚部署了另外一个 "SimpleStorage"
+
+9436
+09:24:28,539 --> 09:24:36,219
+And now we can do things like await simple storage dot retrieve. 
+现在我还可以做这些事 "await simpleStorage.retrieve"
+
+9437
+09:24:36,219 --> 09:24:39,159
+And I get the return value which is going to be a big number with a value of zero. 
+并且我得到了一个返回值是 "BigNumber{ value: "0" }"
+
+9438
+09:24:39,159 --> 09:24:43,239
+I can also make transactions 
+我还可以发起一次交易
+
+9439
+09:24:43,239 --> 09:24:52,179
+so I can do a weight, simple storage. That store let's do 55 
+可以这样做 "await simpleStorage.store("55")"
+
+9440
+09:24:52,179 --> 09:24:55,149
+If I hit up twice, I can go back to the simple storage dot retrieve.
+如果我按两下上键("↑")，可以回到 "simpleStorage.retrieve"
+
+9441
+09:24:55,599 --> 09:24:59,379
+call that function and I can see my big number has a value of 55. Now, 
+调用这个函数就可以看到现在是 "BigNumber{ value: "55" }"
+
+9442
+09:24:59,379 --> 09:25:01,809
+this is a great way to quickly interact with any blockchain that we want. 
+这是与所有区块链进行快速交互的一种很好的方式
+
+9443
+09:25:01,809 --> 09:25:04,629
+Now you can exit the shell by hitting Ctrl C twice to get out. 
+现在你可以通过按两次 "Ctrl C" 来退出 shell
+
+9444
+09:25:04,629 --> 09:25:09,519
+Or you can also just you can also Trash Can your terminal if you get confused. 
+或者你可以直接删除这个终端，如果你觉得麻烦的话
+
+9445
+09:25:09,519 --> 09:25:12,159
+This console works with any network 
+这个控制台适用于所有网络
+
+9446
+09:25:12,159 --> 09:25:18,339
+we can even do yarn, hard hat console dash dash network hard hat. 
+我们可以运行 "yarn hardhat console --network hardhat"
+
+9447
+09:25:18,369 --> 09:25:22,869
+And we'll get dropped into a hard hat network.
+这样我们就会进入 "Hardhat Network"
+
+9448
+09:25:23,319 --> 09:25:26,289
+Now this is not going to be the same node that's running here,
+它与这里的这个节点不是同样的节点
+
+9449
+09:25:26,319 --> 09:25:30,159
+this is going to be one that only runs for the duration of this command. 
+它只是在这个命令下暂时运行的一个节点
+
+9450
+09:25:30,219 --> 09:25:33,399
+So whenever we cancel this command, this hard hat network gets cancelled. 
+所以一旦我们退出这个命令，这个 "Hardhat Network" 就会被删除
+
+9451
+09:25:33,399 --> 09:25:37,449
+And close out that too. 
+再次关闭它
+
+9452
+09:25:37,449 --> 09:25:45,429
+We can also do yarn, hard hat, console, dash dash network Rinkeby Rigby, 
+我们也可以运行 "yarn hardhat console --network rinkeby"
+
+9453
+09:25:45,429 --> 09:25:48,729
+or polygon or test net or main net or whatever we want. 
+或者是 polygon, 测试网，主网络或是任何我们想要用的网络
+
+9454
+09:25:48,729 --> 09:25:54,609
+And we can do things like ethers dot provider 
+我们还可以这样做 "ethers.provider."
+
+9455
+09:25:54,639 --> 09:25:59,439
+that can do things like await ethers dot provider dot get block number, 
+我们可以运行 "await ethers.provider.getBlockNumber"
+
+9456
+09:25:59,439 --> 09:26:03,639
+see the block number of Rigby. 
+查看 Rinkeby 的区块编号
+
+9457
+09:26:03,639 --> 09:26:05,979
+We can also deploy contracts, we can update contracts, we can do anything that we want, 
+我们还可以部署合约，更新合约，以及做任何我们想要做的事情
+
+9458
+09:26:06,009 --> 09:26:08,859
+you can do anything in these consoles, 
+总之你可以在控制台里做任何事
+
+9459
+09:26:08,859 --> 09:26:10,719
+and they're great ways to quickly test and tinker in interact with contracts. 
+它是对合约进行快速测试和交互的一种很好的方式
