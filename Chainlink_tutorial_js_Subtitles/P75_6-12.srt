@@ -1,0 +1,888 @@
+9460
+09:26:10,840 --> 09:26:16,060
+Now, there's a couple other tasks that are really helpful. 
+现在，还有一些其它有用的任务
+
+9461
+09:26:16,060 --> 09:26:19,240
+You'll see before I went ahead and just deleted artifacts and deleted the cache manually. 
+你应该还记得我之前是用手动方法删除的 "artifacts" 和缓存
+
+9462
+09:26:19,240 --> 09:26:22,450
+Well, to do that yourself, you can also just run yarn Hardhead, clean. 
+你自己做的时候也可以运行这个 "yarn hardhat clean"
+
+9463
+09:26:22,450 --> 09:26:28,840
+And that'll delete the artifacts folder and clear out your cache.
+这样做就会删除 "artifacts" 文件夹并清除你的缓存
+
+9464
+09:26:28,840 --> 09:26:31,900
+We already know what compiled does. 
+我们已经知道 "compile" 是在干什么了
+
+9465
+09:26:31,990 --> 09:26:34,750
+But one of the biggest things that Hardhead is fantastic for especially is running tests. 
+但 hardhat 最大的优点之一其实是非常适合运行测试
+
+9466
+09:26:34,750 --> 09:26:37,930
+Now we haven't run tests yet so far. 
+目前为止我们还没有运行任何测试
+
+9467
+09:26:37,930 --> 09:26:41,920
+However, running tests is absolutely critical to your smart contract development journey. 
+但是，测试环节对于你的智能合约开发之旅绝对至关重要
+
+9468
+09:26:41,920 --> 09:26:45,340
+And we're going to spend a lot of time in the future writing really good tests. 
+未来我们将会花费大量时间来编写良好的测试
+
+9469
+09:26:45,340 --> 09:26:48,460
+The reason that writing tests are so important 
+之所以编写测试如此的重要
+
+9470
+09:26:48,460 --> 09:26:51,490
+is because we want to make sure our code does exactly what we want it to do, 
+是因为我们希望确保我们的代码确实能够实现我们想要的功能
+
+9471
+09:26:51,490 --> 09:26:55,270
+especially in the defy, and the decentralized, smart contract world, 
+在 DeFi 以及去中心化智能合约的世界中尤其如此
+
+9472
+09:26:55,270 --> 09:26:59,440
+all of our code is going to be open source for anybody to interact with, and potentially exploit. 
+我们所有的代码都将对所有人开源以供其交互，并有可能被利用
+
+9473
+09:26:59,440 --> 09:27:03,010
+There's sites like req dot news, 
+有一些网站比如说 "rekt.news"
+
+9474
+09:27:03,010 --> 09:27:06,400
+which go through a ton of previous hacks and how they actually got hacked 
+它们会介绍大量之前的黑客攻击事件还有他们是如何被攻击的
+
+9475
+09:27:06,730 --> 09:27:10,540
+and what happened in the smart contract to enable these hacks to occur. 
+以及智能合约中到底发生了什么才导致了这些攻击的发生
+
+9476
+09:27:10,570 --> 09:27:14,590
+So testing, so writing really strong tests is always going to be our first line of defense. 
+所以说编写一个强大的测试永远是我们的第一道防线
+
+9477
+09:27:14,590 --> 09:27:17,890
+And we have this sample test.js, 
+我们这里有一个 "sample-test.js"
+
+9478
+09:27:17,890 --> 09:27:21,760
+that comes default with the basic package of hardhat. 
+它是 Hardhat 默认自带的一个基础包
+
+9479
+09:27:21,760 --> 09:27:25,120
+But as you probably already know, 
+但你可能已经猜到了
+
+9480
+09:27:25,120 --> 09:27:28,300
+we're going to rename this and change it. 
+我们将把它重命名并进行修改
+
+9481
+09:27:28,300 --> 09:27:31,240
+So we're going to rename this to test deploy dot j s. 
+我们将把它重命名为 "test-deploy.js"
+
+9482
+09:27:31,240 --> 09:27:34,330
+And we're going to delete everything in here and start from scratch. 
+并删除其中的所有内容从头开始
+
+9483
+09:27:34,840 --> 09:27:39,640
+We want to be able to test all of our solidity code locally, 
+我们希望能够在本地测试所有的 Solidity 代码
+
+9484
+09:27:39,640 --> 09:27:43,030
+so that we know exactly what it's doing. 
+以便我们知道它正在做什么
+
+9485
+09:27:43,030 --> 09:27:46,630
+And we can have a programmatic way to make sure that our code does what we want it to do. 
+我们可以通过编程的方式来确保我们的代码会按照我们期望的方式运行
+
+9486
+09:27:46,630 --> 09:27:50,320
+So let's write a basic test for our simple storage contract. 
+所以让我们为我们的 "SimpleStorage" 合约写一个基本的测试
+
+9487
+09:27:50,320 --> 09:27:54,700
+So that we can be sure that it's doing exactly what we want it to be doing. 
+这样我们就可以确认它是否在执行我们想要的操作
+
+9488
+09:27:54,700 --> 09:27:58,870
+Hard Hat testing works with the Mocha framework, 
+Hardhat 测试使用的是 Mocha 框架
+
+9489
+09:27:58,870 --> 09:28:02,110
+which is a JavaScript based framework for running our tests, 
+它是一个基于 JavaScript 的框架用于运行我们的测试
+
+9490
+09:28:02,110 --> 09:28:06,130
+you actually can write tests directly in solidity, if you'd like to, 
+你甚至可以直接用 Solidity 来编写测试，如果你想的话
+
+9491
+09:28:06,130 --> 09:28:09,760
+there's a bit of back and forth on whether testing with pure solidity is better or testing with a modern programming language. 
+关于使用纯 Solidity 进行测试更好还是使用现代编程语言进行测试更好存在一些争议
+
+9492
+09:28:09,760 --> 09:28:13,900
+The argument goes that testing with a modern programming language,
+支持现代编程语言进行测试的论点是
+
+9493
+09:28:13,900 --> 09:28:16,630
+you have more flexibility to do more stuff to interact and test your smart contracts. 
+你会拥有更大的灵活性来对你的智能合约进行更多的交互和测试
+
+9494
+09:28:16,630 --> 09:28:19,720
+But the argument for testing with us with solidity is that 
+但支持使用 Solidity 进行测试的论点认为
+
+9495
+09:28:19,720 --> 09:28:22,630
+we want to be as close to the code as possible. 
+我们希望尽可能接近这个代码(即测试用的代码和编写智能合约用的代码相同)
+
+9496
+09:28:22,660 --> 09:28:27,010
+At the time of recording, 
+在录制的这个时间点
+
+9497
+09:28:27,010 --> 09:28:29,230
+most projects do the vast majority of their testing in a modern programming language like JavaScript. 
+大多数项目都在使用现代编程语言进行测试例如 JavaScript
+
+9498
+09:28:29,230 --> 09:28:32,200
+So that's what we're going to be using here. 
+所以我们这里就用这个
+
+9499
+09:28:32,200 --> 09:28:35,980
+So to get started with our mocha tests, 
+要想开始我们的 Mocha 测试
+
+9500
+09:28:35,980 --> 09:28:39,610
+we do, we're going to write a describe function. 
+我们要写一个 "describe" 函数
+
+9501
+09:28:39,640 --> 09:28:42,520
+Describe is a keyword that hardheaded mocha will recognize, 
+"describe" 是一个关键字，Hardhat 的 Mocha 将会识别它
+
+9502
+09:28:42,520 --> 09:28:45,610
+and it takes two parameters, it takes a string, 
+并且它有两个参数，第一个接收的是一个字符串
+
+9503
+09:28:45,610 --> 09:28:50,050
+which we're going to just write simple storage for now. 
+我们要写进去的就是 "SimpleStorage"
+
+9504
+09:28:50,050 --> 09:28:54,550
+And then also takes a function, 
+第二个接收的是一个函数
+
+9505
+09:28:54,550 --> 09:28:58,180
+we could make function, test func and then write some stuff in here, 
+我们可以创建一个函数，名为 "testFunct"，并在这里编写一些内容
+
+9506
+09:28:58,180 --> 09:29:02,500
+and then pass it to our describe here. 
+然后把它传递到 "describe" 这里
+
+9507
+09:29:03,400 --> 09:29:09,670
+
+
+
+9508
+09:29:09,670 --> 09:29:13,930
+But the common convention
+
+
+9509
+09:29:14,110 --> 09:29:17,740
+is going to be to do is to make it as an anonymous function,
+
+
+9510
+09:29:18,250 --> 09:29:22,510
+which we can create by typing function, putting an empty
+
+
+9511
+09:29:22,510 --> 09:29:25,390
+parameter here, and then some brackets like that. So our
+
+
+9512
+09:29:25,390 --> 09:29:29,560
+describe function takes a name, a string, and a function.
+
+
+9513
+09:29:29,890 --> 09:29:32,740
+Another way that you'll often see functions in describe is
+
+
+9514
+09:29:32,740 --> 09:29:37,000
+using that anonymous function syntax. So you might see just
+
+
+9515
+09:29:37,000 --> 09:29:41,440
+these parentheses, an arrow, and then some brackets, the two of
+
+
+9516
+09:29:41,440 --> 09:29:44,350
+these are going to be basically the same, there are some
+
+
+9517
+09:29:44,350 --> 09:29:47,830
+differences. And this second one is actually best practice, but
+
+
+9518
+09:29:47,830 --> 09:29:51,280
+just know that you might see this arrow syntax in other tests
+
+
+9519
+09:29:51,280 --> 09:29:54,010
+as well. We have described a sample storage and then our
+
+
+9520
+09:29:54,010 --> 09:29:56,680
+function here, which is going to have all of our tests in it.
+
+
+9521
+09:29:56,920 --> 09:29:59,530
+Inside each one of our describe blocks. We're gonna have
+
+
+9522
+09:29:59,530 --> 09:30:03,340
+something called a before each, and a bunch of It's Our before
+
+
+9523
+09:30:03,340 --> 09:30:07,030
+each function is going to tell us what to do before each of our
+
+
+9524
+09:30:07,060 --> 09:30:09,730
+hits. So we're going to have a ton of it and then we're going
+
+
+9525
+09:30:09,730 --> 09:30:13,030
+to have a before each. All of our IDs are going to be where we
+
+
+9526
+09:30:13,030 --> 09:30:15,940
+actually write the code for running our tests. And before
+
+
+9527
+09:30:15,940 --> 09:30:19,270
+each is going to be some code that tells us what to do before
+
+
+9528
+09:30:19,540 --> 09:30:23,710
+each one of these hits, we can also actually have describes,
+
+
+9529
+09:30:25,540 --> 09:30:29,470
+inside of describes, which again have more before each and more
+
+
+9530
+09:30:29,470 --> 09:30:33,550
+before it's having these nested describes can be really helpful
+
+
+9531
+09:30:33,550 --> 09:30:37,780
+for separating and modularizing our tests. But for this one,
+
+
+9532
+09:30:37,780 --> 09:30:41,080
+we're just going to have a setup that looks like this. And for
+
+
+9533
+09:30:41,080 --> 09:30:45,010
+this demo, we're only going to have one it. So in order to test
+
+
+9534
+09:30:45,010 --> 09:30:47,710
+our smart contracts, before we actually run our tests, we're
+
+
+9535
+09:30:47,710 --> 09:30:50,620
+probably going to need to deploy the smart contracts first. So
+
+
+9536
+09:30:50,620 --> 09:30:53,470
+inside of our before each, we're going to pass the our before
+
+
+9537
+09:30:53,470 --> 09:30:56,950
+each a function, that's going to tell our testing framework what
+
+
+9538
+09:30:56,950 --> 09:31:00,070
+to do before each test. So we're going to pass it an async
+
+
+9539
+09:31:00,100 --> 09:31:05,080
+function like this. And in here, we want to deploy our simple
+
+
+9540
+09:31:05,080 --> 09:31:08,410
+storage contract. So to do that, we're going to need to get the
+
+
+9541
+09:31:08,410 --> 09:31:12,520
+ethers framework and do exactly what we did in our deploy
+
+
+9542
+09:31:12,520 --> 09:31:15,670
+script. So in here, we're at the top we're gonna say const.
+
+
+9543
+09:31:16,180 --> 09:31:23,590
+Ethers, equals require art have an import ethers from hard hat.
+
+
+9544
+09:31:23,830 --> 09:31:29,800
+Then in our before each function, we'll say await ethers
+
+
+9545
+09:31:29,800 --> 09:31:37,510
+dot get contract factory of simple storage. And we'll assign
+
+
+9546
+09:31:37,510 --> 09:31:46,240
+this to a const. Simple Storage factory. And then we'll run
+
+
+9547
+09:31:46,960 --> 09:31:52,780
+away, simple storage factory dot deploy. Cool. And let's also
+
+
+9548
+09:31:52,810 --> 09:31:58,450
+assign this to a variable cost simple. Now, since right now,
+
+
+9549
+09:31:58,480 --> 09:32:02,470
+our simple storage and simple storage factory are scoped just
+
+
+9550
+09:32:02,470 --> 09:32:05,860
+to inside the before each, we actually need to stick these
+
+
+9551
+09:32:05,860 --> 09:32:09,940
+variables outside of the before each, so all of our events can
+
+
+9552
+09:32:09,970 --> 09:32:12,940
+interact with them. So instead of having simple storage,
+
+
+9553
+09:32:12,940 --> 09:32:16,660
+factory, and simple storage, be constant variables, we're going
+
+
+9554
+09:32:16,660 --> 09:32:20,140
+to define them outside of them for each with the let keyword.
+
+
+9555
+09:32:20,350 --> 09:32:25,540
+And we're gonna say let simple storage factory and we're going
+
+
+9556
+09:32:25,540 --> 09:32:29,860
+to initialize it to nothing. And then we'll say led simple
+
+
+9557
+09:32:29,920 --> 09:32:32,980
+storage. Now, if you have a whole bunch of let's just
+
+
+9558
+09:32:32,980 --> 09:32:35,380
+initializing another way, you can write them in JavaScript,
+
+
+9559
+09:32:35,410 --> 09:32:41,080
+just let simple storage factory comma, simple storage. And that
+
+
+9560
+09:32:41,080 --> 09:32:43,420
+works exactly the same. And then we can get rid of this const
+
+
+9561
+09:32:43,420 --> 09:32:47,770
+keyword. Because it's not a constant since we are assigning
+
+
+9562
+09:32:47,770 --> 09:32:50,050
+it. And now we have simple storage, factory and simple
+
+
+9563
+09:32:50,050 --> 09:32:53,200
+storage that we can use inside of our init function. Now we
+
+
+9564
+09:32:53,200 --> 09:32:56,140
+have a before each section. So before each one of our tests,
+
+
+9565
+09:32:56,200 --> 09:32:58,630
+we're going to deploy our simple storage contract. So we have a
+
+
+9566
+09:32:58,630 --> 09:33:02,200
+brand new contract to interact with for each one of our tests.
+
+
+9567
+09:33:02,260 --> 09:33:05,920
+Now, inside of the ID, this is where we're going to say what we
+
+
+9568
+09:33:05,920 --> 09:33:09,310
+want this specific test to do, and then describe the code
+
+
+9569
+09:33:09,550 --> 09:33:13,480
+that's going to actually do that. So we're going to say it
+
+
+9570
+09:33:13,870 --> 09:33:20,980
+should start with a favorite number of zero. So this is
+
+
+9571
+09:33:20,980 --> 09:33:24,190
+saying what this test should do. And then we're going to add our
+
+
+9572
+09:33:24,220 --> 09:33:27,910
+async function to actually do that. So we'll say async
+
+
+9573
+09:33:28,720 --> 09:33:34,060
+function. And in here, this is where we'll actually write the
+
+
+9574
+09:33:34,060 --> 09:33:38,020
+code to make sure that our contract does exactly this.
+
+
+9575
+09:33:38,080 --> 09:33:45,640
+We're say const. Current Value, equals await, simple storage.re
+
+
+9576
+09:33:46,840 --> 09:33:50,440
+retrieve. And now in this test, we want to say okay, now check
+
+
+9577
+09:33:50,440 --> 09:33:54,100
+to see that this current value is indeed zero. So how do we do
+
+
+9578
+09:33:54,100 --> 09:33:59,200
+that? Well, we can say const, expected value is going to equal
+
+
+9579
+09:33:59,830 --> 09:34:04,360
+zero. And what we can do is we can do either we can use either
+
+
+9580
+09:34:04,360 --> 09:34:08,170
+the assert keyword, or the expect keyword, which we're
+
+
+9581
+09:34:08,170 --> 09:34:12,970
+going to import both of these from a package called Chai. We
+
+
+9582
+09:34:12,970 --> 09:34:16,420
+actually installed Chai automatically when we downloaded
+
+
+9583
+09:34:16,420 --> 09:34:19,120
+the basic parameters when we downloaded the basic packages
+
+
+9584
+09:34:19,120 --> 09:34:23,050
+for hardhats. So at the top, we're gonna say const. Expect
+
+
+9585
+09:34:23,260 --> 09:34:24,310
+and assert
+
+
+9586
+09:34:25,630 --> 09:34:30,760
+equals require Chai, I'm a big fan of using assert as much as
+
+
+9587
+09:34:30,760 --> 09:34:33,160
+possible, because I think the syntax makes a little bit more
+
+
+9588
+09:34:33,190 --> 09:34:36,010
+sense. But there will be scenarios where we need to use
+
+
+9589
+09:34:36,010 --> 09:34:39,130
+expect instead. Now, assert has a ton of functions that are
+
+
+9590
+09:34:39,130 --> 09:34:43,030
+built in that help us make sure this is what we expect it to be.
+
+
+9591
+09:34:43,060 --> 09:34:48,040
+So I can do assert dot equal current value.to string, because
+
+
+9592
+09:34:48,040 --> 09:34:51,130
+remember, this is actually going to be a big number, comma,
+
+
+9593
+09:34:51,370 --> 09:34:55,480
+expected value. So I'm saying I'm asserting this retrieve to
+
+
+9594
+09:34:55,480 --> 09:34:59,440
+return zero, which is going to be our expected value. Now to
+
+
+9595
+09:34:59,440 --> 09:35:04,570
+actually run this, we're going to run yarn, art hat test. And
+
+
+9596
+09:35:04,570 --> 09:35:07,840
+we see we get an output that looks like this should start
+
+
+9597
+09:35:07,840 --> 09:35:10,870
+with favorite number of zero, and it's indeed passing. You'll
+
+
+9598
+09:35:10,870 --> 09:35:14,620
+notice that if I were to change this to one, and this wasn't
+
+
+9599
+09:35:14,620 --> 09:35:18,220
+correct, it would break and it would say art Pass or not
+
+
+9600
+09:35:18,220 --> 09:35:23,890
+passing assertion error expected zero to equal one. It expected
+
+
+9601
+09:35:23,920 --> 09:35:29,260
+zero to equal one, which is not what we want. We want zero to
+
+
+9602
+09:35:29,260 --> 09:35:33,430
+equal zero. So let's run this again. Tada should start with
+
+
+9603
+09:35:33,430 --> 09:35:36,640
+favorite number zero, and it's passing. Alright, fantastic. So
+
+
+9604
+09:35:36,640 --> 09:35:40,030
+that's how we wrote one of our tests, let's write one more test
+
+
+9605
+09:35:40,060 --> 09:35:43,060
+just to make sure that things are good. So let's say it should
+
+
+9606
+09:35:43,060 --> 09:35:48,490
+update when we call store, because when we call the store
+
+
+9607
+09:35:48,490 --> 09:35:51,850
+function, we want our favorite number to update. And we'll make
+
+
+9608
+09:35:51,850 --> 09:35:56,560
+this an async function as well. And let's add our stuff in here.
+
+
+9609
+09:35:56,770 --> 09:36:01,360
+So we'll say const. Expected Value equals seven, we're
+
+
+9610
+09:36:01,360 --> 09:36:04,990
+expecting that when we call store it updates to seven. Now
+
+
+9611
+09:36:05,020 --> 09:36:11,620
+we can say const. Transaction response equals await simple
+
+
+9612
+09:36:11,620 --> 09:36:16,840
+storage dot store. And we can even just pass it the expected
+
+
+9613
+09:36:16,840 --> 09:36:21,670
+value here. And then we'll do a weight transaction response that
+
+
+9614
+09:36:21,670 --> 09:36:25,240
+weight one. Now let's get the current value. So we'll say
+
+
+9615
+09:36:25,240 --> 09:36:31,030
+const. Current Value equals weight, simple storage,
+
+
+9616
+09:36:32,080 --> 09:36:37,750
+retrieve. And now we're going to assert dot equal current
+
+
+9617
+09:36:37,750 --> 09:36:44,140
+value.to string, comma expected value. And now we can run all
+
+
+9618
+09:36:44,140 --> 09:36:47,440
+these tests by running yarn Hardhead test. And you'll see we
+
+
+9619
+09:36:47,440 --> 09:36:51,700
+ran both of these tests. And now if I have 10,000 tests, and I'm
+
+
+9620
+09:36:51,700 --> 09:36:55,000
+only finagling with one test, I can actually just run one test
+
+
+9621
+09:36:55,000 --> 09:37:01,570
+by running yarn, art app, test, dash dash grep. And I can search
+
+
+9622
+09:37:01,600 --> 09:37:06,160
+for any keywords in any of the text here. So I'm going to grep
+
+
+9623
+09:37:06,160 --> 09:37:10,660
+for the store function. Because the store keyword isn't in this
+
+
+9624
+09:37:10,660 --> 09:37:14,740
+tax for this, it, it's only in the text for this it. So if I do
+
+
+9625
+09:37:14,740 --> 09:37:18,550
+grep store, it should only run our second test, which does
+
+
+9626
+09:37:18,550 --> 09:37:22,840
+indeed, one other way we can run only specific tests is with the
+
+
+9627
+09:37:22,840 --> 09:37:28,030
+only keyword. So we can type it dot only like that. And then we
+
+
+9628
+09:37:28,030 --> 09:37:33,430
+can run yarn, art hat test. And it should only run, this should
+
+
+9629
+09:37:33,490 --> 09:37:36,820
+update when we call store. And it does indeed, then we'll go
+
+
+9630
+09:37:36,820 --> 09:37:40,750
+ahead and delete this save, run again, and it should run all
+
+
+9631
+09:37:40,750 --> 09:37:45,250
+too. Fantastic. Now the other way you'll see these tests
+
+
+9632
+09:37:45,250 --> 09:37:49,210
+written is with instead of assert, it'll use the expect
+
+
+9633
+09:37:49,210 --> 09:37:52,600
+keyword. So you'll see something like expect current
+
+
+9634
+09:37:52,600 --> 09:37:59,260
+value.to string.to dot equal expected value, the two of these
+
+
+9635
+09:37:59,290 --> 09:38:03,520
+lines do exactly the same thing. And it's sort of up to you on
+
+
+9636
+09:38:03,520 --> 09:38:06,160
+which one you want to use. And that's all we're going to do for
+
+
+9637
+09:38:06,160 --> 09:38:12,280
+our testing. Now. This is fantastic, great job. 
