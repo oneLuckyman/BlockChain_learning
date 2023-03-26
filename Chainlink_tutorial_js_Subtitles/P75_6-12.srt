@@ -235,92 +235,92 @@ and then pass it to our describe here.
 
 9507
 09:29:03,400 --> 09:29:09,670
-
-
+But the common convention is going to be to do is to make it as an anonymous function,
+但通用的约定是让它成为一个匿名函数
 
 9508
 09:29:09,670 --> 09:29:13,930
-But the common convention
-
+which we can create by typing function, putting an empty parameter here, 
+我们可以输入 "function"，放置一个空参数
 
 9509
 09:29:14,110 --> 09:29:17,740
-is going to be to do is to make it as an anonymous function,
-
+and then some brackets like that. 
+然后加上花括号来创建它
 
 9510
 09:29:18,250 --> 09:29:22,510
-which we can create by typing function, putting an empty
-
+So our describe function takes a name, a string, and a function.
+所以我们的 "describe" 接收一个名称字符串和一个函数
 
 9511
 09:29:22,510 --> 09:29:25,390
-parameter here, and then some brackets like that. So our
-
+Another way that you'll often see functions in describe is using that anonymous function syntax. 
+你经常可以在 "describe" 中见到另一种匿名函数的使用方式
 
 9512
 09:29:25,390 --> 09:29:29,560
-describe function takes a name, a string, and a function.
-
+So you might see just these parentheses, an arrow, and then some brackets, 
+你可能会看到一组括号，一个箭头，然后是一些花括号
 
 9513
 09:29:29,890 --> 09:29:32,740
-Another way that you'll often see functions in describe is
-
+the two of these are going to be basically the same, 
+这两种方式基本上是等价的
 
 9514
 09:29:32,740 --> 09:29:37,000
-using that anonymous function syntax. So you might see just
-
+there are some differences. And this second one is actually best practice, 
+区别就是，第二个在实际使用中是最好用的
 
 9515
 09:29:37,000 --> 09:29:41,440
-these parentheses, an arrow, and then some brackets, the two of
-
+but just know that you might see this arrow syntax in other tests as well. 
+但你也要知道你可能会在其它测试中见到这种箭头语法
 
 9516
 09:29:41,440 --> 09:29:44,350
-these are going to be basically the same, there are some
-
+We have described a sample storage and then our function here, 
+这里我们已经拥有了 "describe"，一个 "SimpleStorage" 和一个函数
 
 9517
 09:29:44,350 --> 09:29:47,830
-differences. And this second one is actually best practice, but
-
+which is going to have all of our tests in it.
+这就是我们的测试所需要包含的全部内容了
 
 9518
 09:29:47,830 --> 09:29:51,280
-just know that you might see this arrow syntax in other tests
-
+Inside each one of our describe blocks. 
+在每一个 "describe" 的代码块内
 
 9519
 09:29:51,280 --> 09:29:54,010
-as well. We have described a sample storage and then our
-
+We're gonna have something called a before each, and a bunch of It's 
+我们都会有一个 "beforeEach" 和很多 "it"
 
 9520
 09:29:54,010 --> 09:29:56,680
-function here, which is going to have all of our tests in it.
-
+Our before each function is going to tell us what to do before each of our hits. 
+"beforeEach" 函数会告诉我们在我们的每一个 "it" 之前要做什么
 
 9521
 09:29:56,920 --> 09:29:59,530
-Inside each one of our describe blocks. We're gonna have
+
 
 
 9522
 09:29:59,530 --> 09:30:03,340
-something called a before each, and a bunch of It's Our before
+
 
 
 9523
 09:30:03,340 --> 09:30:07,030
-each function is going to tell us what to do before each of our
+
 
 
 9524
 09:30:07,060 --> 09:30:09,730
-hits. So we're going to have a ton of it and then we're going
+So we're going to have a ton of it and then we're going
 
 
 9525
