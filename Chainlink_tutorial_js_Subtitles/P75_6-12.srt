@@ -305,142 +305,142 @@ Our before each function is going to tell us what to do before each of our hits.
 
 9521
 09:29:56,920 --> 09:29:59,530
-
-
+So we're going to have a ton of it and then we're going to have a before each. 
+所以我们会有很多 "it" 而只有一个 "beforeEach"
 
 9522
 09:29:59,530 --> 09:30:03,340
-
-
+All of our IDs are going to be where we actually write the code for running our tests. 
+所有的 "it" 就是我们实际编写运行测试代码的地方
 
 9523
 09:30:03,340 --> 09:30:07,030
-
-
+And before each is going to be some code that tells us what to do before each one of these hits,
+而 "beforeEach" 则会告诉我们每个 "it" 之前需要做些什么
 
 9524
 09:30:07,060 --> 09:30:09,730
-So we're going to have a ton of it and then we're going
-
+we can also actually have describes,
+我们实际上还可以这么做 "describe"
 
 9525
 09:30:09,730 --> 09:30:13,030
-to have a before each. All of our IDs are going to be where we
-
+inside of describes, which again have more before each and more before it's 
+在这个 "describe" 内，又可以有更多的 "beforeEach" 和 "it"
 
 9526
 09:30:13,030 --> 09:30:15,940
-actually write the code for running our tests. And before
-
+having these nested describes can be really helpful for separating and modularizing our tests. 
+这些嵌套的 "describe" 能很好的帮助我们分离和模块化我们的测试
 
 9527
 09:30:15,940 --> 09:30:19,270
-each is going to be some code that tells us what to do before
-
+But for this one, we're just going to have a setup that looks like this. 
+但对本次测试，我们将只需要一个这样的配置
 
 9528
 09:30:19,540 --> 09:30:23,710
-each one of these hits, we can also actually have describes,
+
 
 
 9529
 09:30:25,540 --> 09:30:29,470
-inside of describes, which again have more before each and more
-
+And for this demo, we're only going to have one it. 
+并且在这个 demo 中我们也只有一个 "it"
 
 9530
 09:30:29,470 --> 09:30:33,550
-before it's having these nested describes can be really helpful
-
+So in order to test our smart contracts, 
+为了测试我们的智能合约
 
 9531
 09:30:33,550 --> 09:30:37,780
-for separating and modularizing our tests. But for this one,
-
+before we actually run our tests, we're probably going to need to deploy the smart contracts first. 
+在实际运行测试之前，我们可能需要先部署智能合约
 
 9532
 09:30:37,780 --> 09:30:41,080
-we're just going to have a setup that looks like this. And for
-
+So inside of our before each, 
+因此在我们的 "beforeEach" 中
 
 9533
 09:30:41,080 --> 09:30:45,010
-this demo, we're only going to have one it. So in order to test
-
+we're going to pass the our before each a function, 
+我们将传递一个函数给我们的 "beforeEach"
 
 9534
 09:30:45,010 --> 09:30:47,710
-our smart contracts, before we actually run our tests, we're
-
+that's going to tell our testing framework what to do before each test. 
+它会告诉我们的测试框架每个测试前都要做些什么
 
 9535
 09:30:47,710 --> 09:30:50,620
-probably going to need to deploy the smart contracts first. So
-
+So we're going to pass it an async function like this. 
+所以我们要传入一个 "async function"，就像这样
 
 9536
 09:30:50,620 --> 09:30:53,470
-inside of our before each, we're going to pass the our before
-
+And in here, we want to deploy our simple storage contract. 
+然后在这里，我们要部署我们的 "SimpleStorage" 合约
 
 9537
 09:30:53,470 --> 09:30:56,950
-each a function, that's going to tell our testing framework what
-
+So to do that, we're going to need to get the ethers framework 
+为了做到这一点，我们需要获取 ethers 框架
 
 9538
 09:30:56,950 --> 09:31:00,070
-to do before each test. So we're going to pass it an async
-
+and do exactly what we did in our deploy script. 
+并执行我们在 "deploy" 脚本中所做的完全相同的事情
 
 9539
 09:31:00,100 --> 09:31:05,080
-function like this. And in here, we want to deploy our simple
-
+So in here, we're at the top we're gonna say const. 
+所以这里，我们要在顶部执行 "const"
 
 9540
 09:31:05,080 --> 09:31:08,410
-storage contract. So to do that, we're going to need to get the
-
+Ethers, equals require art have 
+"{ethers} = require("hardhat")"
 
 9541
 09:31:08,410 --> 09:31:12,520
-ethers framework and do exactly what we did in our deploy
-
+an import ethers from hard hat.
+并把 ethers 从 Hardhat 中导入进来
 
 9542
 09:31:12,520 --> 09:31:15,670
-script. So in here, we're at the top we're gonna say const.
-
+Then in our before each function, 
+接着在我们的 "beforeEach" 函数中
 
 9543
 09:31:16,180 --> 09:31:23,590
-Ethers, equals require art have an import ethers from hard hat.
-
+we'll say await ethers dot get contract factory of simple storage. 
+我们将执行 "await ethers.getContractFactory("SimpleStorage")"
 
 9544
 09:31:23,830 --> 09:31:29,800
-Then in our before each function, we'll say await ethers
-
+And we'll assign this to a const. Simple Storage factory. 
+并将其赋给一个 "const" 变量 "simpleStorageFactory"
 
 9545
 09:31:29,800 --> 09:31:37,510
-dot get contract factory of simple storage. And we'll assign
-
+And then we'll run away, simple storage factory dot deploy. 
+然后我们要运行 "await simpleStorageFactory.deploy"
 
 9546
 09:31:37,510 --> 09:31:46,240
-this to a const. Simple Storage factory. And then we'll run
-
+Cool. 
+OK，酷~
 
 9547
 09:31:46,960 --> 09:31:52,780
-away, simple storage factory dot deploy. Cool. And let's also
-
+And let's also assign this to a variable cost simple. 
+让我们把它也赋给一个变量 "const simpleStorage"
 
 9548
 09:31:52,810 --> 09:31:58,450
-assign this to a variable cost simple. Now, since right now,
+Now, since right now,
 
 
 9549
