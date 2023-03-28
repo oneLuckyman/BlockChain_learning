@@ -440,449 +440,450 @@ And let's also assign this to a variable cost simple.
 
 9548
 09:31:52,810 --> 09:31:58,450
-Now, since right now,
-
+Now, since right now, our simple storage and simple storage factory are scoped just to inside the before each, 
+现在，由于我们的 "simpleStorage" 和 "simpleStorageFactory" 只在 "beforeEach" 内部可见
 
 9549
 09:31:58,480 --> 09:32:02,470
-our simple storage and simple storage factory are scoped just
-
+we actually need to stick these variables outside of the before each, 
+我们需要把这些变量从 "beforeEach" 中移出来
 
 9550
 09:32:02,470 --> 09:32:05,860
-to inside the before each, we actually need to stick these
-
+so all of our events can interact with them. 
+这样所有事件都可以与它们进行交互
 
 9551
 09:32:05,860 --> 09:32:09,940
-variables outside of the before each, so all of our events can
-
+So instead of having simple storage, factory, and simple storage, be constant variables, 
+所以我们不再将 "simpleStorageFactory" 和 "simpleStorage" 定义为常量变量
 
 9552
 09:32:09,970 --> 09:32:12,940
-interact with them. So instead of having simple storage,
-
+we're going to define them outside of them for each with the let keyword.
+而是使用 "let" 关键字将它们定义在 "beforeEach" 之外
 
 9553
 09:32:12,940 --> 09:32:16,660
-factory, and simple storage, be constant variables, we're going
-
+And we're gonna say let simple storage factory 
+我们要做的就是 "let simpleStorageFactory"
 
 9554
 09:32:16,660 --> 09:32:20,140
-to define them outside of them for each with the let keyword.
-
+and we're going to initialize it to nothing. 
+并将其初始化为空
 
 9555
 09:32:20,350 --> 09:32:25,540
-And we're gonna say let simple storage factory and we're going
-
+And then we'll say led simple storage. 
+接着是 "let simpleStorage"
 
 9556
 09:32:25,540 --> 09:32:29,860
-to initialize it to nothing. And then we'll say led simple
-
+Now, if you have a whole bunch of let's just initializing 
+现在，如果你有很多 "let" 要初始化的话 
 
 9557
 09:32:29,920 --> 09:32:32,980
-storage. Now, if you have a whole bunch of let's just
-
+another way, you can write them in JavaScript,
+那么你可以用 JavaScript 的另一种方式来编写它们
 
 9558
 09:32:32,980 --> 09:32:35,380
-initializing another way, you can write them in JavaScript,
-
+just let simple storage factory comma, simple storage. 
+只要写成 "let simpleStorageFactory, simpleStorage"
 
 9559
 09:32:35,410 --> 09:32:41,080
-just let simple storage factory comma, simple storage. And that
-
+And that works exactly the same. 
+这样做的效果是完全一样的
 
 9560
 09:32:41,080 --> 09:32:43,420
-works exactly the same. And then we can get rid of this const
-
+And then we can get rid of this const keyword. 
+然后我们就可以把 "const" 关键字去掉了
 
 9561
 09:32:43,420 --> 09:32:47,770
-keyword. Because it's not a constant since we are assigning
-
+Because it's not a constant since we are assigning it. 
+因为它不再是一个常量了，我们给它赋了值
 
 9562
 09:32:47,770 --> 09:32:50,050
-it. And now we have simple storage, factory and simple
-
+And now we have simple storage, factory and simple storage 
+现在我们有了 "simpleStorageFactory" 和 "simpleStorage"
 
 9563
 09:32:50,050 --> 09:32:53,200
-storage that we can use inside of our init function. Now we
-
+that we can use inside of our init function. 
+就可以把它们用在我们的 "it" 函数中了
 
 9564
 09:32:53,200 --> 09:32:56,140
-have a before each section. So before each one of our tests,
-
+Now we have a before each section. 
+现在我们有一个 "beforeEach" 部分
 
 9565
 09:32:56,200 --> 09:32:58,630
-we're going to deploy our simple storage contract. So we have a
-
+So before each one of our tests, we're going to deploy our simple storage contract. 
+因此在我们的每个测试之前，我们都会部署一次 "SimpleStorage" 合约
 
 9566
 09:32:58,630 --> 09:33:02,200
-brand new contract to interact with for each one of our tests.
-
+So we have a brand new contract to interact with for each one of our tests.
+这样我们每次测试都有一个全新的合约可供交互
 
 9567
 09:33:02,260 --> 09:33:05,920
-Now, inside of the ID, this is where we're going to say what we
-
+Now, inside of the ID, this is where we're going to say what we want this specific test to do, 
+现在在 "it" 内部，我们要说出想做的测试具体要做什么
 
 9568
 09:33:05,920 --> 09:33:09,310
-want this specific test to do, and then describe the code
-
+and then describe the code that's going to actually do that. 
+然后描述出实际执行此操作的代码
 
 9569
 09:33:09,550 --> 09:33:13,480
-that's going to actually do that. So we're going to say it
-
+So we're going to say it
+所以我们要输入 "it()"
 
 9570
 09:33:13,870 --> 09:33:20,980
-should start with a favorite number of zero. So this is
-
+should start with a favorite number of zero. 
+"should start with a favorite number of 0"
 
 9571
 09:33:20,980 --> 09:33:24,190
-saying what this test should do. And then we're going to add our
-
+So this is saying what this test should do. 
+所以这里就是在说这个测试该做什么
 
 9572
 09:33:24,220 --> 09:33:27,910
-async function to actually do that. So we'll say async
-
+And then we're going to add our async function to actually do that. 
+然后我们要添加一个异步函数来实际执行这个操作
 
 9573
 09:33:28,720 --> 09:33:34,060
-function. And in here, this is where we'll actually write the
-
+So we'll say async function. 
+所以我们输入 "async function"
 
 9574
 09:33:34,060 --> 09:33:38,020
-code to make sure that our contract does exactly this.
-
+And in here, this is where we'll actually write the code to make sure that our contract does exactly this.
+接着在这里，我们将编写代码来确保我们的合约会按照我们所期望的方式运行
 
 9575
 09:33:38,080 --> 09:33:45,640
-We're say const. Current Value, equals await, simple storage.re
-
+We're say const. Current Value, equals await, simple storage.re retrieve. 
+我们要写 "const currentValue = await simpleStorage.retrieve"
 
 9576
 09:33:46,840 --> 09:33:50,440
-retrieve. And now in this test, we want to say okay, now check
-
+And now in this test, we want to say okay, 
+现在在这个测试里，我们想要做的就是
 
 9577
 09:33:50,440 --> 09:33:54,100
-to see that this current value is indeed zero. So how do we do
-
+now check to see that this current value is indeed zero. So how do we do that? 
+检查 "currentValue" 是否确实为 0，该怎么做呢？
 
 9578
 09:33:54,100 --> 09:33:59,200
-that? Well, we can say const, expected value is going to equal
-
+Well, we can say const, expected value is going to equal zero. 
+可以这么做 "const expectedValue = "0""
 
 9579
 09:33:59,830 --> 09:34:04,360
-zero. And what we can do is we can do either we can use either
-
+And what we can do is we can do either we can use either the assert keyword, or the expect keyword, 
+我们可以使用的是 "assert" 或者 "expect" 关键字
 
 9580
 09:34:04,360 --> 09:34:08,170
-the assert keyword, or the expect keyword, which we're
-
+which we're going to import both of these from a package called Chai. 
+它们都可以从一个名为 "chai" 的包中导入进来
 
 9581
 09:34:08,170 --> 09:34:12,970
-going to import both of these from a package called Chai. We
-
+We actually installed Chai automatically 
+我们其实已经自动安装了 "chai" 包
 
 9582
 09:34:12,970 --> 09:34:16,420
-actually installed Chai automatically when we downloaded
-
+when we downloaded the basic parameters when we downloaded the basic packages for hardhats. 
+就是在我们下载 Hardhat 等基础包的时候
 
 9583
 09:34:16,420 --> 09:34:19,120
-the basic parameters when we downloaded the basic packages
-
+So at the top, we're gonna say const. Expect and assert equals require Chai, 
+所以在顶部，我们要输入 "const {expect, assert} = require("chai")"
 
 9584
 09:34:19,120 --> 09:34:23,050
-for hardhats. So at the top, we're gonna say const. Expect
-
+I'm a big fan of using assert as much as possible, 
+我非常喜欢尽可能多地使用 "assert"
 
 9585
 09:34:23,260 --> 09:34:24,310
-and assert
-
+because I think the syntax makes a little bit more sense. 
+因为我认为它的语法更加合理
 
 9586
 09:34:25,630 --> 09:34:30,760
-equals require Chai, I'm a big fan of using assert as much as
-
+But there will be scenarios where we need to use expect instead. 
+但某些情况下我们也需要使用 "expect"
 
 9587
 09:34:30,760 --> 09:34:33,160
-possible, because I think the syntax makes a little bit more
-
+Now, assert has a ton of functions that are built in 
+"assert" 内置了很多函数
 
 9588
 09:34:33,190 --> 09:34:36,010
-sense. But there will be scenarios where we need to use
-
+that help us make sure this is what we expect it to be. 
+它们可以帮助我们确保一切如我们所期望的那样运行
 
 9589
 09:34:36,010 --> 09:34:39,130
-expect instead. Now, assert has a ton of functions that are
-
+So I can do assert dot equal current value.to string, 
+所以我们可以执行 "assert.equal(currentValue.toString())"
 
 9590
 09:34:39,130 --> 09:34:43,030
-built in that help us make sure this is what we expect it to be.
-
+because remember, this is actually going to be a big number, 
+因为要记得，这里实际上是一个大数
 
 9591
 09:34:43,060 --> 09:34:48,040
-So I can do assert dot equal current value.to string, because
-
+comma, expected value. 
+", expectedValue"
 
 9592
 09:34:48,040 --> 09:34:51,130
-remember, this is actually going to be a big number, comma,
-
+So I'm saying I'm asserting this retrieve to return zero, 
+所以我在断言("asserting")这个 "retrieve" 的返回值是 0
 
 9593
 09:34:51,370 --> 09:34:55,480
-expected value. So I'm saying I'm asserting this retrieve to
-
+which is going to be our expected value. 
+也就是我们的 "expectedValue"
 
 9594
 09:34:55,480 --> 09:34:59,440
-return zero, which is going to be our expected value. Now to
-
+Now to actually run this, 
+现在要实际运行这个测试
 
 9595
 09:34:59,440 --> 09:35:04,570
-actually run this, we're going to run yarn, art hat test. And
-
+we're going to run yarn, art hat test. 
+我们需要执行 "yarn hardhat test"
 
 9596
 09:35:04,570 --> 09:35:07,840
-we see we get an output that looks like this should start
-
+And we see we get an output that looks like this 
+我们可以看到输出的结果如下
 
 9597
 09:35:07,840 --> 09:35:10,870
-with favorite number of zero, and it's indeed passing. You'll
-
+should start with favorite number of zero, and it's indeed passing. 
+"favorite number" 应从 0 开始（即刚才在 it() 中输入的那句话），并且它通过了测试
 
 9598
 09:35:10,870 --> 09:35:14,620
-notice that if I were to change this to one, and this wasn't
-
+You'll notice that if I were to change this to one, 
+你会发现，如果我把这里改成 "1"
 
 9599
 09:35:14,620 --> 09:35:18,220
-correct, it would break and it would say art Pass or not
-
+and this wasn't correct, it would break 
+它是不正确的，会报错
 
 9600
 09:35:18,220 --> 09:35:23,890
-passing assertion error expected zero to equal one. It expected
-
+and it would say art Pass or not passing 
+并且它会显示我们的测试没有通过
 
 9601
 09:35:23,920 --> 09:35:29,260
-zero to equal one, which is not what we want. We want zero to
-
+assertion error expected zero to equal one. 
+断言错误：预期 0 等于 1("AssertionError：expected '0' to equal '1'")
 
 9602
 09:35:29,260 --> 09:35:33,430
-equal zero. So let's run this again. Tada should start with
-
+It expected zero to equal one, which is not what we want. 
+它期望 0 等于 1，这不是我们想要的
 
 9603
 09:35:33,430 --> 09:35:36,640
-favorite number zero, and it's passing. Alright, fantastic. So
-
+We want zero to equal zero. So let's run this again. 
+我们想要的是 0 等于 0，让我们再运行一次
 
 9604
 09:35:36,640 --> 09:35:40,030
-that's how we wrote one of our tests, let's write one more test
-
+Tada should start with favorite number zero, and it's passing. 
+看吧，"favorite number" 应从 0 开始，并且已经通过了
 
 9605
 09:35:40,060 --> 09:35:43,060
-just to make sure that things are good. So let's say it should
-
+Alright, fantastic. So that's how we wrote one of our tests, 
+非常好，这就是我们要编写的测试之一
 
 9606
 09:35:43,060 --> 09:35:48,490
-update when we call store, because when we call the store
-
+let's write one more test just to make sure that things are good. 
+让我们再写一个测试以确保一切安好
 
 9607
 09:35:48,490 --> 09:35:51,850
-function, we want our favorite number to update. And we'll make
-
+So let's say it should update when we call store, 
+这次我们说 "Should update when we call store"
 
 9608
 09:35:51,850 --> 09:35:56,560
-this an async function as well. And let's add our stuff in here.
-
+because when we call the store function, we want our favorite number to update. 
+因为当我们调用 "store" 函数时，我们希望 "favorite number" 会更新
 
 9609
 09:35:56,770 --> 09:36:01,360
-So we'll say const. Expected Value equals seven, we're
-
+And we'll make this an async function as well. And let's add our stuff in here. 
+让我们把这个函数也设置为异步函数，并在这里添加我们的代码
 
 9610
 09:36:01,360 --> 09:36:04,990
-expecting that when we call store it updates to seven. Now
-
+So we'll say const. Expected Value equals seven, 
+现在我们可以说 "const expectedValue = "7""
 
 9611
 09:36:05,020 --> 09:36:11,620
-we can say const. Transaction response equals await simple
-
+we're expecting that when we call store it updates to seven. 
+我们期望在调用 "store" 函数时它会更新为 7
 
 9612
 09:36:11,620 --> 09:36:16,840
-storage dot store. And we can even just pass it the expected
-
+Now we can say const. Transaction response equals await simple storage dot store. 
+现在我们输入 "const transactionResponse = await simpleStorage.store"
 
 9613
 09:36:16,840 --> 09:36:21,670
-value here. And then we'll do a weight transaction response that
-
+And we can even just pass it the expected value here. 
+我们甚至可以直接把 "expectedValue" 传给这里
 
 9614
 09:36:21,670 --> 09:36:25,240
-weight one. Now let's get the current value. So we'll say
-
+And then we'll do a weight transaction response that weight one. 
+然后我们执行 "await transactionResponse.wait(1)"
 
 9615
 09:36:25,240 --> 09:36:31,030
-const. Current Value equals weight, simple storage,
-
+Now let's get the current value. 
+现在让我们获取当前值
 
 9616
 09:36:32,080 --> 09:36:37,750
-retrieve. And now we're going to assert dot equal current
-
+So we'll say const. Current Value equals weight, simple storage, retrieve. 
+"const currentValue = await simpleStorage.retrieve"
 
 9617
 09:36:37,750 --> 09:36:44,140
-value.to string, comma expected value. And now we can run all
-
+And now we're going to assert dot equal current value.to string, comma expected value. 
+现在我们执行 "assert.equal(currentValue.toString, expectedValue)"
 
 9618
 09:36:44,140 --> 09:36:47,440
-these tests by running yarn Hardhead test. And you'll see we
-
+And now we can run all these tests by running yarn Hardhead test. 
+现在我们可以通过运行 "yarn hardhat test" 来运行所有这些测试
 
 9619
 09:36:47,440 --> 09:36:51,700
-ran both of these tests. And now if I have 10,000 tests, and I'm
-
+And you'll see we ran both of these tests. 
+你会看到我们运行了这两个测试
 
 9620
 09:36:51,700 --> 09:36:55,000
-only finagling with one test, I can actually just run one test
-
+And now if I have 10,000 tests, and I'm only finagling with one test, 
+现在如果我有 10000 个测试，但我只想运行其中的一个
 
 9621
 09:36:55,000 --> 09:37:01,570
-by running yarn, art app, test, dash dash grep. And I can search
-
+I can actually just run one test by running yarn, art app, test, dash dash grep. 
+我可以这样做 "yarn hardhat test --grep"
 
 9622
 09:37:01,600 --> 09:37:06,160
-for any keywords in any of the text here. So I'm going to grep
-
+And I can search for any keywords in any of the text here. 
+我可以搜索这里的任何文本中的任何关键词
 
 9623
 09:37:06,160 --> 09:37:10,660
-for the store function. Because the store keyword isn't in this
-
+So I'm going to grep for the store function. 
+我将在这里搜索 "store" 函数
 
 9624
 09:37:10,660 --> 09:37:14,740
-tax for this, it, it's only in the text for this it. So if I do
-
+Because the store keyword isn't in this tax for this, it, it's only in the text for this it. 
+因为 "store" 关键词不在这个文本里出现，它只在这个文本里出现
 
 9625
 09:37:14,740 --> 09:37:18,550
-grep store, it should only run our second test, which does
-
+So if I do grep store, it should only run our second test, 
+因此如果我运行 "grep store"，它应该只会运行我们的第二个测试
 
 9626
 09:37:18,550 --> 09:37:22,840
-indeed, one other way we can run only specific tests is with the
-
+which does indeed, 
+它确实做到了
 
 9627
 09:37:22,840 --> 09:37:28,030
-only keyword. So we can type it dot only like that. And then we
-
+one other way we can run only specific tests is with the only keyword. 
+另一种只运行特定测试的方法是使用 "only" 关键字
 
 9628
 09:37:28,030 --> 09:37:33,430
-can run yarn, art hat test. And it should only run, this should
-
+So we can type it dot only like that. And then we can run yarn, art hat test. 
+我们可以输入 "it.only" 就像这样，然后运行 "yarn hardhat test"
 
 9629
 09:37:33,490 --> 09:37:36,820
-update when we call store. And it does indeed, then we'll go
-
+And it should only run, this should update when we call store. 
+它应该只会运行这个 "Should update when we call store"
 
 9630
 09:37:36,820 --> 09:37:40,750
-ahead and delete this save, run again, and it should run all
-
+And it does indeed, 
+确实如此
 
 9631
 09:37:40,750 --> 09:37:45,250
-too. Fantastic. Now the other way you'll see these tests
-
+then we'll go ahead and delete this save, run again, and it should run all too. Fantastic. 
+我们删除这个，保存，再次运行，它应该会再次运行所有测试，太棒了
 
 9632
 09:37:45,250 --> 09:37:49,210
-written is with instead of assert, it'll use the expect
-
+Now the other way you'll see these tests written is with instead of assert, it'll use the expect keyword. 
+你可能会见到另一种编写测试的方式，使用的不是 "assert" 而是 "expect" 关键字
 
 9633
 09:37:49,210 --> 09:37:52,600
-keyword. So you'll see something like expect current
-
+So you'll see something like expect current value.to string.to dot equal expected value, 
+你会见到这样的语句 "expect(currentValue.toString()).to.equal(expectedValue)"
 
 9634
 09:37:52,600 --> 09:37:59,260
-value.to string.to dot equal expected value, the two of these
-
+the two of these lines do exactly the same thing. 
+这两行代码做的是完全相同的事情
 
 9635
 09:37:59,290 --> 09:38:03,520
-lines do exactly the same thing. And it's sort of up to you on
-
+And it's sort of up to you on which one you want to use. 
+你可以根据自己的偏好来选择使用哪一种
 
 9636
 09:38:03,520 --> 09:38:06,160
-which one you want to use. And that's all we're going to do for
-
+And that's all we're going to do for our testing. Now. 
+这就是我们现在所要做的所有测试了
 
 9637
 09:38:06,160 --> 09:38:12,280
-our testing. Now. This is fantastic, great job. 
+This is fantastic, great job. 
+太棒了，干得不错
