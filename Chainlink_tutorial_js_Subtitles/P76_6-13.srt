@@ -1,0 +1,693 @@
+9637
+09:38:06,160 --> 09:38:12,280
+Now that we have some tests, 
+现在我们有了这些测试
+
+9638
+09:38:12,280 --> 09:38:15,940
+we can actually start testing to see how much gas each one of our functions actually costs. 
+就可以开始测试一下每个函数实际要花费多少 Gas 了
+
+9639
+09:38:15,940 --> 09:38:19,660
+One of the most popular extensions for hard hat is the hard hat gas reporter. 
+Hardhat 最受欢迎的扩展之一是 "hardhat-gas-reporter"
+
+9640
+09:38:19,660 --> 09:38:23,230
+This is an extension that gets attached to all of our tests, 
+这是一个可以附加在我们所有测试上的扩展
+
+9641
+09:38:23,230 --> 09:38:27,160
+and automatically gives us an output that looks like this, 
+并自动提供类似这样的输出
+
+9642
+09:38:27,160 --> 09:38:30,130
+that tells us approximately how much gas each one of our functions cost. 
+以告诉我们每个函数大约消耗了多少 Gas
+
+9643
+09:38:30,130 --> 09:38:32,950
+We scroll down in here, we can read the instructions on how to actually install this 
+
+
+9644
+09:38:32,950 --> 09:38:36,010
+npm install Hardhead gas reporter 
+
+
+9645
+09:38:36,010 --> 09:38:38,620
+which we're going to use with yarn. 
+
+
+9646
+09:38:38,620 --> 09:38:41,830
+So we're gonna say yarn, add hard hat, gas reporter, dash dash Dev.
+
+
+9647
+09:38:41,860 --> 09:38:49,510
+And now that that package is installed, 
+
+
+9648
+09:38:49,510 --> 09:38:50,440
+we can go over to our config and add some parameters in here 
+
+
+9649
+09:38:52,930 --> 09:38:56,890
+
+
+
+9650
+09:38:57,040 --> 09:39:01,480
+so that we can work with
+
+
+9651
+09:39:01,480 --> 09:39:04,750
+this gas pit. But our neath our ether scan section, we're going
+
+
+9652
+09:39:04,750 --> 09:39:09,430
+to add a new section called gas reporter. To have it run,
+
+
+9653
+09:39:09,460 --> 09:39:12,940
+whenever we run our tests we're going to do enabled is going to
+
+
+9654
+09:39:12,940 --> 09:39:17,260
+be true. And then up at the top, we can add it by adding require
+
+
+9655
+09:39:18,250 --> 09:39:23,470
+hardhat gas reporter. Now that we have it in here, we can do
+
+
+9656
+09:39:23,470 --> 09:39:27,160
+yarn hardhat test, and after we run our tests, it'll
+
+
+9657
+09:39:27,190 --> 09:39:32,380
+automatically run this gas reporter. So we see our tests go
+
+
+9658
+09:39:32,380 --> 09:39:35,590
+ahead and run. And then we get this output that looks like this
+
+
+9659
+09:39:35,620 --> 09:39:39,610
+that tells us how approximately how much our contracts and
+
+
+9660
+09:39:39,610 --> 09:39:42,850
+methods cost. So our store function looks like It costs
+
+
+9661
+09:39:42,880 --> 09:39:45,910
+approximately this much gas and our simple storage costs
+
+
+9662
+09:39:45,940 --> 09:39:49,390
+approximately this much gas. This is incredibly helpful for
+
+
+9663
+09:39:49,390 --> 09:39:53,530
+figuring out how to optimize our gas as best as possible. Now I
+
+
+9664
+09:39:53,530 --> 09:39:56,650
+usually like to take it a step further though. Having the gas
+
+
+9665
+09:39:56,650 --> 09:40:00,460
+output it like that is nice, but we can make it even better. I
+
+
+9666
+09:40:00,460 --> 09:40:05,440
+like to output it to a file by doing output file. Yes, report
+
+
+9667
+09:40:05,470 --> 09:40:10,120
+dot txt and then my dot get ignore like to add it in here,
+
+
+9668
+09:40:10,210 --> 09:40:15,010
+but doing gas report dot txt sentence it's not really
+
+
+9669
+09:40:15,010 --> 09:40:18,190
+important for the gas report to get pushed up to GitHub. Do no
+
+
+9670
+09:40:18,190 --> 09:40:22,480
+colors is true. The reason we add this is because when we
+
+
+9671
+09:40:22,480 --> 09:40:26,890
+output to a file, the colors can get messed up basically. And
+
+
+9672
+09:40:26,890 --> 09:40:29,500
+then the biggest addition we could do is we can add a
+
+
+9673
+09:40:29,500 --> 09:40:34,840
+currency in here. So that we can get the cost of each function in
+
+
+9674
+09:40:34,840 --> 09:40:38,740
+USD for a blockchain like Aetherium. Now in order to get a
+
+
+9675
+09:40:38,740 --> 09:40:43,450
+currency here, we actually need to get an API key from corn
+
+
+9676
+09:40:43,450 --> 09:40:46,120
+market cap, just like we did with ether scan, you can go to
+
+
+9677
+09:40:46,120 --> 09:40:52,240
+coin market cap, corn market cap API, get your API key now, and
+
+
+9678
+09:40:52,240 --> 09:41:01,240
+we'll go ahead and sign up. Choose a basic plan. We'll agree
+
+
+9679
+09:41:01,660 --> 09:41:05,110
+and create my account, we'll get an email verification. And we'll
+
+
+9680
+09:41:05,110 --> 09:41:10,240
+go ahead and verify. Now in the coin market cap dashboard, we
+
+
+9681
+09:41:10,240 --> 09:41:14,050
+can copy our key. And yep, you guessed it exactly what we're
+
+
+9682
+09:41:14,050 --> 09:41:16,330
+going to do with this key, we're going to drop it into our dot
+
+
+9683
+09:41:16,330 --> 09:41:22,840
+env file, or say coin market cap, API key equals and then
+
+
+9684
+09:41:22,840 --> 09:41:25,750
+paste it in there like that. Now that we have our corn market cap
+
+
+9685
+09:41:25,780 --> 09:41:30,460
+API key in here, we can go back to our header dot config and add
+
+
+9686
+09:41:30,460 --> 09:41:33,490
+it in this corn market cap parameter. We're gonna do the
+
+
+9687
+09:41:33,490 --> 09:41:38,050
+exact same way we did above, we'll do const, coin, market
+
+
+9688
+09:41:38,050 --> 09:41:46,210
+cap, API key equals process dot EMV, that coin market cap API
+
+
+9689
+09:41:46,210 --> 09:41:49,930
+key, and then we'll take this sticking in here. So what this
+
+
+9690
+09:41:49,930 --> 09:41:52,930
+is going to do is actually going to make an API call to corn
+
+
+9691
+09:41:52,930 --> 09:41:56,680
+market cap, whenever we run our gas reporter. This is why
+
+
+9692
+09:41:56,710 --> 09:41:59,290
+sometimes you'll see me comment this out and uncomment it
+
+
+9693
+09:41:59,320 --> 09:42:02,440
+because I don't always want it to make this API calls. But now
+
+
+9694
+09:42:02,440 --> 09:42:05,410
+what we can do now that it's enabled, we have an output file,
+
+
+9695
+09:42:05,770 --> 09:42:08,740
+we can see the currency and we have our API key, all we can do
+
+
+9696
+09:42:08,740 --> 09:42:14,650
+is run yarn hardhat test. And after all our tests pass, we're
+
+
+9697
+09:42:14,650 --> 09:42:18,520
+going to see a gas report.tx T that we can go ahead and read
+
+
+9698
+09:42:18,520 --> 09:42:23,290
+from which has that gas report. And now it actually has the USD
+
+
+9699
+09:42:23,290 --> 09:42:26,200
+price of each one of these transactions, it looks like at
+
+
+9700
+09:42:26,200 --> 09:42:30,670
+current prices, with Aetherium being $3,000 per eath, and a gas
+
+
+9701
+09:42:30,670 --> 09:42:34,930
+price of 43 Gwei, the store function would cost $6. And the
+
+
+9702
+09:42:34,930 --> 09:42:38,440
+simple storage function would cost $64. The current the
+
+
+9703
+09:42:38,440 --> 09:42:40,540
+Hardhead gas reporter actually comes with some different
+
+
+9704
+09:42:40,540 --> 09:42:42,490
+options, though, if you're going to be deploying to different
+
+
+9705
+09:42:42,490 --> 09:42:46,180
+network, for example, with binance, Polygon, Avalanche or
+
+
+9706
+09:42:46,180 --> 09:42:49,630
+hecho. For example, let's say we wanted to deploy the polygon,
+
+
+9707
+09:42:49,900 --> 09:42:53,080
+let's see how much deploying the polygon would cost well in our
+
+
+9708
+09:42:53,080 --> 09:42:55,450
+WMV UHD ad token,
+
+
+9709
+09:42:57,790 --> 09:43:03,580
+Matic And now we'd rerun this test. And if we look at our gas
+
+
+9710
+09:43:03,580 --> 09:43:07,570
+report that takes T will now see the gas price of polygon right
+
+
+9711
+09:43:07,570 --> 09:43:12,100
+now is around 37 Gray per gas. And the cost of Matic is 147
+
+
+9712
+09:43:12,190 --> 09:43:15,760
+automatic and USD. Now we can see the cost of calling the
+
+
+9713
+09:43:15,760 --> 09:43:20,440
+simple storage method is going to be $0.00. Now this of course
+
+
+9714
+09:43:20,440 --> 09:43:23,320
+is rounded down, but it's going to be really, really cheap to
+
+
+9715
+09:43:23,320 --> 09:43:26,890
+call store versus deploying the contract is going to cost three
+
+
+9716
+09:43:26,890 --> 09:43:30,640
+cents, I make it a habit to select false for my gas reporter
+
+
+9717
+09:43:30,850 --> 09:43:32,830
+whenever I don't want to actually work with the gas here.
+
+
+9718
+09:43:33,070 --> 09:43:36,160
+Awesome. Now sometimes when we're working with our code, if
+
+
+9719
+09:43:36,160 --> 09:43:39,550
+we don't have these environment variables specified Hardhead
+
+
+9720
+09:43:39,580 --> 09:43:43,360
+might get a little bit upset with us. So oftentimes, I'll add
+
+
+9721
+09:43:43,390 --> 09:43:47,440
+some code in here. So that these variables are always populated,
+
+
+9722
+09:43:47,470 --> 09:43:52,870
+because we didn't specify our rink prpc URL, ring P RPC URL is
+
+
+9723
+09:43:52,870 --> 09:43:56,140
+going to be undefined. And that might throw some errors blow. So
+
+
+9724
+09:43:56,140 --> 09:43:59,350
+oftentimes, what we'll do is I'll add an or parameter here,
+
+
+9725
+09:43:59,620 --> 09:44:03,610
+these double pipes mean or, and in JavaScript, if we say some
+
+
+9726
+09:44:03,610 --> 09:44:07,000
+variable equals something or something else, what is really
+
+
+9727
+09:44:07,000 --> 09:44:10,690
+happening is we're gonna say, okay, rink, the RPC URL is going
+
+
+9728
+09:44:10,690 --> 09:44:15,220
+to be equal to process dot E and V dot rink, the RPC URL. But if
+
+
+9729
+09:44:15,220 --> 09:44:18,640
+this rink, the RPC URL doesn't exist, it's going to be whatever
+
+
+9730
+09:44:18,640 --> 09:44:23,080
+else is over here. And I might write something like HTTPS eath
+
+
+9731
+09:44:23,080 --> 09:44:28,360
+Rinkeby. Example, or something like this, just so that I don't
+
+
+9732
+09:44:28,360 --> 09:44:31,270
+make hard hat mad if I don't use rank B. And we can do something
+
+
+9733
+09:44:31,270 --> 09:44:36,610
+like that for all these. So you'll see this syntax,
+
+
+9734
+09:44:36,640 --> 09:44:42,700
+oftentimes in a lot of code setups. Now the last thing that
+
+
+9735
+09:44:42,700 --> 09:44:45,340
+I'm going to show you before going into the TypeScript
+
+
+9736
+09:44:45,340 --> 09:44:48,820
+edition of This is test coverage. And as we progressed
+
+
+9737
+09:44:48,820 --> 09:44:51,460
+to this course, I'm going to show you more and more tools
+
+
+9738
+09:44:51,460 --> 09:44:54,370
+that you can use to make sure that our simple storage contract
+
+
+9739
+09:44:54,400 --> 09:44:58,390
+is safe and secure. And we take all the steps we can to prevent
+
+
+9740
+09:44:58,390 --> 09:45:01,180
+any hacks from happening if we deploy in real life. One of
+
+
+9741
+09:45:01,180 --> 09:45:04,210
+those tools is a tool called solidity coverage. And this is
+
+
+9742
+09:45:04,210 --> 09:45:07,420
+also a hardhat plugin that we can use for our code. solidity
+
+
+9743
+09:45:07,420 --> 09:45:10,480
+coverage is a project that goes through all of our tests and
+
+
+9744
+09:45:10,480 --> 09:45:15,550
+sees exactly how many lines of code in our sample store dot Sol
+
+
+9745
+09:45:15,580 --> 09:45:18,580
+are actually covered. And this can be a Good tip off. If we
+
+
+9746
+09:45:18,580 --> 09:45:21,640
+don't cover some line of code, solidity coverage will say, Hey,
+
+
+9747
+09:45:21,670 --> 09:45:23,830
+you don't have any tests for this line, maybe you should
+
+
+9748
+09:45:23,830 --> 09:45:26,320
+write some tests for it. We can add solidity coverage the same
+
+
+9749
+09:45:26,320 --> 09:45:29,770
+way we've been adding all of our packages. npm install dash, just
+
+
+9750
+09:45:29,770 --> 09:45:33,880
+save Dev, or since we're using yarn, yarn, add dash dash Dev,
+
+
+9751
+09:45:34,090 --> 09:45:41,170
+solidity coverage. And we can then add this to our config, the
+
+
+9752
+09:45:41,170 --> 09:45:43,900
+same way we've been adding everything to our config, go to
+
+
+9753
+09:45:43,900 --> 09:45:48,610
+our config, and we'll write require solidity coverage. And
+
+
+9754
+09:45:48,610 --> 09:45:50,890
+there's some configuration pieces we can add down here
+
+
+9755
+09:45:50,890 --> 09:45:53,530
+below for this, but we're just going to use the default now we
+
+
+9756
+09:45:53,530 --> 09:45:58,870
+can do is run yarn, RT hat coverage. And this is going to
+
+
+9757
+09:45:58,870 --> 09:46:01,750
+go through our tests and print out a file that looks like this,
+
+
+9758
+09:46:01,930 --> 09:46:04,780
+we'll also get a file called coverage dot JSON, which is
+
+
+9759
+09:46:04,780 --> 09:46:08,500
+basically this chart broken down a little bit more often put my
+
+
+9760
+09:46:08,740 --> 09:46:12,040
+coverage dot JSON in my dot get ignore. And I know we haven't
+
+
+9761
+09:46:12,040 --> 09:46:15,250
+actually seen dot Git ignore, do what it's supposed to do. But we
+
+
+9762
+09:46:15,250 --> 09:46:20,500
+will soon we can see here that about 50% of the code 50% of our
+
+
+9763
+09:46:20,500 --> 09:46:24,250
+statements in simple storage dot soul are covered. About two
+
+
+9764
+09:46:24,250 --> 09:46:27,700
+thirds of our functions are and 50% of the lines, It'll even
+
+
+9765
+09:46:27,700 --> 09:46:30,940
+give us exactly what lines aren't tested right now, which
+
+
+9766
+09:46:30,940 --> 09:46:34,750
+we can see exactly 31 and 32 of simple swords, outsole aren't
+
+
+9767
+09:46:34,750 --> 09:46:38,560
+covered, which makes a lot of sense, because 31 to 32 is this
+
+
+9768
+09:46:38,590 --> 09:46:41,650
+Add Person function, which we didn't call and we didn't add to
+
+
+9769
+09:46:41,650 --> 09:46:45,310
+our tests. If you want to take this time to pause and try to
+
+
+9770
+09:46:45,310 --> 09:46:48,580
+make this solidity coverage be 100% across the board, by
+
+
+9771
+09:46:48,580 --> 09:46:51,370
+writing some more tests, I highly recommend you do so it'll
+
+
+9772
+09:46:51,370 --> 09:46:54,370
+be a great learning exercise. We'll also add the coverage
+
+
+9773
+09:46:54,400 --> 09:46:57,460
+folder. So covered adjacent and the coverage folder, which
+
+
+9774
+09:46:57,490 --> 09:47:00,550
+again, I'll explain what the dot get ignore folder does a little
+
+
+9775
+09:47:00,550 --> 09:47:06,040
+bit later. 
