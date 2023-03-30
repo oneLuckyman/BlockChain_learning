@@ -31,126 +31,126 @@ that tells us approximately how much gas each one of our functions cost.
 9643
 09:38:30,130 --> 09:38:32,950
 We scroll down in here, we can read the instructions on how to actually install this 
-
+如果我们向下滑动到这里，可以阅读到有关如何安装这个扩展的说明
 
 9644
 09:38:32,950 --> 09:38:36,010
 npm install Hardhead gas reporter 
-
+"npm install hardhat-gas-reporter"
 
 9645
 09:38:36,010 --> 09:38:38,620
 which we're going to use with yarn. 
-
+但我们会使用 yarn 来安装
 
 9646
 09:38:38,620 --> 09:38:41,830
 So we're gonna say yarn, add hard hat, gas reporter, dash dash Dev.
-
+所以我们运行 "yarn add hardhat-gas-reporter --dev"
 
 9647
 09:38:41,860 --> 09:38:49,510
 And now that that package is installed, 
-
+现在这个包已经安装好了
 
 9648
 09:38:49,510 --> 09:38:50,440
 we can go over to our config and add some parameters in here 
-
+我们可以转到 "config" 文件中并在这里添加一些参数
 
 9649
 09:38:52,930 --> 09:38:56,890
-
-
+so that we can work with this gas pit. 
+这样我们就可以使用这个 gas reporter 了
 
 9650
 09:38:57,040 --> 09:39:01,480
-so that we can work with
-
+But our neath our ether scan section, 
+就在我们的 "etherscan" 部分下面
 
 9651
 09:39:01,480 --> 09:39:04,750
-this gas pit. But our neath our ether scan section, we're going
-
+we're going to add a new section called gas reporter. 
+我们要添加一个新的部分名为 "gasReporter"
 
 9652
 09:39:04,750 --> 09:39:09,430
-to add a new section called gas reporter. To have it run,
-
+To have it run, whenever we run our tests 
+为了让它能在我们运行测试时运行
 
 9653
 09:39:09,460 --> 09:39:12,940
-whenever we run our tests we're going to do enabled is going to
-
+we're going to do enabled is going to be true. 
+我们要写下 "enabled" 为 true
 
 9654
 09:39:12,940 --> 09:39:17,260
-be true. And then up at the top, we can add it by adding require
-
+And then up at the top, we can add it by adding require hardhat gas reporter. 
+然后在顶部，我们可以通过添加 "require("hardhat-gas-reporter")" 来添加它
 
 9655
 09:39:18,250 --> 09:39:23,470
-hardhat gas reporter. Now that we have it in here, we can do
-
+Now that we have it in here, we can do yarn hardhat test, 
+现在我们已经有了这个包，就可以运行 "yarn hardhat test" 了
 
 9656
 09:39:23,470 --> 09:39:27,160
-yarn hardhat test, and after we run our tests, it'll
-
+and after we run our tests, it'll automatically run this gas reporter. 
+并且在运行完测试之后，它会自动运行这个 "gas reporter"
 
 9657
 09:39:27,190 --> 09:39:32,380
-automatically run this gas reporter. So we see our tests go
-
+So we see our tests go ahead and run. 
+现在我们看到我们的测试运行好了
 
 9658
 09:39:32,380 --> 09:39:35,590
-ahead and run. And then we get this output that looks like this
-
+And then we get this output that looks like this that tells us 
+并且我们获得了这样的输出，它告诉我们
 
 9659
 09:39:35,620 --> 09:39:39,610
-that tells us how approximately how much our contracts and
-
+how approximately how much our contracts and methods cost. 
+我们的合约和方法大约消耗了多少 gas
 
 9660
 09:39:39,610 --> 09:39:42,850
-methods cost. So our store function looks like It costs
-
+So our store function looks like It costs approximately this much gas 
+所以我们的 "store" 函数看起来大约需要这么多 gas
 
 9661
 09:39:42,880 --> 09:39:45,910
-approximately this much gas and our simple storage costs
-
+and our simple storage costs approximately this much gas. 
+以及我们的 "SimpleStorage" 大约需要这么多 gas
 
 9662
 09:39:45,940 --> 09:39:49,390
-approximately this much gas. This is incredibly helpful for
+This is incredibly helpful for figuring out 
 
 
 9663
 09:39:49,390 --> 09:39:53,530
-figuring out how to optimize our gas as best as possible. Now I
+how to optimize our gas as best as possible. 
 
 
 9664
 09:39:53,530 --> 09:39:56,650
-usually like to take it a step further though. Having the gas
+Now I usually like to take it a step further though. 
 
 
 9665
 09:39:56,650 --> 09:40:00,460
-output it like that is nice, but we can make it even better. I
+Having the gas output it like that is nice, but we can make it even better. 
 
 
 9666
 09:40:00,460 --> 09:40:05,440
-like to output it to a file by doing output file. Yes, report
+I like to output it to a file by doing output file. Yes, report dot txt 
 
 
 9667
 09:40:05,470 --> 09:40:10,120
-dot txt and then my dot get ignore like to add it in here,
+and then my dot get ignore like to add it in here,
 
 
 9668
