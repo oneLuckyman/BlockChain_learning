@@ -526,167 +526,154 @@ And this is also a hardhat plugin that we can use for our code.
 9742
 09:45:04,210 --> 09:45:07,420
 solidity coverage is a project that goes through all of our tests 
-"solidity-coverage" 是这样一个项目，它通过查看我们的测试
+"solidity-coverage" 是这样一个项目，它通过遍历我们的测试
 
 9743
 09:45:07,420 --> 09:45:10,480
 and sees exactly how many lines of code in our sample store dot Sol are actually covered. 
-以判断我们的 "SimpleStorage.sol" 有多少代码被测试覆盖
+以查看我们的 "SimpleStorage.sol" 有多少代码被测试所实际覆盖
 
 9744
 09:45:10,480 --> 09:45:15,550
-And this can be a Good tip off. If we don't cover some line of code, 
-
+And this can be a Good tip off. 
+这是一个很好的提示
 
 9745
 09:45:15,580 --> 09:45:18,580
-solidity coverage will say, Hey, you don't have any tests for this line, 
-
+If we don't cover some line of code, solidity coverage will say, 
+如果我们的某些代码没有被测试覆盖，"solidity-coverage" 就会告诉我们，
 
 9746
 09:45:18,580 --> 09:45:21,640
-maybe you should write some tests for it. 
-
+Hey, you don't have any tests for this line, maybe you should write some tests for it. 
+嘿，你没有为这一行编写任何测试，也许你应该写一下
 
 9747
 09:45:21,670 --> 09:45:23,830
 We can add solidity coverage the same way we've been adding all of our packages. 
-
+我们可以添加一下 "solidity-coverage"，和我们添加其它包的方法完全一样
 
 9748
 09:45:23,830 --> 09:45:26,320
 npm install dash, just save Dev, or since we're using yarn, 
-
+"npm install --save-dev"，或是我们要使用的 "yarn"
 
 9749
 09:45:26,320 --> 09:45:29,770
 yarn, add dash dash Dev, solidity coverage. 
-
+"yarn add --dev solidity-coverage"
 
 9750
 09:45:29,770 --> 09:45:33,880
 And we can then add this to our config, 
-
+然后我们就可以把它添加进我们的 "config" 中
 
 9751
 09:45:34,090 --> 09:45:41,170
 the same way we've been adding everything to our config, 
-
+就和我们把其它包添加进 "config" 一样
 
 9752
 09:45:41,170 --> 09:45:43,900
 go to our config, and we'll write require solidity coverage. 
-
+进入我们的 "config" 文件，写下 "require("solidity-coverage")"
 
 9753
 09:45:43,900 --> 09:45:48,610
 And there's some configuration pieces we can add down here below for this, 
-
+我们还可以添加一些配置选项到这个下面
 
 9754
 09:45:48,610 --> 09:45:50,890
 but we're just going to use the default 
-
+但我们只使用默认配置就行了
 
 9755
 09:45:50,890 --> 09:45:53,530
 now we can do is run yarn, RT hat coverage. 
-
+现在我们就可以运行 "yarn hardhat coverage"
 
 9756
 09:45:53,530 --> 09:45:58,870
 And this is going to go through our tests and print out a file that looks like this, 
-
+它会遍历我们的测试并打印一个看起来像这样的文件
 
 9757
 09:45:58,870 --> 09:46:01,750
 we'll also get a file called coverage dot JSON, 
-
+我们同时会获取一个名为 "coverage.json" 的文件
 
 9758
 09:46:01,930 --> 09:46:04,780
 which is basically this chart broken down a little bit more 
-
+它基本上就是这张图表的拆分形式
 
 9759
 09:46:04,780 --> 09:46:08,500
 often put my coverage dot JSON in my dot get ignore. 
-
+通常我会把 "coverage.json" 放到我的 ".gitignore" 中
 
 9760
 09:46:08,740 --> 09:46:12,040
 And I know we haven't actually seen dot Git ignore, do what it's supposed to do. But we will soon 
-
+我知道我们实际上还没有看到 ".gitignore" 文件发挥作用，但是很快就能看到
 
 9761
 09:46:12,040 --> 09:46:15,250
 we can see here that about 50% of the code 50% of our statements in simple storage dot soul are covered. 
-
+我们可以看到 "SimpleStorage.sol" 中大约有 50% 的代码语句被覆盖
 
 9762
 09:46:15,250 --> 09:46:20,500
 About two thirds of our functions are and 50% of the lines, 
-
+其中包含大约三分之二的函数和 50% 的代码行
 
 9763
 09:46:20,500 --> 09:46:24,250
 It'll even give us exactly what lines aren't tested right now, 
-
+它甚至会告诉我们具体是哪些行还没有被测试
 
 9764
 09:46:24,250 --> 09:46:27,700
 which we can see exactly 31 and 32 of simple swords, outsole aren't covered, 
-
+我们可以看到是 "SimpleStorage.sol" 的第 31 和 32 行还没有被覆盖
 
 9765
 09:46:27,700 --> 09:46:30,940
 which makes a lot of sense, because 31 to 32 is this Add Person function, 
-
+说的很有道理，因为 31 和 32 行是这个 "addPersion" 函数
 
 9766
 09:46:30,940 --> 09:46:34,750
 which we didn't call and we didn't add to our tests. 
-
+我们既没有调用它也没有把它添加进我们的测试中
 
 9767
 09:46:34,750 --> 09:46:38,560
 If you want to take this time to pause 
-
+如果你打算花些时间暂停下来
 
 9768
 09:46:38,590 --> 09:46:41,650
 and try to make this solidity coverage be 100% across the board, by writing some more tests, 
-
+并尝试通过编写更多的测试以使 "solidity-coverage" 的覆盖率达到 100%
 
 9769
 09:46:41,650 --> 09:46:45,310
 I highly recommend you do so it'll be a great learning exercise. 
-
+那我强烈建议你试一试，这会是一个很好的学习练习
 
 9770
 09:46:45,310 --> 09:46:48,580
 We'll also add the coverage folder. 
-
+我们要把 "coverage" 文件夹也添加进来
 
 9771
 09:46:48,580 --> 09:46:51,370
 So covered adjacent and the coverage folder, 
-
+所以就是 "coverage.json" 以及 "coverage" 文件夹
 
 9772
 09:46:51,370 --> 09:46:54,370
 which again, I'll explain what the dot get ignore folder does a little bit later. 
-
-
-9773
-09:46:54,400 --> 09:46:57,460
-
-
-
-9774
-09:46:57,490 --> 09:47:00,550
-
-
-
-9775
-09:47:00,550 --> 09:47:06,040
+再次说明一下，我稍后就会解释 ".gitignore" 文件的作用
