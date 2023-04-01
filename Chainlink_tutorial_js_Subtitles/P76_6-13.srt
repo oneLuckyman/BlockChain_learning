@@ -396,298 +396,297 @@ versus deploying the contract is going to cost three cents,
 9716
 09:43:26,890 --> 09:43:30,640
 I make it a habit to select false for my gas reporter
-
+我习惯于把我的 "gasReporter" 选择为 false
 
 9717
 09:43:30,850 --> 09:43:32,830
 whenever I don't want to actually work with the gas here.
-
+只有我想处理 gas 的时候才打开
 
 9718
 09:43:33,070 --> 09:43:36,160
-Awesome. Now sometimes when we're working with our code, if
-
+Awesome. Now sometimes when we're working with our code, 
+好的，现在当我们有时候处理代码时
 
 9719
 09:43:36,160 --> 09:43:39,550
-we don't have these environment variables specified Hardhead
-
+if we don't have these environment variables specified 
+如果我们没有指定好这些环境变量
 
 9720
 09:43:39,580 --> 09:43:43,360
-might get a little bit upset with us. So oftentimes, I'll add
-
+Hardhead might get a little bit upset with us. 
+Hardhat 就可能会比较“不爽”
 
 9721
 09:43:43,390 --> 09:43:47,440
-some code in here. So that these variables are always populated,
-
+So oftentimes, I'll add some code in here. So that these variables are always populated, 
+因此，我经常会在这里添加一些代码，以使这些变量始终处于被填充的状态
 
 9722
 09:43:47,470 --> 09:43:52,870
-because we didn't specify our rink prpc URL, ring P RPC URL is
-
+because we didn't specify our rink prpc URL, ring P RPC URL is going to be undefined. 
+因为如果我们没有指定 "Rinkeby RPC URL"，"RINKEBY_RPC_URL" 就会变成未定义状态
 
 9723
 09:43:52,870 --> 09:43:56,140
-going to be undefined. And that might throw some errors blow. So
-
+And that might throw some errors blow. 
+这就有可能导致下面出现报错
 
 9724
 09:43:56,140 --> 09:43:59,350
-oftentimes, what we'll do is I'll add an or parameter here,
-
+So oftentimes, what we'll do is I'll add an or parameter here, these double pipes mean or, 
+因此通常情况下，我会在这里添加一个“或”参数，这个双竖线 ("||") 就表示“或”
 
 9725
 09:43:59,620 --> 09:44:03,610
-these double pipes mean or, and in JavaScript, if we say some
-
+and in JavaScript, if we say some variable equals something or something else, 
+在 JavaScript 中，如果我们说某些变量等于某个东西或另一个东西时
 
 9726
 09:44:03,610 --> 09:44:07,000
-variable equals something or something else, what is really
-
+what is really happening is we're gonna say, 
+实际上我们做的是
 
 9727
 09:44:07,000 --> 09:44:10,690
-happening is we're gonna say, okay, rink, the RPC URL is going
-
+okay, rink, the RPC URL is going to be equal to process dot E and V dot rink, the RPC URL. 
+让 "RINKEBY_RPC_URL" 等于 "process.env.RINKEBY_RPC_URL"
 
 9728
 09:44:10,690 --> 09:44:15,220
-to be equal to process dot E and V dot rink, the RPC URL. But if
-
+But if this rink, the RPC URL doesn't exist, 
+但如果这个 "RINKEBY_RPC_URL" 并不存在
 
 9729
 09:44:15,220 --> 09:44:18,640
-this rink, the RPC URL doesn't exist, it's going to be whatever
-
+it's going to be whatever else is over here. 
+它就会是这里的任意其他内容
 
 9730
 09:44:18,640 --> 09:44:23,080
-else is over here. And I might write something like HTTPS eath
-
+And I might write something like HTTPS eath Rinkeby. Example, or something like this, 
+我可能会写一些诸如 "https://eth-rinkeby/example" 之类的东西
 
 9731
 09:44:23,080 --> 09:44:28,360
-Rinkeby. Example, or something like this, just so that I don't
-
+just so that I don't make hard hat mad if I don't use rank B. 
+这样我就不会惹 Hardhat 不爽了，如果我不打算使用 Rinkeby 的话
 
 9732
 09:44:28,360 --> 09:44:31,270
-make hard hat mad if I don't use rank B. And we can do something
-
+And we can do something like that for all these. 
+我们可以对所有这些变量都这样做
 
 9733
 09:44:31,270 --> 09:44:36,610
-like that for all these. So you'll see this syntax,
-
+So you'll see this syntax, oftentimes in a lot of code setups. 
+你经常会在很多代码设置中见到这种语法
 
 9734
 09:44:36,640 --> 09:44:42,700
-oftentimes in a lot of code setups. Now the last thing that
-
+Now the last thing that I'm going to show you 
+现在我要给你展示一下最后一件事
 
 9735
 09:44:42,700 --> 09:44:45,340
-I'm going to show you before going into the TypeScript
-
+before going into the TypeScript edition of This is test coverage. 
+在进入这个脚本的 TypeScript 版本之前，要看一下 "test coverage"
 
 9736
 09:44:45,340 --> 09:44:48,820
-edition of This is test coverage. And as we progressed
-
+And as we progressed to this course, 
+随着我们这个课程的进展
 
 9737
 09:44:48,820 --> 09:44:51,460
-to this course, I'm going to show you more and more tools
-
+I'm going to show you more and more tools that you can use 
+我会向你展示越来越多的工具
 
 9738
 09:44:51,460 --> 09:44:54,370
-that you can use to make sure that our simple storage contract
-
+to make sure that our simple storage contract is safe and secure. 
+以确保我们的 "SimpleStorage" 合约是安全可靠的
 
 9739
 09:44:54,400 --> 09:44:58,390
-is safe and secure. And we take all the steps we can to prevent
-
+And we take all the steps we can to prevent any hacks from happening if we deploy in real life. 
+我们会尽可能采取一切措施以防止实际部署时遭到任何黑客攻击
 
 9740
 09:44:58,390 --> 09:45:01,180
-any hacks from happening if we deploy in real life. One of
-
+One of those tools is a tool called solidity coverage. 
+其中之一就是这个名为 "solidity-coverage" 的工具
 
 9741
 09:45:01,180 --> 09:45:04,210
-those tools is a tool called solidity coverage. And this is
-
+And this is also a hardhat plugin that we can use for our code. 
+这同样也是一个可以直接用于我们代码的 Hardhat 插件
 
 9742
 09:45:04,210 --> 09:45:07,420
-also a hardhat plugin that we can use for our code. solidity
-
+solidity coverage is a project that goes through all of our tests 
+"solidity-coverage" 是这样一个项目，它通过查看我们的测试
 
 9743
 09:45:07,420 --> 09:45:10,480
-coverage is a project that goes through all of our tests and
-
+and sees exactly how many lines of code in our sample store dot Sol are actually covered. 
+以判断我们的 "SimpleStorage.sol" 有多少代码被测试覆盖
 
 9744
 09:45:10,480 --> 09:45:15,550
-sees exactly how many lines of code in our sample store dot Sol
+And this can be a Good tip off. If we don't cover some line of code, 
 
 
 9745
 09:45:15,580 --> 09:45:18,580
-are actually covered. And this can be a Good tip off. If we
+solidity coverage will say, Hey, you don't have any tests for this line, 
 
 
 9746
 09:45:18,580 --> 09:45:21,640
-don't cover some line of code, solidity coverage will say, Hey,
+maybe you should write some tests for it. 
 
 
 9747
 09:45:21,670 --> 09:45:23,830
-you don't have any tests for this line, maybe you should
+We can add solidity coverage the same way we've been adding all of our packages. 
 
 
 9748
 09:45:23,830 --> 09:45:26,320
-write some tests for it. We can add solidity coverage the same
+npm install dash, just save Dev, or since we're using yarn, 
 
 
 9749
 09:45:26,320 --> 09:45:29,770
-way we've been adding all of our packages. npm install dash, just
+yarn, add dash dash Dev, solidity coverage. 
 
 
 9750
 09:45:29,770 --> 09:45:33,880
-save Dev, or since we're using yarn, yarn, add dash dash Dev,
+And we can then add this to our config, 
 
 
 9751
 09:45:34,090 --> 09:45:41,170
-solidity coverage. And we can then add this to our config, the
+the same way we've been adding everything to our config, 
 
 
 9752
 09:45:41,170 --> 09:45:43,900
-same way we've been adding everything to our config, go to
+go to our config, and we'll write require solidity coverage. 
 
 
 9753
 09:45:43,900 --> 09:45:48,610
-our config, and we'll write require solidity coverage. And
+And there's some configuration pieces we can add down here below for this, 
 
 
 9754
 09:45:48,610 --> 09:45:50,890
-there's some configuration pieces we can add down here
+but we're just going to use the default 
 
 
 9755
 09:45:50,890 --> 09:45:53,530
-below for this, but we're just going to use the default now we
+now we can do is run yarn, RT hat coverage. 
 
 
 9756
 09:45:53,530 --> 09:45:58,870
-can do is run yarn, RT hat coverage. And this is going to
+And this is going to go through our tests and print out a file that looks like this, 
 
 
 9757
 09:45:58,870 --> 09:46:01,750
-go through our tests and print out a file that looks like this,
+we'll also get a file called coverage dot JSON, 
 
 
 9758
 09:46:01,930 --> 09:46:04,780
-we'll also get a file called coverage dot JSON, which is
+which is basically this chart broken down a little bit more 
 
 
 9759
 09:46:04,780 --> 09:46:08,500
-basically this chart broken down a little bit more often put my
+often put my coverage dot JSON in my dot get ignore. 
 
 
 9760
 09:46:08,740 --> 09:46:12,040
-coverage dot JSON in my dot get ignore. And I know we haven't
+And I know we haven't actually seen dot Git ignore, do what it's supposed to do. But we will soon 
 
 
 9761
 09:46:12,040 --> 09:46:15,250
-actually seen dot Git ignore, do what it's supposed to do. But we
+we can see here that about 50% of the code 50% of our statements in simple storage dot soul are covered. 
 
 
 9762
 09:46:15,250 --> 09:46:20,500
-will soon we can see here that about 50% of the code 50% of our
+About two thirds of our functions are and 50% of the lines, 
 
 
 9763
 09:46:20,500 --> 09:46:24,250
-statements in simple storage dot soul are covered. About two
+It'll even give us exactly what lines aren't tested right now, 
 
 
 9764
 09:46:24,250 --> 09:46:27,700
-thirds of our functions are and 50% of the lines, It'll even
+which we can see exactly 31 and 32 of simple swords, outsole aren't covered, 
 
 
 9765
 09:46:27,700 --> 09:46:30,940
-give us exactly what lines aren't tested right now, which
+which makes a lot of sense, because 31 to 32 is this Add Person function, 
 
 
 9766
 09:46:30,940 --> 09:46:34,750
-we can see exactly 31 and 32 of simple swords, outsole aren't
+which we didn't call and we didn't add to our tests. 
 
 
 9767
 09:46:34,750 --> 09:46:38,560
-covered, which makes a lot of sense, because 31 to 32 is this
+If you want to take this time to pause 
 
 
 9768
 09:46:38,590 --> 09:46:41,650
-Add Person function, which we didn't call and we didn't add to
+and try to make this solidity coverage be 100% across the board, by writing some more tests, 
 
 
 9769
 09:46:41,650 --> 09:46:45,310
-our tests. If you want to take this time to pause and try to
+I highly recommend you do so it'll be a great learning exercise. 
 
 
 9770
 09:46:45,310 --> 09:46:48,580
-make this solidity coverage be 100% across the board, by
+We'll also add the coverage folder. 
 
 
 9771
 09:46:48,580 --> 09:46:51,370
-writing some more tests, I highly recommend you do so it'll
+So covered adjacent and the coverage folder, 
 
 
 9772
 09:46:51,370 --> 09:46:54,370
-be a great learning exercise. We'll also add the coverage
+which again, I'll explain what the dot get ignore folder does a little bit later. 
 
 
 9773
 09:46:54,400 --> 09:46:57,460
-folder. So covered adjacent and the coverage folder, which
+
 
 
 9774
 09:46:57,490 --> 09:47:00,550
-again, I'll explain what the dot get ignore folder does a little
+
 
 
 9775
 09:47:00,550 --> 09:47:06,040
-bit later. 
