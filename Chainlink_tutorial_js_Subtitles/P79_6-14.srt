@@ -1,0 +1,44 @@
+9775
+09:47:00,550 --> 09:47:06,040
+Now the last thing that we didn't talk about and here 
+现在我们要在这里说的最后一件事是
+
+9776
+09:47:06,040 --> 09:47:10,090
+was what is this nomic labs hard hat waffle. 
+这个 "@nomiclabs/hardhat-waffle" 到底是个什么东西
+
+9777
+09:47:10,090 --> 09:47:13,600
+We talked about Daddy and V heart and ether scan tasks gas reports. So today,
+我们谈过了 "dotenv, hardaht-etherscan, tasks, gas-reporter, solidity-coverage"
+
+9778
+09:47:14,110 --> 09:47:18,130
+what is this? 
+但这个是什么？
+
+9779
+09:47:18,130 --> 09:47:21,730
+Well, we can actually Google search this and find out exactly what this is 
+好吧，其实我们可以直接 Google 搜索一下这个到底是什么
+
+9780
+09:47:21,730 --> 09:47:25,240
+Hardhead waffle is actually a plugin to work with the waffle testing framework. 
+"hardaht-waffle" 其实是一个用于 "Waffle" 测试框架的一个插件
+
+9781
+09:47:25,240 --> 09:47:27,730
+waffle is one of these frameworks that allow us to do some really advanced testing, 
+Waffle 是一个让我们进行高级测试的框架
+
+9782
+09:47:27,760 --> 09:47:30,310
+we're going to be working with some syntax that looks really similar to this really soon. 
+我们很快就会使用类似这样的语法来进行工作
+
+9783
+09:47:30,310 --> 09:47:33,070
+And we'll be showing you more and more of this waffle tool as we continue. 
+随着我们的深入，我会向你展示更多有关 Waffle 的内容
