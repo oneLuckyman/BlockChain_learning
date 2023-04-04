@@ -1,0 +1,443 @@
+9785
+09:47:35,500 --> 09:47:41,200
+Alright, the next part of this section, I'm actually going to go over the TypeScript edition of this. 
+好的，本节的下一部分，我就真的要向你展示这个的 TypeScript 版本了
+
+9786
+09:47:41,200 --> 09:47:43,750
+But for all intents and purposes, you've successfully created your first Hardhead project, 
+但不管怎么讲，你都已经成功创建了你的第一个 Hardhat 项目了
+
+9787
+09:47:43,750 --> 09:47:46,330
+you've done a ton of amazing things. In this lesson, 
+你已经在这节课中完成了许多了不起的事情了
+
+9788
+09:47:46,330 --> 09:47:50,620
+let's do a quick refresher of what we've learned so far, 
+现在让我们快速回顾一下目前为止我们学到的内容
+
+9789
+09:47:50,620 --> 09:47:53,560
+we learned how to spin up our own hard hat projects.
+我们学习了如何启动我们的 Hardhat 项目
+
+9790
+09:47:53,560 --> 09:47:57,100
+And now we can run yarn, hard hat 
+现在我们可以运行 "yarn hardhat"
+
+9791
+09:47:57,340 --> 09:48:02,620
+and see a list of the tasks and different things that we can do with hard hat. 
+并查看可以使用 Hardhat 执行的任务和其他操作的列表
+
+9792
+09:48:02,650 --> 09:48:06,010
+We learned that hard hat looks for this hard hat.config.js. 
+我们了解了 Hardhat 会寻找这个 "hardhat.config.js"
+
+9793
+09:48:06,010 --> 09:48:10,210
+And this is sort of the entry point for any task that we run that starts with hard hat, 
+这是我们运行任何以 "hardhat" 开头的任务的入口
+
+9794
+09:48:10,210 --> 09:48:13,330
+we learned we can add our contracts to this contracts folder. 
+我们学习了可以添加我们的合约到这个 "contracts" 文件夹
+
+9795
+09:48:13,330 --> 09:48:16,150
+And then we compile it by running yarn, art half compile, 
+然后可以执行 "yarn hardhat compile" 来编译它
+
+9796
+09:48:16,150 --> 09:48:20,020
+we learned that all the compliation goes into the artifacts and then the cache as well. 
+我们学习了所有的编译结果都会存放在 "artifacts" 和 "cache" 中
+
+9797
+09:48:20,020 --> 09:48:24,400
+And if we want to clean reset, we can either delete these two files 
+并且如果我们想清空和重置，那么可以删除这两个文件
+
+9798
+09:48:24,400 --> 09:48:28,210
+or just run yarn, hard hat clean. 
+或是执行 "yarn hardhat clean"
+
+9799
+09:48:28,210 --> 09:48:30,820
+So we learned that we can use scripts or tasks 
+我们还学习了如何使用脚本和任务
+
+9800
+09:48:30,820 --> 09:48:34,840
+to actually deploy, interact and do things with our smart contracts. 
+来部署，交互和处理我们的智能合约
+
+9801
+09:48:34,870 --> 09:48:38,350
+We also learned that I'm going to be using scripts for the rest of this course. 
+我们还学到了在这个课程的剩余部分我都将使用脚本
+
+9802
+09:48:38,350 --> 09:48:40,990
+But if you want, you could absolutely use tasks as well. 
+但如果你想的话，也完全可以使用任务
+
+9803
+09:48:40,990 --> 09:48:43,360
+I've asked this question a million times what's the difference? 
+我已经问过了无数次这二者有什么区别
+
+9804
+09:48:43,360 --> 09:48:46,360
+Nobody really seems to know what the main difference is. 
+但似乎没有人真正知道它们的主要区别是什么
+
+9805
+09:48:46,360 --> 09:48:49,060
+But I think the main difference is that tasks are for plugins. 
+不过我认为主要区别是任务用于插件
+
+9806
+09:48:49,060 --> 09:48:51,760
+And scripts are for your local development Mart, that is mind limiter, 
+而脚本用于你的本地开发模式，这是我的看法
+
+9807
+09:48:51,760 --> 09:48:54,220
+we learned that we can import a whole bunch of things, 
+我们还学习了可以导入这么一大堆东西到我们的脚本中
+
+9808
+09:48:54,220 --> 09:48:57,280
+including tasks from hard hat in our scripts, 
+其中就包括 Hardhat 的任务
+
+9809
+09:48:57,280 --> 09:49:01,120
+and we can work with our async functions to grab our contracts and deploy them, 
+并且我们可以使用异步函数来获取我们的合约并部署它们
+
+9810
+09:49:01,150 --> 09:49:03,610
+we actually then can programmatically verify them using hard hat and using hard hat plugins. 
+我们还可以使用 Hardhat 和 Hardhat 的插件来程序化地验证它们
+
+9811
+09:49:03,610 --> 09:49:07,390
+And then additionally, we can interact with our contracts very similar to how we did it with ethers. 
+此外我们还可以使用与 ethers 非常相似的方法与合约进行交互
+
+9812
+09:49:07,390 --> 09:49:11,410
+We wrote a wonderful verification script. 
+我们编写了一个非常棒的验证脚本
+
+9813
+09:49:11,410 --> 09:49:14,230
+And we also wrote our own task, 
+还编写了一个我们自己的任务
+
+9814
+09:49:14,230 --> 09:49:17,260
+we wrote our first test for this whole space. 
+我们为整个空间编写了第一个测试
+
+9815
+09:49:17,260 --> 09:49:20,560
+And we showed what our tests are going to look like moving forward. 
+并展示了我们未来的测试形式
+
+9816
+09:49:20,560 --> 09:49:24,790
+And we talked a little bit about their importance. 
+我们还稍微谈了点测试的重要性
+
+9817
+09:49:24,790 --> 09:49:27,400
+And I really should stress that 
+并且我十分强调
+
+9818
+09:49:27,400 --> 09:49:30,520
+writing good tests is going to be the difference between a really professional environment and kind of a side project. 
+是否编写了一个好的测试是一个项目专业还是业余的主要区别
+
+9819
+09:49:30,520 --> 09:49:33,430
+Whenever I audit smart contracts, 
+每当我审计智能合约时
+
+9820
+09:49:33,430 --> 09:49:35,860
+or whenever I'm given a project for someone to tell me to take a look at. 
+或是每当有人给我一个项目让我去瞧一瞧的时候
+
+9821
+09:49:36,010 --> 09:49:38,920
+The first thing I look at is the readme, of course. 
+我的第一件事是阅读 README，这是当然的了
+
+9822
+09:49:38,920 --> 09:49:41,860
+And the second thing I look at is the tests. 
+而第二件事就是查看它的测试
+
+9823
+09:49:41,860 --> 09:49:44,950
+And if tests aren't good, I usually tell them, 
+如果测试写的不好，我就会告诉他们
+
+9824
+09:49:45,010 --> 09:49:48,850
+hey, you need to go back to the drawing board, and you need to level up your tests.
+嘿，你得重头开始，并且提升一下你的测试水平
+
+9825
+09:49:48,850 --> 09:49:51,640
+So tests are really really important, especially for this space, 
+因此测试非常非常的重要，尤其是对这个领域来说
+
+9826
+09:49:51,640 --> 09:49:54,460
+
+
+
+9827
+09:49:54,490 --> 09:49:57,040
+
+
+
+9828
+09:49:57,040 --> 09:50:00,040
+we learned about a couple of more environment variables we
+
+
+9829
+09:50:00,040 --> 09:50:03,070
+can use. We learned about a couple of tools to see how good
+
+
+9830
+09:50:03,100 --> 09:50:07,060
+our tests are one of them being coverage. We also learn about a
+
+
+9831
+09:50:07,060 --> 09:50:10,450
+gas reporter to see how much it's going to cost us when we
+
+
+9832
+09:50:10,450 --> 09:50:13,900
+actually deploy to a real network. We learned a ton about
+
+
+9833
+09:50:13,900 --> 09:50:16,870
+the hard hat config, and how there are multiple networks that
+
+
+9834
+09:50:16,870 --> 09:50:19,810
+we can add add to our hard heads, we can make our project
+
+
+9835
+09:50:19,840 --> 09:50:23,500
+our EVM code, work with any network out there, we started
+
+
+9836
+09:50:23,500 --> 09:50:26,170
+working with dev dependencies instead of regular dependencies.
+
+
+9837
+09:50:26,410 --> 09:50:29,440
+Now, READMEs are something that I'm not really going to go over
+
+
+9838
+09:50:29,530 --> 09:50:33,130
+too deeply in here. But READMEs are sort of like the welcome
+
+
+9839
+09:50:33,130 --> 09:50:36,490
+page of your GitHub repository, and really should give you an
+
+
+9840
+09:50:36,490 --> 09:50:39,970
+understanding of what your code does. Being a part of the web
+
+
+9841
+09:50:39,970 --> 09:50:42,280
+through space. And being a part of the blockchain ecosystem is
+
+
+9842
+09:50:42,280 --> 09:50:45,580
+really more than just you coding your stuff by yourself. You want
+
+
+9843
+09:50:45,610 --> 09:50:48,400
+other people to interact and engage with your code and engage
+
+
+9844
+09:50:48,400 --> 09:50:50,860
+with your projects. I haven't showed you how to use GitHub
+
+
+9845
+09:50:50,860 --> 09:50:53,350
+yet. But don't worry, we're going to but if you look at my
+
+
+9846
+09:50:53,350 --> 09:50:56,710
+heart had simple storage readme. If you scroll down, usually, you
+
+
+9847
+09:50:56,710 --> 09:50:59,620
+really want to have a Getting Started section where you define
+
+
+9848
+09:50:59,620 --> 09:51:02,920
+how to set up all the code and how to set everything up a
+
+
+9849
+09:51:02,920 --> 09:51:06,730
+Quickstart section, and maybe a usage section and some testing
+
+
+9850
+09:51:06,730 --> 09:51:09,640
+section, which teaches people how to actually use and interact
+
+
+9851
+09:51:09,640 --> 09:51:12,430
+with your code. Since we're just learning more of the code part
+
+
+9852
+09:51:12,430 --> 09:51:15,040
+and not so much the readme part. For now, we're not going to go
+
+
+9853
+09:51:15,040 --> 09:51:18,190
+over how to make a fantastic readme. However, I will leave a
+
+
+9854
+09:51:18,190 --> 09:51:20,680
+link in the GitHub repository associated with this course,
+
+
+9855
+09:51:20,800 --> 09:51:23,680
+link to this best readme template. It really is a
+
+
+9856
+09:51:23,680 --> 09:51:26,620
+fantastic readme template that you can copy to any of your
+
+
+9857
+09:51:26,620 --> 09:51:29,290
+projects to make them look really good and give them a
+
+
+9858
+09:51:29,290 --> 09:51:32,050
+really good setup, so that other developers can come to your
+
+
+9859
+09:51:32,050 --> 09:51:35,230
+project, and learn and participate with what you're
+
+
+9860
+09:51:35,230 --> 09:51:38,590
+coding. But all right, you have learned an absolute ton, you
+
+
+9861
+09:51:38,590 --> 09:51:41,530
+should be incredibly proud of yourself, and incredibly excited
+
+
+9862
+09:51:41,530 --> 09:51:44,110
+that you've made it this far. Now I'm going to jump into the
+
+
+9863
+09:51:44,110 --> 09:51:46,540
+TypeScript section here. So for those of you who are coding
+
+
+9864
+09:51:46,540 --> 09:51:49,300
+along with TypeScript, feel free to follow along. For those of
+
+
+9865
+09:51:49,300 --> 09:51:52,120
+you who are not, you just finished the Basic section on
+
+
+9866
+09:51:52,120 --> 09:51:55,270
+hard hit, but stick around the next to heart out sections are
+
+
+9867
+09:51:55,270 --> 09:51:58,540
+going to be the ones that really fine grain and hone your skills,
+
+
+9868
+09:51:58,750 --> 09:52:01,240
+and give you all the fundamentals for working with
+
+
+9869
+09:52:01,240 --> 09:52:04,090
+these frameworks. So be sure to follow along with the next two
+
+
+9870
+09:52:04,090 --> 09:52:07,780
+sections, we've got a ton more fantastic content for you, we
+
+
+9871
+09:52:07,780 --> 09:52:10,660
+are just beginning to get deeper into the smart contract
+
+
+9872
+09:52:10,660 --> 09:52:14,200
+ecosystem. So take that lap, get that coffee, and I'll see you
+
+
+9873
+09:52:14,200 --> 09:52:20,740
+soon. 
