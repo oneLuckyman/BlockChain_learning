@@ -21,22 +21,22 @@ like I showed you before.
 9234
 09:11:06,820 --> 09:11:11,650
 Hard Hat comes with these tasks. 
-Hardhat 自带的任务有这些
+Hardhat 自带的 task 有这些
 
 9235
 09:11:11,650 --> 09:11:13,900
 And the number of tasks that Hardhead can come with can be extended by us writing plugins, 
-并且 Hardhat 的可执行任务数可以通过我们编写的插件进行扩展
+并且 Hardhat 可执行的 task 数可以通过我们编写的插件进行扩展
 
 9236
 09:11:13,900 --> 09:11:17,620
 we can actually write our own tasks in hardhat. 
-我们实际上可以在 Hardhat 中编写我们自己的任务
+我们实际上可以在 Hardhat 中编写我们自己的 task
 
 9237
 09:11:17,620 --> 09:11:21,190
 And in our Hardhead dot config, it can defaulted with this task account, 
-在我们的 "hardhat.config" 中，默认有一个任务是 "accounts"
+在我们的 "hardhat.config" 中，默认有一个 task 是 "accounts"
 
 9238
 09:11:21,190 --> 09:11:24,250
@@ -51,12 +51,12 @@ and just prints a list of accounts here
 9240
 09:11:28,510 --> 09:11:31,960
 actually go to the heart had documentation to learn more about creating our own tasks, 
-实际上，我们可以前往 Hardhat 的文档学习更多有关创建自己任务的内容
+实际上，我们可以前往 Hardhat 的文档学习更多有关创建自己 task 的内容
 
 9241
 09:11:31,960 --> 09:11:34,690
 one of the ways that you can define tasks is directly in our heart head.config.js. 
-其中一种定义任务的方式就是直接在我们的 "hardhat.config.js" 中定义
+其中一种定义 task 的方式就是直接在我们的 "hardhat.config.js" 中定义
 
 9242
 09:11:34,690 --> 09:11:39,640
@@ -66,7 +66,7 @@ But typically, what people do
 9243
 09:11:39,640 --> 09:11:43,450
 is they have a new folder called tasks where they put all their tasks. 
-创建一个名为 "tasks" 的新文件夹，将所有任务放在这里面
+创建一个名为 "tasks" 的新文件夹，将所有 task 放在这里面
 
 9244
 09:11:43,480 --> 09:11:47,530
@@ -76,7 +76,7 @@ So for now, I'm gonna go ahead and delete this section here.
 9245
 09:11:47,530 --> 09:11:49,900
 And we're going to create our own task. 
-并创建一个属于我们自己的任务
+并创建一个属于我们自己的 task
 
 9246
 09:11:49,930 --> 09:11:52,840
@@ -86,17 +86,17 @@ You'll notice that now that we've deleted that section,
 9247
 09:11:52,840 --> 09:11:58,750
 if we run yarn RDAP, we no longer see the accounts task in here, 
-如果我们运行 "yarn hardhat"，就不会在这里再看到 "accounts" 任务了
+如果我们运行 "yarn hardhat"，就不会在这里再看到 "accounts" task 了
 
 9248
 09:11:58,750 --> 09:12:01,660
 because we've just deleted that task. 
-因为我们刚刚删除了那个任务
+因为我们刚刚删除了那个 task
 
 9249
 09:12:01,660 --> 09:12:08,140
 So let's create our own new task. We'll call this block number.js. 
-让我们开始创建属于我们自己的新任务，把它命名为 "block-number.js"
+让我们开始创建属于我们自己的新 task，把它命名为 "block-number.js"
 
 9250
 09:12:08,140 --> 09:12:10,900
@@ -106,7 +106,7 @@ And we'll use this to get the current block number or whatever blockchain that w
 9251
 09:12:10,900 --> 09:12:13,810
 So let's create this task.
-让我们来创建这个任务
+让我们来创建这个 task
 
 9252
 09:12:14,080 --> 09:12:17,320
@@ -126,7 +126,7 @@ The hard hat slash config has the task function.
 9255
 09:12:28,870 --> 09:12:33,460
 To define a task, we can now just say task, give it a name and a description, 
-要定义一个任务，可以这样做 "task()"，并给它一个名称和描述
+要定义一个 task ，可以这样做 "task()"，并给它一个名称和描述
 
 9256
 09:12:33,490 --> 09:12:34,630
@@ -141,7 +141,7 @@ And then the description is going to be prints the current block number.
 9258
 09:12:40,930 --> 09:12:45,700
 Now that we have this task, 
-现在我们有了这个任务，
+现在我们有了这个 task，
 
 9259
 09:12:45,700 --> 09:12:48,040
@@ -156,12 +156,12 @@ we can add different parameters to it by using the dot add command,
 9261
 09:12:51,280 --> 09:12:54,400
 which allow us to pass parameters to the task. 
-它允许我们可以向任务传递参数
+它允许我们可以向 task 传递参数
 
 9262
 09:12:54,400 --> 09:12:58,180
 And then we could also set actions which define what the task should actually do 
-接着我们还可以设置 "setAction"，它定义了这个任务实际应该执行什么
+接着我们还可以设置 "setAction"，它定义了这个 task 实际应该执行什么
 
 9263
 09:12:58,210 --> 09:13:03,340
@@ -331,12 +331,12 @@ Well, how can we get the block number
 9296
 09:15:10,150 --> 09:15:13,480
 when we run tasks, we automatically pass our anonymous functions, the task arguments, 
-每当我们运行任务时，都会自动向匿名函数传入 "taskArgs"
+每当我们运行 task 时，都会自动向匿名函数传入 "taskArgs"
 
 9297
 09:15:13,480 --> 09:15:18,040
 which in this one, we don't have any, 
-但在这个任务中，并没有什么参数
+但在这个 task 中，并没有什么参数
 
 9298
 09:15:18,550 --> 09:15:23,560
@@ -401,12 +401,12 @@ Or better yet, we'll string interpolate this and say current block number like t
 9310
 09:16:12,760 --> 09:16:17,740
 Now though, if I try to run this task, 
-现在，如果我尝试运行这个任务
+现在，如果我尝试运行这个 task
 
 9311
 09:16:17,770 --> 09:16:21,790
 you'll notice it doesn't show up in the heart Atlas of tasks, 
-你就会发现它并没有出现在 hardhat 的任务列表中
+你就会发现它并没有出现在 hardhat 的 task 列表中
 
 9312
 09:16:22,330 --> 09:16:26,920
@@ -441,7 +441,7 @@ But now that we've required it, if I run yarn hard hat,
 9318
 09:16:50,950 --> 09:16:54,490
 and now see blocked over is one of the tasks that I can use. 
-现在就可以看到 "block-number" 是一个可用的任务了
+现在就可以看到 "block-number" 是一个可用的 task 了
 
 9319
 09:16:54,490 --> 09:16:59,740
@@ -491,7 +491,7 @@ because it gets reset every single time, we run one of these scripts
 9328
 09:17:31,660 --> 09:17:35,500
 now scripts and tasks both can basically do the same thing. 
-现在脚本和任务基本可以做到相同的事了
+现在脚本和 task 基本可以做到相同的事了
 
 9329
 09:17:35,500 --> 09:17:38,080
@@ -516,12 +516,12 @@ because I don't always think adding a special thing from the command line makes 
 9333
 09:17:48,310 --> 09:17:51,400
 So I prefer scripts, but you'll see a ton of tasks and examples out there as well. 
-所以我更喜欢使用脚本，但你同时也会看到有很多任务和示例
+所以我更喜欢使用脚本，但你同时也会见到许多使用 task 的示例
 
 9334
 09:17:51,400 --> 09:17:55,270
 I think tasks are really nice for specific use cases. 
-我认为任务在某些特定情形下很有用
+我认为 task 在某些特定情形下很有用
 
 9335
 09:17:55,510 --> 09:17:58,270
@@ -531,12 +531,12 @@ But for the most part, we're pretty much going to use exclusively scripts,
 9336
 09:17:58,270 --> 09:18:01,960
 but it is good to know what a task looks like and how to use it. 
-但知道任务是什么样并且如何使用，仍然很有好处
+但了解 task 是什么样并且如何使用的，仍然很有好处
 
 9337
 09:18:01,960 --> 09:18:05,260
 I think tasks are better for plugins 
-我认为任务更适合用于插件
+我认为 task 更适合用于插件
 
 9338
 09:18:05,290 --> 09:18:08,410
@@ -546,4 +546,4 @@ and scripts are better for your own local development environment.
 9339
 09:18:08,410 --> 09:18:14,380
 But if you want to do everything with tasks, you absolutely can. 
-不过如果你想用任务来完成所有事情，当然也可以了
+不过如果你想用 task 来完成所有事情，当然也可以了

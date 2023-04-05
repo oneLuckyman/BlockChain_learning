@@ -21,7 +21,7 @@ akin to ganache, that allows you to deploy your contracts and run your tests and
 8780
 08:41:58,149 --> 08:42:00,789
 Whenever we run a command in hard hat, or a script and hard hat or a task and hard hat, 
-每当我们在 Hardhat 中运行命令、脚本或者任务时
+每当我们在 Hardhat 中运行命令、脚本或者任务("task")时
 
 8781
 08:42:00,879 --> 08:42:04,839

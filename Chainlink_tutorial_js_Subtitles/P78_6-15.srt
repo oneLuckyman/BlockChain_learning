@@ -31,7 +31,7 @@ And now we can run yarn, hard hat
 9791
 09:47:57,340 --> 09:48:02,620
 and see a list of the tasks and different things that we can do with hard hat. 
-并查看可以使用 Hardhat 执行的任务和其他操作的列表
+并查看可以使用 Hardhat 执行的 task 以及其他操作的列表
 
 9792
 09:48:02,650 --> 09:48:06,010
@@ -41,7 +41,7 @@ We learned that hard hat looks for this hard hat.config.js.
 9793
 09:48:06,010 --> 09:48:10,210
 And this is sort of the entry point for any task that we run that starts with hard hat, 
-这是我们运行任何以 "hardhat" 开头的任务的入口
+这是我们运行任何以 "hardhat" 开头的 task 的入口
 
 9794
 09:48:10,210 --> 09:48:13,330
@@ -71,7 +71,7 @@ or just run yarn, hard hat clean.
 9799
 09:48:28,210 --> 09:48:30,820
 So we learned that we can use scripts or tasks 
-我们还学习了如何使用脚本和任务
+我们还学习了如何使用脚本和 task 
 
 9800
 09:48:30,820 --> 09:48:34,840
@@ -86,7 +86,7 @@ We also learned that I'm going to be using scripts for the rest of this course.
 9802
 09:48:38,350 --> 09:48:40,990
 But if you want, you could absolutely use tasks as well. 
-但如果你想的话，也完全可以使用任务
+但如果你想的话，也完全可以使用 task
 
 9803
 09:48:40,990 --> 09:48:43,360
@@ -101,7 +101,7 @@ Nobody really seems to know what the main difference is.
 9805
 09:48:46,360 --> 09:48:49,060
 But I think the main difference is that tasks are for plugins. 
-不过我认为主要区别是任务用于插件
+不过我认为主要区别是 task 用于插件
 
 9806
 09:48:49,060 --> 09:48:51,760
@@ -116,7 +116,7 @@ we learned that we can import a whole bunch of things,
 9808
 09:48:54,220 --> 09:48:57,280
 including tasks from hard hat in our scripts, 
-其中就包括 Hardhat 的任务
+其中就包括 Hardhat 的 task 
 
 9809
 09:48:57,280 --> 09:49:01,120
@@ -141,7 +141,7 @@ We wrote a wonderful verification script.
 9813
 09:49:11,410 --> 09:49:14,230
 And we also wrote our own task, 
-还编写了一个我们自己的任务
+还编写了一个我们自己的 task 
 
 9814
 09:49:14,230 --> 09:49:17,260

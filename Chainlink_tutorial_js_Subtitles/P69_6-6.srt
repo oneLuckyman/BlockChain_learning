@@ -406,7 +406,7 @@ back in the heart had documentation, it tells us by adding this,
 9008
 08:56:14,980 --> 08:56:18,010
 we actually get a new task called verify. 
-就可以执行一种名为 "verify" 的新任务
+就可以执行一种名为 "verify" 的新 task
 
 9009
 08:56:18,010 --> 08:56:22,840
@@ -436,7 +436,7 @@ If there are new plugins there,
 9014
 08:56:38,980 --> 08:56:42,850
 it'll add them as a new task that we can do. 
-它就会将其作为新的任务添加进来以便我们能够使用
+它就会将其作为新的 task 添加进来以便我们能够使用
 
 9015
 08:56:42,850 --> 08:56:46,630
@@ -496,7 +496,7 @@ just so that we know we might have to wait for a little bit.
 9026
 08:57:18,970 --> 08:57:22,090
 And in our code, we can actually run any task from hard hat using a run package. 
-在我们的代码中，我们可以使用 "run" 包来运行 Hardhat 中的所有任务
+在我们的代码中，我们可以使用 "run" 包来运行 Hardhat 中的所有 task
 
 9027
 08:57:22,090 --> 08:57:28,210
@@ -506,7 +506,7 @@ So up at the top, we're actually going to import run from hard hat as well
 9028
 08:57:28,210 --> 08:57:32,410
 run allows us to run any hard hat task. 
-"run" 允许我们运行所有 Hardhat 的任务
+"run" 允许我们运行所有的 Hardhat task
 
 9029
 08:57:32,410 --> 08:57:37,690
@@ -551,7 +551,7 @@ So we'll do colon, verify.
 9037
 08:58:04,540 --> 08:58:08,800
 If you go to the actual GitHub for the verification tasks, 
-如果你去查看验证任务的 GitHub 页面
+如果你去查看 verify task 的 GitHub 页面
 
 9038
 08:58:08,800 --> 08:58:11,200
@@ -576,7 +576,7 @@ verify, verify, which is what we're going to be working with,
 9042
 08:58:19,720 --> 08:58:23,050
 and a couple of other subtasks as well. 
-以及一些其它的子任务
+以及一些其它的子 task
 
 9043
 08:58:23,050 --> 08:58:26,110
@@ -586,7 +586,7 @@ The second parameter that goes inside run is going to be a list of actual parame
 9044
 08:58:26,140 --> 08:58:28,720
 This second parameter here is just kind of the sub task, if you will, of our verify task. 
-如果你愿意的话，这里的第二个参数可以说成是 "verify" 任务的一个子任务
+如果你愿意的话，这里的第二个参数可以说成是 "verify" task的一个子 task
 
 9045
 08:58:28,720 --> 08:58:32,500
@@ -755,7 +755,7 @@ feel free to copy and paste it from the GitHub repo to just move along.
 9078
 09:00:34,450 --> 09:00:38,170
 But awesome. So we now have a verify function using the Verify task in hardhat. 
-很好，现在我们有了一个可以使用 Hardhat 进行验证任务的 "verify" 函数
+很好，现在我们有了一个可以使用 Hardhat 进行 "verify" task 的 "verify" 函数
 
 9079
 09:00:38,200 --> 09:00:42,040

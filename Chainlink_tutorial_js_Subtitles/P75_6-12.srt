@@ -1,7 +1,7 @@
 9460
 09:26:10,840 --> 09:26:16,060
 Now, there's a couple other tasks that are really helpful. 
-现在，还有一些其它有用的任务
+现在，还有一些其它有用的 task
 
 9461
 09:26:16,060 --> 09:26:19,240
