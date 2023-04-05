@@ -36,7 +36,7 @@ and see a list of the tasks and different things that we can do with hard hat.
 9792
 09:48:02,650 --> 09:48:06,010
 We learned that hard hat looks for this hard hat.config.js. 
-我们了解了 Hardhat 会寻找这个 "hardhat.config.js"
+我们知道了 Hardhat 会寻找这个 "hardhat.config.js"
 
 9793
 09:48:06,010 --> 09:48:10,210
@@ -205,239 +205,230 @@ So tests are really really important, especially for this space,
 
 9826
 09:49:51,640 --> 09:49:54,460
-
-
+we learned about a couple of more environment variables we can use. 
+我们还学习了另外几个可用的环境变量
 
 9827
 09:49:54,490 --> 09:49:57,040
-
-
+We learned about a couple of tools to see how good our tests are one of them being coverage. 
+以及几个用于检查测试质量的工具，其中一个是 "coverage"
 
 9828
 09:49:57,040 --> 09:50:00,040
-we learned about a couple of more environment variables we
-
+We also learn about a gas reporter 
+我们还学习了有关 "gas-reporter" 的内容
 
 9829
 09:50:00,040 --> 09:50:03,070
-can use. We learned about a couple of tools to see how good
-
+to see how much it's going to cost us when we actually deploy to a real network. 
+它可以查看我们在实际网络上进行部署时的花费
 
 9830
 09:50:03,100 --> 09:50:07,060
-our tests are one of them being coverage. We also learn about a
-
+We learned a ton about the hard hat config, 
+我们学习了大量有关 "hardhat.config" 的知识
 
 9831
 09:50:07,060 --> 09:50:10,450
-gas reporter to see how much it's going to cost us when we
-
+and how there are multiple networks that we can add add to our hard heads, 
+以及如何在 Hardhat 中添加多个网络
 
 9832
 09:50:10,450 --> 09:50:13,900
-actually deploy to a real network. We learned a ton about
-
+we can make our project our EVM code, work with any network out there, 
+这样我们就可以使我们项目的 EVM 代码用于任何网络上
 
 9833
 09:50:13,900 --> 09:50:16,870
-the hard hat config, and how there are multiple networks that
-
+we started working with dev dependencies instead of regular dependencies. 
+我们开始使用 "devDependencies" 而不是常规依赖项
 
 9834
 09:50:16,870 --> 09:50:19,810
-we can add add to our hard heads, we can make our project
-
+Now, READMEs are something that I'm not really going to go over too deeply in here. 
+README 并不是一个我现在要深入讲解的东西
 
 9835
 09:50:19,840 --> 09:50:23,500
-our EVM code, work with any network out there, we started
-
+But READMEs are sort of like the welcome page of your GitHub repository, 
+README 有点像是一个 GitHub 仓库的欢迎页面
 
 9836
 09:50:23,500 --> 09:50:26,170
-working with dev dependencies instead of regular dependencies.
-
+and really should give you an understanding of what your code does. 
+要能帮助他人了解你的代码是干什么的
 
 9837
 09:50:26,410 --> 09:50:29,440
-Now, READMEs are something that I'm not really going to go over
-
+Being a part of the web through space. And being a part of the blockchain ecosystem 
+要想成为 Web3 和区块链领域的一部分
 
 9838
 09:50:29,530 --> 09:50:33,130
-too deeply in here. But READMEs are sort of like the welcome
-
+is really more than just you coding your stuff by yourself. 
+仅仅是自己会写代码是完全不够的
 
 9839
 09:50:33,130 --> 09:50:36,490
-page of your GitHub repository, and really should give you an
-
+You want other people to interact and engage with your code and engage with your projects. 
+你得与其他人进行交互并促使他们参与你的代码和项目
 
 9840
 09:50:36,490 --> 09:50:39,970
-understanding of what your code does. Being a part of the web
-
+I haven't showed you how to use GitHub yet. 
+我还没有向你们展示如何使用 GitHub
 
 9841
 09:50:39,970 --> 09:50:42,280
-through space. And being a part of the blockchain ecosystem is
-
+But don't worry, we're going to 
+但不用担心，很快就会讲到
 
 9842
 09:50:42,280 --> 09:50:45,580
-really more than just you coding your stuff by yourself. You want
-
+but if you look at my heart had simple storage readme. 
+如果你查看我的 "hardhat-simple-storage" 的 README
 
 9843
 09:50:45,610 --> 09:50:48,400
-other people to interact and engage with your code and engage
-
+If you scroll down, 
+如果你往下拉
 
 9844
 09:50:48,400 --> 09:50:50,860
-with your projects. I haven't showed you how to use GitHub
-
+usually, you really want to have a Getting Started section 
+通常你会希望有一个“开始使用” ("Getting Started") 部分
 
 9845
 09:50:50,860 --> 09:50:53,350
-yet. But don't worry, we're going to but if you look at my
-
+where you define how to set up all the code and how to set everything up 
+里面包含了如何配置全部代码以及如何进行设置
 
 9846
 09:50:53,350 --> 09:50:56,710
-heart had simple storage readme. If you scroll down, usually, you
-
+a Quickstart section, 
+还有一个“快速上手” ("Quickstart") 部分
 
 9847
 09:50:56,710 --> 09:50:59,620
-really want to have a Getting Started section where you define
-
+and maybe a usage section and some testing section, 
+也许还会有一个“使用” ("Useage") 部分和一个“测试” ("Testing") 部分
 
 9848
 09:50:59,620 --> 09:51:02,920
-how to set up all the code and how to set everything up a
-
+which teaches people how to actually use and interact with your code. 
+这些部分能教会人们如何实际使用你的代码并与之交互
 
 9849
 09:51:02,920 --> 09:51:06,730
-Quickstart section, and maybe a usage section and some testing
-
+Since we're just learning more of the code part
+因为我们现在更多地还是在进行代码的学习
 
 9850
 09:51:06,730 --> 09:51:09,640
-section, which teaches people how to actually use and interact
-
+and not so much the readme part. 
+而不是 README 环节
 
 9851
 09:51:09,640 --> 09:51:12,430
-with your code. Since we're just learning more of the code part
-
+For now, we're not going to go over how to make a fantastic readme. 
+所以目前我不会深入讲解如何把 README 做的出彩
 
 9852
 09:51:12,430 --> 09:51:15,040
-and not so much the readme part. For now, we're not going to go
-
+However, I will leave a link in the GitHub repository associated with this course, 
+不过，我会在课程关联的 GitHub 仓库里留下一个链接
 
 9853
 09:51:15,040 --> 09:51:18,190
-over how to make a fantastic readme. However, I will leave a
-
+link to this best readme template. 
+它会链接到这个最佳的 README 模板下
 
 9854
 09:51:18,190 --> 09:51:20,680
-link in the GitHub repository associated with this course,
-
+It really is a fantastic readme template 
+它真的是一个很不错的 README 模板
 
 9855
 09:51:20,800 --> 09:51:23,680
-link to this best readme template. It really is a
-
+that you can copy to any of your projects to make them look really good and give them a really good setup, 
+你可以把它复制到你的项目中并进行适当的配置，以使你的 README 也变得很好看
 
 9856
 09:51:23,680 --> 09:51:26,620
-fantastic readme template that you can copy to any of your
-
+so that other developers can come to your project, 
+这样其它开发者就可以参与到你的项目中
 
 9857
 09:51:26,620 --> 09:51:29,290
-projects to make them look really good and give them a
-
+and learn and participate with what you're coding. 
+并了解和参与你的编程工作
 
 9858
 09:51:29,290 --> 09:51:32,050
-really good setup, so that other developers can come to your
-
+But all right, you have learned an absolute ton, 
+但话说回来，你已经学了很多东西了
 
 9859
 09:51:32,050 --> 09:51:35,230
-project, and learn and participate with what you're
-
+you should be incredibly proud of yourself, 
+你应该为自己感到无比自豪
 
 9860
 09:51:35,230 --> 09:51:38,590
-coding. But all right, you have learned an absolute ton, you
-
+and incredibly excited that you've made it this far. 
+并为自己能走到这一步而感到兴奋
 
 9861
 09:51:38,590 --> 09:51:41,530
-should be incredibly proud of yourself, and incredibly excited
-
+Now I'm going to jump into the TypeScript section here. 
+现在我要进入到 TypeScript 部分了
 
 9862
 09:51:41,530 --> 09:51:44,110
-that you've made it this far. Now I'm going to jump into the
-
+So for those of you who are coding along with TypeScript, 
+对于那些要使用 TypeScript 的人来说
 
 9863
 09:51:44,110 --> 09:51:46,540
-TypeScript section here. So for those of you who are coding
-
+feel free to follow along. 
+你可以选择跟进
 
 9864
 09:51:46,540 --> 09:51:49,300
-along with TypeScript, feel free to follow along. For those of
-
+For those of you who are not, 
+如果你不是的话
 
 9865
 09:51:49,300 --> 09:51:52,120
-you who are not, you just finished the Basic section on
-
+you just finished the Basic section on hard hit, but stick around 
+你刚刚只是完成了 Hardhat 的基础部分，所以请保持势头
 
 9866
 09:51:52,120 --> 09:51:55,270
-hard hit, but stick around the next to heart out sections are
-
+the next to heart out sections are going to be the ones that really fine grain and hone your skills, 
+接下来的两个 Hardhat 章节才是真正精细化以及磨练你技术的部分
 
 9867
 09:51:55,270 --> 09:51:58,540
-going to be the ones that really fine grain and hone your skills,
-
+and give you all the fundamentals for working with these frameworks. 
+它们会为你提供使用这个框架所需的所有基本知识
 
 9868
 09:51:58,750 --> 09:52:01,240
-and give you all the fundamentals for working with
-
+So be sure to follow along with the next two sections, 
+所以请务必跟上接下来的两个章节
 
 9869
 09:52:01,240 --> 09:52:04,090
-these frameworks. So be sure to follow along with the next two
-
+we've got a ton more fantastic content for you, 
+里面还有更精彩的内容等着你
 
 9870
 09:52:04,090 --> 09:52:07,780
-sections, we've got a ton more fantastic content for you, we
-
+we are just beginning to get deeper into the smart contract ecosystem. 
+我们才刚刚开始深入智能合约的生态系统
 
 9871
 09:52:07,780 --> 09:52:10,660
-are just beginning to get deeper into the smart contract
-
-
-9872
-09:52:10,660 --> 09:52:14,200
-ecosystem. So take that lap, get that coffee, and I'll see you
-
-
-9873
-09:52:14,200 --> 09:52:20,740
-soon. 
+So take that lap, get that coffee, and I'll see you soon. 
+所以休息一下，喝杯咖啡，待会儿再见
