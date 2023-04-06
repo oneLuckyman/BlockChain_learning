@@ -1,0 +1,694 @@
+9873
+09:52:14,200 --> 09:52:20,740
+Alright, also now let's do this with TypeScript. 
+好的，现在让我们使用 TypeScript 来进行操作
+
+9874
+09:52:20,740 --> 09:52:22,930
+So I am going to go ahead and just start this from our JavaScript section. 
+我将直接从我们的 JavaScript 部分开始来继续操作
+
+9875
+09:52:22,930 --> 09:52:25,570
+However, if in the future, you want to start a new Hardhead project, 
+但如果将来你打算开始一个新的 Hardhat 项目
+
+9876
+09:52:25,570 --> 09:52:28,000
+you can actually start a new project with yarn, hard hat. 
+那么你可以这样操作 "yarn hardhat" 
+
+9877
+09:52:29,050 --> 09:52:34,450
+And then do great and advanced sample project that uses TypeScript, 
+然后选择 "Create an advanced sample project that uses TypeScript" 
+(“使用 TypeScript 创建一个高级示例项目”)
+
+9878
+09:52:34,450 --> 09:52:38,740
+you'll add a ton of plugins. And you'll wait a while for everything to get uploaded. 
+它会添加大量插件，你需要稍等一段时间直到所有内容上传完毕
+
+9879
+09:52:38,740 --> 09:52:41,380
+And you wait, and you wait a little bit for everything to get downloaded. 
+然后再稍微等一会儿直到所有内容下载完成
+
+9880
+09:52:41,380 --> 09:52:43,120
+We're not going to do that though, 
+我们并不会这样做
+
+9881
+09:52:43,120 --> 09:52:45,370
+because I'm going to show you how to convert this to JavaScript Anyways, 
+因为我将向你展示如何把这个转换为 JavaScript (口误，应为 TypeScript)
+
+9882
+09:52:45,370 --> 09:52:48,640
+if in future hearted sections, as we're coding along with JavaScript, 
+在未来的 Hardhat 部分，我们仍会采用 JavaScript 来编写代码
+
+9883
+09:52:48,640 --> 09:52:51,130
+if you want to code along with TypeScript, you absolutely 100% can. 
+但如果你想用 TypeScript 的话，也是百分百可以的
+
+9884
+09:52:51,130 --> 09:52:53,800
+But let's go ahead and show you what the main differences are. 
+现在让我来向你展示它们之间的主要差别是什么
+
+9885
+09:52:53,800 --> 09:52:57,100
+Now that advanced TypeScript thing is going to add a whole bunch of packages that you may or may not want, 
+现在，这个高级 TypeScript 选项添加了一大堆你可能用的到也可能用不到的包
+
+9886
+09:52:57,100 --> 09:52:59,620
+I will talk about some of them in our next lesson. 
+我会在下节课中讨论其中的某些
+
+9887
+09:52:59,620 --> 09:53:01,960
+But there are going to be some that you absolutely do need. 
+但有几个是你肯定会用到的
+
+9888
+09:53:01,960 --> 09:53:04,870
+Those are going to be at type chain slash ethers, dash v five, at type chain, slash hard hat, 
+它们是 "@typechain/ethers-v5 @typechain/hardhat"
+
+9889
+09:53:04,870 --> 09:53:07,510
+at TypeScript, at types, slash Chai, at types, slash node, at types slash moko, 
+"@types/chai @types/node @types/mocha"
+
+9890
+09:53:07,510 --> 09:53:14,650
+TS node, type chain and TypeScript. 
+"ts-node typechain" 以及 "typescript"
+
+9891
+09:53:14,680 --> 09:53:20,470
+And I have a link in the GitHub repo associated with this course, 
+我在课程关联的 GitHub 仓库中提供了一个链接
+
+9892
+09:53:20,470 --> 09:53:28,930
+I've got this yarn ad that you can just copy paste, 
+这里有一个 "yarn add" 后面的你可以直接复制粘贴
+
+9893
+09:53:28,930 --> 09:53:33,790
+if you want to just copy paste that into your project to run it. 
+如果你想的话可以直接把它们复制粘贴到你的项目中运行
+
+9894
+09:53:33,790 --> 09:53:36,640
+Oops, and I should have added those as dev dependencies. 
+哎呀，我还应该把它们添加到 "devDependencies" 里
+
+9895
+09:53:36,640 --> 09:53:39,160
+So we're going to actually just make them dev dependencies real quick, 
+我们可以很快地把它们放进 "devDependencies" 里
+
+9896
+09:53:39,160 --> 09:53:41,650
+just by deleting these two lines, and adding a comma here. 
+只要删除这两行，然后添加一个逗号就行了
+
+9897
+09:53:41,650 --> 09:53:44,260
+Awesome, that looks much better. 
+不错，看起来好多了
+
+9898
+09:53:44,260 --> 09:53:47,530
+And then of course, what we're going to do is we're going to convert all of our JavaScript to TypeScript. 
+当然，接下来要做的就是把 JavaScript 转换到 TypeScript 了
+
+9899
+09:53:47,530 --> 09:53:51,310
+So anywhere where we have J S, we're going to put Ts, 
+所以只要是 "js"，一律替换成 "ts"
+
+9900
+09:53:51,310 --> 09:53:54,400
+obviously, if you're coding this from scratch with TypeScript, 
+显然，如果你要从头开始使用 TypeScript
+
+9901
+09:53:54,400 --> 09:53:59,110
+you would do the.ts From the get go. 
+这里就要直接写成 ".ts" 
+
+9902
+09:53:59,200 --> 09:54:01,690
+
+
+
+9903
+09:54:01,690 --> 09:54:04,630
+This includes our hard hat dot config, that's also going to be TypeScript now. 
+
+
+9904
+09:54:04,630 --> 09:54:08,110
+And additionally, we're going to add a TS config dot JSON. 
+
+
+9905
+09:54:08,110 --> 09:54:10,420
+This is going to be our TypeScript configuration. 
+
+
+9906
+09:54:10,420 --> 09:54:14,260
+Typically, for a setup, we're gonna go with something like this. 
+
+
+9907
+09:54:14,260 --> 09:54:16,840
+And you can copy this from the GitHub repo associated with this course. 
+
+
+9908
+09:54:16,840 --> 09:54:19,420
+It's basically telling TypeScript, 
+
+
+9909
+09:54:19,420 --> 09:54:21,580
+what versions of Typescript and what files to include for working with TypeScript. 
+
+
+9910
+09:54:21,610 --> 09:54:24,130
+Now let's go ahead and start with our deploy dot TypeScript. 
+
+
+9911
+09:54:24,130 --> 09:54:27,100
+For usual, instead of using require, 
+
+
+9912
+09:54:27,100 --> 09:54:30,370
+we're gonna go ahead and use import, 
+
+
+9913
+09:54:30,370 --> 09:54:34,390
+we're gonna do the exact same thing. 
+
+
+9914
+09:54:34,390 --> 09:54:37,990
+We're gonna have import ethers run network, from hard hat. 
+
+
+9915
+09:54:37,990 --> 09:54:45,640
+And then in our verify function, we're going to add that we're gonna add the types for these arguments. 
+
+
+9916
+09:54:45,790 --> 09:54:48,070
+So contract address, is going to be a string. 
+
+
+9917
+09:54:48,070 --> 09:54:52,540
+And args is going to be an array of arguments. 
+
+
+9918
+09:54:52,570 --> 09:54:56,260
+So we're gonna say it's gonna be any array, 
+
+
+9919
+09:54:56,260 --> 09:54:59,410
+because it could be string, it could be numbers, it could be balloons, it could be anything. 
+
+
+9920
+09:54:59,410 --> 09:55:02,200
+We're also going to say for IE, going to say for IE, it could be any, 
+
+
+9921
+09:55:02,200 --> 09:55:04,840
+even though this is technically an error type, 
+
+
+9922
+09:55:04,840 --> 09:55:08,230
+we're just going to put any for simplicity. For now. 
+
+
+9923
+09:55:08,230 --> 09:55:12,160
+All of our TypeScript scripts are included in our TS config, 
+
+
+9924
+09:55:12,520 --> 09:55:15,730
+or any TypeScript files are manually added here, 
+
+
+9925
+09:55:15,730 --> 09:55:18,700
+which we have Our entire scripts folder here, which is good. 
+
+
+9926
+09:55:18,730 --> 09:55:22,870
+So now we need to add ethers in here. 
+
+
+9927
+09:55:22,870 --> 09:55:26,980
+Well, if we look at our hardhead.config.ts, we're using require here still,
+
+
+9928
+09:55:27,040 --> 09:55:30,550
+and we need to swap this out for import 
+
+
+9929
+09:55:30,550 --> 09:55:34,720
+for Donnie V, you can use dot env slash config for it to grab your dot env file. 
+
+
+9930
+09:55:34,720 --> 09:55:38,050
+Now that we've imported everything, go back to our deploy.ts, 
+
+
+9931
+09:55:38,050 --> 09:55:41,020
+we can see that that linting has gone away. 
+
+
+9932
+09:55:41,020 --> 09:55:45,190
+If you want to be even more explicit, we can go ahead and add import 
+
+
+9933
+09:55:45,850 --> 09:55:50,470
+at nomic labs slash hard hat ethers like so. 
+
+
+9934
+09:55:50,470 --> 09:55:54,040
+reason we don't need to import it here is because these two packages also work with Hardhead ethers, 
+
+
+9935
+09:55:54,040 --> 09:55:56,830
+so they automatically import it. But if you want to be super explicit, 
+
+
+9936
+09:55:56,830 --> 09:56:00,220
+you can go ahead and add it like so. 
+
+
+9937
+09:56:00,220 --> 09:56:03,730
+Now, we're almost good to go. 
+
+
+9938
+09:56:03,730 --> 09:56:06,460
+But remember, our Harnett dot config is also importing our tasks. 
+
+
+9939
+09:56:06,460 --> 09:56:10,990
+So we're going to need to update our tasks or block number to be TypeScript fide. 
+
+
+9940
+09:56:11,020 --> 09:56:16,720
+So of course, instead of const require, we're going to import task from our that slash config. 
+
+
+9941
+09:56:16,720 --> 09:56:19,630
+And we're going to be sure to export our task from lock number as the default. 
+
+
+9942
+09:56:19,630 --> 09:56:23,350
+So we're going to do export default task like so. 
+
+
+9943
+09:56:23,380 --> 09:56:28,960
+And now we should be good to run our scripts. 
+
+
+9944
+09:56:28,960 --> 09:56:33,970
+So we can just do yarn, art hat, run scripts, employee.ts. 
+
+
+9945
+09:56:34,330 --> 09:56:38,440
+We can do network hard hat if we choose. And awesome. 
+
+
+9946
+09:56:38,470 --> 09:56:42,250
+Now, it's when we get to the testing, that things get a little bit different here. 
+
+
+9947
+09:56:42,280 --> 09:56:45,400
+So let's go ahead and change this required to import. 
+
+
+9948
+09:56:45,430 --> 09:56:50,410
+Just to make it happy there. 
+
+
+9949
+09:56:50,440 --> 09:56:55,990
+Let's try to run yarn, art head test, we get a whole bunch of errors, and in VS
+
+
+9950
+09:56:55,990 --> 09:56:58,930
+code will actually go ahead and get these errors right from the
+
+
+9951
+09:56:58,930 --> 09:57:02,320
+linter. One of the trickiest things that you run into as a
+
+
+9952
+09:57:02,320 --> 09:57:06,100
+developer in this space is calling functions on contracts
+
+
+9953
+09:57:06,100 --> 09:57:09,520
+where those functions don't exist, or vice versa. We're not
+
+
+9954
+09:57:09,520 --> 09:57:12,340
+calling functions on contracts that do exist. Right now the
+
+
+9955
+09:57:12,340 --> 09:57:17,140
+typing for our contracts is just type contract, which isn't super
+
+
+9956
+09:57:17,140 --> 09:57:20,290
+helpful, because type contract doesn't necessarily have all the
+
+
+9957
+09:57:20,290 --> 09:57:23,440
+functions that we want it to have. We want our contracts to
+
+
+9958
+09:57:23,440 --> 09:57:27,490
+be of type contract, but we want them to be of the type of our
+
+
+9959
+09:57:27,490 --> 09:57:30,550
+contract, because if they're the type of our contract, they can
+
+
+9960
+09:57:30,550 --> 09:57:33,880
+have all the functions that we want them to have. So to give
+
+
+9961
+09:57:33,880 --> 09:57:37,330
+our contracts the correct typing here, we actually can use this
+
+
+9962
+09:57:37,330 --> 09:57:40,870
+tool called type chain, which gives our contracts correct
+
+
+9963
+09:57:40,900 --> 09:57:44,800
+typing type chain has a hardened plugin, which allows us to use
+
+
+9964
+09:57:44,830 --> 09:57:47,890
+type chain and TypeScript natively together, type chain
+
+
+9965
+09:57:47,890 --> 09:57:49,930
+slash hard hat was one of these things that we already
+
+
+9966
+09:57:49,930 --> 09:57:53,440
+installed. And to add it to our hard hat, we got to just go to
+
+
+9967
+09:57:53,440 --> 09:57:59,530
+the hard hat config, and add it in import at type chain slash
+
+
+9968
+09:57:59,680 --> 09:58:03,910
+arhat. Now once we import that in to our config, if we run yarn
+
+
+9969
+09:58:03,910 --> 09:58:08,860
+hardhat, we now get a new task here called type chain, you read
+
+
+9970
+09:58:08,860 --> 09:58:11,650
+the description, it says generate type chain typings for
+
+
+9971
+09:58:11,650 --> 09:58:15,460
+compiled contracts, this will enable all of our contracts to
+
+
+9972
+09:58:15,460 --> 09:58:18,910
+have their own typing. So we can have a simple storage variable
+
+
+9973
+09:58:18,970 --> 09:58:22,810
+of type simple storage contract, which is much better, because
+
+
+9974
+09:58:22,810 --> 09:58:25,600
+we're always going to know exactly what we can do with each
+
+
+9975
+09:58:25,600 --> 09:58:28,360
+contract. To create this, we run yarn,
+
+
+9976
+09:58:28,810 --> 09:58:35,620
+arhat type chain. And this is going to create a new folder
+
+
+9977
+09:58:35,680 --> 09:58:39,130
+called type chain slash types. With types for all of our
+
+
+9978
+09:58:39,130 --> 09:58:42,400
+contracts, you can even go into our simple storage sub Ts, which
+
+
+9979
+09:58:42,400 --> 09:58:44,650
+is going to have all the different functions and
+
+
+9980
+09:58:44,890 --> 09:58:48,550
+everything to do with our simple storage contract automatically
+
+
+9981
+09:58:48,550 --> 09:58:51,610
+coded into Typescript and JavaScript for us, which is
+
+
+9982
+09:58:51,610 --> 09:58:54,400
+incredibly helpful. And again, no, I haven't shown you what
+
+
+9983
+09:58:54,400 --> 09:58:57,520
+this is yet. But in our dot Git ignore, we usually want to add
+
+
+9984
+09:58:57,520 --> 09:59:01,390
+type chain and type chain dash types into our dot Git ignore so
+
+
+9985
+09:59:01,390 --> 09:59:04,630
+we don't push them up to GitHub. Now back in our test, we're
+
+
+9986
+09:59:04,630 --> 09:59:09,220
+going to add the exact types of these different objects here. So
+
+
+9987
+09:59:09,220 --> 09:59:12,130
+we're going to import them from that folder that we just
+
+
+9988
+09:59:12,130 --> 09:59:17,950
+created. So we'll do import simple storage, comma, simple
+
+
+9989
+09:59:17,950 --> 09:59:24,130
+storage underscore underscore factory from dot dot slash
+
+
+9990
+09:59:24,190 --> 09:59:29,350
+types, ain slash types, the simple storage factory is going
+
+
+9991
+09:59:29,350 --> 09:59:32,110
+to be simple storage factory and then civil storage of course, is
+
+
+9992
+09:59:32,110 --> 09:59:36,730
+going to be simple storage. So now when do let simple storage
+
+
+9993
+09:59:36,730 --> 09:59:42,430
+factory which is going to be of type, simple storage, underscore
+
+
+9994
+09:59:42,430 --> 09:59:46,090
+underscore factory, and then simple storage, which is going
+
+
+9995
+09:59:46,090 --> 09:59:51,820
+to be of type simple storage contract. And if we command
+
+
+9996
+09:59:51,820 --> 09:59:55,390
+clicked into simple storage, once again, we can see all the
+
+
+9997
+09:59:55,390 --> 09:59:59,380
+contract functions that we know and love, are here. In addition,
+
+
+9998
+09:59:59,380 --> 10:00:03,970
+we have all the functions of the actual contract itself. Once we
+
+
+9999
+10:00:03,970 --> 10:00:06,580
+do that, we're pretty much good to go we just need to have a
+
+
+10000
+10:00:06,580 --> 10:00:10,540
+couple of new things here. Get contract factory returns a type
+
+
+10001
+10:00:10,570 --> 10:00:13,420
+ethers dot contract factory. So what we just need to do is we
+
+
+10002
+10:00:13,420 --> 10:00:17,410
+need to wrap this in a simple storage factory type. So We'll
+
+
+10003
+10:00:17,410 --> 10:00:21,250
+just do a little wrap like this. And we'll say, as simple
+
+
+10004
+10:00:21,670 --> 10:00:25,960
+storage, I'm just going to sort of factory. And that's good to
+
+
+10005
+10:00:25,960 --> 10:00:28,930
+go. Now that we've added all this, we can run yarn, Hardhead
+
+
+10006
+10:00:28,930 --> 10:00:33,970
+test. And boom, our test run is normal, but with TypeScript and
+
+
+10007
+10:00:33,970 --> 10:00:37,060
+with this additional typing that makes our lives substantially
+
+
+10008
+10:00:37,060 --> 10:00:39,880
+substantially better. And that's going to be all you need to know
+
+
+10009
+10:00:39,880 --> 10:00:43,510
+for TypeScript, reusable, all of the branches have an optional
+
+
+10010
+10:00:43,540 --> 10:00:46,870
+TypeScript branch that you can use to reference to work with
+
+
+10011
+10:00:46,870 --> 10:00:47,410
+TypeScript.
