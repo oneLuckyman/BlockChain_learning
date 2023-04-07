@@ -132,12 +132,12 @@ And then of course, what we're going to do is we're going to convert all of our 
 9899
 09:53:47,530 --> 09:53:51,310
 So anywhere where we have J S, we're going to put Ts, 
-所以只要是 "js"，一律替换成 "ts"
+所以只要是 "js" 的地方，一律替换成 "ts"
 
 9900
 09:53:51,310 --> 09:53:54,400
 obviously, if you're coding this from scratch with TypeScript, 
-显然，如果你要从头开始使用 TypeScript
+显然，如果你是从头使用 TypeScript
 
 9901
 09:53:54,400 --> 09:53:59,110
@@ -146,407 +146,407 @@ you would do the.ts From the get go.
 
 9902
 09:53:59,200 --> 09:54:01,690
-
-
+This includes our hard hat dot config, that's also going to be TypeScript now. 
+包括我们的 "hardhat.config"，现在也变成 TypeScript 了
 
 9903
 09:54:01,690 --> 09:54:04,630
-This includes our hard hat dot config, that's also going to be TypeScript now. 
-
+And additionally, we're going to add a TS config dot JSON. 
+此外我们还要添加一个 "tsconfig.json"
 
 9904
 09:54:04,630 --> 09:54:08,110
-And additionally, we're going to add a TS config dot JSON. 
-
+This is going to be our TypeScript configuration. 
+这是我们的 TypeScript 配置文件
 
 9905
 09:54:08,110 --> 09:54:10,420
-This is going to be our TypeScript configuration. 
-
+Typically, for a setup, we're gonna go with something like this. 
+通常情况下，我们会采用类似这样的配置
 
 9906
 09:54:10,420 --> 09:54:14,260
-Typically, for a setup, we're gonna go with something like this. 
-
+And you can copy this from the GitHub repo associated with this course. 
+你可以直接从课程关联的 GitHub 仓库中复制它们
 
 9907
 09:54:14,260 --> 09:54:16,840
-And you can copy this from the GitHub repo associated with this course. 
-
+It's basically telling TypeScript, 
+基本上它就是告诉 TypeScript
 
 9908
 09:54:16,840 --> 09:54:19,420
-It's basically telling TypeScript, 
-
+what versions of Typescript and what files to include for working with TypeScript. 
+要使用哪个版本的 TypeScript 以及哪些文件被用于处理 TypeScript
 
 9909
 09:54:19,420 --> 09:54:21,580
-what versions of Typescript and what files to include for working with TypeScript. 
-
+Now let's go ahead and start with our deploy dot TypeScript. 
+现在让我们开始处理我们的 "deploy.ts" 文件
 
 9910
 09:54:21,610 --> 09:54:24,130
-Now let's go ahead and start with our deploy dot TypeScript. 
-
+For usual, instead of using require, 
+通常情况下，我们不再使用 "require"
 
 9911
 09:54:24,130 --> 09:54:27,100
-For usual, instead of using require, 
-
+we're gonna go ahead and use import, 
+而是使用 "import"
 
 9912
 09:54:27,100 --> 09:54:30,370
-we're gonna go ahead and use import, 
-
+we're gonna do the exact same thing. 
+我们要做的事情差不多
 
 9913
 09:54:30,370 --> 09:54:34,390
-we're gonna do the exact same thing. 
-
+We're gonna have import ethers run network, from hard hat. 
+输入 "import { ethers, run, network } from "hardhat""
 
 9914
 09:54:34,390 --> 09:54:37,990
-We're gonna have import ethers run network, from hard hat. 
-
+And then in our verify function, we're going to add that we're gonna add the types for these arguments. 
+然后在我们的 "verify" 函数中，我们要给这些参数添加数据类型
 
 9915
 09:54:37,990 --> 09:54:45,640
-And then in our verify function, we're going to add that we're gonna add the types for these arguments. 
-
+So contract address, is going to be a string. 
+"contractAddress" 是一个 "string"
 
 9916
 09:54:45,790 --> 09:54:48,070
-So contract address, is going to be a string. 
-
+And args is going to be an array of arguments. 
+而 "args" 则是包含参数的一个数组
 
 9917
 09:54:48,070 --> 09:54:52,540
-And args is going to be an array of arguments. 
-
+So we're gonna say it's gonna be any array, 
+所以我们会说它是一个 "any[]"
 
 9918
 09:54:52,570 --> 09:54:56,260
-So we're gonna say it's gonna be any array, 
-
+because it could be string, it could be numbers, it could be balloons, it could be anything. 
+因为它既可以是一个字符串也可以是一个数字或者布尔值，它可以是任何类型
 
 9919
 09:54:56,260 --> 09:54:59,410
-because it could be string, it could be numbers, it could be balloons, it could be anything. 
-
+We're also going to say for IE, it could be any, 
+我们还要把 "e" 指定为 "any" 类型
 
 9920
 09:54:59,410 --> 09:55:02,200
-We're also going to say for IE, going to say for IE, it could be any, 
-
+even though this is technically an error type, 
+尽管从技术上来说它是一个 "Error" 类型
 
 9921
 09:55:02,200 --> 09:55:04,840
-even though this is technically an error type, 
-
+we're just going to put any for simplicity. For now. 
+但为了简单起见，我们现在把它设置为 "any" 就好
 
 9922
 09:55:04,840 --> 09:55:08,230
-we're just going to put any for simplicity. For now. 
-
+All of our TypeScript scripts are included in our TS config, 
+我们所有的 TypeScript 脚本都会包含进我们的 "tsconfig" 中
 
 9923
 09:55:08,230 --> 09:55:12,160
-All of our TypeScript scripts are included in our TS config, 
-
+or any TypeScript files are manually added here, 
+或者任何 TypeScript 文件也可以手动添加在这里
 
 9924
 09:55:12,520 --> 09:55:15,730
-or any TypeScript files are manually added here, 
-
+which we have Our entire scripts folder here, which is good. 
+我们在这里放入了整个 "scripts" 文件夹，这很不错
 
 9925
 09:55:15,730 --> 09:55:18,700
-which we have Our entire scripts folder here, which is good. 
-
+So now we need to add ethers in here. 
+现在我们要在这里添加 "ethers" 了
 
 9926
 09:55:18,730 --> 09:55:22,870
-So now we need to add ethers in here. 
-
+Well, if we look at our hardhead.config.ts, we're using require here still,
+如果我们看一下我们的 "hardhat.config.ts"，这里使用的仍然是 "require"
 
 9927
 09:55:22,870 --> 09:55:26,980
-Well, if we look at our hardhead.config.ts, we're using require here still,
-
+and we need to swap this out for import 
+我们需要把它们替换成 "import"
 
 9928
 09:55:27,040 --> 09:55:30,550
-and we need to swap this out for import 
-
+for Donnie V, you can use dot env slash config for it to grab your dot env file. 
+对于 "dotenv"，你可以使用 "dotenv/config" 来获取你的 ".env" 文件
 
 9929
 09:55:30,550 --> 09:55:34,720
-for Donnie V, you can use dot env slash config for it to grab your dot env file. 
-
+Now that we've imported everything, go back to our deploy.ts, 
+现在我们已经把所有东西都导入好了，回到我们的 "deploy.ts"
 
 9930
 09:55:34,720 --> 09:55:38,050
-Now that we've imported everything, go back to our deploy.ts, 
-
+we can see that that linting has gone away. 
+可以看到刚才的报错已经消失了
 
 9931
 09:55:38,050 --> 09:55:41,020
-we can see that that linting has gone away. 
-
+If you want to be even more explicit, 
+如果你想表达的更明确
 
 9932
 09:55:41,020 --> 09:55:45,190
-If you want to be even more explicit, we can go ahead and add import 
-
+we can go ahead and add import at nomic labs slash hard hat ethers like so. 
+那么可以添加 "import @nomiclabs/hardhat-ethers"，就像这样
 
 9933
 09:55:45,850 --> 09:55:50,470
-at nomic labs slash hard hat ethers like so. 
-
+reason we don't need to import it here is because these two packages also work with Hardhead ethers, 
+之所以不用在这导入它是因为这两个包也使用 "hardhat-ethers"
 
 9934
 09:55:50,470 --> 09:55:54,040
-reason we don't need to import it here is because these two packages also work with Hardhead ethers, 
-
+so they automatically import it. But if you want to be super explicit, 
+所以它们会自动导入它，但如果你特别想表达明确
 
 9935
 09:55:54,040 --> 09:55:56,830
-so they automatically import it. But if you want to be super explicit, 
-
+you can go ahead and add it like so. 
+就可以像这样把它添加进来
 
 9936
 09:55:56,830 --> 09:56:00,220
-you can go ahead and add it like so. 
-
+Now, we're almost good to go. 
+现在我们可以继续前进了
 
 9937
 09:56:00,220 --> 09:56:03,730
-Now, we're almost good to go. 
-
+But remember, our Harnett dot config is also importing our tasks. 
+但记住，我们的 "hardhat.config" 同时还导入了我们的 tasks
 
 9938
 09:56:03,730 --> 09:56:06,460
-But remember, our Harnett dot config is also importing our tasks. 
-
+So we're going to need to update our tasks or block number to be TypeScript fide. 
+所以我们需要把我们的 tasks 或者说 "block-number" 更新为 TypeScript 格式
 
 9939
 09:56:06,460 --> 09:56:10,990
-So we're going to need to update our tasks or block number to be TypeScript fide. 
-
+So of course, instead of const require, we're going to import task from our that slash config. 
+所以说当然，不再是 "const require"，要改成 "import { task } from "hardhat/config""
 
 9940
 09:56:11,020 --> 09:56:16,720
-So of course, instead of const require, we're going to import task from our that slash config. 
-
+And we're going to be sure to export our task from lock number as the default. 
+并且我们要确保 "block-number" task 要导出为 "default"
 
 9941
 09:56:16,720 --> 09:56:19,630
-And we're going to be sure to export our task from lock number as the default. 
-
+So we're going to do export default task like so. 
+所以我们要写成 "export default task" 就像这样
 
 9942
 09:56:19,630 --> 09:56:23,350
-So we're going to do export default task like so. 
-
+And now we should be good to run our scripts. 
+现在应该就能运行我们的脚本了
 
 9943
 09:56:23,380 --> 09:56:28,960
-And now we should be good to run our scripts. 
-
+So we can just do yarn, art hat, run scripts, employee.ts. 
+只要执行 "yarn hardhat run scripts/deploy.ts"
 
 9944
 09:56:28,960 --> 09:56:33,970
-So we can just do yarn, art hat, run scripts, employee.ts. 
-
+We can do network hard hat if we choose. And awesome. 
+如果需要的话还可以加上 "--network hardhat"，好极了
 
 9945
 09:56:34,330 --> 09:56:38,440
-We can do network hard hat if we choose. And awesome. 
+Now, it's when we get to the testing, that things get a little bit different here. 
 
 
 9946
 09:56:38,470 --> 09:56:42,250
-Now, it's when we get to the testing, that things get a little bit different here. 
+So let's go ahead and change this required to import. 
 
 
 9947
 09:56:42,280 --> 09:56:45,400
-So let's go ahead and change this required to import. 
+Just to make it happy there. 
 
 
 9948
 09:56:45,430 --> 09:56:50,410
-Just to make it happy there. 
+Let's try to run yarn, art head test, 
 
 
 9949
 09:56:50,440 --> 09:56:55,990
-Let's try to run yarn, art head test, we get a whole bunch of errors, and in VS
+we get a whole bunch of errors, 
 
 
 9950
 09:56:55,990 --> 09:56:58,930
-code will actually go ahead and get these errors right from the
+and in VS code will actually go ahead and get these errors right from the linter. 
 
 
 9951
 09:56:58,930 --> 09:57:02,320
-linter. One of the trickiest things that you run into as a
+One of the trickiest things that you run into as a developer in this space 
 
 
 9952
 09:57:02,320 --> 09:57:06,100
-developer in this space is calling functions on contracts
+is calling functions on contracts where those functions don't exist, or vice versa. 
 
 
 9953
 09:57:06,100 --> 09:57:09,520
-where those functions don't exist, or vice versa. We're not
+We're not calling functions on contracts that do exist. 
 
 
 9954
 09:57:09,520 --> 09:57:12,340
-calling functions on contracts that do exist. Right now the
+Right now the typing for our contracts is just type contract, 
 
 
 9955
 09:57:12,340 --> 09:57:17,140
-typing for our contracts is just type contract, which isn't super
+which isn't super helpful, 
 
 
 9956
 09:57:17,140 --> 09:57:20,290
-helpful, because type contract doesn't necessarily have all the
+because type contract doesn't necessarily have all the functions that we want it to have. 
 
 
 9957
 09:57:20,290 --> 09:57:23,440
-functions that we want it to have. We want our contracts to
+We want our contracts to be of type contract, 
 
 
 9958
 09:57:23,440 --> 09:57:27,490
-be of type contract, but we want them to be of the type of our
+but we want them to be of the type of our contract, 
 
 
 9959
 09:57:27,490 --> 09:57:30,550
-contract, because if they're the type of our contract, they can
+because if they're the type of our contract, 
 
 
 9960
 09:57:30,550 --> 09:57:33,880
-have all the functions that we want them to have. So to give
+they can have all the functions that we want them to have. 
 
 
 9961
 09:57:33,880 --> 09:57:37,330
-our contracts the correct typing here, we actually can use this
+So to give our contracts the correct typing here, 
 
 
 9962
 09:57:37,330 --> 09:57:40,870
-tool called type chain, which gives our contracts correct
+we actually can use this tool called type chain, which gives our contracts correct typing 
 
 
 9963
 09:57:40,900 --> 09:57:44,800
-typing type chain has a hardened plugin, which allows us to use
+type chain has a hardened plugin, 
 
 
 9964
 09:57:44,830 --> 09:57:47,890
-type chain and TypeScript natively together, type chain
+which allows us to use type chain and TypeScript natively together, 
 
 
 9965
 09:57:47,890 --> 09:57:49,930
-slash hard hat was one of these things that we already
+type chain slash hard hat was one of these things that we already installed. 
 
 
 9966
 09:57:49,930 --> 09:57:53,440
-installed. And to add it to our hard hat, we got to just go to
+And to add it to our hard hat, we got to just go to the hard hat config, 
 
 
 9967
 09:57:53,440 --> 09:57:59,530
-the hard hat config, and add it in import at type chain slash
+and add it in import at type chain slash arhat. 
 
 
 9968
 09:57:59,680 --> 09:58:03,910
-arhat. Now once we import that in to our config, if we run yarn
+Now once we import that in to our config, if we run yarn hardhat, 
 
 
 9969
 09:58:03,910 --> 09:58:08,860
-hardhat, we now get a new task here called type chain, you read
+we now get a new task here called type chain, 
 
 
 9970
 09:58:08,860 --> 09:58:11,650
-the description, it says generate type chain typings for
+you read the description, it says generate type chain typings for compiled contracts, 
 
 
 9971
 09:58:11,650 --> 09:58:15,460
-compiled contracts, this will enable all of our contracts to
+this will enable all of our contracts to have their own typing. 
 
 
 9972
 09:58:15,460 --> 09:58:18,910
-have their own typing. So we can have a simple storage variable
+So we can have a simple storage variable of type simple storage contract, 
 
 
 9973
 09:58:18,970 --> 09:58:22,810
-of type simple storage contract, which is much better, because
+which is much better, because we're always going to know exactly what we can do with each contract. 
 
 
 9974
 09:58:22,810 --> 09:58:25,600
-we're always going to know exactly what we can do with each
+To create this, we run yarn, arhat type chain. 
 
 
 9975
 09:58:25,600 --> 09:58:28,360
-contract. To create this, we run yarn,
+And this is going to create a new folder called type chain slash types. 
 
 
 9976
 09:58:28,810 --> 09:58:35,620
-arhat type chain. And this is going to create a new folder
+With types for all of our contracts, 
 
 
 9977
 09:58:35,680 --> 09:58:39,130
-called type chain slash types. With types for all of our
+you can even go into our simple storage sub Ts, 
 
 
 9978
 09:58:39,130 --> 09:58:42,400
-contracts, you can even go into our simple storage sub Ts, which
+which is going to have all the different functions and everything to do 
 
 
 9979
 09:58:42,400 --> 09:58:44,650
-is going to have all the different functions and
+with our simple storage contract automatically coded 
 
 
 9980
 09:58:44,890 --> 09:58:48,550
-everything to do with our simple storage contract automatically
+into Typescript and JavaScript for us, 
 
 
 9981
 09:58:48,550 --> 09:58:51,610
-coded into Typescript and JavaScript for us, which is
+which is incredibly helpful. 
 
 
 9982
 09:58:51,610 --> 09:58:54,400
-incredibly helpful. And again, no, I haven't shown you what
+And again, no, I haven't shown you what
 
 
 9983
