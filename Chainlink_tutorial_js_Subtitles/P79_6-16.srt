@@ -362,62 +362,62 @@ We can do network hard hat if we choose. And awesome.
 9945
 09:56:34,330 --> 09:56:38,440
 Now, it's when we get to the testing, that things get a little bit different here. 
-
+现在，轮到我们的测试环节了，这里的情况会有些不同
 
 9946
 09:56:38,470 --> 09:56:42,250
 So let's go ahead and change this required to import. 
-
+我们先把这里的 "require" 改成 "import"
 
 9947
 09:56:42,280 --> 09:56:45,400
 Just to make it happy there. 
-
+为的是让它不要报错
 
 9948
 09:56:45,430 --> 09:56:50,410
 Let's try to run yarn, art head test, 
-
+让我们尝试运行一下 "yarn hardhat test"
 
 9949
 09:56:50,440 --> 09:56:55,990
 we get a whole bunch of errors, 
-
+我们得到了一大堆报错
 
 9950
 09:56:55,990 --> 09:56:58,930
 and in VS code will actually go ahead and get these errors right from the linter. 
-
+在 VS Code 中，代码检查器其实也会发现这些错误
 
 9951
 09:56:58,930 --> 09:57:02,320
 One of the trickiest things that you run into as a developer in this space 
-
+这个领域中的开发者所能遇到的最棘手的问题之一就是
 
 9952
 09:57:02,320 --> 09:57:06,100
 is calling functions on contracts where those functions don't exist, or vice versa. 
-
+在合约上调用的函数不存在，或者反之亦然
 
 9953
 09:57:06,100 --> 09:57:09,520
 We're not calling functions on contracts that do exist. 
-
+即，没有在已存在的合约上调用函数
 
 9954
 09:57:09,520 --> 09:57:12,340
 Right now the typing for our contracts is just type contract, 
-
+目前我们合约的数据类型就是 "Contract" 类型
 
 9955
 09:57:12,340 --> 09:57:17,140
 which isn't super helpful, 
-
+这其实没什么大用
 
 9956
 09:57:17,140 --> 09:57:20,290
 because type contract doesn't necessarily have all the functions that we want it to have. 
-
+因为 "Contract" 类型可能并不包含我们所需的所有函数
 
 9957
 09:57:20,290 --> 09:57:23,440
