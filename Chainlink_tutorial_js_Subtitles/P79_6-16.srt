@@ -422,273 +422,254 @@ because type contract doesn't necessarily have all the functions that we want it
 9957
 09:57:20,290 --> 09:57:23,440
 We want our contracts to be of type contract, 
-
+我们当然希望合约类型是 "Contract"
 
 9958
 09:57:23,440 --> 09:57:27,490
 but we want them to be of the type of our contract, 
-
+但我们更希望它们的类型可以是我们的合约
 
 9959
 09:57:27,490 --> 09:57:30,550
 because if they're the type of our contract, 
-
+因为如果它们的类型是我们的合约
 
 9960
 09:57:30,550 --> 09:57:33,880
 they can have all the functions that we want them to have. 
-
+它们就会拥有我们所需的所有函数
 
 9961
 09:57:33,880 --> 09:57:37,330
 So to give our contracts the correct typing here, 
-
+所以为了给我们的合约提供正确的类型
 
 9962
 09:57:37,330 --> 09:57:40,870
 we actually can use this tool called type chain, which gives our contracts correct typing 
-
+我们需要使用这个名为 "TypeChain" 工具，它可以给我们的合约提供正确的类型
 
 9963
 09:57:40,900 --> 09:57:44,800
 type chain has a hardened plugin, 
-
+"TypeChain" 有一个 Hardhat 插件
 
 9964
 09:57:44,830 --> 09:57:47,890
 which allows us to use type chain and TypeScript natively together, 
-
+这就允许我们能够原生地使用 "TypeChain" 和 "TypeScript"
 
 9965
 09:57:47,890 --> 09:57:49,930
 type chain slash hard hat was one of these things that we already installed. 
-
+"typechain/hardhat" 就是我们已经安装好的工具之一
 
 9966
 09:57:49,930 --> 09:57:53,440
 And to add it to our hard hat, we got to just go to the hard hat config, 
-
+要想把它添加进 Hardhat，我们只需要打开 "hardhat.config"
 
 9967
 09:57:53,440 --> 09:57:59,530
 and add it in import at type chain slash arhat. 
-
+并添加 "import @typechain/hardhat"
 
 9968
 09:57:59,680 --> 09:58:03,910
 Now once we import that in to our config, if we run yarn hardhat, 
-
+一旦我们把它导入进了 "config" 中，就可以运行 "yarn hardhat"
 
 9969
 09:58:03,910 --> 09:58:08,860
 we now get a new task here called type chain, 
-
+现在我们获得了一个新的 task 名为 "typechain"
 
 9970
 09:58:08,860 --> 09:58:11,650
 you read the description, it says generate type chain typings for compiled contracts, 
-
+可以读一下描述，它说的是：“为已编译的合约生成 Typechain 类型”
 
 9971
 09:58:11,650 --> 09:58:15,460
 this will enable all of our contracts to have their own typing. 
-
+这将使我们的所有合约都拥有属于它们自己的类型
 
 9972
 09:58:15,460 --> 09:58:18,910
 So we can have a simple storage variable of type simple storage contract, 
-
+这样我们就可以拥有一个 "SimpleStorage" 合约类型的 "simpleStorage" 变量了
 
 9973
 09:58:18,970 --> 09:58:22,810
 which is much better, because we're always going to know exactly what we can do with each contract. 
-
+这样很好，因为这样我们就总是可以知道每个合约都能做什么了
 
 9974
 09:58:22,810 --> 09:58:25,600
 To create this, we run yarn, arhat type chain. 
-
+要创建这个，我们需要运行 "yarn hardhat typechain"
 
 9975
 09:58:25,600 --> 09:58:28,360
 And this is going to create a new folder called type chain slash types. 
-
+这样就会创建一个新的文件夹名为 "typechain-types"
 
 9976
 09:58:28,810 --> 09:58:35,620
 With types for all of our contracts, 
-
+其中包含了我们所有的合约类型
 
 9977
 09:58:35,680 --> 09:58:39,130
 you can even go into our simple storage sub Ts, 
-
+你甚至可以进入我们的 "SimpleStorage.ts"
 
 9978
 09:58:39,130 --> 09:58:42,400
-which is going to have all the different functions and everything to do 
-
+which is going to have all the different functions and 
+它所具有的所有不同的函数
 
 9979
 09:58:42,400 --> 09:58:44,650
-with our simple storage contract automatically coded 
-
+everything to do with our simple storage contract 
+以及你要用 "SimpleStorage" 合约所做的所有事
 
 9980
 09:58:44,890 --> 09:58:48,550
-into Typescript and JavaScript for us, 
-
+automatically coded into Typescript and JavaScript for us, 
+都会被自动生成为 TypeScript 和 JavaScript 
 
 9981
 09:58:48,550 --> 09:58:51,610
 which is incredibly helpful. 
-
+这真的很有用
 
 9982
 09:58:51,610 --> 09:58:54,400
-And again, no, I haven't shown you what
-
+And again, no, I haven't shown you what this is yet. 
+再次强调，尽管我还没有向你们详细说明
 
 9983
 09:58:54,400 --> 09:58:57,520
-this is yet. But in our dot Git ignore, we usually want to add
-
+But in our dot Git ignore, 
+但在我们的 ".gitignore" 中
 
 9984
 09:58:57,520 --> 09:59:01,390
-type chain and type chain dash types into our dot Git ignore so
-
+we usually want to add type chain and type chain dash types into our dot Git ignore so
+通常要加上 "typechain" 以及 "typechain-types"
 
 9985
 09:59:01,390 --> 09:59:04,630
-we don't push them up to GitHub. Now back in our test, we're
-
+we don't push them up to GitHub. 
+我们不会把它们上传到 GitHub 上
 
 9986
 09:59:04,630 --> 09:59:09,220
-going to add the exact types of these different objects here. So
-
+Now back in our test, we're going to add the exact types of these different objects here. 
+现在回到我们的测试上，我们要给这些对象添加确切的类型
 
 9987
 09:59:09,220 --> 09:59:12,130
-we're going to import them from that folder that we just
-
+So we're going to import them from that folder that we just created. 
+因此我们要从刚刚创建的文件夹中导入它们
 
 9988
 09:59:12,130 --> 09:59:17,950
-created. So we'll do import simple storage, comma, simple
-
+So we'll do import simple storage, comma, simple storage underscore underscore factory from dot dot slash types, ain slash types, 
+所以就是 "import {SimpleStorage, SimpleStorage__factory} from "../typechain-types""
 
 9989
 09:59:17,950 --> 09:59:24,130
-storage underscore underscore factory from dot dot slash
-
+the simple storage factory is going to be simple storage factory 
+这个 "SimpleStorage factory" 就是 "simpleStorageFactory"
 
 9990
 09:59:24,190 --> 09:59:29,350
-types, ain slash types, the simple storage factory is going
-
+and then civil storage of course, is going to be simple storage. 
+而这个 "SimpleStorage" 当然就是 "simpleStorage" 了
 
 9991
 09:59:29,350 --> 09:59:32,110
-to be simple storage factory and then civil storage of course, is
-
+So now when do let simple storage factory which is going to be of type, simple storage, underscore underscore factory, 
+所以我们要把 "let simpleStorageFactory" 指定为 "SimpleStorage__factory" 类型
 
 9992
 09:59:32,110 --> 09:59:36,730
-going to be simple storage. So now when do let simple storage
-
+and then simple storage, which is going to be of type simple storage contract. 
+而 "simpleStorage" 就会是 "SimpleStorage" 合约类型
 
 9993
 09:59:36,730 --> 09:59:42,430
-factory which is going to be of type, simple storage, underscore
-
+And if we command clicked into simple storage, 
+如果我们使用 "Command + 点击" 的方法进入 "SimpleStorage"
 
 9994
 09:59:42,430 --> 09:59:46,090
-underscore factory, and then simple storage, which is going
-
+once again, we can see all the contract functions that we know and love, are here. 
+就可以看到我们所熟悉的所有合约函数都在这里
 
 9995
 09:59:46,090 --> 09:59:51,820
-to be of type simple storage contract. And if we command
-
+In addition, we have all the functions of the actual contract itself. 
+此外，我们还可以获得实际的合约其本身的所有函数
 
 9996
 09:59:51,820 --> 09:59:55,390
-clicked into simple storage, once again, we can see all the
-
+Once we do that, we're pretty much good to go we just need to have a couple of new things here. 
+一旦完成这一步，基本上就已经可以开始了，只要在这里再添加一点东西
 
 9997
 09:59:55,390 --> 09:59:59,380
-contract functions that we know and love, are here. In addition,
-
+Get contract factory returns a type ethers dot contract factory. 
+"getContractFactory" 返回一个 "ethers.ContractFactory" 类型
 
 9998
 09:59:59,380 --> 10:00:03,970
-we have all the functions of the actual contract itself. Once we
-
+So what we just need to do is we need to wrap this in a simple storage factory type. 
+因此，我们只需要将其包装进一个 "SimpleStorage__factory" 类型即可
 
 9999
 10:00:03,970 --> 10:00:06,580
-do that, we're pretty much good to go we just need to have a
-
+So We'll just do a little wrap like this. 
+我们只要在这里简单包装一下
 
 10000
 10:00:06,580 --> 10:00:10,540
-couple of new things here. Get contract factory returns a type
-
+And we'll say, as simple storage, I'm just going to sort of factory. 
+然后写上 "as SimpleStorage__factory"
 
 10001
 10:00:10,570 --> 10:00:13,420
-ethers dot contract factory. So what we just need to do is we
-
+And that's good to go. 
+这就成了
 
 10002
 10:00:13,420 --> 10:00:17,410
-need to wrap this in a simple storage factory type. So We'll
-
+Now that we've added all this, we can run yarn, Hardhead test. 
+现在我们已经添加好了所有的东西，就可以运行 "yarn hardhat test" 了
 
 10003
 10:00:17,410 --> 10:00:21,250
-just do a little wrap like this. And we'll say, as simple
-
+And boom, our test run is normal, 
+嘭！我们的测试运行正常
 
 10004
 10:00:21,670 --> 10:00:25,960
-storage, I'm just going to sort of factory. And that's good to
-
+but with TypeScript and with this additional typing that makes our lives substantially substantially better. 
+有了 TypeScript 以及这些额外的类型，我们的工作将变得更加轻松
 
 10005
 10:00:25,960 --> 10:00:28,930
-go. Now that we've added all this, we can run yarn, Hardhead
-
+And that's going to be all you need to know for TypeScript, 
+这就是你需要知道的有关 TypeScript 的全部内容了
 
 10006
 10:00:28,930 --> 10:00:33,970
-test. And boom, our test run is normal, but with TypeScript and
-
+reusable, all of the branches have an optional TypeScript branch 
+通常，所有分支都会有一个可选的 TypeScript 分支
 
 10007
 10:00:33,970 --> 10:00:37,060
-with this additional typing that makes our lives substantially
-
-
-10008
-10:00:37,060 --> 10:00:39,880
-substantially better. And that's going to be all you need to know
-
-
-10009
-10:00:39,880 --> 10:00:43,510
-for TypeScript, reusable, all of the branches have an optional
-
-
-10010
-10:00:43,540 --> 10:00:46,870
-TypeScript branch that you can use to reference to work with
-
-
-10011
-10:00:46,870 --> 10:00:47,410
-TypeScript.
+that you can use to reference to work with TypeScript.
+你可以参考它们来使用 TypeScript 进行工作
