@@ -1,0 +1,74 @@
+10159
+10:09:39,350 --> 10:09:44,390
+So we can run yarn Hardhead compile. 
+现在我们运行 "yarn hardhat compile"
+
+10160
+10:09:44,390 --> 10:09:47,480
+And you'll see we actually get an error here. 
+你会看到我们遇到了报错
+
+10161
+10:09:47,480 --> 10:09:50,630
+Library at chain link slash contracts imported from contracts slash fund me dot soul is not installed, 
+“库 "@chainlink/contracts" 导入自 "contracts/FundMe.sol"，并没有安装”
+
+10162
+10:09:50,660 --> 10:09:55,370
+try installing it using npm. 
+“请尝试使用 npm 进行安装”
+
+10163
+10:09:55,370 --> 10:09:58,640
+In remix, we went ahead and just imported at chainlink slash contracts, right from our NPM and or GitHub. 
+在 Remix 中我们只需要从 npm 或 GitHub 中直接导入 "@chainlink/contracts" 
+
+10164
+10:09:58,640 --> 10:10:02,600
+But in our local code, 
+但在我们的本地代码中，
+
+10165
+10:10:02,600 --> 10:10:07,070
+we have to tell Hardhead specifically, where to get this from, 
+我们还必须具体告诉 Hardhat 从哪里获取这个东西
+
+10166
+10:10:07,070 --> 10:10:11,270
+we want to download this specifically from the NPM package manager at chainlink slash contracts, 
+具体来说，我们要从 npm 包管理器上下载这个 "@chainlink/contracts"
+
+10167
+10:10:11,270 --> 10:10:14,420
+we can download it simply by running yarn, add dash dash dev at chainlink slash contracts.
+我们可以简单地使用 "yarn add --dev @chainlink/contracts" 来把它下载下来
+
+10168
+10:10:14,420 --> 10:10:20,690
+Now that we've downloaded it into our file, 
+现在我们已经把它下载到我们的文件里了
+
+10169
+10:10:23,000 --> 10:10:25,610
+we'll be able to see it in Node modules here. 
+我们可以在 "node_modules" 这里看到它
+
+10170
+10:10:25,610 --> 10:10:30,170
+Hardhead is now smart enough to know that at chain link slash contracts 
+Hardhat 十分智能，它知道这里的 "@chainlink/contracts" 
+
+10171
+10:10:30,170 --> 10:10:32,510
+is going to point to that node module that we have. 
+指的就是 "node_modules" 中安装的那个
+
+10172
+10:10:32,510 --> 10:10:36,290
+So we can now run yarn Hardhead compile 
+所以现在我们就可以运行 "yarn hardhat compile"
+
+10173
+10:10:36,290 --> 10:10:40,610
+boom, now we can see compiled three solidity files successfully. 
+嘭！现在我们可以看到“已成功编译 3 个 Solidity 文件
