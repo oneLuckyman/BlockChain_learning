@@ -1,0 +1,848 @@
+10174
+10:10:40,640 --> 10:10:47,000
+So now we have our contracts in here and our code
+
+
+10175
+10:10:47,000 --> 10:10:50,000
+is compiling successfully. We're probably going Want to deploy
+
+
+10176
+10:10:50,030 --> 10:10:52,910
+our code? Now in our last section, I know we use the
+
+
+10177
+10:10:52,910 --> 10:10:56,360
+scripts module. And we made our own manual deploy script.
+
+
+10178
+10:10:56,390 --> 10:10:58,730
+However, something that you'd notice, the more that you work
+
+
+10179
+10:10:58,730 --> 10:11:01,940
+with just raw ethers, or even just hard hat is that keeping
+
+
+10180
+10:11:01,940 --> 10:11:05,390
+track of all our deployments can get a little bit tricky. If you
+
+
+10181
+10:11:05,390 --> 10:11:08,480
+just use a deploy script, it's not saving our deployments to
+
+
+10182
+10:11:08,480 --> 10:11:11,630
+any file. Additionally, having everything in the deploy script
+
+
+10183
+10:11:11,630 --> 10:11:15,020
+for deploying can make the tests and the deploy scripts, maybe
+
+
+10184
+10:11:15,020 --> 10:11:18,200
+not work exactly hand in hand. And there are a couple of other
+
+
+10185
+10:11:18,200 --> 10:11:20,390
+things that might be a little bit tricky to work on, we're
+
+
+10186
+10:11:20,390 --> 10:11:22,820
+actually going to work with a package that makes everything I
+
+
+10187
+10:11:22,820 --> 10:11:26,450
+just mentioned, and a couple other things way easier. And
+
+
+10188
+10:11:26,450 --> 10:11:29,060
+this package that I'm talking about is going to be the hard
+
+
+10189
+10:11:29,060 --> 10:11:32,570
+hat deploy package. There's a link to this package in the
+
+
+10190
+10:11:32,570 --> 10:11:35,330
+GitHub repository associated with this course. It's a hardhat
+
+
+10191
+10:11:35,330 --> 10:11:38,060
+plugin for replicable deployments and easy testing.
+
+
+10192
+10:11:38,450 --> 10:11:40,760
+And if we scroll down to installation, we can see we
+
+
+10193
+10:11:40,760 --> 10:11:44,570
+install it basically the normal way. They're using npm. And
+
+
+10194
+10:11:44,570 --> 10:11:48,200
+we're gonna go ahead and use yarn. So for us to add it, we'll
+
+
+10195
+10:11:48,200 --> 10:11:53,060
+do yarn, add hardhat dash deploy. And then of course,
+
+
+10196
+10:11:53,060 --> 10:11:59,270
+we're gonna do dash dash Dev. Once done deploying this require
+
+
+10197
+10:11:59,270 --> 10:12:04,880
+statement to our hard hat.config.js. Once again,
+
+
+10198
+10:12:04,880 --> 10:12:07,640
+basically the config is our entry point. This is where we're
+
+
+10199
+10:12:07,640 --> 10:12:11,540
+gonna get started. And we can go ahead and delete our deploy.js
+
+
+10200
+10:12:11,540 --> 10:12:15,170
+script. Now if we run yarn hardhat, you see that we have a
+
+
+10201
+10:12:15,170 --> 10:12:19,640
+bunch of new tasks in here, with one of them being this deploy
+
+
+10202
+10:12:19,700 --> 10:12:23,060
+task, this deploy task is going to be the main task that we use
+
+
+10203
+10:12:23,060 --> 10:12:26,030
+to deploy our contracts. Instead of writing our deploy scripts in
+
+
+10204
+10:12:26,030 --> 10:12:28,430
+the Scripts folder, we're actually going to create a new
+
+
+10205
+10:12:28,430 --> 10:12:31,880
+folder, we can create a new folder by just doing MK dir
+
+
+10206
+10:12:32,090 --> 10:12:36,860
+deploy. Or you can always right click and hit New Folder. This
+
+
+10207
+10:12:36,860 --> 10:12:39,290
+deploy folder is going to be where a lot of hard hat Deploy
+
+
+10208
+10:12:39,290 --> 10:12:42,410
+Module looks to deploy code. And it's going to be where we are
+
+
+10209
+10:12:42,410 --> 10:12:45,140
+writing our scripts. To write our scripts, we usually need to
+
+
+10210
+10:12:45,140 --> 10:12:48,230
+add one more thing in here. Since we're going to be using
+
+
+10211
+10:12:48,260 --> 10:12:51,770
+ethers JS in all of our scripts, we want to add Hardhead deploy
+
+
+10212
+10:12:51,800 --> 10:12:55,370
+ethers to our package here. Now, instead of just doing yarn, add
+
+
+10213
+10:12:55,370 --> 10:12:58,190
+dash dev hard at deploy ethers, we're going to do something a
+
+
+10214
+10:12:58,190 --> 10:13:02,390
+little bit weird. We're going to do yarn add or npm install dash
+
+
+10215
+10:13:02,390 --> 10:13:05,780
+dash Dev, and we're going to install it like this. So let me
+
+
+10216
+10:13:05,780 --> 10:13:08,900
+just copy this. And you can just copy that from the repo. And
+
+
+10217
+10:13:08,900 --> 10:13:11,990
+we'll do yarn, add dash dash Dev, and paste that in here.
+
+
+10218
+10:13:12,380 --> 10:13:16,130
+What we're doing is we're taking at nomic labs, hard hat ethers,
+
+
+10219
+10:13:16,160 --> 10:13:19,700
+which we've used before, and we're overriding it with hard
+
+
+10220
+10:13:19,700 --> 10:13:23,450
+hat deploy ethers. Remember how in our last project, we used
+
+
+10221
+10:13:23,450 --> 10:13:27,260
+hard hat ethers. So that hard hat could override ethers to use
+
+
+10222
+10:13:27,260 --> 10:13:30,350
+hard hat deploy. We use hard hat deploy ethers, so that hard hat
+
+
+10223
+10:13:30,350 --> 10:13:34,370
+deploy can override Hardhead, which overrides ethers, which is
+
+
+10224
+10:13:34,370 --> 10:13:38,210
+kind of funny. When you say like that, this will enable ethers to
+
+
+10225
+10:13:38,210 --> 10:13:41,570
+keep track of and remember all the different deployments that
+
+
+10226
+10:13:41,570 --> 10:13:44,030
+we actually make in our contract. So if we look at our
+
+
+10227
+10:13:44,030 --> 10:13:48,410
+package, JSON, and now we can see our nomic labs dashboard had
+
+
+10228
+10:13:48,410 --> 10:13:52,850
+ethers. Now the version of it is going to be MPM. Hardhead deploy
+
+
+10229
+10:13:52,880 --> 10:13:56,030
+ethers. This is our package dot JSON, basically saying the hard
+
+
+10230
+10:13:56,060 --> 10:13:59,540
+hat ethers package is now overwritten by the hard hat
+
+
+10231
+10:13:59,540 --> 10:14:03,140
+deploy ethers package, which is what we want. Alright, great. So
+
+
+10232
+10:14:03,140 --> 10:14:05,570
+now that we have that setup, we can start writing our deploy
+
+
+10233
+10:14:05,570 --> 10:14:08,630
+scripts, the way that Hart had to play works is all the scripts
+
+
+10234
+10:14:08,660 --> 10:14:12,080
+that get added to our deploy folder will get run when we run
+
+
+10235
+10:14:12,080 --> 10:14:16,070
+yarn, hard hat deploy. So a good practice is usually to number
+
+
+10236
+10:14:16,070 --> 10:14:18,800
+them so that they run in the order that you want them to run
+
+
+10237
+10:14:18,800 --> 10:14:22,130
+in. So since we only have one contract that we want to deploy
+
+
+10238
+10:14:22,160 --> 10:14:28,340
+the Funmi contract, we're going to do 01 Deploy Funmi Jas, and
+
+
+10239
+10:14:28,340 --> 10:14:31,760
+in this script, this is going to be where we define how to deploy
+
+
+10240
+10:14:31,760 --> 10:14:35,150
+the fundament contract. Alright, so we're in our deploy Funmi
+
+
+10241
+10:14:35,150 --> 10:14:39,350
+scripts. Now traditionally, what did we do, we did imports, we
+
+
+10242
+10:14:39,350 --> 10:14:43,460
+did the main function. And then we did calling of main function,
+
+
+10243
+10:14:44,210 --> 10:14:47,120
+that Hardhead deploy is a little bit different, we're still going
+
+
+10244
+10:14:47,120 --> 10:14:49,700
+to import our libraries and packages, but we're not going to
+
+
+10245
+10:14:49,700 --> 10:14:52,460
+have main function. And we're also not going to call the main
+
+
+10246
+10:14:52,460 --> 10:14:56,000
+function when we run Hardhead deploy Harnett deploy is
+
+
+10247
+10:14:56,000 --> 10:14:59,750
+actually going to call a function that we specify. In
+
+
+10248
+10:14:59,780 --> 10:15:02,030
+this script here. What we're going to do is we're gonna
+
+
+10249
+10:15:02,030 --> 10:15:05,510
+create a function, we'll call it deploy funk.
+
+
+10250
+10:15:06,530 --> 10:15:08,990
+We're going to export this deploy function as the default
+
+
+10251
+10:15:08,990 --> 10:15:12,500
+function for Hardhead deploy to look for, so we could say,
+
+
+10252
+10:15:13,040 --> 10:15:20,240
+module that exports dot default equals deploy funk. To test it
+
+
+10253
+10:15:20,240 --> 10:15:25,370
+out, we can go ahead and do console dot log, hi. And then in
+
+
+10254
+10:15:25,370 --> 10:15:31,880
+our terminal, run yarn, hard hat, deploy. Oops, get rid of
+
+
+10255
+10:15:31,880 --> 10:15:37,220
+the parentheses here. Sorry. Run it again. And we can see it went
+
+
+10256
+10:15:37,370 --> 10:15:41,420
+and ran our deploy func here. Now if this syntax is easier for
+
+
+10257
+10:15:41,420 --> 10:15:44,510
+you to understand, go ahead and use this syntax and we're going
+
+
+10258
+10:15:44,510 --> 10:15:47,270
+to be passing the heart at runtime environment as a
+
+
+10259
+10:15:47,270 --> 10:15:51,500
+parameter to this function. However, if we go to the heart
+
+
+10260
+10:15:51,500 --> 10:15:55,610
+hat deploy documentation, and we scroll down to an example
+
+
+10261
+10:15:55,640 --> 10:15:58,700
+script, the syntax looks a little bit different. And let me
+
+
+10262
+10:15:58,700 --> 10:16:01,670
+just explain what's going on here and how we're going to be
+
+
+10263
+10:16:01,670 --> 10:16:04,370
+writing ours. So instead of kind of defining everything like
+
+
+10264
+10:16:04,370 --> 10:16:07,640
+this, and defining the function name, similar to what we were
+
+
+10265
+10:16:07,640 --> 10:16:10,730
+doing before, we're actually going to using a nameless, a
+
+
+10266
+10:16:10,730 --> 10:16:13,580
+synchronous function, we're going to make it an anonymous
+
+
+10267
+10:16:13,580 --> 10:16:17,120
+function, similar to what we've seen before. So instead, we're
+
+
+10268
+10:16:17,120 --> 10:16:21,770
+going to say async parameters like this, I'm going to pass our
+
+
+10269
+10:16:21,770 --> 10:16:24,830
+parameters our heart at runtime environment in here. And it's
+
+
+10270
+10:16:24,830 --> 10:16:28,490
+going to be an arrow function. And then we're going to wrap
+
+
+10271
+10:16:28,490 --> 10:16:32,480
+this whole thing in module dot exports. So we're gonna say,
+
+
+10272
+10:16:33,320 --> 10:16:40,640
+module, dot exports, equals this async function like this. This
+
+
+10273
+10:16:40,670 --> 10:16:45,200
+syntax here is nearly identical to what's up here, we just don't
+
+
+10274
+10:16:45,200 --> 10:16:48,710
+have a name for our async function. So this is how we're
+
+
+10275
+10:16:48,710 --> 10:16:52,040
+going to set it up instead. But if this syntax is a little bit
+
+
+10276
+10:16:52,040 --> 10:16:55,070
+confusing for you feel free to use this above as the two of
+
+
+10277
+10:16:55,070 --> 10:16:58,580
+these are going to be the same. Now the next thing that most of
+
+
+10278
+10:16:58,580 --> 10:17:01,100
+the documentation does is it pulls out the variables and
+
+
+10279
+10:17:01,100 --> 10:17:05,240
+functions out of the HRV that we're going to use. HRV is the
+
+
+10280
+10:17:05,240 --> 10:17:09,290
+heart hat runtime environment. Whenever we run a deploy script,
+
+
+10281
+10:17:09,350 --> 10:17:12,710
+heart hat deploy automatically calls this function and just
+
+
+10282
+10:17:12,710 --> 10:17:16,580
+passes the hard hat object into it similar to in back in hard
+
+
+10283
+10:17:16,580 --> 10:17:21,020
+hat simple storage. In our deploy script. We had ethers run
+
+
+10284
+10:17:21,050 --> 10:17:24,350
+in network come from hard hat, instead of coming from hard hat.
+
+
+10285
+10:17:24,680 --> 10:17:27,770
+We're coming from HRV, which is basically the same thing as hard
+
+
+10286
+10:17:27,770 --> 10:17:30,740
+hat. For our script, we're only going to use two variables from
+
+
+10287
+10:17:30,740 --> 10:17:38,450
+a jury when you use const. Get named accounts. And deployments.
+
+
+10288
+10:17:41,060 --> 10:17:44,450
+This syntax might look a little bit weird for you. But it's just
+
+
+10289
+10:17:44,450 --> 10:17:47,930
+a way to pull these exact variables out of a tree. It's
+
+
+10290
+10:17:47,930 --> 10:17:51,170
+kind of the same thing as just doing a tree dot get named
+
+
+10291
+10:17:51,170 --> 10:17:56,990
+accounts and HRA dot deployments. But pulling them
+
+
+10292
+10:17:56,990 --> 10:17:58,970
+out like this means we don't have to add a tree at the
+
+
+10293
+10:17:58,970 --> 10:18:01,940
+beginning anymore. And then additionally, additionally,
+
+
+10294
+10:18:02,150 --> 10:18:05,480
+JavaScript has something called syntactic sugar. So instead of
+
+
+10295
+10:18:05,480 --> 10:18:09,110
+doing this on two lines like this, we can actually do that
+
+
+10296
+10:18:09,110 --> 10:18:14,180
+whole bit on one line. So instead, we just extrapolate
+
+
+10297
+10:18:14,300 --> 10:18:18,260
+those two variables, right in the function declaration. So
+
+
+10298
+10:18:18,290 --> 10:18:22,250
+this line is the exact same thing as doing this line. This
+
+
+10299
+10:18:22,250 --> 10:18:25,430
+is an asynchronous, nameless function using the arrow
+
+
+10300
+10:18:25,430 --> 10:18:29,150
+notation, or working with our deploy scripts here. And we're
+
+
+10301
+10:18:29,150 --> 10:18:32,750
+default, exporting it with module dot exports. I don't know
+
+
+10302
+10:18:32,750 --> 10:18:35,510
+that was a lot. And another is kind of a lot of syntactic sugar
+
+
+10303
+10:18:35,510 --> 10:18:38,270
+here. But if that's really confusing for you, just feel
+
+
+10304
+10:18:38,270 --> 10:18:41,270
+free to use the above. And whenever we refer to get named
+
+
+10305
+10:18:41,270 --> 10:18:48,560
+accounts, you can also just do a three dot get named accounts, or
+
+
+10306
+10:18:48,590 --> 10:18:53,210
+a three dot deployments. So hopefully, that's clear that
+
+
+10307
+10:18:53,210 --> 10:18:55,760
+this top part is gonna be the same as this bottom part right
+
+
+10308
+10:18:55,760 --> 10:18:58,460
+here, whichever one you feel more comfortable working with.
+
+
+10309
+10:18:59,360 --> 10:19:01,460
+But alright, now that we've gotten all that out of the way,
+
+
+10310
+10:19:01,580 --> 10:19:04,790
+let's continue with the script. So we're using this deployments
+
+
+10311
+10:19:04,820 --> 10:19:08,150
+object, reason this deployments object to get two functions,
+
+
+10312
+10:19:08,870 --> 10:19:11,690
+those two functions are going to be the deploy function, and the
+
+
+10313
+10:19:11,690 --> 10:19:14,540
+log function. So we're gonna say const, deploy log equals
+
+
+10314
+10:19:14,540 --> 10:19:18,350
+deployments. So we're going to pull these two functions out of
+
+
+10315
+10:19:18,350 --> 10:19:22,100
+deployments. And then we're also going to do const Deployer.
+
+
+10316
+10:19:23,150 --> 10:19:28,310
+Equals await, get named accounts. So we are grabbing
+
+
+10317
+10:19:28,310 --> 10:19:31,310
+this new deploy function, this new log function, and we're
+
+
+10318
+10:19:31,310 --> 10:19:34,880
+grabbing this deployer account from this weird get named
+
+
+10319
+10:19:34,880 --> 10:19:38,420
+accounts function. What's this get named accounts function,
+
+
+10320
+10:19:38,660 --> 10:19:42,350
+this get named accounts is a way for us to get named accounts.
+
+
+10321
+10:19:42,710 --> 10:19:45,620
+When working with ethers we saw when working with ethers, we can
+
+
+10322
+10:19:45,620 --> 10:19:49,400
+actually get our accounts based off of the number in the Account
+
+
+10323
+10:19:49,400 --> 10:19:51,710
+section of each network. So for example,
+
+
+10324
+10:19:54,800 --> 10:19:57,800
+in this list of private keys, private keys zero private key
+
+
+10325
+10:19:57,800 --> 10:20:00,770
+one private key two, it might get a little confusing to
+
+
+10326
+10:20:00,770 --> 10:20:04,460
+remember which ones which so instead of working like that, we
+
+
+10327
+10:20:04,460 --> 10:20:07,880
+can add a section at the bottom called named accounts where we
+
+
+10328
+10:20:07,880 --> 10:20:11,900
+can name each one of those spots in the accounts array. So we'll
+
+
+10329
+10:20:11,900 --> 10:20:15,470
+do named accounts. And we'll say one of the accounts that will
+
+
+10330
+10:20:15,470 --> 10:20:18,710
+name is going to be named Deployer. And we're gonna say by
+
+
+10331
+10:20:18,710 --> 10:20:23,240
+default, the zero with account is going to be Deployer. We can
+
+
+10332
+10:20:23,240 --> 10:20:27,560
+also specify which number is going to be the deployer account
+
+
+10333
+10:20:27,560 --> 10:20:31,070
+across different chains. For example, on Rigby we wanted the
+
+
+10334
+10:20:31,070 --> 10:20:33,770
+deployer account to be the first position, we could do something
+
+
+10335
+10:20:33,770 --> 10:20:37,130
+like this or on hard hat, we could do it like this. We can
+
+
+10336
+10:20:37,130 --> 10:20:40,160
+create multiple users. Like for example, if we wanted to do a
+
+
+10337
+10:20:40,160 --> 10:20:44,510
+user for some test or something, and we'll just say the default
+
+
+10338
+10:20:44,540 --> 10:20:48,380
+is one or whatever we wanted in here. So back in our deploy fun
+
+
+10339
+10:20:48,380 --> 10:20:51,170
+me We're going to say we're going to grab that deployer
+
+
+10340
+10:20:51,260 --> 10:20:54,320
+account from our named accounts. And then finally, we're going to
+
+
+10341
+10:20:54,320 --> 10:20:57,530
+grab our chain ID for reasons that will come clear pretty
+
+
+10342
+10:20:57,530 --> 10:21:03,320
+soon. So we'll do const, chain ID equals network dot config dot
+
+
+10343
+10:21:03,320 --> 10:21:09,920
+chain ID. 
