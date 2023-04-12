@@ -1,266 +1,267 @@
 10174
 10:10:40,640 --> 10:10:47,000
-So now we have our contracts in here and our code
-
+So now we have our contracts in here and our code is compiling successfully. 
+现在我们有了我们的合约，并且我们的代码已经成功编译
 
 10175
 10:10:47,000 --> 10:10:50,000
-is compiling successfully. We're probably going Want to deploy
-
+We're probably going Want to deploy our code? 
+接下来我们要做的是部署我们的代码
 
 10176
 10:10:50,030 --> 10:10:52,910
-our code? Now in our last section, I know we use the
-
+Now in our last section, I know we use the scripts module. 
+在上一节中，我们用的是脚本模块
 
 10177
 10:10:52,910 --> 10:10:56,360
-scripts module. And we made our own manual deploy script.
-
+And we made our own manual deploy script.
+并且创建了一个手动部署脚本
 
 10178
 10:10:56,390 --> 10:10:58,730
-However, something that you'd notice, the more that you work
-
+However, something that you'd notice, the more that you work with just raw ethers, or even just hard hat 
+然而，你可能会注意到，当你使用原生 ethers 或仅仅是 Hardhat 进行工作时
 
 10179
 10:10:58,730 --> 10:11:01,940
-with just raw ethers, or even just hard hat is that keeping
-
+is that keeping track of all our deployments can get a little bit tricky. 
+跟踪所有部署会是一件棘手的事情
 
 10180
 10:11:01,940 --> 10:11:05,390
-track of all our deployments can get a little bit tricky. If you
-
+If you just use a deploy script, 
+如果你只使用一个部署脚本
 
 10181
 10:11:05,390 --> 10:11:08,480
-just use a deploy script, it's not saving our deployments to
-
+it's not saving our deployments to any file. 
+它就不会把我们的部署保存到文件中去
 
 10182
 10:11:08,480 --> 10:11:11,630
-any file. Additionally, having everything in the deploy script
-
+Additionally, having everything in the deploy script for deploying 
+此外，把所有部署都放到一个部署脚本中
 
 10183
 10:11:11,630 --> 10:11:15,020
-for deploying can make the tests and the deploy scripts, maybe
-
+can make the tests and the deploy scripts, maybe not work exactly hand in hand. 
+可能会使测试和部署脚本之间无法完全兼容
 
 10184
 10:11:15,020 --> 10:11:18,200
-not work exactly hand in hand. And there are a couple of other
-
+And there are a couple of other things that might be a little bit tricky to work on, 
+而且还可能会遇到一些其他比较麻烦的事
 
 10185
 10:11:18,200 --> 10:11:20,390
-things that might be a little bit tricky to work on, we're
-
+we're actually going to work with a package 
+我们会使用一个包
 
 10186
 10:11:20,390 --> 10:11:22,820
-actually going to work with a package that makes everything I
-
+that makes everything I just mentioned, and a couple other things way easier. 
+它会使我刚才提到的所有事情还有一些其他事情变得更容易一些
 
 10187
 10:11:22,820 --> 10:11:26,450
-just mentioned, and a couple other things way easier. And
-
+And this package that I'm talking about is going to be the hard hat deploy package. 
+而我所说的这个包就是 "hardhat-deploy" 包
 
 10188
 10:11:26,450 --> 10:11:29,060
-this package that I'm talking about is going to be the hard
-
+There's a link to this package in the GitHub repository associated with this course. 
+这个包的链接也会放到课程关联的 GitHub 仓库里
 
 10189
 10:11:29,060 --> 10:11:32,570
-hat deploy package. There's a link to this package in the
-
+It's a hardhat plugin for replicable deployments and easy testing.
+它是一个用于可复制部署及简便测试的 Hardhat 插件
 
 10190
 10:11:32,570 --> 10:11:35,330
-GitHub repository associated with this course. It's a hardhat
-
+And if we scroll down to installation, we can see we install it basically the normal way. 
+如果我们向下滑到安装部分，就能看到可以用通用方法安装它
 
 10191
 10:11:35,330 --> 10:11:38,060
-plugin for replicable deployments and easy testing.
-
+They're using npm. And we're gonna go ahead and use yarn. 
+他们用的是 npm 而我们还是会继续使用 yarn
 
 10192
 10:11:38,450 --> 10:11:40,760
-And if we scroll down to installation, we can see we
-
+So for us to add it, we'll do yarn, add hardhat dash deploy. 
+所以要想添加它，就要执行 "yarn add hardhat-deploy"
 
 10193
 10:11:40,760 --> 10:11:44,570
-install it basically the normal way. They're using npm. And
-
+And then of course, we're gonna do dash dash Dev. 
+当然了，还有 "--dev"
 
 10194
 10:11:44,570 --> 10:11:48,200
-we're gonna go ahead and use yarn. So for us to add it, we'll
-
+Once done deploying this require statement to our hard hat.config.js. 
+一旦部署（口误，应为“安装”）完成，就需要在我们的 "hardhat.config.js" 中 "require" 进来
 
 10195
 10:11:48,200 --> 10:11:53,060
-do yarn, add hardhat dash deploy. And then of course,
-
+Once again, basically the config is our entry point. 
+再次强调，这个配置文件就是我们的入口点
 
 10196
 10:11:53,060 --> 10:11:59,270
-we're gonna do dash dash Dev. Once done deploying this require
-
+This is where we're gonna get started. 
+基本上就是我们一切开始的地方
 
 10197
 10:11:59,270 --> 10:12:04,880
-statement to our hard hat.config.js. Once again,
-
+And we can go ahead and delete our deploy.js script. 
+然后我们就可以删除我们的 "deploy.js" 脚本了
 
 10198
 10:12:04,880 --> 10:12:07,640
-basically the config is our entry point. This is where we're
-
+Now if we run yarn hardhat, you see that we have a bunch of new tasks in here, 
+现在如果我们运行 "yarn hardhat"，你会看到这里有一堆新的 task
 
 10199
 10:12:07,640 --> 10:12:11,540
-gonna get started. And we can go ahead and delete our deploy.js
-
+with one of them being this deploy task, 
+其中之一就是 "deploy" task
 
 10200
 10:12:11,540 --> 10:12:15,170
-script. Now if we run yarn hardhat, you see that we have a
-
+this deploy task is going to be the main task that we use to deploy our contracts. 
+这个 "deploy" task 将是我们部署合约时主要使用的 task
 
 10201
 10:12:15,170 --> 10:12:19,640
-bunch of new tasks in here, with one of them being this deploy
-
+Instead of writing our deploy scripts in the Scripts folder, 
+这次我们不再在 "scripts" 文件夹中编写我们的部署脚本
 
 10202
 10:12:19,700 --> 10:12:23,060
-task, this deploy task is going to be the main task that we use
-
+we're actually going to create a new folder, 
+而是创建一个新的文件夹
 
 10203
 10:12:23,060 --> 10:12:26,030
-to deploy our contracts. Instead of writing our deploy scripts in
-
+we can create a new folder by just doing MK dir deploy. 
+我们可以使用 "mkdir deploy" 来新建文件夹
 
 10204
 10:12:26,030 --> 10:12:28,430
-the Scripts folder, we're actually going to create a new
-
+Or you can always right click and hit New Folder. 
+或者你也可以右键并点击新建文件夹("New Folder")
 
 10205
 10:12:28,430 --> 10:12:31,880
-folder, we can create a new folder by just doing MK dir
-
+This deploy folder is going to be where a lot of hard hat Deploy Module looks to deploy code. 
+这个 "deploy" 文件夹将是许多 "hardhat-deploy" 模块部署代码的地方
 
 10206
 10:12:32,090 --> 10:12:36,860
-deploy. Or you can always right click and hit New Folder. This
-
+And it's going to be where we are writing our scripts. 
+同时也是我们编写脚本的地方
 
 10207
 10:12:36,860 --> 10:12:39,290
-deploy folder is going to be where a lot of hard hat Deploy
-
+To write our scripts, we usually need to add one more thing in here. 
+为了编写我们的脚本，通常还需要添加一个东西
 
 10208
 10:12:39,290 --> 10:12:42,410
-Module looks to deploy code. And it's going to be where we are
-
+Since we're going to be using ethers JS in all of our scripts, 
+因为我们要在所有脚本中使用 "ethers.js"
 
 10209
 10:12:42,410 --> 10:12:45,140
-writing our scripts. To write our scripts, we usually need to
-
+we want to add Hardhead deploy ethers to our package here. 
+所以我们要添加 "hardhat-deploy-ethers" 到我们的包里
 
 10210
 10:12:45,140 --> 10:12:48,230
-add one more thing in here. Since we're going to be using
-
+Now, instead of just doing yarn, add dash dev hard at deploy ethers, 
+这回我们不再是只运行 "yarn --dev hardhat-deploy-ethers"
 
 10211
 10:12:48,260 --> 10:12:51,770
-ethers JS in all of our scripts, we want to add Hardhead deploy
-
+we're going to do something a little bit weird. 
+而是会做一些略显奇怪的事情
 
 10212
 10:12:51,800 --> 10:12:55,370
-ethers to our package here. Now, instead of just doing yarn, add
-
+We're going to do yarn add or npm install dash dash Dev, 
+我们要运行 "yarn add" 或是 "npm install --dev"
 
 10213
 10:12:55,370 --> 10:12:58,190
-dash dev hard at deploy ethers, we're going to do something a
-
+and we're going to install it like this. 
+然后按照这样的方式来进行安装
 
 10214
 10:12:58,190 --> 10:13:02,390
-little bit weird. We're going to do yarn add or npm install dash
-
+So let me just copy this. 
+让我来复制一下这个东西
 
 10215
 10:13:02,390 --> 10:13:05,780
-dash Dev, and we're going to install it like this. So let me
-
+And you can just copy that from the repo. 
+你也可以直接从代码库里复制
 
 10216
 10:13:05,780 --> 10:13:08,900
-just copy this. And you can just copy that from the repo. And
-
+And we'll do yarn, add dash dash Dev, and paste that in here.
+然后我们来运行 "yarn add --dev" 并粘贴到这里
 
 10217
 10:13:08,900 --> 10:13:11,990
-we'll do yarn, add dash dash Dev, and paste that in here.
-
+What we're doing is we're taking at nomic labs, hard hat ethers, which we've used before, 
+我们做的就是获取 "@nomiclabs/hardhat-ethers"，这是我们之前用过的
 
 10218
 10:13:12,380 --> 10:13:16,130
-What we're doing is we're taking at nomic labs, hard hat ethers,
-
+and we're overriding it with hard hat deploy ethers. 
+然后我们用 "hardhat-deploy-ehters" 把它覆盖掉
 
 10219
 10:13:16,160 --> 10:13:19,700
-which we've used before, and we're overriding it with hard
-
+Remember how in our last project, we used hard hat ethers. 
+还记得我们在上个项目中是怎么做的么？我们使用的是 "hardhat-ethers"
 
 10220
 10:13:19,700 --> 10:13:23,450
-hat deploy ethers. Remember how in our last project, we used
-
+So that hard hat could override ethers to use hard hat deploy. 
+所以 Hardhat 可以覆盖 ethers 使用 "hardhat-deploy" 
+(译者注：这句中的 hardhat-deploy 很可能应为 hardhat-ethers)
 
 10221
 10:13:23,450 --> 10:13:27,260
-hard hat ethers. So that hard hat could override ethers to use
-
+We use hard hat deploy ethers, so that hard hat deploy can override Hardhead, 
+我们使用了 "hardhat-deploy-ethers" 所以 "hardhat-deploy" 可以覆盖 Hardhat
 
 10222
 10:13:27,260 --> 10:13:30,350
-hard hat deploy. We use hard hat deploy ethers, so that hard hat
-
+which overrides ethers, which is kind of funny. 
+而它又覆盖了 ethers，这还挺有意思的
 
 10223
 10:13:30,350 --> 10:13:34,370
-deploy can override Hardhead, which overrides ethers, which is
-
+When you say like that, this will enable ethers to keep track of and remember 
+这样做的话 ethers 就能够跟踪并记住
 
 10224
 10:13:34,370 --> 10:13:38,210
-kind of funny. When you say like that, this will enable ethers to
-
+all the different deployments that we actually make in our contract. 
+我们所部署的所有不同合约
 
 10225
 10:13:38,210 --> 10:13:41,570
-keep track of and remember all the different deployments that
+
 
 
 10226
 10:13:41,570 --> 10:13:44,030
-we actually make in our contract. So if we look at our
+So if we look at our
 
 
 10227
