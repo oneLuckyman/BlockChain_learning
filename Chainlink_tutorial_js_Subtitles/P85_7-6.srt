@@ -256,142 +256,142 @@ all the different deployments that we actually make in our contract.
 
 10225
 10:13:38,210 --> 10:13:41,570
-
-
+So if we look at our package, JSON, 
+所以如果查看一下我们的 "package.json"
 
 10226
 10:13:41,570 --> 10:13:44,030
-So if we look at our
-
+and now we can see our nomic labs dashboard had ethers. 
+现在我们就可以看到 "@nomiclabs/hardhat-ethers"
 
 10227
 10:13:44,030 --> 10:13:48,410
-package, JSON, and now we can see our nomic labs dashboard had
-
+Now the version of it is going to be MPM. Hardhead deploy ethers. 
+现在它的版本是 "npm:hardhat-deploy-ethers"
 
 10228
 10:13:48,410 --> 10:13:52,850
-ethers. Now the version of it is going to be MPM. Hardhead deploy
-
+This is our package dot JSON, basically saying 
+我们的 "package.json" 基本上就是在说
 
 10229
 10:13:52,880 --> 10:13:56,030
-ethers. This is our package dot JSON, basically saying the hard
-
+the hard hat ethers package is now overwritten by the hard hat deploy ethers package, 
+"hardhat-ethers" 包现在被 "hardhat-deploy-ethers" 包覆盖了
 
 10230
 10:13:56,060 --> 10:13:59,540
-hat ethers package is now overwritten by the hard hat
-
+which is what we want. 
+这正是我们想要的
 
 10231
 10:13:59,540 --> 10:14:03,140
-deploy ethers package, which is what we want. Alright, great. So
-
+Alright, great. So now that we have that setup, 
+很好，现在我们已经做好了设置
 
 10232
 10:14:03,140 --> 10:14:05,570
-now that we have that setup, we can start writing our deploy
-
+we can start writing our deploy scripts, 
+那么就可以开始编写我们的部署脚本了
 
 10233
 10:14:05,570 --> 10:14:08,630
-scripts, the way that Hart had to play works is all the scripts
-
+the way that Hart had to play works is 
+"hardhat-deploy" 的工作方式是
 
 10234
 10:14:08,660 --> 10:14:12,080
-that get added to our deploy folder will get run when we run
-
+all the scripts that get added to our deploy folder will get run when we run yarn, hard hat deploy. 
+我们在 "deploy" 文件夹中添加的所有脚本都会在执行 "yarn hardhat deploy" 时运行
 
 10235
 10:14:12,080 --> 10:14:16,070
-yarn, hard hat deploy. So a good practice is usually to number
-
+So a good practice is usually to number them 
+所以有一个很好的做法是对它们进行编号
 
 10236
 10:14:16,070 --> 10:14:18,800
-them so that they run in the order that you want them to run
-
+so that they run in the order that you want them to run in. 
+以便让它们按照你想要的顺序运行
 
 10237
 10:14:18,800 --> 10:14:22,130
-in. So since we only have one contract that we want to deploy
-
+So since we only have one contract that we want to deploy the Funmi contract, 
+因为我们只有一个合约要部署，即 "FundMe" 合约
 
 10238
 10:14:22,160 --> 10:14:28,340
-the Funmi contract, we're going to do 01 Deploy Funmi Jas, and
-
+we're going to do 01 Deploy Funmi Jas, 
+所以我们就命名为 "01-deploy-fund-me.js"
 
 10239
 10:14:28,340 --> 10:14:31,760
-in this script, this is going to be where we define how to deploy
-
+and in this script, this is going to be where we define how to deploy the fundament contract. 
+在这个脚本中，我们将定义具体如何部署 "FundMe" 合约
 
 10240
 10:14:31,760 --> 10:14:35,150
-the fundament contract. Alright, so we're in our deploy Funmi
-
+Alright, so we're in our deploy Funmi scripts. 
+好的，现在在我们的 "deploy-fund-me" 脚本中
 
 10241
 10:14:35,150 --> 10:14:39,350
-scripts. Now traditionally, what did we do, we did imports, we
-
+Now traditionally, what did we do, 
+通常情况下，我需要做哪些事情？
 
 10242
 10:14:39,350 --> 10:14:43,460
-did the main function. And then we did calling of main function,
-
+we did imports, we did the main function. And then we did calling of main function,
+我们要导入库，还要定义 main 函数，并且要调用这个 main 函数
 
 10243
 10:14:44,210 --> 10:14:47,120
-that Hardhead deploy is a little bit different, we're still going
-
+that Hardhead deploy is a little bit different, 
+"hardhat-deploy" 会有一点点不同
 
 10244
 10:14:47,120 --> 10:14:49,700
-to import our libraries and packages, but we're not going to
-
+we're still going to import our libraries and packages, 
+我们仍然要导入所需的库和包
 
 10245
 10:14:49,700 --> 10:14:52,460
-have main function. And we're also not going to call the main
-
+but we're not going to have main function. 
+但我们不再需要 main 函数了
 
 10246
 10:14:52,460 --> 10:14:56,000
-function when we run Hardhead deploy Harnett deploy is
-
+And we're also not going to call the main function 
+当然也不再需要调用 main 函数了
 
 10247
 10:14:56,000 --> 10:14:59,750
-actually going to call a function that we specify. In
-
+when we run Hardhead deploy 
+当我们运行 "hardhat-deploy" 时
 
 10248
 10:14:59,780 --> 10:15:02,030
-this script here. What we're going to do is we're gonna
-
+Harnett deploy is actually going to call a function that we specify. In this script here. 
+"hardhat-deploy" 实际上就是在调用我们指定的某个函数，这个脚本里的
 
 10249
 10:15:02,030 --> 10:15:05,510
-create a function, we'll call it deploy funk.
-
+What we're going to do is we're gonna create a function, we'll call it deploy funk.
+我们要做的就是创建一个函数，命名为 "deployFunc"
 
 10250
 10:15:06,530 --> 10:15:08,990
-We're going to export this deploy function as the default
-
+We're going to export this deploy function as the default function for Hardhead deploy to look for, 
+我们要把这个 "deployFunc" 导出为 "hardhat-deploy" 默认要查找的函数
 
 10251
 10:15:08,990 --> 10:15:12,500
-function for Hardhead deploy to look for, so we could say,
-
+so we could say, module that exports dot default equals deploy funk. 
+因此我们要这么写 "module.export.default = deployFunc()"
 
 10252
 10:15:13,040 --> 10:15:20,240
-module that exports dot default equals deploy funk. To test it
+To test it
 
 
 10253
