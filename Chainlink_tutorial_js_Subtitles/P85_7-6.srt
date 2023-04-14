@@ -387,463 +387,462 @@ We're going to export this deploy function as the default function for Hardhead 
 10251
 10:15:08,990 --> 10:15:12,500
 so we could say, module that exports dot default equals deploy funk. 
-因此我们要这么写 "module.export.default = deployFunc()"
+因此我们要这么写 "module.exports.default = deployFunc"
 
 10252
 10:15:13,040 --> 10:15:20,240
-To test it
-
+To test it out, we can go ahead and do console dot log, hi. 
+要想测试它，我们使用 "console.log("Hi!")"
 
 10253
 10:15:20,240 --> 10:15:25,370
-out, we can go ahead and do console dot log, hi. And then in
-
+And then in our terminal, run yarn, hard hat, deploy. 
+然后在终端中运行 "yarn hardhat deploy"
 
 10254
 10:15:25,370 --> 10:15:31,880
-our terminal, run yarn, hard hat, deploy. Oops, get rid of
-
+Oops, get rid of the parentheses here. Sorry. Run it again. 
+哦，这里多了个括号，抱歉，再运行一次
 
 10255
 10:15:31,880 --> 10:15:37,220
-the parentheses here. Sorry. Run it again. And we can see it went
-
+And we can see it went and ran our deploy func here. 
+我们可以看到它运行了我们的 "deployFunc"
 
 10256
 10:15:37,370 --> 10:15:41,420
-and ran our deploy func here. Now if this syntax is easier for
-
+Now if this syntax is easier for you to understand, 
+如果你认为现在这种语法更易于你理解
 
 10257
 10:15:41,420 --> 10:15:44,510
-you to understand, go ahead and use this syntax and we're going
-
+go ahead and use this syntax 
+那么你可以继续使用这种语法
 
 10258
 10:15:44,510 --> 10:15:47,270
-to be passing the heart at runtime environment as a
-
+and we're going to be passing the heart at runtime environment as a parameter to this function. 
+我们将传入 “hardhat 运行环境”("hre")作为这个函数的输入参数
 
 10259
 10:15:47,270 --> 10:15:51,500
-parameter to this function. However, if we go to the heart
-
+However, if we go to the heart hat deploy documentation, 
+然而，如果我们查看 "hardhat-deploy" 的文档
 
 10260
 10:15:51,500 --> 10:15:55,610
-hat deploy documentation, and we scroll down to an example
-
+and we scroll down to an example script, 
+并向下滑到这个示例脚本
 
 10261
 10:15:55,640 --> 10:15:58,700
-script, the syntax looks a little bit different. And let me
-
+the syntax looks a little bit different. 
+这里使用的语法看起来会有些不同
 
 10262
 10:15:58,700 --> 10:16:01,670
-just explain what's going on here and how we're going to be
-
+And let me just explain what's going on here and how we're going to be writing ours. 
+我来解释一下这是什么意思，以及我们怎么使用这种方式编写
 
 10263
 10:16:01,670 --> 10:16:04,370
-writing ours. So instead of kind of defining everything like
-
+So instead of kind of defining everything like this, 
+与这里的定义方式不同
 
 10264
 10:16:04,370 --> 10:16:07,640
-this, and defining the function name, similar to what we were
-
+and defining the function name, similar to what we were doing before, 
+定义函数名时，和之前我们某次的做法类似
 
 10265
 10:16:07,640 --> 10:16:10,730
-doing before, we're actually going to using a nameless, a
-
+we're actually going to using a nameless, a synchronous function, 
+我们要使用一个无名的，异步函数
 
 10266
 10:16:10,730 --> 10:16:13,580
-synchronous function, we're going to make it an anonymous
-
+we're going to make it an anonymous function, 
+即，我们要把它创建为一个匿名函数
 
 10267
 10:16:13,580 --> 10:16:17,120
-function, similar to what we've seen before. So instead, we're
-
+similar to what we've seen before. 
+就像我们之前见过的那样
 
 10268
 10:16:17,120 --> 10:16:21,770
-going to say async parameters like this, I'm going to pass our
-
+So instead, we're going to say async parameters like this, 
+因此我们要写上 "async" 然后是参数，就像这样
 
 10269
 10:16:21,770 --> 10:16:24,830
-parameters our heart at runtime environment in here. And it's
-
+I'm going to pass our parameters our heart at runtime environment in here. 
+我要在这里传入的参数是 “hardhat 运行环境”("hre")
 
 10270
 10:16:24,830 --> 10:16:28,490
-going to be an arrow function. And then we're going to wrap
-
+And it's going to be an arrow function. 
+并且它是一个箭头函数
 
 10271
 10:16:28,490 --> 10:16:32,480
-this whole thing in module dot exports. So we're gonna say,
-
+And then we're going to wrap this whole thing in module dot exports. 
+接着，我们要把这整个东西包装进 "module.exports" 里
 
 10272
 10:16:33,320 --> 10:16:40,640
-module, dot exports, equals this async function like this. This
-
+So we're gonna say, module, dot exports, equals this async function like this. 
+所以我们要写成 "module.exports" 等于这个 async 函数，就像这样
 
 10273
 10:16:40,670 --> 10:16:45,200
-syntax here is nearly identical to what's up here, we just don't
-
+This syntax here is nearly identical to what's up here, 
+这里的语法和上面的语法几乎是等价的
 
 10274
 10:16:45,200 --> 10:16:48,710
-have a name for our async function. So this is how we're
-
+we just don't have a name for our async function. 
+只是我们的 async 函数没有名称罢了
 
 10275
 10:16:48,710 --> 10:16:52,040
-going to set it up instead. But if this syntax is a little bit
-
+So this is how we're going to set it up instead. 
+这就是我们要使用的配置方法
 
 10276
 10:16:52,040 --> 10:16:55,070
-confusing for you feel free to use this above as the two of
-
+But if this syntax is a little bit confusing for you 
+但如果这种语法对你来说有点困惑
 
 10277
 10:16:55,070 --> 10:16:58,580
-these are going to be the same. Now the next thing that most of
-
+feel free to use this above as the two of these are going to be the same. 
+那么请自由使用上面那种，因为这两种方式是相同的
 
 10278
 10:16:58,580 --> 10:17:01,100
-the documentation does is it pulls out the variables and
-
+Now the next thing that most of the documentation does 
+现在，大多数文档的下一步做的都是
 
 10279
 10:17:01,100 --> 10:17:05,240
-functions out of the HRV that we're going to use. HRV is the
-
+is it pulls out the variables and functions out of the HRV that we're going to use. 
+从 "hre" 中提取出我们要使用的变量和函数
 
 10280
 10:17:05,240 --> 10:17:09,290
-heart hat runtime environment. Whenever we run a deploy script,
-
+HRV is the heart hat runtime environment. 
+"hre" 就是 “hardhat 运行环境”
 
 10281
 10:17:09,350 --> 10:17:12,710
-heart hat deploy automatically calls this function and just
-
+Whenever we run a deploy script, heart hat deploy automatically calls this function 
+每当我们运行部署脚本时，"hardhat-deploy" 都会自动调用这个函数
 
 10282
 10:17:12,710 --> 10:17:16,580
-passes the hard hat object into it similar to in back in hard
-
+and just passes the hard hat object into it 
+并将 hardhat 对象传递给它
 
 10283
 10:17:16,580 --> 10:17:21,020
-hat simple storage. In our deploy script. We had ethers run
-
+similar to in back in hard hat simple storage. In our deploy script. 
+就像 hardhat 中的 "SimpleStorage" 一样，在我们的 "deploy" 脚本里
 
 10284
 10:17:21,050 --> 10:17:24,350
-in network come from hard hat, instead of coming from hard hat.
-
+We had ethers run in network come from hard hat, 
+我们拥有 "ethers, run" 以及 "network" 来源是 "hardhat"
 
 10285
 10:17:24,680 --> 10:17:27,770
-We're coming from HRV, which is basically the same thing as hard
-
+instead of coming from hard hat. We're coming from HRV, 
+这次不再是来源于 "hardhat" 而是 "hre"
 
 10286
 10:17:27,770 --> 10:17:30,740
-hat. For our script, we're only going to use two variables from
-
+which is basically the same thing as hard hat. 
+基本上它和 "hardhat" 是相同的
 
 10287
 10:17:30,740 --> 10:17:38,450
-a jury when you use const. Get named accounts. And deployments.
-
+For our script, we're only going to use two variables from a jury 
+对我们的脚本来说，我们只使用 "hre" 中的两个变量
 
 10288
 10:17:41,060 --> 10:17:44,450
-This syntax might look a little bit weird for you. But it's just
-
+when you use const. Get named accounts. And deployments. 
+我们要使用 "const {getNamedAccounts}" 以及 "deployments"
 
 10289
 10:17:44,450 --> 10:17:47,930
-a way to pull these exact variables out of a tree. It's
-
+This syntax might look a little bit weird for you. 
+这个语法对你来说可能会有些陌生
 
 10290
 10:17:47,930 --> 10:17:51,170
-kind of the same thing as just doing a tree dot get named
-
+But it's just a way to pull these exact variables out of a tree. 
+它所做的就是从 "hre" 中提取出这些变量
 
 10291
 10:17:51,170 --> 10:17:56,990
-accounts and HRA dot deployments. But pulling them
-
+It's kind of the same thing as just doing a tree dot get named accounts and HRA dot deployments. 
+这其实就相当于使用 "hre.getNamedAccounts" 以及 "hre.deployments"
 
 10292
 10:17:56,990 --> 10:17:58,970
-out like this means we don't have to add a tree at the
-
+But pulling them out like this means we don't have to add a tree at the beginning anymore. 
+但使用这种方式的话就不需要在开头加上 "hre." 了
 
 10293
 10:17:58,970 --> 10:18:01,940
-beginning anymore. And then additionally, additionally,
-
+And then additionally, additionally, JavaScript has something called syntactic sugar. 
+此外呢，JavaScript 还有一种被称为“语法糖”("syntactic sugar")的东西
 
 10294
 10:18:02,150 --> 10:18:05,480
-JavaScript has something called syntactic sugar. So instead of
-
+So instead of doing this on two lines like this, 
+我们可以不用像这样分成两行来做
 
 10295
 10:18:05,480 --> 10:18:09,110
-doing this on two lines like this, we can actually do that
-
+we can actually do that whole bit on one line. 
+而是把这些东西放到一行里面
 
 10296
 10:18:09,110 --> 10:18:14,180
-whole bit on one line. So instead, we just extrapolate
-
+So instead, we just extrapolate those two variables, right in the function declaration. 
+我们只需要在函数声明里直接使用这两个变量即可
 
 10297
 10:18:14,300 --> 10:18:18,260
-those two variables, right in the function declaration. So
-
+So this line is the exact same thing as doing this line. 
+所以这一行，就和这两行所做的事完全相同
 
 10298
 10:18:18,290 --> 10:18:22,250
-this line is the exact same thing as doing this line. This
-
+This is an asynchronous, nameless function using the arrow notation, 
+因此这就是一个异步的，无名的，并且使用箭头符号的函数
 
 10299
 10:18:22,250 --> 10:18:25,430
-is an asynchronous, nameless function using the arrow
-
+or working with our deploy scripts here. 
+用于处理我们的部署脚本
 
 10300
 10:18:25,430 --> 10:18:29,150
-notation, or working with our deploy scripts here. And we're
-
+And we're default, exporting it with module dot exports. 
+并且要在 "module.exports" 中作为默认导出
 
 10301
 10:18:29,150 --> 10:18:32,750
-default, exporting it with module dot exports. I don't know
-
+I don't know that was a lot. 
+呼，我知道这内容有点多
 
 10302
 10:18:32,750 --> 10:18:35,510
-that was a lot. And another is kind of a lot of syntactic sugar
-
+And another is kind of a lot of syntactic sugar here. 
+而且这里还使用了一些语法糖
 
 10303
 10:18:35,510 --> 10:18:38,270
-here. But if that's really confusing for you, just feel
-
+But if that's really confusing for you, just feel free to use the above. 
+但如果你真的觉得这很让人困惑的话，那么也可以使用上面那种方法
 
 10304
 10:18:38,270 --> 10:18:41,270
-free to use the above. And whenever we refer to get named
+And whenever we refer to get named accounts, 
 
 
 10305
 10:18:41,270 --> 10:18:48,560
-accounts, you can also just do a three dot get named accounts, or
+you can also just do a three dot get named accounts, or a three dot deployments. 
 
 
 10306
 10:18:48,590 --> 10:18:53,210
-a three dot deployments. So hopefully, that's clear that
+So hopefully, that's clear that
 
 
 10307
 10:18:53,210 --> 10:18:55,760
-this top part is gonna be the same as this bottom part right
+this top part is gonna be the same as this bottom part right here, 
 
 
 10308
 10:18:55,760 --> 10:18:58,460
-here, whichever one you feel more comfortable working with.
+whichever one you feel more comfortable working with.
 
 
 10309
 10:18:59,360 --> 10:19:01,460
-But alright, now that we've gotten all that out of the way,
+But alright, now that we've gotten all that out of the way, let's continue with the script. 
 
 
 10310
 10:19:01,580 --> 10:19:04,790
-let's continue with the script. So we're using this deployments
+So we're using this deployments object, 
 
 
 10311
 10:19:04,820 --> 10:19:08,150
-object, reason this deployments object to get two functions,
+reason this deployments object to get two functions,
 
 
 10312
 10:19:08,870 --> 10:19:11,690
-those two functions are going to be the deploy function, and the
+those two functions are going to be the deploy function, and the log function. 
 
 
 10313
 10:19:11,690 --> 10:19:14,540
-log function. So we're gonna say const, deploy log equals
+So we're gonna say const, deploy log equals deployments. 
 
 
 10314
 10:19:14,540 --> 10:19:18,350
-deployments. So we're going to pull these two functions out of
+So we're going to pull these two functions out of deployments. 
 
 
 10315
 10:19:18,350 --> 10:19:22,100
-deployments. And then we're also going to do const Deployer.
+And then we're also going to do const Deployer. Equals await, get named accounts. 
 
 
 10316
 10:19:23,150 --> 10:19:28,310
-Equals await, get named accounts. So we are grabbing
+So we are grabbing this new deploy function, this new log function, 
 
 
 10317
 10:19:28,310 --> 10:19:31,310
-this new deploy function, this new log function, and we're
+and we're grabbing this deployer account from this weird get named accounts function. 
 
 
 10318
 10:19:31,310 --> 10:19:34,880
-grabbing this deployer account from this weird get named
+What's this get named accounts function, 
 
 
 10319
 10:19:34,880 --> 10:19:38,420
-accounts function. What's this get named accounts function,
+this get named accounts is a way for us to get named accounts.
 
 
 10320
 10:19:38,660 --> 10:19:42,350
-this get named accounts is a way for us to get named accounts.
+When working with ethers we saw when working with ethers, 
 
 
 10321
 10:19:42,710 --> 10:19:45,620
-When working with ethers we saw when working with ethers, we can
+we can actually get our accounts based off of the number in the Account section of each network. 
 
 
 10322
 10:19:45,620 --> 10:19:49,400
-actually get our accounts based off of the number in the Account
+So for example,
 
 
 10323
 10:19:49,400 --> 10:19:51,710
-section of each network. So for example,
+in this list of private keys, 
 
 
 10324
 10:19:54,800 --> 10:19:57,800
-in this list of private keys, private keys zero private key
+private keys zero private key one private key two, 
 
 
 10325
 10:19:57,800 --> 10:20:00,770
-one private key two, it might get a little confusing to
+it might get a little confusing to remember which ones which 
 
 
 10326
 10:20:00,770 --> 10:20:04,460
-remember which ones which so instead of working like that, we
+so instead of working like that, 
 
 
 10327
 10:20:04,460 --> 10:20:07,880
-can add a section at the bottom called named accounts where we
+we can add a section at the bottom called named accounts 
 
 
 10328
 10:20:07,880 --> 10:20:11,900
-can name each one of those spots in the accounts array. So we'll
+where we can name each one of those spots in the accounts array. 
 
 
 10329
 10:20:11,900 --> 10:20:15,470
-do named accounts. And we'll say one of the accounts that will
+So we'll do named accounts. 
 
 
 10330
 10:20:15,470 --> 10:20:18,710
-name is going to be named Deployer. And we're gonna say by
+And we'll say one of the accounts that will name is going to be named Deployer. 
 
 
 10331
 10:20:18,710 --> 10:20:23,240
-default, the zero with account is going to be Deployer. We can
+And we're gonna say by default, the zero with account is going to be Deployer. 
 
 
 10332
 10:20:23,240 --> 10:20:27,560
-also specify which number is going to be the deployer account
+We can also specify which number is going to be the deployer account across different chains. 
 
 
 10333
 10:20:27,560 --> 10:20:31,070
-across different chains. For example, on Rigby we wanted the
+For example, on Rigby we wanted the deployer account to be the first position, 
 
 
 10334
 10:20:31,070 --> 10:20:33,770
-deployer account to be the first position, we could do something
+we could do something like this 
 
 
 10335
 10:20:33,770 --> 10:20:37,130
-like this or on hard hat, we could do it like this. We can
+or on hard hat, we could do it like this. 
 
 
 10336
 10:20:37,130 --> 10:20:40,160
-create multiple users. Like for example, if we wanted to do a
+We can create multiple users. Like for example, 
 
 
 10337
 10:20:40,160 --> 10:20:44,510
-user for some test or something, and we'll just say the default
+if we wanted to do a user for some test or something, 
 
 
 10338
 10:20:44,540 --> 10:20:48,380
-is one or whatever we wanted in here. So back in our deploy fun
+and we'll just say the default is one or whatever we wanted in here. 
 
 
 10339
 10:20:48,380 --> 10:20:51,170
-me We're going to say we're going to grab that deployer
+So back in our deploy fun me 
 
 
 10340
 10:20:51,260 --> 10:20:54,320
-account from our named accounts. And then finally, we're going to
+We're going to say we're going to grab that deployer account from our named accounts. 
 
 
 10341
 10:20:54,320 --> 10:20:57,530
-grab our chain ID for reasons that will come clear pretty
+And then finally, we're going to grab our chain ID for reasons that will come clear pretty soon. 
 
 
 10342
 10:20:57,530 --> 10:21:03,320
-soon. So we'll do const, chain ID equals network dot config dot
+So we'll do const, chain ID equals network dot config dot chain ID. 
 
 
 10343
 10:21:03,320 --> 10:21:09,920
-chain ID. 
