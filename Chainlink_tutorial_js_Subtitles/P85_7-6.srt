@@ -652,197 +652,199 @@ But if that's really confusing for you, just feel free to use the above.
 10304
 10:18:38,270 --> 10:18:41,270
 And whenever we refer to get named accounts, 
-
+每当我们获取 "getNamedAccounts" 时
 
 10305
 10:18:41,270 --> 10:18:48,560
 you can also just do a three dot get named accounts, or a three dot deployments. 
-
+你也可以这么做 "hre.getNamedAccounts" 或者是 "hre.deployments"
 
 10306
 10:18:48,590 --> 10:18:53,210
 So hopefully, that's clear that
-
+希望我已经讲清楚了
 
 10307
 10:18:53,210 --> 10:18:55,760
 this top part is gonna be the same as this bottom part right here, 
-
+这里的上半部分和这边的下半部分是完全相同的
 
 10308
 10:18:55,760 --> 10:18:58,460
 whichever one you feel more comfortable working with.
-
+无论你是觉得哪种方式更适合自己
 
 10309
 10:18:59,360 --> 10:19:01,460
 But alright, now that we've gotten all that out of the way, let's continue with the script. 
-
+好了，现在我们已经把这些东西都搞清楚了，让我们继续编写脚本吧
 
 10310
 10:19:01,580 --> 10:19:04,790
 So we're using this deployments object, 
-
+我们使用了这个 "deployments" 对象
 
 10311
 10:19:04,820 --> 10:19:08,150
 reason this deployments object to get two functions,
-
+通过这个 "deployments" 对象可以获取两个函数
 
 10312
 10:19:08,870 --> 10:19:11,690
 those two functions are going to be the deploy function, and the log function. 
-
+这两个函数分别是 "deploy" 函数以及 "log" 函数
 
 10313
 10:19:11,690 --> 10:19:14,540
 So we're gonna say const, deploy log equals deployments. 
-
+因此我们要执行 "const {deploy, log} = deployments"
 
 10314
 10:19:14,540 --> 10:19:18,350
 So we're going to pull these two functions out of deployments. 
-
+我们要把这两个函数从 "deployments" 中提取出来
 
 10315
 10:19:18,350 --> 10:19:22,100
 And then we're also going to do const Deployer. Equals await, get named accounts. 
-
+接着我们要执行 "const {deployer} = await getNamedAccounts()"
 
 10316
 10:19:23,150 --> 10:19:28,310
 So we are grabbing this new deploy function, this new log function, 
-
+现在我们获取了这个新的 "deploy" 函数以及这个 "log" 函数
 
 10317
 10:19:28,310 --> 10:19:31,310
-and we're grabbing this deployer account from this weird get named accounts function. 
-
+and we're grabbing this deployer account 
+并且我们还获取了部署者的账户
 
 10318
 10:19:31,310 --> 10:19:34,880
-What's this get named accounts function, 
-
+from this weird get named accounts function. 
+就是通过这个奇怪的 "getNamedAccounts" 函数做到的
 
 10319
 10:19:34,880 --> 10:19:38,420
-this get named accounts is a way for us to get named accounts.
-
+What's this get named accounts function, 
+这个 "getNamedAccounts" 函数到底是什么呢？
 
 10320
 10:19:38,660 --> 10:19:42,350
-When working with ethers we saw when working with ethers, 
-
+this get named accounts is a way for us to get named accounts. 
+"getNamedAccounts" 就是一个获取 "namedAccounts" 的方法
 
 10321
 10:19:42,710 --> 10:19:45,620
-we can actually get our accounts based off of the number in the Account section of each network. 
-
+When working with ethers we saw when working with ethers, 
+当我们在使用 "ethers" 时
 
 10322
 10:19:45,620 --> 10:19:49,400
-So for example,
-
+we can actually get our accounts based off of the number in the Account section of each network. 
+我们可以根据不同网络的 "accounts" 部分中的编号来获取我们的账户
 
 10323
 10:19:49,400 --> 10:19:51,710
-in this list of private keys, 
-
+So for example, 
+举个例子
 
 10324
 10:19:54,800 --> 10:19:57,800
-private keys zero private key one private key two, 
-
+in this list of private keys, private keys zero private key one private key two, 
+在这个包含私钥的列表中，有 "privateKey0", "privateKey1", "privateKey2"
 
 10325
 10:19:57,800 --> 10:20:00,770
 it might get a little confusing to remember which ones which 
-
+这很容易让人混淆并记不清究竟哪个是哪个
 
 10326
 10:20:00,770 --> 10:20:04,460
 so instead of working like that, 
-
+因此，我们不采用这种方式
 
 10327
 10:20:04,460 --> 10:20:07,880
 we can add a section at the bottom called named accounts 
-
+而是在底部添加一个名为 "namedAccounts" 的部分
 
 10328
 10:20:07,880 --> 10:20:11,900
 where we can name each one of those spots in the accounts array. 
-
+我们可以在里面为 "accounts" 数组中每个位置的账户取一个名字
 
 10329
 10:20:11,900 --> 10:20:15,470
 So we'll do named accounts. 
-
+所以我们来写下 "namedAccounts"
 
 10330
 10:20:15,470 --> 10:20:18,710
 And we'll say one of the accounts that will name is going to be named Deployer. 
-
+并且我们要把其中一个账户命名为 "deployer"
 
 10331
 10:20:18,710 --> 10:20:23,240
 And we're gonna say by default, the zero with account is going to be Deployer. 
-
+并且我们要指定 "default"，即 "accounts" 中的第 0 个就是 "deployer"
 
 10332
 10:20:23,240 --> 10:20:27,560
 We can also specify which number is going to be the deployer account across different chains. 
-
+我们也可以指定不同链上的第几个账户为 "deployer"
 
 10333
 10:20:27,560 --> 10:20:31,070
 For example, on Rigby we wanted the deployer account to be the first position, 
-
+例如，在 Rinkeby 上如果我们想让位置 1 的账户成为 "deployer"
 
 10334
 10:20:31,070 --> 10:20:33,770
 we could do something like this 
-
+我们就可以这么做
 
 10335
 10:20:33,770 --> 10:20:37,130
 or on hard hat, we could do it like this. 
-
+或者在 Hardhat 上，我们可以这样做
 
 10336
 10:20:37,130 --> 10:20:40,160
 We can create multiple users. Like for example, 
-
+我们还可以创建多个用户，举例来说
 
 10337
 10:20:40,160 --> 10:20:44,510
 if we wanted to do a user for some test or something, 
-
+如果我们想为了测试或其他目的而使用 "user"
 
 10338
 10:20:44,540 --> 10:20:48,380
 and we'll just say the default is one or whatever we wanted in here. 
-
+我们就可以这样做 "default: 1"，或是任何一个我们想用的编号
 
 10339
 10:20:48,380 --> 10:20:51,170
 So back in our deploy fun me 
-
+回到我们的 "deploy-fund-me"
 
 10340
 10:20:51,260 --> 10:20:54,320
 We're going to say we're going to grab that deployer account from our named accounts. 
-
+我们就可以说我们通过 "namedAccounts" 获取了 "deployer" 的账户
 
 10341
 10:20:54,320 --> 10:20:57,530
-And then finally, we're going to grab our chain ID for reasons that will come clear pretty soon. 
-
+And then finally, we're going to grab our chain ID 
+最后，我们要获取我们的 "chainId"
 
 10342
 10:20:57,530 --> 10:21:03,320
-So we'll do const, chain ID equals network dot config dot chain ID. 
-
+for reasons that will come clear pretty soon. 
+至于原因很快就会搞清楚的
 
 10343
 10:21:03,320 --> 10:21:09,920
+So we'll do const, chain ID equals network dot config dot chain ID. 
+我们先写下 "const chainId = network.config.chainId"
