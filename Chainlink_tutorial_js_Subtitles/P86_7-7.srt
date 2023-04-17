@@ -1,211 +1,211 @@
 10343
 10:21:03,320 --> 10:21:09,920
-Now, how do we actually deploy this fund me
-
+Now, how do we actually deploy this fund me contract? 
+现在，我们该如何部署这个 "FundMe" 合约呢？
 
 10344
 10:21:09,920 --> 10:21:12,590
-contract? Well, let's think about this for a little bit.
-
+Well, let's think about this for a little bit.
+让我们来仔细考虑一下这个问题
 
 10345
 10:21:12,830 --> 10:21:15,260
-When working with remix, it was pretty easy, right? We just
-
+When working with remix, it was pretty easy, right? 
+当我们使用 Remix 的时候，这是件很简单的事，对吧？
 
 10346
 10:21:15,260 --> 10:21:18,830
-deployed it to a test net. Ah, that's kind of the issue there,
-
+We just deployed it to a test net. 
+我们只要直接把它部署到测试网络上就行了
 
 10347
 10:21:18,830 --> 10:21:21,590
-isn't it deploying to a rink, the test net is a little bit
-
+Ah, that's kind of the issue there, isn't it 
+啊，但这就是问题所在不是么？
 
 10348
 10:21:21,590 --> 10:21:24,680
-slow. We don't always want to have to deploy to one of these
-
+deploying to a rink, the test net is a little bit slow. 
+部署到 Rinkeby 测试网上实在是有点慢
 
 10349
 10:21:24,680 --> 10:21:27,920
-slow test nets or even a main net when tinkering and fiddling
-
+We don't always want to have to deploy to one of these slow test nets or even a main net 
+我们不想总是在这些慢速的测试网或主网上进行部署
 
 10350
 10:21:27,920 --> 10:21:31,010
-with our contracts, do we know that's gonna be really bad, we
-
+when tinkering and fiddling with our contracts, do we 
+从而调试和修改我们的合约，是吧？
 
 10351
 10:21:31,010 --> 10:21:34,700
-really want to deploy to a test net as a last stop after we've
-
+know that's gonna be really bad, 
+是的，那真的很糟糕
 
 10352
 10:21:34,700 --> 10:21:37,580
-done all our testing locally. Or we can deploy it to a test that
-
+we really want to deploy to a test net as a last stop after we've done all our testing locally. 
+我们想要的是将部署测试网这一步作为本地测试后的最后一步
 
 10353
 10:21:37,580 --> 10:21:41,450
-to see some very specific code work, like for example, with the
+Or we can deploy it to a test that to see some very specific code work, 
 
 
 10354
 10:21:41,450 --> 10:21:44,870
-chain link documentation. So ideally, we deploy this to a
+like for example, with the chain link documentation. 
 
 
 10355
 10:21:44,870 --> 10:21:48,020
-local network first. But can we just do that? Well, if we look
+So ideally, we deploy this to a local network first. But can we just do that? 
 
 
 10356
 10:21:48,020 --> 10:21:51,260
-in our price converter, dot Seoul, we have this hard coded
+Well, if we look in our price converter, dot Seoul, 
 
 
 10357
 10:21:51,260 --> 10:21:55,220
-address in here, this 0x address, if we go to Doc's dot
+we have this hard coded address in here, this 0x address, 
 
 
 10358
 10:21:55,220 --> 10:21:59,570
-chain that link EVM chains, contract addresses for Aetherium
+if we go to Doc's dot chain that link EVM chains, contract addresses for Aetherium data feeds. 
 
 
 10359
 10:21:59,570 --> 10:22:03,560
-data feeds. That address is the eth USD, specifically for
+That address is the eth USD, specifically for Rinkeby. 
 
 
 10360
 10:22:03,560 --> 10:22:07,400
-Rinkeby. What if we work on the Hard Hat Network? Example?
+What if we work on the Hard Hat Network? 
 
 
 10361
 10:22:07,580 --> 10:22:08,630
-default network?
+Example? default network? Hard Hat. 
 
 
 10362
 10:22:10,010 --> 10:22:13,250
-Hard Hat. And then like I said before, if you don't write this
+And then like I said before, 
 
 
 10363
 10:22:13,250 --> 10:22:16,640
-in part, it is automatically the default network. But if we're to
+if you don't write this in part, it is automatically the default network. 
 
 
 10364
 10:22:16,640 --> 10:22:19,430
-point to the Hard Hat Network, harder network is a blank
+But if we're to point to the Hard Hat Network, 
 
 
 10365
 10:22:19,430 --> 10:22:21,860
-blockchain. And it gets destroyed every time our scripts
+harder network is a blank blockchain. 
 
 
 10366
 10:22:21,860 --> 10:22:24,950
-finish, or even if we're working with a local node, this price
+And it gets destroyed every time our scripts finish, 
 
 
 10367
 10:22:24,950 --> 10:22:28,220
-feed contract won't exist, one of the code there won't be
+or even if we're working with a local node, 
 
 
 10368
 10:22:28,220 --> 10:22:31,880
-updated with data. So what do we do? How do we test and interact
+this price feed contract won't exist, 
 
 
 10369
 10:22:31,880 --> 10:22:34,550
-with our code locally? Is there a way we can do this? Well, one
+one of the code there won't be updated with data. So what do we do? 
 
 
 10370
 10:22:34,550 --> 10:22:36,770
-of the ways that we can do this that we'll learn a little bit
+How do we test and interact with our code locally? Is there a way we can do this? 
 
 
 10371
 10:22:36,770 --> 10:22:39,920
-later is actually forking a blockchain, where you can keep
+Well, one of the ways that we can do this 
 
 
 10372
 10:22:39,920 --> 10:22:42,920
-stuff hard coded. But usually, it's still better to figure out
+that we'll learn a little bit later is actually forking a blockchain, where you can keep stuff hard coded. 
 
 
 10373
 10:22:42,920 --> 10:22:46,370
-how to do everything with something called mocks. There's
+But usually, it's still better to figure out how to do everything with something called mocks. 
 
 
 10374
 10:22:46,370 --> 10:22:49,460
-a great Stack Overflow question that just says, What is mocking
+There's a great Stack Overflow question that just says, What is mocking
 
 
 10375
 10:22:49,520 --> 10:22:52,550
-and mocking is primarily used for unit testing, which we'll
+and mocking is primarily used for unit testing, which we'll talk about in a little bit. 
 
 
 10376
 10:22:52,550 --> 10:22:55,880
-talk about in a little bit. And object under test may have
+And object under test may have dependencies on other complex objects. 
 
 
 10377
 10:22:55,880 --> 10:22:59,480
-dependencies on other complex objects. To isolate the behavior
+To isolate the behavior of the object, 
 
 
 10378
 10:22:59,480 --> 10:23:03,860
-of the object, you want to replace other objects by mocks
+you want to replace other objects by mocks that simulate the behavior of the real objects. 
 
 
 10379
 10:23:03,890 --> 10:23:07,490
-that simulate the behavior of the real objects. In short,
+In short, mocking is creating objects that simulate behavior of real objects. 
 
 
 10380
 10:23:07,490 --> 10:23:10,490
-mocking is creating objects that simulate behavior of real
+Now, this might seem like a lot of words. 
 
 
 10381
 10:23:10,520 --> 10:23:13,670
-objects. Now, this might seem like a lot of words. But
+But basically, what we want to do is we want to make a 
 
 
 10382
 10:23:14,090 --> 10:23:17,060
-basically, what we want to do is we want to make a fake price
+fake price feed contract that we can use and we can control when working locally. 
 
 
 10383
 10:23:17,060 --> 10:23:20,330
-feed contract that we can use and we can control when working
+
 
 
 10384
 10:23:20,360 --> 10:23:23,270
-locally. So back here, I'm just going to leave a note in here
+So back here, I'm just going to leave a note in here
 
 
 10385
