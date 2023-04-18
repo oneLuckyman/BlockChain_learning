@@ -46,441 +46,441 @@ know that's gonna be really bad,
 10352
 10:21:34,700 --> 10:21:37,580
 we really want to deploy to a test net as a last stop after we've done all our testing locally. 
-我们想要的是将部署测试网这一步作为本地测试后的最后一步
+我们想要的是将部署测试网这一步作为本地测试之后的最后一步
 
 10353
 10:21:37,580 --> 10:21:41,450
 Or we can deploy it to a test that to see some very specific code work, 
-
+或者我们可以提前将其部署到测试网络以查看某些特定代码如何工作
 
 10354
 10:21:41,450 --> 10:21:44,870
 like for example, with the chain link documentation. 
-
+例如与 Chainlink 文档一起使用
 
 10355
 10:21:44,870 --> 10:21:48,020
 So ideally, we deploy this to a local network first. But can we just do that? 
-
+理想情况下，我们应当首先部署到本地网络上，但我们真的可以直接这样做么？
 
 10356
 10:21:48,020 --> 10:21:51,260
 Well, if we look in our price converter, dot Seoul, 
-
+如果查看一下我们的 "PriceConverter.sol"
 
 10357
 10:21:51,260 --> 10:21:55,220
 we have this hard coded address in here, this 0x address, 
-
+我们会发现这里有一处硬编码地址，就是这个 0x 地址
 
 10358
 10:21:55,220 --> 10:21:59,570
 if we go to Doc's dot chain that link EVM chains, contract addresses for Aetherium data feeds. 
-
+如果我们前往 "docs.chain.link"-"EVM Chains"-"Contract Address"-"Ethereum Data Feeds"
 
 10359
 10:21:59,570 --> 10:22:03,560
 That address is the eth USD, specifically for Rinkeby. 
-
+那个地址是 "ETH USD" 的地址，具体来说是 Rinkeby 的
 
 10360
 10:22:03,560 --> 10:22:07,400
 What if we work on the Hard Hat Network? 
-
+如果我们想在 "Hardhat Network" 上运行呢
 
 10361
 10:22:07,580 --> 10:22:08,630
 Example? default network? Hard Hat. 
-
+比如说 `defaultNetwork: "Hardhat"`
 
 10362
 10:22:10,010 --> 10:22:13,250
 And then like I said before, 
-
+就像我之前说的
 
 10363
 10:22:13,250 --> 10:22:16,640
 if you don't write this in part, it is automatically the default network. 
-
+如果你这里不明确指定，那么 "hardhat" 将自动作为默认网络使用
 
 10364
 10:22:16,640 --> 10:22:19,430
 But if we're to point to the Hard Hat Network, 
-
+但如果我们就要指向 "Hardhat Network"
 
 10365
 10:22:19,430 --> 10:22:21,860
 harder network is a blank blockchain. 
-
+"Hardhat Network" 是一个空白的区块链
 
 10366
 10:22:21,860 --> 10:22:24,950
 And it gets destroyed every time our scripts finish, 
-
+每次我们的脚本运行完毕后它都会被销毁
 
 10367
 10:22:24,950 --> 10:22:28,220
 or even if we're working with a local node, 
-
+又或者即使我们在本地节点上工作
 
 10368
 10:22:28,220 --> 10:22:31,880
 this price feed contract won't exist, 
-
+这个 "priceFeed" 合约将不再存在
 
 10369
 10:22:31,880 --> 10:22:34,550
 one of the code there won't be updated with data. So what do we do? 
-
+其中某些代码将无法更新数据，那么我们该怎么办？
 
 10370
 10:22:34,550 --> 10:22:36,770
 How do we test and interact with our code locally? Is there a way we can do this? 
-
+我们该如何在本地测试中与我们的代码进行交互？有没有什么方式可以做到这一点？
 
 10371
 10:22:36,770 --> 10:22:39,920
-Well, one of the ways that we can do this 
-
+Well, one of the ways that we can do this that we'll learn a little bit later 
+嗯，之后我们会学习一种方法
 
 10372
 10:22:39,920 --> 10:22:42,920
-that we'll learn a little bit later is actually forking a blockchain, where you can keep stuff hard coded. 
-
+is actually forking a blockchain, where you can keep stuff hard coded. 
+就是所谓的分叉(fork)一个区块链，你可以在其中保留硬编码内容
 
 10373
 10:22:42,920 --> 10:22:46,370
 But usually, it's still better to figure out how to do everything with something called mocks. 
-
+但通常来说，最好的方法还是使用一种被称为 "mocks" 的方法来完成所有的操作
 
 10374
 10:22:46,370 --> 10:22:49,460
 There's a great Stack Overflow question that just says, What is mocking
-
+这里有一个很好的 "Stack Overflow" 问题问的就是，什么是 Mocking？
 
 10375
 10:22:49,520 --> 10:22:52,550
 and mocking is primarily used for unit testing, which we'll talk about in a little bit. 
-
+mocking 主要用于单元测试，我们稍后会详细讨论
 
 10376
 10:22:52,550 --> 10:22:55,880
 And object under test may have dependencies on other complex objects. 
-
+受测对象可能依赖于其它复杂的对象
 
 10377
 10:22:55,880 --> 10:22:59,480
 To isolate the behavior of the object, 
-
+为了隔离某些对象的行为
 
 10378
 10:22:59,480 --> 10:23:03,860
 you want to replace other objects by mocks that simulate the behavior of the real objects. 
-
+你需要使用 mocks 对象来替换其它对象，以模拟真实对象的行为
 
 10379
 10:23:03,890 --> 10:23:07,490
 In short, mocking is creating objects that simulate behavior of real objects. 
-
+简而言之，mocking 就是创建一个模拟真实对象行为的对象
 
 10380
 10:23:07,490 --> 10:23:10,490
 Now, this might seem like a lot of words. 
-
+看起来它说了很多东西
 
 10381
 10:23:10,520 --> 10:23:13,670
-But basically, what we want to do is we want to make a 
-
+But basically, what we want to do is we want to make a fake price feed contract 
+但基本来说，我们想要的就是一个虚拟的 "priceFeed" 合约
 
 10382
 10:23:14,090 --> 10:23:17,060
-fake price feed contract that we can use and we can control when working locally. 
-
+that we can use and we can control when working locally. 
+以供我们在本地工作时能够使用并进行控制
 
 10383
 10:23:17,060 --> 10:23:20,330
-
-
+So back here, I'm just going to leave a note in here saying, 
+所以在这里，我会留下一条注释说
 
 10384
 10:23:20,360 --> 10:23:23,270
-So back here, I'm just going to leave a note in here
-
+When going for local host or Hard Hat Network, we want to use a mock. 
+当使用本地主机或 "Hardhat Network" 时，我们要使用 mock
 
 10385
 10:23:23,270 --> 10:23:30,350
-saying, When going for local host or Hard Hat Network, we
-
+Okay, great, well, we can use a mock 
+OK 好，现在我们要使用 mock 了
 
 10386
 10:23:30,560 --> 10:23:33,800
-want to use a mock. Okay, great, well, we can use a mock and
-
+and we'll learn how to make one of those in a little bit. 
+之后我们将学习如何来创建一个 mock
 
 10387
 10:23:33,800 --> 10:23:36,110
-we'll learn how to make one of those in a little bit. Well,
-
+Well, what happens when we want to change chains, 
+但是当我们想切换链的时候会发生什么呢
 
 10388
 10:23:36,110 --> 10:23:42,290
-what happens when we want to change chains, for example, back
-
+for example, back in dots dot chain to link EVM chains, contract addresses, 
+举个例子，回到 "docs.chain.link"-"EVM Chains"-"Contract Address"
 
 10389
 10:23:42,290 --> 10:23:46,490
-in dots dot chain to link EVM chains, contract addresses,
-
+there are a ton of different block chains that have price feeds on them. 
+这里有很多不同的区块链都有价格数据源
 
 10390
 10:23:46,940 --> 10:23:50,150
-there are a ton of different block chains that have price
-
+And on each one of these blockchains, 
+并且在这些区块链的每一个上面
 
 10391
 10:23:50,150 --> 10:23:53,840
-feeds on them. And on each one of these blockchains, the eth
-
+the eth USD price feed is going to be a little bit different. 
+"ETH/USD" 的价格数据可能会有一点不同
 
 10392
 10:23:53,840 --> 10:23:56,060
-USD price feed is going to be a little bit different. For
-
+For example, we're looking at ETH USD, 
+比方说，如果你查看 "ETH/USD"
 
 10393
 10:23:56,060 --> 10:23:59,900
-example, we're looking at ETH USD, the address of eth USD for
-
+the address of eth USD for Aetherium main net 
+以太坊主网的 "ETH/USD" 地址
 
 10394
 10:23:59,900 --> 10:24:03,740
-Aetherium main net is different from the address of eth USD for
-
+is different from the address of eth USD for Rigby, 
+与 Rinkeby 的 "ETH/USD" 地址是不同的
 
 10395
 10:24:03,740 --> 10:24:05,840
-Rigby, which makes sense, they're totally different
-
+which makes sense, they're totally different contracts on different chains, 
+这是有道理的，它们是不同链上完全不同的合约
 
 10396
 10:24:05,840 --> 10:24:08,150
-contracts on different chains, they have very similar
-
+they have very similar functionality. And they do nearly the exact same thing. 
+它们有非常相似的功能，做的也几乎是完全相同的事
 
 10397
 10:24:08,150 --> 10:24:10,970
-functionality. And they do nearly the exact same thing. But
-
+But they're still different. 
+但它们仍然是不同的
 
 10398
 10:24:11,000 --> 10:24:13,580
-they're still different. We're also going to need a way for us
-
+We're also going to need a way for us to modularize or parameterize, this address in here, 
+我们还需要一种方法来把这里的地址给模块化或参数化
 
 10399
 10:24:13,580 --> 10:24:18,230
-to modularize or parameterize, this address in here, so that no
-
+so that no matter what chain we deploy to, 
+这样无论我们部署到哪个链上
 
 10400
 10:24:18,230 --> 10:24:21,410
-matter what chain we deploy to, we don't have to change any of
-
+we don't have to change any of our code, 
+我们都不需要改动任何代码
 
 10401
 10:24:21,410 --> 10:24:23,810
-our code, we can always have our code be exactly the same. And we
-
+we can always have our code be exactly the same. 
+这样我们的代码可以始终保持一致
 
 10402
 10:24:23,810 --> 10:24:26,180
-don't have to come in here and like flip values and flip
+And we don't have to come in here and like flip values and flip variables and stuff. So 
 
 
 10403
 10:24:26,180 --> 10:24:29,720
-variables and stuff. So let's keep that all of that in mind as
+let's keep that all of that in mind as we write the rest of this. 
 
 
 10404
 10:24:29,720 --> 10:24:32,990
-we write the rest of this. Now in order to parameterize. This,
+Now in order to parameterize. This,
 
 
 10405
 10:24:33,170 --> 10:24:36,500
-we actually want to prioritize and do a little refactoring of
+we actually want to prioritize and do a little refactoring of our fundamental soul. 
 
 
 10406
 10:24:36,500 --> 10:24:39,440
-our fundamental soul. Refactoring basically means
+Refactoring basically means going back and, 
 
 
 10407
 10:24:39,440 --> 10:24:43,370
-going back and, and changing the way your code works. Right now
+and changing the way your code works. 
 
 
 10408
 10:24:43,400 --> 10:24:46,340
-we have this constructor function, right the constructor
+Right now we have this constructor function, right 
 
 
 10409
 10:24:46,340 --> 10:24:49,190
-function is the function that automatically gets called
+the constructor function is the function that automatically gets called whenever we deploy our contract. 
 
 
 10410
 10:24:49,220 --> 10:24:52,280
-whenever we deploy our contract. Right now it's not doing a whole
+Right now it's not doing a whole lot 
 
 
 10411
 10:24:52,280 --> 10:24:55,040
-lot right now it's just updating the owner variable to be whoever
+right now it's just updating the owner variable to be whoever sent in the contract. 
 
 
 10412
 10:24:55,040 --> 10:24:58,970
-sent in the contract. But we can actually have a do much more
+But we can actually have a do much more than that. 
 
 
 10413
 10:24:58,970 --> 10:25:02,030
-than that. Since this constructor is a function just
+Since this constructor is a function just like every other function, 
 
 
 10414
 10:25:02,030 --> 10:25:04,520
-like every other function, we can actually have it take
+we can actually have it take parameters, 
 
 
 10415
 10:25:04,520 --> 10:25:07,250
-parameters, one of the parameters that we might like
+one of the parameters that we might like for it to have is going to be the address of a price feed. 
 
 
 10416
 10:25:07,250 --> 10:25:11,270
-for it to have is going to be the address of a price feed. So
+So let's go ahead and add this and figure out how to refactor all this code. 
 
 
 10417
 10:25:11,270 --> 10:25:13,220
-let's go ahead and add this and figure out how to refactor all
+So we're going to add constructor address, 
 
 
 10418
 10:25:13,220 --> 10:25:17,900
-this code. So we're going to add constructor address, price feed
+price feed for the constructor in here. 
 
 
 10419
 10:25:18,380 --> 10:25:21,500
-for the constructor in here. When we deploy our contract. Now
+When we deploy our contract. Now
 
 
 10420
 10:25:21,530 --> 10:25:24,890
-we're going to pass it the eth USD price feed address depending
+we're going to pass it the eth USD price feed address depending on what chain we're on. 
 
 
 10421
 10:25:24,890 --> 10:25:27,500
-on what chain we're on. If we're on rink B, we'll use this
+If we're on rink B, we'll use this address 
 
 
 10422
 10:25:27,500 --> 10:25:30,470
-address if one polygon will use a different one b&b, different
+if one polygon will use a different one b&b, different one, Gnosis hecho, avalanche, etc, you get the picture. 
 
 
 10423
 10:25:30,470 --> 10:25:34,100
-one, Gnosis hecho, avalanche, etc, you get the picture. So
+So we're going to marginalize this like so. 
 
 
 10424
 10:25:34,100 --> 10:25:37,730
-we're going to marginalize this like so. Now that our
+Now that our constructor takes a parameter for the price feed, 
 
 
 10425
 10:25:37,730 --> 10:25:40,700
-constructor takes a parameter for the price feed, we can
+we can actually save an aggregator v3 interface object as a global variable 
 
 
 10426
 10:25:40,700 --> 10:25:44,420
-actually save an aggregator v3 interface object as a global
+in our price converter, 
 
 
 10427
 10:25:44,420 --> 10:25:47,540
-variable in our price converter, we just create a price feed
+we just create a price feed variable of type aggregator v3 interface, 
 
 
 10428
 10:25:47,540 --> 10:25:51,290
-variable of type aggregator v3 interface, which again, we're
+which again, we're importing from the chainlink repo, 
 
 
 10429
 10:25:51,290 --> 10:25:54,020
-importing from the chainlink repo, which is an interface
+which is an interface object which gets compiled down to the ABI. 
 
 
 10430
 10:25:54,020 --> 10:25:57,590
-object which gets compiled down to the ABI. If you match an ABI
+If you match an ABI with up with an address, you get a contract that you can interact with. 
 
 
 10431
 10:25:57,590 --> 10:26:00,590
-with up with an address, you get a contract that you can interact
+So we're going to do the same thing here. 
 
 
 10432
 10:26:00,590 --> 10:26:02,690
-with. So we're going to do the same thing here. We're gonna
+We're gonna say, aggregate Tor, v3 interface, public price feed,
 
 
 10433
 10:26:02,690 --> 10:26:09,530
-say, aggregate Tor, v3 interface, public price feed,
+ration and call this price feed address 
 
 
 10434
 10:26:10,670 --> 10:26:13,940
-ration and call this price feed address so that these don't have
+so that these don't have the same name. 
 
 
 10435
 10:26:13,940 --> 10:26:17,690
-the same name. And in our constructor, we're going to say
+And in our constructor, we're going to say price feed equals, 
 
 
 10436
 10:26:17,690 --> 10:26:21,440
-price feed equals, and we're going to do the exact same thing
+and we're going to do the exact same thing we did with our price converter 
 
 
 10437
 10:26:21,470 --> 10:26:26,360
-we did with our price converter equals aggregate tore the three
+equals aggregate tore the three interface of price feed address. 
 
 
 10438
 10:26:26,360 --> 10:26:27,440
-interface
+
 
 
 10439
 10:26:28,580 --> 10:26:36,680
-of price feed address. Like so now, we have this price feed
+Like so now, we have this price feed
 
 
 10440
