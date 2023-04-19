@@ -475,257 +475,257 @@ equals aggregate tore the three interface of price feed address.
 
 10438
 10:26:26,360 --> 10:26:27,440
-
+Like so 
 
 
 10439
 10:26:28,580 --> 10:26:36,680
-Like so now, we have this price feed
+now, we have this price feed address 
 
 
 10440
 10:26:36,680 --> 10:26:40,520
-address that's variable and modularized, depending on
+that's variable and modularized, depending on whatever chain that we're on. 
 
 
 10441
 10:26:40,520 --> 10:26:44,030
-whatever chain that we're on. Now, what we can do is we can
+Now, what we can do is we can grab this price feed address, 
 
 
 10442
 10:26:44,030 --> 10:26:47,720
-grab this price feed address, and we can use it for our price
+and we can use it for our price converter. 
 
 
 10443
 10:26:47,720 --> 10:26:51,170
-converter. So where are we using our price converter? Well, just
+So where are we using our price converter? 
 
 
 10444
 10:26:51,170 --> 10:26:55,550
-a quick reminder, we're using using price converter for you at
+Well, just a quick reminder, we're using using price converter for you at 256. 
 
 
 10445
 10:26:55,550 --> 10:26:59,690
-256. We're using this as a library on top of our unit 256
+We're using this as a library on top of our unit 256 type. 
 
 
 10446
 10:26:59,720 --> 10:27:03,200
-type. So we're calling message dot value dot get conversion
+So we're calling message dot value dot get conversion rate. 
 
 
 10447
 10:27:03,200 --> 10:27:06,200
-rate. So we look at our price converter, we have this function
+So we look at our price converter, we have this function get conversion rate, 
 
 
 10448
 10:27:06,200 --> 10:27:09,860
-get conversion rate, which takes an FML as its initial parameter,
+which takes an FML as its initial parameter,
 
 
 10449
 10:27:09,860 --> 10:27:13,490
-which again, since this is a library, it automatically passes
+which again, since this is a library, 
 
 
 10450
 10:27:13,490 --> 10:27:16,550
-the message dot value into this get conversion rate function.
+it automatically passes the message dot value into this get conversion rate function.
 
 
 10451
 10:27:17,150 --> 10:27:22,280
-But we could also pass in this price feed, and therefore we
+But we could also pass in this price feed, 
 
 
 10452
 10:27:22,280 --> 10:27:25,640
-wouldn't need to hard code it in the get price anymore. So let's
+and therefore we wouldn't need to hard code it in the get price anymore. 
 
 
 10453
 10:27:25,640 --> 10:27:28,310
-go ahead and figure out how to do that. Well, what we can do is
+So let's go ahead and figure out how to do that. 
 
 
 10454
 10:27:28,310 --> 10:27:31,430
-we can do message dot value dot get conversion rate, we'll stick
+Well, what we can do is we can do message dot value dot get conversion rate, 
 
 
 10455
 10:27:31,430 --> 10:27:34,520
-price feed in here. And then we'll have to update our get
+we'll stick price feed in here. 
 
 
 10456
 10:27:34,520 --> 10:27:38,240
-conversion rate to do a comma so that it takes a second
+And then we'll have to update our get conversion rate 
 
 
 10457
 10:27:38,240 --> 10:27:41,960
-parameter, because remember, again, the initial parameter is
+to do a comma so that it takes a second parameter, 
 
 
 10458
 10:27:41,960 --> 10:27:44,540
-going to be message dot value. And the second parameter is
+because remember, again, the initial parameter is going to be message dot value. 
 
 
 10459
 10:27:44,540 --> 10:27:50,210
-going to be what we define here. So we'll do s amount, comma ag
+And the second parameter is going to be what we define here. 
 
 
 10460
 10:27:50,210 --> 10:27:58,610
-reg gate Tor v3 interface. And we'll call this price feed. And
+So we'll do s amount, comma ag reg gate Tor v3 interface. 
 
 
 10461
 10:27:58,610 --> 10:28:03,680
-now, when we call our get price function, we can pass the price
+And we'll call this price feed. 
 
 
 10462
 10:28:03,680 --> 10:28:07,430
-feed to the get price function. And up here we can have get
+And now, when we call our get price function, 
 
 
 10463
 10:28:07,430 --> 10:28:14,420
-price. Take, you guessed it an aggregate or the three interface
+we can pass the price feed to the get price function. 
 
 
 10464
 10:28:15,410 --> 10:28:22,220
-called price feed. And now we no longer need to hard code in the
+And up here we can have get price. 
 
 
 10465
 10:28:22,220 --> 10:28:25,430
-price feed. And we can just delete those lines and have it
+Take, you guessed it an aggregate or the three interface called price feed. 
 
 
 10466
 10:28:25,430 --> 10:28:30,020
-compile like this, which is awesome. So quick refresher,
+And now we no longer need to hard code in the price feed. 
 
 
 10467
 10:28:30,170 --> 10:28:33,590
-we're parameterizing that price feed address and passing it in
+And we can just delete those lines and have it compile like this, which is awesome. 
 
 
 10468
 10:28:33,590 --> 10:28:37,250
-with a constructor that gets saved as a global variable to an
+So quick refresher, we're parameterizing that price feed address 
 
 
 10469
 10:28:37,250 --> 10:28:41,570
-aggregator v3 interface type, or passing it to a get conversion
+and passing it in with a constructor that gets saved as a global variable to an aggregator v3 interface type, 
 
 
 10470
 10:28:41,570 --> 10:28:45,770
-rate function, which passes it to the get price function, which
+or passing it to a get conversion rate function, 
 
 
 10471
 10:28:45,770 --> 10:28:48,680
-then just calls latest round data. And we probably could have
+which passes it to the get price function, which then just calls latest round data. 
 
 
 10472
 10:28:48,680 --> 10:28:50,720
-made this even easier, probably could have just got rid of the
+And we probably could have made this even easier, probably could have just got rid of the get price function 
 
 
 10473
 10:28:50,720 --> 10:28:54,080
-get price function and stuck this code in the get conversion
+and stuck this code in the get conversion rate. 
 
 
 10474
 10:28:54,080 --> 10:28:56,630
-rate. But we'll leave it there for now. Now that we've done
+But we'll leave it there for now. 
 
 
 10475
 10:28:56,660 --> 10:28:59,630
-that refactoring, let's make sure it works. Yarn Hardhead,
+Now that we've done that refactoring, let's make sure it works. 
 
 
 10476
 10:28:59,630 --> 10:29:03,140
-compile, invalid value undefined for hardhat dot config dot
+Yarn Hardhead, compile, invalid value undefined for hardhat dot config dot networks. 
 
 
 10477
 10:29:03,140 --> 10:29:07,010
-networks. Let's go to the let's go to the config real quick.
+Let's go to the let's go to the config real quick.
 
 
 10478
 10:29:07,100 --> 10:29:09,860
-That's because the default network needs to be outside of
+That's because the default network needs to be outside of networks. 
 
 
 10479
 10:29:09,860 --> 10:29:14,300
-networks. My mistake. Let's try that again. I spelled interface
+My mistake. Let's try that again. I spelled interface wrong and the price converter. 
 
 
 10480
 10:29:14,300 --> 10:29:17,360
-wrong and the price converter. And a quick note, if gives you
+And a quick note, if gives you an error like this, 
 
 
 10481
 10:29:17,360 --> 10:29:20,750
-an error like this, oftentimes, you can command click or control
+oftentimes, you can command click or control click and open that file up right in the editor, 
 
 
 10482
 10:29:20,750 --> 10:29:23,930
-click and open that file up right in the editor, which saves
+which saves you some time, we're going to have defined the line and find the file. 
 
 
 10483
 10:29:23,930 --> 10:29:26,240
-you some time, we're going to have defined the line and find
+But yeah, let's spell that correctly. 
 
 
 10484
 10:29:26,240 --> 10:29:29,540
-the file. But yeah, let's spell that correctly. And let's try
+And let's try this again. 
 
 
 10485
 10:29:29,540 --> 10:29:33,620
-this again. And awesome. It looks like it's compiling
+And awesome. It looks like it's compiling correctly. 
 
 
 10486
 10:29:33,620 --> 10:29:36,560
-correctly. And we just have some warnings, it looks like these
+And we just have some warnings, 
 
 
 10487
 10:29:36,560 --> 10:29:39,560
-warnings are just about this git version, which is because we're
+it looks like these warnings are just about this git version, 
 
 
 10488
 10:29:39,560 --> 10:29:42,650
-shadowing this, we're creating a new price variable down here,
+which is because we're shadowing this, we're creating a new price variable down here,
 
 
 10489
@@ -735,112 +735,112 @@ you've no we just created a global price free variable.
 
 10490
 10:29:46,100 --> 10:29:48,200
-Let's just go ahead and delete the get version function
+Let's just go ahead and delete the get version function altogether 
 
 
 10491
 10:29:48,200 --> 10:29:51,140
-altogether since we're not even going to really need it. And we
+since we're not even going to really need it. 
 
 
 10492
 10:29:51,140 --> 10:29:53,690
-only use the Git version to show you how to actually start
+And we only use the Git version to show you how to actually start working with interfaces. 
 
 
 10493
 10:29:53,690 --> 10:29:56,480
-working with interfaces. And then we'll compile it one more
+And then we'll compile it one more time for good measure. 
 
 
 10494
 10:29:56,480 --> 10:30:01,100
-time for good measure. Boom compiled successfully. Awesome.
+Boom compiled successfully. Awesome.
 
 
 10495
 10:30:01,130 --> 10:30:04,970
-So now we've just refactored our code. So we can pass a price
+So now we've just refactored our code. 
 
 
 10496
 10:30:04,970 --> 10:30:08,990
-feed address depending on the network that we're on. Okay,
+So we can pass a price feed address depending on the network that we're on. 
 
 
 10497
 10:30:08,990 --> 10:30:12,320
-great. With all that being said, let's come back to our deploy
+Okay, great. With all that being said, let's come back to our deploy Funmi script, 
 
 
 10498
 10:30:12,320 --> 10:30:15,110
-Funmi script, and let's learn how to actually deploy the rest
+and let's learn how to actually deploy the rest of it. 
 
 
 10499
 10:30:15,110 --> 10:30:18,350
-of it. In order for us to deploy a contract we remember from our
+In order for us to deploy a contract 
 
 
 10500
 10:30:18,350 --> 10:30:22,100
-last sections that we use the contract factories, with heart
+we remember from our last sections that we use the contract factories, 
 
 
 10501
 10:30:22,100 --> 10:30:25,640
-hit Deploy, we can just use this deploy function. And to use the
+with heart hit Deploy, we can just use this deploy function. 
 
 
 10502
 10:30:25,640 --> 10:30:28,700
-deploy function, we'll say const Funmi, which is going to be the
+And to use the deploy function, 
 
 
 10503
 10:30:28,700 --> 10:30:32,300
-name of our contract, equals await. And we'll call this
+we'll say const Funmi, which is going to be the name of our contract,  equals await. 
 
 
 10504
 10:30:32,300 --> 10:30:36,200
-deploy function, the name of the contract that we're deploying
+And we'll call this deploy function, the name of the contract that we're deploying right now, 
 
 
 10505
 10:30:36,200 --> 10:30:39,710
-right now, and then a list of overrides that we want to add
+and then a list of overrides that we want to add here. 
 
 
 10506
 10:30:39,710 --> 10:30:42,650
-here. So we're gonna say who is actually deploying this by
+So we're gonna say who is actually deploying this by saying from, 
 
 
 10507
 10:30:42,650 --> 10:30:45,980
-saying from, we're gonna say it's from the Deployer. We're
+we're gonna say it's from the Deployer. 
 
 
 10508
 10:30:45,980 --> 10:30:49,880
-gonna pass any arguments to the constructor In this args piece
+We're gonna pass any arguments to the constructor In this args piece here, 
 
 
 10509
 10:30:49,880 --> 10:30:55,250
-here, which we just added a single Argh. So these brackets,
+which we just added a single Argh. 
 
 
 10510
 10:30:55,250 --> 10:30:57,530
-we're going to make it a list of arguments, we're going to put
+
 
 
 10511
 10:30:57,530 --> 10:30:59,660
-the price feed address in here, which we'll show you how to do
+So these brackets, we're going to make it a list of arguments, we're going to put the price feed address in here, which we'll show you how to do
 
 
 10512
