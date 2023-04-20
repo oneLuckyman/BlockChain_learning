@@ -231,7 +231,7 @@ for example, back in dots dot chain to link EVM chains, contract addresses,
 10389
 10:23:42,290 --> 10:23:46,490
 there are a ton of different block chains that have price feeds on them. 
-这里有很多不同的区块链都有价格数据源
+这里有很多不同的区块链它们都有价格数据源
 
 10390
 10:23:46,940 --> 10:23:50,150
@@ -296,261 +296,261 @@ we can always have our code be exactly the same.
 10402
 10:24:23,810 --> 10:24:26,180
 And we don't have to come in here and like flip values and flip variables and stuff. So 
-
+也就不需要到这儿来切换值和切换变量之类的
 
 10403
 10:24:26,180 --> 10:24:29,720
 let's keep that all of that in mind as we write the rest of this. 
-
+在我们编写接下来的代码时，我们需要牢记这一点
 
 10404
 10:24:29,720 --> 10:24:32,990
 Now in order to parameterize. This,
-
+现在，为了把它参数化
 
 10405
 10:24:33,170 --> 10:24:36,500
 we actually want to prioritize and do a little refactoring of our fundamental soul. 
-
+我们需要对我们的 "FundMe.sol" 进行一些重构
 
 10406
 10:24:36,500 --> 10:24:39,440
 Refactoring basically means going back and, 
-
+重构的意思基本上就是
 
 10407
 10:24:39,440 --> 10:24:43,370
 and changing the way your code works. 
-
+回过头去改变你代码的工作方式
 
 10408
 10:24:43,400 --> 10:24:46,340
 Right now we have this constructor function, right 
-
+现在我们拥有这个构造函数，对吧？
 
 10409
 10:24:46,340 --> 10:24:49,190
 the constructor function is the function that automatically gets called whenever we deploy our contract. 
-
+构造函数就是一个在我们部署合约时会被自动调用的函数
 
 10410
 10:24:49,220 --> 10:24:52,280
 Right now it's not doing a whole lot 
-
+目前它并没有做很多事情
 
 10411
 10:24:52,280 --> 10:24:55,040
 right now it's just updating the owner variable to be whoever sent in the contract. 
-
+现在它只负责把 "owner" 变量更新为合约的发送者
 
 10412
 10:24:55,040 --> 10:24:58,970
 But we can actually have a do much more than that. 
-
+但我们能做的远远不止这些
 
 10413
 10:24:58,970 --> 10:25:02,030
-Since this constructor is a function just like every other function, 
-
+Since this constructor is a function just like every other function, we can actually have it take parameters, 
+由于构造函数和其它函数一样，也可以接收参数
 
 10414
 10:25:02,030 --> 10:25:04,520
-we can actually have it take parameters, 
-
+one of the parameters that we might like for it to have is going to be the address of a price feed. 
+那么我们想让它接收的其中一个可能的参数就是价格数据的地址
 
 10415
 10:25:04,520 --> 10:25:07,250
-one of the parameters that we might like for it to have is going to be the address of a price feed. 
-
+So let's go ahead and add this and figure out how to refactor all this code. 
+现在让我们添加这个参数，并搞清楚如何重构这些代码
 
 10416
 10:25:07,250 --> 10:25:11,270
-So let's go ahead and add this and figure out how to refactor all this code. 
-
+So we're going to add constructor address, price feed for the constructor in here. 
+所以我们要在 "constructor" 中添加一个 "address priceFeed"
 
 10417
 10:25:11,270 --> 10:25:13,220
-So we're going to add constructor address, 
-
+When we deploy our contract. Now
+现在，当我们部署合约时
 
 10418
 10:25:13,220 --> 10:25:17,900
-price feed for the constructor in here. 
-
+we're going to pass it the eth USD price feed address depending on what chain we're on. 
+我们将根据所在的链向它传递 "ETH/USD" 的 "priceFeed" 地址
 
 10419
 10:25:18,380 --> 10:25:21,500
-When we deploy our contract. Now
-
+If we're on rink B, we'll use this address 
+如果我们在 Rinkeby 上，我们就要用这个地址
 
 10420
 10:25:21,530 --> 10:25:24,890
-we're going to pass it the eth USD price feed address depending on what chain we're on. 
-
+if one polygon will use a different one 
+如果是 Polygon 就会用其它的
 
 10421
 10:25:24,890 --> 10:25:27,500
-If we're on rink B, we'll use this address 
-
+b&b, different one, Gnosis hecho, avalanche, etc, you get the picture. 
+BNB 也是一个道理 Gnosis, HECO, Avalanche 等等，你应该懂了吧
 
 10422
 10:25:27,500 --> 10:25:30,470
-if one polygon will use a different one b&b, different one, Gnosis hecho, avalanche, etc, you get the picture. 
-
+So we're going to marginalize this like so. 
+所以我们才要这样调整它
 
 10423
 10:25:30,470 --> 10:25:34,100
-So we're going to marginalize this like so. 
-
+Now that our constructor takes a parameter for the price feed, 
+现在我们的 "constructor" 要接收一个 "priceFeed" 参数
 
 10424
 10:25:34,100 --> 10:25:37,730
-Now that our constructor takes a parameter for the price feed, 
-
+we can actually save an aggregator v3 interface object as a global variable 
+那么我们就可以将 "AggregatorV3Interface" 保存为一个全局变量
 
 10425
 10:25:37,730 --> 10:25:40,700
-we can actually save an aggregator v3 interface object as a global variable 
-
+in our price converter, 
+在我们的 "PriceConverter" 中
 
 10426
 10:25:40,700 --> 10:25:44,420
-in our price converter, 
-
+we just create a price feed variable of type aggregator v3 interface, 
+我们创建了一个 "AggregatorV3Interface" 类型的 "priceFeed" 变量
 
 10427
 10:25:44,420 --> 10:25:47,540
-we just create a price feed variable of type aggregator v3 interface, 
-
+which again, we're importing from the chainlink repo, 
+并且重申一下，我们是从 chainlink 的代码库中导入进来的
 
 10428
 10:25:47,540 --> 10:25:51,290
-which again, we're importing from the chainlink repo, 
-
+which is an interface object which gets compiled down to the ABI. 
+它是一个 "Interface" 对象并且会被编译为 ABI
 
 10429
 10:25:51,290 --> 10:25:54,020
-which is an interface object which gets compiled down to the ABI. 
-
+If you match an ABI with up with an address, you get a contract that you can interact with. 
+如果你将 ABI 与某个地址匹配起来，就能获得一个可以与之交互的合约了
 
 10430
 10:25:54,020 --> 10:25:57,590
-If you match an ABI with up with an address, you get a contract that you can interact with. 
-
+So we're going to do the same thing here. 
+我们将在这里执行相同的操作
 
 10431
 10:25:57,590 --> 10:26:00,590
-So we're going to do the same thing here. 
-
+We're gonna say, aggregate Tor, v3 interface, public price feed,
+我们要定义 "AggregatorV3Interface public priceFeed"
 
 10432
 10:26:00,590 --> 10:26:02,690
-We're gonna say, aggregate Tor, v3 interface, public price feed,
-
+ration and call this price feed address 
+这里得改成 "priceFeedAddress"
 
 10433
 10:26:02,690 --> 10:26:09,530
-ration and call this price feed address 
-
+so that these don't have the same name. 
+这样它们就不会重名了
 
 10434
 10:26:10,670 --> 10:26:13,940
-so that these don't have the same name. 
-
+And in our constructor, we're going to say price feed equals, 
+在 "constructor" 中，我们要执行 "priceFeed = "
 
 10435
 10:26:13,940 --> 10:26:17,690
-And in our constructor, we're going to say price feed equals, 
-
+and we're going to do the exact same thing we did with our price converter 
+接下来就和我们在 "PriceConverter" 中所做的完全相同
 
 10436
 10:26:17,690 --> 10:26:21,440
-and we're going to do the exact same thing we did with our price converter 
-
+equals aggregate tore the three interface of price feed address. 
+"= AggregatorV3Interface(priceFeedAddress)"
 
 10437
 10:26:21,470 --> 10:26:26,360
-equals aggregate tore the three interface of price feed address. 
-
+Like so 
+就像这样
 
 10438
 10:26:26,360 --> 10:26:27,440
-Like so 
-
+now, we have this price feed address 
+现在我们就有了这个 "priceFeedAddress"
 
 10439
 10:26:28,580 --> 10:26:36,680
-now, we have this price feed address 
-
+that's variable and modularized, depending on whatever chain that we're on. 
+它是可变的也是模块化的，具体的值取决于我们在哪个链上
 
 10440
 10:26:36,680 --> 10:26:40,520
-that's variable and modularized, depending on whatever chain that we're on. 
-
+Now, what we can do is we can grab this price feed address, and we can use it for our price converter. 
+现在，我们就可以获取 "priceFeedAddress" 并将其用于我们的 "PriceConverter" 了
 
 10441
 10:26:40,520 --> 10:26:44,030
-Now, what we can do is we can grab this price feed address, 
-
+So where are we using our price converter? 
+那么我们要在哪里使用 "PriceConverter" 呢？
 
 10442
 10:26:44,030 --> 10:26:47,720
-and we can use it for our price converter. 
-
+Well, just a quick reminder, we're using using price converter for you at 256. 
+快速提醒一下，我们正在使用 "using PriceConverter for uint256"
 
 10443
 10:26:47,720 --> 10:26:51,170
-So where are we using our price converter? 
-
+We're using this as a library on top of our unit 256 type. 
+我们将其作为一个 "library"，附着于 "uint256" 类型之上
 
 10444
 10:26:51,170 --> 10:26:55,550
-Well, just a quick reminder, we're using using price converter for you at 256. 
-
+So we're calling message dot value dot get conversion rate. 
+所以我们要调用 "msg.value.getConversionRate"
 
 10445
 10:26:55,550 --> 10:26:59,690
-We're using this as a library on top of our unit 256 type. 
-
+So we look at our price converter, we have this function get conversion rate, 
+查看一下我们的 "PriceConverter"，里面有这个 "getConversionRate" 函数
 
 10446
 10:26:59,720 --> 10:27:03,200
-So we're calling message dot value dot get conversion rate. 
-
+which takes an FML as its initial parameter,
+它接收一个 "ethAmount" 作为初始参数
 
 10447
 10:27:03,200 --> 10:27:06,200
-So we look at our price converter, we have this function get conversion rate, 
-
+which again, since this is a library, 
+再提醒一下，由于这是一个 "library"
 
 10448
 10:27:06,200 --> 10:27:09,860
-which takes an FML as its initial parameter,
-
+it automatically passes the message dot value into this get conversion rate function.
+所以它会自动将 "msg.value" 传递给 "getConversionRate" 函数
 
 10449
 10:27:09,860 --> 10:27:13,490
-which again, since this is a library, 
-
+But we could also pass in this price feed, 
+但我们可以同时传递这个 "priceFeed"
 
 10450
 10:27:13,490 --> 10:27:16,550
-it automatically passes the message dot value into this get conversion rate function.
-
+and therefore we wouldn't need to hard code it in the get price anymore. 
+这样 "getPrice" 里就不再需要使用硬编码了
 
 10451
 10:27:17,150 --> 10:27:22,280
-But we could also pass in this price feed, 
-
+So let's go ahead and figure out how to do that. 
+让我们来看一下如何做到这一点
 
 10452
 10:27:22,280 --> 10:27:25,640
-and therefore we wouldn't need to hard code it in the get price anymore. 
+
 
 
 10453
 10:27:25,640 --> 10:27:28,310
-So let's go ahead and figure out how to do that. 
+
 
 
 10454
