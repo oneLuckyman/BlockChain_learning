@@ -541,232 +541,233 @@ and therefore we wouldn't need to hard code it in the get price anymore.
 10451
 10:27:17,150 --> 10:27:22,280
 So let's go ahead and figure out how to do that. 
-让我们来看一下如何做到这一点
+让我们来看一下如何实现这一点
 
 10452
 10:27:22,280 --> 10:27:25,640
-
-
+Well, what we can do is we can do message dot value dot get conversion rate, 
+我们需要做的是使用 `msg.value.getConversionRate` 
 
 10453
 10:27:25,640 --> 10:27:28,310
-
-
+we'll stick price feed in here. 
+并把 "priceFeed" 填入其中
 
 10454
 10:27:28,310 --> 10:27:31,430
-Well, what we can do is we can do message dot value dot get conversion rate, 
-
+And then we'll have to update our get conversion rate 
+接着要更新我们的 "getConversionRate"
 
 10455
 10:27:31,430 --> 10:27:34,520
-we'll stick price feed in here. 
-
+to do a comma so that it takes a second parameter, 
+添加一个逗号，以使其接收第二个参数
 
 10456
 10:27:34,520 --> 10:27:38,240
-And then we'll have to update our get conversion rate 
-
+because remember, again, the initial parameter is going to be message dot value. 
+因为要记住，初始参数是 `msg.value`
 
 10457
 10:27:38,240 --> 10:27:41,960
-to do a comma so that it takes a second parameter, 
-
+And the second parameter is going to be what we define here. 
+而第二个参数将是我们在此处定义的内容
 
 10458
 10:27:41,960 --> 10:27:44,540
-because remember, again, the initial parameter is going to be message dot value. 
-
+So we'll do s amount, comma ag reg gate Tor v3 interface. 
+所以我们写下 `ethAmount, AggregatorV3Interface`
 
 10459
 10:27:44,540 --> 10:27:50,210
-And the second parameter is going to be what we define here. 
-
+And we'll call this price feed. 
+并称其为 `priceFeed`
 
 10460
 10:27:50,210 --> 10:27:58,610
-So we'll do s amount, comma ag reg gate Tor v3 interface. 
-
+And now, when we call our get price function, 
+现在，当我们调用 `getPrice` 函数时
 
 10461
 10:27:58,610 --> 10:28:03,680
-And we'll call this price feed. 
-
+we can pass the price feed to the get price function. 
+就可以将 `priceFeed` 传递给 `getPrice` 函数了
 
 10462
 10:28:03,680 --> 10:28:07,430
-And now, when we call our get price function, 
-
+And up here we can have get price. 
+而在这里，我们可以定义 `getPrice`
 
 10463
 10:28:07,430 --> 10:28:14,420
-we can pass the price feed to the get price function. 
-
+Take, you guessed it an aggregate or the three interface called price feed. 
+接收一个 `AggregatorV3Interface priceFeed`
 
 10464
 10:28:15,410 --> 10:28:22,220
-And up here we can have get price. 
-
+And now we no longer need to hard code in the price feed. 
+现在我们就再也不需要在 `priceFeed` 中使用硬编码了
 
 10465
 10:28:22,220 --> 10:28:25,430
-Take, you guessed it an aggregate or the three interface called price feed. 
-
+And we can just delete those lines and have it compile like this, which is awesome. 
+我们可以删掉这几行并直接进行编译，就像这样，这真是太棒了
 
 10466
 10:28:25,430 --> 10:28:30,020
-And now we no longer need to hard code in the price feed. 
-
+So quick refresher, we're parameterizing that price feed address 
+好，快速回顾一下，我们正在对 `priceFeed` 地址进行参数化处理
 
 10467
 10:28:30,170 --> 10:28:33,590
-And we can just delete those lines and have it compile like this, which is awesome. 
+and passing it in with a constructor 
+并将其传入构造函数中
 
 
 10468
 10:28:33,590 --> 10:28:37,250
-So quick refresher, we're parameterizing that price feed address 
-
+that gets saved as a global variable to an aggregator v3 interface type, 
+它被保存为一个 "AggregatorV3Interface" 类型的全局变量
 
 10469
 10:28:37,250 --> 10:28:41,570
-and passing it in with a constructor that gets saved as a global variable to an aggregator v3 interface type, 
-
+or passing it to a get conversion rate function, 
+并被传入一个 `getConversionRate` 函数
 
 10470
 10:28:41,570 --> 10:28:45,770
-or passing it to a get conversion rate function, 
-
+which passes it to the get price function, which then just calls latest round data. 
+接着被进一步传入到 `getPrice` 函数，然后调用 `latestRoundData`
 
 10471
 10:28:45,770 --> 10:28:48,680
-which passes it to the get price function, which then just calls latest round data. 
-
+And we probably could have made this even easier, 
+或许我们能让这一切变得更简单一些
 
 10472
 10:28:48,680 --> 10:28:50,720
-And we probably could have made this even easier, probably could have just got rid of the get price function 
-
+probably could have just got rid of the get price function 
+我们可以直接删除 `getPrice` 函数
 
 10473
 10:28:50,720 --> 10:28:54,080
 and stuck this code in the get conversion rate. 
-
+并把这些代码放进 `getConversionRate` 里
 
 10474
 10:28:54,080 --> 10:28:56,630
 But we'll leave it there for now. 
-
+但我们暂时先不做改动
 
 10475
 10:28:56,660 --> 10:28:59,630
 Now that we've done that refactoring, let's make sure it works. 
-
+现在我们已经完成了重构，让我们确保它能顺利工作
 
 10476
 10:28:59,630 --> 10:29:03,140
 Yarn Hardhead, compile, invalid value undefined for hardhat dot config dot networks. 
-
+`yarn hardhat compile`，未在 "HardhatConfig.networks" 中定义的无效的值
 
 10477
 10:29:03,140 --> 10:29:07,010
 Let's go to the let's go to the config real quick.
-
+让我们快速转到配置文件
 
 10478
 10:29:07,100 --> 10:29:09,860
-That's because the default network needs to be outside of networks. 
-
+That's because the default network needs to be outside of networks. My mistake. Let's try that again. 
+这是因为 `defaultNetwork` 需要在 `networks` 的外部，是我的错，我们再试一次
 
 10479
 10:29:09,860 --> 10:29:14,300
-My mistake. Let's try that again. I spelled interface wrong and the price converter. 
-
+I spelled interface wrong and the price converter. 
+我把 "Interface" 拼错了，在 `PriceConverter` 里
 
 10480
 10:29:14,300 --> 10:29:17,360
 And a quick note, if gives you an error like this, 
-
+这里做个小说明，如果你像这样遇到了某个报错
 
 10481
 10:29:17,360 --> 10:29:20,750
 oftentimes, you can command click or control click and open that file up right in the editor, 
-
+通常你可以按住 "Command" 键单击或 "Ctrl" 键单击来在编辑器中把对应文件打开
 
 10482
 10:29:20,750 --> 10:29:23,930
 which saves you some time, we're going to have defined the line and find the file. 
-
+这样可以节省你的一些时间，也就不需要去找特定某个文件的某一行了
 
 10483
 10:29:23,930 --> 10:29:26,240
 But yeah, let's spell that correctly. 
-
+好的，让我们把拼写改正
 
 10484
 10:29:26,240 --> 10:29:29,540
 And let's try this again. 
-
+接着我们来再试一次
 
 10485
 10:29:29,540 --> 10:29:33,620
 And awesome. It looks like it's compiling correctly. 
-
+太棒了，看起来编译正确
 
 10486
 10:29:33,620 --> 10:29:36,560
 And we just have some warnings, 
-
+只是有一些警告("Warning")
 
 10487
 10:29:36,560 --> 10:29:39,560
 it looks like these warnings are just about this git version, 
-
+看起来这些 "warning" 是关于这个 `getVersion` 的
 
 10488
 10:29:39,560 --> 10:29:42,650
 which is because we're shadowing this, we're creating a new price variable down here,
-
+这是因为我们在这里创建了一个新的 `priceFeed` 变量
 
 10489
 10:29:42,920 --> 10:29:45,590
 you've no we just created a global price free variable.
-
+而我们刚刚又在这里创建了一个全局的 `priceFeed` 变量
 
 10490
 10:29:46,100 --> 10:29:48,200
 Let's just go ahead and delete the get version function altogether 
-
+我们把 `getVersion` 函数也删除掉
 
 10491
 10:29:48,200 --> 10:29:51,140
 since we're not even going to really need it. 
-
+因为我们根本不需要它
 
 10492
 10:29:51,140 --> 10:29:53,690
 And we only use the Git version to show you how to actually start working with interfaces. 
-
+我只是用 `getVersion` 来向你展示如何开始使用接口
 
 10493
 10:29:53,690 --> 10:29:56,480
 And then we'll compile it one more time for good measure. 
-
+让我们再编译一次以确保一切顺利
 
 10494
 10:29:56,480 --> 10:30:01,100
 Boom compiled successfully. Awesome.
-
+嘭，编译成功，太棒了
 
 10495
 10:30:01,130 --> 10:30:04,970
 So now we've just refactored our code. 
-
+我们刚刚已经重构了我们的代码
 
 10496
 10:30:04,970 --> 10:30:08,990
 So we can pass a price feed address depending on the network that we're on. 
-
+这样我们就可以根据我们所处的网络来传递 `priceFeed` 的地址了
 
 10497
 10:30:08,990 --> 10:30:12,320
