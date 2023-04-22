@@ -623,7 +623,6 @@ So quick refresher, we're parameterizing that price feed address
 and passing it in with a constructor 
 并将其传入构造函数中
 
-
 10468
 10:28:33,590 --> 10:28:37,250
 that gets saved as a global variable to an aggregator v3 interface type, 
@@ -772,161 +771,161 @@ So we can pass a price feed address depending on the network that we're on.
 10497
 10:30:08,990 --> 10:30:12,320
 Okay, great. With all that being said, let's come back to our deploy Funmi script, 
-
+好，说了这么多，让我们回到 "deploy-fund-me" 脚本
 
 10498
 10:30:12,320 --> 10:30:15,110
 and let's learn how to actually deploy the rest of it. 
-
+继续学习如何部署它的其余部分
 
 10499
 10:30:15,110 --> 10:30:18,350
 In order for us to deploy a contract 
-
+为了部署这个合约
 
 10500
 10:30:18,350 --> 10:30:22,100
 we remember from our last sections that we use the contract factories, 
-
+上一部分我们使用了 `contractFactory`
 
 10501
 10:30:22,100 --> 10:30:25,640
 with heart hit Deploy, we can just use this deploy function. 
-
+通过 "hardhat deploy"，我们可以直接使用这个 `deploy` 函数
 
 10502
 10:30:25,640 --> 10:30:28,700
 And to use the deploy function, 
-
+要使用这个 `deploy` 函数
 
 10503
 10:30:28,700 --> 10:30:32,300
-we'll say const Funmi, which is going to be the name of our contract,  equals await. 
-
+we'll say const Funmi, which is going to be the name of our contract, 
+我们要写下 `const fundMe` 这是我们合约的名称 
 
 10504
 10:30:32,300 --> 10:30:36,200
-And we'll call this deploy function, the name of the contract that we're deploying right now, 
-
+equals await. And we'll call this deploy function, the name of the contract that we're deploying right now, 
+`= await` 接着调用这个 `deploy` 函数，包含我们要部署的合约名称
 
 10505
 10:30:36,200 --> 10:30:39,710
 and then a list of overrides that we want to add here. 
-
+以及想要添加的覆盖选项的列表
 
 10506
 10:30:39,710 --> 10:30:42,650
 So we're gonna say who is actually deploying this by saying from, 
-
+通过指定 `from` 来确定是谁在进行部署
 
 10507
 10:30:42,650 --> 10:30:45,980
 we're gonna say it's from the Deployer. 
-
+我们将指定 `deployer` 为 `from` 的值
 
 10508
 10:30:45,980 --> 10:30:49,880
 We're gonna pass any arguments to the constructor In this args piece here, 
-
+我们会将任何需要传递给构造函数的参数放在 `args` 中
 
 10509
 10:30:49,880 --> 10:30:55,250
 which we just added a single Argh. 
-
+目前我们只传递了一个参数
 
 10510
 10:30:55,250 --> 10:30:57,530
-
-
+So these brackets, we're going to make it a list of arguments, 
+这个括号会使它成为一个参数列表
 
 10511
 10:30:57,530 --> 10:30:59,660
-So these brackets, we're going to make it a list of arguments, we're going to put the price feed address in here, which we'll show you how to do
-
+we're going to put the price feed address in here, 
+我们要在这里放入 `priceFeedAddress` 
 
 10512
 10:30:59,660 --> 10:31:03,980
-in a second, put price feed address. And then we're also
-
+which we'll show you how to do in a second, put price feed address. 
+我们马上就会展示如何做到这一点，“放入 price feed address ”
 
 10513
 10:31:03,980 --> 10:31:06,260
-going to do some custom logging here so that we don't have to do
-
+And then we're also going to do some custom logging here 
+接着我们还要做一些自定义的日志
 
 10514
 10:31:06,260 --> 10:31:08,600
-all that console dot log stuff that we've been doing this whole
-
+so that we don't have to do all that console dot log stuff that we've been doing this whole time. 
+这样我们就不需要像之前那样总是用一堆 `console.log` 了
 
 10515
 10:31:08,600 --> 10:31:12,080
-time. And we need to put something in here. We need to
-
+And we need to put something in here. 
+我们需要在这里放置一些内容
 
 10516
 10:31:12,080 --> 10:31:15,290
-put an address in here. And you can use this backslash star to
-
+We need to put an address in here. 
+我们需要放在这里的是一个地址
 
 10517
 10:31:15,290 --> 10:31:17,600
-put like a common in between your code.
-
+And you can use this backslash star to put like a common in between your code.
+你可以使用这个反斜杠星号("/*")在你的代码中放置注释
 
 10518
 10:31:18,950 --> 10:31:22,130
-We can't just do const address equals, you know the address and
-
+We can't just do const address equals, you know the address and stick it in here. 
+我们不能直接用 `const address = `，因为你要把地址放到这里
 
 10519
 10:31:22,190 --> 10:31:24,740
-stick it in here. Well, I mean, we could but we're not really
-
+Well, I mean, we could but we're not really prioritizing now. Right? 
+好吧，我的意思是，可以这样做，但这样就不是真正的参数化了，对吧？
 
 10520
 10:31:24,740 --> 10:31:27,620
-prioritizing now. Right? We're kind of back to just hard coding
-
+We're kind of back to just hard coding it here. 
+这相当于我们又回到硬编码了
 
 10521
 10:31:27,620 --> 10:31:30,860
-it here. So what can we do instead? Well, what we can do is
-
+So what can we do instead? 
+那我们该怎么做呢？
 
 10522
 10:31:30,860 --> 10:31:35,990
-we can actually use the chain ID to do something like if chain ID
-
+Well, what we can do is we can actually use the chain ID to do something like 
+我们可以使用 "chainId"，来做一些像是这样的事
 
 10523
 10:31:35,990 --> 10:31:45,500
-is x, use address, Y, or if chain ID is Z use address A. So
-
+if chain ID is x, use address, Y, 
+如果 "chainId" 是 "X" 则使用地址 "Y"
 
 10524
 10:31:45,500 --> 10:31:48,140
-we can do something that looks like this. And to enable this
-
+or if chain ID is Z use address A. 
+或者如果 "chainId" 是 "Z" 则使用地址 "A" 
 
 10525
 10:31:48,140 --> 10:31:51,860
-functionality, we actually take a page out of the Ave GitHub. So
-
+So we can do something that looks like this. 
+那么我们可以做一些类似这样的事情
 
 10526
 10:31:51,890 --> 10:31:54,830
-Ave is another protocol that's on multiple chains and has to
+And to enable this functionality, we actually take a page out of the Ave GitHub. So Ave is another protocol that's on multiple chains and has to
 
 
 10527
 10:31:54,830 --> 10:31:57,590
-deploy their code to multiple chains and work with multiple
+deploy their code to multiple chains and work with multiple different addresses. 
 
 
 10528
 10:31:57,590 --> 10:32:01,220
-different addresses. So what they do is they use a number of
+So what they do is they use a number of
 
 
 10529
@@ -941,12 +940,12 @@ helper hardhat config. Now they're using TypeScript with
 
 10531
 10:32:07,340 --> 10:32:10,280
-JavaScript, but it's gonna be the same thing. With this
+JavaScript, but it's gonna be the same thing. 
 
 
 10532
 10:32:10,280 --> 10:32:14,630
-config, they have different variables, depending on what
+With this config, they have different variables, depending on what
 
 
 10533
@@ -956,12 +955,12 @@ network that they're actually on. And depending on the network
 
 10534
 10:32:17,690 --> 10:32:20,270
-that they're on, they use different variables. So they use
+that they're on, they use different variables. 
 
 
 10535
 10:32:20,270 --> 10:32:24,020
-this network config almost to do exactly what we're trying to do
+So they use this network config almost to do exactly what we're trying to do
 
 
 10536
@@ -981,12 +980,12 @@ we're going to call it helper, hard hat config dot j, s. And
 
 10539
 10:32:39,170 --> 10:32:41,840
-this is where we're going to define that network config. And
+this is where we're going to define that network config. 
 
 
 10540
 10:32:41,840 --> 10:32:43,940
-this is where we're going to say, hey, if you're on network,
+And this is where we're going to say, hey, if you're on network,
 
 
 10541
@@ -1006,12 +1005,12 @@ equals and we're going to add a bunch of stuff in here. So our
 
 10544
 10:32:55,730 --> 10:32:58,700
-main network that we're working with right now is rinky. dinky
+main network that we're working with right now is rinky. dinky has a chain ID of four. 
 
 
 10545
 10:32:58,700 --> 10:33:04,250
-has a chain ID of four. So we'll say chain ID four is going to be
+So we'll say chain ID four is going to be
 
 
 10546
@@ -1031,12 +1030,12 @@ feed. So we're going to copied from the documentation or from
 
 10549
 10:33:19,190 --> 10:33:22,820
-the GitHub, whatever you want to do, and paste it in here. Now we
+the GitHub, whatever you want to do, and paste it in here. 
 
 
 10550
 10:33:22,820 --> 10:33:26,000
-have a simple methodology of keeping track of different price
+Now we have a simple methodology of keeping track of different price
 
 
 10551
