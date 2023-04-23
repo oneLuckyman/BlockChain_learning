@@ -915,222 +915,222 @@ So we can do something that looks like this.
 
 10526
 10:31:51,890 --> 10:31:54,830
-And to enable this functionality, we actually take a page out of the Ave GitHub. So Ave is another protocol that's on multiple chains and has to
-
+And to enable this functionality, we actually take a page out of the Ave GitHub. 
+要想实现这个功能，我们需要借鉴 "aave" 的 GitHub
 
 10527
 10:31:54,830 --> 10:31:57,590
-deploy their code to multiple chains and work with multiple different addresses. 
-
+So Ave is another protocol that's on multiple chains 
+"aave" 是存在于多个链上的一个协议
 
 10528
 10:31:57,590 --> 10:32:01,220
-So what they do is they use a number of
-
+and has to deploy their code to multiple chains and work with multiple different addresses. 
+所以它必须把代码部署到多个链上并使用多个不同的地址
 
 10529
 10:32:01,220 --> 10:32:04,070
-different useful tricks. But one of the main ones is using this
-
+So what they do is they use a number of different useful tricks. 
+他们使用了多个不同的实用技巧
 
 10530
 10:32:04,070 --> 10:32:07,340
-helper hardhat config. Now they're using TypeScript with
-
+But one of the main ones is using this helper hardhat config. 
+其中一个主要的就是使用这个 "helper-hardhat-config"
 
 10531
 10:32:07,340 --> 10:32:10,280
-JavaScript, but it's gonna be the same thing. 
-
+Now they're using TypeScript with JavaScript, but it's gonna be the same thing. 
+他们用的是 TypeScript 我们用的是 JavaScript，但都是一样的
 
 10532
 10:32:10,280 --> 10:32:14,630
-With this config, they have different variables, depending on what
-
+With this config, they have different variables, 
+在这个 config 中，他们定义了许多不同的变量
 
 10533
 10:32:14,630 --> 10:32:17,690
-network that they're actually on. And depending on the network
-
+depending on what network that they're actually on. 
+具体取决于它们所依赖的网络
 
 10534
 10:32:17,690 --> 10:32:20,270
-that they're on, they use different variables. 
-
+And depending on the network that they're on, they use different variables. 
+根据所在网络的不同，他们使用不同的变量
 
 10535
 10:32:20,270 --> 10:32:24,020
-So they use this network config almost to do exactly what we're trying to do
-
+So they use this network config almost to do exactly what we're trying to do here. 
+他们使用的这个网络配置几乎完全做到了我们想要做的事情
 
 10536
 10:32:24,020 --> 10:32:27,710
-here. So what we want to do is we're going to create a new file
-
+So what we want to do is we're going to create a new file at the root directory, 
+那么我们要做的就是，在根目录下创建一个新的文件
 
 10537
 10:32:28,250 --> 10:32:32,900
-at the root directory, so just click down here, new file. And
-
+so just click down here, new file. 
+点击这里，新建文件(New File)
 
 10538
 10:32:32,900 --> 10:32:39,170
-we're going to call it helper, hard hat config dot j, s. And
-
+And we're going to call it helper, hard hat config dot j, s. 
+将其命名为 "helper-hardhat-config.js"
 
 10539
 10:32:39,170 --> 10:32:41,840
-this is where we're going to define that network config. 
-
+And this is where we're going to define that network config. 
+这就是我们要定义网络配置的地方
 
 10540
 10:32:41,840 --> 10:32:43,940
-And this is where we're going to say, hey, if you're on network,
-
+And this is where we're going to say, hey, if you're on network, a, use this address 
+也就是告诉它，嘿，如果你在网络 A 上，就用这个地址
 
 10541
 10:32:43,970 --> 10:32:48,050
-a, use this address network, be this use this address, etc. So
-
+network, be this use this address, etc. 
+如果是网络 B 就是这个地址，等等等等
 
 10542
 10:32:48,080 --> 10:32:52,280
-we're going to create an object called const. Network config.
-
+So we're going to create an object called const. Network config. equals 
+现在我们就来构建 `const networkConfig =`
 
 10543
 10:32:53,000 --> 10:32:55,730
-equals and we're going to add a bunch of stuff in here. So our
-
+and we're going to add a bunch of stuff in here. 
+然后在这里添加一大堆东西
 
 10544
 10:32:55,730 --> 10:32:58,700
-main network that we're working with right now is rinky. dinky has a chain ID of four. 
-
+So our main network that we're working with right now is rinky. dinky has a chain ID of four. 
+现在我们使用的网络是 Rinkeby，Rinkeby 的 chainId 是 4
 
 10545
 10:32:58,700 --> 10:33:04,250
-So we'll say chain ID four is going to be
-
+So we'll say chain ID four 
+所以我们写下 chainId 4 
 
 10546
 10:33:04,310 --> 10:33:12,410
-named Rinkeby. And the eth USD price feed address is going to
-
+is going to be named Rinkeby. And the eth USD price feed address is going to be 
+`name: "rinkeby"` 以及 `ethUsdPriceFeed` 地址是 
 
 10547
 10:33:12,410 --> 10:33:16,370
-be the price feed address of rank B of the eth USD price
-
+the price feed address of rank B of the eth USD price feed. 
+Rinkeby "ETH/USD" 价格数据的 "priceFeed" 地址
 
 10548
 10:33:16,370 --> 10:33:19,190
-feed. So we're going to copied from the documentation or from
-
+So we're going to copied from the documentation or from the GitHub, whatever you want to do, 
+我们把它从文档中复制下来，或者 GitHub 也行，随你便了
 
 10549
 10:33:19,190 --> 10:33:22,820
-the GitHub, whatever you want to do, and paste it in here. 
-
+and paste it in here. 
+然后粘贴到这里
 
 10550
 10:33:22,820 --> 10:33:26,000
-Now we have a simple methodology of keeping track of different price
-
+Now we have a simple methodology of 
+现在我们就有了一个简单的方法
 
 10551
 10:33:26,000 --> 10:33:29,270
-feeds a different contract addresses across different
-
+keeping track of different price feeds a different contract addresses across different chains. 
+来跟踪不同 "priceFeed" 在不同链上不同的合约地址
 
 10552
 10:33:29,270 --> 10:33:33,140
-chains. Let's say for example, we wanted to deploy to Polygon
-
+Let's say for example, we wanted to deploy to Polygon as well. 
+举个例子，比如说我还想要部署到 Polygon 上
 
 10553
 10:33:33,170 --> 10:33:36,110
-as well. Well, first, what are we going to need? Well, we're
-
+Well, first, what are we going to need? 
+首先，我们需要什么？
 
 10554
 10:33:36,110 --> 10:33:39,590
-going to need the chain ID of polygon. So a quick little
-
+Well, we're going to need the chain ID of polygon. 
+我们需要的是 Polygon 的 chainId
 
 10555
 10:33:39,590 --> 10:33:43,040
-Google Search brings us to the polygon documentation. And we
-
+So a quick little Google Search brings us to the polygon documentation. 
+使用 Google 快速搜索一下，它会带我们去到 Polygon 的文档
 
 10556
 10:33:43,040 --> 10:33:48,170
-see the chain ID is 137. So I'll do 137. What's a little brackets
-
+And we see the chain ID is 137. 
+可以看到 chainId 是 137
 
 10557
 10:33:48,170 --> 10:33:54,260
-here, we'll say name, polygon. Then we'll do a comma eth USD,
-
+So I'll do 137. What's a little brackets here, 
+所以这里就是 137 然后是一组括号
 
 10558
 10:33:54,800 --> 10:33:58,700
-price feed. And then we'll add the price feed of eth USD on
-
+we'll say name, polygon. Then we'll do a comma eth USD, price feed. 
+还有 `name: "polygon", ethUsdPriceFeed`
 
 10559
 10:33:58,700 --> 10:34:04,130
-polygon. So docstoc, chain link, polygon or Matic and then we'll
-
+And then we'll add the price feed of eth USD on polygon. 
+接着我们要添加 Polygon "ETH/USD" 的 "priceFeed" 
 
 10560
 10:34:04,130 --> 10:34:09,200
-look up eth, USD. And boom, we see it right here. We've grabbed
-
+So docstoc, chain link, polygon or Matic and then we'll look up eth, USD. 
+所以来到 "docs.chain.link-Polygon (Matic)" 找到 "ETH/USD"
 
 10561
 10:34:09,200 --> 10:34:12,770
-this address, and we paste it in. Well, what about the
-
+And boom, we see it right here. We've grabbed this address, and we paste it in. 
+可以看到就在这里，获取这个地址，并粘贴过来
 
 10562
 10:34:12,770 --> 10:34:15,620
-Hardhead? Network? We'll get to that in just a second, don't you
-
+Well, what about the Hardhead? Network? 
+那么 "Hardhat Network" 是什么样的呢
 
 10563
 10:34:15,620 --> 10:34:18,620
-worry. And then at the bottom, we need to export this network
-
+We'll get to that in just a second, don't you worry. 
+我们马上就会解释，不要着急
 
 10564
 10:34:18,620 --> 10:34:21,710
-config. So our other scripts can actually work with it. So we'll
-
+And then at the bottom, we need to export this network config. 
+接着来到底部，我们需要导出这个 "networkConfig"
 
 10565
 10:34:21,710 --> 10:34:28,100
-do module dot exports equals network config. And we're going
-
+So our other scripts can actually work with it. 
+以便我们的其它脚本能够使用它
 
 10566
 10:34:28,100 --> 10:34:31,070
-to actually export a couple of things from this file, which is
-
+So we'll do module dot exports equals network config. 
+所以我们要写下 `module.exports = {networkConfig}`
 
 10567
 10:34:31,070 --> 10:34:34,160
-why we're doing it like this instead of that default way that
-
+And we're going to actually export a couple of things from this file, 
+我们还要从这个文件中导出一些其它东西
 
 10568
 10:34:34,160 --> 10:34:37,580
-I showed you before. So back in our script, now, what can we do?
-
+which is why we're doing it like this instead of that default way that I showed you before. 
+这也是为什么这里没有像之前展示的那样使用 `default` 的方式
 
 10569
 10:34:37,760 --> 10:34:41,390
-Well, first, we want to go ahead and import that network config.
+So back in our script, now, what can we do? Well, first, we want to go ahead and import that network config.
 
 
 10570
