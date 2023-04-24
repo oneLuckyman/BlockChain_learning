@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 // 这里需要指正一下，^0.8.0 表示只有在 0.8.* 版本中大于 0.8.0 版本才可以用，例如 0.9.0 就是不可以的
 
 // 导入另一个文件，这等同于把另一个文件中的代码复制到这个文件
-import "./011_SimpleStorage.sol";
+import "./0302_SimpleStorage.sol";
 
 contract SotrageFactory {
     SimpleStorage[] public simpleStorageArray;

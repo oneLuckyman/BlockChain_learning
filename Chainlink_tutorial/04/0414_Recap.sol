@@ -2,7 +2,7 @@
 pragma solidity ^0.8.8;
 
 // 除了可以导入本地文件，还以用一些固定协议导入 GitHub 等互联网上的其他文件
-import "./026_PriceConverter.sol";
+import "./0403-03_PriceConverter.sol";
 
 error NotOwner();
 

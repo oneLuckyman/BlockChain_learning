@@ -1,29 +1,31 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.8;
 
-import "./026_PriceConverter.sol";
+import "./0403-03_PriceConverter.sol";
+
+// 为了解决 require 耗费更多 gas 的问题，可以自定义报错类型
+error NotOwner();
 
 contract FundMe {
     using PriceConverter for uint256;
 
-    uint256 public minimumUsd = 50 * 1e18;
+    uint256 public constant MINIMUM_USD = 50 * 1e18;
 
     address[] public funders;
     mapping(address => uint256) public addressToAmountFunded;
 
-    address public owner;
+    address public immutable i_owner;
 
     constructor(){
-        owner = msg.sender();
+        i_owner = msg.sender();
     }
 
     function fund() public payable{
-        require(msg.value.getConversionRate() > minimumUsd, "Didn't send enough!");
+        require(msg.value.getConversionRate() > MINIMUM_USD, "Didn't send enough!");
         funders.push(msg.sender);
         addressToAmountFunded[msg.sender] += msg.value;
     }
 
-    // 把 modifier 的函数名添加到函数的声明中
     function withdraw() public onlyOwner {
         /* starting index, ending index, step amount */
         for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
@@ -36,10 +38,12 @@ contract FundMe {
         require(callSuccess, "Call failed");
     }
 
-    // modifier 是一种修饰函数的函数，有点类似 python 中的装饰器，或者 Java 中的闭包
     modifier onlyOwner {
-        require(msg.sender == owner, "Sender is not owner!");
-        // 下划线表示被修饰的函数的全部内容，将 _ 放置于上面的语句后面表示先执行上面的语句，在执行被修饰函数，反之亦然
+        // "Sender is not owner!" 这段字符串会单独进行存储，因此会耗费更多 gas
+        // require(msg.sender == i_owner, "Sender is not owner!");
+        // 通过以下判断语句可以让报错仅仅是调用代码，从而减少 gas 消耗
+        // 但是现在主流的方法仍然是使用 require 语句，因为自定义错误类型还是个比较新的语言特性
+        if(msg.sender != i_owner) { revert NotOwner(); }
         _;
     }
 }
