@@ -126,7 +126,7 @@ or even if we're working with a local node,
 10368
 10:22:28,220 --> 10:22:31,880
 this price feed contract won't exist, 
-这个 "priceFeed" 合约将不再存在
+这个喂价 (price feed) 合约也都是不存在的
 
 10369
 10:22:31,880 --> 10:22:34,550
@@ -191,7 +191,7 @@ Now, this might seem like a lot of words.
 10381
 10:23:10,520 --> 10:23:13,670
 But basically, what we want to do is we want to make a fake price feed contract 
-但基本来说，我们想要的就是一个虚拟的 "priceFeed" 合约
+但基本来说，我们想要的就是一个虚拟的喂价合约
 
 10382
 10:23:14,090 --> 10:23:17,060
@@ -231,7 +231,7 @@ for example, back in dots dot chain to link EVM chains, contract addresses,
 10389
 10:23:42,290 --> 10:23:46,490
 there are a ton of different block chains that have price feeds on them. 
-这里有很多不同的区块链它们都有价格数据源
+这里有很多不同的区块链它们都有喂价数据
 
 10390
 10:23:46,940 --> 10:23:50,150
@@ -241,7 +241,7 @@ And on each one of these blockchains,
 10391
 10:23:50,150 --> 10:23:53,840
 the eth USD price feed is going to be a little bit different. 
-"ETH/USD" 的价格数据可能会有一点不同
+"ETH/USD" 的喂价数据可能会有一点不同
 
 10392
 10:23:53,840 --> 10:23:56,060
@@ -376,7 +376,7 @@ When we deploy our contract. Now
 10418
 10:25:13,220 --> 10:25:17,900
 we're going to pass it the eth USD price feed address depending on what chain we're on. 
-我们将根据所在的链向它传递 "ETH/USD" 的 "priceFeed" 地址
+我们将根据所在的链向它传递 "ETH/USD" 的喂价地址
 
 10419
 10:25:18,380 --> 10:25:21,500
@@ -1021,7 +1021,7 @@ is going to be named Rinkeby. And the eth USD price feed address is going to be
 10547
 10:33:12,410 --> 10:33:16,370
 the price feed address of rank B of the eth USD price feed. 
-Rinkeby "ETH/USD" 价格数据的 "priceFeed" 地址
+Rinkeby "ETH/USD" 喂价数据的地址
 
 10548
 10:33:16,370 --> 10:33:19,190
@@ -1041,7 +1041,7 @@ Now we have a simple methodology of
 10551
 10:33:26,000 --> 10:33:29,270
 keeping track of different price feeds a different contract addresses across different chains. 
-来跟踪不同 "priceFeed" 在不同链上不同的合约地址
+来跟踪不同喂价数据在不同链上的不同合约地址
 
 10552
 10:33:29,270 --> 10:33:33,140
@@ -1130,222 +1130,222 @@ which is why we're doing it like this instead of that default way that I showed 
 
 10569
 10:34:37,760 --> 10:34:41,390
-So back in our script, now, what can we do? Well, first, we want to go ahead and import that network config.
-
+So back in our script, now, what can we do? 
+回到我们的脚本，现在我们能做些什么呢？
 
 10570
 10:34:41,420 --> 10:34:47,810
-So we'll say const. Network config equals require, and then
-
+Well, first, we want to go ahead and import that network config. 
+首先，我们要做的是导入网络配置
 
 10571
 10:34:47,810 --> 10:34:51,590
-we'll import it, we'll go down and directory to help our
-
+So we'll say const. Network config equals require, 
+所以就是 `const {networkConfig} = require("")`
 
 10572
 10:34:51,590 --> 10:34:54,920
-Hardhead config and save. And I just want to mention this one
-
+and then we'll import it, we'll go down and directory to help our Hardhead config and save. 
+现在导入它，上一级目录的 `helper-hardhat-config`，然后保存
 
 10573
 10:34:54,920 --> 10:34:57,410
-more time, just so that it doesn't confuse anybody. This
-
+And I just want to mention this one more time, just so that it doesn't confuse anybody. 
+我想要再提醒一下这个，以免让人混淆
 
 10574
 10:34:57,410 --> 10:35:00,710
-syntax here, constant network config with the little curly
-
+This syntax here, constant network config with the little curly braces around it 
+这个语法 `const {networkConfig}` 带有一组花括号
 
 10575
 10:35:00,710 --> 10:35:08,990
-braces around it is the same is if I went const. Helper config
-
+is the same is if I went const. Helper config equals this thing, 
+它就和 `const helperConfig` 等于这些东西
 
 10576
 10:35:10,100 --> 10:35:13,280
-equals this thing, which helper config is now kind of this whole
-
+which helper config is now kind of this whole file. 
+现在 `helperConfig` 就代表了整个文件
 
 10577
 10:35:13,280 --> 10:35:21,020
-file. And then const network config equals Hopper config dot
-
+And then const network config equals Hopper config dot network config. 
+然后是 `const networkConfig = helperConfig.networkConfig`
 
 10578
 10:35:21,440 --> 10:35:24,890
-network config. So again, this index is just kind of an easy
-
+So again, this index is just kind of an easy way 
+所以，这个语法就是一个简便用法
 
 10579
 10:35:24,890 --> 10:35:28,610
-way to extrapolate or pull out just the network config from
-
+to extrapolate or pull out just the network config from this file. 
+它会推断并提取出 `networkConfig`，从这个文件中
 
 10580
 10:35:28,610 --> 10:35:31,850
-this file. So that's how that works. And that's why we export
-
+So that's how that works. 
+这就是它的工作原理
 
 10581
 10:35:31,850 --> 10:35:35,600
-it at the bottom so that we can do this, please use the GitHub
-
+And that's why we export it at the bottom so that we can do this, 
+这也是为什么我们要在底部导出它的原因，就是为了做这个操作
 
 10582
 10:35:35,600 --> 10:35:39,410
-repository to ask questions and discussions especially about
-
+please use the GitHub repository to ask questions and discussions 
+请尽情使用 GitHub 仓库来进行提问和讨论
 
 10583
 10:35:39,410 --> 10:35:41,840
-some of this JavaScript stuff. Alright, great. So now that we
-
+especially about some of this JavaScript stuff. 
+尤其是有关 JavaScript 的这些东西
 
 10584
 10:35:41,840 --> 10:35:44,630
-have this network configured here, we can now do this part of
-
+Alright, great. So now that we have this network configured here, 
+很好，现在我们有了这些网络配置
 
 10585
 10:35:44,630 --> 10:35:48,950
-where we say if China d z use a if chain ID is x use y. So Since
-
+we can now do this part of where we say if China d z use a if chain ID is x use y. 
+现在我们就可以进行这个操作了 “如果 chainId 是 Z 则使用 A 如果 chainId 是 X 则使用 Y”
 
 10586
 10:35:48,950 --> 10:35:52,670
-our helper config is nicely in this kind of dictionary, key
-
+So Since our helper config is nicely in this kind of dictionary, key value pair style, 
+由于我们的 `helperConfig` 很好地使用了这种字典的键值对儿格式
 
 10587
 10:35:52,670 --> 10:35:58,490
-value pair style, what we can do is we can say const. eth USD.
-
+what we can do is we can say const. eth USD. Price feed address equals network config at the chain ID, 
+所以我们可以这么做 `const ethUsdPriceFeedAddress = networkConfig[chainId]`
 
 10588
 10:35:59,060 --> 10:36:08,360
-Price feed address equals network config at the chain ID,
-
+because if Francina D, or it'll be this object, 
+如果 "chainId" 是 4 那么就是这个对象
 
 10589
 10:36:08,690 --> 10:36:12,770
-because if Francina D, or it'll be this object, French entity
-
+French entity polygon, it'll be this object 
+如果 "chainId" 是 Polygon，就会是这个对象
 
 10590
 10:36:12,770 --> 10:36:21,470
-polygon, it'll be this object at the eth USD price feed, we're
-
+at the eth USD price feed, 
+`["ethUsdPriceFeed"]`
 
 10591
 10:36:21,470 --> 10:36:24,950
-going to save this to eth USD price feed address. And now no
-
+we're going to save this to eth USD price feed address. 
+我们要把这个保存到 `ethUsdPriceFeedAddress`
 
 10592
 10:36:24,950 --> 10:36:27,980
-matter what chain we're on, whenever we run hard hat deploy,
-
+And now no matter what chain we're on, whenever we run hard hat deploy,
+现在无论我们是在哪条链上，只要我们运行 `hardhat deploy`
 
 10593
 10:36:28,130 --> 10:36:34,550
-if I run yarn, hard hat deploy dash dash network Rinkeby. This
-
+if I run yarn, hard hat deploy dash dash network Rinkeby. 
+如果我运行 `yarn hardhat deploy --network rinkeby`
 
 10594
 10:36:34,550 --> 10:36:37,940
-chain ID is going to be four. And so it's going to use this
-
+This chain ID is going to be four. 
+这个 "chainId" 就会是 4
 
 10595
 10:36:37,940 --> 10:36:42,500
-price feed address. If I do dash test network polygon, and I
-
+And so it's going to use this price feed address. 
+接着它就会使用这一个喂价地址
 
 10596
 10:36:42,500 --> 10:36:45,560
-remember to add both ring P and polygon to my networks, like
-
+If I do dash test network polygon, and I remember to add both ring P and polygon to my networks, like here, 
+如果我运行 `--network polygon`，当然，要记得在把 Rinkeby 和 Polygon 都添加到 "networks" 里
 
 10597
 10:36:45,560 --> 10:36:48,770
-here, the channel is going to be 137. It's going to use this
-
+the channel is going to be 137. It's going to use this price feed address. 
+"chainId" 就会是 137 并使用这个喂价地址
 
 10598
 10:36:48,770 --> 10:36:52,310
-price feed address. So this is awesome. This is exactly what we
-
+So this is awesome. This is exactly what we want. 
+真是太棒了，这正是我们想要的
 
 10599
 10:36:52,310 --> 10:36:55,340
-want. But is it everything that we want? Those of you who have
-
+But is it everything that we want? 
+但这是我们想要的全部么？
 
 10600
 10:36:55,340 --> 10:36:58,040
-been questioning while I have been coding and talking, you
-
+Those of you who have been questioning while I have been coding and talking, 
+也许会有人在我编码和讲话时产生疑问
 
 10601
 10:36:58,040 --> 10:37:00,590
-might be thinking, Okay, well, you talked about this marking
-
+you might be thinking, Okay, well, you talked about this marking thing. You talked about localhost and hard hat. 
+你可能在想，OK 你提到了 mocking 还提到了本地主机和 Hardhat
 
 10602
 10:37:00,590 --> 10:37:03,500
-thing. You talked about localhost and hard hat. And how
-
+And how do we test this locally? 
+但我们该怎么在本地做测试呢？
 
 10603
 10:37:03,500 --> 10:37:06,410
-do we test this locally? Like this is how we go to a test net
-
+Like this is how we go to a test net and a main net. 
+这些都是在告诉我们怎么去测试网或者主网上
 
 10604
 10:37:06,410 --> 10:37:09,740
-and a main net. But what about a local network? And that is
-
+But what about a local network? 
+但是本地网络呢？
 
 10605
 10:37:09,740 --> 10:37:13,370
-exactly what we're going to talk about now. So we've modularized,
-
+And that is exactly what we're going to talk about now. 
+这正是我们现在马上要讨论的东西
 
 10606
 10:37:13,370 --> 10:37:16,760
-our code and parameterize our code so that we're going to use
-
+So we've modularized, our code and parameterize our code 
+我们已经模块化和参数化了我们的代码
 
 10607
 10:37:16,760 --> 10:37:20,240
-the address based off of the chain that we're on. But what if
-
+so that we're going to use the address based off of the chain that we're on. 
+这样我们就可以基于我们所处的链来使用对应的地址了
 
 10608
 10:37:20,240 --> 10:37:24,020
-we use a chain that doesn't even have a price feed address on it?
-
+But what if we use a chain that doesn't even have a price feed address on it?
+但如果我们使用的链甚至都没有喂价地址呢？
 
 10609
 10:37:24,080 --> 10:37:27,470
-What do we do there? This is where we actually create those
-
+What do we do there? This is where we actually create those mock contracts. 
+那我们该怎么办？这就是我们要创建 "mock" 合约的地方了
 
 10610
 10:37:27,500 --> 10:37:32,120
-mock contracts. The idea of mock contracts here is if the
-
+The idea of mock contracts here is if the contract doesn't exist, 
+"mock" 合约的想法是，如果某个合约不存在
 
 10611
 10:37:32,120 --> 10:37:37,550
-contract doesn't exist, we deploy a minimal version of it
-
+we deploy a minimal version of it for our local testing, or our local testing. 
+我们就部署一个最小化的版本来进行我们的本地测试
 
 10612
 10:37:37,580 --> 10:37:42,530
-for our local testing, or our local testing. And deploying
+And deploying
 
 
 10613
