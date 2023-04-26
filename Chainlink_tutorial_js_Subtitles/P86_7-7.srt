@@ -1346,262 +1346,262 @@ we deploy a minimal version of it for our local testing, or our local testing.
 10612
 10:37:37,580 --> 10:37:42,530
 And deploying mocks is technically a deploy script. 
-
+部署 "mock" 从技术上来说也是一个部署脚本
 
 10613
 10:37:42,530 --> 10:37:48,200
 So what we do actually
-
+我们实际上做的就是
 
 10614
 10:37:48,230 --> 10:37:51,080
 is back in our deploy folder is we're going to create a new file, 
-
+回到我们的 "deploy" 文件夹，创建一个新文件
 
 10615
 10:37:51,080 --> 10:37:58,340
 and we're going to call it 00 Dash deploy mocks dot j s, 
-
+我们将其命名为 "00-deploy-mocks.js"
 
 10616
 10:37:58,340 --> 10:38:01,670
 we started with 00. Because this is almost like the pre deploy stuff, 
-
+我们从 00 开始是因为这几乎就是一个预部署的东西
 
 10617
 10:38:01,670 --> 10:38:05,480
 we only do this, sometimes we don't always deploy mocks, right, 
-
+我们只是有时候这么做，并不会总是部署 "mock" 对吧？
 
 10618
 10:38:05,480 --> 10:38:08,750
 we don't need to deploy mocks to Rinkeby, or polygon or or Aetherium main net, 
-
+我们不需要把 "mock" 部署到 Rinkeby 或 Polygon 或以太坊主网
 
 10619
 10:38:08,750 --> 10:38:11,810
 because those already have these price feeds, 
-
+因为他们都已经有喂价数据了
 
 10620
 10:38:11,810 --> 10:38:15,200
 we're actually going to deploy our own mock price feed contracts. 
-
+我们要部署一个自己的 "mock" 喂价合约
 
 10621
 10:38:15,350 --> 10:38:19,700
 And in our deploy Funmi script,
-
+在我们的 "deploy-fund-me" 脚本里
 
 10622
 10:38:19,730 --> 10:38:23,780
 we're going to use our own contracts, instead of already established contracts. 
-
+我们要使用我们自己的合约，而不是已建立的合约
 
 10623
 10:38:23,780 --> 10:38:26,990
 If we're on a network that doesn't have any price, few contracts, 
-
+如果我们在一个没有任何喂价合约的网络上
 
 10624
 10:38:27,020 --> 10:38:30,770
 like hard hat or locos, for example.
-
+比如说像 Hardhat 本体主机
 
 10625
 10:38:30,860 --> 10:38:34,160
 So let's write our deploy mock script. 
-
+让我们开始编写我们的 "deploy-mocks" 脚本
 
 10626
 10:38:34,160 --> 10:38:37,430
 So the setup of this is going to look nearly identical to our deploy Funmi. 
-
+这里的配置和我们的 "deploy-fund-me" 几乎相同
 
 10627
 10:38:37,430 --> 10:38:41,270
 And again, if you want to set it up like this, you absolutely can. 
-
+当然，如果你想用这种方式进行设置，完全是可以的
 
 10628
 10:38:41,270 --> 10:38:43,880
 But I'm actually just going to copy this, this part, paste it in here, 
-
+但我会选择复制这部分，粘贴到这里
 
 10629
 10:38:43,880 --> 10:38:46,820
 because that initial part is going to be exactly the same.
-
+因为初始部分是完全相同的
 
 10630
 10:38:47,000 --> 10:38:49,340
 Oh, and over here, I just realized that we're calling this network thing without being defined, 
-
+哦，这个地方，我们正在调用这个 `network` 但没有定义
 
 10631
 10:38:49,340 --> 10:38:52,160
 JavaScript will kind of be smart enough to know where this network thing is coming from. 
-
+JavaScript 很智能，知道这个 `network` 来自哪里
 
 10632
 10:38:52,160 --> 10:38:54,770
 But it can be a little bit confusing. 
-
+但这可能会让人产生一点疑惑
 
 10633
 10:38:54,770 --> 10:38:57,860
 So it's better to be really explicit, 
-
+所以最好还是明确一点
 
 10634
 10:38:57,860 --> 10:39:03,740
 and say, const. Network equals require hard hat,
-
+写下 `const {network} = require("hardhat")`
 
 10635
 10:39:03,980 --> 10:39:07,130
 this network thing is coming from hard hat. 
-
+这个 `network` 来源于 "hardhat"
 
 10636
 10:39:07,130 --> 10:39:10,370
 And we're going to grab this line. And we're also going to use this 
-
+我们复制这一行，因为这里也要使用它
 
 10637
 10:39:10,370 --> 10:39:13,460
 at the top of our script here. 
-
+放到我们脚本的顶部
 
 10638
 10:39:13,490 --> 10:39:16,160
 And then our top section is going to look exactly the same as well, 
-
+这样顶部的部分看起来就完全一样了
 
 10639
 10:39:16,250 --> 10:39:19,490
 we're going to grab these three lines, and paste them in 
-
+我们复制这三行，然后粘贴过来
 
 10640
 10:39:19,490 --> 10:39:21,530
 deploy deployer chain ID, boom, it's all going to be the same here, 
-
+`deploy deployer chainId`，boom，这里也完全一样
 
 10641
 10:39:21,530 --> 10:39:25,100
 because we're setting up to deploy some stuff. 
-
+因为我们正在配置部署一些东西
 
 10642
 10:39:25,100 --> 10:39:28,460
 Now we want to deploy a new contract. 
-
+现在我们想要部署一个新的合约
 
 10643
 10:39:28,580 --> 10:39:32,450
 But if we look at our contracts folder, this is all we have right now. 
-
+查看一下我们的 "contracts" 文件夹，这就是目前我们所拥有的全部了
 
 10644
 10:39:32,450 --> 10:39:35,330
 So we're going to need to add this mock this fake contract to our contracts folder. 
-
+所以我们需要添加这个 "mock" 虚拟合约到我们的 "contracts" 文件夹中
 
 10645
 10:39:35,330 --> 10:39:38,810
 Now what we can do is in our contracts folder, 
-
+现在我们要在 "contracts" 文件夹中
 
 10646
 10:39:38,810 --> 10:39:41,900
 we want to separate this file from the rest of our file 
-
+将这个文件与其它文件分离开来
 
 10647
 10:39:41,900 --> 10:39:44,990
 so that we know okay, this isn't part of our project, but it is part of our testing. 
-
+这样我们就能知道，它并不是我们项目的一部分，而是用来进行测试的部分
 
 10648
 10:39:44,990 --> 10:39:49,160
 So we're going to right click Create New Folder. 
-
+所以我们要右键，点击新建文件夹("Net Folder")
 
 10649
 10:39:49,160 --> 10:39:52,220
 And we can either call it mocks, or test I like to call mine test. 
-
+我们可以将其命名为 "mocks" 或者 "test"，我喜欢用 "test"
 
 10650
 10:39:52,220 --> 10:39:54,890
 And inside of this folder, we can go ahead and right click create a new file, 
-
+在这个文件夹里，我们继续右键点击新建文件("New File")
 
 10651
 10:39:54,920 --> 10:40:01,940
 I'm going to create a new file and call it mock, v3 aggregate tore that soul. 
-
+我们将创建一个新文件并命名为 "MockV3Aggregator.sol"
 
 10652
 10:40:01,940 --> 10:40:05,360
 And this is where we're going to define our mock price feed aggregator ourselves. 
-
+这就是我们用来定义我们自己的 "mock" 喂价聚合器的地方
 
 10653
 10:40:05,390 --> 10:40:09,650
 So how can we create our own fake price feed contract, 
-
+那么我们该如何创建自己的虚拟喂价合约
 
 10654
 10:40:09,650 --> 10:40:12,620
 so we can test everything locally? 
-
+以便能够进行所有的本地测试呢？
 
 10655
 10:40:12,620 --> 10:40:16,010
 Well, one thing we could do is we go to the chain link GitHub repo, 
-
+其中一个可用的方式是，前往 chainlink 的 GitHub 仓库
 
 10656
 10:40:16,010 --> 10:40:18,470
 and go through the contracts and find one of these price feed addresses, 
-
+并进入 "contracts" 找到一个 "priceFeedAddress"
 
 10657
 10:40:18,470 --> 10:40:22,640
 source eight, or maybe we'll go back to source 
-
+"src-v0.8"，或者我们先回到 "src"
 
 10658
 10:40:22,640 --> 10:40:24,500
 we'll maybe we'll check in V six.
-
+也许我们会选择 "v0.6"
 
 10659
 10:40:26,360 --> 10:40:29,510
 Looks like we could find some stuff and look around 
-
+看起来我们可以找到一些东西并进行查看
 
 10660
 10:40:29,510 --> 10:40:32,690
 and we probably copy paste all this code, 
-
+或许我们可以复制粘贴这里的全部代码
 
 10661
 10:40:32,690 --> 10:40:35,060
 but it really seems like kind of a huge pain in the butt to have to copy all this code.
-
+但这真的是有些麻烦，我们必须复制这里全部的代码
 
 10662
 10:40:35,210 --> 10:40:38,210
 Now we absolutely could we copy paste the code in here, 
-
+我们当然可以把所有代码都复制粘贴过来
 
 10663
 10:40:38,210 --> 10:40:40,460
 but we're gonna do something a little bit more clever. 
-
+但我们有更聪明的做法可以采用
 
 10664
 10:40:40,460 --> 10:40:44,750
