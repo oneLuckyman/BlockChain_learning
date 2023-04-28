@@ -2111,388 +2111,390 @@ But I like to do it like that.
 10765
 10:47:39,260 --> 10:47:43,640
 So Conce. So now we have to import them in here. 
-
+现在我们得在这里导入它们
 
 10766
 10:47:43,640 --> 10:47:47,120
-const development chains. It's also grabbed decimals. 
-
+const development chains. It's also grabbed decimals. It's also grabbed initial answer, we'll save it. 
+`const {developmentChains}` 也要获取 `DECIMALS` 还有 `INITIAL_ANSWER` 保存一下
 
 10767
 10:47:47,120 --> 10:47:49,550
-It's also grabbed initial answer, we'll save it. 
+We'll take a look back at the constructor looks like it's decimals first, initial answers second. 
+回来看一下构造函数，看来 `_decimals` 是第一个 `_initialAnswer` 是第二个
 
 
 10768
 10:47:49,550 --> 10:47:52,820
-We'll take a look back at the constructor looks like it's decimals first, initial answers second. 
-
+So in our arguments, 
+所以在我们的 `args` 中
 
 10769
 10:47:52,820 --> 10:47:57,440
-So in our arguments, we'll do decimals first, initial answers second, 
-
+we'll do decimals first, initial answers second, 
+我们要把 `DECIMALS` 放到第一位 `INITIAL_ANSWER` 放到第二位
 
 10770
 10:47:57,440 --> 10:48:01,940
 and tada. And then we will be all done 
-
+然后哒哒，这就全部完成了
 
 10771
 10:48:01,940 --> 10:48:05,450
 that we'll do a quick log box deployed. 
-
+接着我们快速做一个 `log("Mocks deployed")`
 
 10772
 10:48:05,450 --> 10:48:08,030
 And then I also like to do kind of like a big line at the end of all of my deploy scripts 
-
+我还喜欢在部署脚本末尾加上一条长线
 
 10773
 10:48:08,030 --> 10:48:11,180
 just to be like, hey, that's the end of this deploy script. 
-
+这就像是在说，嘿，这就是部署脚本的末尾
 
 10774
 10:48:11,180 --> 10:48:14,390
 Anything else after this is going to be a different deploy script. 
-
+在此之后就是一个不同的部署脚本
 
 10775
 10:48:14,390 --> 10:48:17,600
 All right, great. Now our deployed mocks script is actually done. 
-
+非常好，现在我们的 "deploy-mocks" 已经完成了
 
 10776
 10:48:17,840 --> 10:48:21,770
 But our deploy Funmi script isn't quite done. 
-
+但我们的 "deploy-fund-me" 脚本还没有完成
 
 10777
 10:48:21,770 --> 10:48:25,190
 Is there a way that we could run only our deploy mock script? 
-
+有没有办法可以只运行我们的 "deploy-mocks" 脚本？
 
 10778
 10:48:25,190 --> 10:48:27,890
 Well, yes, there is. Great, thanks for asking. 
-
+当然是有了，感谢提问~
 
 10779
 10:48:27,920 --> 10:48:35,000
 What we can do at the bottom of our deploy mock script 
-
+我们可以在 "deploy-mocks" 脚本的底部添加一个模块
 
 10780
 10:48:35,000 --> 10:48:40,430
 is we can add a module that exports dot tags, equals, and we'll say all and marks. 
-
+`module.exports.tags = ["all", "mocks"]`
 
 10781
 10:48:40,430 --> 10:48:45,770
 Now what we can do is if we run yarn, hard hat deploy, we can add this flag dash dash tags.
-
+现在我们可以运行 `yarn hardhat deploy` 并添加标记 `--tags`
 
 10782
 10:48:46,190 --> 10:48:50,540
 And it will only run the deploy scripts that have a special tag.
-
+这样它就只会运行带有特殊标签的部署脚本
 
 10783
 10:48:50,930 --> 10:48:55,310
 So we'll run our mocks tag, which means it'll only run our deploy mock script. 
-
+我们来运行 `mocks` 标签，这意味着它就只会运行 "deploy-mocks" 脚本
 
 10784
 10:48:55,310 --> 10:48:59,840
 And, and oops, actually, in our helper config 
-
+哎呀，其实，在我们的 "helper-config"
 
 10785
 10:48:59,840 --> 10:49:03,440
 development chains is actually hard hat and localhost.
-
+`developmentChains` 实际上是 "hardhat" 和 "localhost"
 
 10786
 10:49:03,440 --> 10:49:06,860
 And I said, we're going to try to do with the chain ID, 
-
+这里我们在尝试使用 `chainId`
 
 10787
 10:49:06,890 --> 10:49:09,380
 sorry, we're going to do this, 
-
+抱歉，其实应该这么做
 
 10788
 10:49:09,380 --> 10:49:11,990
 we're gonna do development chains dot includes network dot name.
-
+应该是 `developmentChains.includes(network.name)`
 
 10789
 10:49:15,350 --> 10:49:19,880
 Because our helper config is using names and not chain IDs,
-
+因为我们在 "helper-config" 中使用是名称而不是 "chainId"
 
 10790
 10:49:19,910 --> 10:49:23,030
 so if development chains that includes that network the names,
-
+所以如果 "developmentChains" 包含 "network" 的 "name"
 
 10791
 10:49:23,060 --> 10:49:25,670
 then we're gonna go ahead and deploy the mocks. 
-
+我们就会部署 "mocks"
 
 10792
 10:49:25,670 --> 10:49:28,730
 So let's go ahead and run this yarn here and hit Deploy dash dash tags, mocks. 
-
+让我们继续运行 `yarn hardhat deploy --tags mocks`
 
 10793
 10:49:28,730 --> 10:49:32,990
 And perfect we do indeed see our mocks getting deployed here. 
-
+完美，确实看到我们的 "mocks" 已经被部署了
 
 10794
 10:49:32,990 --> 10:49:36,620
 This log true means that it's going to spit out stuff like this. 
-
+这个 `log` 为 `true` 意味着它会输出一些这样的东西
 
 10795
 10:49:36,620 --> 10:49:39,560
 It'll say contract, it's deploying, it'll say the transaction it's doing 
-
+它说的是正在部署合约，正在执行交易
 
 10796
 10:49:39,560 --> 10:49:42,830
 and it'll say where it was deployed with how much gas 
-
+以及部署到了哪里，使用了多少 gas
 
 10797
 10:49:42,830 --> 10:49:47,000
 and awesome This means our deployed Mach script is working perfectly. 
-
+太棒了，这意味着我们的 "deploy-mocks" 脚本运行良好
 
 10798
 10:49:47,000 --> 10:49:50,570
 So now we have our deploy mocks script working perfectly. 
-
+现在我们的 "deploy-mocks" 脚本已经可以完美运行了
 
 10799
 10:49:50,600 --> 10:49:54,170
 So how do we apply that back to our deploy Funmi script? 
-
+那么我们该如何将其应用到我们的 "deploy-fund-me" 脚本中呢？
 
 10800
 10:49:54,200 --> 10:49:57,440
 Well, we're gonna do the exact same thing here.
-
+好吧，我们会在这里做相同的处理
 
 10801
 10:49:57,980 --> 10:50:01,070
 Instead of making eth USD price feed address constant variable,
-
+不再是创建一个 `ethUsdPriceFeedAddress` 常量变量
 
 10802
 10:50:01,100 --> 10:50:04,700
 we're gonna say let at USD price you'd variable 
-
+我们会创建为 `let ethUsdPriceFeedAddress` 变量
 
 10803
 10:50:04,700 --> 10:50:09,800
 so that we can actually update it. 
-
+这样我们就可以随时更新它了
 
 10804
 10:50:09,800 --> 10:50:15,650
 And we'll say, if development chains dot includes network dot name, 
-
+我们写下 `if(developmentChains.includes(network.name))`
 
 10805
 10:50:15,680 --> 10:50:19,010
 what we can do with hard hat deploy 
-
+在使用 `hardhat deploy` 情况下
 
 10806
 10:50:19,010 --> 10:50:23,840
 is we can just get the most recent deployment using a command called literally get. 
-
+我们可以使用 `get` 命令来获取近期的部署
 
 10807
 10:50:23,840 --> 10:50:30,200
 So we'll say const. eth USD aggregator equals await deployments dot get. 
-
+所以就是 `const ethUsdAggregator = await deployments.get()`
 
 10808
 10:50:30,200 --> 10:50:34,280
 And then the name of the contract that we deployed Mach v3 aggregator, 
-
+然后是我们所部署合约的名称 "MockV3Aggregator"
 
 10809
 10:50:34,280 --> 10:50:37,040
-and if you wanted to just do get instead of deployments dot get,
-
+and if you wanted to just do get instead of deployments dot get, we absolutely could, 
+如果你只想使用 `get` 而非 `deployments.get` 也是可以的
 
 10810
 10:50:37,220 --> 10:50:42,020
-we absolutely could, just by doing it like this. 
-
+just by doing it like this. 
+只要像这样做就行
 
 10811
 10:50:42,020 --> 10:50:45,080
 Those are exactly the same. 
-
+完全是一样的
 
 10812
 10:50:45,080 --> 10:50:52,400
 So we'll get the address like this and then we'll say 
-
+我们获取了它的地址，然后就是
 
 10813
 10:50:52,400 --> 10:50:56,900
 eth USD price feed address equals that eth USD aggregator contract dot address. 
-
+`ethUsdPriceFeedAddress = ethUsdAggregator.address`
 
 10814
 10:50:56,900 --> 10:51:00,380
 And then if we're not on a development chain, 
-
+如果我们没有处在开发链上的话
 
 10815
 10:51:00,380 --> 10:51:04,160
 if we didn't deploy a mock, we're just going to do exactly what we did before. 
-
+如果我们没有部署 "mock"，则执行与之前完全相同的操作
 
 10816
 10:51:04,160 --> 10:51:09,740
 With using the network config. 
-
+使用 "networkConfig"
 
 10817
 10:51:09,740 --> 10:51:13,070
 Oh, my goodness. Now, now that we've done all of these steps, 
-
+呼，天呐，现在，我们已经完成了所有的步骤
 
 10818
 10:51:13,070 --> 10:51:18,260
 let's add a little log thing at the bottom here with just a bunch of hyphens. 
-
+让我们在底部添加一个小的日志输出，只包含一堆连字符("-")
 
 10819
 10:51:18,440 --> 10:51:22,340
 Now, we should have a very robust script 
-
+现在，我们就有了一个非常健壮的脚本
 
 10820
 10:51:22,340 --> 10:51:25,820
 to flip between a local development chain, a test net chain, a main net chain, 
-
+它可以在本地开发链，测试链以及主链之间进行切换
 
 10821
 10:51:25,820 --> 10:51:29,330
 and allow us to deploy literally everywhere without changing any of our solidity. 
-
+并且我们可以在任何地方进行部署而无需修改我们的 Solidity 代码
 
 10822
 10:51:29,330 --> 10:51:33,770
 And then we just take this, this eth USD price feed address and stick it into logs here. 
-
+然后我们把这个 `ethUsdPriceFeedAddress` 粘贴到这里来
 
 10823
 10:51:34,460 --> 10:51:38,450
 And then at the bottom, we can do module dot exports, dot tags equals 
-
+最后在底部，我们就可以执行 `module.exports.tags =`
 
 10824
 10:51:38,450 --> 10:51:43,490
-and then we'll just do all 
-
+and then we'll just do all and then we'll call this one Funmi. 
+接着就是 `["all"]` 以及 `"fundme"`
 
 10825
 10:51:43,490 --> 10:51:48,650
-and then we'll call this one Funmi. 
-
+Oh, now moment of truth. 
+哦！现在，关键时刻到了
 
 10826
 10:51:48,650 --> 10:51:52,430
-Oh, now moment of truth. If we did all this, right, 
-
+If we did all this, right, 
+如果我们做对了所有这些
 
 10827
 10:51:52,430 --> 10:51:57,110
 we should just be able to run yarn, hard hat deploy. 
-
+我们应该就可以直接运行 `yarn hardhat deploy` 了
 
 10828
 10:51:57,110 --> 10:52:00,500
 And it should work on our local chain, our hard hat chain. 
-
+它应该就能在我们的本地链，hardhat 链上正常运行了
 
 10829
 10:52:00,500 --> 10:52:03,950
 And then it should also work on any test net that we give it. 
-
+并且它应该也可以在任何测试网上正常运行
 
 10830
 10:52:04,340 --> 10:52:07,460
 So let's give this a try. Yarn, Hardhead deploy. Let's see if this works. 
-
+让我们来试一试吧 `yarn hardhat deploy` 我们来看看是否奏效
 
 10831
 10:52:07,460 --> 10:52:11,780
 Awesome. And we got this all to deploy locally to our Hard Hat Network, 
-
+太棒了，我们已经把这些全部都部署到了本地的 "Hardhat Network" 上了
 
 10832
 10:52:11,780 --> 10:52:14,780
 we can see that we went ahead and we deployed mocks, we did our little underline here.
-
+可以看到我们部署了 "mocks"，还有这一堆下划线
 
 10833
 10:52:15,170 --> 10:52:18,020
 And then we deployed Funmi deployed at this address with this much gas. 
-
+接着我们把 "FundMe" 部署到了这个地址，使用了这么多 gas 
 
 10834
 10:52:18,050 --> 10:52:21,560
 Now, what are the other awesome things about hard hat deploy? 
-
+"hardhat deploy" 还有一些其它有意思的功能
 
 10835
 10:52:21,560 --> 10:52:24,680
 When we run our local blockchain, our own blockchain node, 
-
+当我们运行于本地区块链或我们自己的区块链节点时
 
 10836
 10:52:24,680 --> 10:52:28,880
-hard hat deploy will automatically run through
-
+hard hat deploy will automatically run through all of our deploy scripts 
+"hardhat deploy" 可以自动运行我们所有的部署脚本
 
 10837
 10:52:29,060 --> 10:52:33,290
-all of our deploy scripts and add them to our node. 
-
+and add them to our node. 
+并把它们添加进我们的节点
 
 10838
 10:52:33,290 --> 10:52:38,420
 So now if I run yarn, hard hat node, 
-
+现在如果我运行 `yarn hardhat node`
 
 10839
 10:52:38,420 --> 10:52:41,690
 we're going to spin up a new blockchain node, 
-
+我们将启动一个新的区块链节点
 
 10840
 10:52:41,690 --> 10:52:45,140
 but it's already going to have all of our deployed contracts on it. 
-
+但是它已经包含了我们已部署的所有合约
 
 10841
 10:52:45,140 --> 10:52:48,530
 So every time we spin up a local node, now 
-
+所以每当我们启动一个本地节点时
 
 10842
 10:52:48,530 --> 10:52:54,500
 it's going to come automatically packed with the contracts that we want on it. 
+它都会自动打包我们想要的所有合约
