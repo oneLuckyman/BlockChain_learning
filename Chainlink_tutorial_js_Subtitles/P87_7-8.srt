@@ -1,0 +1,213 @@
+10842
+10:52:48,530 --> 10:52:54,500
+So we are going to show us doing this on a test net on Rinkeby. 
+
+
+10843
+10:52:54,500 --> 10:52:57,740
+But before we actually test it on Rinkeby, 
+
+
+10844
+10:52:57,740 --> 10:53:00,530
+I'm going to add a little bit of the auto verification piece in here as well, 
+
+
+10845
+10:53:00,530 --> 10:53:03,440
+because we did that in the last lesson. 
+
+
+10846
+10:53:03,440 --> 10:53:06,290
+And we wanted to show how to do it in hard hat deploy as well. 
+
+
+10847
+10:53:06,290 --> 10:53:09,770
+So right after we deploy our Funmi, we can do something similar here, 
+
+
+10848
+10:53:09,770 --> 10:53:13,100
+we'll say, if developer chains includes network dot name, 
+
+
+10849
+10:53:13,100 --> 10:53:17,150
+we'll say if developer chains doesn't include network dot name, 
+
+
+10850
+10:53:17,150 --> 10:53:19,670
+because we don't want to verify on a local network. 
+
+
+10851
+10:53:19,700 --> 10:53:25,010
+So we'll say if not development chains dot includes network dot name, 
+
+
+10852
+10:53:25,010 --> 10:53:28,670
+the exclamation mark, aka the bang 
+
+
+10853
+10:53:29,000 --> 10:53:32,690
+means not when we're talking about booleans. 
+
+
+10854
+10:53:32,960 --> 10:53:36,080
+So we're saying, if the name of the network isn't a development chain, 
+
+
+10855
+10:53:36,080 --> 10:53:41,450
+we want to go ahead and verify and same as last time. 
+
+
+10856
+10:53:41,450 --> 10:53:45,170
+And if process dot e NV dot ether scan API key,
+
+
+10857
+10:53:46,490 --> 10:53:50,270
+then we're going to go ahead and verify. 
+
+
+10858
+10:53:50,270 --> 10:53:53,450
+Now before we had our verify code, right in our deploy code, 
+
+
+10859
+10:53:53,450 --> 10:53:56,450
+we're gonna do something a little bit different here. 
+
+
+10860
+10:53:56,450 --> 10:53:59,810
+Instead of having our verify code in our deploy scripts here, 
+
+
+10861
+10:53:59,810 --> 10:54:04,250
+we're actually going to create a new folder called utils, which stands for utilities. 
+
+
+10862
+10:54:04,250 --> 10:54:07,010
+And this is where we're going to add different scripts that 
+
+
+10863
+10:54:07,010 --> 10:54:09,200
+we can use across different deployments. 
+
+
+10864
+10:54:09,200 --> 10:54:12,320
+Because let's say we have 50 Deploy scripts, 
+
+
+10865
+10:54:12,320 --> 10:54:15,350
+we're not going to make 50 Deploy functions, 
+
+
+10866
+10:54:15,470 --> 10:54:19,460
+we're just going to add them to our utils folder, 
+
+
+10867
+10:54:19,580 --> 10:54:23,270
+and in our utils folder, or create a new file called verify dot j s, 
+
+
+10868
+10:54:23,270 --> 10:54:26,540
+we're going to add that code from our last project in here. 
+
+
+10869
+10:54:26,540 --> 10:54:30,200
+So if you want, you can go ahead copy paste from our last project over to this one, 
+
+
+10870
+10:54:30,200 --> 10:54:33,320
+or you can pause the video to type it out yourself. 
+
+
+10871
+10:54:33,320 --> 10:54:38,810
+Since we're using the run command here, we're gonna do const run equals require RT hat. 
+
+
+10872
+10:54:38,810 --> 10:54:47,750
+And then at the bottom, we're going to do module exports. Exports equals verify.
+
+
+10873
+10:54:48,470 --> 10:54:53,180
+Now that we have a verify script in our utils folder, 
+
+
+10874
+10:54:53,180 --> 10:54:59,090
+back in our deploy Funmi we're going to say 
+
+
+10875
+10:54:59,090 --> 10:55:04,970
+const. Verify equals require dot dot slash utils. Slash verify. 
+
+
+10876
+10:55:05,000 --> 10:55:08,540
+And since now in our verified Jas, we have a lot of this trycatch stuff in here, 
+
+
+10877
+10:55:08,540 --> 10:55:15,140
+we can just do a wait. Verify 
+
+
+10878
+10:55:15,140 --> 10:55:18,320
+and a verify once again takes a contract address and a list of arguments. 
+
+
+10879
+10:55:18,350 --> 10:55:24,680
+We'll say await verify, fund me dot address and then the list of arguments. 
+
+
+10880
+10:55:24,680 --> 10:55:27,740
+To make the list of arguments easier to put in. 
+
+
+10881
+10:55:27,740 --> 10:55:32,540
+You can go const args, equals and then we'll just stick our eth USD price feed in here 
+
+
+10882
+10:55:32,540 --> 10:55:37,640
+and then replace this with args 
+
+
+10883
+10:55:37,640 --> 10:55:42,410
+and then take this args and pop it on down into the second parameter here. 
+
+
+10884
+10:55:42,410 --> 10:55:48,560
+All right, great. 
