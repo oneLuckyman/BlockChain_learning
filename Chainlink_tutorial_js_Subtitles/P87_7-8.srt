@@ -1,7 +1,7 @@
 10842
 10:52:48,530 --> 10:52:54,500
 So we are going to show us doing this on a test net on Rinkeby. 
-
+现在我们要展示如何在
 
 10843
 10:52:54,500 --> 10:52:57,740
