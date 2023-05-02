@@ -1,0 +1,323 @@
+10884
+10:55:42,410 --> 10:55:48,560
+Now let's go ahead and deploy this to With the Rinkeby test net, 
+现在让我们把它部署到 Rinkeby 测试网上
+
+10885
+10:55:48,590 --> 10:55:51,470
+and what do we need to deploy this to the Rinkeby test net? 
+那么部署到 Rinkeby 测试网上需要做哪些事呢？
+
+10886
+10:55:51,470 --> 10:55:53,900
+Well, let's jump into our hard hat config first. 
+让我们先转到 "hardhat.config"
+
+10887
+10:55:53,900 --> 10:55:57,140
+And let's clean this up, we don't really need this accounts task, 
+并且清除掉这些内容，我们并不需要这个 "accounts" task
+
+10888
+10:55:57,140 --> 10:56:00,410
+so I'm just going to delete it, 
+所以我们要把它删掉
+
+10889
+10:56:00,410 --> 10:56:03,710
+I don't really need this comment. So I'm going to delete this too. 
+我也不需要这个注释了，所以也要删掉
+
+10890
+10:56:03,710 --> 10:56:06,470
+And let's jump into the network section, 
+现在让我们进入 "network" 部分
+
+10891
+10:56:06,470 --> 10:56:09,560
+we're not going to be working with ropsten. So we're gonna go ahead and dump that. 
+我们不会使用 "ropsten"，所以我们扔掉它
+
+10892
+10:56:09,560 --> 10:56:13,370
+We are however, going to be working with rink B, the URL is going to be that same Rinkeby RPC URL. 
+但我们要使用 "Rinkeby"，"url" 还是一样的 `RINKEBY_RPC_URL`
+
+10893
+10:56:13,370 --> 10:56:18,410
+So we're going to define that up here, like we did before. 
+我们在这里定义它，就和之前的做法一样
+
+10894
+10:56:18,410 --> 10:56:21,950
+And if you want to copy paste from your last project, feel free to do so 
+你可以选择从上一个项目中直接复制粘贴过来
+
+10895
+10:56:21,950 --> 10:56:25,280
+you can also follow along with me or fastforward me 
+也可以选择跟着我或者快进
+
+10896
+10:56:25,280 --> 10:56:38,540
+the counts is going to be the same. 
+`accounts` 是相同的
+
+10897
+10:56:38,540 --> 10:56:41,360
+I'm going to go ahead and just copy paste the gas reporter with what we had from before. 
+我这里直接复制粘贴了之前使用过的 `gasReporter`
+
+10898
+10:56:41,360 --> 10:56:44,960
+So we're going to add this 
+所以我们要添加一句 
+
+10899
+10:56:44,960 --> 10:56:49,340
+constant corn market cap API key equals process dot EMV dot corn market cap API key. 
+`const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY`
+
+10900
+10:56:49,340 --> 10:56:53,600
+Do the same thing with the ether scan API key Licious add everything in here. Now. 
+`ETHERSCAN_API_KEY` 也是一样的，添加到这里来
+
+10901
+10:56:53,600 --> 10:57:00,920
+We have our ether scan section in here already, 
+
+
+10902
+10:57:00,920 --> 10:57:04,160
+we're gonna have our gas reporter be
+
+
+10903
+10:57:04,160 --> 10:57:06,800
+false, because I don't really feel like using it right now.
+
+
+10904
+10:57:07,070 --> 10:57:09,920
+And then finally, we're going to add one more thing in here.
+
+
+10905
+10:57:10,130 --> 10:57:12,830
+Remember how in our last project, before we actually
+
+
+10906
+10:57:12,830 --> 10:57:16,100
+verified we waited some block confirmations. That way ether
+
+
+10907
+10:57:16,100 --> 10:57:19,130
+scan could make sure to catch up. Well, we can do the exact
+
+
+10908
+10:57:19,130 --> 10:57:22,910
+same thing in here in our hard hat dot config, we can add a
+
+
+10909
+10:57:22,910 --> 10:57:26,300
+section for each test net for how many blocks we want to wait,
+
+
+10910
+10:57:26,570 --> 10:57:33,320
+I'm going to add block confirmations of six. Now back
+
+
+10911
+10:57:33,320 --> 10:57:36,920
+on our deploy Funmi. In a new section, I can add wait
+
+
+10912
+10:57:37,130 --> 10:57:46,340
+confirmations of network dot config. That block on for
+
+
+10913
+10:57:47,180 --> 10:57:53,480
+motions, or one is or one means if no block confirmations is
+
+
+10914
+10:57:53,480 --> 10:57:57,110
+given in our Hardhead dot config will just wait for one block.
+
+
+10915
+10:57:57,290 --> 10:57:59,960
+And again, the reason we want to wait for approximately six block
+
+
+10916
+10:57:59,960 --> 10:58:03,410
+confirmations is we want to give ether scan a chance to index our
+
+
+10917
+10:58:03,410 --> 10:58:07,490
+transaction. And I added a chain ID 42 when it should be for my
+
+
+10918
+10:58:07,490 --> 10:58:11,240
+mistake. And of course, we're going to need our dot env file,
+
+
+10919
+10:58:11,420 --> 10:58:14,660
+where we add all of our stuff from the last session, the RIP
+
+
+10920
+10:58:14,660 --> 10:58:18,650
+ERP CRL private key ether scan API and then coin market cap
+
+
+10921
+10:58:18,650 --> 10:58:23,000
+API. All right moment of truth. Let's try this out. If we run
+
+
+10922
+10:58:23,000 --> 10:58:30,020
+yarn Hardhead deploy dash dash network Rinkeby. It should not
+
+
+10923
+10:58:30,050 --> 10:58:34,040
+deploy any marks because we have this if statement in our mock
+
+
+10924
+10:58:34,040 --> 10:58:39,050
+deployment. But it should deploy our Funmi contract using the
+
+
+10925
+10:58:39,050 --> 10:58:43,250
+correct price feed address. And then it'll go ahead and verify
+
+
+10926
+10:58:43,250 --> 10:58:47,300
+it. Since we're waiting for six block confirmations, we can even
+
+
+10927
+10:58:47,300 --> 10:58:51,500
+be super secure by adding dash dash tags and just running the
+
+
+10928
+10:58:51,500 --> 10:58:55,790
+funding tag. But we're just going to do yarn hearted deploy
+
+
+10929
+10:58:55,820 --> 10:58:59,930
+network Rigby. And let's see what happens. All right, and
+
+
+10930
+10:58:59,930 --> 10:59:03,950
+we're deploying funding. And we can see the transaction that we
+
+
+10931
+10:59:03,950 --> 10:59:08,630
+have for fun me, this is that logging feature, we have log is
+
+
+10932
+10:59:08,630 --> 10:59:12,860
+true for deploying Funmi. So it gives us the transaction once it
+
+
+10933
+10:59:12,860 --> 10:59:16,160
+has a transaction, and it will give us the address once we have
+
+
+10934
+10:59:16,160 --> 10:59:20,120
+the address. So we're going to wait six block confirmations for
+
+
+10935
+10:59:20,120 --> 10:59:23,240
+this transaction to finish going through. Now we see we've
+
+
+10936
+10:59:23,240 --> 10:59:27,230
+deployed this contract address with X amount of gas. And now
+
+
+10937
+10:59:27,260 --> 10:59:30,410
+we're running the verification process. While the verification
+
+
+10938
+10:59:30,410 --> 10:59:35,630
+process is running, we can pull up Rinkeby ether scan, paste our
+
+
+10939
+10:59:35,630 --> 10:59:39,560
+address in here and see that we have indeed created this
+
+
+10940
+10:59:39,560 --> 10:59:42,620
+contract. And now it looks like we've successfully verified the
+
+
+10941
+10:59:42,620 --> 10:59:46,760
+contract on ether scan. So if we hit refresh, we can indeed see
+
+
+10942
+10:59:46,790 --> 10:59:50,030
+that the contract has been verified. Awesome. All right. So
+
+
+10943
+10:59:50,030 --> 10:59:53,570
+this is fantastic. Our deploy script is looking great, we're
+
+
+10944
+10:59:53,570 --> 10:59:57,110
+able to deploy to a local chain, we're able to deploy to a test
+
+
+10945
+10:59:57,110 --> 11:00:00,050
+that and if we wanted to, we could deploy to any network that
+
+
+10946
+11:00:00,050 --> 11:00:03,860
+we wanted simply by updating our hard hat config, and then
+
+
+10947
+11:00:03,890 --> 11:00:07,700
+updating our helper config. This is fantastic.
+
+
+10948
+11:00:07,730 --> 11:00:13,610
+Great work so far. 
