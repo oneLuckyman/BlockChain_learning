@@ -86,238 +86,239 @@ Do the same thing with the ether scan API key Licious add everything in here. No
 10901
 10:56:53,600 --> 10:57:00,920
 We have our ether scan section in here already, 
-
+我们已经准备好了 `etherscan` 部分
 
 10902
 10:57:00,920 --> 10:57:04,160
-we're gonna have our gas reporter be
-
+we're gonna have our gas reporter be false, 
+我们让 `gasReporter` 保持为 `false`
 
 10903
 10:57:04,160 --> 10:57:06,800
-false, because I don't really feel like using it right now.
-
+because I don't really feel like using it right now.
+因为我现在用不到它
 
 10904
 10:57:07,070 --> 10:57:09,920
 And then finally, we're going to add one more thing in here.
-
+最后，我们还要再添加一个东西
 
 10905
 10:57:10,130 --> 10:57:12,830
-Remember how in our last project, before we actually
-
+Remember how in our last project, 
+还记得我们在上一个项目中
 
 10906
 10:57:12,830 --> 10:57:16,100
-verified we waited some block confirmations. That way ether
-
+before we actually verified we waited some block confirmations. 
+在实际验证之前，我们等待了一些区块的确认
 
 10907
 10:57:16,100 --> 10:57:19,130
-scan could make sure to catch up. Well, we can do the exact
-
+That way ether scan could make sure to catch up. 
+这样 `etherscan` 就可以保证能跟上进度
 
 10908
 10:57:19,130 --> 10:57:22,910
-same thing in here in our hard hat dot config, we can add a
-
+Well, we can do the exact same thing in here 
+这里，我们可以执行一些相同的操作
 
 10909
 10:57:22,910 --> 10:57:26,300
-section for each test net for how many blocks we want to wait,
-
+in our hard hat dot config, 
+在我们的 "hardhat.config" 中
 
 10910
 10:57:26,570 --> 10:57:33,320
-I'm going to add block confirmations of six. Now back
-
+we can add a section for each test net for how many blocks we want to wait, 
+我们可以为每个测试网添加一部分，告诉它我们想等待多少区块
 
 10911
 10:57:33,320 --> 10:57:36,920
-on our deploy Funmi. In a new section, I can add wait
-
+I'm going to add block confirmations of six. 
+我将添加为 `blockConfirmations: 6`
 
 10912
 10:57:37,130 --> 10:57:46,340
-confirmations of network dot config. That block on for
-
+Now back on our deploy Funmi. 
+现在，回到我们的 "deploy-fund-me" 
 
 10913
 10:57:47,180 --> 10:57:53,480
-motions, or one is or one means if no block confirmations is
-
+In a new section, I can add wait confirmations of network dot config. That block on for motions, or one 
+在新的部分中，我可以添加 `waitConfirmations: network.config.blockConfirmations || 1`
 
 10914
 10:57:53,480 --> 10:57:57,110
-given in our Hardhead dot config will just wait for one block.
-
+is or one means if no block confirmations is given in our Hardhead dot config 
+这个 `|| 1` 表示，如果在 "hardhat.config" 中没有指定 `blockConfirmations` 
 
 10915
 10:57:57,290 --> 10:57:59,960
-And again, the reason we want to wait for approximately six block
-
+will just wait for one block. 
+我们就只等待一个区块
 
 10916
 10:57:59,960 --> 10:58:03,410
-confirmations is we want to give ether scan a chance to index our
-
+And again, the reason we want to wait for approximately six block confirmations 
+再回顾一下，我们之所以要等待大约 6 个区块确认
 
 10917
 10:58:03,410 --> 10:58:07,490
-transaction. And I added a chain ID 42 when it should be for my
-
+is we want to give ether scan a chance to index our transaction. 
+是因为我们想给 "etherscan" 一个索引我们交易的机会
 
 10918
 10:58:07,490 --> 10:58:11,240
-mistake. And of course, we're going to need our dot env file,
-
+And I added a chain ID 42 when it should be for my mistake. 
+我把这里的 `chainId` 应该是 4 而不是 42，我的错
 
 10919
 10:58:11,420 --> 10:58:14,660
-where we add all of our stuff from the last session, the RIP
-
+And of course, we're going to need our dot env file, where we add all of our stuff from the last session, 
+当然，我们还需要 ".env" 文件，其中添加了上次会话的所有内容
 
 10920
 10:58:14,660 --> 10:58:18,650
-ERP CRL private key ether scan API and then coin market cap
-
+the RIP ERP CRL private key ether scan API and then coin market cap API. 
+有 "RINKEBY_RPC_URL" "PRIVATE_KEY" "ETHERSCAN_API(_KEY)" 以及 "COINMARKETCAP_API(_KEY)"
 
 10921
 10:58:18,650 --> 10:58:23,000
-API. All right moment of truth. Let's try this out. If we run
-
+All right moment of truth. Let's try this out. 
+好了，关键时刻到了，让我们来试一试
 
 10922
 10:58:23,000 --> 10:58:30,020
-yarn Hardhead deploy dash dash network Rinkeby. It should not
-
+If we run yarn Hardhead deploy dash dash network Rinkeby. 
+如果我们运行 `yarn hardhat deploy --network rinkeby`
 
 10923
 10:58:30,050 --> 10:58:34,040
-deploy any marks because we have this if statement in our mock
-
+It should not deploy any marks because we have this if statement in our mock deployment. 
+它应该不会部署任何 "mocks"，因为我们在 "mock" 的部署中有这个 `if` 语句
 
 10924
 10:58:34,040 --> 10:58:39,050
-deployment. But it should deploy our Funmi contract using the
-
+But it should deploy our Funmi contract using the correct price feed address. 
+但它应该会部署我们的 `FundMe` 合约并使用正确的喂价地址
 
 10925
 10:58:39,050 --> 10:58:43,250
-correct price feed address. And then it'll go ahead and verify
-
+And then it'll go ahead and verify it. 
+接着它会对其进行验证
 
 10926
 10:58:43,250 --> 10:58:47,300
-it. Since we're waiting for six block confirmations, we can even
-
+Since we're waiting for six block confirmations, 
+由于我们等待了 6 个区块的确认
 
 10927
 10:58:47,300 --> 10:58:51,500
-be super secure by adding dash dash tags and just running the
-
+we can even be super secure by adding dash dash tags and just running the funding tag.  
+所以我们甚至可以通过添加 `--tags` 来确保安全，只需要运行 `fundme` 标签
 
 10928
 10:58:51,500 --> 10:58:55,790
-funding tag. But we're just going to do yarn hearted deploy
-
+But we're just going to do yarn hearted deploy network Rigby. 
+但这里我们只运行 `yarn hardhat deploy --network rinkeby`
 
 10929
 10:58:55,820 --> 10:58:59,930
-network Rigby. And let's see what happens. All right, and
-
+And let's see what happens. 
+让我们看看会发生什么
 
 10930
 10:58:59,930 --> 10:59:03,950
-we're deploying funding. And we can see the transaction that we
-
+All right, and we're deploying funding. And we can see the transaction that we have for fun me, 
+好的，我们正在部署 "FundMe"，并且可以看到我们拥有一个关于 "FundMe" 的交易
 
 10931
 10:59:03,950 --> 10:59:08,630
-have for fun me, this is that logging feature, we have log is
-
+this is that logging feature, we have log is true for deploying Funmi. 
+这就是日志功能，因为 `deploy("FundMe")` 这里的 `log` 为 `true`
 
 10932
 10:59:08,630 --> 10:59:12,860
-true for deploying Funmi. So it gives us the transaction once it
-
+So it gives us the transaction once it has a transaction, 
+所以一旦有了交易它就会提供给我们这个交易
 
 10933
 10:59:12,860 --> 10:59:16,160
-has a transaction, and it will give us the address once we have
-
+and it will give us the address once we have the address. 
+一旦有了地址它也会将地址提供给我们
 
 10934
 10:59:16,160 --> 10:59:20,120
-the address. So we're going to wait six block confirmations for
-
+So we're going to wait six block confirmations for this transaction to finish going through. 
+现在我们要等待 6 个区块确认以完成这笔交易
 
 10935
 10:59:20,120 --> 10:59:23,240
-this transaction to finish going through. Now we see we've
-
+Now we see we've deployed this contract address with X amount of gas. 
+现在我们已经看到了部署好的合约地址，它使用了这么多的 gas
 
 10936
 10:59:23,240 --> 10:59:27,230
-deployed this contract address with X amount of gas. And now
-
+And now we're running the verification process. 
+现在我们正在运行验证过程
 
 10937
 10:59:27,260 --> 10:59:30,410
-we're running the verification process. While the verification
-
+While the verification process is running, 
+在验证过程正在运行的时候
 
 10938
 10:59:30,410 --> 10:59:35,630
-process is running, we can pull up Rinkeby ether scan, paste our
-
+we can pull up Rinkeby ether scan, 
+我们可以打开 "rinkeby etherscan"
 
 10939
 10:59:35,630 --> 10:59:39,560
-address in here and see that we have indeed created this
-
+paste our address in here and see that we have indeed created this contract. 
+把我们的地址粘贴到这里，可以看到我们确实已经创建了这个合约
 
 10940
 10:59:39,560 --> 10:59:42,620
-contract. And now it looks like we've successfully verified the
-
+And now it looks like we've successfully verified the contract on ether scan. 
+看起来我们已经成功在 "etherscan" 上验证了我们的合约
 
 10941
 10:59:42,620 --> 10:59:46,760
-contract on ether scan. So if we hit refresh, we can indeed see
-
+So if we hit refresh, we can indeed see that the contract has been verified. Awesome. 
+如果我们点击刷新，就可以看到合约确实已经被验证了，非常好
 
 10942
 10:59:46,790 --> 10:59:50,030
-that the contract has been verified. Awesome. All right. So
-
+All right. So this is fantastic. 
+太好了，非常棒
 
 10943
 10:59:50,030 --> 10:59:53,570
-this is fantastic. Our deploy script is looking great, we're
-
+Our deploy script is looking great, 
+我们的部署脚本看起来非常棒
 
 10944
 10:59:53,570 --> 10:59:57,110
-able to deploy to a local chain, we're able to deploy to a test
-
+we're able to deploy to a local chain, we're able to deploy to a test that 
+现在我们能够部署到本地链，还可以部署到测试网络
 
 10945
 10:59:57,110 --> 11:00:00,050
-that and if we wanted to, we could deploy to any network that
-
+and if we wanted to, we could deploy to any network that we wanted 
+如果我们想的话，我们可以部署到任何我们想要的网络上
 
 10946
 11:00:00,050 --> 11:00:03,860
-we wanted simply by updating our hard hat config, and then
-
+simply by updating our hard hat config, 
+只需要更新我们的 "hardhat.config"
 
 10947
 11:00:03,890 --> 11:00:07,700
-updating our helper config. This is fantastic.
-
+and then updating our helper config. 
+然后更新我们的 "helper(-hardhat)-config"
 
 10948
 11:00:07,730 --> 11:00:13,610
-Great work so far. 
+This is fantastic. Great work so far. 
+目前为止，干得漂亮
