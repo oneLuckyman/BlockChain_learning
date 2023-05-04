@@ -1,0 +1,742 @@
+10948
+11:00:07,730 --> 11:00:13,610
+Now we're about to jump in and level up our tests. 
+
+
+10949
+11:00:13,610 --> 11:00:16,430
+But before we do that, 
+
+
+10950
+11:00:16,460 --> 11:00:19,130
+we're going to clean up our Funmi contract a little bit to make it look a little bit more professional. 
+
+
+10951
+11:00:19,130 --> 11:00:22,190
+And I'm going to talk about some of the syntax and some of the reasons why some conventions exist. 
+
+
+10952
+11:00:22,190 --> 11:00:25,520
+We're not going to do this full force on all the projects moving forward. 
+
+
+10953
+11:00:25,520 --> 11:00:28,970
+But they are good to know and they are good to keep in mind
+
+
+10954
+11:00:29,210 --> 11:00:31,820
+when moving forward and working with our contracts. 
+
+
+10955
+11:00:31,910 --> 11:00:35,330
+While we go through this we're going to learn why some of these conventions exist 
+
+
+10956
+11:00:35,330 --> 11:00:37,640
+including learning a little bit of low level solidity. 
+
+
+10957
+11:00:37,640 --> 11:00:40,460
+So don't skip this part. 
+
+
+10958
+11:00:40,460 --> 11:00:43,400
+When we get to later sections. 
+
+
+10959
+11:00:43,400 --> 11:00:46,460
+We're going to be a little bit looser and not be as strict with the code style guides 
+
+
+10960
+11:00:46,460 --> 11:00:49,700
+but That's basically what we're gonna go over now. 
+
+
+10961
+11:00:49,700 --> 11:00:52,400
+And for now, you might see this event funded thing here, 
+
+
+10962
+11:00:52,400 --> 11:00:55,250
+please just ignore that for now, 
+
+
+10963
+11:00:55,250 --> 11:00:58,730
+in an earlier take, I'd introduced the events much earlier. 
+
+
+10964
+11:00:58,730 --> 11:01:00,530
+And now we're actually going to learn about events a little bit later in the course. 
+
+
+10965
+11:01:00,530 --> 11:01:04,070
+So please ignore that event funded for now. 
+
+
+10966
+11:01:04,070 --> 11:01:06,380
+So let's go ahead and tweak a little bit of our contracts here. 
+
+
+10967
+11:01:06,380 --> 11:01:08,900
+Now what I'm talking about tweaking this to make it look professional, 
+
+
+10968
+11:01:08,900 --> 11:01:11,240
+a little bit more professional, I'm talking about the solidity style guide, 
+
+
+10969
+11:01:11,240 --> 11:01:14,690
+there are some conventions for naming and ordering 
+
+
+10970
+11:01:14,690 --> 11:01:17,810
+that we can follow to make our code look a little bit better. 
+
+
+10971
+11:01:17,810 --> 11:01:20,390
+Now, like I said, this is going to be a little bit more optional, 
+
+
+10972
+11:01:20,390 --> 11:01:23,360
+because it can be a little bit verbose. 
+
+
+10973
+11:01:23,510 --> 11:01:26,330
+And it doesn't really make that big of a difference. 
+
+
+10974
+11:01:26,330 --> 11:01:29,870
+But it can increase readability of your contracts by a lot and make your code look a lot nicer. 
+
+
+10975
+11:01:29,870 --> 11:01:33,350
+So if you want, you can go through this style guide to learn more about 
+
+
+10976
+11:01:33,380 --> 11:01:36,800
+what kind of makes solidity look nice, and what makes it not look nice. 
+
+
+10977
+11:01:36,800 --> 11:01:39,290
+But well, that's some of these style guides in here, 
+
+
+10978
+11:01:39,290 --> 11:01:41,360
+we're not going to follow the style guide exactly to a tee. 
+
+
+10979
+11:01:41,360 --> 11:01:44,090
+But we are going to make some best efforts to make our code follow the style guide, 
+
+
+10980
+11:01:44,090 --> 11:01:47,060
+we've got a link to the style guide in the GitHub repository for this section, 
+
+
+10981
+11:01:47,060 --> 11:01:50,150
+we can read some more about the layout. 
+
+
+10982
+11:01:50,150 --> 11:01:53,210
+But the main thing we want to look at is this order of the layout, 
+
+
+10983
+11:01:53,210 --> 11:01:55,700
+we want to start with our imports 
+
+
+10984
+11:01:55,700 --> 11:01:59,180
+with our pragma statement, our imports, interfaces, libraries, and then contracts. 
+
+
+10985
+11:01:59,210 --> 11:02:02,450
+And then inside each contract type declarations, state variables, events, modifiers, and functions. 
+
+
+10986
+11:02:02,450 --> 11:02:05,480
+So let's go back here and make sure that we're up to speed, 
+
+
+10987
+11:02:05,510 --> 11:02:08,990
+we want our pragma first. 
+
+
+10988
+11:02:08,990 --> 11:02:12,530
+Alright, awesome, we did exactly that, 
+
+
+10989
+11:02:12,530 --> 11:02:16,610
+then we want our imports. Okay, awesome, we have those too. 
+
+
+10990
+11:02:16,640 --> 11:02:19,460
+Something that's not in the style guide is going to be error codes, 
+
+
+10991
+11:02:19,460 --> 11:02:22,820
+which we definitely want next. 
+
+
+10992
+11:02:22,820 --> 11:02:27,140
+So next is going to be error codes. 
+
+
+10993
+11:02:27,140 --> 11:02:30,410
+Now this is where we're going to bump into one of our first updates here. 
+
+
+10994
+11:02:30,410 --> 11:02:34,400
+As of recent, it's sort of becoming a best practice to 
+
+
+10995
+11:02:34,400 --> 11:02:37,820
+add the name of your contract, some underscores, and then the name of your error.
+
+
+10996
+11:02:38,000 --> 11:02:40,580
+Whenever you're running into an error. 
+
+
+10997
+11:02:40,610 --> 11:02:43,970
+This makes it a lot easier to understand which contract is throwing the error.
+
+
+10998
+11:02:44,030 --> 11:02:48,350
+So for this, we're going to say error Funmi, two underscores not owner, 
+
+
+10999
+11:02:48,350 --> 11:02:52,190
+then we're going to scroll down to the our revert and set it like this. 
+
+
+11000
+11:02:52,490 --> 11:02:56,120
+This way, when if we ever run into this error, 
+
+
+11001
+11:02:56,120 --> 11:02:59,240
+we know that the error is coming from the Funmi contract,
+
+
+11002
+11:02:59,480 --> 11:03:01,940
+not from the aggregator v3 interface, 
+
+
+11003
+11:03:01,940 --> 11:03:05,090
+or the price converter or some other contract. 
+
+
+11004
+11:03:05,090 --> 11:03:07,820
+So that's how we want to write our error codes here. 
+
+
+11005
+11:03:07,820 --> 11:03:11,720
+If we had any interfaces or libraries not imported, we would add them here. 
+
+
+11006
+11:03:11,750 --> 11:03:15,050
+But then finally, we add our contracts. 
+
+
+11007
+11:03:15,050 --> 11:03:18,950
+In this file, we only have one contract here. 
+
+
+11008
+11:03:18,950 --> 11:03:21,590
+It's our Funmi contract. Awesome. 
+
+
+11009
+11:03:21,590 --> 11:03:26,810
+Now the next thing we want to learn about as far as style guides go is this thing scalled natspec. 
+
+
+11010
+11:03:26,810 --> 11:03:30,500
+natspec stands for Etherium natural language specification format. 
+
+
+11011
+11:03:30,530 --> 11:03:34,490
+And it's basically a way of documenting our code inspired by Doxygen 
+
+
+11012
+11:03:34,490 --> 11:03:38,270
+uses Doxygen style comments and tags to help document our code, 
+
+
+11013
+11:03:38,270 --> 11:03:41,270
+you can click the link here in the solidity documentation to learn more about Doxygen. 
+
+
+11014
+11:03:41,270 --> 11:03:43,880
+If we scroll down in the documentation, here, 
+
+
+11015
+11:03:43,880 --> 11:03:47,330
+we can see an example of using natspec. 
+
+
+11016
+11:03:47,330 --> 11:03:50,450
+Whenever we have a contract or a function that needs documentation, 
+
+
+11017
+11:03:50,450 --> 11:03:53,750
+we can add some syntax that looks like this to it. 
+
+
+11018
+11:03:53,750 --> 11:03:57,470
+So for example, if we wanted to add this to our code, 
+
+
+11019
+11:03:57,500 --> 11:04:00,560
+we could add a comment explaining this funding contract 
+
+
+11020
+11:04:00,590 --> 11:04:05,210
+to start a piece of natspec, you can do three backslashes, 
+
+
+11021
+11:04:05,870 --> 11:04:09,350
+or one backslash, two stars, and then another ending star here. x
+
+
+11022
+11:04:09,350 --> 11:04:12,200
+or one backslash, two stars, and then comment section basically gets turned into a comment. 
+
+
+11023
+11:04:12,200 --> 11:04:15,590
+For the start of our contract, we'll do the Add sign title 
+
+
+11024
+11:04:15,590 --> 11:04:18,050
+to explain basically, what this contract is, 
+
+
+11025
+11:04:18,050 --> 11:04:20,270
+it's fun, we contract is going to be a contract for crowdfunding, 
+
+
+11026
+11:04:20,390 --> 11:04:27,980
+we'll add another star. And we can add the author of it, 
+
+
+11027
+11:04:27,980 --> 11:04:31,610
+which is going to be your name, I'm going to put Patrick Collins, of course, 
+
+
+11028
+11:04:31,640 --> 11:04:35,030
+then we'll add a notice, which is just kind of a note to people 
+
+
+11029
+11:04:35,030 --> 11:04:39,800
+we can say this contract is is to demo a sample funding contract. 
+
+
+11030
+11:04:39,800 --> 11:04:46,250
+And we can also add apt Dev,
+
+
+11031
+11:04:46,670 --> 11:04:49,820
+which is a note specifically to developers. 
+
+
+11032
+11:04:50,120 --> 11:04:54,770
+And we can say this implements price feeds as our library. 
+
+
+11033
+11:04:54,770 --> 11:04:58,850
+The reason that we want to add these tags here 
+
+
+11034
+11:04:58,850 --> 11:05:02,360
+is actually because we can use the natspec to automatically create documentation for us 
+
+
+11035
+11:05:02,360 --> 11:05:06,350
+if we download so we can actually run solc dash s user doc dash dash dev doc, 
+
+
+11036
+11:05:06,350 --> 11:05:10,220
+and the name of our file to automatically generate documentation. 
+
+
+11037
+11:05:10,220 --> 11:05:13,820
+So this is also really helpful for 
+
+
+11038
+11:05:13,820 --> 11:05:16,370
+automatically creating documentation for other developers who interact with the protocol later on. 
+
+
+11039
+11:05:16,370 --> 11:05:20,300
+You can use this natspec For as many or as few functions as you'd like. 
+
+
+11040
+11:05:20,300 --> 11:05:23,090
+Most of us probably aren't going to be making documentation. 
+
+
+11041
+11:05:23,090 --> 11:05:26,120
+So we really just want to follow those guidelines 
+
+
+11042
+11:05:26,120 --> 11:05:29,300
+if we think some function or some section of our code 
+
+
+11043
+11:05:29,300 --> 11:05:32,240
+is a little bit tricky for other developers. 
+
+
+11044
+11:05:32,240 --> 11:05:34,910
+Now that we're inside of contract, we can follow the order of our contract. 
+
+
+11045
+11:05:34,910 --> 11:05:39,110
+We're first going to start with type declarations
+
+
+11046
+11:05:41,870 --> 11:05:43,790
+which we don't really have any except for the fact 
+
+
+11047
+11:05:43,790 --> 11:05:48,410
+that we're using our price converter for the UN 256 type. 
+
+
+11048
+11:05:48,650 --> 11:05:51,140
+Okay, great. You Next, after our type declarations, 
+
+
+11049
+11:05:51,170 --> 11:05:54,380
+we're going to do state variables. 
+
+
+11050
+11:05:54,380 --> 11:05:57,410
+And in this state variables section, 
+
+
+11051
+11:05:57,410 --> 11:06:00,170
+this is where we're actually going to change the name of some of our state variables. 
+
+
+11052
+11:06:00,170 --> 11:06:04,370
+So we'll do a little common here state variables. 
+
+
+11053
+11:06:04,400 --> 11:06:08,780
+Now in the solidity style guide, kind of adhere to the naming styles, 
+
+
+11054
+11:06:08,810 --> 11:06:12,080
+we use upper and lowercase, we use total caps with underscores here. 
+
+
+11055
+11:06:12,080 --> 11:06:14,750
+However, these naming variables are going to change in the future in this section. 
+
+
+11056
+11:06:14,750 --> 11:06:16,820
+And if you're following along with the GitHub repo associated with this course,
+
+
+11057
+11:06:17,180 --> 11:06:19,340
+these are going to be actually a little bit different than what you see. 
+
+
+11058
+11:06:19,340 --> 11:06:22,400
+However, for now, we're going to leave them as they are,
+
+
+11059
+11:06:22,400 --> 11:06:24,710
+because the reason why we're going to change them isn't going to be quite clear yet. 
+
+
+11060
+11:06:24,710 --> 11:06:27,980
+Don't worry. So these names are going to change soon, but not yet. 
+
+
+11061
+11:06:27,980 --> 11:06:31,310
+Alright, after state variables comes events, and modifiers. 
+
+
+11062
+11:06:31,310 --> 11:06:34,940
+We don't have any events, but we do have a modifier. 
+
+
+11063
+11:06:34,940 --> 11:06:39,560
+So we'll copy this. And actually, we'll delete this comment here. 
+
+
+11064
+11:06:39,560 --> 11:06:46,850
+And we'll paste our modifier here. 
+
+
+11065
+11:06:46,850 --> 11:06:50,120
+Oh, and it looks like looks like we're not auto formatting here. 
+
+
+11066
+11:06:50,450 --> 11:06:52,820
+So we're going to uncomment immutable actually, 
+
+
+11067
+11:06:52,880 --> 11:06:55,160
+so that it automatically auto formats. 
+
+
+11068
+11:06:55,160 --> 11:06:57,440
+Okay, great. We're out of formatting now. And Cool. 
+
+
+11069
+11:06:57,440 --> 11:07:01,100
+Alright, so now we have our modifiers. Next, 
+
+
+11070
+11:07:01,100 --> 11:07:05,030
+we have right here, and then we have all of our functions. Great. 
+
+
+11071
+11:07:05,030 --> 11:07:08,390
+We actually want to group our functions in this order that I just print here. 
+
+
+11072
+11:07:08,390 --> 11:07:11,720
+So we want the constructor which we have received and fall back, 
+
+
+11073
+11:07:11,720 --> 11:07:14,570
+we do have fall back and receive. 
+
+
+11074
+11:07:14,570 --> 11:07:20,690
+So we're going to actually copy those and delete this comment. 
+
+
+11075
+11:07:20,690 --> 11:07:24,110
+We're gonna stick those veterans Heath here looks like receive goes first. 
+
+
+11076
+11:07:24,110 --> 11:07:28,460
+So we'll put that here. Then external functions, then public, internal, private.
+
+
+11077
+11:07:29,180 --> 11:07:32,480
+So we have public public. And that's it. And then we can delete this part down here. Okay. 
+
+
+11078
+11:07:32,480 --> 11:07:36,680
+Cool. And if we want, we can do that syntax up here from the net spec for our functions. 
+
+
+11079
+11:07:36,680 --> 11:07:39,920
+For example, for fund it, we could even just copy paste, 
+
+
+11080
+11:07:40,490 --> 11:07:44,060
+we would remove title, we would remove author, 
+
+
+11081
+11:07:44,060 --> 11:07:48,710
+and we just say add, notice, this function, funds this contract. 
+
+
+11082
+11:07:48,710 --> 11:07:55,640
+And we can even leave a little dev thing here to talk about it. 
+
+
+11083
+11:07:55,640 --> 11:07:58,850
+Now if we have parameters, you can do apt puram. 
+
+
+11084
+11:07:58,850 --> 11:08:02,660
+And say like what the parameter is. 
+
+
+11085
+11:08:02,660 --> 11:08:06,470
+And then if we have returns, we can say returns, 
+
+
+11086
+11:08:06,470 --> 11:08:10,400
+or returns and then what it returns for the documentation. 
+
+
+11087
+11:08:10,400 --> 11:08:13,400
+Since this doesn't have any parameters in here, 
+
+
+11088
+11:08:13,400 --> 11:08:15,980
+and doesn't return anything, we can just leave it like this. 
+
+
+11089
+11:08:15,980 --> 11:08:18,680
+And great, we've just revamped our contract here 
+
+
+11090
+11:08:18,680 --> 11:08:21,560
+to make it a little bit more nicely formatted. Great job. 
+
+
+11091
+11:08:21,560 --> 11:08:24,710
+Now, like I said, we actually are going to change the names of our state variables, 
+
+
+11092
+11:08:24,710 --> 11:08:26,900
+and we're going to add some functions in here and a little bit. 
+
+
+11093
+11:08:26,900 --> 11:08:29,300
+So if we're following with the GitHub repo,
+
+
+11094
+11:08:29,330 --> 11:08:31,940
+the state of the contract right now is going to look a little bit different. 
+
+
+11095
+11:08:31,940 --> 11:08:34,670
+But it'll make sense why change this up in a little bit.
+
+
+11096
+11:08:34,670 --> 11:08:35,120
