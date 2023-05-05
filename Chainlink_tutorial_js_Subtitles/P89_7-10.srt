@@ -1,127 +1,127 @@
 10948
 11:00:07,730 --> 11:00:13,610
 Now we're about to jump in and level up our tests. 
-
+现在我们要开始升级我们的测试了
 
 10949
 11:00:13,610 --> 11:00:16,430
 But before we do that, 
-
+但在此之前
 
 10950
 11:00:16,460 --> 11:00:19,130
 we're going to clean up our Funmi contract a little bit to make it look a little bit more professional. 
-
+我们将稍微整理一下 "FundMe" 合约以让它看起来更加专业
 
 10951
 11:00:19,130 --> 11:00:22,190
 And I'm going to talk about some of the syntax and some of the reasons why some conventions exist. 
-
+我会讲解一些语法以及一些惯例之所以存在的原因
 
 10952
 11:00:22,190 --> 11:00:25,520
 We're not going to do this full force on all the projects moving forward. 
-
+我们不会在之后的项目中往这方面投入很大的力气
 
 10953
 11:00:25,520 --> 11:00:28,970
 But they are good to know and they are good to keep in mind
-
+但了解并记住它们是很有益的
 
 10954
 11:00:29,210 --> 11:00:31,820
 when moving forward and working with our contracts. 
-
+尤其是在处理我们的合约的时候
 
 10955
 11:00:31,910 --> 11:00:35,330
 While we go through this we're going to learn why some of these conventions exist 
-
+在这个过程中，我们将了解这些惯例为什么会存在
 
 10956
 11:00:35,330 --> 11:00:37,640
 including learning a little bit of low level solidity. 
-
+而且会学习一些 Solidity 更底层的知识
 
 10957
 11:00:37,640 --> 11:00:40,460
 So don't skip this part. 
-
+因此，请不要跳过这部分
 
 10958
 11:00:40,460 --> 11:00:43,400
 When we get to later sections. 
-
+当我们抵达更靠后的章节时
 
 10959
 11:00:43,400 --> 11:00:46,460
 We're going to be a little bit looser and not be as strict with the code style guides 
-
+我们会变得稍微宽松一些，不会像代码风格指南那样严格
 
 10960
 11:00:46,460 --> 11:00:49,700
 but That's basically what we're gonna go over now. 
-
+但基本上，这就是我们现在要讨论的内容
 
 10961
 11:00:49,700 --> 11:00:52,400
 And for now, you might see this event funded thing here, 
-
+现在，你可能会看到这里有个 `event Funded`
 
 10962
 11:00:52,400 --> 11:00:55,250
 please just ignore that for now, 
-
+请暂时先忽略它
 
 10963
 11:00:55,250 --> 11:00:58,730
 in an earlier take, I'd introduced the events much earlier. 
-
+在较早版本的课程中，我比较早地介绍了 "event"
 
 10964
 11:00:58,730 --> 11:01:00,530
 And now we're actually going to learn about events a little bit later in the course. 
-
+但现在我们会在更靠后的课程中学习 "event"
 
 10965
 11:01:00,530 --> 11:01:04,070
 So please ignore that event funded for now. 
-
+所以请暂时忽略掉 `event Funded`
 
 10966
 11:01:04,070 --> 11:01:06,380
 So let's go ahead and tweak a little bit of our contracts here. 
-
+让我们继续，来稍微修改一下我们的合约
 
 10967
 11:01:06,380 --> 11:01:08,900
-Now what I'm talking about tweaking this to make it look professional, 
-
+Now what I'm talking about tweaking this to make it look professional, a little bit more professional, 
+我所说的优化我们的合约以让它看起来更专业的意思
 
 10968
 11:01:08,900 --> 11:01:11,240
-a little bit more professional, I'm talking about the solidity style guide, 
-
+I'm talking about the solidity style guide, 
+指的就是 Solidity 的风格指南("Style Guide")
 
 10969
 11:01:11,240 --> 11:01:14,690
 there are some conventions for naming and ordering 
-
+有一些关于命名和排序的惯例
 
 10970
 11:01:14,690 --> 11:01:17,810
 that we can follow to make our code look a little bit better. 
-
+可以通过遵循它们以使我们的代码看起来更好
 
 10971
 11:01:17,810 --> 11:01:20,390
 Now, like I said, this is going to be a little bit more optional, 
-
+就像我说的，这是一个可选步骤
 
 10972
 11:01:20,390 --> 11:01:23,360
 because it can be a little bit verbose. 
-
+因为它可能会有些冗长
 
 10973
 11:01:23,510 --> 11:01:26,330
