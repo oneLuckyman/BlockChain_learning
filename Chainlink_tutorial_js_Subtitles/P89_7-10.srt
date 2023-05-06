@@ -126,157 +126,157 @@ because it can be a little bit verbose.
 10973
 11:01:23,510 --> 11:01:26,330
 And it doesn't really make that big of a difference. 
-
+而且它也不会带来特别大的差异
 
 10974
 11:01:26,330 --> 11:01:29,870
 But it can increase readability of your contracts by a lot and make your code look a lot nicer. 
-
+但它可以大大提高合约的可读性并让你的代码更好看
 
 10975
 11:01:29,870 --> 11:01:33,350
 So if you want, you can go through this style guide to learn more about 
-
+因此，如果你想的话，可以通过阅读这个风格指南
 
 10976
 11:01:33,380 --> 11:01:36,800
 what kind of makes solidity look nice, and what makes it not look nice. 
-
+来了解更多有关哪些做法会让 Solidity 看起来更好，而哪些不会
 
 10977
 11:01:36,800 --> 11:01:39,290
 But well, that's some of these style guides in here, 
-
+但这里我们只是介绍一些风格指南
 
 10978
 11:01:39,290 --> 11:01:41,360
 we're not going to follow the style guide exactly to a tee. 
-
+并不会严格遵循风格指南的每一处细节
 
 10979
 11:01:41,360 --> 11:01:44,090
 But we are going to make some best efforts to make our code follow the style guide, 
-
+不过我们还是会尽力让我们的代码遵循风格指南
 
 10980
 11:01:44,090 --> 11:01:47,060
 we've got a link to the style guide in the GitHub repository for this section, 
-
+我们在 GitHub 仓库的这一部分提供了风格指南的链接
 
 10981
 11:01:47,060 --> 11:01:50,150
 we can read some more about the layout. 
-
+我们可以读到许多关于布局的内容
 
 10982
 11:01:50,150 --> 11:01:53,210
 But the main thing we want to look at is this order of the layout, 
-
+但我们主要看的是布局的顺序
 
 10983
 11:01:53,210 --> 11:01:55,700
-we want to start with our imports 
-
+we want to start with our imports with our pragma statement, our imports, interfaces, libraries, and then contracts. 
+我们要从版本声明开始("Pragma statement")，然后是导入("Import")、接口(Interfaces)、库(Libraries)、然后是合约(Contracts)
 
 10984
 11:01:55,700 --> 11:01:59,180
-with our pragma statement, our imports, interfaces, libraries, and then contracts. 
-
+And then inside each contract 
+接着在合约内部，我们按照
 
 10985
 11:01:59,210 --> 11:02:02,450
-And then inside each contract type declarations, state variables, events, modifiers, and functions. 
-
+type declarations, state variables, events, modifiers, and functions. 
+类型声明(Type declarations)、状态变量(State variables)、事件(Events)、修饰器(Modifiers)、以及函数(Function)的顺序编写
 
 10986
 11:02:02,450 --> 11:02:05,480
 So let's go back here and make sure that we're up to speed, 
-
+让我们回到这里，确保可以跟上进度
 
 10987
 11:02:05,510 --> 11:02:08,990
 we want our pragma first. 
-
+首先是编译器版本声明
 
 10988
 11:02:08,990 --> 11:02:12,530
 Alright, awesome, we did exactly that, 
-
+很好，我们已经是这样做的了
 
 10989
 11:02:12,530 --> 11:02:16,610
 then we want our imports. Okay, awesome, we have those too. 
-
+接着是导入，很好，我们有这两个
 
 10990
 11:02:16,640 --> 11:02:19,460
 Something that's not in the style guide is going to be error codes, 
-
+样式指南中没有提到报错代码(Error Codes)
 
 10991
 11:02:19,460 --> 11:02:22,820
 which we definitely want next. 
-
+我们要把它放在下一个位置
 
 10992
 11:02:22,820 --> 11:02:27,140
 So next is going to be error codes. 
-
+所以下一个就是报错代码
 
 10993
 11:02:27,140 --> 11:02:30,410
 Now this is where we're going to bump into one of our first updates here. 
-
+这里是我们遇到的第一处更新
 
 10994
 11:02:30,410 --> 11:02:34,400
 As of recent, it's sort of becoming a best practice to 
-
+最近，有一种写法已经逐渐成为主流
 
 10995
 11:02:34,400 --> 11:02:37,820
 add the name of your contract, some underscores, and then the name of your error.
-
+即，添加你的合约名称，一些下划线，然后是你错误类型的名称
 
 10996
 11:02:38,000 --> 11:02:40,580
 Whenever you're running into an error. 
-
+这样每当你遇到报错时
 
 10997
 11:02:40,610 --> 11:02:43,970
 This makes it a lot easier to understand which contract is throwing the error.
-
+都可以更容易地理解是哪个合约引发了错误
 
 10998
 11:02:44,030 --> 11:02:48,350
 So for this, we're going to say error Funmi, two underscores not owner, 
-
+具体来说，我们要这么写 `error FundMe__NotOwner`
 
 10999
 11:02:48,350 --> 11:02:52,190
 then we're going to scroll down to the our revert and set it like this. 
-
+然后我们拉到下面找到 `revert` 语句，并设置成这样
 
 11000
 11:02:52,490 --> 11:02:56,120
 This way, when if we ever run into this error, 
-
+这样的话，只要我们遇到这个报错
 
 11001
 11:02:56,120 --> 11:02:59,240
 we know that the error is coming from the Funmi contract,
-
+就能知道报错来源于 "FundMe" 合约
 
 11002
 11:02:59,480 --> 11:03:01,940
 not from the aggregator v3 interface, 
-
+而不是 "AggregatorV3Interface"
 
 11003
 11:03:01,940 --> 11:03:05,090
 or the price converter or some other contract. 
-
+或是 "PriceConverter" 又或者其它合约
 
 11004
 11:03:05,090 --> 11:03:07,820
@@ -365,12 +365,12 @@ to start a piece of natspec, you can do three backslashes,
 
 11021
 11:04:05,870 --> 11:04:09,350
-or one backslash, two stars, and then another ending star here. x
+or one backslash, two stars, and then another ending star here. 
 
 
 11022
 11:04:09,350 --> 11:04:12,200
-or one backslash, two stars, and then comment section basically gets turned into a comment. 
+Everything we put inside of this comment section basically gets turned into a comment. 
 
 
 11023
