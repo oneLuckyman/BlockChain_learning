@@ -281,92 +281,92 @@ or the price converter or some other contract.
 11004
 11:03:05,090 --> 11:03:07,820
 So that's how we want to write our error codes here. 
-
+这就是我们编写报错代码的方式
 
 11005
 11:03:07,820 --> 11:03:11,720
 If we had any interfaces or libraries not imported, we would add them here. 
-
+如果我们有任何未导入的接口或库，都会在这里添加
 
 11006
 11:03:11,750 --> 11:03:15,050
 But then finally, we add our contracts. 
-
+接着在最后，添加我们的合约
 
 11007
 11:03:15,050 --> 11:03:18,950
 In this file, we only have one contract here. 
-
+在这个文件中，我们只有一个合约
 
 11008
 11:03:18,950 --> 11:03:21,590
 It's our Funmi contract. Awesome. 
-
+就是我们的 "FundMe" 合约，很好
 
 11009
 11:03:21,590 --> 11:03:26,810
-Now the next thing we want to learn about as far as style guides go is this thing scalled natspec. 
-
+Now the next thing we want to learn about as far as style guides go is this thing called natspec. 
+现在，我们要学习的下一个有关风格指南的内容是 "NatSpec"
 
 11010
 11:03:26,810 --> 11:03:30,500
 natspec stands for Etherium natural language specification format. 
-
+"NatSpec" 表示以太坊自然语言规范格式("Ethereum Natural Language Specification Format")
 
 11011
 11:03:30,530 --> 11:03:34,490
 And it's basically a way of documenting our code inspired by Doxygen 
-
+它是一种受到 "Doxygen" 启发的一种文档化代码的方式
 
 11012
 11:03:34,490 --> 11:03:38,270
 uses Doxygen style comments and tags to help document our code, 
-
+它使用 "Doxygen" 风格的注释和标签来帮助文档化我们的代码
 
 11013
 11:03:38,270 --> 11:03:41,270
 you can click the link here in the solidity documentation to learn more about Doxygen. 
-
+你可以点击 Solidity 文档这里的链接来了解更多有关 "Doxygen" 的内容
 
 11014
 11:03:41,270 --> 11:03:43,880
 If we scroll down in the documentation, here, 
-
+如果我们把文档往下拉
 
 11015
 11:03:43,880 --> 11:03:47,330
 we can see an example of using natspec. 
-
+就可以看到一个使用 "NatSpec" 的示例
 
 11016
 11:03:47,330 --> 11:03:50,450
 Whenever we have a contract or a function that needs documentation, 
-
+每当我们有需要文档化的合约或函数时
 
 11017
 11:03:50,450 --> 11:03:53,750
 we can add some syntax that looks like this to it. 
-
+就可以添加类似这样的语法
 
 11018
 11:03:53,750 --> 11:03:57,470
 So for example, if we wanted to add this to our code, 
-
+举个例子，如果要在我们的代码中添加的话
 
 11019
 11:03:57,500 --> 11:04:00,560
 we could add a comment explaining this funding contract 
-
+我们可以添加一个注释来解释一下这个 "FundMe" 合约
 
 11020
 11:04:00,590 --> 11:04:05,210
 to start a piece of natspec, you can do three backslashes, 
-
+要开始一个 "NatSpec" 部分，你可以使用三个 "/" (反斜杠)
 
 11021
 11:04:05,870 --> 11:04:09,350
 or one backslash, two stars, and then another ending star here. 
-
+或一个 "/"，两个 "*" (星号)，以及另外一个用于结尾的 "*"
 
 11022
 11:04:09,350 --> 11:04:12,200
