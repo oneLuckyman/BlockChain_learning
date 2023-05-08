@@ -371,372 +371,374 @@ or one backslash, two stars, and then another ending star here.
 11022
 11:04:09,350 --> 11:04:12,200
 Everything we put inside of this comment section basically gets turned into a comment. 
-
+所有我们放进这个注释部分的内容都属于注释
 
 11023
 11:04:12,200 --> 11:04:15,590
 For the start of our contract, we'll do the Add sign title 
-
+对于合约的开头，我们将添加标记 `@title`
 
 11024
 11:04:15,590 --> 11:04:18,050
 to explain basically, what this contract is, 
-
+基本上就是在解释，这是个什么合约
 
 11025
 11:04:18,050 --> 11:04:20,270
 it's fun, we contract is going to be a contract for crowdfunding, 
-
+对于我们的 "FundMe" 合约，它是“一个用于众筹的合约”
+("A contract for crowd funding")
 
 11026
 11:04:20,390 --> 11:04:27,980
 we'll add another star. And we can add the author of it, 
-
+再加一个 "*"，我们可以添加它的“作者”("author")
 
 11027
 11:04:27,980 --> 11:04:31,610
 which is going to be your name, I'm going to put Patrick Collins, of course, 
-
+也就是你的名字，而我要写的是 "Patrick Collins"，这是当然了
 
 11028
 11:04:31,640 --> 11:04:35,030
 then we'll add a notice, which is just kind of a note to people 
-
+接着我们添加一个“注意”("notice")，就是用来提示他人的
 
 11029
 11:04:35,030 --> 11:04:39,800
 we can say this contract is is to demo a sample funding contract. 
-
+我们可以说“该合约是一个众筹合约的示例”
+("This contract is to demo a sample funding contracts")
 
 11030
 11:04:39,800 --> 11:04:46,250
 And we can also add apt Dev,
-
+我们还可以添加 `@dev`
 
 11031
 11:04:46,670 --> 11:04:49,820
 which is a note specifically to developers. 
-
+这是一个专门针对开发者的说明
 
 11032
 11:04:50,120 --> 11:04:54,770
 And we can say this implements price feeds as our library. 
-
+我们可以说“该合约使用了喂价的库实现”
+("This implements price feeds as out library")
 
 11033
 11:04:54,770 --> 11:04:58,850
 The reason that we want to add these tags here 
-
+我们之所以在这里添加这些标签
 
 11034
 11:04:58,850 --> 11:05:02,360
 is actually because we can use the natspec to automatically create documentation for us 
-
+是因为我们可以使用 "NatSpec" 来自动为我们创建文档
 
 11035
 11:05:02,360 --> 11:05:06,350
 if we download so we can actually run solc dash s user doc dash dash dev doc, 
-
+如果我们下载了 "solc" 则可以运行 `solc --userdoc --devdoc`
 
 11036
 11:05:06,350 --> 11:05:10,220
 and the name of our file to automatically generate documentation. 
-
+以及我们想要的文件名称，来自动生成文档
 
 11037
 11:05:10,220 --> 11:05:13,820
-So this is also really helpful for 
-
+So this is also really helpful for automatically creating documentation for other developers who interact with the protocol later on. 
+因此，这对于以后要进行协议交互的其他开发人员生成文档也很有帮助
 
 11038
 11:05:13,820 --> 11:05:16,370
-automatically creating documentation for other developers who interact with the protocol later on. 
+You can use this natspec For as many or as few functions as you'd like. 
+你可以根据需要尽可能或多或少的用一点这个 "NatSpec" 的功能
 
 
 11039
 11:05:16,370 --> 11:05:20,300
-You can use this natspec For as many or as few functions as you'd like. 
-
+Most of us probably aren't going to be making documentation. 
+我们中的大多数人可能并不会去编写文档
 
 11040
 11:05:20,300 --> 11:05:23,090
-Most of us probably aren't going to be making documentation. 
-
+So we really just want to follow those guidelines 
+所以我们只需要遵守这个指南
 
 11041
 11:05:23,090 --> 11:05:26,120
-So we really just want to follow those guidelines 
-
+if we think some function or some section of our code is a little bit tricky for other developers. 
+如果我们认为某些函数或部分的代码对其他开发者来说比较棘手的话
 
 11042
 11:05:26,120 --> 11:05:29,300
-if we think some function or some section of our code 
-
+Now that we're inside of contract, 
+现在我们到了合约内部
 
 11043
 11:05:29,300 --> 11:05:32,240
-is a little bit tricky for other developers. 
-
+we can follow the order of our contract. 
+可以按照这个顺序来进行
 
 11044
 11:05:32,240 --> 11:05:34,910
-Now that we're inside of contract, we can follow the order of our contract. 
-
+We're first going to start with type declarations 
+我们首先要从，“类型声明”("Type Declarations")开始
 
 11045
 11:05:34,910 --> 11:05:39,110
-We're first going to start with type declarations
-
+which we don't really have any except for the fact 
+我们其实没有任何类型声明
 
 11046
 11:05:41,870 --> 11:05:43,790
-which we don't really have any except for the fact 
-
+that we're using our price converter for the UN 256 type. 
+除了这个 `PriceConverter for uint256`
 
 11047
 11:05:43,790 --> 11:05:48,410
-that we're using our price converter for the UN 256 type. 
-
+Okay, great. You Next, after our type declarations, 
+很好，下一个，在 "Type declarations" 之后
 
 11048
 11:05:48,650 --> 11:05:51,140
-Okay, great. You Next, after our type declarations, 
-
+we're going to do state variables. 
+我们要处理“状态变量”("State variables")
 
 11049
 11:05:51,170 --> 11:05:54,380
-we're going to do state variables. 
-
+And in this state variables section, 
+在这个状态变量部分
 
 11050
 11:05:54,380 --> 11:05:57,410
-And in this state variables section, 
-
+this is where we're actually going to change the name of some of our state variables. 
+我们需要更改一些状态变量的名称
 
 11051
 11:05:57,410 --> 11:06:00,170
-this is where we're actually going to change the name of some of our state variables. 
-
+So we'll do a little common here state variables. 
+我们在这里做一个注释 "State Variables!"
 
 11052
 11:06:00,170 --> 11:06:04,370
-So we'll do a little common here state variables. 
-
+Now in the solidity style guide, kind of adhere to the naming styles, 
+在 Solidity 风格指南中，我们要遵循它的命名风格
 
 11053
 11:06:04,400 --> 11:06:08,780
-Now in the solidity style guide, kind of adhere to the naming styles, 
-
+we use upper and lowercase, 
+我们要使用大小写混合
 
 11054
 11:06:08,810 --> 11:06:12,080
-we use upper and lowercase, we use total caps with underscores here. 
-
+we use total caps with underscores here. 
+带有下划线的要全部大写
 
 11055
 11:06:12,080 --> 11:06:14,750
 However, these naming variables are going to change in the future in this section. 
-
+然而，这个部分的这些变量的命名将来会发生改变
 
 11056
 11:06:14,750 --> 11:06:16,820
 And if you're following along with the GitHub repo associated with this course,
-
+如果你正在关注本课程关联的 GitHub 仓库
 
 11057
 11:06:17,180 --> 11:06:19,340
 these are going to be actually a little bit different than what you see. 
-
+就会发现那里和你现在看到的有些不同
 
 11058
 11:06:19,340 --> 11:06:22,400
 However, for now, we're going to leave them as they are,
-
+但现在，我们暂时保持原样
 
 11059
 11:06:22,400 --> 11:06:24,710
 because the reason why we're going to change them isn't going to be quite clear yet. 
-
+因为我们还不是很清楚要更改它们的原因
 
 11060
 11:06:24,710 --> 11:06:27,980
 Don't worry. So these names are going to change soon, but not yet. 
-
+别着急，这些名称很快就会更改，但不是现在
 
 11061
 11:06:27,980 --> 11:06:31,310
 Alright, after state variables comes events, and modifiers. 
-
+好的，在状态变量之后是“事件”("Events")和“修饰器”("Modifiers")
 
 11062
 11:06:31,310 --> 11:06:34,940
 We don't have any events, but we do have a modifier. 
-
+我们没有任何事件但有一个修饰器
 
 11063
 11:06:34,940 --> 11:06:39,560
 So we'll copy this. And actually, we'll delete this comment here. 
-
+所以我们要复制它，然后删除这里的注释
 
 11064
 11:06:39,560 --> 11:06:46,850
 And we'll paste our modifier here. 
-
+接着把我们的修饰器粘贴到这里
 
 11065
 11:06:46,850 --> 11:06:50,120
 Oh, and it looks like looks like we're not auto formatting here. 
-
+哦，看起来这里没有被自动格式化
 
 11066
 11:06:50,450 --> 11:06:52,820
 So we're going to uncomment immutable actually, 
-
+我们把这里的 "immutable" 解除注释
 
 11067
 11:06:52,880 --> 11:06:55,160
 so that it automatically auto formats. 
-
+这样它就会进行自动格式化
 
 11068
 11:06:55,160 --> 11:06:57,440
 Okay, great. We're out of formatting now. And Cool. 
-
+很好，现在已经是格式化的了，酷~
 
 11069
 11:06:57,440 --> 11:07:01,100
 Alright, so now we have our modifiers. Next, 
-
+好的，现在我们已经处理好了修饰器，下一个
 
 11070
 11:07:01,100 --> 11:07:05,030
 we have right here, and then we have all of our functions. Great. 
-
+我们现在位于这里，接下来要处理我们所有的函数，很好
 
 11071
 11:07:05,030 --> 11:07:08,390
 We actually want to group our functions in this order that I just print here. 
-
+我们打算按照这个顺序来对我们的函数进行分组，我已经打在这里了
 
 11072
 11:07:08,390 --> 11:07:11,720
-So we want the constructor which we have received and fall back, 
-
+So we want the constructor which we have 
+先是“构造函数”("constructor")，我们有
 
 11073
 11:07:11,720 --> 11:07:14,570
-we do have fall back and receive. 
-
+received and fall back, we do have fall back and receive. 
+然后是 "receive" 和 "fallback"，我们也确实有 "fallback" 和 "receive"
 
 11074
 11:07:14,570 --> 11:07:20,690
 So we're going to actually copy those and delete this comment. 
-
+所以我们要把它们复制下来，删掉这里的注释
 
 11075
 11:07:20,690 --> 11:07:24,110
-We're gonna stick those veterans Heath here looks like receive goes first. 
-
+We're gonna stick those veterans Heath here looks like receive goes first. So we'll put that here. 
+把它们粘贴到这里来，看起来 "receive" 要放在前面，把它放到这里
 
 11076
 11:07:24,110 --> 11:07:28,460
-So we'll put that here. Then external functions, then public, internal, private.
-
+Then external functions, then public, internal, private.
+接下来是 "external" 函数，再接下来是 "public", "internal", "private"
 
 11077
 11:07:29,180 --> 11:07:32,480
-So we have public public. And that's it. And then we can delete this part down here. Okay. 
-
+So we have public public. And that's it. And then we can delete this part down here. Okay. Cool. 
+我们有 "public", "public" 就是这样，然后删除下面这部分，很好，酷~ 
 
 11078
 11:07:32,480 --> 11:07:36,680
-Cool. And if we want, we can do that syntax up here from the net spec for our functions. 
-
+And if we want, we can do that syntax up here from the net spec for our functions. 
+如果我们愿意，可以对我们的函数使用 "NatSpec" 的语法
 
 11079
 11:07:36,680 --> 11:07:39,920
 For example, for fund it, we could even just copy paste, 
-
+举个例子，对于 "fund()"，我们可以直接复制粘贴
 
 11080
 11:07:40,490 --> 11:07:44,060
 we would remove title, we would remove author, 
-
+删除 "title"，删除 "author"
 
 11081
 11:07:44,060 --> 11:07:48,710
 and we just say add, notice, this function, funds this contract. 
-
+只需要保留 "notice"，“该函数为本合约吸纳资金”
+("This function funds this contract")
 
 11082
 11:07:48,710 --> 11:07:55,640
 And we can even leave a little dev thing here to talk about it. 
-
+我们也可以保留一个 "dev" 内容做点说明
 
 11083
 11:07:55,640 --> 11:07:58,850
 Now if we have parameters, you can do apt puram. 
-
+如果我们有一些参数，你可以添加 "@param"
 
 11084
 11:07:58,850 --> 11:08:02,660
 And say like what the parameter is. 
-
+并描述相应的参数
 
 11085
 11:08:02,660 --> 11:08:06,470
 And then if we have returns, we can say returns, 
-
+如果有返回值，则可以添加 "@return"
 
 11086
 11:08:06,470 --> 11:08:10,400
 or returns and then what it returns for the documentation. 
-
+来说明返回值是什么
 
 11087
 11:08:10,400 --> 11:08:13,400
-Since this doesn't have any parameters in here, 
-
+Since this doesn't have any parameters in here, and doesn't return anything, 
+因为它这里并没有任何参数，也不返回任何内容
 
 11088
 11:08:13,400 --> 11:08:15,980
-and doesn't return anything, we can just leave it like this. 
-
+we can just leave it like this. 
+所以我们可以就保持这样
 
 11089
 11:08:15,980 --> 11:08:18,680
-And great, we've just revamped our contract here 
-
+And great, we've just revamped our contract here to make it a little bit more nicely formatted. Great job. 
+很好，我们已经重新整理了我们的合约，并使其格式更加整洁，干得好
 
 11090
 11:08:18,680 --> 11:08:21,560
-to make it a little bit more nicely formatted. Great job. 
-
+Now, like I said, 
+正如我所说的
 
 11091
 11:08:21,560 --> 11:08:24,710
-Now, like I said, we actually are going to change the names of our state variables, 
-
+we actually are going to change the names of our state variables, 
+我们实际上还要更改状态变量的名称
 
 11092
 11:08:24,710 --> 11:08:26,900
 and we're going to add some functions in here and a little bit. 
-
+并在这里添加一些函数
 
 11093
 11:08:26,900 --> 11:08:29,300
 So if we're following with the GitHub repo,
-
+如果你正在关注 GitHub 仓库
 
 11094
 11:08:29,330 --> 11:08:31,940
 the state of the contract right now is going to look a little bit different. 
-
+会发现合约的状态会与这里看到的有些不同
 
 11095
 11:08:31,940 --> 11:08:34,670
 But it'll make sense why change this up in a little bit.
-
-
-11096
-11:08:34,670 --> 11:08:35,120
+稍后我们会解释为什么要做出这些改变
