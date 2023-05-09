@@ -3,6 +3,9 @@ const fs = require("fs-extra");
 require("dotenv").config();
 
 async function main() {
+    // 使用 .env 保存敏感信息
+    // 使用 .gitignore 忽略上传至 github 的文件
+    // process.env 调用 .env 中的变量
     console.log(process.env.PRIVATE_KEY)
     const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
     const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
