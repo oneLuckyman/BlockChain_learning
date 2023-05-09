@@ -1,0 +1,1623 @@
+11097
+11:08:37,910 --> 11:08:40,190
+Alright, so now that we've cleaned this up, we've got to deploy marks, deploy Funmi. 
+
+
+11098
+11:08:40,190 --> 11:08:43,730
+Let's go ahead and start writing some tests. 
+
+
+11099
+11:08:43,730 --> 11:08:46,640
+And after we write these tests, we're actually going to run that gas estimator 
+
+
+11100
+11:08:46,640 --> 11:08:50,000
+and using that gas estimator, we're gonna go back, 
+
+
+11101
+11:08:50,210 --> 11:08:52,370
+and we're going to update this contract one more time 
+
+
+11102
+11:08:52,370 --> 11:08:56,300
+to make this even cheaper to use and work with. 
+
+
+11103
+11:08:56,540 --> 11:08:58,850
+And remember, that's going to be one of the advantages of writing these tests 
+
+
+11104
+11:08:58,850 --> 11:09:01,700
+is how we can optimize our contracts to be even faster, more gas efficient, etc, 
+
+
+11105
+11:09:01,700 --> 11:09:05,780
+we want to make sure that we write really good tests, 
+
+
+11106
+11:09:05,780 --> 11:09:08,540
+and this is going to be one of our first jumps into these more professional test setups. 
+
+
+11107
+11:09:08,540 --> 11:09:13,070
+So we're going to jump into our test folder, 
+
+
+11108
+11:09:13,100 --> 11:09:14,930
+we're going to delete this sample test.js. 
+
+
+11109
+11:09:14,930 --> 11:09:19,490
+In our last section, we went over a really minimalistic test, which is great. 
+
+
+11110
+11:09:19,490 --> 11:09:22,880
+However, when we get bigger and bigger projects, 
+
+
+11111
+11:09:22,880 --> 11:09:24,950
+we're going to want to start testing more and more different things, 
+
+
+11112
+11:09:24,950 --> 11:09:28,190
+we're going to get more and more into at least two different types of testing. 
+
+
+11113
+11:09:28,190 --> 11:09:31,100
+So if we cd into our test folder, 
+
+
+11114
+11:09:31,100 --> 11:09:33,800
+we're going to make one directory called staging. 
+
+
+11115
+11:09:33,800 --> 11:09:37,310
+And then we're going to make another directory called unit. 
+
+
+11116
+11:09:37,310 --> 11:09:41,090
+And now if we look in our test folder,
+
+
+11117
+11:09:41,150 --> 11:09:44,450
+we now have a staging folder, and a unit test folder. 
+
+
+11118
+11:09:44,480 --> 11:09:47,330
+Now we're going to talk about two different types of tests. 
+
+
+11119
+11:09:47,330 --> 11:09:49,820
+The first one is going to be something called a unit test.
+
+
+11120
+11:09:49,850 --> 11:09:53,090
+Now what is a unit test? 
+
+
+11121
+11:09:53,090 --> 11:09:56,690
+Unit testing is a software testing method by which individual units of source code are tested.
+
+
+11122
+11:09:56,780 --> 11:10:00,320
+Basically, what we want to do is in our contracts, 
+
+
+11123
+11:10:00,320 --> 11:10:03,680
+we want to test minimal portions of our code to make sure that they work correctly. 
+
+
+11124
+11:10:03,710 --> 11:10:07,430
+Then once our small pieces of the test work, 
+
+
+11125
+11:10:07,430 --> 11:10:11,360
+we want to do a staging test or maybe an integration test. 
+
+
+11126
+11:10:11,360 --> 11:10:15,020
+This might be where we run our code on a test net or some actual network. 
+
+
+11127
+11:10:15,020 --> 11:10:17,630
+You can think of a staging test, it's kind of the last stop before you deploy to a main net. 
+
+
+11128
+11:10:17,660 --> 11:10:21,380
+They're not always 100% necessary, 
+
+
+11129
+11:10:21,380 --> 11:10:24,080
+but they can be really, really helpful.
+
+
+11130
+11:10:24,110 --> 11:10:28,130
+Remember, we do want to be conscientious of how much we use our test nets, 
+
+
+11131
+11:10:28,160 --> 11:10:32,060
+but we absolutely would 100% want to make sure
+
+
+11132
+11:10:32,060 --> 11:10:35,480
+that everything works locally and that we unit test and we run all of our code locally. 
+
+
+11133
+11:10:35,510 --> 11:10:39,500
+Then we can use staging tests on an
+
+
+11134
+11:10:39,500 --> 11:10:43,400
+actual test net to make sure that our code will work with
+
+
+11135
+11:10:43,400 --> 11:10:48,740
+actual other contracts. Now unit tests can be done with local
+
+
+11136
+11:10:48,770 --> 11:10:52,070
+Hard Hat Network or a forked Hard Hat Network, we'll talk
+
+
+11137
+11:10:52,070 --> 11:10:55,820
+about this for tar Hat Network very soon, right, now, let's
+
+
+11138
+11:10:55,850 --> 11:10:58,340
+build these unit tests, these unit tests are going to be
+
+
+11139
+11:10:58,340 --> 11:11:02,090
+basically what we saw in our last section. So let's go in and
+
+
+11140
+11:11:02,090 --> 11:11:04,670
+let's jump in and write some of these unit tests. So let's
+
+
+11141
+11:11:04,670 --> 11:11:10,370
+create a new test, we'll call it on me dot test dot j, s. And
+
+
+11142
+11:11:10,370 --> 11:11:13,160
+we'll start making our tests in here. Now, we did test
+
+
+11143
+11:11:13,160 --> 11:11:15,920
+previously in our last section, but our tests here are going to
+
+
+11144
+11:11:15,920 --> 11:11:18,470
+look a little bit differently, we're actually going to use
+
+
+11145
+11:11:18,470 --> 11:11:22,130
+hardhat deploy, to automatically set up our tests as if both of
+
+
+11146
+11:11:22,130 --> 11:11:24,860
+these deployed functions had been run. So let's go ahead and
+
+
+11147
+11:11:24,860 --> 11:11:27,440
+get this started. So we're still going to do that same setup that
+
+
+11148
+11:11:27,440 --> 11:11:32,600
+we're gonna do describe, we're gonna say fund me. And this is
+
+
+11149
+11:11:32,600 --> 11:11:41,540
+going to have that async function like so. And in here,
+
+
+11150
+11:11:41,570 --> 11:11:46,670
+we're going to have a before each, and we're going to have
+
+
+11151
+11:11:46,670 --> 11:11:49,730
+some hits and some describes and everything. Now since we want to
+
+
+11152
+11:11:49,730 --> 11:11:52,280
+unit test this, we're gonna go a little bit heavier on the test
+
+
+11153
+11:11:52,280 --> 11:11:54,470
+here, and then with our last project, but in the future,
+
+
+11154
+11:11:54,470 --> 11:11:57,140
+we'll go a little bit lighter with some of the tests. So let's
+
+
+11155
+11:11:57,140 --> 11:12:02,750
+get started. If we run yarn Hardhead test right now, we're
+
+
+11156
+11:12:02,750 --> 11:12:06,770
+gonna get zero passing. Now, if we run yarn hardhat coverage,
+
+
+11157
+11:12:08,690 --> 11:12:11,180
+we're gonna get something that looks like this, saying, Hey,
+
+
+11158
+11:12:11,510 --> 11:12:15,440
+you're missing a lot of stuff. So let's try to cover some more
+
+
+11159
+11:12:15,440 --> 11:12:18,680
+lines with our tests. And one way we can do that is actually
+
+
+11160
+11:12:18,680 --> 11:12:22,760
+we can group our tests based off of different functions. So let's
+
+
+11161
+11:12:22,760 --> 11:12:26,150
+have our first set of tests be around our constructor. To do
+
+
+11162
+11:12:26,150 --> 11:12:29,300
+that inside of our first describe, we can add another
+
+
+11163
+11:12:29,300 --> 11:12:34,250
+describe, have this describe the just the constructor, this
+
+
+11164
+11:12:34,280 --> 11:12:37,610
+larger scope will be for the entire Funmi contract. And
+
+
+11165
+11:12:37,610 --> 11:12:41,690
+everything inside this one will just be for the constructor. So
+
+
+11166
+11:12:41,690 --> 11:12:45,530
+this will also be an async function. And these tasks will
+
+
+11167
+11:12:45,530 --> 11:12:48,560
+be just for the constructor. But before we even work on this
+
+
+11168
+11:12:48,560 --> 11:12:51,380
+describe, we probably want to deploy our Funmi contract. So
+
+
+11169
+11:12:51,380 --> 11:12:54,440
+let's learn how to do that. So we'll do a before each, which
+
+
+11170
+11:12:54,440 --> 11:13:00,950
+will be an async function. And we're going to deploy our Funmi
+
+
+11171
+11:13:00,950 --> 11:13:06,350
+contract using hard hat deploy. Since we use hard hat deploy,
+
+
+11172
+11:13:06,380 --> 11:13:09,350
+our Funmi contract will come even with our mocks and
+
+
+11173
+11:13:09,350 --> 11:13:11,540
+everything. So above the before each,
+
+
+11174
+11:13:11,570 --> 11:13:18,500
+let's do let me HDMI. And then here, we're going to deploy
+
+
+11175
+11:13:18,500 --> 11:13:21,380
+Funmi, where we're going to deploy our Funmi contract is
+
+
+11176
+11:13:21,380 --> 11:13:24,140
+first by pulling in our deployments object from Harnett
+
+
+11177
+11:13:24,140 --> 11:13:28,880
+deploy. So we'll do const deployments equals require
+
+
+11178
+11:13:29,930 --> 11:13:33,950
+hardhat. And this deployments object has, has a function
+
+
+11179
+11:13:33,950 --> 11:13:38,300
+called fixture with fixture does is it allows us to basically run
+
+
+11180
+11:13:38,300 --> 11:13:41,960
+our entire deploy folder with as many tags as we want. You'll
+
+
+11181
+11:13:41,960 --> 11:13:46,190
+notice I added this alt tag in both of our scripts. This means
+
+
+11182
+11:13:46,190 --> 11:13:49,940
+that in this deployment stuff fixtures, it's gonna be a wait
+
+
+11183
+11:13:49,970 --> 11:13:53,630
+deployment of fixtures. If I run away deployments dot fixture,
+
+
+11184
+11:13:53,720 --> 11:13:56,840
+I'll run through our deploy scripts on our local network and
+
+
+11185
+11:13:56,840 --> 11:14:00,200
+deploy all of the contracts that we can use them in our scripts
+
+
+11186
+11:14:00,230 --> 11:14:03,170
+and in our testing, and we can deploy everything in that deploy
+
+
+11187
+11:14:03,170 --> 11:14:07,040
+folder with just this one line. isn't that helpful. Now, once
+
+
+11188
+11:14:07,040 --> 11:14:09,590
+all of our contracts have been deployed, we can start getting
+
+
+11189
+11:14:09,590 --> 11:14:15,890
+them will say fund me equals await ethers, and we'll pull an
+
+
+11190
+11:14:15,890 --> 11:14:20,450
+ether some hard hat as well. dot and this is where hard hat
+
+
+11191
+11:14:20,450 --> 11:14:25,010
+deploy is helpful. Again, hard to deploy rapt ether is with a
+
+
+11192
+11:14:25,010 --> 11:14:29,180
+function called Get contract, this get contract function is
+
+
+11193
+11:14:29,180 --> 11:14:32,510
+going to get the most recent deployment of whatever contract
+
+
+11194
+11:14:32,510 --> 11:14:36,380
+we tell it. So we'll say get contract of fun to me. So this
+
+
+11195
+11:14:36,380 --> 11:14:40,820
+will give us the most recent Lee deployed Funmi contract in just
+
+
+11196
+11:14:40,850 --> 11:14:45,200
+this one line. And now Funmi will be equal to this line here.
+
+
+11197
+11:14:45,410 --> 11:14:48,350
+Now we're going to make a bunch of transactions on our Funmi. To
+
+
+11198
+11:14:48,350 --> 11:14:52,280
+test it. Of course, we can also tell ethers which account we
+
+
+11199
+11:14:52,280 --> 11:14:57,080
+want connected to fund me. So I can say const deployer equals
+
+
+11200
+11:14:57,620 --> 11:15:03,050
+goes away get named accounts, exactly like we did in our
+
+
+11201
+11:15:03,050 --> 11:15:06,770
+deploy scripts. And then we just need to import it from our tap
+
+
+11202
+11:15:06,920 --> 11:15:10,130
+in our deploy scripts we imported get named accounts
+
+
+11203
+11:15:10,220 --> 11:15:13,970
+inside of our input parameters for our deploy function.
+
+
+11204
+11:15:14,390 --> 11:15:17,240
+Remember getting named accounts and deployments was abstracted
+
+
+11205
+11:15:17,240 --> 11:15:20,390
+from if we look up here, from the hard hat runtime
+
+
+11206
+11:15:20,390 --> 11:15:23,030
+environment, and like I said, the hard hat runtime environment
+
+
+11207
+11:15:23,030 --> 11:15:25,580
+is basically the same thing as hard hat. So we can just go
+
+
+11208
+11:15:25,580 --> 11:15:29,180
+ahead and import it like this, actually like this. Because we
+
+
+11209
+11:15:29,180 --> 11:15:32,210
+actually need to abstract just the deployer from getting named
+
+
+11210
+11:15:32,210 --> 11:15:36,290
+accounts. And now what we can do is we can connect our Deployer
+
+
+11211
+11:15:36,350 --> 11:15:39,830
+to our Fund Me account. So whenever we call a function with
+
+
+11212
+11:15:39,830 --> 11:15:43,340
+fund me, it'll automatically be from that the player account,
+
+
+11213
+11:15:43,670 --> 11:15:46,070
+which is great. Another way you can get different accounts
+
+
+11214
+11:15:46,100 --> 11:15:49,250
+directly from your heart had config. Is you could take const
+
+
+11215
+11:15:49,280 --> 11:15:55,400
+accounts equals await ethers dot get signers, ethers dot get
+
+
+11216
+11:15:55,400 --> 11:15:58,640
+signers is going to return whatever is in this account
+
+
+11217
+11:15:58,640 --> 11:16:01,790
+section of your network. If you're on your default network
+
+
+11218
+11:16:01,790 --> 11:16:04,280
+hard hat, it's going to give you a list of 10 fake accounts that
+
+
+11219
+11:16:04,280 --> 11:16:06,470
+we can work with you then of course, can do something like
+
+
+11220
+11:16:06,470 --> 11:16:12,860
+const. Account one equals accounts. More correctly would
+
+
+11221
+11:16:12,860 --> 11:16:16,100
+be account zero equals account zero and work like that. We'll
+
+
+11222
+11:16:16,100 --> 11:16:17,960
+leave that comment that out, just in case you need a
+
+
+11223
+11:16:17,960 --> 11:16:20,390
+reference to it in the future. Okay, great. So now we have our
+
+
+11224
+11:16:20,390 --> 11:16:23,960
+Funmi contract. Let's go ahead and write some tests for testing
+
+
+11225
+11:16:23,960 --> 11:16:25,940
+the constructor. And we're probably going to want to use
+
+
+11226
+11:16:25,940 --> 11:16:30,320
+this deployer object down here. So we'll do let deployer above.
+
+
+11227
+11:16:30,410 --> 11:16:33,920
+And we'll do something a little finicky here. But we'll say
+
+
+11228
+11:16:33,920 --> 11:16:39,710
+deployer equals Wait, get named accounts, dot Deployer. And
+
+
+11229
+11:16:39,710 --> 11:16:42,170
+we'll just wrap this up so that we can just grab this deployer
+
+
+11230
+11:16:42,170 --> 11:16:45,410
+object and assign it to declare like so. Now in here, we'll
+
+
+11231
+11:16:45,410 --> 11:16:50,420
+create our first test, we'll say it will say it sets the Agra
+
+
+11232
+11:16:50,450 --> 11:16:56,480
+Gator addresses correctly. Comma will have this be an async
+
+
+11233
+11:16:56,480 --> 11:17:03,050
+function. And we'll say const response equals await fund me
+
+
+11234
+11:17:03,200 --> 11:17:07,850
+dot, let's get this price feed here, fund me dot price feed.
+
+
+11235
+11:17:08,240 --> 11:17:10,880
+And then we'll want to make sure this price feed is going to be
+
+
+11236
+11:17:10,880 --> 11:17:14,330
+the same as our Mk V three aggregator since we're going to
+
+
+11237
+11:17:14,330 --> 11:17:18,200
+be running these tests locally. So we should get our mark three
+
+
+11238
+11:17:18,230 --> 11:17:23,960
+V three aggregator up top. Let's do let mock v3 aggregate store.
+
+
+11239
+11:17:25,040 --> 11:17:27,950
+And we'll grab this address the same way mockbee Three
+
+
+11240
+11:17:27,950 --> 11:17:34,010
+aggregator equals await ethers dot get contract mockbee Three
+
+
+11241
+11:17:34,010 --> 11:17:37,460
+aggregator comma, we'll connect this one to the deployer as
+
+
+11242
+11:17:37,460 --> 11:17:43,880
+well. So we'll want to say cert dot equals cert dot equal
+
+
+11243
+11:17:44,660 --> 11:17:50,000
+response comma lock v3 aggregator dot address. And of
+
+
+11244
+11:17:50,000 --> 11:17:58,040
+course we'll want to say const. Assert equals require gy. Import
+
+
+11245
+11:17:58,040 --> 11:18:00,170
+that from DJI. Okay, cool.
+
+
+11246
+11:18:00,500 --> 11:18:05,630
+Now, let's go ahead and try this out. Yarn hardhat. Test. Oops, I
+
+
+11247
+11:18:05,630 --> 11:18:10,850
+spelled response wrong. Let's try that again. Awesome. So this
+
+
+11248
+11:18:10,850 --> 11:18:14,960
+means that we are indeed assigning the price feed address
+
+
+11249
+11:18:14,990 --> 11:18:18,230
+correctly to the Mach v3 aggregator. Okay, great.
+
+
+11250
+11:18:18,440 --> 11:18:21,080
+Awesome. I think for now, that's all we really want to do for our
+
+
+11251
+11:18:21,080 --> 11:18:24,200
+constructor. Now these two are kind of a nice to have, I showed
+
+
+11252
+11:18:24,200 --> 11:18:26,870
+them more just to kind of demo what they look like, we're going
+
+
+11253
+11:18:26,870 --> 11:18:29,420
+to skip writing tests for them for now. And we're actually
+
+
+11254
+11:18:29,420 --> 11:18:31,760
+going to go ahead and delete them directly from the contract.
+
+
+11255
+11:18:32,090 --> 11:18:34,190
+If you want to go ahead and write some tests for them and
+
+
+11256
+11:18:34,190 --> 11:18:36,920
+leave them in your examples for your learnings. You absolutely
+
+
+11257
+11:18:36,920 --> 11:18:39,440
+can pause the video and write some tests for it if you choose
+
+
+11258
+11:18:39,440 --> 11:18:42,470
+so, but we're going to skip them. Next though, we are going
+
+
+11259
+11:18:42,470 --> 11:18:46,250
+to move on to fund and running some tests for fun here. So
+
+
+11260
+11:18:46,250 --> 11:18:49,730
+let's go ahead and write describe fund. This will be an
+
+
+11261
+11:18:49,730 --> 11:18:55,730
+async function. And in here, we're going to do a number of
+
+
+11262
+11:18:55,730 --> 11:18:58,760
+tests. So if we're going to go line by line here, what's the
+
+
+11263
+11:18:58,760 --> 11:19:01,370
+first thing that we should look at? Well, we should look at this
+
+
+11264
+11:19:01,370 --> 11:19:04,790
+require line we should write a test to see if this contract
+
+
+11265
+11:19:04,790 --> 11:19:09,170
+actually does fail? If not enough, eath is sent. So let's
+
+
+11266
+11:19:09,170 --> 11:19:15,680
+go ahead and we'll say it fails, if you don't send enough eath
+
+
+11267
+11:19:17,030 --> 11:19:23,210
+have this be an async function? Now, how do we test to see if
+
+
+11268
+11:19:23,210 --> 11:19:26,810
+something fails? Right now we've done assert equals, but if
+
+
+11269
+11:19:26,810 --> 11:19:30,500
+something fails, we might run into an issue. So for example,
+
+
+11270
+11:19:30,530 --> 11:19:36,290
+if I run await fund me dot fund, but I don't pass any value to
+
+
+11271
+11:19:36,290 --> 11:19:39,410
+this transaction. Let's see what happens. I run yarn Hardhead
+
+
+11272
+11:19:39,410 --> 11:19:44,720
+test. Well, our test is actually going to break VM exception.
+
+
+11273
+11:19:44,930 --> 11:19:48,980
+While processing transaction reverted with reason string, you
+
+
+11274
+11:19:48,980 --> 11:19:51,950
+need to spend more eath. So our tests are going to break which
+
+
+11275
+11:19:51,950 --> 11:19:56,330
+is good. We want this to break. But we want to tell our test
+
+
+11276
+11:19:56,330 --> 11:20:00,710
+that this is okay. Right? Want to tell that this is okay. So
+
+
+11277
+11:20:00,860 --> 11:20:04,220
+the way we can do this, and this is where our waffle testing
+
+
+11278
+11:20:04,220 --> 11:20:07,580
+comes into play. With waffle and with testing, what we can
+
+
+11279
+11:20:07,580 --> 11:20:11,390
+actually do is we can use the expect keyword and expect
+
+
+11280
+11:20:11,510 --> 11:20:15,080
+transactions to be reverted and for transactions to fail. So
+
+
+11281
+11:20:15,080 --> 11:20:18,200
+instead of using assert here, we're actually going to run a
+
+
+11282
+11:20:18,200 --> 11:20:28,310
+wait expect fund me dot fun 2.2 dot B, that reverted and we've
+
+
+11283
+11:20:28,310 --> 11:20:31,340
+actually even be more specific here by saying to be reverted
+
+
+11284
+11:20:31,430 --> 11:20:37,310
+with and then the exact reverted error, you need to spend more
+
+
+11285
+11:20:37,340 --> 11:20:42,950
+eath. Now if we run our tests, oops expect is not defined. So
+
+
+11286
+11:20:42,950 --> 11:20:47,570
+we need to import that from Chai. Which chai is being
+
+
+11287
+11:20:47,600 --> 11:20:52,790
+overwritten by waffle, we see that it does indeed Pass, which
+
+
+11288
+11:20:52,790 --> 11:20:57,860
+is perfect. So now we have a way to both assert things and expect
+
+
+11289
+11:20:57,860 --> 11:21:01,310
+things to fail. Awesome, even with the specific failure codes.
+
+
+11290
+11:21:01,580 --> 11:21:04,670
+Perfect. Let's write some more tests here. Well, we probably
+
+
+11291
+11:21:04,670 --> 11:21:09,170
+want it to correctly update this data structure. So we could say,
+
+
+11292
+11:21:09,680 --> 11:21:16,640
+it updates the amount funded data structure, it's going to be
+
+
+11293
+11:21:16,640 --> 11:21:20,630
+an async function. In here, we're going to need to call fund
+
+
+11294
+11:21:20,630 --> 11:21:25,070
+v dot fund. However, we're going to need to actually pass some
+
+
+11295
+11:21:25,070 --> 11:21:29,180
+value with this transaction. And for now, we'll just hard code
+
+
+11296
+11:21:29,180 --> 11:21:34,280
+the value that we're going to send, say const. Send value is
+
+
+11297
+11:21:34,280 --> 11:21:40,070
+going to be 112345 678-910-1234 5678, which
+
+
+11298
+11:21:40,070 --> 11:21:43,640
+is going to be one eath. Another way we can write this though, is
+
+
+11299
+11:21:43,640 --> 11:21:46,790
+we can use the ethers utility to make this a little bit easier to
+
+
+11300
+11:21:46,790 --> 11:21:49,610
+read. Because all those zeros are kind of confusing, and it's
+
+
+11301
+11:21:49,610 --> 11:21:52,460
+hard to tell at first glance what this actually is. So we're
+
+
+11302
+11:21:52,460 --> 11:22:00,980
+gonna actually use ethers dot utils dot parse ether, one, this
+
+
+11303
+11:22:01,010 --> 11:22:05,570
+parse ethers utility converts this one into that one with 18
+
+
+11304
+11:22:05,570 --> 11:22:08,870
+zeros, which makes life a lot easier. If you go to the ethers
+
+
+11305
+11:22:08,870 --> 11:22:11,930
+documentation, there's also a parts units function where you
+
+
+11306
+11:22:11,930 --> 11:22:16,250
+can actually convert any unit, either ethers or Gwei. Or really
+
+
+11307
+11:22:16,250 --> 11:22:19,370
+whatever you want to do, you could convert any number to any
+
+
+11308
+11:22:19,370 --> 11:22:22,130
+other Aetherium you type. So this is the set value that we're
+
+
+11309
+11:22:22,130 --> 11:22:25,760
+going to use for our fund. And, and this is definitely going to
+
+
+11310
+11:22:25,760 --> 11:22:30,830
+be more than our minimum USD of 50. So after we call this fun
+
+
+11311
+11:22:30,830 --> 11:22:34,790
+function, we'll say const response is going to be equal to
+
+
+11312
+11:22:34,850 --> 11:22:41,720
+a weight, fund me dot address to Mt funded address to Mt funded
+
+
+11313
+11:22:41,990 --> 11:22:45,440
+for the deployer dot address. Because remember, this is a
+
+
+11314
+11:22:45,440 --> 11:22:49,310
+mapping of each address and how much they've actually funded. So
+
+
+11315
+11:22:49,310 --> 11:22:51,980
+if we use the deployer address, it should give us the amount
+
+
+11316
+11:22:52,010 --> 11:22:55,130
+that we actually sent. So now we can run assert dot equal
+
+
+11317
+11:22:57,020 --> 11:23:00,950
+response.to string, right, because this response is going
+
+
+11318
+11:23:00,950 --> 11:23:04,880
+to be the big number version of how much has been funded by that
+
+
+11319
+11:23:04,880 --> 11:23:08,570
+account. And that should be the same as our send value.to
+
+
+11320
+11:23:08,570 --> 11:23:14,090
+string. Since send value, our one should be the exact same as
+
+
+11321
+11:23:14,090 --> 11:23:17,690
+the amount that we funded, we can run just this one test, or
+
+
+11322
+11:23:17,690 --> 11:23:23,090
+running yarn, art hat, test, dash dash grep. And we'll put
+
+
+11323
+11:23:23,090 --> 11:23:28,970
+this in quotes allow funded for this amount funded line. And it
+
+
+11324
+11:23:28,970 --> 11:23:32,630
+looks like we ran into an issue here, because we don't need to
+
+
+11325
+11:23:32,630 --> 11:23:36,860
+do deployed at address, we can just do deploy here. And great,
+
+
+11326
+11:23:36,890 --> 11:23:40,370
+it looks like we are indeed passing. Now if we even run yarn
+
+
+11327
+11:23:40,370 --> 11:23:44,390
+Hardhead coverage will now see we've got at least a little bit
+
+
+11328
+11:23:44,390 --> 11:23:47,570
+more coverage here. It's still not going to be great. But we
+
+
+11329
+11:23:47,570 --> 11:23:50,270
+have much better coverage. We have some statements, some
+
+
+11330
+11:23:50,270 --> 11:23:53,450
+branches, and at least some functions covered. So this is
+
+
+11331
+11:23:53,450 --> 11:23:56,990
+awesome. Let's keep going. Are we all done testing our fun
+
+
+11332
+11:23:56,990 --> 11:24:00,260
+function? Well, probably not. What else can we do with our fun
+
+
+11333
+11:24:00,260 --> 11:24:03,230
+function? Well, we're also adding funders to a funders
+
+
+11334
+11:24:03,230 --> 11:24:09,650
+array. So let's go ahead and test for that. So it adds funder
+
+
+11335
+11:24:09,680 --> 11:24:17,540
+to array of funders has been an async function. And we'll say
+
+
+11336
+11:24:17,570 --> 11:24:23,210
+await fund mean that fund value is going to be send value. We'll
+
+
+11337
+11:24:23,210 --> 11:24:30,650
+say const response equals await fund me dot calling the funders
+
+
+11338
+11:24:30,680 --> 11:24:38,030
+array at index zero. So this will be funder equals await fund
+
+
+11339
+11:24:38,030 --> 11:24:41,930
+me dot funders zero. And then we'll say assert dot equal
+
+
+11340
+11:24:42,680 --> 11:24:46,880
+funder should be the same as the Deployer. So let's go ahead and
+
+
+11341
+11:24:46,880 --> 11:24:49,850
+run this test. We'll hit up a couple times. And we'll change
+
+
+11342
+11:24:49,850 --> 11:24:56,990
+the GREP to under to array so that it looks for this line. And
+
+
+11343
+11:24:56,990 --> 11:25:00,590
+perfect. It looks like that one is also passing. Great. So the
+
+
+11344
+11:25:00,590 --> 11:25:03,890
+money's coming through, the minimum amount is coming through
+
+
+11345
+11:25:03,920 --> 11:25:07,400
+and our data structures are being updated. Awesome. Now we
+
+
+11346
+11:25:07,400 --> 11:25:10,340
+could be a little bit more verbose and do even more testing
+
+
+11347
+11:25:10,340 --> 11:25:12,980
+with this fun function. But I think for the most part, we've
+
+
+11348
+11:25:12,980 --> 11:25:16,280
+got the gist, right. So now let's go ahead and move on to
+
+
+11349
+11:25:16,310 --> 11:25:18,800
+the withdrawal function. So we're going to create a new
+
+
+11350
+11:25:18,800 --> 11:25:24,590
+describe or withdraw. This is going to be an async function.
+
+
+11351
+11:25:26,150 --> 11:25:29,480
+And let's see what the withdrawal function does. Only
+
+
+11352
+11:25:29,480 --> 11:25:32,120
+the owner of the contract is going to be able to get the
+
+
+11353
+11:25:32,120 --> 11:25:36,170
+balance, get the money back. And we're also going to reset all of
+
+
+11354
+11:25:36,170 --> 11:25:39,710
+the amounts that each one of these users is done. So let's go
+
+
+11355
+11:25:39,710 --> 11:25:42,980
+ahead and do some withdrawing. Now in order for us to test
+
+
+11356
+11:25:42,980 --> 11:25:47,630
+withdraw, we probably first want the contract to actually have
+
+
+11357
+11:25:47,630 --> 11:25:51,230
+some money and so what we can do actually is we can add another
+
+
+11358
+11:25:51,230 --> 11:25:55,250
+before each in the describe to automatically fund the contract
+
+
+11359
+11:25:55,460 --> 11:26:01,430
+before we run any tests. So we can say before each async
+
+
+11360
+11:26:01,430 --> 11:26:10,160
+function. We can say await, fund me dot fund. Value, send value.
+
+
+11361
+11:26:10,820 --> 11:26:14,660
+Now for all of our tests in this withdrawal scope, we're first
+
+
+11362
+11:26:14,660 --> 11:26:18,500
+going to fund it with eath. Let's say it can withdraw,
+
+
+11363
+11:26:19,940 --> 11:26:26,300
+withdraw eath. From a single founder, this would be an async
+
+
+11364
+11:26:26,300 --> 11:26:32,720
+function. And this is going to be a little bit longer test. So
+
+
+11365
+11:26:32,750 --> 11:26:39,050
+I'm going to set it up to be an arrange, act and assert test. So
+
+
+11366
+11:26:39,050 --> 11:26:42,290
+arrange act assert is just sort of a way to think about writing
+
+
+11367
+11:26:42,290 --> 11:26:45,500
+tests, you want to arrange the test, then you want to act. And
+
+
+11368
+11:26:45,500 --> 11:26:47,720
+then you want to run the asserts, and you'll see what I
+
+
+11369
+11:26:47,720 --> 11:26:50,630
+mean in just a second. So we're going to arrange this test,
+
+
+11370
+11:26:50,630 --> 11:26:53,360
+we're going to set this test up, we want to actually check that
+
+
+11371
+11:26:53,360 --> 11:26:56,930
+we're correctly withdrawing the ether from a single founder. So
+
+
+11372
+11:26:56,930 --> 11:26:59,360
+first, we're going to get the starting balance of the
+
+
+11373
+11:26:59,360 --> 11:27:01,550
+fundraising contract and the starting balance of the
+
+
+11374
+11:27:01,550 --> 11:27:08,090
+Deployer. So we'll say const. Starting under me, balance,
+
+
+11375
+11:27:09,200 --> 11:27:16,340
+equals await, fund me dot provider, dot get balance, fund
+
+
+11376
+11:27:16,340 --> 11:27:20,720
+me dot address. So we're gonna start with the balance of the
+
+
+11377
+11:27:20,720 --> 11:27:24,470
+fund V contract after it's been funded with some eath. And we're
+
+
+11378
+11:27:24,470 --> 11:27:29,840
+also gonna get costs start starting, deploy your balance
+
+
+11379
+11:27:30,560 --> 11:27:37,790
+goes await, fund me dot provider, dot get balance of
+
+
+11380
+11:27:38,360 --> 11:27:38,930
+deployed employer.
+
+
+11381
+11:27:39,770 --> 11:27:42,410
+So we're getting the starting balance of the Funmi, we're
+
+
+11382
+11:27:42,410 --> 11:27:44,930
+getting to the starting balance of the employer so that we can
+
+
+11383
+11:27:44,960 --> 11:27:48,320
+test later on how much these numbers have changed based off
+
+
+11384
+11:27:48,320 --> 11:27:50,750
+of what happens when we call the withdrawal function. Now that
+
+
+11385
+11:27:50,750 --> 11:27:53,690
+we've done a little bit of setup, we can actually run this
+
+
+11386
+11:27:53,690 --> 11:27:56,750
+withdrawal function, we can do the act here. So we're gonna say
+
+
+11387
+11:27:56,750 --> 11:28:02,570
+const, trans action response equals await, fund me dot
+
+
+11388
+11:28:02,570 --> 11:28:10,970
+withdraw. And then we can say const, transaction receipt
+
+
+11389
+11:28:11,630 --> 11:28:19,520
+equals await transaction response. That Wait, one, and
+
+
+11390
+11:28:19,520 --> 11:28:22,400
+now we should be able to check to see that the entire fund
+
+
+11391
+11:28:22,400 --> 11:28:26,360
+rebalance has been added to the deployer balance. So now we can
+
+
+11392
+11:28:26,360 --> 11:28:33,560
+say const ending fund me balance equals a weight on me that
+
+
+11393
+11:28:33,560 --> 11:28:41,150
+provider dot get balance of Unreal dot address. Then we can
+
+
+11394
+11:28:41,150 --> 11:28:49,460
+say const ending deployer balance equals await, fund me
+
+
+11395
+11:28:49,610 --> 11:28:52,220
+dot provider dot get balance
+
+
+11396
+11:28:54,080 --> 11:28:59,510
+of Deployer. And now we can just check to see if the numbers work
+
+
+11397
+11:28:59,510 --> 11:28:59,900
+out here.
+
+
+11398
+11:29:00,200 --> 11:29:09,770
+So we can say assert dot equal ending fund me balance is going
+
+
+11399
+11:29:09,770 --> 11:29:13,070
+to be zero, right, because we just withdrew all of the money.
+
+
+11400
+11:29:13,070 --> 11:29:16,940
+So ending funding balance should be zero. And we'll say assert
+
+
+11401
+11:29:17,180 --> 11:29:25,880
+dot equal starting fund me balance plus starting deployer
+
+
+11402
+11:29:25,880 --> 11:29:30,140
+balance. So the starting funds the balance plus the starting
+
+
+11403
+11:29:30,170 --> 11:29:34,700
+employer balance should equal the ending employer balance.
+
+
+11404
+11:29:34,730 --> 11:29:37,730
+Since we're grabbing whatever the starting deployer balance
+
+
+11405
+11:29:37,730 --> 11:29:40,400
+started with plus the starting fund to be balanced, because we
+
+
+11406
+11:29:40,400 --> 11:29:43,040
+just withdrew all of the starting fund, we balance that
+
+
+11407
+11:29:43,040 --> 11:29:46,220
+should equal the ending deployer bots. Now a couple of notes
+
+
+11408
+11:29:46,220 --> 11:29:48,830
+here, since starting Funmi balance is calling from the
+
+
+11409
+11:29:48,830 --> 11:29:52,340
+blockchain, it's going to be of type a big number, we want to
+
+
+11410
+11:29:52,340 --> 11:29:56,090
+use big number dot add actually, instead of the plus sign here,
+
+
+11411
+11:29:56,120 --> 11:29:58,400
+just because it'll it'll make working with our big numbers a
+
+
+11412
+11:29:58,400 --> 11:30:02,030
+little bit easier. So instead of starting Funmi balance, plus
+
+
+11413
+11:30:02,060 --> 11:30:06,770
+we're gonna be starting from the balance dot add. Like that. And
+
+
+11414
+11:30:06,770 --> 11:30:09,080
+that should be good. One other thing about this, though, is
+
+
+11415
+11:30:09,080 --> 11:30:13,940
+that when we called withdraw our Deployer did what our Deployer
+
+
+11416
+11:30:13,970 --> 11:30:20,510
+spent a little bit of gas. So this actually isn't accurate. We
+
+
+11417
+11:30:20,510 --> 11:30:24,110
+actually also need to calculate in the gas cost, so we wouldn't
+
+
+11418
+11:30:24,110 --> 11:30:29,930
+need to do dot add gas cost. We'd also have to do.to string
+
+
+11419
+11:30:29,930 --> 11:30:34,340
+because big numbers are objects and so identities a little bit
+
+
+11420
+11:30:34,340 --> 11:30:37,460
+weird. So to test to see if they're equal, we'll just make
+
+
+11421
+11:30:37,460 --> 11:30:44,120
+them both strings. 
