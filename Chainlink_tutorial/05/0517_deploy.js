@@ -3,11 +3,11 @@ const fs = require("fs-extra");
 require("dotenv").config();
 
 async function main() {
-    console.log(process.env.PRIVATE_KEY)
+    console.log(process.env.PRIVATE_KEY);
     const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
     // const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
     // 使用加密方式打开钱包
-    const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8")
+    const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8");
     let wallet = new ethers.Wallet.fromEncryptedJsonSync(encryptedJson, process.env.PRIVATE_KEY_PASSWORD);
     wallet = await wallet.connect(provider);
     // 这样，在终端中使用 PRIVATE_KEY_PASSWORD=password node deploy.js 就可以不使用明文密钥了

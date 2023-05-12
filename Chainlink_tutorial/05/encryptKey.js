@@ -4,7 +4,7 @@ require("dotenv").config();
 
 async function main() {
     const wallet = new ethers.Wallet(process.env.PRIVATE_KEY);
-    const encryptedJsonKey = await wallet.encrypt(
+    const encryptedJsonKey = await wallet.encryptSync(
         process.env.PRIVATE_KEY_PASSWORD,
         process.env.PRIVATE_KEY);
     console.log(encryptedJsonKey);
