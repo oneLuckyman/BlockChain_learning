@@ -1,182 +1,182 @@
 11097
 11:08:37,910 --> 11:08:40,190
-Alright, so now that we've cleaned this up, we've got to deploy marks, deploy Funmi. 
-
+Alright, so now that we've cleaned this up, 
+好了，现在我们已经把这里都整理好了
 
 11098
 11:08:40,190 --> 11:08:43,730
-Let's go ahead and start writing some tests. 
-
+we've got to deploy marks, deploy Funmi. 
+我们已经有了 "deploy-mocks" 和 "deploy-fund-me" 
 
 11099
 11:08:43,730 --> 11:08:46,640
-And after we write these tests, we're actually going to run that gas estimator 
-
+Let's go ahead and start writing some tests. 
+让我们开始编写测试吧
 
 11100
 11:08:46,640 --> 11:08:50,000
-and using that gas estimator, we're gonna go back, 
-
+And after we write these tests, we're actually going to run that gas estimator 
+等我们写完这些测试，就要运行 "gas estimator" 了
 
 11101
 11:08:50,210 --> 11:08:52,370
-and we're going to update this contract one more time 
-
+and using that gas estimator, we're gonna go back, and we're going to update this contract one more time 
+使用了 "gas estimator" 我们就可以返回去再次更新合约
 
 11102
 11:08:52,370 --> 11:08:56,300
 to make this even cheaper to use and work with. 
-
+以使其使用起来更加便宜
 
 11103
 11:08:56,540 --> 11:08:58,850
 And remember, that's going to be one of the advantages of writing these tests 
-
+记住，编写这些测试的优势之一
 
 11104
 11:08:58,850 --> 11:09:01,700
 is how we can optimize our contracts to be even faster, more gas efficient, etc, 
-
+就是可以通过它们来优化我们的合约，使其更快速，更节省 gas 等等
 
 11105
 11:09:01,700 --> 11:09:05,780
 we want to make sure that we write really good tests, 
-
+我们希望确保我们编写的测试非常好
 
 11106
 11:09:05,780 --> 11:09:08,540
 and this is going to be one of our first jumps into these more professional test setups. 
-
+这将是我们迈向更专业的测试设置的第一步
 
 11107
 11:09:08,540 --> 11:09:13,070
 So we're going to jump into our test folder, 
-
+所以，现在要跳转到我们的 "test" 文件夹
 
 11108
 11:09:13,100 --> 11:09:14,930
 we're going to delete this sample test.js. 
-
+我们要删除这个 "sample-test.js"
 
 11109
 11:09:14,930 --> 11:09:19,490
 In our last section, we went over a really minimalistic test, which is great. 
-
+在上一节中，我们介绍了一个非常简化的测试，已经很不错了
 
 11110
 11:09:19,490 --> 11:09:22,880
 However, when we get bigger and bigger projects, 
-
+然而，当我们的项目越来越大时
 
 11111
 11:09:22,880 --> 11:09:24,950
 we're going to want to start testing more and more different things, 
-
+我们就会开始想测试越来越多不同的内容
 
 11112
 11:09:24,950 --> 11:09:28,190
 we're going to get more and more into at least two different types of testing. 
-
+我们将至少进行两种不同类型的测试
 
 11113
 11:09:28,190 --> 11:09:31,100
 So if we cd into our test folder, 
-
+如果我们进入 ("cd") 到我们的 "test" 文件夹
 
 11114
 11:09:31,100 --> 11:09:33,800
 we're going to make one directory called staging. 
-
+我们要创建一个名为 "staging" 的目录
 
 11115
 11:09:33,800 --> 11:09:37,310
 And then we're going to make another directory called unit. 
-
+接着我们再创建另一个目录名为 "unit"
 
 11116
 11:09:37,310 --> 11:09:41,090
 And now if we look in our test folder,
-
+现在如果查看我们的 "test" 文件夹
 
 11117
 11:09:41,150 --> 11:09:44,450
 we now have a staging folder, and a unit test folder. 
-
+就会有一个 "staging" 文件夹和一个 "unit" 文件夹
 
 11118
 11:09:44,480 --> 11:09:47,330
 Now we're going to talk about two different types of tests. 
-
+现在我们要讨论两种不同的测试类型
 
 11119
 11:09:47,330 --> 11:09:49,820
 The first one is going to be something called a unit test.
-
+第一种被称为单元 ("unit") 测试
 
 11120
 11:09:49,850 --> 11:09:53,090
 Now what is a unit test? 
-
+那么什么是单元测试?
 
 11121
 11:09:53,090 --> 11:09:56,690
 Unit testing is a software testing method by which individual units of source code are tested.
-
+单元测试是一种软件测试方法，用于测试源代码的各个单元
 
 11122
 11:09:56,780 --> 11:10:00,320
 Basically, what we want to do is in our contracts, 
-
+基本上，我们想要在我们的合约中
 
 11123
 11:10:00,320 --> 11:10:03,680
 we want to test minimal portions of our code to make sure that they work correctly. 
-
+测试代码的最小部分，以确保它们正常工作。
 
 11124
 11:10:03,710 --> 11:10:07,430
 Then once our small pieces of the test work, 
-
+一旦小的测试片段工作正常
 
 11125
 11:10:07,430 --> 11:10:11,360
 we want to do a staging test or maybe an integration test. 
-
+我们就要进行暂存 ("staging") 测试或者说集成 ("integration") 测试
 
 11126
 11:10:11,360 --> 11:10:15,020
 This might be where we run our code on a test net or some actual network. 
-
+这可能就是我们在测试网络或真实网络上运行代码的地方
 
 11127
 11:10:15,020 --> 11:10:17,630
 You can think of a staging test, it's kind of the last stop before you deploy to a main net. 
-
+你可以将暂存测试看作是部署到主网络前的最后一道检查点
 
 11128
 11:10:17,660 --> 11:10:21,380
 They're not always 100% necessary, 
-
+它们并不总是百分百必要的
 
 11129
 11:10:21,380 --> 11:10:24,080
 but they can be really, really helpful.
-
+但它们真的非常非常有用
 
 11130
 11:10:24,110 --> 11:10:28,130
 Remember, we do want to be conscientious of how much we use our test nets, 
-
+记住，我们确实需要注意我们使用测试网的频次
 
 11131
 11:10:28,160 --> 11:10:32,060
-but we absolutely would 100% want to make sure
-
+but we absolutely would 100% want to make sure that everything works locally 
+但我们必须确保在本地的一切都工作正常
 
 11132
 11:10:32,060 --> 11:10:35,480
-that everything works locally and that we unit test and we run all of our code locally. 
-
+and that we unit test and we run all of our code locally. 
+并且我们要在本地进行单元测试并运行所有的代码
 
 11133
 11:10:35,510 --> 11:10:39,500
