@@ -111,22 +111,22 @@ Now we're going to talk about two different types of tests.
 11119
 11:09:47,330 --> 11:09:49,820
 The first one is going to be something called a unit test.
-第一种被称为单元 ("unit") 测试
+第一种被称为单元 ("Unit") 测试
 
 11120
 11:09:49,850 --> 11:09:53,090
 Now what is a unit test? 
-那么什么是单元测试?
+那么什么是 Unit 测试?
 
 11121
 11:09:53,090 --> 11:09:56,690
 Unit testing is a software testing method by which individual units of source code are tested.
-单元测试是一种软件测试方法，用于测试源代码的各个单元
+Unit 测试是一种软件测试方法，用于测试源代码的各个单元
 
 11122
 11:09:56,780 --> 11:10:00,320
 Basically, what we want to do is in our contracts, 
-基本上，我们想要在我们的合约中
+基本上就是，我们要在我们的合约中
 
 11123
 11:10:00,320 --> 11:10:03,680
@@ -141,7 +141,7 @@ Then once our small pieces of the test work,
 11125
 11:10:07,430 --> 11:10:11,360
 we want to do a staging test or maybe an integration test. 
-我们就要进行暂存 ("staging") 测试或者说集成 ("integration") 测试
+我们就要进行暂存 ("Staging") 测试或者说集成 ("integration") 测试
 
 11126
 11:10:11,360 --> 11:10:15,020
@@ -151,7 +151,7 @@ This might be where we run our code on a test net or some actual network.
 11127
 11:10:15,020 --> 11:10:17,630
 You can think of a staging test, it's kind of the last stop before you deploy to a main net. 
-你可以将暂存测试看作是部署到主网络前的最后一道检查点
+你可以将 Staging 测试看作是部署到主网络前的最后一道检查点
 
 11128
 11:10:17,660 --> 11:10:21,380
@@ -166,116 +166,116 @@ but they can be really, really helpful.
 11130
 11:10:24,110 --> 11:10:28,130
 Remember, we do want to be conscientious of how much we use our test nets, 
-记住，我们确实需要注意我们使用测试网的频次
+记住，我们必须要注意我们使用测试网络的频次
 
 11131
 11:10:28,160 --> 11:10:32,060
 but we absolutely would 100% want to make sure that everything works locally 
-但我们必须确保在本地的一切都工作正常
+我们必须要确保所有东西都能在本地正常工作
 
 11132
 11:10:32,060 --> 11:10:35,480
 and that we unit test and we run all of our code locally. 
-并且我们要在本地进行单元测试并运行所有的代码
+而且我们要在本地进行 Unit 测试并运行所有代码
 
 11133
 11:10:35,510 --> 11:10:39,500
-Then we can use staging tests on an
-
+Then we can use staging tests on an actual test net 
+接着我们才可以在实际的测试网上使用 Staging 测试
 
 11134
 11:10:39,500 --> 11:10:43,400
-actual test net to make sure that our code will work with
-
+to make sure that our code will work with actual other contracts. 
+以确保我们的代码能与其它合约共同工作
 
 11135
 11:10:43,400 --> 11:10:48,740
-actual other contracts. Now unit tests can be done with local
-
+Now unit tests can be done with local Hard Hat Network or a forked Hard Hat Network, 
+Unit 测试可以使用 "local hardhat" 或者 "forked hardhat"
 
 11136
 11:10:48,770 --> 11:10:52,070
-Hard Hat Network or a forked Hard Hat Network, we'll talk
-
+we'll talk about this for tar Hat Network very soon, 
+我们很快就会讨论这个 "forked hardhat"
 
 11137
 11:10:52,070 --> 11:10:55,820
-about this for tar Hat Network very soon, right, now, let's
-
+right, now, let's build these unit tests, 
+但现在，让我们先来构建 Unit 测试
 
 11138
 11:10:55,850 --> 11:10:58,340
-build these unit tests, these unit tests are going to be
-
+these unit tests are going to be basically what we saw in our last section. 
+这些 Unit 测试基本上就是我们在上一节中看到的内容
 
 11139
 11:10:58,340 --> 11:11:02,090
-basically what we saw in our last section. So let's go in and
-
+So let's go in and let's jump in and write some of these unit tests.  
+让我们开始编写这些 Unit 测试吧
 
 11140
 11:11:02,090 --> 11:11:04,670
-let's jump in and write some of these unit tests. So let's
-
+So let's create a new test, 
+我们来创建一个新的测试
 
 11141
 11:11:04,670 --> 11:11:10,370
-create a new test, we'll call it on me dot test dot j, s. And
-
+we'll call it on me dot test dot j, s. 
+命名为 "FundMe.test.js"
 
 11142
 11:11:10,370 --> 11:11:13,160
-we'll start making our tests in here. Now, we did test
-
+And we'll start making our tests in here. 
+我们就从这里开始开展我们的测试
 
 11143
 11:11:13,160 --> 11:11:15,920
-previously in our last section, but our tests here are going to
-
+Now, we did test previously in our last section, 
+我们在上一节中也做了测试，
 
 11144
 11:11:15,920 --> 11:11:18,470
-look a little bit differently, we're actually going to use
-
+but our tests here are going to look a little bit differently, 
+但现在的这个会有一些不同
 
 11145
 11:11:18,470 --> 11:11:22,130
-hardhat deploy, to automatically set up our tests as if both of
-
+we're actually going to use hardhat deploy, to automatically set up our tests 
+我们要用 "hardhat deploy" 来自动设置我们的测试
 
 11146
 11:11:22,130 --> 11:11:24,860
-these deployed functions had been run. So let's go ahead and
-
+as if both of these deployed functions had been run. 
+就像这两个已经运行过的 "deploy" 函数一样
 
 11147
 11:11:24,860 --> 11:11:27,440
-get this started. So we're still going to do that same setup that
-
+So let's go ahead and get this started. 
+让我们现在开始吧
 
 11148
 11:11:27,440 --> 11:11:32,600
-we're gonna do describe, we're gonna say fund me. And this is
-
+So we're still going to do that same setup that we're gonna do describe, we're gonna say fund me. 
+我们仍然是做相同的设置 `describe("FundMe")`
 
 11149
 11:11:32,600 --> 11:11:41,540
-going to have that async function like so. And in here,
-
+And this is going to have that async function like so. 
+这里面是一个 `async function` 就像这样
 
 11150
 11:11:41,570 --> 11:11:46,670
-we're going to have a before each, and we're going to have
-
+And in here, we're going to have a before each, 
+在它的内部，有一个 `beforeEach`
 
 11151
 11:11:46,670 --> 11:11:49,730
-some hits and some describes and everything. Now since we want to
-
+and we're going to have some hits and some describes and everything. 
+我们还会有一些 `it` 和一些 `describe` 以及一些其它东西
 
 11152
 11:11:49,730 --> 11:11:52,280
-unit test this, we're gonna go a little bit heavier on the test
+Now since we want to unit test this, we're gonna go a little bit heavier on the test
 
 
 11153
@@ -285,12 +285,12 @@ here, and then with our last project, but in the future,
 
 11154
 11:11:54,470 --> 11:11:57,140
-we'll go a little bit lighter with some of the tests. So let's
+we'll go a little bit lighter with some of the tests. 
 
 
 11155
 11:11:57,140 --> 11:12:02,750
-get started. If we run yarn Hardhead test right now, we're
+So let's get started. If we run yarn Hardhead test right now, we're
 
 
 11156
@@ -315,12 +315,12 @@ lines with our tests. And one way we can do that is actually
 
 11160
 11:12:18,680 --> 11:12:22,760
-we can group our tests based off of different functions. So let's
+we can group our tests based off of different functions. 
 
 
 11161
 11:12:22,760 --> 11:12:26,150
-have our first set of tests be around our constructor. To do
+So let's have our first set of tests be around our constructor. To do
 
 
 11162
@@ -340,12 +340,12 @@ larger scope will be for the entire Funmi contract. And
 
 11165
 11:12:37,610 --> 11:12:41,690
-everything inside this one will just be for the constructor. So
+everything inside this one will just be for the constructor. 
 
 
 11166
 11:12:41,690 --> 11:12:45,530
-this will also be an async function. And these tasks will
+So this will also be an async function. And these tasks will
 
 
 11167
