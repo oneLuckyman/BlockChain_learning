@@ -275,228 +275,228 @@ and we're going to have some hits and some describes and everything.
 
 11152
 11:11:49,730 --> 11:11:52,280
-Now since we want to unit test this, we're gonna go a little bit heavier on the test
-
+Now since we want to unit test this, 
+由于我们要进行的是 Unit 测试
 
 11153
 11:11:52,280 --> 11:11:54,470
-here, and then with our last project, but in the future,
-
+we're gonna go a little bit heavier on the test here, and then with our last project, 
+所以相比上一个项目，我们在这里会进行更加重度的测试
 
 11154
 11:11:54,470 --> 11:11:57,140
-we'll go a little bit lighter with some of the tests. 
-
+but in the future, we'll go a little bit lighter with some of the tests. 
+但未来，我们会对一些测试做轻量化处理
 
 11155
 11:11:57,140 --> 11:12:02,750
-So let's get started. If we run yarn Hardhead test right now, we're
-
+So let's get started. 
+让我们开始吧
 
 11156
 11:12:02,750 --> 11:12:06,770
-gonna get zero passing. Now, if we run yarn hardhat coverage,
-
+If we run yarn Hardhead test right now, we're gonna get zero passing. 
+如果我们现在运行 `yarn hardhat test` 得到的会是零通过
 
 11157
 11:12:08,690 --> 11:12:11,180
-we're gonna get something that looks like this, saying, Hey,
-
+Now, if we run yarn hardhat coverage, 
+而如果我们运行的是 `yarn hardhat coverage`
 
 11158
 11:12:11,510 --> 11:12:15,440
-you're missing a lot of stuff. So let's try to cover some more
-
+we're gonna get something that looks like this, saying, Hey, you're missing a lot of stuff. 
+就会得到一些这样的东西，呃，你漏掉了很多东西
 
 11159
 11:12:15,440 --> 11:12:18,680
-lines with our tests. And one way we can do that is actually
-
+So let's try to cover some more lines with our tests. 
+所以，让我们尝试将测试覆盖更多的行
 
 11160
 11:12:18,680 --> 11:12:22,760
-we can group our tests based off of different functions. 
-
+And one way we can do that is actually we can group our tests based off of different functions. 
+其中一种方式是，我们可以基于功能的不同来对测试进行分组
 
 11161
 11:12:22,760 --> 11:12:26,150
-So let's have our first set of tests be around our constructor. To do
-
+So let's have our first set of tests be around our constructor. 
+我们的第一组测试将围绕着我们的构造函数展开
 
 11162
 11:12:26,150 --> 11:12:29,300
-that inside of our first describe, we can add another
-
+To do that inside of our first describe, we can add another describe, 
+因此，在我们的第一个 `describe` 内部，我们可以添加另一个 `describe`
 
 11163
 11:12:29,300 --> 11:12:34,250
-describe, have this describe the just the constructor, this
-
+have this describe the just the constructor, 
+这个 `describe` 只涉及构造函数 ("constructor")
 
 11164
 11:12:34,280 --> 11:12:37,610
-larger scope will be for the entire Funmi contract. And
-
+this larger scope will be for the entire Funmi contract. 
+这个较大的范围适用于整个 "FundMe" 合约
 
 11165
 11:12:37,610 --> 11:12:41,690
-everything inside this one will just be for the constructor. 
-
+And everything inside this one will just be for the constructor. 
+而这一个(`describe`)里面的内容只涉及构造函数
 
 11166
 11:12:41,690 --> 11:12:45,530
-So this will also be an async function. And these tasks will
-
+So this will also be an async function. 
+这里也是一个 `async function`
 
 11167
 11:12:45,530 --> 11:12:48,560
-be just for the constructor. But before we even work on this
-
+And these tasks will be just for the constructor. 
+这些任务将只适用于构造函数
 
 11168
 11:12:48,560 --> 11:12:51,380
-describe, we probably want to deploy our Funmi contract. So
-
+But before we even work on this describe, we probably want to deploy our Funmi contract. 
+但在处理这个 `describe` 之前，得先部署我们的 "FundMe" 合约
 
 11169
 11:12:51,380 --> 11:12:54,440
-let's learn how to do that. So we'll do a before each, which
-
+So let's learn how to do that. 
+所以让我们来学习一下如何操作
 
 11170
 11:12:54,440 --> 11:13:00,950
-will be an async function. And we're going to deploy our Funmi
-
+So we'll do a before each, which will be an async function. 
+输入 `beforeEach(async function)`
 
 11171
 11:13:00,950 --> 11:13:06,350
-contract using hard hat deploy. Since we use hard hat deploy,
-
+And we're going to deploy our Funmi contract using hard hat deploy. 
+我们要做的就是部署我们的 "FundMe" 合约，使用 "Hardhat-deploy"
 
 11172
 11:13:06,380 --> 11:13:09,350
-our Funmi contract will come even with our mocks and
-
+Since we use hard hat deploy, 
+由于我们使用了 "Hardhat-deploy"
 
 11173
 11:13:09,350 --> 11:13:11,540
-everything. So above the before each,
-
+our Funmi contract will come even with our mocks and everything. 
+所以我们的 "FundMe" 合约会包括我们的 "mocks" 和其它一切内容
 
 11174
 11:13:11,570 --> 11:13:18,500
-let's do let me HDMI. And then here, we're going to deploy
-
+So above the before each, let's do let me HDMI. 
+所以在这个 `beforeEach` 上面，我们要写下 "let fundMe"
 
 11175
 11:13:18,500 --> 11:13:21,380
-Funmi, where we're going to deploy our Funmi contract is
-
+And then here, we're going to deploy Funmi, 
+接着在这里，我们就来部署 "FundMe" 
 
 11176
 11:13:21,380 --> 11:13:24,140
-first by pulling in our deployments object from Harnett
-
+where we're going to deploy our Funmi contract is first by pulling in our deployments object from Harnett deploy. 
+我们首先通过 "Hardhat-deploy" 获取 "deployments" 对象来部署我们的 "FundMe" 合约
 
 11177
 11:13:24,140 --> 11:13:28,880
-deploy. So we'll do const deployments equals require
-
+So we'll do const deployments equals require hardhat. 
+所以就是 `const {deployments} = require("hardhat")`
 
 11178
 11:13:29,930 --> 11:13:33,950
-hardhat. And this deployments object has, has a function
-
+And this deployments object has, has a function called fixture 
+而这个 "deployments" 对象有一个名为 `fixture` 的函数
 
 11179
 11:13:33,950 --> 11:13:38,300
-called fixture with fixture does is it allows us to basically run
-
+with fixture does is it allows us to basically run our entire deploy folder 
+`fixture` 的作用是允许我们运行整个 "deploy" 文件夹
 
 11180
 11:13:38,300 --> 11:13:41,960
-our entire deploy folder with as many tags as we want. You'll
-
+with as many tags as we want. 
+并且可以使用任意数量的标签("tags")
 
 11181
 11:13:41,960 --> 11:13:46,190
-notice I added this alt tag in both of our scripts. This means
-
+You'll notice I added this alt tag in both of our scripts. 
+你可以看到，我在全部两个脚本中都添加了这个 "all" 标签
 
 11182
 11:13:46,190 --> 11:13:49,940
-that in this deployment stuff fixtures, it's gonna be a wait
-
+This means that in this deployment stuff fixtures, 
+这意味着，在这个 `deployments.fixture()` 中
 
 11183
 11:13:49,970 --> 11:13:53,630
-deployment of fixtures. If I run away deployments dot fixture,
-
+it's gonna be a wait deployment of fixtures. 
+抱歉，应该是 `await deployments.fixture()`
 
 11184
 11:13:53,720 --> 11:13:56,840
-I'll run through our deploy scripts on our local network and
-
+If I run away deployments dot fixture, 
+如果我运行 `await deployments.fixture()`
 
 11185
 11:13:56,840 --> 11:14:00,200
-deploy all of the contracts that we can use them in our scripts
-
+I'll run through our deploy scripts on our local network and deploy all of the contracts 
+就会在我们的本地网络中运行部署脚本并部署全部合约
 
 11186
 11:14:00,230 --> 11:14:03,170
-and in our testing, and we can deploy everything in that deploy
-
+that we can use them in our scripts and in our testing, 
+这样我们就可以在我们的脚本和测试中使用它们了
 
 11187
 11:14:03,170 --> 11:14:07,040
-folder with just this one line. isn't that helpful. Now, once
-
+and we can deploy everything in that deploy folder with just this one line. 
+我们可以直接部署 "deploy" 文件夹中的所有内容，只需要这么一行代码
 
 11188
 11:14:07,040 --> 11:14:09,590
-all of our contracts have been deployed, we can start getting
-
+isn't that helpful. 
+是不是很好用
 
 11189
 11:14:09,590 --> 11:14:15,890
-them will say fund me equals await ethers, and we'll pull an
-
+Now, once all of our contracts have been deployed, we can start getting them 
+现在，只要我们的所有合约都部署完毕，就可以开始获取它们了 
 
 11190
 11:14:15,890 --> 11:14:20,450
-ether some hard hat as well. dot and this is where hard hat
-
+will say fund me equals await ethers, and we'll pull an ether some hard hat as well. 
+`fundMe = await ethers`，我们得把 "ethers" 也从 "hardhat" 中获取出来
 
 11191
 11:14:20,450 --> 11:14:25,010
-deploy is helpful. Again, hard to deploy rapt ether is with a
-
+dot and this is where hard hat deploy is helpful. Again, 
+`.` 这就是 "Hardhat-deploy" 再次发挥作用的地方了
 
 11192
 11:14:25,010 --> 11:14:29,180
-function called Get contract, this get contract function is
-
+hard to deploy rapt ether is with a function called Get contract, 
+"Hardhat-deploy" 为 "ethers" 包装了一个名为 `getContract` 的函数
 
 11193
 11:14:29,180 --> 11:14:32,510
-going to get the most recent deployment of whatever contract
-
+this get contract function is going to get the most recent deployment of whatever contract we tell it. 
+这个 `getContract` 函数将获取我们告诉它的任意合约的最新部署
 
 11194
 11:14:32,510 --> 11:14:36,380
-we tell it. So we'll say get contract of fun to me. So this
-
+So we'll say get contract of fun to me. 
+所以我们写下 `getContract("FundMe")`
 
 11195
 11:14:36,380 --> 11:14:40,820
-will give us the most recent Lee deployed Funmi contract in just
-
+So this will give us the most recent Lee deployed Funmi contract in just this one line. 
+这就会为我们提供最新部署的 "FundMe" 合约，只需要这么一行
 
 11196
 11:14:40,850 --> 11:14:45,200
-this one line. And now Funmi will be equal to this line here.
-
+And now Funmi will be equal to this line here.
+现在 `fundMe` 就是等于，这么一行
 
 11197
 11:14:45,410 --> 11:14:48,350
