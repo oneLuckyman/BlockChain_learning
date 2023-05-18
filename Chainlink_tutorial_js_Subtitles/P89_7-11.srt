@@ -500,247 +500,247 @@ And now Funmi will be equal to this line here.
 
 11197
 11:14:45,410 --> 11:14:48,350
-Now we're going to make a bunch of transactions on our Funmi. To
-
+Now we're going to make a bunch of transactions on our Funmi. 
+现在我们要在 "FundMe" 上进行一系列交易
 
 11198
 11:14:48,350 --> 11:14:52,280
-test it. Of course, we can also tell ethers which account we
-
+To test it. Of course, we can also tell ethers which account we want connected to fund me. 
+为了进行测试，我们可以告诉 "ethers" 我们想把哪个账户连接到 "FundMe"
 
 11199
 11:14:52,280 --> 11:14:57,080
-want connected to fund me. So I can say const deployer equals
-
+So I can say const deployer equals goes away get named accounts, 
+所以可以这么写 `const deployer = await getNameAccounts`
 
 11200
 11:14:57,620 --> 11:15:03,050
-goes away get named accounts, exactly like we did in our
-
+exactly like we did in our deploy scripts. 
+就和我们在部署脚本中做的完全一样
 
 11201
 11:15:03,050 --> 11:15:06,770
-deploy scripts. And then we just need to import it from our tap
-
+And then we just need to import it from our tap
+接着我们只需要把它从 "hardhat" 中导入进来就行了
 
 11202
 11:15:06,920 --> 11:15:10,130
-in our deploy scripts we imported get named accounts
-
+in our deploy scripts 
+在我们的部署脚本中 
 
 11203
 11:15:10,220 --> 11:15:13,970
-inside of our input parameters for our deploy function.
-
+we imported get named accounts inside of our input parameters for our deploy function.
+我们导入了 "getNameAccounts" 作为 "deploy" 函数的输入参数
 
 11204
 11:15:14,390 --> 11:15:17,240
-Remember getting named accounts and deployments was abstracted
-
+Remember getting named accounts and deployments was abstracted from 
+记住，"getNameAccounts" 和 "deployments" 是从
 
 11205
 11:15:17,240 --> 11:15:20,390
-from if we look up here, from the hard hat runtime
-
+if we look up here,  from the hard hat runtime environment, 
+看一下这里，是从 "hardhat" 运行环境中提取出来的
 
 11206
 11:15:20,390 --> 11:15:23,030
-environment, and like I said, the hard hat runtime environment
-
+and like I said, the hard hat runtime environment is basically the same thing as hard hat. 
+就像我说的那样，"hardhat" 运行环境基本上就和 "hardhat" 是一回事
 
 11207
 11:15:23,030 --> 11:15:25,580
-is basically the same thing as hard hat. So we can just go
-
+So we can just go ahead and import it like this, 
+所以我们可以直接这样导入它
 
 11208
 11:15:25,580 --> 11:15:29,180
-ahead and import it like this, actually like this. Because we
-
+actually like this. 
+应该这样写...
 
 11209
 11:15:29,180 --> 11:15:32,210
-actually need to abstract just the deployer from getting named
-
+Because we actually need to abstract just the deployer from getting named accounts. 
+因为我们只需要从 "getNameAccounts" 中提取出 "deployer" 就够了
 
 11210
 11:15:32,210 --> 11:15:36,290
-accounts. And now what we can do is we can connect our Deployer
-
+And now what we can do is we can connect our Deployer to our Fund Me account. 
+现在我们就可以把 "deployer" 连接到我们的 "FundMe" 上了
 
 11211
 11:15:36,350 --> 11:15:39,830
-to our Fund Me account. So whenever we call a function with
-
+So whenever we call a function with fund me, 
+每当我们用 "fundMe" 调用函数时
 
 11212
 11:15:39,830 --> 11:15:43,340
-fund me, it'll automatically be from that the player account,
-
+it'll automatically be from that the player account, which is great. 
+它都将自动连接到 "deployer" 账户，这非常好
 
 11213
 11:15:43,670 --> 11:15:46,070
-which is great. Another way you can get different accounts
-
+Another way you can get different accounts 
+另一种获取不同账户的方式是
 
 11214
 11:15:46,100 --> 11:15:49,250
-directly from your heart had config. Is you could take const
-
+directly from your heart had config. 
+是直接从 "hardhat.config" 中获取
 
 11215
 11:15:49,280 --> 11:15:55,400
-accounts equals await ethers dot get signers, ethers dot get
-
+Is you could take const accounts equals await ethers dot get signers, 
+你可以这样做 `const accounts = await ethers.getSigners`
 
 11216
 11:15:55,400 --> 11:15:58,640
-signers is going to return whatever is in this account
-
+ethers dot get signers is going to return whatever is in this account section of your network. 
+`ethers.getSigners` 会返回你 `networks` 中的 `accounts` 部分
 
 11217
 11:15:58,640 --> 11:16:01,790
-section of your network. If you're on your default network
-
+If you're on your default network hard hat, 
+如果你处于 `defaultNetwork` "hardhat" 上的话
 
 11218
 11:16:01,790 --> 11:16:04,280
-hard hat, it's going to give you a list of 10 fake accounts that
-
+it's going to give you a list of 10 fake accounts that we can work with 
+它就会返回一个包含 10 个虚拟账户的列表以供你使用
 
 11219
 11:16:04,280 --> 11:16:06,470
-we can work with you then of course, can do something like
-
+you then of course, can do something like const. 
+所以当然，你就可以进行一些这样的操作
 
 11220
 11:16:06,470 --> 11:16:12,860
-const. Account one equals accounts. More correctly would
-
+Account one equals accounts. 
+`accountOne = accounts`
 
 11221
 11:16:12,860 --> 11:16:16,100
-be account zero equals account zero and work like that. We'll
-
+More correctly would be account zero equals account zero and work like that. 
+更正确的写法可能应该是 `accountZero = accounts[0]` 就像这样
 
 11222
 11:16:16,100 --> 11:16:17,960
-leave that comment that out, just in case you need a
-
+We'll leave that comment that out, just in case you need a reference to it in the future. 
+我们会把这一段注释掉，以防将来需要参考
 
 11223
 11:16:17,960 --> 11:16:20,390
-reference to it in the future. Okay, great. So now we have our
-
+Okay, great. So now we have our Funmi contract. 
+OK 很好，现在我们拥有了 `fundMe` 合约
 
 11224
 11:16:20,390 --> 11:16:23,960
-Funmi contract. Let's go ahead and write some tests for testing
-
+Let's go ahead and write some tests for testing the constructor. 
+让我们继续编写测试构造函数的测试
 
 11225
 11:16:23,960 --> 11:16:25,940
-the constructor. And we're probably going to want to use
-
+And we're probably going to want to use this deployer object down here. 
+我们可能需要在下面用到这个 `deployer` 对象
 
 11226
 11:16:25,940 --> 11:16:30,320
-this deployer object down here. So we'll do let deployer above.
-
+So we'll do let deployer above.
+所以我们在上面定义一个 `let deployer`
 
 11227
 11:16:30,410 --> 11:16:33,920
-And we'll do something a little finicky here. But we'll say
-
+And we'll do something a little finicky here. 
+现在我们要处理一些棘手的事情
 
 11228
 11:16:33,920 --> 11:16:39,710
-deployer equals Wait, get named accounts, dot Deployer. And
-
+But we'll say deployer equals Wait, get named accounts, dot Deployer. 
+我们要改成 `deployer = (await getNameAccounts()).deployer`
 
 11229
 11:16:39,710 --> 11:16:42,170
-we'll just wrap this up so that we can just grab this deployer
-
+And we'll just wrap this up 
+我们要把它用括号包起来
 
 11230
 11:16:42,170 --> 11:16:45,410
-object and assign it to declare like so. Now in here, we'll
-
+so that we can just grab this deployer object and assign it to declare like so. 
+以便我们可以直接获取这个 `deployer` 对象并将其分配给这个 `deployer`
 
 11231
 11:16:45,410 --> 11:16:50,420
-create our first test, we'll say it will say it sets the Agra
-
+Now in here, we'll create our first test, 
+现在我们就要创建我们的第一个测试了
 
 11232
 11:16:50,450 --> 11:16:56,480
-Gator addresses correctly. Comma will have this be an async
-
+we'll say it will say it sets the Agra Gator addresses correctly. Comma will have this be an async function. 
+写下 `it("sets the aggregator addresses correctly", async function (){})`
 
 11233
 11:16:56,480 --> 11:17:03,050
-function. And we'll say const response equals await fund me
-
+And we'll say const response equals await fund me dot, 
+然后是 `const response = await fundMe.`
 
 11234
 11:17:03,200 --> 11:17:07,850
-dot, let's get this price feed here, fund me dot price feed.
-
+let's get this price feed here, fund me dot price feed. 
+我们来获取一下这里的这个 `priceFeed`，`fundMe.priceFeed()` 
 
 11235
 11:17:08,240 --> 11:17:10,880
-And then we'll want to make sure this price feed is going to be
-
+And then we'll want to make sure this price feed is going to be the same as our Mk V three aggregator 
+接着我们要确保这个 `priceFeed` 就是我们的 "MockV3Aggregator"
 
 11236
 11:17:10,880 --> 11:17:14,330
-the same as our Mk V three aggregator since we're going to
-
+since we're going to be running these tests locally. 
+因为我们要在本地运行这些测试
 
 11237
 11:17:14,330 --> 11:17:18,200
-be running these tests locally. So we should get our mark three
-
+So we should get our mark three V three aggregator up top. 
+所以我们应该在顶部获取 "mockV3Aggregator" 
 
 11238
 11:17:18,230 --> 11:17:23,960
-V three aggregator up top. Let's do let mock v3 aggregate store.
-
+Let's do let mock v3 aggregate store.
+写下 `let mockV3Aggregator`
 
 11239
 11:17:25,040 --> 11:17:27,950
-And we'll grab this address the same way mockbee Three
-
+And we'll grab this address the same way 
+并以相同的方式获取地址
 
 11240
 11:17:27,950 --> 11:17:34,010
-aggregator equals await ethers dot get contract mockbee Three
-
+mockbee Three aggregator equals await ethers dot get contract mockbee Three aggregator comma, 
+`mockV3Aggregator = await ethers.getContract("MockV3Aggregator", )`
 
 11241
 11:17:34,010 --> 11:17:37,460
-aggregator comma, we'll connect this one to the deployer as
-
+we'll connect this one to the deployer as well. 
+并同样连接上 `deployer` 
 
 11242
 11:17:37,460 --> 11:17:43,880
-well. So we'll want to say cert dot equals cert dot equal
-
+So we'll want to say cert dot equals cert dot equal response comma lock v3 aggregator dot address. 
+所以我们要写的就是 `assert.equal(response, mockV3Aggregator.address)`
 
 11243
 11:17:44,660 --> 11:17:50,000
-response comma lock v3 aggregator dot address. And of
-
+And of course we'll want to say const. Assert equals require gy. 
+当然了，还有 `const { assert } = require("chai")`
 
 11244
 11:17:50,000 --> 11:17:58,040
-course we'll want to say const. Assert equals require gy. Import
-
+Import that from DJI. 
+从 "chai" 中把它导入进来
 
 11245
 11:17:58,040 --> 11:18:00,170
-that from DJI. Okay, cool.
+Okay, cool.
 
 
 11246
