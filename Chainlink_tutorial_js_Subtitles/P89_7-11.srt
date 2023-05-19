@@ -741,101 +741,101 @@ Import that from DJI.
 11245
 11:17:58,040 --> 11:18:00,170
 Okay, cool.
-
+OK，酷~
 
 11246
 11:18:00,500 --> 11:18:05,630
-Now, let's go ahead and try this out. Yarn hardhat. Test. Oops, I
-
+Now, let's go ahead and try this out. Yarn hardhat. Test. 
+现在让我们来试一下 `yarn hardhat test`
 
 11247
 11:18:05,630 --> 11:18:10,850
-spelled response wrong. Let's try that again. Awesome. So this
-
+Oops, I spelled response wrong. Let's try that again. 
+哎呀，我拼错了 `response`，来再试一次
 
 11248
 11:18:10,850 --> 11:18:14,960
-means that we are indeed assigning the price feed address
-
+Awesome. So this means that we are indeed assigning the price feed address correctly to the Mach v3 aggregator. 
+太棒了，这就意味着我们确实正确地把 `priceFeed` 分配到 `mockV3Aggregator` 了
 
 11249
 11:18:14,990 --> 11:18:18,230
-correctly to the Mach v3 aggregator. Okay, great.
-
+Okay, great. Awesome. 
+OK，非常好，太棒了
 
 11250
 11:18:18,440 --> 11:18:21,080
-Awesome. I think for now, that's all we really want to do for our
-
+I think for now, that's all we really want to do for our constructor. 
+我想目前这些就是对构造函数所要做的所有事了
 
 11251
 11:18:21,080 --> 11:18:24,200
-constructor. Now these two are kind of a nice to have, I showed
-
+Now these two are kind of a nice to have, 
+这两个东西也很不错
 
 11252
 11:18:24,200 --> 11:18:26,870
-them more just to kind of demo what they look like, we're going
-
+I showed them more just to kind of demo what they look like, 
+但我展示它们只是为了演示它们是什么
 
 11253
 11:18:26,870 --> 11:18:29,420
-to skip writing tests for them for now. And we're actually
-
+we're going to skip writing tests for them for now. 
+所以我们暂时不需要为它们编写测试
 
 11254
 11:18:29,420 --> 11:18:31,760
-going to go ahead and delete them directly from the contract.
-
+And we're actually going to go ahead and delete them directly from the contract.
+我们直接把它们从合约中删掉
 
 11255
 11:18:32,090 --> 11:18:34,190
-If you want to go ahead and write some tests for them and
-
+If you want to go ahead and write some tests for them 
+如果你打算为它们编写测试
 
 11256
 11:18:34,190 --> 11:18:36,920
-leave them in your examples for your learnings. You absolutely
-
+and leave them in your examples for your learnings. 
+并把它们留在你的示例中以供学习的话
 
 11257
 11:18:36,920 --> 11:18:39,440
-can pause the video and write some tests for it if you choose
-
+You absolutely can pause the video and write some tests for it if you choose so, 
+你也可以暂停视频，编写测试
 
 11258
 11:18:39,440 --> 11:18:42,470
-so, but we're going to skip them. Next though, we are going
-
+but we're going to skip them. 
+但我会跳过它们
 
 11259
 11:18:42,470 --> 11:18:46,250
-to move on to fund and running some tests for fun here. So
-
+Next though, we are going to move on to fund and running some tests for fun here. 
+接下来我们将移步到 `fund` 并为其运行测试
 
 11260
 11:18:46,250 --> 11:18:49,730
-let's go ahead and write describe fund. This will be an
-
+So let's go ahead and write describe fund. This will be an async function. 
+所以我们来写下 `describe("fund", async function() {})`
 
 11261
 11:18:49,730 --> 11:18:55,730
-async function. And in here, we're going to do a number of
-
+And in here, we're going to do a number of tests. 
+这里，我们将进行数个测试
 
 11262
 11:18:55,730 --> 11:18:58,760
-tests. So if we're going to go line by line here, what's the
-
+So if we're going to go line by line here, 
+如果我们要逐行测试这里
 
 11263
 11:18:58,760 --> 11:19:01,370
-first thing that we should look at? Well, we should look at this
-
+what's the first thing that we should look at? 
+首先应该注意什么？
 
 11264
 11:19:01,370 --> 11:19:04,790
-require line we should write a test to see if this contract
+Well, we should look at this require line we should write a test to see if this contract
 
 
 11265
