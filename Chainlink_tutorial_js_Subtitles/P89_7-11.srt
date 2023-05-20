@@ -166,7 +166,7 @@ but they can be really, really helpful.
 11130
 11:10:24,110 --> 11:10:28,130
 Remember, we do want to be conscientious of how much we use our test nets, 
-记住，我们必须要注意我们使用测试网络的频次
+记住，我们必须要注意我们使用测试网络的频率
 
 11131
 11:10:28,160 --> 11:10:32,060
@@ -835,789 +835,767 @@ what's the first thing that we should look at?
 
 11264
 11:19:01,370 --> 11:19:04,790
-Well, we should look at this require line we should write a test to see if this contract
-
+Well, we should look at this require line 
+我们应该先注意这里的 `require` 行 
 
 11265
 11:19:04,790 --> 11:19:09,170
-actually does fail? If not enough, eath is sent. So let's
-
+we should write a test to see if this contract actually does fail? If not enough, eath is sent. 
+我们应该先写一个测试看看这个合约是否会在以太币发送量不足时发送失败
 
 11266
 11:19:09,170 --> 11:19:15,680
-go ahead and we'll say it fails, if you don't send enough eath
-
+So let's go ahead and we'll say it fails, if you don't send enough eath have this be an async function? 
+让我们继续 `it("Fails if you don't send enough ETH", async function() {})
 
 11267
 11:19:17,030 --> 11:19:23,210
-have this be an async function? Now, how do we test to see if
-
+Now, how do we test to see if something fails? 
+我们该怎么测试是否会失败呢？
 
 11268
 11:19:23,210 --> 11:19:26,810
-something fails? Right now we've done assert equals, but if
-
+Right now we've done assert equals, 
+目前我们使用的是 `assert.equal`
 
 11269
 11:19:26,810 --> 11:19:30,500
-something fails, we might run into an issue. So for example,
-
+but if something fails, we might run into an issue. 
+但如果出现报错，我们可能就会遇到问题
 
 11270
 11:19:30,530 --> 11:19:36,290
-if I run await fund me dot fund, but I don't pass any value to
-
+So for example, if I run await fund me dot fund, but I don't pass any value to this transaction. 
+举例来说，如果我运行 `await fundMe.fund()` 但不在交易中传递任何价值
 
 11271
 11:19:36,290 --> 11:19:39,410
-this transaction. Let's see what happens. I run yarn Hardhead
-
+Let's see what happens. I run yarn Hardhead test. 
+让我们看看会发生些什么，运行 `yarn hardhat test`
 
 11272
 11:19:39,410 --> 11:19:44,720
-test. Well, our test is actually going to break VM exception.
-
+Well, our test is actually going to break 
+好吧，我们的测试实际上就会报错
 
 11273
 11:19:44,930 --> 11:19:48,980
-While processing transaction reverted with reason string, you
-
+VM exception. While processing transaction 
+处理交易时虚拟机出现异常
+("VM Exception while processing transaction")
 
 11274
 11:19:48,980 --> 11:19:51,950
-need to spend more eath. So our tests are going to break which
-
+reverted with reason string, you need to spend more eath. 
+回滚并附带原因字符串“你需要支付更多以太币！”
+("reverted with reason string 'You need to spend more ETH!'")
 
 11275
 11:19:51,950 --> 11:19:56,330
-is good. We want this to break. But we want to tell our test
-
+So our tests are going to break which is good. We want this to break. 
+我们的测试会就此中断，这很好，我们就希望它中断
 
 11276
 11:19:56,330 --> 11:20:00,710
-that this is okay. Right? Want to tell that this is okay. So
-
+But we want to tell our test that this is okay. 
+但我们想告诉我们的测试，这是可以接受的
 
 11277
 11:20:00,860 --> 11:20:04,220
-the way we can do this, and this is where our waffle testing
-
+Right? Want to tell that this is okay. 
+对吧？我们想告诉它这是可以接受的
 
 11278
 11:20:04,220 --> 11:20:07,580
-comes into play. With waffle and with testing, what we can
-
+So the way we can do this, and this is where our waffle testing comes into play. 
+所以我们可以这样做，这就是我们的 "waffle" 测试派上用场的地方了
 
 11279
 11:20:07,580 --> 11:20:11,390
-actually do is we can use the expect keyword and expect
-
+With waffle and with testing, what we can actually do 
+使用 "waffle" 测试
 
 11280
 11:20:11,510 --> 11:20:15,080
-transactions to be reverted and for transactions to fail. So
-
+is we can use the expect keyword and expect transactions to be reverted and for transactions to fail. 
+我们可以通过使用 `expect` 关键字来预期交易回滚和交易失败
 
 11281
 11:20:15,080 --> 11:20:18,200
-instead of using assert here, we're actually going to run a
-
+So instead of using assert here, 
+所以这里就不要再使用 `assert` 了
 
 11282
 11:20:18,200 --> 11:20:28,310
-wait expect fund me dot fun 2.2 dot B, that reverted and we've
-
+we're actually going to run a wait expect fund me dot fun 2.2 dot B, that reverted 
+我们要运行 `await expect(fundMe.fund()).to.be.reverted`
 
 11283
 11:20:28,310 --> 11:20:31,340
-actually even be more specific here by saying to be reverted
-
+and we've actually even be more specific here by saying to be reverted with 
+我们还可以说的更具体一点 `to.be.revertedWith("")`
 
 11284
 11:20:31,430 --> 11:20:37,310
-with and then the exact reverted error, you need to spend more
-
+and then the exact reverted error, you need to spend more eath. 
+然后写上预期遭遇的回滚错误 `"You need to spend more ETH!"`
 
 11285
 11:20:37,340 --> 11:20:42,950
-eath. Now if we run our tests, oops expect is not defined. So
-
+Now if we run our tests, oops expect is not defined. 
+现在，如果我们运行测试，哎呀 `expect` 没有被定义
 
 11286
 11:20:42,950 --> 11:20:47,570
-we need to import that from Chai. Which chai is being
-
+So we need to import that from Chai. 
+我们需要从 "chai" 中导入它
 
 11287
 11:20:47,600 --> 11:20:52,790
-overwritten by waffle, we see that it does indeed Pass, which
-
+Which chai is being overwritten by waffle, 
+因为 "chai" 已经覆盖了 "waffle"
 
 11288
 11:20:52,790 --> 11:20:57,860
-is perfect. So now we have a way to both assert things and expect
-
+we see that it does indeed Pass, which is perfect. 
+我们看到它确实通过了，真是完美
 
 11289
 11:20:57,860 --> 11:21:01,310
-things to fail. Awesome, even with the specific failure codes.
-
+So now we have a way to both assert things and expect things to fail. 
+现在我们就有了两种方式 `assert` 和 `expect` 来检查错误
 
 11290
 11:21:01,580 --> 11:21:04,670
-Perfect. Let's write some more tests here. Well, we probably
-
+Awesome, even with the specific failure codes. Perfect. 
+非常好，甚至包括了特定的代码报错，完美
 
 11291
 11:21:04,670 --> 11:21:09,170
-want it to correctly update this data structure. So we could say,
-
+Let's write some more tests here. 
+然我们继续编写别的测试
 
 11292
 11:21:09,680 --> 11:21:16,640
-it updates the amount funded data structure, it's going to be
-
+Well, we probably want it to correctly update this data structure. 
+嗯，我们还希望它能正确地更新这里的数据结构
 
 11293
 11:21:16,640 --> 11:21:20,630
-an async function. In here, we're going to need to call fund
-
+So we could say, it updates the amount funded data structure, it's going to be an async function. 
+所以就是 `it(updated the amount funded data structure", async function() {})`
 
 11294
 11:21:20,630 --> 11:21:25,070
-v dot fund. However, we're going to need to actually pass some
-
+In here, we're going to need to call fund v dot fund. 
+这里我们需要调用 `fundMe.fund()`
 
 11295
 11:21:25,070 --> 11:21:29,180
-value with this transaction. And for now, we'll just hard code
-
+However, we're going to need to actually pass some value with this transaction. 
+但这次我们需要为交易传递一些价值(`{value: }`)
 
 11296
 11:21:29,180 --> 11:21:34,280
-the value that we're going to send, say const. Send value is
-
+And for now, we'll just hard code the value that we're going to send, 
+我们这里就直接对要发送的 `value` 使用硬编码了
 
 11297
 11:21:34,280 --> 11:21:40,070
-going to be 112345 678-910-1234 5678, which
-
+say const. Send value is going to be 112345 678-910-1234 5678, which is going to be one eath. 
+`const sendValue = "1000000000000000000"`(共 18 个 0)，也就是 1 以太币
 
 11298
 11:21:40,070 --> 11:21:43,640
-is going to be one eath. Another way we can write this though, is
-
+Another way we can write this though, 
+我们还可以通过另一种编写方式
 
 11299
 11:21:43,640 --> 11:21:46,790
-we can use the ethers utility to make this a little bit easier to
-
+is we can use the ethers utility to make this a little bit easier to read. 
+就是使用 "ethers" 的实用程序来使它变得更容易阅读
 
 11300
 11:21:46,790 --> 11:21:49,610
-read. Because all those zeros are kind of confusing, and it's
-
+Because all those zeros are kind of confusing, 
+因为这么多 0 看着实在是混乱
 
 11301
 11:21:49,610 --> 11:21:52,460
-hard to tell at first glance what this actually is. So we're
-
+and it's hard to tell at first glance what this actually is. 
+乍看之下很难说这到底是多少
 
 11302
 11:21:52,460 --> 11:22:00,980
-gonna actually use ethers dot utils dot parse ether, one, this
-
+So we're gonna actually use ethers dot utils dot parse ether, one, 
+实际用法是 `ethers.utils.parseEther("1")`
 
 11303
 11:22:01,010 --> 11:22:05,570
-parse ethers utility converts this one into that one with 18
-
+this parse ethers utility converts this one into that one with 18 zeros, 
+这个 `parseEther` 实用程序会把 1 转换为 1 再带上 18 个 0
 
 11304
 11:22:05,570 --> 11:22:08,870
-zeros, which makes life a lot easier. If you go to the ethers
-
+which makes life a lot easier.  
+这会让人感到舒适不少
 
 11305
 11:22:08,870 --> 11:22:11,930
-documentation, there's also a parts units function where you
-
+If you go to the ethers documentation, there's also a parts units function 
+如果你前往 "ethers" 的文档，它还有一个 `parseUnits` 函数
 
 11306
 11:22:11,930 --> 11:22:16,250
-can actually convert any unit, either ethers or Gwei. Or really
-
+where you can actually convert any unit, 
+你可以在其中进行任何单位转换
 
 11307
 11:22:16,250 --> 11:22:19,370
-whatever you want to do, you could convert any number to any
-
+either ethers or Gwei. Or really whatever you want to do, 
+有 "ether" 还有 "gwei" 以及任何你想用的单位
 
 11308
 11:22:19,370 --> 11:22:22,130
-other Aetherium you type. So this is the set value that we're
-
+you could convert any number to any other Aetherium you type. 
+你可以将任何数字转换为任何其他以太币类型
 
 11309
 11:22:22,130 --> 11:22:25,760
-going to use for our fund. And, and this is definitely going to
-
+So this is the set value that we're going to use for our fund. 
+这就是我们要在 `fund()` 中使用的 `sendValue` 
 
 11310
 11:22:25,760 --> 11:22:30,830
-be more than our minimum USD of 50. So after we call this fun
-
+And, and this is definitely going to be more than our minimum USD of 50. 
+这肯定比 "MINIMUM_USD" 所要求的的 50 USD 要多了
 
 11311
 11:22:30,830 --> 11:22:34,790
-function, we'll say const response is going to be equal to
-
+So after we call this fun function, 
+调用完这个 `fund` 函数之后
 
 11312
 11:22:34,850 --> 11:22:41,720
-a weight, fund me dot address to Mt funded address to Mt funded
-
+we'll say const response is going to be equal to a weight, fund me dot address to Mt funded address to Mt funded for the deployer dot address. 
+就要执行 `const response = await fundMe.addressToAmountFunded(deployer.address)`
 
 11313
 11:22:41,990 --> 11:22:45,440
-for the deployer dot address. Because remember, this is a
-
+Because remember, this is a mapping of each address and how much they've actually funded. 
+要记住，这是一个记录每个地址的实际资助金额的 "mapping"
 
 11314
 11:22:45,440 --> 11:22:49,310
-mapping of each address and how much they've actually funded. So
-
+So if we use the deployer address, 
+所以如果我们调用 "deployer" 的地址 
 
 11315
 11:22:49,310 --> 11:22:51,980
-if we use the deployer address, it should give us the amount
-
+it should give us the amount that we actually sent. 
+它应该就要给我们提供我们实际发送的金额
 
 11316
 11:22:52,010 --> 11:22:55,130
-that we actually sent. So now we can run assert dot equal
-
+So now we can run assert dot equal response.to string, right, 
+现在我们就可以运行 `assert.equal(response.toString())` 了
 
 11317
 11:22:57,020 --> 11:23:00,950
-response.to string, right, because this response is going
-
+because this response is going to be the big number version 
+因为这个 `response` 会是一个很大的数字
 
 11318
 11:23:00,950 --> 11:23:04,880
-to be the big number version of how much has been funded by that
-
+of how much has been funded by that account. 
+里面是账户资助的金额数量
 
 11319
 11:23:04,880 --> 11:23:08,570
-account. And that should be the same as our send value.to
-
+And that should be the same as our send value.to string. 
+并且它应该和我们发送的 `sendValue.toString()` 是相等的
 
 11320
 11:23:08,570 --> 11:23:14,090
-string. Since send value, our one should be the exact same as
-
+Since send value, our one 
+因为 `sendValue` 也就是 1 
 
 11321
 11:23:14,090 --> 11:23:17,690
-the amount that we funded, we can run just this one test, or
-
+should be the exact same as the amount that we funded, 
+应该和我们资助的金额完全相同
 
 11322
 11:23:17,690 --> 11:23:23,090
-running yarn, art hat, test, dash dash grep. And we'll put
-
+we can run just this one test, 
+我们可以只运行这一个测试
 
 11323
 11:23:23,090 --> 11:23:28,970
-this in quotes allow funded for this amount funded line. And it
-
+or running yarn, art hat, test, dash dash grep. And we'll put this in quotes allow funded for this amount funded line. 
+运行 `yarn hardhat test --grep` 把 "amount funded" 放到引号内，因为它在这一行中出现了
 
 11324
 11:23:28,970 --> 11:23:32,630
-looks like we ran into an issue here, because we don't need to
-
+And it looks like we ran into an issue here, 
+看来我们遇到了一个问题
 
 11325
 11:23:32,630 --> 11:23:36,860
-do deployed at address, we can just do deploy here. And great,
-
+because we don't need to do deployed at address, we can just do deploy here. 
+这里不需要是 `deployer.address` 只要是 `deployer` 就行了
 
 11326
 11:23:36,890 --> 11:23:40,370
-it looks like we are indeed passing. Now if we even run yarn
-
+And great, it looks like we are indeed passing. 
+很好，看来我们确实已经通过了
 
 11327
 11:23:40,370 --> 11:23:44,390
-Hardhead coverage will now see we've got at least a little bit
-
+Now if we even run yarn Hardhead coverage 
+现在，如果我们运行 `yarn hardhat coverage`
 
 11328
 11:23:44,390 --> 11:23:47,570
-more coverage here. It's still not going to be great. But we
-
+will now see we've got at least a little bit more coverage here. 
+就会看到我们又多了一点的覆盖率
 
 11329
 11:23:47,570 --> 11:23:50,270
-have much better coverage. We have some statements, some
-
+It's still not going to be great. But we have much better coverage. 
+尽管这仍然不是很好，但覆盖范围多少是大了一些
 
 11330
 11:23:50,270 --> 11:23:53,450
-branches, and at least some functions covered. So this is
-
+We have some statements, some branches, and at least some functions covered. 
+我们已经覆盖了一些声明，一些分支，以及一些函数
 
 11331
 11:23:53,450 --> 11:23:56,990
-awesome. Let's keep going. Are we all done testing our fun
-
+So this is awesome. Let's keep going. 
+很不错，让我们继续
 
 11332
 11:23:56,990 --> 11:24:00,260
-function? Well, probably not. What else can we do with our fun
-
+Are we all done testing our fun function? Well, probably not. 
+我们完整地测试完了我们的 `fund` 函数了吗？应该没有吧
 
 11333
 11:24:00,260 --> 11:24:03,230
-function? Well, we're also adding funders to a funders
-
+What else can we do with our fun function? 
+`fund` 函数还能做些什么？
 
 11334
 11:24:03,230 --> 11:24:09,650
-array. So let's go ahead and test for that. So it adds funder
-
+Well, we're also adding funders to a funders array. 
+嗯，我们还把资助者添加到了 `funders` 数组中
 
 11335
 11:24:09,680 --> 11:24:17,540
-to array of funders has been an async function. And we'll say
-
+So let's go ahead and test for that. 
+让我们来测试一下它
 
 11336
 11:24:17,570 --> 11:24:23,210
-await fund mean that fund value is going to be send value. We'll
-
+So it adds funder to array of funders has been an async function. 
+`it("Adds funder to array of funders", async function() {})`
 
 11337
 11:24:23,210 --> 11:24:30,650
-say const response equals await fund me dot calling the funders
-
+And we'll say await fund mean that fund value is going to be send value. 
+然后是 `await fundMe.fund({value: sendValue})
 
 11338
 11:24:30,680 --> 11:24:38,030
-array at index zero. So this will be funder equals await fund
-
+We'll say const response equals await fund me dot 
+再然后是 `const response = await fundMe.` 
 
 11339
 11:24:38,030 --> 11:24:41,930
-me dot funders zero. And then we'll say assert dot equal
-
+calling the funders array at index zero. 
+这里需要调用 `funders` 数组，索引为 0 
 
 11340
 11:24:42,680 --> 11:24:46,880
-funder should be the same as the Deployer. So let's go ahead and
-
+So this will be funder equals await fund me dot funders zero. 
+所以这里就是 `funder = await fundMe.funders[0]`
 
 11341
 11:24:46,880 --> 11:24:49,850
-run this test. We'll hit up a couple times. And we'll change
-
+And then we'll say assert dot equal funder should be the same as the Deployer. 
+接着是 `assert.equal(funder, )` 应该和 `deployer` 是相同的
 
 11342
 11:24:49,850 --> 11:24:56,990
-the GREP to under to array so that it looks for this line. And
-
+So let's go ahead and run this test. We'll hit up a couple times. 
+现在来运行测试，我们会多次运行它的
 
 11343
 11:24:56,990 --> 11:25:00,590
-perfect. It looks like that one is also passing. Great. So the
-
+And we'll change the GREP to under to array so that it looks for this line. 
+把 `grep` 更改为 `"funders to array"` 以便它能找到这一行
 
 11344
 11:25:00,590 --> 11:25:03,890
-money's coming through, the minimum amount is coming through
-
+And perfect. It looks like that one is also passing. Great. 
+完美，看来这个也通过了，很好
 
 11345
 11:25:03,920 --> 11:25:07,400
-and our data structures are being updated. Awesome. Now we
-
+So the money's coming through, the minimum amount is coming through and our data structures are being updated. 
+所以送钱通过了，最小金额也通过了，而且数据结构也顺利更新了
 
 11346
 11:25:07,400 --> 11:25:10,340
-could be a little bit more verbose and do even more testing
-
+Awesome. Now we could be a little bit more verbose and do even more testing with this fun function. 
+非常好，现在我们还可以更细致地测试这个 `fund` 函数
 
 11347
 11:25:10,340 --> 11:25:12,980
-with this fun function. But I think for the most part, we've
-
+But I think for the most part, we've got the gist, right. 
+但我认为我们已经在大多数情况下掌握住了要点，对吧
 
 11348
 11:25:12,980 --> 11:25:16,280
-got the gist, right. So now let's go ahead and move on to
-
+So now let's go ahead and move on to the withdrawal function. 
+所以让我们继续移步到 `withdraw` 函数上来
 
 11349
 11:25:16,310 --> 11:25:18,800
-the withdrawal function. So we're going to create a new
-
+So we're going to create a new describe or withdraw. This is going to be an async function. 
+我们来创建一个新的 `describe("withdraw", async function() {})`
 
 11350
 11:25:18,800 --> 11:25:24,590
-describe or withdraw. This is going to be an async function.
-
+And let's see what the withdrawal function does. 
+让我们看一下 `withdraw` 函数是做什么的
 
 11351
 11:25:26,150 --> 11:25:29,480
-And let's see what the withdrawal function does. Only
-
+Only the owner of the contract is going to be able to get the balance, get the money back. 
+只有合约的拥有者才能把里面的余额提取出来
 
 11352
 11:25:29,480 --> 11:25:32,120
-the owner of the contract is going to be able to get the
-
+And we're also going to reset all of the amounts that each one of these users is done. 
+我们还将重置每个用户的所有金额
 
 11353
 11:25:32,120 --> 11:25:36,170
-balance, get the money back. And we're also going to reset all of
-
+So let's go ahead and do some withdrawing. 
+所以让我们进行一些取款操作
 
 11354
 11:25:36,170 --> 11:25:39,710
-the amounts that each one of these users is done. So let's go
-
+Now in order for us to test withdraw, 
+为了测试 `withdraw`
 
 11355
 11:25:39,710 --> 11:25:42,980
-ahead and do some withdrawing. Now in order for us to test
-
+we probably first want the contract to actually have some money 
+我们首先希望合约里确实有一些钱
 
 11356
 11:25:42,980 --> 11:25:47,630
-withdraw, we probably first want the contract to actually have
-
+and so what we can do actually 
+那我们应该做些什么？
 
 11357
 11:25:47,630 --> 11:25:51,230
-some money and so what we can do actually is we can add another
-
+is we can add another before each in the describe 
+我们可以在 `describe` 里添加一个 `beforeEach`
 
 11358
 11:25:51,230 --> 11:25:55,250
-before each in the describe to automatically fund the contract
-
+to automatically fund the contract before we run any tests. 
+以在我们运行任何测试之前为合约注入资金
 
 11359
 11:25:55,460 --> 11:26:01,430
-before we run any tests. So we can say before each async
-
+So we can say before each async function. 
+所以我们可以 `beforeEach(async function() {})`
 
 11360
 11:26:01,430 --> 11:26:10,160
-function. We can say await, fund me dot fund. Value, send value.
-
+We can say await, fund me dot fund. Value, send value.
+`await fundMe.fund({ value: sendValue })`
 
 11361
 11:26:10,820 --> 11:26:14,660
-Now for all of our tests in this withdrawal scope, we're first
-
+Now for all of our tests in this withdrawal scope, we're first going to fund it with eath. 
+现在 `withdraw` 范围内的所有测试，都会先被注入资金
 
 11362
 11:26:14,660 --> 11:26:18,500
-going to fund it with eath. Let's say it can withdraw,
-
+Let's say it can withdraw, withdraw eath. From a single founder, this would be an async function. 
+接下来是 `it("withdraw ETH from a single founder", async function() {})
 
 11363
 11:26:19,940 --> 11:26:26,300
-withdraw eath. From a single founder, this would be an async
-
+And this is going to be a little bit longer test. 
+这会是一个比较长的测试
 
 11364
 11:26:26,300 --> 11:26:32,720
-function. And this is going to be a little bit longer test. So
-
+So I'm going to set it up to be an arrange, act and assert test. 
+我们把它设置为 "Arrange" "Act" 以及 "Assert" 测试
 
 11365
 11:26:32,750 --> 11:26:39,050
-I'm going to set it up to be an arrange, act and assert test. So
-
+So arrange act assert is just sort of a way to think about writing tests, 
+"Arrange Act Assert" 只是一种编写测试的思路
 
 11366
 11:26:39,050 --> 11:26:42,290
-arrange act assert is just sort of a way to think about writing
-
+you want to arrange the test, then you want to act. 
+你要先准备测试，接着执行测试
 
 11367
 11:26:42,290 --> 11:26:45,500
-tests, you want to arrange the test, then you want to act. And
-
+And then you want to run the asserts, 
+然后进行断言
 
 11368
 11:26:45,500 --> 11:26:47,720
-then you want to run the asserts, and you'll see what I
-
+and you'll see what I mean in just a second. 
+你马上就会明白我的意思
 
 11369
 11:26:47,720 --> 11:26:50,630
-mean in just a second. So we're going to arrange this test,
-
+So we're going to arrange this test,
+我们先来准备这个测试
 
 11370
 11:26:50,630 --> 11:26:53,360
-we're going to set this test up, we want to actually check that
-
+we're going to set this test up, we want to actually check that we're correctly withdrawing the ether from a single founder. 
+我们要设置这个测试，确保我们从单个资助者处正确地提取以太币
 
 11371
 11:26:53,360 --> 11:26:56,930
-we're correctly withdrawing the ether from a single founder. So
-
+So first, we're going to get the starting balance of the fundraising contract 
+首先，我们要获取 "fundMe" 合约的初始余额
 
 11372
 11:26:56,930 --> 11:26:59,360
-first, we're going to get the starting balance of the
-
+and the starting balance of the Deployer. 
+以及 `deployer` 的初始余额
 
 11373
 11:26:59,360 --> 11:27:01,550
-fundraising contract and the starting balance of the
-
+So we'll say const. Starting under me, balance, equals await, fund me dot provider, dot get balance, fund me dot address. 
+`const startingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
 
 11374
 11:27:01,550 --> 11:27:08,090
-Deployer. So we'll say const. Starting under me, balance,
-
+So we're gonna start with the balance of the fund V contract after it's been funded with some eath. 
+在其被注入了一些以太币之后，我们获取了 "fundMe" 合约的初始余额
 
 11375
 11:27:09,200 --> 11:27:16,340
-equals await, fund me dot provider, dot get balance, fund
-
+And we're also gonna get costs start starting, deploy your balance goes await, fund me dot provider, dot get balance of deployed employer.
+我们还要获取 `const startingDeployerBalance = await fundMe.provider.getBalance(deployer)
 
 11376
 11:27:16,340 --> 11:27:20,720
-me dot address. So we're gonna start with the balance of the
-
+So we're getting the starting balance of the Funmi, 
+现在我们获取了 "fundMe" 的初始余额
 
 11377
 11:27:20,720 --> 11:27:24,470
-fund V contract after it's been funded with some eath. And we're
-
+we're getting to the starting balance of the employer 
+还获取了 "deployer" 的初始余额
 
 11378
 11:27:24,470 --> 11:27:29,840
-also gonna get costs start starting, deploy your balance
-
+so that we can test later on how much these numbers have changed based off of what happens when we call the withdrawal function. 
+这样我们稍后就可以测试这些数字到底在我们调用 `withdraw` 函数时改变了多少
 
 11379
 11:27:30,560 --> 11:27:37,790
-goes await, fund me dot provider, dot get balance of
-
+Now that we've done a little bit of setup, 
+现在我们已经完成了一些配置
 
 11380
 11:27:38,360 --> 11:27:38,930
-deployed employer.
-
+we can actually run this withdrawal function, 
+可以开始运行 `withdraw` 函数了
 
 11381
 11:27:39,770 --> 11:27:42,410
-So we're getting the starting balance of the Funmi, we're
-
+we can do the act here. 
+我们在 "Act" 这里进行操作
 
 11382
 11:27:42,410 --> 11:27:44,930
-getting to the starting balance of the employer so that we can
-
+So we're gonna say const, trans action response equals await, fund me dot withdraw. 
+`const transactionResponse = await fundMe.withdraw()`
 
 11383
 11:27:44,960 --> 11:27:48,320
-test later on how much these numbers have changed based off
-
+And then we can say const, transaction receipt equals await transaction response. That Wait, one, 
+接着是 `const transactionReceipt = await transactionResponse.wait(1)`
 
 11384
 11:27:48,320 --> 11:27:50,750
-of what happens when we call the withdrawal function. Now that
-
+and now we should be able to check to see that 
+现在我们就能够检查一下
 
 11385
 11:27:50,750 --> 11:27:53,690
-we've done a little bit of setup, we can actually run this
-
+the entire fund rebalance has been added to the deployer balance. 
+`fundMe` 的所有余额是否添加到了 `deployer` 的余额上
 
 11386
 11:27:53,690 --> 11:27:56,750
-withdrawal function, we can do the act here. So we're gonna say
-
+So now we can say 
+我们可以这么写
 
 11387
 11:27:56,750 --> 11:28:02,570
-const, trans action response equals await, fund me dot
-
+const ending fund me balance equals a weight on me that provider dot get balance of Unreal dot address. 
+`const endingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)`
 
 11388
 11:28:02,570 --> 11:28:10,970
-withdraw. And then we can say const, transaction receipt
-
+Then we can say const ending deployer balance equals await, fund me dot provider dot get balance of Deployer. 
+然后是 `const endingDeployerBalance = await fundMe.provider.getBalance(deployer)`
 
 11389
 11:28:11,630 --> 11:28:19,520
-equals await transaction response. That Wait, one, and
-
+And now we can just check to see if the numbers work out here.
+现在我们可以检查一下这些数字是否有效
 
 11390
 11:28:19,520 --> 11:28:22,400
-now we should be able to check to see that the entire fund
-
+So we can say assert dot equal ending fund me balance is going to be zero, right, 
+`assert.equal(endingFundMeBalance, 0)` 对吧？
 
 11391
 11:28:22,400 --> 11:28:26,360
-rebalance has been added to the deployer balance. So now we can
-
+because we just withdrew all of the money.
+因为我们刚刚已经取出了所有的钱
 
 11392
 11:28:26,360 --> 11:28:33,560
-say const ending fund me balance equals a weight on me that
-
+So ending funding balance should be zero. 
+所以 `endingFundMeBalance` 应该是 0
 
 11393
 11:28:33,560 --> 11:28:41,150
-provider dot get balance of Unreal dot address. Then we can
-
+And we'll say assert dot equal starting fund me balance plus starting deployer balance. 
+然后是 `assert.equal(startingFundMeBalance + startingDeployerBalance)`
 
 11394
 11:28:41,150 --> 11:28:49,460
-say const ending deployer balance equals await, fund me
-
+So the starting funds the balance plus the starting employer balance should equal the ending employer balance. 
+所以就是 `startingFundMeBalance + startingDeployerBalance` 应该等于 `endingDeployerBalance`
 
 11395
 11:28:49,610 --> 11:28:52,220
-dot provider dot get balance
-
+Since we're grabbing whatever the starting deployer balance started with 
+因为无论 `startingDeployerBalance` 从多少开始
 
 11396
 11:28:54,080 --> 11:28:59,510
-of Deployer. And now we can just check to see if the numbers work
-
+plus the starting fund to be balanced, 
+它加上 `startingFundMeBalance`
 
 11397
 11:28:59,510 --> 11:28:59,900
-out here.
-
+because we just withdrew all of the starting fund, we balance 
+因为我们刚刚取出了 "fundMe" 的全部初始余额
 
 11398
 11:29:00,200 --> 11:29:09,770
-So we can say assert dot equal ending fund me balance is going
-
+that should equal the ending deployer bots. 
+就应该等于 "deployer" 的最终余额
 
 11399
 11:29:09,770 --> 11:29:13,070
-to be zero, right, because we just withdrew all of the money.
-
+Now a couple of notes here, 
+现在要说几个注意事项
 
 11400
 11:29:13,070 --> 11:29:16,940
-So ending funding balance should be zero. And we'll say assert
-
+since starting Funmi balance is calling from the blockchain, 
+因为 `startingFundMeBalance` 是从区块链上调取来的
 
 11401
 11:29:17,180 --> 11:29:25,880
-dot equal starting fund me balance plus starting deployer
-
+it's going to be of type a big number, 
+所以它会是一个 "BigNumber" 类型
 
 11402
 11:29:25,880 --> 11:29:30,140
-balance. So the starting funds the balance plus the starting
-
+we want to use big number dot add actually, instead of the plus sign here, 
+因此我们这里要使用 `BigNumber.add` 而不是加号(`+`)
 
 11403
 11:29:30,170 --> 11:29:34,700
-employer balance should equal the ending employer balance.
-
+just because it'll it'll make working with our big numbers a little bit easier. 
+只是因为它会使我们处理大数时更容易一些
 
 11404
 11:29:34,730 --> 11:29:37,730
-Since we're grabbing whatever the starting deployer balance
-
+So instead of starting Funmi balance, plus
+所以不再是 `startingFundMeBalance + `
 
 11405
 11:29:37,730 --> 11:29:40,400
-started with plus the starting fund to be balanced, because we
-
+we're gonna be starting from the balance dot add. 
+而是 `startingFundMeBalance.add()`
 
 11406
 11:29:40,400 --> 11:29:43,040
-just withdrew all of the starting fund, we balance that
-
+Like that. And that should be good. 
+就像这样，这样就没问题了
 
 11407
 11:29:43,040 --> 11:29:46,220
-should equal the ending deployer bots. Now a couple of notes
-
+One other thing about this, though, is that 
+这里还有一个问题就是
 
 11408
 11:29:46,220 --> 11:29:48,830
-here, since starting Funmi balance is calling from the
-
+when we called withdraw our Deployer did what 
+当我们调用 `withdraw` 时，我们的 `deployer` 做了些什么？
 
 11409
 11:29:48,830 --> 11:29:52,340
-blockchain, it's going to be of type a big number, we want to
-
+our Deployer spent a little bit of gas. 
+我们的 `deployer` 花费了一点 gas
 
 11410
 11:29:52,340 --> 11:29:56,090
-use big number dot add actually, instead of the plus sign here,
-
+So this actually isn't accurate. 
+所以，这个实际上并不准确
 
 11411
 11:29:56,120 --> 11:29:58,400
-just because it'll it'll make working with our big numbers a
-
+We actually also need to calculate in the gas cost, 
+我们还需要计算上 gas 的花费
 
 11412
 11:29:58,400 --> 11:30:02,030
-little bit easier. So instead of starting Funmi balance, plus
-
+so we wouldn't need to do dot add gas cost. 
+所以我们需要执行 `add(gasCost)`
 
 11413
 11:30:02,060 --> 11:30:06,770
-we're gonna be starting from the balance dot add. Like that. And
-
+We'd also have to do.to string because 
+我们还需要加上 `.toString`，因为
 
 11414
 11:30:06,770 --> 11:30:09,080
-that should be good. One other thing about this, though, is
-
+big numbers are objects and so identities a little bit weird. 
+"BigNumber" 是一些对象，类型有些奇怪
 
 11415
 11:30:09,080 --> 11:30:13,940
-that when we called withdraw our Deployer did what our Deployer
-
+So to test to see if they're equal, 
+所以为了测试它们是否相等
 
 11416
 11:30:13,970 --> 11:30:20,510
-spent a little bit of gas. So this actually isn't accurate. We
-
-
-11417
-11:30:20,510 --> 11:30:24,110
-actually also need to calculate in the gas cost, so we wouldn't
-
-
-11418
-11:30:24,110 --> 11:30:29,930
-need to do dot add gas cost. We'd also have to do.to string
-
-
-11419
-11:30:29,930 --> 11:30:34,340
-because big numbers are objects and so identities a little bit
-
-
-11420
-11:30:34,340 --> 11:30:37,460
-weird. So to test to see if they're equal, we'll just make
-
-
-11421
-11:30:37,460 --> 11:30:44,120
-them both strings. 
+we'll just make them both strings. 
+我们将它们都转换为字符串
