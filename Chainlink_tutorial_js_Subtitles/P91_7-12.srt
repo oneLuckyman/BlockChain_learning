@@ -1,0 +1,240 @@
+11421
+11:30:37,460 --> 11:30:44,120
+Now we don't have gas costs. 
+现在我们还没有获得 "gasCost"
+
+11422
+11:30:44,120 --> 11:30:48,170
+So let's figure out how to get the gas cost from this transaction. 
+所以我们来搞清楚一下怎么从交易中获取 "gasCost"
+
+11423
+11:30:48,170 --> 11:30:51,260
+So we can add it to Are any deployer bounce, 
+这样我们才可以将它添加到我们的 `endingDeployerBalance`
+
+11424
+11:30:51,260 --> 11:30:54,230
+so we can run this assertion here. 
+然后运行这里的 "Assert" 部分
+
+11425
+11:30:54,260 --> 11:30:57,290
+So what we can do is we can actually find the gas costs from our transaction receipt. 
+我们可以从我们的 `transactionReceipt` 中找到 gas 的花费
+
+11426
+11:30:57,290 --> 11:31:01,190
+And I'm going to show you a couple of phenomenal tricks you can use with VS code. 
+我要向你们展示几个可以搭配 VScode 使用的惊奇技巧
+
+11427
+11:31:01,190 --> 11:31:04,220
+And if using a different editor, then don't worry too much about this.
+如果你使用的是不同的编辑器，也不要太在意这个
+
+11428
+11:31:04,250 --> 11:31:07,220
+What we can do in VS code actually is create something called breakpoints. 
+我们可以在 VScode 中创建一种名为断点("breakpoint")的东西
+
+11429
+11:31:07,220 --> 11:31:10,970
+unverified breakpoint file is modified to please restart the bug session, 
+“未验证的断点，文件已修改，请重新启动调试会话”
+("Unverified breakpoint. File is modified, please restart the bug session.")
+
+11430
+11:31:11,000 --> 11:31:14,510
+or let's put it right here, 
+我们先把它放到这里
+
+11431
+11:31:14,510 --> 11:31:17,600
+put it right in this line after transaction receipt is created.
+把它放到创建 `transactionReceipt` 之后
+
+11432
+11:31:17,720 --> 11:31:21,650
+But before ending Funmi belts, 
+但要在 `endingFundMeBalance` 之前
+
+11433
+11:31:21,650 --> 11:31:25,850
+what this breakpoint does is it stops the script at this line, and allows us to drop into something called a debug console 
+这个断点的作用是在这一行停止脚本，并让我们进入一个名为调试控制台("debug console")的东西
+
+11434
+11:31:25,850 --> 11:31:30,320
+and see all the variables that are happening. At this time, 
+以及查看所有变量的当前情况
+
+11435
+11:31:30,320 --> 11:31:33,590
+we want to look at the transaction receipt 
+我们要查看一下这个 `transactionReceipt`
+
+11436
+11:31:33,590 --> 11:31:37,820
+and see if the total gas cost is in there. 
+并看一下完整的 gas 花费是否就在其中
+
+11437
+11:31:37,820 --> 11:31:40,700
+This is also incredibly helpful for dropping into tests and dropping into scripts and seeing exactly what's going on that's wrong. 
+这对于进入测试和脚本并查看报错原因也非常有帮助。
+
+11438
+11:31:40,700 --> 11:31:44,030
+So what we can do is we can move down to this run into bug section. 
+我们要做的就是转到这个“运行和调试”("Run and Debug")部分
+
+11439
+11:31:44,030 --> 11:31:47,090
+And if it's not there, you can hit additional views. 
+如果它不在这里，你就需要点击这里的“其他视图”("Additional Views")
+
+11440
+11:31:47,210 --> 11:31:50,090
+And we can click this JavaScript Debug Terminal, 
+我们可以点击这里的 “JavaScript 调试终端”("JavaScript Debug Terminal")
+
+11441
+11:31:50,330 --> 11:31:54,440
+which will create a new terminal in our terminal section. 
+它会在我们的终端部分建立一个新的终端
+
+11442
+11:31:54,440 --> 11:31:58,550
+Now, what happens here is if we run yarn, hard hat test, 
+现在的情况是，如果我们运行 "yarn hardhat test"
+
+11443
+11:31:58,550 --> 11:32:03,440
+it'll run our testing and everything. 
+它就会运行测试的所有内容
+
+11444
+11:32:03,440 --> 11:32:06,380
+But when it hits this breakpoint, it'll stop. 
+但当它遇到这里的断点时，它就会停止
+
+11445
+11:32:06,380 --> 11:32:09,140
+Currently, there is no gas cost. So we're just going to delete this for now. 
+目前还没有 `gasCost` 所以我们先删掉它
+
+11446
+11:32:09,140 --> 11:32:11,570
+So that we compile and we work in everything. 
+这样我们就可以进行编译并处理所有内容
+
+11447
+11:32:11,570 --> 11:32:17,000
+But if we run yarn Hardhead test, 
+如果我们运行 `yarn hardhat test`
+
+11448
+11:32:17,000 --> 11:32:21,500
+see, it's gonna say debugger has been attached to start running our tests. 
+看，它会说调试器已连接 ("Debugger attached")，开始运行我们的测试
+
+11449
+11:32:21,500 --> 11:32:25,460
+And it's going to stop on this line here. 
+然后它就会停在这一行上
+
+11450
+11:32:25,460 --> 11:32:29,270
+And if we look in this variable section on the left hand side, 
+如果我们查看左侧这个“变量”("VARIABLES")部分
+
+11451
+11:32:29,270 --> 11:32:34,340
+we can actually see a ton of the variables that are in here. 
+就可以看到这里现在有一大堆的变量
+
+11452
+11:32:34,340 --> 11:32:37,910
+And we can read a little bit more about what's going on. 
+我们可以更详细地了解发生了什么情况
+
+11453
+11:32:37,910 --> 11:32:44,270
+And if we go over to our debug console, we can type in things like transaction receipt, 
+如果前往我们的调试控制台，我们可以输入 "transactionReceipt"
+
+11454
+11:32:44,270 --> 11:32:47,510
+and we can see a ton of information about that transaction receipt object, 
+接着我们就可以看到关于 "transactionReceipt" 对象的大量信息
+
+11455
+11:32:47,510 --> 11:32:50,420
+what we're looking for is we're looking to see this transaction receipt, 
+我们要寻找的正是这里的这个 "transactionReceipt"
+
+11456
+11:32:50,420 --> 11:32:53,480
+which we could look in the debug console or over here, if there's anything to do with gas in here. 
+我们可以在调试控制台或这里查看，是否有和 gas 相关的内容
+
+11457
+11:32:53,510 --> 11:32:56,870
+And it looks like there is 
+看起来是有的
+
+11458
+11:32:57,110 --> 11:33:01,460
+there's a gas used big number. 
+这里有一个 "gasUsed: BigNumber"
+
+11459
+11:33:01,700 --> 11:33:05,630
+And there's also an effective gas price. 
+同时还有一个“有效 gas 价格”("effectiveGasPrice")
+
+11460
+11:33:05,630 --> 11:33:09,620
+So the amount of gas used times the gas price is going to give us all the money that we paid for gas here. 
+所以 "gasUsed" 乘以 "gasPrice" 就是我们为 gas 所支付的全部金额了
+
+11461
+11:33:09,620 --> 11:33:13,100
+So now that we've figured out there's a gas used and effective gas price variables in this transaction receipt, 
+现在我们已经在这个 "transactionReceipt" 中找到了 "gasUsed" 和 "effectiveGasPrice" 变量
+
+11462
+11:33:13,100 --> 11:33:17,030
+which we could have also found in the documentation here. 
+其实我们也可以在文档这里找到
+
+11463
+11:33:17,030 --> 11:33:20,240
+However, sometimes it's even quicker just to find it out yourself 
+然而，有时候亲自去找会更快一些
+
+11464
+11:33:20,240 --> 11:33:23,510
+what we can do, we can exit the debugger 
+接下来我们就可以退出调试器了
+
+11465
+11:33:23,510 --> 11:33:27,320
+by clicking this little thing here. 
+点击这里的小按钮
+
+11466
+11:33:27,530 --> 11:33:32,570
+Go back to terminal will trash can the JavaScript debugger, 
+回到终端，把 "JavaScript Debugger" 删掉
+
+11467
+11:33:32,570 --> 11:33:35,450
+we'll remove the breakpoint. 
+删除这个断点
+
+11468
+11:33:35,450 --> 11:33:42,860
+And we'll grab those two variables 
+现在我们来获取一下这两个变量
