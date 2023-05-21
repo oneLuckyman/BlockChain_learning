@@ -1,0 +1,224 @@
+11468
+11:33:35,450 --> 11:33:42,860
+we can pull them right out of that transaction receipt object 
+我们可以通过以下操作来把它们从 `transactionReceipt` 对象中提取出来
+
+11469
+11:33:42,890 --> 11:33:46,880
+by typing const. Yes, used comma effective gas price equals transaction receipt. 
+`const {gasUsed, effectiveGasPrice } = transactionReceipt`
+
+11470
+11:33:48,230 --> 11:33:55,460
+So again, with this curly bracket syntax, 
+再强调一下这里的花括号语法
+
+11471
+11:33:55,460 --> 11:33:59,930
+we can use this to pull out objects out of another object. 
+我们可以用它来把一些对象从另一个对象中提取出来
+
+11472
+11:33:59,930 --> 11:34:03,560
+And now that we have these two objects, 
+现在我们有了这两个对象
+
+11473
+11:34:03,560 --> 11:34:08,090
+we can create a const gas cost or total gas cost 
+就可以创建 `const gasCost` 或者说总的 "gasCost"
+
+11474
+11:34:08,090 --> 11:34:13,310
+is going to be equal to the gas used times the effective gas price. 
+` = gasUsed * effectiveGasPrice`
+
+11475
+11:34:13,520 --> 11:34:17,930
+Which again, since these are both big numbers, 
+这里再次因为它们都是 "BigNumber" 
+
+11476
+11:34:17,930 --> 11:34:23,540
+we can use a big number function called dot mol to multiply them together. 
+所以我们可以用 "BigNumber" 的函数 `.mul` 来把它们乘到一起
+
+11477
+11:34:23,540 --> 11:34:27,770
+Now that we have this total gas cost, we can come down
+现在我们有了这个总的 "gasCost" 就可以拉到底下
+
+11478
+11:34:27,860 --> 11:34:32,210
+and we can say the ending deployer balance plus that gas cost to string. 
+并写上 `endingDeployerBalance.add(gasCost).toString()`
+
+11479
+11:34:32,210 --> 11:34:36,830
+Now the two of these should be equivalent. 
+现在这二者应该是相等的了
+
+11480
+11:34:36,830 --> 11:34:39,140
+I know there's a lot of math that we're doing in this section and a lot of new things. 
+我知道这一部分我们用到了许多数学的东西以及其他一些新内容
+
+11481
+11:34:39,140 --> 11:34:42,830
+So I want to just quickly rego over what we just learned. 
+所以我来快速回顾一下我们这会儿学到的东西
+
+11482
+11:34:42,830 --> 11:34:46,670
+So first off, the font of the contract comes with a provider, 
+首先 "fundMe" 合约带有一个 "provider"
+
+11483
+11:34:46,670 --> 11:34:49,550
+we could have also done ethers dot provider dot get balance, 
+我们也可以写成是 `ethers.provider.getBalance`
+
+11484
+11:34:49,580 --> 11:34:52,940
+but we're using fun v dot provider because we're using the provider of the Funmi contract. 
+但我们要使用 `fundMe.provider` 因为我们正在使用的是 "fundMe" 合约的 `provider`
+
+11485
+11:34:52,940 --> 11:34:55,370
+It doesn't really matter what we use here. 
+我们在这里使用什么其实并不重要
+
+11486
+11:34:55,370 --> 11:34:58,790
+We just wanted to use this get balanced function of the provider object 
+我们只是想用 `provider` 对象的这个 `getBalance` 函数
+
+11487
+11:34:58,790 --> 11:35:02,510
+which gets us the balance of any contract. 
+它可以为我们提供任意合约的资金余额
+
+11488
+11:35:02,510 --> 11:35:06,140
+We do the same thing with starting deplore balance.
+我们对 `startingDeployerBalance` 做了相同的事
+
+11489
+11:35:06,140 --> 11:35:08,810
+The reason that we needed the starting balances  
+我们需要初始余额的原因
+
+11490
+11:35:08,810 --> 11:35:11,330
+is because we wanted to compare it to the ending balances 
+是因为我们想要将其与最终余额进行对比
+
+11491
+11:35:11,330 --> 11:35:13,760
+to see if all the money went to the right places, 
+以查看所有的钱是不是都流到了正确的地方
+
+11492
+11:35:13,760 --> 11:35:17,630
+we then call the withdrawal function. 
+我们接着调用了 `withdraw` 函数
+
+11493
+11:35:17,630 --> 11:35:22,250
+And from the transaction receipt, we grabbed the gas used and the gas price. 
+并从 `transactionReceipt` 中获取了 `gasUsed` 和 `gasPrice` 
+
+11494
+11:35:22,250 --> 11:35:26,510
+If you want to debug your JavaScript code, you can add a breakpoint like so 
+如果你想要调试你的 JavaScript 代码，可以添加一个断点，就像这样
+
+11495
+11:35:26,510 --> 11:35:30,800
+go to run into bug, open your debug JavaScript terminal, 
+前往“运行和调试”，打开你的 “JavaScript 调试终端”
+
+11496
+11:35:30,800 --> 11:35:34,970
+which is different from your regular bash terminals. 
+它和你常规的 bash 终端是不同的
+
+11497
+11:35:35,000 --> 11:35:38,210
+And when you run JavaScript commands in here, 
+如果你在这里运行 JavaScript 命令
+
+11498
+11:35:38,210 --> 11:35:40,550
+they will stop where your breakpoints are. 
+它们就会在你的断点处停止
+
+11499
+11:35:40,550 --> 11:35:43,460
+Then you can read the different variables and see where different things are. 
+接着你就可以读取不同的变量，并查看它们的不同情况
+
+11500
+11:35:43,460 --> 11:35:46,430
+Using that knowledge. We pulled out the gas use and effective gas price from the transaction receipt 
+使用这个知识点，我们在 "transactionReceipt" 中提取了 "gasUsed" 和 "effectiveGasPrice"
+
+11501
+11:35:46,430 --> 11:35:49,400
+and used it to get the total gas cost of this transaction, 
+并使用它们获得了该交易总的 "gasCost"
+
+11502
+11:35:49,400 --> 11:35:52,220
+we then got the ending fund, we balanced the
+我们获取了 `endingFundMeBalance` 还有 `endingFundMeBalance` ending deployer balance, 
+
+11503
+11:35:52,220 --> 11:35:55,970
+and used all those variables to make sure all the money went to the right places. 
+并动用了全部这些变量确保了所有资金都流向了正确的地方
+
+11504
+11:35:55,970 --> 11:35:59,840
+And we, we can check this 
+我们可以检查一下
+
+11505
+11:35:59,840 --> 11:36:04,220
+by running yarn Hardhead test dash dash grep 
+运行 `yarn hardhat test --grep` 
+
+11506
+11:36:05,450 --> 11:36:09,200
+withdraw eath in quotes, since there's a space here, 
+把 "Withdraw ETH" 放到引号内，因为这里有个空格
+
+11507
+11:36:09,200 --> 11:36:14,030
+and we can see that our test does indeed pass. Great job. 
+可以看到我们的测试确实通过了，干得漂亮
+
+11508
+11:36:14,570 --> 11:36:19,910
+If we didn't add the gas cost here, and we just did.to string, 
+如果我们不在这里添加 "gasCost"，只是执行 `.toString()`
+
+11509
+11:36:19,910 --> 11:36:25,040
+we would see something like this, 
+就会看到这样的情况
+
+11510
+11:36:25,040 --> 11:36:28,010
+we would see that the numbers are ever so slightly off, 
+我们看到这些数字有一些偏差
+
+11511
+11:36:28,010 --> 11:36:31,220
+because we're not anticipating we're not calculating the gas here. 
+因为我们没有预料到，没有计算上这里的 gas 
+
+11512
+11:36:31,220 --> 11:36:36,740
+So we always want to make sure we're using the gas if we're doing calculations like this. 
+所以我们总是要确保我们考虑了 gas，如果我们执行了类似这样的计算的话
