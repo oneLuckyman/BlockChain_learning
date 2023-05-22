@@ -1,0 +1,88 @@
+11512
+11:36:31,220 --> 11:36:36,740
+Now
+
+
+11513
+11:36:36,740 --> 11:36:39,350
+another incredibly powerful debugging tool that we're not
+
+
+11514
+11:36:39,350 --> 11:36:41,720
+really going to go over here. But it's important to know about
+
+
+11515
+11:36:41,720 --> 11:36:43,850
+because it can be really helpful is that you can actually use
+
+
+11516
+11:36:43,850 --> 11:36:48,050
+console dot log in your solidity with hard hat. If you're inside
+
+
+11517
+11:36:48,050 --> 11:36:51,350
+of a heart hat project, you just import hard hat slash console
+
+
+11518
+11:36:51,350 --> 11:36:56,090
+dot soul. And then right in your solidity, you can do console dot
+
+
+11519
+11:36:56,090 --> 11:36:59,480
+log, and then type pretty much whatever you want. When you
+
+
+11520
+11:36:59,480 --> 11:37:02,840
+execute these functions, similar to how we do a console dot log
+
+
+11521
+11:37:02,840 --> 11:37:05,750
+in JavaScript, those will actually console dot log out to
+
+
+11522
+11:37:05,750 --> 11:37:09,260
+your terminal. Here's an example of if you run yarn, hard hat
+
+
+11523
+11:37:09,260 --> 11:37:12,650
+test and you have those console dot logs, you'll see stuff like
+
+
+11524
+11:37:12,650 --> 11:37:16,370
+this get printed out. So in addition to the Visual Studio
+
+
+11525
+11:37:16,370 --> 11:37:19,760
+Code debugger, importing hard hat slash console dot Sol, and
+
+
+11526
+11:37:19,760 --> 11:37:23,000
+using console dot logs in your solidity can also be an
+
+
+11527
+11:37:23,000 --> 11:37:25,610
+effective debugging strategy. Feel free to give this video a
+
+
+11528
+11:37:25,610 --> 11:37:29,210
+pause, implement this in some of our contracts and try it out in
+
+
+11529
+11:37:29,210 --> 11:37:35,210
+our tests. 
