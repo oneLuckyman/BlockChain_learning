@@ -1,88 +1,84 @@
 11512
 11:36:31,220 --> 11:36:36,740
-Now
-
+Now another incredibly powerful debugging tool 
+还有一个非常强大的调试工具
 
 11513
 11:36:36,740 --> 11:36:39,350
-another incredibly powerful debugging tool that we're not
-
+that we're not really going to go over here. 
+在此我们不会详细介绍它
 
 11514
 11:36:39,350 --> 11:36:41,720
-really going to go over here. But it's important to know about
-
+But it's important to know about because it can be really helpful 
+但了解一下它还是很重要的，因为它的用处真的很大
 
 11515
 11:36:41,720 --> 11:36:43,850
-because it can be really helpful is that you can actually use
-
+is that you can actually use console dot log in your solidity with hard hat. 
+你实际上可以在 Solidity 中使用 Hardhat 的 `console.log` 语句
 
 11516
 11:36:43,850 --> 11:36:48,050
-console dot log in your solidity with hard hat. If you're inside
-
+If you're inside of a heart hat project, 
+如果你正处于一个 Hardhat 项目中
 
 11517
 11:36:48,050 --> 11:36:51,350
-of a heart hat project, you just import hard hat slash console
-
+you just import hard hat slash console dot soul. 
+你只需要执行 `import "hardhat/console.sol"
 
 11518
 11:36:51,350 --> 11:36:56,090
-dot soul. And then right in your solidity, you can do console dot
-
+And then right in your solidity, you can do console dot log, 
+然后在你的 Solidity 中，你就可以运行 `console.log`
 
 11519
 11:36:56,090 --> 11:36:59,480
-log, and then type pretty much whatever you want. When you
-
+and then type pretty much whatever you want. 
+并输入任何你想要的内容
 
 11520
 11:36:59,480 --> 11:37:02,840
-execute these functions, similar to how we do a console dot log
-
+When you execute these functions, similar to how we do a console dot log in JavaScript, 
+当你执行这些函数时，就和我们在 JavaScript 中使用 `console.log` 很相似
 
 11521
 11:37:02,840 --> 11:37:05,750
-in JavaScript, those will actually console dot log out to
-
+those will actually console dot log out to your terminal. 
+它们会把 `console.log` 的内容输出到你的终端上
 
 11522
 11:37:05,750 --> 11:37:09,260
-your terminal. Here's an example of if you run yarn, hard hat
-
+Here's an example of if you run yarn, hard hat test 
+这里有一个例子，如果你运行 `yarn hardhat test`
 
 11523
 11:37:09,260 --> 11:37:12,650
-test and you have those console dot logs, you'll see stuff like
-
+and you have those console dot logs, you'll see stuff like this get printed out. 
+并且其中有包含 `console.log` 的语句，你就会看到类似这样的内容被打印出来
 
 11524
 11:37:12,650 --> 11:37:16,370
-this get printed out. So in addition to the Visual Studio
-
+So in addition to the Visual Studio Code debugger, 
+所以除了使用 Visual Studio Code 的调试器之外
 
 11525
 11:37:16,370 --> 11:37:19,760
-Code debugger, importing hard hat slash console dot Sol, and
-
+importing hard hat slash console dot Sol, 
+导入 `hardhat/console.sol`
 
 11526
 11:37:19,760 --> 11:37:23,000
-using console dot logs in your solidity can also be an
-
+and using console dot logs in your solidity can also be an effective debugging strategy. 
+并在 Solidity 中使用 `console.log` ，这同样也是一种有效的调试策略
 
 11527
 11:37:23,000 --> 11:37:25,610
-effective debugging strategy. Feel free to give this video a
-
+Feel free to give this video a pause, 
+你可以暂停本视频
 
 11528
 11:37:25,610 --> 11:37:29,210
-pause, implement this in some of our contracts and try it out in
-
-
-11529
-11:37:29,210 --> 11:37:35,210
-our tests. 
+implement this in some of our contracts and try it out in our tests. 
+将其应用到我们的合约中，并在测试中尝试使用它
