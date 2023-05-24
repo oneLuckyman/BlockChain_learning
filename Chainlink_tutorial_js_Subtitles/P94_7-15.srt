@@ -1,0 +1,464 @@
+11529
+11:37:29,210 --> 11:37:35,210
+So we tested that withdrawing eath when there's a single funder works perfectly, 
+我们已经测试了当只有一个资助者时提取以太币的情况，测试结果十分完美
+
+11530
+11:37:35,210 --> 11:37:38,930
+let's test withdrawing eath if there are multiple funders, 
+现在让我们测试一下当存在多个资助者时提取以太币的情况
+
+11531
+11:37:38,930 --> 11:37:44,450
+so we'll do it, let's say allows us to withdraw with multiple funders. Why would this be an async function. 
+所以我们就 `it("allows us to withdraw with multiple funders", async function() {})`
+
+11532
+11:37:44,450 --> 11:37:51,680
+And let's do this await Funmi not fun, 
+让我们再次运行这个 `await fundMe.fund()`
+
+11533
+11:37:51,680 --> 11:37:59,150
+but with a number of different accounts. 
+但这次有数个不同的账户
+
+11534
+11:37:59,150 --> 11:38:02,390
+So we can create a whole bunch of different accounts of course, 
+所以我们需要创建一大堆不同的账户，这是当然的了
+
+11535
+11:38:02,390 --> 11:38:04,970
+by saying const accounts equals await ethers dot get signers. 
+`const accounts = await ethers.getSigners()`
+
+11536
+11:38:04,970 --> 11:38:12,560
+And we can loop through these accounts 
+我们可以遍历这些账户
+
+11537
+11:38:12,560 --> 11:38:15,140
+and have each one of these accounts call the fund function. 
+并让它们中的每一个都调用这个 `fund` 函数
+
+11538
+11:38:15,140 --> 11:38:18,710
+And we're going to do this with a for loop. 
+我们将使用一个 "for" 循环来实现这一操作
+
+11539
+11:38:18,740 --> 11:38:25,490
+So we're going to say for let i equals 
+所以就是 `for (let i = )`
+
+11540
+11:38:25,490 --> 11:38:28,670
+we'll start with the first index of the accounts 
+我们将从账户的第一个索引开始
+
+11541
+11:38:28,700 --> 11:38:31,310
+because the zero with index is going to be the Deployer. 
+因为索引为零的账户是 `deployer`
+
+11542
+11:38:31,310 --> 11:38:36,140
+So we'll say let i equals one is going to be less than let's say six. And we'll do i plus plus. 
+所以我们要写 `(let i = 1; i < 6; i++)`
+
+11543
+11:38:36,170 --> 11:38:43,310
+And in here, we'll say const. And me contract Funmi connected contract equals await. And me dot connect two accounts, I, 
+在这里的内部，我们说 `const fundMeConnectedContract = await fundMe.connect(accounts[i])
+
+11544
+11:38:43,310 --> 11:38:51,050
+so we need to call this connect function 
+我们需要调用这个 `connect` 函数
+
+11545
+11:38:51,440 --> 11:38:55,610
+because right now if we scroll up back to the top, 
+因为现在，如果我们向上滚动到顶部
+
+11546
+11:38:55,610 --> 11:38:59,930
+our Funmi contract is connected to our Deployer account. 
+我们的 `fundMe` 合约现在正与 `deployer` 账户连接
+
+11547
+11:38:59,930 --> 11:39:03,800
+And anytime we call a transaction with Funmi, 
+因此无论何时只要我们使用 `fundMe` 调用交易
+
+11548
+11:39:03,800 --> 11:39:08,090
+the deployer is the account that is calling that transaction, 
+交易的调用者就都是 `deployer`
+
+11549
+11:39:08,120 --> 11:39:11,300
+we need to create new objects to connect to all of these different accounts. 
+我们需要创建新的对象来连接所有这些不同的账户
+
+11550
+11:39:11,300 --> 11:39:13,940
+So we're gonna say fund me connected contract, 
+所以我们现在要使用 `fundMeConnectedContract`
+
+11551
+11:39:13,940 --> 11:39:16,910
+which is now connected to one of these different accounts 
+它现在正连接在一个不同的账户上
+
+11552
+11:39:16,910 --> 11:39:20,780
+dot fund. And this is where we'll do value, send value. 
+`.fund({ value: sendValue })`
+
+11553
+11:39:20,780 --> 11:39:25,310
+Or excuse me, we'll do await. 
+抱歉，这里还有一个 `await`
+
+11554
+11:39:25,310 --> 11:39:29,720
+Great. So this is going to be our our range section. 
+很好，这里就是我们的 "Arrange" 部分
+
+11555
+11:39:29,720 --> 11:39:33,020
+And then same as we did above, we need to grab those starting balances. 
+接着就和上面一样，我们需要获取初始余额
+
+11556
+11:39:33,020 --> 11:39:36,680
+So we can just copy that, those two lines and paste that down here. 
+我们可以直接复制这两行，并把它们粘贴到这里
+
+11557
+11:39:36,680 --> 11:39:39,650
+Now we're going to move into act, 
+现在我们就要转到 "Act" 了
+
+11558
+11:39:39,650 --> 11:39:43,730
+I'm going to call that withdrawal function again. 
+我们将再次调用 `withdraw` 函数
+
+11559
+11:39:43,910 --> 11:39:50,000
+So let's say const, transaction action response equals await and MI dot withdraw. 
+`const transactionResponse = await fundMe.withdraw()`
+
+11560
+11:39:50,810 --> 11:39:54,350
+And we're going to do the exact same thing as we did above, 
+接着我们就要做和上面完全相同的事了
+
+11561
+11:39:54,350 --> 11:39:58,730
+getting the transaction receipt and the gas costs so we can get everything correct. 
+获取 `transactionReceipt` 以及 `gasCost` 以便我们可以确保一切正确
+
+11562
+11:39:58,730 --> 11:40:01,790
+Once we've done the act, we move on into assert. 
+只要我们完成了 "Act" 就可以转到 "Assert" 上了
+
+11563
+11:40:01,790 --> 11:40:05,420
+And we're going to do some very similar things to what we did above, 
+我们要做的事和上面很类似
+
+11564
+11:40:05,420 --> 11:40:08,570
+like this, for example, this whole first part is going to be exactly the same. 
+比如说，第一部分是完全相同的
+
+11565
+11:40:08,570 --> 11:40:12,830
+We also want to make sure the funders are reset properly. 
+但同时我们还希望 `funders` 可以正确重置
+
+11566
+11:40:12,920 --> 11:40:18,950
+So we'll make sure that this funders array is reset properly. 
+所以我们要确保这个 `funders` 数组能正确重置
+
+11567
+11:40:18,950 --> 11:40:22,670
+So to do that, 
+要做到这一点
+
+11568
+11:40:22,670 --> 11:40:25,160
+we can actually just check to see that if looking at the zero with position throws an error 
+我们只需要检查一下位置零是否会报错就行了
+
+11569
+11:40:25,160 --> 11:40:30,260
+so we can run a wait expect fund me dot get on me dot funder on me dot funders of zero. 
+所以我们可以运行 `await expect(fundMe.funders(0))`
+
+11570
+11:40:30,260 --> 11:40:36,170
+This should revert 
+它应该会导致回滚
+
+11571
+11:40:36,170 --> 11:40:41,780
+so we'll say await expect Funmi dot funders dot two dot b dot reverted 
+所以就是 `await expect(fundMe.funders(0)).to.be.reverted`
+
+11572
+11:40:41,780 --> 11:40:47,060
+and then we want to loop through all these accounts
+然后我们要遍历所有这些账户
+
+11573
+11:40:47,090 --> 11:40:50,840
+and make sure that it makes sure or that in our mapping here, all their amounts are zero. 
+并要确保在我们的 `mapping` 中，它们的金额都是零
+
+11574
+11:40:50,870 --> 11:40:58,760
+So we'll say, for I equals one is less than six, i plus plus, 
+所以就是 `for (i = 1; i< 6; i++)`
+
+11575
+11:40:58,760 --> 11:40:59,720
+we'll say assert dot equal. Wait, fund me dot address to amount funded, of the accounts of I got address should be zero. 
+`assert.equal(await fundMe.addressToAmountFunded(accounts[i].address), 0)
+
+11576
+11:41:01,520 --> 11:41:11,450
+So we're making sure that all of these mappings are correctly updated to zero. 
+我们正在确保所有这些 `mapping` 都能被正确更新为零
+
+11577
+11:41:12,530 --> 11:41:21,980
+So let's go and test this. 
+让我们来测试一下
+
+11578
+11:41:21,980 --> 11:41:26,630
+So we're withdrawing with multiple founders, 
+获取 "withdraw with multiple funders" 
+
+11579
+11:41:26,630 --> 11:41:29,960
+we're going to go back to our terminal, 
+回到我们的终端
+
+11580
+11:41:29,960 --> 11:41:32,420
+we're going to hit up, 
+按一下上("↑")键
+
+11581
+11:41:32,420 --> 11:41:36,530
+we're going to change this GREP or this one. 
+把 `grep` 改成这个
+
+11582
+11:41:36,530 --> 11:41:42,020
+We'll see if this passes. And it does indeed, 
+看能不能通过测试，确实通过了！
+
+11583
+11:41:42,020 --> 11:41:45,530
+so this means that our withdraw function works really well even when there's multiple funders 
+这就意味着我们的 `withdraw` 函数运行良好，即使是有多个资助者存在
+
+11584
+11:41:45,530 --> 11:41:49,250
+and we can be happy and go to sleep knowing that. 
+这应该能让我们安心地睡个好觉了
+
+11585
+11:41:49,250 --> 11:41:52,130
+Now the other thing we absolutely want 100% want to test 
+还有一个东西我们百分之一百要测试一下
+
+11586
+11:41:52,130 --> 11:41:55,880
+is that our only owner modifier is working, 
+就是我们的 `onlyOwner` 修饰器是否有效
+
+11587
+11:41:55,880 --> 11:41:59,540
+we want only the owner to be able to withdraw the funds from here. 
+我们希望只有拥有者才能从这里提取资金
+
+11588
+11:41:59,540 --> 11:42:04,580
+So we'll create a new session, 
+所以我们来创建一个新的部分
+
+11589
+11:42:04,580 --> 11:42:10,220
+we'll say it only allows the owner to withdraw only allows you to withdraw. This will be an async function. 
+`it("Only allows the owner to withdraw", async function() {})`
+
+11590
+11:42:10,820 --> 11:42:15,740
+And in here, we'll say const. Accounts equals ethers dot get signers again. 
+这里我们再写一次 `const accounts = ethers.getSigners()`
+
+11591
+11:42:17,420 --> 11:42:20,780
+And we'll say const attacker equals accounts of one. 
+然后是 `const attacker = accounts[1]`
+
+11592
+11:42:20,780 --> 11:42:27,680
+So we'll say the first account will be some random attacker 
+我们假设第一个账户将成为一个随机的攻击者
+
+11593
+11:42:27,680 --> 11:42:30,860
+will connect this attacker to a new contract, 
+我们要把这个 `attacker` 连接到一个新的合约上
+
+11594
+11:42:30,860 --> 11:42:34,970
+we'll say const attacker connected contract equals await on DB dot Connect. Attacker dot address, 
+`const attackerConnectedContract = await fundMe.connect(attacker.address)`
+
+11595
+11:42:35,180 --> 11:42:44,360
+excuse me a dot connect attacker. 
+抱歉，应该是 `.connect(attacker)`
+
+11596
+11:42:44,360 --> 11:42:49,190
+Since we're not just connecting the address, we're connecting the account 
+因为我们不是连接到地址，而是连接到账户
+
+11597
+11:42:49,190 --> 11:42:52,160
+which attacker is an account object. 
+`attacker` 是一个账户对象
+
+11598
+11:42:52,220 --> 11:42:56,990
+And then we'll do a wait expect attacker connected contract dot withdraw dot two dot b dot reverted, 
+接着我们执行 `await expect(attackerConnectedContract.withdraw()).to.be.reverted`
+
+11599
+11:42:59,630 --> 11:43:10,670
+they should not be able to withdraw. 
+它应该是不能提取的
+
+11600
+11:43:11,210 --> 11:43:15,470
+So let's go ahead, we can even just copy this whole thing if we want 
+让我们继续，我们可以直接复制这一整句话，只要我们想的话
+
+11601
+11:43:15,470 --> 11:43:19,010
+to hit up, we'll delete this section here. 
+按上("↑")键，删除这一部分
+
+11602
+11:43:19,190 --> 11:43:24,410
+We'll paste that in. 
+粘贴进去
+
+11603
+11:43:24,410 --> 11:43:29,510
+And boom. This means that when some other account tries to call withdraw, automatically gets reverted, 
+嘭，这意味着当某个其他账户尝试调用 `withdraw` 时，就会自动执行回滚
+
+11604
+11:43:29,510 --> 11:43:32,360
+which is what we want. 
+这正是我们想要的
+
+11605
+11:43:32,360 --> 11:43:36,110
+Now we can be more explicit to make sure that the correct error code is being thrown, 
+现在我们可以更加明确，要求抛出的是正确的错误代码
+
+11606
+11:43:36,110 --> 11:43:39,410
+not just that it's reverted. Right, 
+而不仅仅只是执行了回滚，对吧
+
+11607
+11:43:39,440 --> 11:43:43,280
+it can be very reverted because they sent ether did it they did something weird, 
+回滚可以是因为发送了以太币也可以是因为做了其它奇怪的事
+
+11608
+11:43:43,280 --> 11:43:45,230
+we want to make sure it's reverted with our specific error code. 
+而我们想要确保的是它是因为某个特定的错误代码才回滚的
+
+11609
+11:43:45,230 --> 11:43:48,650
+So right now we have this not owner error code. 
+现在我们有这么一个 `NotOwner` 错误代码
+
+11610
+11:43:48,680 --> 11:43:52,730
+But it's actually a best practice 
+但实际上最好的做法应该是
+
+11611
+11:43:52,730 --> 11:43:57,620
+to put the contract name to underscores and then your custom error. 
+把合约的名字和两个下划线放到你的自定义错误前
+
+11612
+11:43:57,620 --> 11:44:00,110
+This makes it a lot easier in the future when you have a ton of different contracts, 
+这样做可以使未来处理大量不同合约时变得更加容易
+
+11613
+11:44:00,110 --> 11:44:02,960
+and you're not sure where an error is coming from. 
+尤其是在你不确定错误来自于哪里的时候
+
+11614
+11:44:02,960 --> 11:44:05,510
+So we're going to just update this really quickly to be fund me underscore underscore, not owner, 
+我们来快速更新一下这个 `FundMe__NotOwner()`
+
+11615
+11:44:05,510 --> 11:44:09,530
+now we can do is now that we have this custom error, 
+现在我们有了这个自定义错误
+
+11616
+11:44:09,530 --> 11:44:12,860
+we can say withdraw that to be reverted with, 
+就可以开始 `(withdraw()).to.be.revertedWith()
+
+11617
+11:44:12,950 --> 11:44:17,690
+then we can add our custom error in here. 
+接着把我们的自定义错误添加进去
+
+11618
+11:44:17,690 --> 11:44:22,400
+Now, if we rerun our test, with only allows the owner to withdraw, 
+现在，如果我们重新运行我们的测试，附带 "Only allows the owner to withdraw"
+
+11619
+11:44:22,400 --> 11:44:26,270
+oops, we need to do a wait here. My mistake,
+哎呀，这里需要有一个 `await`，我的错
+
+11620
+11:44:26,300 --> 11:44:29,870
+wait a Thursday, get signers. 
+`await ethers.getSigners()`
+
+11621
+11:44:30,560 --> 11:44:32,900
+And now let's try this again. And we are indeed passing Perfect.
+我们来再试一次，确实通过了，完美！
