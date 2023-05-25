@@ -1,0 +1,693 @@
+11622
+11:44:35,690 --> 11:44:38,990
+Okay, great. We have some basic unit tests here. 
+很好，我们在这已经有了一些基础的 Unit 测试了
+
+11623
+11:44:38,990 --> 11:44:41,780
+And we're going to write some staging tests pretty soon. 
+我们很快就会编写一些 Staging 测试
+
+11624
+11:44:41,780 --> 11:44:46,490
+But before we actually do that, let's go ahead and add the gas estimator. 
+但在此之前，让我们来先添加一下 "gas estimator"
+
+11625
+11:44:46,490 --> 11:44:49,280
+And we'll see how much gas these contracts in these functions are taking. 
+我们要看一下这些合约和函数用掉了多少 gas 
+
+11626
+11:44:49,280 --> 11:44:52,160
+It looks like the Hardhead gas reporter is already here. 
+看起来 "hardhat-gas-reporter" 已经准备好了
+
+11627
+11:44:52,160 --> 11:44:57,620
+So let's scroll down. We'll do gas reporter true. 
+所以让我们往下拉，把 "gasReporter" 修改为 `true` 
+
+11628
+11:44:57,770 --> 11:45:01,250
+And we won't do coin market cap here. And we'll just look purely at the GUI. 
+这里我们就不使用 "coinmarketcap" 了，只看用了多少 gwei
+
+11629
+11:45:01,250 --> 11:45:03,920
+So you can just comment it out like that. 
+你可以像这样直接注释掉它
+
+11630
+11:45:03,920 --> 11:45:09,710
+Now rerun all of our tests. So we'll say yarn, our test. 
+现在重新运行我们所有的测试 `yarn hardhat test`
+
+11631
+11:45:09,710 --> 11:45:13,310
+And in doing so we're gonna get that that gas output in that gas report dash text here. 
+这样我们就会在 "gas-report.txt" 中得到相应的 gas 输出
+
+11632
+11:45:13,310 --> 11:45:17,210
+So looks like all of our tests are passing, which is perfect. 
+看起来我们所有的测试都通过了，非常完美
+
+11633
+11:45:17,210 --> 11:45:21,830
+Now we can look into our gas report and see what's going on here. 
+现在我们可以查看一下 "gas-report"，看看都发生了些什么。
+
+11634
+11:45:21,830 --> 11:45:25,220
+i Well, it looks like the fundraising function is taking a decent chunk of gas, 
+好吧，看起来 "fund" 函数消耗了相当多的 gas 
+
+11635
+11:45:25,220 --> 11:45:28,970
+the withdrawal function, take it some guests to 
+"withdraw" 函数同样消耗了不少 gas
+
+11636
+11:45:28,970 --> 11:45:32,330
+we'd see the min, the max and the average. 
+我们可以看到最小值("Min")，最大值("Max")以及平均值("Avg")
+
+11637
+11:45:32,330 --> 11:45:35,300
+Of course, we can see how much each one of these contracts cost to actually output. 
+当然还可以看到每个合约消耗量的输出
+
+11638
+11:45:35,300 --> 11:45:38,210
+We don't really care about the MOQ aggregator of course, 
+我们倒是不关心 "MockV3Aggregator" 
+
+11639
+11:45:38,210 --> 11:45:39,860
+because we're never actually going to use that.
+因为我们永远都不会真的用上它
+
+11640
+11:45:40,220 --> 11:45:42,800
+Let's say we look at the average gas for these and we go hmm,
+我们就来看看它们平均消耗了多少 gas 
+
+11641
+11:45:42,980 --> 11:45:45,980
+this looks like it's actually a lot more than what we originally expected. 
+看起来大大超出了我们最初的预期
+
+11642
+11:45:45,980 --> 11:45:48,770
+Is there a way for us to make this a little bit cheap.
+有没有办法能让这个便宜一点呢
+
+11643
+11:45:48,770 --> 11:45:51,740
+If we go back to our funding contract, we look at our withdrawal function. 
+回到我们的 "FundMe" 合约，看一下我们的 "withdraw" 函数
+
+11644
+11:45:51,740 --> 11:45:55,760
+And we noticed something, 
+我们注意到了某些东西
+
+11645
+11:45:55,760 --> 11:45:58,940
+oh, there is actually a way to make this a lot cheaper. 
+哦，确实有个方法可以让它便宜不少
+
+11646
+11:45:58,970 --> 11:46:02,600
+And it has to do with something called storage variables, or these global variables that we've been working with this whole time. 
+这与我们一直使用的 storage 变量或者说全局变量有关
+
+11647
+11:46:02,600 --> 11:46:05,060
+Let me let me paint you a little picture here, 
+让我来给你们描述一下
+
+11648
+11:46:05,240 --> 11:46:07,790
+we're gonna look at one of the first gas optimization techniques you can take to drop these down. 
+我们要通过一种早期的 gas 优化技巧来把成本降下来
+
+11649
+11:46:07,790 --> 11:46:10,610
+And it has to do with an R Funmi. Contract 
+它要在我们的 "FundMe" 合约中进行操作
+
+11650
+11:46:10,610 --> 11:46:14,600
+these state variables and how they're actually stored 
+这些状态变量以及它们实际如何存储
+
+11651
+11:46:14,600 --> 11:46:19,130
+and how this contract actually keeps track of all this stuff, 
+还有这些合约如何跟踪它们，我们要把这些东西搞清楚
+
+11652
+11:46:19,130 --> 11:46:22,070
+this section is going to be a little bit more advanced. 
+这个部分略微会有点进阶
+
+11653
+11:46:22,370 --> 11:46:25,280
+So we'll have a note here saying that this is an advanced section, 
+所以我们这里先说明一下，这是一个进阶部分
+
+11654
+11:46:25,280 --> 11:46:27,560
+if you want to skip over it, you can, 
+如果你想跳过的话，完全可以
+
+11655
+11:46:27,560 --> 11:46:30,410
+because now
+
+
+11656
+11:46:30,410 --> 11:46:32,630
+we're getting into gas optimizations here, this
+
+
+11657
+11:46:32,630 --> 11:46:35,180
+information still is really good to know. So if you want to skip
+
+
+11658
+11:46:35,180 --> 11:46:38,120
+it for now, and then come back later, you absolutely can. But
+
+
+11659
+11:46:38,120 --> 11:46:43,250
+let's talk about what happens when we actually save or store
+
+
+11660
+11:46:43,370 --> 11:46:47,870
+these global variables. Okay, these storage variables. Now,
+
+
+11661
+11:46:47,870 --> 11:46:50,180
+everything I'm about to go through is in the documentation.
+
+
+11662
+11:46:50,210 --> 11:46:52,550
+And there is a link to this, of course, in the GitHub repo
+
+
+11663
+11:46:52,580 --> 11:46:55,190
+associated with this course, whenever we have one of these
+
+
+11664
+11:46:55,190 --> 11:46:58,520
+global variables, or these variables that stay permanently,
+
+
+11665
+11:46:58,700 --> 11:47:01,550
+they're stuck in something called storage, you can think of
+
+
+11666
+11:47:01,550 --> 11:47:06,080
+storage as a big giant array, or a giant list of all the
+
+
+11667
+11:47:06,080 --> 11:47:08,930
+variables that we actually create. So when we say we have
+
+
+11668
+11:47:08,930 --> 11:47:11,510
+some contract called Son of storage, and we have a variable
+
+
+11669
+11:47:11,510 --> 11:47:14,420
+called favorite number, we're basically saying we want this
+
+
+11670
+11:47:14,420 --> 11:47:17,570
+favorite number variable to persist, right, we saw in a lot
+
+
+11671
+11:47:17,570 --> 11:47:20,210
+of our examples, we had a favorite number variable that we
+
+
+11672
+11:47:20,210 --> 11:47:23,000
+can always call to see what this contracts favorite number was,
+
+
+11673
+11:47:23,000 --> 11:47:27,020
+well, the way it persists, is it gets stored in this place called
+
+
+11674
+11:47:27,050 --> 11:47:30,560
+storage. A storage box is this giant list associated with this
+
+
+11675
+11:47:30,560 --> 11:47:33,800
+contract where every single variable and every single value
+
+
+11676
+11:47:33,800 --> 11:47:38,720
+in the storage section is slotted into a 32 byte long slot
+
+
+11677
+11:47:38,750 --> 11:47:43,430
+in this storage array. So for example, the number 25 in its
+
+
+11678
+11:47:43,430 --> 11:47:48,080
+bytes implementation is 000 with a ton of zeros 19. This is the
+
+
+11679
+11:47:48,080 --> 11:47:51,950
+hex version of the yuan 256. This is why we do so much hex
+
+
+11680
+11:47:51,950 --> 11:47:56,120
+translation, the bytes implementation of a yuan 256.
+
+
+11681
+11:47:56,270 --> 11:47:59,450
+And each store saw increments just like an array starting from
+
+
+11682
+11:47:59,480 --> 11:48:04,460
+zero. So for example, our next global variable or next storage
+
+
+11683
+11:48:04,460 --> 11:48:08,720
+variable just gets slotted at the next slot that's available.
+
+
+11684
+11:48:09,140 --> 11:48:12,800
+So bullions, for example, get transformed from their bull
+
+
+11685
+11:48:12,800 --> 11:48:16,220
+version two, their hex and we modified our some bool variable
+
+
+11686
+11:48:16,220 --> 11:48:22,010
+to be true and X edition of the true Boolean 0x 001. Every time
+
+
+11687
+11:48:22,010 --> 11:48:25,640
+you save an additional global variable, or more correctly, one
+
+
+11688
+11:48:25,640 --> 11:48:29,480
+of these storage variables, it takes up an additional storage
+
+
+11689
+11:48:29,510 --> 11:48:32,450
+slot. And what about variables that are dynamic in length, or
+
+
+11690
+11:48:32,450 --> 11:48:35,300
+that can change length? What about something that's dynamic?
+
+
+11691
+11:48:35,360 --> 11:48:39,080
+Well, for dynamic values, like a dynamic array, or a mapping
+
+
+11692
+11:48:39,230 --> 11:48:42,560
+elements inside the array or inside the mapping are actually
+
+
+11693
+11:48:42,560 --> 11:48:45,560
+stored using some type of hashing function. And you can
+
+
+11694
+11:48:45,560 --> 11:48:48,800
+see those specific functions in the documentation, the object
+
+
+11695
+11:48:48,800 --> 11:48:52,010
+itself does take up a storage slot, but it's not going to be
+
+
+11696
+11:48:52,010 --> 11:48:55,760
+the entire array. For example, my array variable here at
+
+
+11697
+11:48:55,760 --> 11:49:00,230
+storage, slot two doesn't have the entire array in storage slot
+
+
+11698
+11:49:00,230 --> 11:49:04,100
+two, what has actually is just the array length, the length of
+
+
+11699
+11:49:04,100 --> 11:49:07,730
+the array is stored at storage slot two. But for example, if we
+
+
+11700
+11:49:07,730 --> 11:49:12,500
+do my array dot push 222, we do some hashing function, which
+
+
+11701
+11:49:12,500 --> 11:49:15,140
+again, you can see in the documentation what that is, and
+
+
+11702
+11:49:15,140 --> 11:49:20,300
+we'll store the number 222. At that location in storage, the
+
+
+11703
+11:49:20,300 --> 11:49:26,390
+hex of 222 is 0x 0000 D, so it gets stored in this crazy spot.
+
+
+11704
+11:49:26,390 --> 11:49:29,780
+And this is good, this is intentional, because 32 Bytes
+
+
+11705
+11:49:29,900 --> 11:49:32,960
+may not be nearly big enough to store my array if our array gets
+
+
+11706
+11:49:32,960 --> 11:49:35,360
+massive. And it wouldn't make sense for to put the elements
+
+
+11707
+11:49:35,360 --> 11:49:38,900
+inside the array at subsequent numbers because again, the size
+
+
+11708
+11:49:38,900 --> 11:49:40,880
+of the array can change and you're never going to be sure
+
+
+11709
+11:49:40,910 --> 11:49:44,810
+how many subsequence that you need. So for my array, it does
+
+
+11710
+11:49:44,810 --> 11:49:47,630
+have a storage slot for the length for mappings. It does
+
+
+11711
+11:49:47,630 --> 11:49:50,810
+have a storage spot as well similar to array, but it's just
+
+
+11712
+11:49:50,810 --> 11:49:54,050
+blank. But it's blank intentionally so that solidity
+
+
+11713
+11:49:54,050 --> 11:49:57,830
+knows, okay, there is a mapping here, and it needs a storage
+
+
+11714
+11:49:57,830 --> 11:50:00,110
+slot for attaching functional work correctly. Now
+
+
+11715
+11:50:00,110 --> 11:50:03,110
+interestingly, constant variables and immutable
+
+
+11716
+11:50:03,110 --> 11:50:07,340
+variables do not take up spots in storage. The reason for this
+
+
+11717
+11:50:07,370 --> 11:50:10,820
+is because constant variables are actually part of the
+
+
+11718
+11:50:10,820 --> 11:50:14,120
+contracts byte code itself, which sounds a little bit weird.
+
+
+11719
+11:50:14,390 --> 11:50:17,870
+But you can imagine what solidity does is anytime it sees
+
+
+11720
+11:50:17,900 --> 11:50:21,320
+constant variables name is it just automatically swaps it out
+
+
+11721
+11:50:21,320 --> 11:50:24,320
+with whatever number it actually is. So you can kind of think of
+
+
+11722
+11:50:24,380 --> 11:50:28,940
+not in storage is just a pointer to 123 and it doesn't take up a
+
+
+11723
+11:50:28,940 --> 11:50:32,510
+storage slot. Well when we have variables inside of a function,
+
+
+11724
+11:50:32,690 --> 11:50:36,110
+those variables only exist for the duration of the function.
+
+
+11725
+11:50:36,290 --> 11:50:39,260
+They don't stay inside the contract. They don't persist
+
+
+11726
+11:50:39,260 --> 11:50:42,350
+they're not permanent. So variables inside these functions
+
+
+11727
+11:50:42,350 --> 11:50:46,400
+like new var and other var do not get added to storage. They
+
+
+11728
+11:50:46,400 --> 11:50:49,490
+get added in their own memory data structure. Which gets
+
+
+11729
+11:50:49,490 --> 11:50:52,850
+deleted after the function has finished running. Now you might
+
+
+11730
+11:50:52,850 --> 11:50:55,850
+be asking, Okay, well, why do we need this memory keyword,
+
+
+11731
+11:50:55,880 --> 11:50:59,210
+especially when it comes to strings, we saw before that we
+
+
+11732
+11:50:59,210 --> 11:51:02,360
+had to say String memory. The reason we need it for strings is
+
+
+11733
+11:51:02,360 --> 11:51:05,990
+because strings are technically this dynamically sized array.
+
+
+11734
+11:51:06,260 --> 11:51:08,960
+And we need to tell solidity, hey, we're going to do this on
+
+
+11735
+11:51:08,960 --> 11:51:11,180
+the storage location, or we're going to do it into the memory
+
+
+11736
+11:51:11,180 --> 11:51:14,690
+location where we can just wipe it. arrays and mappings can take
+
+
+11737
+11:51:14,690 --> 11:51:18,290
+up a lot more space. So slowly, just wants to make sure Okay,
+
+
+11738
+11:51:18,290 --> 11:51:21,080
+where are we working with this is it storage is a memory, you
+
+
+11739
+11:51:21,080 --> 11:51:24,110
+have to tell me, I need to know if I need to allocate space for
+
+
+11740
+11:51:24,110 --> 11:51:27,230
+it in our storage data structure. And again, everything
+
+
+11741
+11:51:27,230 --> 11:51:29,900
+here you can read in the solidity documentation. Now, in
+
+
+11742
+11:51:29,900 --> 11:51:33,200
+the GitHub repo associated with this course, if you go to
+
+
+11743
+11:51:33,200 --> 11:51:37,010
+contracts, we've actually got an example contract section called
+
+
+11744
+11:51:37,040 --> 11:51:39,920
+Fun with storage, where you can play with and look at a lot of
+
+
+11745
+11:51:39,920 --> 11:51:44,810
+this stuff. And we even wrote a little script called deploy
+
+
+11746
+11:51:44,810 --> 11:51:48,140
+storage fun, where it'll print out the storage location of some
+
+
+11747
+11:51:48,140 --> 11:51:50,750
+of the different variables, feel free to give it a run, if you
+
+
+11748
+11:51:50,750 --> 11:51:53,420
+want to try a challenge anybody to write some functions that
+
+
+11749
+11:51:53,420 --> 11:51:56,510
+find the storage slots of the elements of the arrays, and the
+
+
+11750
+11:51:56,510 --> 11:52:00,200
+mappings, and then find the data inside of those as well. We use
+
+
+11751
+11:52:00,200 --> 11:52:03,380
+a function here called Get storage app, which allows us to
+
+
+11752
+11:52:03,380 --> 11:52:06,890
+get the storage at any one of these slots. And this is to
+
+
+11753
+11:52:06,890 --> 11:52:10,910
+reinforce that even if you have a function as private or
+
+
+11754
+11:52:10,910 --> 11:52:14,930
+internal. Anybody can still read it. Anybody can read anything
+
+
+11755
+11:52:14,930 --> 11:52:18,260
+off the blockchain. And you can test it exactly what this if you
+
+
+11756
+11:52:18,260 --> 11:52:20,930
+go ahead and get clone that or copy paste the code yourself.
+
+
+11757
+11:52:21,260 --> 11:52:26,570
+You can then run yarn part at deploy dash test tags, storage.
+
+
+11758
+11:52:27,440 --> 11:52:30,260
+And you'll run the deploy script for that storage.
+
+
+11759
+11:52:30,260 --> 11:52:33,920
+And you'll see printing out the location of storage in each
+
+
+11760
+11:52:33,920 --> 11:52:40,430
+storage slot with a fun contract that we made as an example. 
