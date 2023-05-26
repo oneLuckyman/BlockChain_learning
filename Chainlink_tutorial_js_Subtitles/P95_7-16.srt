@@ -1,12 +1,12 @@
 11622
 11:44:35,690 --> 11:44:38,990
 Okay, great. We have some basic unit tests here. 
-很好，我们在这已经有了一些基础的 Unit 测试了
+很好，我们这已经有了一些基础的 Unit 测试了
 
 11623
 11:44:38,990 --> 11:44:41,780
 And we're going to write some staging tests pretty soon. 
-我们很快就会编写一些 Staging 测试
+很快我们就会编写一些 Staging 测试
 
 11624
 11:44:41,780 --> 11:44:46,490
@@ -91,7 +91,7 @@ because we're never actually going to use that.
 11640
 11:45:40,220 --> 11:45:42,800
 Let's say we look at the average gas for these and we go hmm,
-我们就来看看它们平均消耗了多少 gas 
+我们来看看它们平均消耗了多少 gas 
 
 11641
 11:45:42,980 --> 11:45:45,980
@@ -101,7 +101,7 @@ this looks like it's actually a lot more than what we originally expected.
 11642
 11:45:45,980 --> 11:45:48,770
 Is there a way for us to make this a little bit cheap.
-有没有办法能让这个便宜一点呢
+有没有办法能便宜一点呢
 
 11643
 11:45:48,770 --> 11:45:51,740
@@ -146,7 +146,7 @@ these state variables and how they're actually stored
 11651
 11:46:14,600 --> 11:46:19,130
 and how this contract actually keeps track of all this stuff, 
-还有这些合约如何跟踪它们，我们要把这些东西搞清楚
+还有这些合约如何跟踪它们，我们要把这些东西都搞清楚
 
 11652
 11:46:19,130 --> 11:46:22,070
@@ -165,529 +165,531 @@ if you want to skip over it, you can,
 
 11655
 11:46:27,560 --> 11:46:30,410
-because now
-
+because now we're getting into gas optimizations here, 
+因为现在我们要做的是 gas 优化相关的事
 
 11656
 11:46:30,410 --> 11:46:32,630
-we're getting into gas optimizations here, this
-
+this information still is really good to know. 
+但这些知识点仍然是很有用的
 
 11657
 11:46:32,630 --> 11:46:35,180
-information still is really good to know. So if you want to skip
-
+So if you want to skip it for now, and then come back later, you absolutely can. 
+所以如果你打算现在先跳过，之后再返回来看，也完全是可以的
 
 11658
 11:46:35,180 --> 11:46:38,120
-it for now, and then come back later, you absolutely can. But
-
+But let's talk about what happens 
+让我们来讨论一下
 
 11659
 11:46:38,120 --> 11:46:43,250
-let's talk about what happens when we actually save or store
-
+when we actually save or store these global variables. Okay, these storage variables. 
+当我们保存或存储这些全局变量或者说 storage 变量时，到底发生了些什么
 
 11660
 11:46:43,370 --> 11:46:47,870
-these global variables. Okay, these storage variables. Now,
-
+Now, everything I'm about to go through is in the documentation. 
+现在，我要提到的所有内容都来自于这个文档
 
 11661
 11:46:47,870 --> 11:46:50,180
-everything I'm about to go through is in the documentation.
-
+And there is a link to this, of course, in the GitHub repo associated with this course, 
+链接放在了课程关联的 GitHub 仓库中
 
 11662
 11:46:50,210 --> 11:46:52,550
-And there is a link to this, of course, in the GitHub repo
-
+whenever we have one of these global variables, or these variables that stay permanently, 
+当我们有这么一些全局变量或者说永久保留的变量时
 
 11663
 11:46:52,580 --> 11:46:55,190
-associated with this course, whenever we have one of these
-
+they're stuck in something called storage, 
+它们都被存放在了一个被称为 "Storage" 的区域里
 
 11664
 11:46:55,190 --> 11:46:58,520
-global variables, or these variables that stay permanently,
-
+you can think of storage as a big giant array, or a giant list of all the variables that we actually create. 
+你可以将 "Storage" 想象为一个包含我们所创建的所有变量的一个巨大的数组或列表
 
 11665
 11:46:58,700 --> 11:47:01,550
-they're stuck in something called storage, you can think of
-
+So when we say we have some contract called Son of storage, 
+假如说我们有一个合约，名为 "FunWithStorage" 
 
 11666
 11:47:01,550 --> 11:47:06,080
-storage as a big giant array, or a giant list of all the
-
+and we have a variable called favorite number, 
+其中有一个变量名为 "favoriteNumber" 
 
 11667
 11:47:06,080 --> 11:47:08,930
-variables that we actually create. So when we say we have
-
+we're basically saying we want this favorite number variable to persist, right, 
+基本上，我们的意思就是让这个 "favoriteNumber" 变量永久存在，对吧？
 
 11668
 11:47:08,930 --> 11:47:11,510
-some contract called Son of storage, and we have a variable
-
+we saw in a lot of our examples, 
+我们已经见过许多例子了
 
 11669
 11:47:11,510 --> 11:47:14,420
-called favorite number, we're basically saying we want this
-
+we had a favorite number variable 
+如果我们有一个 "favoriteNumber" 变量
 
 11670
 11:47:14,420 --> 11:47:17,570
-favorite number variable to persist, right, we saw in a lot
-
+that we can always call to see what this contracts favorite number was, 
+那么我们可以随时调用并查看这个合约的 "favoriteNumber" 是什么
 
 11671
 11:47:17,570 --> 11:47:20,210
-of our examples, we had a favorite number variable that we
-
+well, the way it persists, 
+它能永久存在的原因是，
 
 11672
 11:47:20,210 --> 11:47:23,000
-can always call to see what this contracts favorite number was,
-
+is it gets stored in this place called storage. 
+它被存储在了一个名为 "Storage" 的地方
 
 11673
 11:47:23,000 --> 11:47:27,020
-well, the way it persists, is it gets stored in this place called
-
+A storage box is this giant list associated with this contract 
+"Storage" 是一个与合约相关联的巨大列表
 
 11674
 11:47:27,050 --> 11:47:30,560
-storage. A storage box is this giant list associated with this
-
+where every single variable and every single value in the storage section is slotted into a 32 byte long slot in this storage array. 
+其中的每个变量，每个值都被放置在了 "Storage" 数组中的某个 32 字节长的槽位中
 
 11675
 11:47:30,560 --> 11:47:33,800
-contract where every single variable and every single value
-
+So for example, the number 25 in its bytes implementation is 000 with a ton of zeros 19. 
+举个例子，这个数字 25 在字节中的表示就是 0x00 一大堆 0 然后是 19
 
 11676
 11:47:33,800 --> 11:47:38,720
-in the storage section is slotted into a 32 byte long slot
-
+This is the hex version of the yuan 256. 
+这是 uint256 的十六进制形式
 
 11677
 11:47:38,750 --> 11:47:43,430
-in this storage array. So for example, the number 25 in its
-
+This is why we do so much hex translation, 
+这就是为什么我们要进行大量的十六进制转换
 
 11678
 11:47:43,430 --> 11:47:48,080
-bytes implementation is 000 with a ton of zeros 19. This is the
-
+the bytes implementation of a yuan 256. 
+因为这就是 uint256 的字节表示形式
 
 11679
 11:47:48,080 --> 11:47:51,950
-hex version of the yuan 256. This is why we do so much hex
-
+And each store saw increments just like an array starting from zero. 
+每个存储位置都和数组一样，从 0 开始递增
 
 11680
 11:47:51,950 --> 11:47:56,120
-translation, the bytes implementation of a yuan 256.
-
+So for example, our next global variable or next storage variable just gets slotted at the next slot that's available. 
+例如，我们的下一个全局变量或者说 storage 变量会被插入到下一个可用的槽位中
 
 11681
 11:47:56,270 --> 11:47:59,450
-And each store saw increments just like an array starting from
-
+So bullions, for example, get transformed from their bull version two, their hex 
+例如说布尔值，就会从布尔值形式转换到它们的十六进制形式
 
 11682
 11:47:59,480 --> 11:48:04,460
-zero. So for example, our next global variable or next storage
-
+and we modified our some bool variable to be true 
+我们把这个 "someBool" 变量修改为了 true 
 
 11683
 11:48:04,460 --> 11:48:08,720
-variable just gets slotted at the next slot that's available.
-
+and X edition of the true Boolean 0x 001. 
+而 true 布尔值的十六进制版本就是 0x00...01
 
 11684
 11:48:09,140 --> 11:48:12,800
-So bullions, for example, get transformed from their bull
-
+Every time you save an additional global variable, 
+每当你保存一个额外的全局变量
 
 11685
 11:48:12,800 --> 11:48:16,220
-version two, their hex and we modified our some bool variable
-
+or more correctly, one of these storage variables, 
+或者更准确地说，保存一个 storage 变量时
 
 11686
 11:48:16,220 --> 11:48:22,010
-to be true and X edition of the true Boolean 0x 001. Every time
-
+it takes up an additional storage slot. 
+它都会占用一个额外的 "Storage" 槽位
 
 11687
 11:48:22,010 --> 11:48:25,640
-you save an additional global variable, or more correctly, one
-
+And what about variables that are dynamic in length, or that can change length? 
+那么对于动态长度，或者说可以改变长度的变量呢？
 
 11688
 11:48:25,640 --> 11:48:29,480
-of these storage variables, it takes up an additional storage
-
+What about something that's dynamic? 
+这些动态的东西怎么办？
 
 11689
 11:48:29,510 --> 11:48:32,450
-slot. And what about variables that are dynamic in length, or
-
+Well, for dynamic values, like a dynamic array, or a mapping
+对于动态值来说，比如动态数组或者 mapping
 
 11690
 11:48:32,450 --> 11:48:35,300
-that can change length? What about something that's dynamic?
-
+elements inside the array or inside the mapping are actually stored using some type of hashing function. 
+它们内部的元素实际上是以一种名为“哈希函数”("Hashing Function")的形式存储的
 
 11691
 11:48:35,360 --> 11:48:39,080
-Well, for dynamic values, like a dynamic array, or a mapping
-
+And you can see those specific functions in the documentation, 
+你可以在文档中查看到它的具体函数形式
 
 11692
 11:48:39,230 --> 11:48:42,560
-elements inside the array or inside the mapping are actually
-
+the object itself does take up a storage slot, 
+这些对象本身确实会占用一个 "Storage" 槽位
 
 11693
 11:48:42,560 --> 11:48:45,560
-stored using some type of hashing function. And you can
-
+but it's not going to be the entire array. 
+但它并不是整个数组
 
 11694
 11:48:45,560 --> 11:48:48,800
-see those specific functions in the documentation, the object
-
+For example, my array variable here at storage, slot two 
+比如说，这里的 "myArray" 变量位于 "Storage" 的槽位 [2]
 
 11695
 11:48:48,800 --> 11:48:52,010
-itself does take up a storage slot, but it's not going to be
-
+doesn't have the entire array in storage slot two, 
+并不是整个数组都位于 "Storage" 槽位 [2]
 
 11696
 11:48:52,010 --> 11:48:55,760
-the entire array. For example, my array variable here at
-
+what has actually is just the array length, 
+它其实只代表这个数组的长度
 
 11697
 11:48:55,760 --> 11:49:00,230
-storage, slot two doesn't have the entire array in storage slot
-
+the length of the array is stored at storage slot two. 
+数组的长度值被存储在了 "Storage" 槽位 [2] 上
 
 11698
 11:49:00,230 --> 11:49:04,100
-two, what has actually is just the array length, the length of
-
+But for example, if we do my array dot push 222, 
+但如果我们执行 `myArray.push(222)` 的话
 
 11699
 11:49:04,100 --> 11:49:07,730
-the array is stored at storage slot two. But for example, if we
-
+we do some hashing function, 
+就会获得这么一个哈希函数
 
 11700
 11:49:07,730 --> 11:49:12,500
-do my array dot push 222, we do some hashing function, which
-
+which again, you can see in the documentation what that is, 
+再次强调，你可以在文档中查看它具体是什么东西
 
 11701
 11:49:12,500 --> 11:49:15,140
-again, you can see in the documentation what that is, and
-
+and we'll store the number 222. At that location in storage, 
+而我们将在 "Storage" 的那个位置上(指哈希函数)，存储数字 222 
 
 11702
 11:49:15,140 --> 11:49:20,300
-we'll store the number 222. At that location in storage, the
-
+the hex of 222 is 0x 0000 D, 
+222 的十六进制形式是 0x00...0de
 
 11703
 11:49:20,300 --> 11:49:26,390
-hex of 222 is 0x 0000 D, so it gets stored in this crazy spot.
-
+so it gets stored in this crazy spot.
+所以它就被存储在了这么一个奇怪的位置上
 
 11704
 11:49:26,390 --> 11:49:29,780
-And this is good, this is intentional, because 32 Bytes
-
+And this is good, this is intentional, 
+而且这很好，这就是有意为之的
 
 11705
 11:49:29,900 --> 11:49:32,960
-may not be nearly big enough to store my array if our array gets
-
+because 32 Bytes may not be nearly big enough to store my array if our array gets massive. 
+因为 32 字节的大小可能远远不足以存储我的数组，如果我们的数组非常大的话
 
 11706
 11:49:32,960 --> 11:49:35,360
-massive. And it wouldn't make sense for to put the elements
-
+And it wouldn't make sense for to put the elements inside the array at subsequent numbers 
+而将数组中的元素依次放置在后续的位置上也没有什么意义
 
 11707
 11:49:35,360 --> 11:49:38,900
-inside the array at subsequent numbers because again, the size
-
+because again, the size of the array can change 
+还是因为，数组的大小可以改变
 
 11708
 11:49:38,900 --> 11:49:40,880
-of the array can change and you're never going to be sure
-
+and you're never going to be sure how many subsequence that you need. 
+而你永远无法确定到底需要多少个位置才足够
 
 11709
 11:49:40,910 --> 11:49:44,810
-how many subsequence that you need. So for my array, it does
-
+So for my array, it does have a storage slot for the length 
+对于 "myArray" 来说，它占用一个 "Storage" 槽位存储长度
 
 11710
 11:49:44,810 --> 11:49:47,630
-have a storage slot for the length for mappings. It does
-
+for mappings. It does have a storage spot as well 
+而对于 mapping，它也会占用一个 "Storage" 槽位
 
 11711
 11:49:47,630 --> 11:49:50,810
-have a storage spot as well similar to array, but it's just
-
+similar to array, but it's just blank. 
+和数组很相似，但它是空白的
 
 11712
 11:49:50,810 --> 11:49:54,050
-blank. But it's blank intentionally so that solidity
-
+But it's blank intentionally 
+不过这是故意留白的
 
 11713
 11:49:54,050 --> 11:49:57,830
-knows, okay, there is a mapping here, and it needs a storage
-
+so that solidity knows, okay, there is a mapping here, 
+这样 Solidity 就能知道，OK 这里有一个 mapping 
 
 11714
 11:49:57,830 --> 11:50:00,110
-slot for attaching functional work correctly. Now
-
+and it needs a storage slot for attaching functional work correctly. 
+它需要一个 "Storage" 槽位来正确运行它的哈希函数
 
 11715
 11:50:00,110 --> 11:50:03,110
-interestingly, constant variables and immutable
-
+Now interestingly, constant variables and immutable variables do not take up spots in storage. 
+有趣的是 `constant` 变量和 `immutable` 变量并不占用 "Storage" 的空间
 
 11716
 11:50:03,110 --> 11:50:07,340
-variables do not take up spots in storage. The reason for this
-
+The reason for this is because constant variables are actually part of the contracts byte code itself, 
+这是因为 `constant` 变量实际上已经成为了合约字节码其本身的一部分了
 
 11717
 11:50:07,370 --> 11:50:10,820
-is because constant variables are actually part of the
-
+which sounds a little bit weird. 
+听起来有些奇怪
 
 11718
 11:50:10,820 --> 11:50:14,120
-contracts byte code itself, which sounds a little bit weird.
-
+But you can imagine 
+但你可以这样想
 
 11719
 11:50:14,390 --> 11:50:17,870
-But you can imagine what solidity does is anytime it sees
-
+what solidity does is anytime it sees constant variables name 
+Solidity 看到 `constant` 变量的名字时会做什么
 
 11720
 11:50:17,900 --> 11:50:21,320
-constant variables name is it just automatically swaps it out
-
+is it just automatically swaps it out with whatever number it actually is. 
+它只是自动将其替换为所对应的数字而已
 
 11721
 11:50:21,320 --> 11:50:24,320
-with whatever number it actually is. So you can kind of think of
-
+So you can kind of think of not in storage is just a pointer to 123 
+因此你可以认为它并不在 "Storage" 中，而只是作为一个指针指向 123 而已
 
 11722
 11:50:24,380 --> 11:50:28,940
-not in storage is just a pointer to 123 and it doesn't take up a
-
+and it doesn't take up a storage slot. 
+当然也就不占用 "Storage" 的槽位了
 
 11723
 11:50:28,940 --> 11:50:32,510
-storage slot. Well when we have variables inside of a function,
-
+Well when we have variables inside of a function,
+而当我们在函数内部有一些变量时
 
 11724
 11:50:32,690 --> 11:50:36,110
-those variables only exist for the duration of the function.
-
+those variables only exist for the duration of the function. 
+这些变量只存在于函数的执行期间
 
 11725
 11:50:36,290 --> 11:50:39,260
-They don't stay inside the contract. They don't persist
-
+They don't stay inside the contract. They don't persist they're not permanent. 
+它们不会一直存在于合约内，不是永久存在的
 
 11726
 11:50:39,260 --> 11:50:42,350
-they're not permanent. So variables inside these functions
-
+So variables inside these functions like new var and other var 
+所以这些存在于函数内部的变量，比如 `newVar` 和 `otherVar`
 
 11727
 11:50:42,350 --> 11:50:46,400
-like new var and other var do not get added to storage. They
-
+do not get added to storage. 
+它们不会被添加到 "Storage" 中
 
 11728
 11:50:46,400 --> 11:50:49,490
-get added in their own memory data structure. Which gets
-
+They get added in their own memory data structure. 
+它们会被添加到它们自己的 "memory" 数据结构中
 
 11729
 11:50:49,490 --> 11:50:52,850
-deleted after the function has finished running. Now you might
-
+Which gets deleted after the function has finished running. 
+这种数据结构在函数运行结束后就会被删除
 
 11730
 11:50:52,850 --> 11:50:55,850
-be asking, Okay, well, why do we need this memory keyword,
-
+Now you might be asking, Okay, well, why do we need this memory keyword, especially when it comes to strings, 
+现在你可能会问了，为什么我们会需要这个 "memory" 关键字呢？尤其是在处理字符串的时候
 
 11731
 11:50:55,880 --> 11:50:59,210
-especially when it comes to strings, we saw before that we
-
+we saw before that we had to say String memory. 
+之前我们就看到过，我们必须要声明成 "string memory" 
 
 11732
 11:50:59,210 --> 11:51:02,360
-had to say String memory. The reason we need it for strings is
-
+The reason we need it for strings is because strings are technically this dynamically sized array. 
+原因就是，因为字符串从技术上来说就是一个动态大小的数组
 
 11733
 11:51:02,360 --> 11:51:05,990
-because strings are technically this dynamically sized array.
-
+And we need to tell solidity, 
+我们需要告诉 Solidity
 
 11734
 11:51:06,260 --> 11:51:08,960
-And we need to tell solidity, hey, we're going to do this on
-
+hey, we're going to do this on the storage location, 
+嘿，我们要把它存储到 "Storage" 的位置上
 
 11735
 11:51:08,960 --> 11:51:11,180
-the storage location, or we're going to do it into the memory
-
+or we're going to do it into the memory location where we can just wipe it. 
+或者是我们把它存到 "memory" 的位置上，这样我们就可以轻松地清除掉它
 
 11736
 11:51:11,180 --> 11:51:14,690
-location where we can just wipe it. arrays and mappings can take
-
+arrays and mappings can take up a lot more space. 
+数组和 mapping 会占用更多的空间
 
 11737
 11:51:14,690 --> 11:51:18,290
-up a lot more space. So slowly, just wants to make sure Okay,
-
+So slowly, just wants to make sure Okay, where are we working with this is it 
+所以 Solidity 会想要确认，我们到底在哪里处理它们
 
 11738
 11:51:18,290 --> 11:51:21,080
-where are we working with this is it storage is a memory, you
-
+storage is a memory, you have to tell me, 
+是 "Storage" 还是 "memory" 你必须要告诉我
 
 11739
 11:51:21,080 --> 11:51:24,110
-have to tell me, I need to know if I need to allocate space for
-
+I need to know if I need to allocate space for it in our storage data structure. 
+我需要知道我是否需要为它们在 "Storage" 数据结构中分配空间
 
 11740
 11:51:24,110 --> 11:51:27,230
-it in our storage data structure. And again, everything
-
+And again, everything here you can read in the solidity documentation. 
+再提醒一下，所以这些内容你都可以在 Solidity 的文档中进行查阅
 
 11741
 11:51:27,230 --> 11:51:29,900
-here you can read in the solidity documentation. Now, in
-
+Now, in the GitHub repo associated with this course, 
+在课程关联的 GitHub 仓库中
 
 11742
 11:51:29,900 --> 11:51:33,200
-the GitHub repo associated with this course, if you go to
-
+if you go to contracts, 
+如果你前往 "contracts" 
 
 11743
 11:51:33,200 --> 11:51:37,010
-contracts, we've actually got an example contract section called
-
+we've actually got an example contract section called Fun with storage, 
+这里有一个 "exampleContracts" 部分，名为 "FunWithStorage" 
 
 11744
 11:51:37,040 --> 11:51:39,920
-Fun with storage, where you can play with and look at a lot of
-
+where you can play with and look at a lot of this stuff. 
+你可以在这里尝试和探索很多相关内容
 
 11745
 11:51:39,920 --> 11:51:44,810
-this stuff. And we even wrote a little script called deploy
-
+And we even wrote a little script called deploy storage fun, 
+我们甚至还写了一个名为 "deploy-storage-fun" 的小脚本
 
 11746
 11:51:44,810 --> 11:51:48,140
-storage fun, where it'll print out the storage location of some
-
+where it'll print out the storage location of some of the different variables, 
+它会打印出一些不同变量的 "Storage" 位置
 
 11747
 11:51:48,140 --> 11:51:50,750
-of the different variables, feel free to give it a run, if you
-
+feel free to give it a run, if you want to try 
+如果你想尝试一下的话，请随意
 
 11748
 11:51:50,750 --> 11:51:53,420
-want to try a challenge anybody to write some functions that
-
+a challenge anybody to write some functions that find the storage slots of the elements of the arrays, and the mappings, 
+这里向大家发起一个挑战，请编写一些函数来查找数组和 mapping 的元素所在的 "Storage" 槽位
 
 11749
 11:51:53,420 --> 11:51:56,510
-find the storage slots of the elements of the arrays, and the
-
+and then find the data inside of those as well. 
+接着再找到这些槽位内的数据
 
 11750
 11:51:56,510 --> 11:52:00,200
-mappings, and then find the data inside of those as well. We use
-
+We use a function here called Get storage app, 
+这里我们用到了一个函数名为 `getStorageAt()`
 
 11751
 11:52:00,200 --> 11:52:03,380
-a function here called Get storage app, which allows us to
-
+which allows us to get the storage at any one of these slots. 
+它能让我们获取任意一个槽位内的数据
 
 11752
 11:52:03,380 --> 11:52:06,890
-get the storage at any one of these slots. And this is to
-
+And this is to reinforce that 
+这也是为了向你强调
 
 11753
 11:52:06,890 --> 11:52:10,910
-reinforce that even if you have a function as private or
-
+even if you have a function as private or internal. Anybody can still read it. 
+即使你将一个函数设置为 "private" 或者 "internal"，其他人也仍然可以读取它
 
 11754
 11:52:10,910 --> 11:52:14,930
-internal. Anybody can still read it. Anybody can read anything
-
+Anybody can read anything off the blockchain. 
+任何人都可以从区块链上读取任何信息
 
 11755
 11:52:14,930 --> 11:52:18,260
-off the blockchain. And you can test it exactly what this if you
-
+And you can test it exactly what this 
+你可以用这个来进行精准测试
 
 11756
 11:52:18,260 --> 11:52:20,930
-go ahead and get clone that or copy paste the code yourself.
-
+if you go ahead and get clone that or copy paste the code yourself. 
+如果你把它 clone 了下来或者复制粘贴到了自己的代码里
+(译注: clone 是 Git 的一个功能，可以把 GitHub 上的代码库直接整个下载到本地)
 
 11757
 11:52:21,260 --> 11:52:26,570
-You can then run yarn part at deploy dash test tags, storage.
-
+You can then run yarn part at deploy dash test tags, storage. 
+你就可以运行 `yarn hardhat deploy --test tags storage`
 
 11758
 11:52:27,440 --> 11:52:30,260
-And you'll run the deploy script for that storage.
-
+And you'll run the deploy script for that storage. 
+接着你就会运行这个 "storage" 的部署脚本
 
 11759
 11:52:30,260 --> 11:52:33,920
-And you'll see printing out the location of storage in each
-
+And you'll see printing out the location of storage in each storage slot 
+然后你就会看到每个 "Storage" 槽位上的 "Storage" 位置信息
 
 11760
 11:52:33,920 --> 11:52:40,430
-storage slot with a fun contract that we made as an example. 
+with a fun contract that we made as an example. 
+被我们所制作的 "Fun(WithStorage)" 合约示例打印出来
