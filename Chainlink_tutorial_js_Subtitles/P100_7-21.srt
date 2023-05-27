@@ -1,0 +1,244 @@
+12202
+12:21:57,590 --> 12:22:03,440
+There's actually one more thing I want to show you before we actually work 
+在我们实际开始工作并把代码推送至 GitHub 之前
+
+12203
+12:22:03,440 --> 12:22:05,900
+and we push all this wonderful code up to GitHub 
+我还要向你展示一个东西
+
+12204
+12:22:05,900 --> 12:22:09,800
+in our package dot JSON. I've shown you a little bit of this before, 
+在我们的 "package.json" 中，我之前向你们展示过一点
+
+12205
+12:22:09,800 --> 12:22:12,350
+but we can add this scripts section to make our lives a lot easier 
+我们可以添加这个 "scripts" 部分来让许多事变得更简单
+
+12206
+12:22:12,380 --> 12:22:17,180
+and condense all these long tests into a yarn script for us. 
+而且它可以把这些长测试浓缩为一个 `yarn script` 
+
+12207
+12:22:17,210 --> 12:22:22,130
+So usually, what you'll see in common package dot JSON is you'll see a list of these in here 
+所以通常来说，一般的 "package.json" 里你都可以看到这里有这么一个列表
+
+12208
+12:22:22,130 --> 12:22:25,460
+for people to look and just automatically run, 
+供人们查看还有自动运行
+
+12209
+12:22:25,460 --> 12:22:29,000
+one of the most common ones is going to be test. 
+最常见的一种就是 `"test":`
+
+12210
+12:22:29,000 --> 12:22:32,720
+And to run test, we're going to do yarn, hard hat test. 
+为了运行测试，我们要执行 `yarn hardhat test`
+
+12211
+12:22:32,930 --> 12:22:37,430
+So now instead of running yarn, Hardhead test, 
+现在，其他人就不再需要执行 `yarn hardhat test` 
+
+12212
+12:22:37,430 --> 12:22:40,400
+someone can just come to your package once this is saved and just run yarn test. 
+而是可以直接来到你的 "package"，只要这里保存了，就可以运行 `yarn test`
+
+12213
+12:22:40,400 --> 12:22:44,120
+And this will grab this test from your script section 
+接着它就会从 "scripts" 部分获取这个 "test" 
+
+12214
+12:22:44,120 --> 12:22:47,060
+and it will run yarn heart at test 
+并运行 `yarn hardhat test`
+
+12215
+12:22:47,060 --> 12:22:49,700
+and Bada bing, bada boom,
+接着，噼里啪啦，嘭
+
+12216
+12:22:49,730 --> 12:22:52,010
+okay, cool. What else do we probably probably want to do in here? 
+OK 酷~ 我们还要在这里做些什么？
+
+12217
+12:22:52,010 --> 12:22:55,880
+Well, we probably want to have a test staging section
+我们大概还需要一个 `"test:staging"` 部分
+
+12218
+12:22:55,940 --> 12:23:02,930
+that'll run yarn Hardhead test dash dash, network Rinkeby. 
+它运行 `yarn hardhat test --network rinkeby`
+
+12219
+12:23:02,930 --> 12:23:05,000
+I'm not going to run that. But that's probably something we want to have in here, 
+我并不会运行它，但这里确实需要有它
+
+12220
+12:23:05,000 --> 12:23:07,370
+we're probably going to want some linting. 
+我们大概还想要有一些 "linting"
+
+12221
+12:23:07,370 --> 12:23:11,570
+So we showed you briefly that linting thing. 
+之前我向你们简短地展示过一些关于 "linting" 的东西
+
+12222
+12:23:11,600 --> 12:23:16,280
+So we'll have a yarn lint, which will just run yarn, sole hint.
+所以我们需要一个 `yarn lint`，它运行 `yarn solhint`
+
+12223
+12:23:16,520 --> 12:23:20,900
+And then we'll just have it so hence the contracts folder. And anything that starts out soul.  
+我们就让它 solhint 'contracts' 文件夹下所有的 ".sol" 文件
+
+12224
+12:23:20,900 --> 12:23:24,530
+So now if I run yarn, lint, 
+现在如果我运行 `yarn lint` 
+
+12225
+12:23:24,800 --> 12:23:29,120
+it'll run soul hint, and all of our code here 
+它就会 solhint 我们这里所有的代码
+
+12226
+12:23:29,120 --> 12:23:32,270
+and it'll give us some warnings here, which we can pretty much all ignore. 
+这里它给了我们一些 "warning"，基本上都可以忽略掉
+
+12227
+12:23:32,270 --> 12:23:36,290
+And Solon actually has an auto fix and auto fix that we can add, 
+solhint 还有一个自动修复功能，我们也可以添加上
+
+12228
+12:23:36,290 --> 12:23:42,740
+by doing yarn lint fix, we'll say yarn. So hint, contracts slash start out. So we'll do dash dash fix. 
+需要运行 `yarn lint:fix` 然后是 "yarn solhint 'contracts/*.sol' --fix"
+
+12229
+12:23:42,740 --> 12:23:48,230
+So now we run yarn, lint fix, it'll auto fix, which there's nothing to auto fix. 
+现在我们运行 `yarn lint:fix` 它就会自动修复，不过也没什么可修复的
+
+12230
+12:23:48,230 --> 12:23:52,310
+So nothing happens. But it's good to have anyways. 
+所以什么都不会发生，但无论如何还是得有的
+
+12231
+12:23:52,670 --> 12:23:55,490
+And then we can do our formatter, 
+接着我们可以运行我们的 "formatter"
+
+12232
+12:23:55,490 --> 12:23:59,240
+we're just going to format our code 
+为的是格式化我们的代码
+
+12233
+12:23:59,600 --> 12:24:03,710
+format, that which will do yarn, prettier, dash dash write to,
+`"format": "yarn prettier --write"
+
+12234
+12:24:03,710 --> 12:24:06,800
+and we'll just do a period to do everything. 
+我们直接写句号(".") 来格式化所有内容
+
+12235
+12:24:06,800 --> 12:24:11,240
+And then we can just do yarn format. 
+然后我们就可以使用 `yarn format`
+
+12236
+12:24:11,240 --> 12:24:15,080
+And it's gonna fix all of our, it's going to fix everything for us, which is great. 
+接着它就会处理我们所有的，处理我们所有的内容，非常好
+
+12237
+12:24:15,080 --> 12:24:20,630
+And then we finally can have coverage. By running yarn hardhat coverage, 
+然后就是最后一个 `"coverage": "yarn hardhat coverage"`
+
+12238
+12:24:20,630 --> 12:24:24,350
+now we can just run yarn coverage, will give us this wonderful little coverage report. 
+现在我们可以运行 `yarn coverage`，它就会为我们提供一份小而美的 "coverage" 报告
+
+12239
+12:24:24,350 --> 12:24:28,250
+Awesome. So our packages looking fantastic.
+太棒了，我们的 "package" 看起来棒极了
+
+12240
+12:24:28,280 --> 12:24:31,130
+Maybe we'll even come into package json. 
+或许我们甚至可以进入 "package.json"
+
+12241
+12:24:31,130 --> 12:24:38,090
+We'll give this a name. We'll call this hard hat. 
+给它一个 "name" 就叫 "hardhat fund me"
+
+12242
+12:24:38,090 --> 12:24:41,000
+And me give it an author, which is going to be your name. So I'm just gonna say Patrick Collins,
+再给它一个 "author" 也就是你的名字，对我来说就是 "patrick collins"
+
+12243
+12:24:41,660 --> 12:24:48,740
+and we'll give it a version in here. of 1.0 Point 
+我们再给它一个 `"version": "1.0.0"`
+
+12244
+12:24:48,740 --> 12:24:53,840
+Oh, oops. And let's do icons instead of spaces. 
+哦，这里要用 "-" 来代替空格
+
+12245
+12:24:53,870 --> 12:24:57,740
+Oh, and one more thing. We're not using ES lint. So all this es lint stuff, we can dump
+哦！还有一件事，我们并没有使用 "eslint"，所以所有这些 "eslint" 的东西，我们都可以删掉
+
+12246
+12:24:57,830 --> 12:25:00,710
+and we could delete the yarn dot lock and reinstall. But yeah, whatever. 
+我们可以删掉 "yarn.lock" 然后再重新安装，不过现在先不管了
+
+12247
+12:25:00,740 --> 12:25:03,590
+We don't have a readme, but that's okay. 
+我们还没有 "README"，但没关系
+
+12248
+12:25:03,590 --> 12:25:06,740
+If you want to go back, like I said, go check out that best readme template 
+如果你想的话，就像我说的，去找一下那个最好的 "README" 模板("Best README Template")
+
+12249
+12:25:06,740 --> 12:25:10,310
+and go update your READMEs to make them look as awesome as this, you can do that as well. 
+然后更新一下你的 "README" 让它看起来和这个一样棒
+
+12250
+12:25:10,310 --> 12:25:12,740
+But other than that, we've got an awesome code repo here. 
+但除此之外，我们已经有了一个非常棒的代码库了
