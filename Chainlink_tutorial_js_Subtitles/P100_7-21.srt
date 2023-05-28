@@ -241,4 +241,4 @@ and go update your READMEs to make them look as awesome as this, you can do that
 12250
 12:25:10,310 --> 12:25:12,740
 But other than that, we've got an awesome code repo here. 
-但除此之外，我们已经有了一个非常棒的代码库了
+但除了这个以外，我们的代码库已经非常好了

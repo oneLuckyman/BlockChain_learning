@@ -1,0 +1,685 @@
+12251
+12:25:12,770 --> 12:25:19,070
+What do we want to do with it? 
+我们要用它来做些什么？
+
+12252
+12:25:19,070 --> 12:25:21,770
+Well, we've been playing around with GitHub so much, 
+我们一直在大量使用 GitHub
+
+12253
+12:25:21,770 --> 12:25:24,800
+we've been looking at all these good hubs. 
+一直在看这些 GitHub
+
+12254
+12:25:24,800 --> 12:25:29,720
+It's time for us to join GitHub with our own with our first repository. 
+现在是时候让我们亲自加入 GitHub 创造属于我们自己的第一个仓库了
+
+12255
+12:25:29,720 --> 12:25:33,320
+Let's go ahead and let's make this happen 
+让我们来实现这个目标
+
+12256
+12:25:33,320 --> 12:25:36,110
+in the lesson seven full blockchain solidity course, yes, 
+在 "full-blockchain-solidity-course-js" 的 "Lesson 7" 中
+
+12257
+12:25:36,110 --> 12:25:39,080
+there is a link to this GitHub Quickstart 
+有一个到 "Github Quickstart" 的链接
+
+12258
+12:25:39,080 --> 12:25:42,440
+that we're going to follow to set up our first repository. 
+我们可以参照它来设置我们的首个仓库
+
+12259
+12:25:42,440 --> 12:25:45,290
+This is going to be the moment where you are starting to build your portfolio 
+现在是时候开始创建你的档案了
+
+12260
+12:25:45,290 --> 12:25:48,200
+building and GitHub is borderline crucial for your development journey. 
+建立一个 GitHub 对你的开发之旅来说至关重要
+
+12261
+12:25:48,200 --> 12:25:50,420
+It's going to be your portal folio, it's going to be where you say, 
+它会成为你的档案，你可以在这里告诉其他人
+
+12262
+12:25:50,690 --> 12:25:53,150
+Hey, look at all the cool products that I'm engaging with, that I'm working with, that I'm participating in. 
+嘿，看看我参与和从事的炫酷产品
+
+12263
+12:25:53,150 --> 12:25:55,910
+If you've already made GitHub before, 
+如果你之前就用过 GitHub 
+
+12264
+12:25:55,910 --> 12:25:58,670
+I highly recommend you still push this up to GitHub 
+我强烈建议你仍然要把这些成果推送到 GitHub 上
+
+12265
+12:25:58,670 --> 12:26:01,700
+as proof that you've done it. 
+它可以证明你做到了
+
+12266
+12:26:01,700 --> 12:26:04,760
+And then you can also tweet it at me saying, hey, look how far I've gotten. 
+你还可以到 Twitter 上说一下，嘿，看看我走了多远！
+
+12267
+12:26:04,760 --> 12:26:07,790
+Look where I've done, look at how fantastic I'm learning smart contracts, 
+看看我智能合约学的多好！
+
+12268
+12:26:07,790 --> 12:26:10,160
+and be incredibly excited about now, 
+然后好好兴奋一下吧
+
+12269
+12:26:10,160 --> 12:26:13,130
+this quickstart will walk you through creating a repository, creating a branch and teaching all this stuff, 
+这个 Quickstart 会引导你创建仓库，创建分支，并教给你所有这些东西
+
+12270
+12:26:13,130 --> 12:26:16,100
+we're going to follow the instructions from the GitHub documentation 
+我们将按照 GitHub 的这个文档说明进行操作
+
+12271
+12:26:16,100 --> 12:26:18,680
+about adding locally hosted code to GitHub, 
+即“添加本地托管代码到 GitHub”
+("Adding locally hosted code to GitHub")
+
+12272
+12:26:18,680 --> 12:26:21,770
+we already have a project, and we're just pushing it up. 
+我们已经有了一个项目，现在只用把它推送上来就行了
+
+12273
+12:26:21,770 --> 12:26:25,430
+Since the Windows users are using WsL,
+由于 Windows 用户用的是 WSL
+
+12274
+12:26:25,520 --> 12:26:28,370
+you can just follow the Mac or Linux instructions here, 
+所以你可以直接参照 Mac 和 Linux 的说明进行操作
+
+12275
+12:26:28,370 --> 12:26:31,550
+the first thing that we're going to do is in your GitHub profile, 
+我们要做的第一件事是来到你的 GitHub 的 "profile" 页面
+
+12276
+12:26:31,550 --> 12:26:34,760
+or your GitHub login, 
+或是你的 GitHub 登录页面
+
+12277
+12:26:34,760 --> 12:26:37,880
+we're gonna hit this little plus thing, and hit new repository, 
+我们要点击这里的小加号并点击 "New repository"
+
+12278
+12:26:37,880 --> 12:26:43,940
+you can call this whatever you want, let's call it hard hat, fund me b code camp, 
+你可以随意命名，我命名为 "hardhat-fund-me-fcc"
+
+12279
+12:26:43,940 --> 12:26:49,910
+you can put a description if you want, 
+如有需要你还可以添加描述("Description")
+
+12280
+12:26:49,910 --> 12:26:51,320
+learning from recode camp, and Patrick, about smart contracts.
+跟着 FCC & Patrick 一起学习智能合约！！！
+("Learning from FCC & Patrick about Smart Contracts!!!")
+
+12281
+12:26:52,670 --> 12:26:55,070
+We'll make it public because we want other people to see you being fantastic and learning smart contracts. 
+我们设置为公开("Public")，因为我们希望其他人能看到你学习智能合约的杰出表现
+
+12282
+12:26:55,070 --> 12:26:57,740
+We'll leave this blank, and we'll hit Create repository. 
+这个部分我们留白，接着点击 "Create repository"
+
+12283
+12:26:57,740 --> 12:27:01,820
+Now, this is our public code repository. 
+现在，这就是我们的公开代码仓库了
+
+12284
+12:27:01,850 --> 12:27:04,970
+This is our first one, 
+这是我们的首个仓库
+
+12285
+12:27:04,970 --> 12:27:08,000
+if you've done these already, this will be your first smart contract one. 
+如果你以前有过的话，那这个就是你的首个智能合约仓库
+
+12286
+12:27:08,030 --> 12:27:11,810
+It even has some instructions in here, too, that teaches us how to create a new repository from the command line, 
+这里甚至还有一些说明，它在教我们如何在命令行中创建一个新的仓库
+
+12287
+12:27:11,810 --> 12:27:14,900
+you can follow this if you want, or you can follow like so 
+你可以跟着这个来做，也可以跟着我来做
+
+12288
+12:27:14,900 --> 12:27:18,470
+the first thing we're going to do is we're going to initialize a git branch. 
+我们要做的第一件事是初始化一个 git 分支
+
+12289
+12:27:18,470 --> 12:27:23,000
+And from way back when you should already have Git installed. 
+很久之前，你应该就已经安装好 git 了
+
+12290
+12:27:23,120 --> 12:27:26,300
+Remember, you can check by running git dash dash version like this. 
+你可以像这样，运行 `git --version` 来进行检查
+
+12291
+12:27:26,390 --> 12:27:29,150
+Git is a little different from GitHub, 
+git 和 GitHub 还是有一点不同的
+
+12292
+12:27:29,150 --> 12:27:32,270
+Git is known as version control. 
+git 就是所谓的版本控制系统("Version Control")
+
+12293
+12:27:32,270 --> 12:27:35,780
+And it allows us to make changes to our code, but keep a history of all the code changes that we've made. 
+它可以让我们在更改代码后保留全部的代码更改历史
+
+12294
+12:27:35,780 --> 12:27:39,200
+GitHub is a place where we can push all of these changes and keep track of all of our code. 
+而 GitHub 则是我们推送更改和跟踪代码的地方
+
+12295
+12:27:39,200 --> 12:27:43,040
+So the first thing that we're going to do is we're going to create a new branch. 
+所以我们的第一件事就是创建一个新的分支
+
+12296
+12:27:43,040 --> 12:27:45,560
+And I'm not going to explain Git and working with Git too, too deeply. 
+我不打算过于深入地介绍和使用 git 
+
+12297
+12:27:45,560 --> 12:27:48,290
+But if you want to learn about Git 
+但如果你想学习有关 git 的知识的话
+
+12298
+12:27:48,290 --> 12:27:51,500
+Free Code Camp, of course, has a video on Git and GitHub for beginners. 
+"freeCodeCamp" 有一个关于 git 和 GitHub 的面向初学者的视频
+
+12299
+12:27:51,500 --> 12:27:54,620
+So we're going to create this new branch with git init dash b main, 
+我们来创建一下这个新分支 `git init -b main`
+
+12300
+12:27:54,620 --> 12:27:58,130
+now your Visual Studio code might automatically start formatting some stuff. 
+你的 Visual Studio Code 可能会自动开始做一些格式化
+
+12301
+12:27:58,130 --> 12:28:02,000
+
+
+
+12302
+12:28:02,000 --> 12:28:05,090
+
+
+
+12303
+12:28:05,090 --> 12:28:07,910
+And if it does, that's great. And if it doesn't,
+
+
+12304
+12:28:07,970 --> 12:28:10,670
+don't worry about it. But what you'll see here on the left is
+
+
+12305
+12:28:10,670 --> 12:28:14,930
+you'll see some stuff is green, and some stuff is gray, open
+
+
+12306
+12:28:14,930 --> 12:28:17,960
+back up that dot Git ignore, you'll see that all the gray
+
+
+12307
+12:28:17,960 --> 12:28:21,050
+stuff is the stuff that we have in this dot Git ignore this is
+
+
+12308
+12:28:21,050 --> 12:28:23,840
+intentional, this is what we want. This is just some some
+
+
+12309
+12:28:23,840 --> 12:28:26,270
+highlighting saying, hey, this green stuff is what you're
+
+
+12310
+12:28:26,270 --> 12:28:29,360
+working with on GitHub. And this gray stuff is what you're not
+
+
+12311
+12:28:29,360 --> 12:28:31,970
+working with and GitHub. And that's what we want. You don't
+
+
+12312
+12:28:31,970 --> 12:28:35,420
+need to push artifacts, or cash or coverage or node modules,
+
+
+12313
+12:28:35,420 --> 12:28:39,530
+people can install and compile on their own machines, we
+
+
+12314
+12:28:39,560 --> 12:28:43,070
+definitely don't want to push up our Dotty and V if we're using a
+
+
+12315
+12:28:43,070 --> 12:28:46,070
+Dotty and V. And we don't really need to push up coverage dot
+
+
+12316
+12:28:46,070 --> 12:28:50,420
+JSON, either the rest of this we do. So now what's next, after we
+
+
+12317
+12:28:50,450 --> 12:28:54,380
+initialize our main branch, you now should be able to run git
+
+
+12318
+12:28:54,380 --> 12:28:59,450
+status in your terminal and see this huge red output of all
+
+
+12319
+12:28:59,450 --> 12:29:03,140
+these things that are untracked, and we don't have any commits
+
+
+12320
+12:29:03,140 --> 12:29:07,370
+for, what we can do now is we can stage all of our code with
+
+
+12321
+12:29:07,370 --> 12:29:11,570
+git add period, and then commit it with Git commit, we're going
+
+
+12322
+12:29:11,570 --> 12:29:14,420
+to run these one at a time instead of together. Before I
+
+
+12323
+12:29:14,420 --> 12:29:17,570
+run git add, I'm going to add deployments to this list too,
+
+
+12324
+12:29:17,570 --> 12:29:19,760
+because GitHub doesn't really need to know about all the
+
+
+12325
+12:29:19,760 --> 12:29:22,340
+different deployments I make, especially when I make a ton of
+
+
+12326
+12:29:22,340 --> 12:29:24,800
+deployments to my local hosts, they don't need to know. So
+
+
+12327
+12:29:24,800 --> 12:29:28,880
+we're going to add that to, then we're going to run git add dot.
+
+
+12328
+12:29:29,090 --> 12:29:34,400
+And if we do a git status, now, we can see all of our code has
+
+
+12329
+12:29:34,400 --> 12:29:38,420
+been staged for being committed for being a part of this history
+
+
+12330
+12:29:38,720 --> 12:29:41,810
+of our code. And then take a quick look at all these files
+
+
+12331
+12:29:41,810 --> 12:29:46,220
+and make sure your dot E and V file is not and never in here.
+
+
+12332
+12:29:46,340 --> 12:29:49,370
+So now we're going to run git commit dash m and then this
+
+
+12333
+12:29:49,370 --> 12:29:55,580
+message for our commit, okay, so we'll run git commit dash m, we
+
+
+12334
+12:29:55,580 --> 12:29:59,180
+can say, initial commit, or whatever you want in this
+
+
+12335
+12:29:59,180 --> 12:30:02,000
+message here, first commit, initial commit, who cares, and
+
+
+12336
+12:30:02,000 --> 12:30:04,490
+it's gonna say, create mode, blah, blah, blah, for all of
+
+
+12337
+12:30:04,490 --> 12:30:08,120
+these files. And if we do git status, now, it's blank on
+
+
+12338
+12:30:08,120 --> 12:30:11,120
+branch main, nothing to commit. And then you might get something
+
+
+12339
+12:30:11,120 --> 12:30:13,730
+like this. If you've never worked with Git before your name
+
+
+12340
+12:30:13,730 --> 12:30:16,490
+and email were added automatically. We're a little
+
+
+12341
+12:30:16,490 --> 12:30:20,060
+bit confused here. We'll talk about this in just a second. So
+
+
+12342
+12:30:20,060 --> 12:30:23,630
+next, what we can do is we're actually going to copy the URL
+
+
+12343
+12:30:23,660 --> 12:30:27,110
+of our GitHub repo. So you can grab that just by copying here
+
+
+12344
+12:30:27,140 --> 12:30:30,620
+or right at the top, that URL right there. And what we're
+
+
+12345
+12:30:30,620 --> 12:30:33,710
+going to do is we're going to add this as a remote repo. To do
+
+
+12346
+12:30:33,710 --> 12:30:39,380
+that. We'll do git remote add, and we'll give this remote repo
+
+
+12347
+12:30:39,410 --> 12:30:44,330
+a name. For us. We'll say origin and then we'll paste that URL
+
+
+12348
+12:30:44,330 --> 12:30:48,770
+there. We're now saying the the origin remote repo is good.
+
+
+12349
+12:30:48,770 --> 12:30:54,020
+Gonna be at this URL, we run git remote dash v, we can see that
+
+
+12350
+12:30:54,230 --> 12:30:58,850
+the origin repo for fetching is at this branch. And the origin
+
+
+12351
+12:30:58,850 --> 12:31:02,600
+repo for pushing is also at this branch. So when we want to get
+
+
+12352
+12:31:02,600 --> 12:31:06,650
+new code, a fetch code will fetch it from here. And if we
+
+
+12353
+12:31:06,650 --> 12:31:09,950
+want to push code up, we want to give code to the GitHub. We'll
+
+
+12354
+12:31:09,980 --> 12:31:13,490
+also get it from here. So now we've set the new remote with
+
+
+12355
+12:31:13,490 --> 12:31:17,990
+that remote URL. Now we're going to actually push the changes to
+
+
+12356
+12:31:17,990 --> 12:31:22,730
+github.com. And the way we do that is with Git push, and we
+
+
+12357
+12:31:22,730 --> 12:31:25,250
+pick which remote we want to push to, and we're going to push
+
+
+12358
+12:31:25,250 --> 12:31:29,060
+the origin. And then which branch we want to push to which
+
+
+12359
+12:31:29,060 --> 12:31:32,090
+we're going to push to Maine, it'll probably prompt you for
+
+
+12360
+12:31:32,090 --> 12:31:34,520
+your username and your password, and maybe your email and
+
+
+12361
+12:31:34,520 --> 12:31:36,530
+everything. Now, if authentication doesn't work for
+
+
+12362
+12:31:36,530 --> 12:31:39,410
+you, for some reason, you can come over to Settings. Or if you
+
+
+12363
+12:31:39,410 --> 12:31:44,090
+scroll down to developer settings, Personal Access Tokens
+
+
+12364
+12:31:44,090 --> 12:31:46,760
+and create generate new token, some token,
+
+
+12365
+12:31:48,020 --> 12:31:51,980
+give yourself repo access, write access, and hit Generate token.
+
+
+12366
+12:31:52,610 --> 12:31:55,580
+And try to use this token as your password. Instead, be sure
+
+
+12367
+12:31:55,580 --> 12:31:58,970
+to use the GitHub documentation and the GitHub discussion
+
+
+12368
+12:31:59,000 --> 12:32:01,760
+associated with this course, if you get lost or if something
+
+
+12369
+12:32:01,760 --> 12:32:05,540
+doesn't work, as shown here. But once it's done, once you add all
+
+
+12370
+12:32:05,540 --> 12:32:08,270
+that information in correctly, you come back to your get up and
+
+
+12371
+12:32:08,270 --> 12:32:11,930
+you will have your first GitHub repo with all the code and
+
+
+12372
+12:32:11,930 --> 12:32:15,650
+everything in it like this. And once you complete this step,
+
+
+12373
+12:32:15,650 --> 12:32:18,770
+once you do this, you should absolutely celebrate. If you
+
+
+12374
+12:32:18,770 --> 12:32:21,770
+like, you can shoot a tweet web three community in the
+
+
+12375
+12:32:21,770 --> 12:32:24,260
+blockchain community is absolutely this collaborative
+
+
+12376
+12:32:24,260 --> 12:32:26,660
+space. So Twitter crypto is where a lot of these people
+
+
+12377
+12:32:26,660 --> 12:32:30,500
+congregate to share ideas. So definitely be sure to celebrate
+
+
+12378
+12:32:30,500 --> 12:32:33,200
+and share this and be really, really excited. And shoot a
+
+
+12379
+12:32:33,200 --> 12:32:35,990
+tweet out like this. Give your friends a high five, share it on
+
+
+12380
+12:32:35,990 --> 12:32:38,810
+Twitter, share it on Discord shared on Reddit, be excited for
+
+
+12381
+12:32:38,810 --> 12:32:41,510
+how far you've gotten, we've got a lot more to go. But by
+
+
+12382
+12:32:41,510 --> 12:32:44,690
+completing this part, you have done fantastically, and I'm so
+
+
+12383
+12:32:44,690 --> 12:32:47,660
+excited for you to start the next section. Now, we're not
+
+
+12384
+12:32:47,660 --> 12:32:50,150
+going to go over the TypeScript addition to this because there's
+
+
+12385
+12:32:50,150 --> 12:32:53,210
+nothing really new here. However, again, if you want to
+
+
+12386
+12:32:53,210 --> 12:32:56,060
+see TypeScript, feel free to jump into the GitHub repository
+
+
+12387
+12:32:56,090 --> 12:32:57,380
+associated with this course.
