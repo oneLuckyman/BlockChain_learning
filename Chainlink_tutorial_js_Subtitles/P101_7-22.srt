@@ -66,7 +66,7 @@ If you've already made GitHub before,
 12264
 12:25:55,910 --> 12:25:58,670
 I highly recommend you still push this up to GitHub 
-我强烈建议你仍然要把这些成果推送到 GitHub 上
+我强烈建议你仍然要把这些成果推送("push")到 GitHub 上
 
 12265
 12:25:58,670 --> 12:26:01,700
@@ -91,7 +91,7 @@ and be incredibly excited about now,
 12269
 12:26:10,160 --> 12:26:13,130
 this quickstart will walk you through creating a repository, creating a branch and teaching all this stuff, 
-这个 Quickstart 会引导你创建仓库，创建分支，并教给你所有这些东西
+这个 Quickstart 会引导你创建仓库，创建分支("branch")，并教给你所有这些东西
 
 12270
 12:26:13,130 --> 12:26:16,100
@@ -188,7 +188,7 @@ you can follow this if you want, or you can follow like so
 12288
 12:27:14,900 --> 12:27:18,470
 the first thing we're going to do is we're going to initialize a git branch. 
-我们要做的第一件事是初始化一个 git 分支
+我们要做的第一件事是初始化一个 git 分支("branch")
 
 12289
 12:27:18,470 --> 12:27:23,000
@@ -252,262 +252,263 @@ now your Visual Studio code might automatically start formatting some stuff.
 
 12301
 12:27:58,130 --> 12:28:02,000
-
-
+And if it does, that's great. 
+如果做了的话，那很好
 
 12302
 12:28:02,000 --> 12:28:05,090
-
-
+And if it doesn't, don't worry about it. 
+如果没做的话，也没关系
 
 12303
 12:28:05,090 --> 12:28:07,910
-And if it does, that's great. And if it doesn't,
-
+But what you'll see here on the left is you'll see some stuff is green, and some stuff is gray, 
+在左边，你会看到有一些东西是绿色的，而有些则是灰色的
 
 12304
 12:28:07,970 --> 12:28:10,670
-don't worry about it. But what you'll see here on the left is
-
+open back up that dot Git ignore, 
+打开 ".gitignore"
 
 12305
 12:28:10,670 --> 12:28:14,930
-you'll see some stuff is green, and some stuff is gray, open
-
+you'll see that all the gray stuff is the stuff that we have in this dot Git ignore 
+你会看到所有灰色的东西都是在 ".gitignore" 里的
 
 12306
 12:28:14,930 --> 12:28:17,960
-back up that dot Git ignore, you'll see that all the gray
-
+this is intentional, this is what we want. 
+这是刻意为之的，也是我们想要的
 
 12307
 12:28:17,960 --> 12:28:21,050
-stuff is the stuff that we have in this dot Git ignore this is
-
+This is just some some highlighting saying, 
+这些高亮内容的意思是
 
 12308
 12:28:21,050 --> 12:28:23,840
-intentional, this is what we want. This is just some some
-
+hey, this green stuff is what you're working with on GitHub. 
+绿色的东西就是你要放到 GitHub 上的东西
 
 12309
 12:28:23,840 --> 12:28:26,270
-highlighting saying, hey, this green stuff is what you're
-
+And this gray stuff is what you're not working with and GitHub. 
+而灰色的东西则是你不打算放在 GitHub 上的东西
 
 12310
 12:28:26,270 --> 12:28:29,360
-working with on GitHub. And this gray stuff is what you're not
-
+And that's what we want. 
+这正是我们想要的
 
 12311
 12:28:29,360 --> 12:28:31,970
-working with and GitHub. And that's what we want. You don't
-
+You don't need to push artifacts, or cash or coverage or node modules, 
+你不需要推送 "artifacts" "cache" "coverage" 还有 "node_modules"
 
 12312
 12:28:31,970 --> 12:28:35,420
-need to push artifacts, or cash or coverage or node modules,
-
+people can install and compile on their own machines, 
+人们可以在他们的机器上自行进行安装和编译
 
 12313
 12:28:35,420 --> 12:28:39,530
-people can install and compile on their own machines, we
-
+we definitely don't want to push up our Dotty and V 
+我们当然也不打算推送我们的 ".env"
 
 12314
 12:28:39,560 --> 12:28:43,070
-definitely don't want to push up our Dotty and V if we're using a
-
+if we're using a Dotty and V. 
+如果我们正在使用 ".env" 的话
 
 12315
 12:28:43,070 --> 12:28:46,070
-Dotty and V. And we don't really need to push up coverage dot
-
+And we don't really need to push up coverage dot JSON, either 
+最后我们同样也不需要推送 "coverage.json" 
 
 12316
 12:28:46,070 --> 12:28:50,420
-JSON, either the rest of this we do. So now what's next, after we
-
+the rest of this we do. 
+剩余的就是我们要推送的
 
 12317
 12:28:50,450 --> 12:28:54,380
-initialize our main branch, you now should be able to run git
-
+So now what's next, after we initialize our main branch, 
+初始化完我们的 "main" 分支之后该做什么
 
 12318
 12:28:54,380 --> 12:28:59,450
-status in your terminal and see this huge red output of all
-
+you now should be able to run git status in your terminal 
+你现在应该可以在终端内运行 `git status` 了
 
 12319
 12:28:59,450 --> 12:29:03,140
-these things that are untracked, and we don't have any commits
-
+and see this huge red output of all these things that are untracked, and we don't have any commits for, 
+并且能看到这么一大堆红色的 "Untracked" 输出，以及我们还没有提交("commit")任何内容
 
 12320
 12:29:03,140 --> 12:29:07,370
-for, what we can do now is we can stage all of our code with
-
+what we can do now is we can stage all of our code with git add period, 
+现在我们可以使用 `git add .` 暂存("Stage")所有代码
 
 12321
 12:29:07,370 --> 12:29:11,570
-git add period, and then commit it with Git commit, we're going
-
+and then commit it with Git commit, 
+并使用 `git commit` 来提交("commit")它们
 
 12322
 12:29:11,570 --> 12:29:14,420
-to run these one at a time instead of together. Before I
-
+we're going to run these one at a time instead of together. 
+我们将逐一执行它们而不是一起执行
 
 12323
 12:29:14,420 --> 12:29:17,570
-run git add, I'm going to add deployments to this list too,
-
+Before I run git add, I'm going to add deployments to this list too,
+在我执行 `git add` 之前，我要把 "deployments" 也添加到这个列表中
 
 12324
 12:29:17,570 --> 12:29:19,760
-because GitHub doesn't really need to know about all the
-
+because GitHub doesn't really need to know about all the different deployments I make, 
+因为 GitHub 并不需要知道我所做的所有不同的 "deployments"
 
 12325
 12:29:19,760 --> 12:29:22,340
-different deployments I make, especially when I make a ton of
-
+especially when I make a ton of deployments to my local hosts, they don't need to know. 
+尤其是我们要在本地主机上进行大量部署的时候，他们并不需要知道这些
 
 12326
 12:29:22,340 --> 12:29:24,800
-deployments to my local hosts, they don't need to know. So
-
+So we're going to add that to, 
+所以我们要把它添加进来
 
 12327
 12:29:24,800 --> 12:29:28,880
-we're going to add that to, then we're going to run git add dot.
-
+then we're going to run git add dot.
+接着我们要执行 `git add .`
 
 12328
 12:29:29,090 --> 12:29:34,400
-And if we do a git status, now, we can see all of our code has
-
+And if we do a git status, now, 
+如果我们现在运行 `git status`
 
 12329
 12:29:34,400 --> 12:29:38,420
-been staged for being committed for being a part of this history
-
+we can see all of our code has been staged for being committed 
+可以看到我们的所有代码都已经被暂存("stage")，准备提交("commit")了
 
 12330
 12:29:38,720 --> 12:29:41,810
-of our code. And then take a quick look at all these files
-
+for being a part of this history of our code. 
+它们成为了我们代码历史的一部分
 
 12331
 12:29:41,810 --> 12:29:46,220
-and make sure your dot E and V file is not and never in here.
-
+And then take a quick look at all these files and make sure your dot E and V file is not and never in here.
+接着快速浏览一下这些文件，确保你的 ".env" 文件不要，永远不要出现在这里
 
 12332
 12:29:46,340 --> 12:29:49,370
-So now we're going to run git commit dash m and then this
-
+So now we're going to run git commit dash m and then this message for our commit, 
+现在我要运行 `git commit -m` 以及这条提交("commit")消息
 
 12333
 12:29:49,370 --> 12:29:55,580
-message for our commit, okay, so we'll run git commit dash m, we
-
+okay, so we'll run git commit dash m, we can say, initial commit, 
+所以我们来运行 `git commit -m`，然后可以说 `'initial commit'`
 
 12334
 12:29:55,580 --> 12:29:59,180
-can say, initial commit, or whatever you want in this
-
+or whatever you want in this message here, 
+或是任何你想在这里说的消息
 
 12335
 12:29:59,180 --> 12:30:02,000
-message here, first commit, initial commit, who cares, and
-
+first commit, initial commit, who cares, 
+'first commit' 'initial commit' 无所谓了
 
 12336
 12:30:02,000 --> 12:30:04,490
-it's gonna say, create mode, blah, blah, blah, for all of
-
+and it's gonna say, create mode, blah, blah, blah, for all of these files. 
+然后它会说 "create mode" 不拉不拉不拉，用于描述所有这些文件
 
 12337
 12:30:04,490 --> 12:30:08,120
-these files. And if we do git status, now, it's blank on
-
+And if we do git status, now, it's blank 
+如果我们现在运行 `git status`，是空白的
 
 12338
 12:30:08,120 --> 12:30:11,120
-branch main, nothing to commit. And then you might get something
-
+on branch main, nothing to commit. 
+在主分支上，无任何内容可提交
+("On branch main, nothing to commit")
 
 12339
 12:30:11,120 --> 12:30:13,730
-like this. If you've never worked with Git before your name
-
+And then you might get something like this. 
+接着你可能会获得一些这样的信息
 
 12340
 12:30:13,730 --> 12:30:16,490
-and email were added automatically. We're a little
-
+If you've never worked with Git before your name and email were added automatically. 
+如果你之前从未使用过 git，那么你的姓名和邮箱都已经被自动添加了
 
 12341
 12:30:16,490 --> 12:30:20,060
-bit confused here. We'll talk about this in just a second. So
-
+We're a little bit confused here. We'll talk about this in just a second. 
+这会让我们有一点疑惑，但我们稍后再来谈它
 
 12342
 12:30:20,060 --> 12:30:23,630
-next, what we can do is we're actually going to copy the URL
-
+So next, what we can do is we're actually going to copy the URL of our GitHub repo. 
+接下来我们要复制我们 GitHub 仓库的 URL
 
 12343
 12:30:23,660 --> 12:30:27,110
-of our GitHub repo. So you can grab that just by copying here
-
+So you can grab that just by copying here
+你可以在这里点击复制以直接获取
 
 12344
 12:30:27,140 --> 12:30:30,620
-or right at the top, that URL right there. And what we're
-
+or right at the top, that URL right there. 
+或是来到顶部，URL 就在这里
 
 12345
 12:30:30,620 --> 12:30:33,710
-going to do is we're going to add this as a remote repo. To do
-
+And what we're going to do is we're going to add this as a remote repo. 
+我们需要做的就是把它添加为远程("remote")仓库
 
 12346
 12:30:33,710 --> 12:30:39,380
-that. We'll do git remote add, and we'll give this remote repo
-
+To do that. We'll do git remote add, and we'll give this remote repo a name. 
+为了做到这一点，我们要执行 `git remote add` 然后提供一个远程仓库的名字
 
 12347
 12:30:39,410 --> 12:30:44,330
-a name. For us. We'll say origin and then we'll paste that URL
-
+For us. We'll say origin and then we'll paste that URL there. 
+我们就把它叫做 "origin" 然后我们把 URL 粘贴过来
 
 12348
 12:30:44,330 --> 12:30:48,770
-there. We're now saying the the origin remote repo is good.
-
+We're now saying the the origin remote repo is good. Gonna be at this URL, 
+现在的意思就是 "origin" 远程仓库位于这个 URL 上
 
 12349
 12:30:48,770 --> 12:30:54,020
-Gonna be at this URL, we run git remote dash v, we can see that
-
+we run git remote dash v, we can see that the origin repo for fetching is at this branch. 
+运行 `git remote -v` 我们可以看到 "origin" 仓库拉取("fetch")自这个分支("branch")
 
 12350
 12:30:54,230 --> 12:30:58,850
-the origin repo for fetching is at this branch. And the origin
-
+And the origin repo for pushing is also at this branch. 
+并且 "origin" 仓库也推送("push")至这个分支("branch")
 
 12351
 12:30:58,850 --> 12:31:02,600
-repo for pushing is also at this branch. So when we want to get
+So when we want to get new code, 
 
 
 12352
 12:31:02,600 --> 12:31:06,650
-new code, a fetch code will fetch it from here. And if we
+a fetch code will fetch it from here. And if we
 
 
 12353
