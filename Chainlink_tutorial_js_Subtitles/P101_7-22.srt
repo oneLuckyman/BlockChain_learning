@@ -503,184 +503,185 @@ And the origin repo for pushing is also at this branch.
 
 12351
 12:30:58,850 --> 12:31:02,600
-So when we want to get new code, 
-
+So when we want to get new code, a fetch code will fetch it from here. 
+所以当我们获取新代码或者说拉取代码时就是从这里拉取
 
 12352
 12:31:02,600 --> 12:31:06,650
-a fetch code will fetch it from here. And if we
-
+And if we want to push code up, we want to give code to the GitHub. We'll also get it from here. 
+如果我们要推送代码，也就是把代码提交到 GitHub 上的地方也是这里
 
 12353
 12:31:06,650 --> 12:31:09,950
-want to push code up, we want to give code to the GitHub. We'll
-
+So now we've set the new remote with that remote URL. 
+所以我们把新的远程仓库设置为了指定的远程 URL
 
 12354
 12:31:09,980 --> 12:31:13,490
-also get it from here. So now we've set the new remote with
-
+Now we're going to actually push the changes to github.com. 
+现在我们就要把改动实际推送到 "github.com" 上了
 
 12355
 12:31:13,490 --> 12:31:17,990
-that remote URL. Now we're going to actually push the changes to
-
+And the way we do that is with Git push, 
+实现的方式就是 `git push`
 
 12356
 12:31:17,990 --> 12:31:22,730
-github.com. And the way we do that is with Git push, and we
-
+and we pick which remote we want to push to, 
+接着我们要指定推送至哪个远程仓库
 
 12357
 12:31:22,730 --> 12:31:25,250
-pick which remote we want to push to, and we're going to push
-
+and we're going to push the origin. 
+我们将推送至 "origin" 上
 
 12358
 12:31:25,250 --> 12:31:29,060
-the origin. And then which branch we want to push to which
-
+And then which branch we want to push to 
+接着要指定推送至哪一个分支上
 
 12359
 12:31:29,060 --> 12:31:32,090
-we're going to push to Maine, it'll probably prompt you for
-
+which we're going to push to Maine, 
+我们选择推送至 "main" 分支上
 
 12360
 12:31:32,090 --> 12:31:34,520
-your username and your password, and maybe your email and
-
+it'll probably prompt you for your username and your password, and maybe your email and everything. 
+它可能会提示你输入你的用户名和密码，或者是邮箱之类的
 
 12361
 12:31:34,520 --> 12:31:36,530
-everything. Now, if authentication doesn't work for
-
+Now, if authentication doesn't work for you, for some reason, you can come over to Settings. 
+如果出于某种原因，身份验证对你不起作用，那么你可以转到设置("Settings")页面
 
 12362
 12:31:36,530 --> 12:31:39,410
-you, for some reason, you can come over to Settings. Or if you
-
+Or if you scroll down to developer settings, 
+往下拉，找到 "Developer settings"(“开发者设置”)
 
 12363
 12:31:39,410 --> 12:31:44,090
-scroll down to developer settings, Personal Access Tokens
-
+Personal Access Tokens
+"Personal access tokens"(“个人访问令牌”)
 
 12364
 12:31:44,090 --> 12:31:46,760
-and create generate new token, some token,
-
+and create generate new token, 
+创建 "Generate new token"(“生成新令牌”)
 
 12365
 12:31:48,020 --> 12:31:51,980
-give yourself repo access, write access, and hit Generate token.
-
+some token, give yourself repo access, write access, and hit Generate token.
+"someToken"，给予你自己仓库访问权限，写入权限，并点击 "Generate token"
 
 12366
 12:31:52,610 --> 12:31:55,580
-And try to use this token as your password. Instead, be sure
-
+And try to use this token as your password. Instead, 
+使用此令牌来作为你的密码
 
 12367
 12:31:55,580 --> 12:31:58,970
-to use the GitHub documentation and the GitHub discussion
-
+be sure to use the GitHub documentation and the GitHub discussion associated with this course, 
+如果你有疑惑或某些操作问题
 
 12368
 12:31:59,000 --> 12:32:01,760
-associated with this course, if you get lost or if something
-
+if you get lost or if something doesn't work, as shown here. 
+请务必善用 GitHub 文档和本课程关联的 GitHub 讨论区，就是这里所展示的
 
 12369
 12:32:01,760 --> 12:32:05,540
-doesn't work, as shown here. But once it's done, once you add all
-
+But once it's done, once you add all that information in correctly, 
+但是一旦完成，一旦你正确添加了所有这些信息
 
 12370
 12:32:05,540 --> 12:32:08,270
-that information in correctly, you come back to your get up and
-
+you come back to your get up and you will have your first GitHub repo 
+你就可以回到 GitHub 并看到你已经拥有了你的第一个 GitHub 仓库
 
 12371
 12:32:08,270 --> 12:32:11,930
-you will have your first GitHub repo with all the code and
-
+with all the code and everything in it like this. 
+其中包含了所有代码和其它内容，就像这样
 
 12372
 12:32:11,930 --> 12:32:15,650
-everything in it like this. And once you complete this step,
-
+And once you complete this step, once you do this, 
+一旦你完成了这一步，一旦你做到了这些
 
 12373
 12:32:15,650 --> 12:32:18,770
-once you do this, you should absolutely celebrate. If you
-
+you should absolutely celebrate. 
+那你真的应该庆祝一下
 
 12374
 12:32:18,770 --> 12:32:21,770
-like, you can shoot a tweet web three community in the
-
+If you like, you can shoot a tweet 
+如果你愿意，可以发一条推文
 
 12375
 12:32:21,770 --> 12:32:24,260
-blockchain community is absolutely this collaborative
-
+web three community in the blockchain community is absolutely this collaborative space. 
+Web3 社区和区块链社区真的是一个互相协作的空间
 
 12376
 12:32:24,260 --> 12:32:26,660
-space. So Twitter crypto is where a lot of these people
-
+So Twitter crypto is where a lot of these people congregate to share ideas. 
+因此 Twitter 的加密领域是一个很多人聚在一起分享想法的地方
 
 12377
 12:32:26,660 --> 12:32:30,500
-congregate to share ideas. So definitely be sure to celebrate
-
+So definitely be sure to celebrate and share this and be really, really excited. 
+所以请一定要庆祝和分享一下你的成果，并真心为此感到激动吧
 
 12378
 12:32:30,500 --> 12:32:33,200
-and share this and be really, really excited. And shoot a
-
+And shoot a tweet out like this. 
+发一条推文，就像这样
 
 12379
 12:32:33,200 --> 12:32:35,990
-tweet out like this. Give your friends a high five, share it on
-
+Give your friends a high five, share it on Twitter, share it on Discord shared on Reddit, 
+和你的朋友一起击个掌，在 Twitter 或 Discord 或 Reddit 上分享一下你的成果
 
 12380
 12:32:35,990 --> 12:32:38,810
-Twitter, share it on Discord shared on Reddit, be excited for
-
+be excited for how far you've gotten, 
+并为你所取得的成就感到兴奋吧
 
 12381
 12:32:38,810 --> 12:32:41,510
-how far you've gotten, we've got a lot more to go. But by
-
+we've got a lot more to go. 
+我们还有很多工作要做
 
 12382
 12:32:41,510 --> 12:32:44,690
-completing this part, you have done fantastically, and I'm so
-
+But by completing this part, you have done fantastically, 
+但你能完成这一部分，就已经非常不错了
 
 12383
 12:32:44,690 --> 12:32:47,660
-excited for you to start the next section. Now, we're not
-
+and I'm so excited for you to start the next section. 
+我非常期待你开始下一部分
 
 12384
 12:32:47,660 --> 12:32:50,150
-going to go over the TypeScript addition to this because there's
-
+Now, we're not going to go over the TypeScript addition to this 
+不过我们不打算再讨论这些内容的 TypeScript 版本了
 
 12385
 12:32:50,150 --> 12:32:53,210
-nothing really new here. However, again, if you want to
-
+because there's nothing really new here. 
+因为并没有什么新东西可说了
 
 12386
 12:32:53,210 --> 12:32:56,060
-see TypeScript, feel free to jump into the GitHub repository
-
+However, again, if you want to see TypeScript, 
+不过，再次提醒，如果你想查看 TypeScript 版本
 
 12387
 12:32:56,090 --> 12:32:57,380
-associated with this course.
+feel free to jump into the GitHub repository associated with this course.
+可以移步至课程关联的 GitHub 仓库中进行查看
