@@ -1,0 +1,668 @@
+12388
+12:33:00,250 --> 12:33:03,610
+Alright, awesome. You've just completed Lesson Seven, the heart had fun me. 
+非常好，你已经完成了 "Lesson 7: Hardhat Fund Me"
+
+12389
+12:33:03,610 --> 12:33:07,210
+And now it's time to move on to lesson eight,
+现在是时候移步到 Lesson 8 了
+
+12390
+12:33:07,210 --> 12:33:11,080
+which is going to be our HTML slash JavaScript to fund me, 
+标题是 "HTML/JavaScript Fund Me"
+
+12391
+12:33:11,080 --> 12:33:13,360
+you can find all the code for what we're about to go through, of course, on my GitHub repo. 
+你可以在我的 GitHub 仓库中找到所有代码
+
+12392
+12:33:13,360 --> 12:33:16,810
+And for this section, we're now going to start to see some of the differences between Node js between that back end JavaScript, 
+在这一节中，我们会看到 Node.js 和后端 JavaScript 
+
+12393
+12:33:16,810 --> 12:33:20,050
+and JavaScript in the browser or front end JavaScript. 
+以及浏览器中的 JavaScript 或者说前端 JavaScript 之间的区别
+
+12394
+12:33:20,050 --> 12:33:23,080
+And if you come to the GitHub repo associated with this lesson, 
+如果你来到与这节课关联的 GitHub 仓库
+
+12395
+12:33:23,080 --> 12:33:25,540
+our main version we'll be using what's considered better front end JavaScript. 
+我们 main 版本使用的是通常被认为更好的 JavaScript 前端版本
+
+12396
+12:33:25,540 --> 12:33:28,900
+But we'll also have a no JS addition, as well, 
+但我们同样会提供一个 Node.js 版本
+
+12397
+12:33:28,900 --> 12:33:32,710
+if some of the front end JavaScript is really confusing, 
+如果某些 JavaScript 前端确实令人困惑的话
+
+12398
+12:33:32,710 --> 12:33:36,010
+and you'll see what I mean with some of those differences very soon. 
+你很快就会看到我所说的区别是什么意思
+
+12399
+12:33:36,010 --> 12:33:38,650
+
+
+
+12400
+12:33:38,650 --> 12:33:41,680
+Now,
+
+
+12401
+12:33:41,680 --> 12:33:43,600
+people can programmatically interact with our smart
+
+
+12402
+12:33:43,600 --> 12:33:47,170
+contracts at any time. However, most of our users are not
+
+
+12403
+12:33:47,170 --> 12:33:49,900
+compete developers. So we need to create a website, we need to
+
+
+12404
+12:33:49,900 --> 12:33:52,690
+create a user interface for them to interact with our smart
+
+
+12405
+12:33:52,690 --> 12:33:55,090
+contracts and interact with our protocols. And that's what this
+
+
+12406
+12:33:55,090 --> 12:33:57,550
+section is going to teach us, it's going to be an introduction
+
+
+12407
+12:33:57,790 --> 12:34:00,490
+to building these fullstack. building these front ends on top
+
+
+12408
+12:34:00,490 --> 12:34:03,100
+of our smart contracts. Now, I wanted to show you what this is
+
+
+12409
+12:34:03,100 --> 12:34:06,130
+actually going to look like when we finish it. Because here,
+
+
+12410
+12:34:06,130 --> 12:34:09,130
+we're actually going to make our first front end our first
+
+
+12411
+12:34:09,130 --> 12:34:12,820
+website using the blockchain using web three. And it's going
+
+
+12412
+12:34:12,820 --> 12:34:16,000
+to be an incredibly minimalistic website. As you can see right
+
+
+12413
+12:34:16,000 --> 12:34:18,400
+here, we're not going to have any styling, we're just going to
+
+
+12414
+12:34:18,400 --> 12:34:21,580
+show you how to get the functionality. And additionally,
+
+
+12415
+12:34:21,610 --> 12:34:23,920
+we're going to do a couple of things that aren't really
+
+
+12416
+12:34:23,920 --> 12:34:27,100
+recommended and are definitely not best practices. The reason
+
+
+12417
+12:34:27,100 --> 12:34:29,350
+we're going to do it like this is the same reason that in math
+
+
+12418
+12:34:29,350 --> 12:34:31,390
+class, before you learn the tricks for derivatives, you
+
+
+12419
+12:34:31,390 --> 12:34:34,270
+learn what a derivative actually is. We're teaching it like this
+
+
+12420
+12:34:34,270 --> 12:34:37,090
+first, so that you can understand what's going on on
+
+
+12421
+12:34:37,090 --> 12:34:39,790
+the websites when you interact with them. And when you work
+
+
+12422
+12:34:39,790 --> 12:34:42,730
+with them. We saw already with Foston, touching the link where
+
+
+12423
+12:34:42,730 --> 12:34:45,310
+we can connect our wallets and we can work with the faucets.
+
+
+12424
+12:34:45,490 --> 12:34:48,250
+All decentralized applications have this website and have this
+
+
+12425
+12:34:48,280 --> 12:34:50,980
+setup where you connect your wallet and then you interact by
+
+
+12426
+12:34:50,980 --> 12:34:53,560
+clicking buttons, which make these function calls to the
+
+
+12427
+12:34:53,560 --> 12:34:56,470
+blockchain. And here's going to be our minimalistic website that
+
+
+12428
+12:34:56,470 --> 12:34:59,410
+does exactly that. So this section is just going to teach
+
+
+12429
+12:34:59,410 --> 12:35:01,750
+you what's going on under the hood. So you can really
+
+
+12430
+12:35:01,780 --> 12:35:04,930
+understand how to build these applications at a professional
+
+
+12431
+12:35:04,930 --> 12:35:07,900
+level. So for this section, if you don't want to code along
+
+
+12432
+12:35:07,900 --> 12:35:10,780
+with me, you definitely don't have to however, coding along
+
+
+12433
+12:35:10,780 --> 12:35:13,600
+with me will definitely ingrain everything in your memory here.
+
+
+12434
+12:35:13,630 --> 12:35:17,320
+So here's what an application is going to look like. We have our
+
+
+12435
+12:35:17,320 --> 12:35:20,680
+website here, which is connected to our hard hat, our local
+
+
+12436
+12:35:20,680 --> 12:35:24,460
+blockchain, but it's gonna run exactly the same as if it was on
+
+
+12437
+12:35:24,460 --> 12:35:27,580
+a real test net, the first thing you'll notice is in our meta
+
+
+12438
+12:35:27,580 --> 12:35:31,330
+mask, we are not connected. And we'll go ahead and hit Connect,
+
+
+12439
+12:35:31,360 --> 12:35:34,420
+and meta masks will pop up asking us if we want to connect,
+
+
+12440
+12:35:34,540 --> 12:35:38,260
+we'll go ahead and connect to it. And now we'll be able to
+
+
+12441
+12:35:38,260 --> 12:35:40,750
+interact with our heart at Funmi. You'll notice two buttons
+
+
+12442
+12:35:40,750 --> 12:35:43,030
+here are functions that we're familiar with, we have our
+
+
+12443
+12:35:43,030 --> 12:35:45,310
+withdrawal function, which is going to be our withdrawal
+
+
+12444
+12:35:45,310 --> 12:35:48,340
+function that we just created. And then of course, we also have
+
+
+12445
+12:35:48,370 --> 12:35:52,330
+our fund function here where we push or we send Aetherium or
+
+
+12446
+12:35:52,540 --> 12:35:56,140
+Matic or whatever, native blockchain token to our smart
+
+
+12447
+12:35:56,140 --> 12:35:58,630
+contract. So we can do it through this user interface. So
+
+
+12448
+12:35:58,630 --> 12:36:01,180
+once we're connected, if we want to see the balance, we can
+
+
+12449
+12:36:01,180 --> 12:36:04,660
+actually right click, hit Inspect, come over to our
+
+
+12450
+12:36:04,660 --> 12:36:08,500
+console. And we'll print out to the JavaScript console, the
+
+
+12451
+12:36:08,500 --> 12:36:12,040
+current balance of our smart contract. So nobody has funded
+
+
+12452
+12:36:12,040 --> 12:36:15,130
+this yet, we can come down, we can choose an amount we want to
+
+
+12453
+12:36:15,130 --> 12:36:19,210
+fund. So for example, maybe 0.1, eath, we'll go ahead, we'll hit
+
+
+12454
+12:36:19,210 --> 12:36:22,300
+fund, meta masks will pop up, we'll get a little council
+
+
+12455
+12:36:22,300 --> 12:36:25,720
+saying funding with 0.1. And it'll give us all the
+
+
+12456
+12:36:25,720 --> 12:36:30,190
+transaction details that we need to send 0.1 eath, to our smart
+
+
+12457
+12:36:30,190 --> 12:36:33,580
+contract, we can go ahead and hit Confirm. And after it's been
+
+
+12458
+12:36:33,580 --> 12:36:36,910
+confirmed after it's been mined on our local blockchain, we had
+
+
+12459
+12:36:36,910 --> 12:36:41,260
+get balance, we now see that it's 0.1. We could call fund
+
+
+12460
+12:36:41,260 --> 12:36:44,050
+again, we could have multiple funders, we could switch between
+
+
+12461
+12:36:44,050 --> 12:36:46,690
+different accounts and fund with different amounts. And we can
+
+
+12462
+12:36:46,690 --> 12:36:49,480
+see that funding amount increase, then we can call the
+
+
+12463
+12:36:49,480 --> 12:36:52,510
+withdrawal function. As long as we're the owner, we can confirm
+
+
+12464
+12:36:52,540 --> 12:36:54,490
+and we can pull out all the money out of our funding
+
+
+12465
+12:36:54,490 --> 12:36:57,370
+contract. And we'll get balance. Now we'll see the balance is
+
+
+12466
+12:36:57,370 --> 12:37:00,370
+reset to zero. So this is what we're going to be building. Are
+
+
+12467
+12:37:00,370 --> 12:37:01,930
+you ready? I sure am.
+
+
+12468
+12:37:01,960 --> 12:37:04,810
+Let's get into it. This is the introduction to building
+
+
+12469
+12:37:04,810 --> 12:37:07,810
+websites with web three. All the information here is available in
+
+
+12470
+12:37:07,810 --> 12:37:10,840
+our GitHub repo, so feel free to follow along there. Alright, so
+
+
+12471
+12:37:10,840 --> 12:37:14,440
+if you're in your heart head Funmi dash Free Code Camp repo,
+
+
+12472
+12:37:14,470 --> 12:37:17,080
+we're still going to want to have this open as well. But
+
+
+12473
+12:37:17,080 --> 12:37:20,290
+we're also going to want to create a new Visual Studio code
+
+
+12474
+12:37:20,320 --> 12:37:24,490
+for working with our new repo. So let's go ahead and CD down a
+
+
+12475
+12:37:24,490 --> 12:37:31,630
+directory. We'll type MK dir, we'll call this HTML, Fund Me
+
+
+12476
+12:37:32,050 --> 12:37:36,460
+Free Code Camp. We'll cd into that. And we'll open this up by
+
+
+12477
+12:37:36,460 --> 12:37:40,870
+typing code period. You can also do File Open Folder, but we just
+
+
+12478
+12:37:40,870 --> 12:37:45,460
+want to open this up in a new Visual Studio Code. New VS code
+
+
+12479
+12:37:45,460 --> 12:37:49,450
+will pop up but before we flip over to that, we do want to CD
+
+
+12480
+12:37:49,450 --> 12:37:54,550
+down CD back into hard hat fun we Free Code Camp because we are
+
+
+12481
+12:37:54,550 --> 12:37:57,130
+still going to use everything in here. We're still going to
+
+
+12482
+12:37:57,130 --> 12:38:01,120
+deploy In a smart contract using this folder and using this repo,
+
+
+12483
+12:38:01,180 --> 12:38:04,120
+when you're building daps, or websites that are connected to
+
+
+12484
+12:38:04,120 --> 12:38:08,140
+the blockchain, you'll usually have two repositories or repos.
+
+
+12485
+12:38:08,470 --> 12:38:10,990
+One is going to be for the smart contracts, like what we see
+
+
+12486
+12:38:10,990 --> 12:38:13,690
+here. This is our repo that has all the code for our smart
+
+
+12487
+12:38:13,690 --> 12:38:16,480
+contracts. And then you'll also have one for the front end slash
+
+
+12488
+12:38:16,480 --> 12:38:18,880
+website. And it's going to be the combination of these two
+
+
+12489
+12:38:18,880 --> 12:38:22,120
+repos, which makes up the full stack. So when people are
+
+
+12490
+12:38:22,120 --> 12:38:25,360
+talking about full stack, they're talking about the smart
+
+
+12491
+12:38:25,360 --> 12:38:31,150
+contracts, which is going to be our back end, plus, plus our
+
+
+12492
+12:38:31,150 --> 12:38:36,010
+HTML slash JavaScript slash website stuff, which is going to
+
+
+12493
+12:38:36,010 --> 12:38:39,910
+be our front end. So smart contracts are the back end, HTML
+
+
+12494
+12:38:39,910 --> 12:38:42,610
+slash JavaScript slash website stuff is going to be our front
+
+
+12495
+12:38:42,610 --> 12:38:45,640
+end. So we have our back end already. And now we're going to
+
+
+12496
+12:38:45,640 --> 12:38:48,040
+build our front end, we want to keep this up because we're going
+
+
+12497
+12:38:48,040 --> 12:38:51,940
+to need it to test and interact with our front end. Awesome. So
+
+
+12498
+12:38:52,150 --> 12:38:56,650
+we have this new folder now, HTML Funmi, Free Code Camp. Now
+
+
+12499
+12:38:56,650 --> 12:38:59,860
+this course is not a how to learn front end course, we are
+
+
+12500
+12:38:59,860 --> 12:39:02,980
+going to teach you a number of front end concepts. But if you
+
+
+12501
+12:39:02,980 --> 12:39:06,670
+want to learn a full traditional front end course, once again,
+
+
+12502
+12:39:06,670 --> 12:39:08,920
+you can check out Free Code Camp, they've got a ton of
+
+
+12503
+12:39:08,920 --> 12:39:11,710
+fantastic tutorials, I'm teaching you front end, if you
+
+
+12504
+12:39:11,710 --> 12:39:13,720
+go ahead and follow along with me, though, you'll definitely
+
+
+12505
+12:39:13,720 --> 12:39:17,200
+get a basic understanding of front end as well as front ends
+
+
+12506
+12:39:17,200 --> 12:39:19,690
+and how it relates to our smart contracts. Additionally, you
+
+
+12507
+12:39:19,690 --> 12:39:22,450
+don't have to do the front end parts or the full stack parts.
+
+
+12508
+12:39:22,480 --> 12:39:25,900
+If you only want to take this course, to learn back end and to
+
+
+12509
+12:39:25,900 --> 12:39:28,990
+learn JavaScript, and to learn solidity and learn how to do
+
+
+12510
+12:39:28,990 --> 12:39:31,150
+these smart contracts programmatically, then you can
+
+
+12511
+12:39:31,180 --> 12:39:34,210
+absolutely skip these front end parts. However, if you want to
+
+
+12512
+12:39:34,210 --> 12:39:36,640
+learn to build exciting websites, and you want to have
+
+
+12513
+12:39:36,670 --> 12:39:39,160
+other people other than developers interact with your
+
+
+12514
+12:39:39,160 --> 12:39:41,800
+protocols, you definitely want to watch this part. Now before
+
+
+12515
+12:39:41,800 --> 12:39:44,590
+we actually jump in here and start writing our code. We need
+
+
+12516
+12:39:44,590 --> 12:39:48,880
+to understand what exactly is going on when work with one of
+
+
+12517
+12:39:48,880 --> 12:39:51,910
+these websites that use the blockchain. So I actually made a
+
+
+12518
+12:39:51,910 --> 12:39:55,030
+video about this recently. So let's watch a segment from that
+
+
+12519
+12:39:55,030 --> 12:39:57,430
+really quick, just so that we can get up to speed with with
+
+
+12520
+12:39:57,430 --> 12:40:00,520
+exactly what's going on behind the scenes of these websites
+
+
+12521
+12:40:00,730 --> 12:40:06,040
+that interact with the blockchain. 
