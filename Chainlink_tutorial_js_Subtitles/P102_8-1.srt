@@ -86,81 +86,81 @@ And that's what this section is going to teach us,
 12405
 12:33:52,690 --> 12:33:55,090
 it's going to be an introduction to building these fullstack. 
-即构建全栈的介绍
+即构建全栈应用的介绍
 
 12406
 12:33:55,090 --> 12:33:57,550
-
-
+building these front ends on top of our smart contracts. 
+在我们的智能合约之上构建这些前端应用
 
 12407
 12:33:57,790 --> 12:34:00,490
-building these front ends on top
-
+Now, I wanted to show you what this is actually going to look like when we finish it. 
+现在我要给你展示的是实际完成后的效果是什么样的
 
 12408
 12:34:00,490 --> 12:34:03,100
-of our smart contracts. Now, I wanted to show you what this is
-
+Because here, we're actually going to make our first front end our first website using the blockchain using web three. 
+我们要做的是使用区块链和 Web3 来创建我们的首个前端，首个网站
 
 12409
 12:34:03,100 --> 12:34:06,130
-actually going to look like when we finish it. Because here,
-
+And it's going to be an incredibly minimalistic website. 
+这会是一个非常简约的网站
 
 12410
 12:34:06,130 --> 12:34:09,130
-we're actually going to make our first front end our first
-
+As you can see right here, 
+正如你现在所看到的
 
 12411
 12:34:09,130 --> 12:34:12,820
-website using the blockchain using web three. And it's going
-
+we're not going to have any styling, 
+我们不会做任何风格化处理
 
 12412
 12:34:12,820 --> 12:34:16,000
-to be an incredibly minimalistic website. As you can see right
-
+we're just going to show you how to get the functionality. 
+只向你展示如何获取这些功能
 
 12413
 12:34:16,000 --> 12:34:18,400
-here, we're not going to have any styling, we're just going to
-
+And additionally, we're going to do a couple of things that aren't really recommended and are definitely not best practices. 
+此外，我们要做几件既不推荐也非最优的事
 
 12414
 12:34:18,400 --> 12:34:21,580
-show you how to get the functionality. And additionally,
-
+The reason we're going to do it like this is the same reason that in math class, 
+我们之所以这么做，原因就和在数学课上一样
 
 12415
 12:34:21,610 --> 12:34:23,920
-we're going to do a couple of things that aren't really
-
+before you learn the tricks for derivatives, 
+在你学习关于求导数的各种技巧之前
 
 12416
 12:34:23,920 --> 12:34:27,100
-recommended and are definitely not best practices. The reason
-
+you learn what a derivative actually is. 
+你得先了解导数是什么
 
 12417
 12:34:27,100 --> 12:34:29,350
-we're going to do it like this is the same reason that in math
-
+We're teaching it like this first, 
+我们先这样教你
 
 12418
 12:34:29,350 --> 12:34:31,390
-class, before you learn the tricks for derivatives, you
+
 
 
 12419
 12:34:31,390 --> 12:34:34,270
-learn what a derivative actually is. We're teaching it like this
+
 
 
 12420
 12:34:34,270 --> 12:34:37,090
-first, so that you can understand what's going on on
+so that you can understand what's going on on
 
 
 12421
