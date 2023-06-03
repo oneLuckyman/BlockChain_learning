@@ -150,52 +150,52 @@ We're teaching it like this first,
 
 12418
 12:34:29,350 --> 12:34:31,390
-
-
+so that you can understand 
+这样你就能理解
 
 12419
 12:34:31,390 --> 12:34:34,270
-
-
+what's going on on the websites when you interact with them. And when you work with them. 
+当你与网站进行交互和工作的时候它发生了些什么
 
 12420
 12:34:34,270 --> 12:34:37,090
-so that you can understand what's going on on
-
+We saw already with Foston, touching the link 
+我们之前来看过 "faucets.chain.link"
 
 12421
 12:34:37,090 --> 12:34:39,790
-the websites when you interact with them. And when you work
-
+where we can connect our wallets and we can work with the faucets. 
+我们可以在这里连接到我们的钱包并使用水龙头
 
 12422
 12:34:39,790 --> 12:34:42,730
-with them. We saw already with Foston, touching the link where
-
+All decentralized applications have this website and have this setup where you connect your wallet 
+所有的去中心化应用都会有这样的网站和设置供你连接钱包
 
 12423
 12:34:42,730 --> 12:34:45,310
-we can connect our wallets and we can work with the faucets.
-
+and then you interact by clicking buttons, 
+接着你可以通过这些按钮进行交互
 
 12424
 12:34:45,490 --> 12:34:48,250
-All decentralized applications have this website and have this
-
+which make these function calls to the blockchain. 
+以在区块链上调用这些函数
 
 12425
 12:34:48,280 --> 12:34:50,980
-setup where you connect your wallet and then you interact by
+
 
 
 12426
 12:34:50,980 --> 12:34:53,560
-clicking buttons, which make these function calls to the
+
 
 
 12427
 12:34:53,560 --> 12:34:56,470
-blockchain. And here's going to be our minimalistic website that
+And here's going to be our minimalistic website that
 
 
 12428
