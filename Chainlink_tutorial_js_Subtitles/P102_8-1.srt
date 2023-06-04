@@ -185,42 +185,42 @@ which make these function calls to the blockchain.
 
 12425
 12:34:48,280 --> 12:34:50,980
-
-
+And here's going to be our minimalistic website that does exactly that. 
+我们的简化网站就是这样做的
 
 12426
 12:34:50,980 --> 12:34:53,560
-
-
+So this section is just going to teach you what's going on under the hood. 
+所以这一节只是教你底层原理
 
 12427
 12:34:53,560 --> 12:34:56,470
-And here's going to be our minimalistic website that
-
+So you can really understand how to build these applications at a professional level. 
+这样你就能明白如何以一个专业的水平来构建应用了
 
 12428
 12:34:56,470 --> 12:34:59,410
-does exactly that. So this section is just going to teach
-
+So for this section, if you don't want to code along with me, 
+因此在这一节中，如果你不想跟着我的代码的话
 
 12429
 12:34:59,410 --> 12:35:01,750
-you what's going on under the hood. So you can really
-
+you definitely don't have to 
+完全是可以的
 
 12430
 12:35:01,780 --> 12:35:04,930
-understand how to build these applications at a professional
+
 
 
 12431
 12:35:04,930 --> 12:35:07,900
-level. So for this section, if you don't want to code along
+
 
 
 12432
 12:35:07,900 --> 12:35:10,780
-with me, you definitely don't have to however, coding along
+however, coding along
 
 
 12433
