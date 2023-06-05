@@ -210,8 +210,8 @@ you definitely don't have to
 
 12430
 12:35:01,780 --> 12:35:04,930
-
-
+however, coding along with me will definitely ingrain everything in your memory here. 
+然而，跟着我一起写代码可以让你的记忆更加牢固
 
 12431
 12:35:04,930 --> 12:35:07,900
@@ -220,12 +220,12 @@ you definitely don't have to
 
 12432
 12:35:07,900 --> 12:35:10,780
-however, coding along
+
 
 
 12433
 12:35:10,780 --> 12:35:13,600
-with me will definitely ingrain everything in your memory here.
+
 
 
 12434
