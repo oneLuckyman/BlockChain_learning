@@ -156,12 +156,12 @@ so that you can understand
 12419
 12:34:31,390 --> 12:34:34,270
 what's going on on the websites when you interact with them. And when you work with them. 
-当你与网站进行交互和工作的时候它发生了些什么
+当你与网站进行交互和工作的时候它都发生了些什么
 
 12420
 12:34:34,270 --> 12:34:37,090
 We saw already with Foston, touching the link 
-我们之前来看过 "faucets.chain.link"
+我们之前已经见到过了 "faucets.chain.link"
 
 12421
 12:34:37,090 --> 12:34:39,790
@@ -171,7 +171,7 @@ where we can connect our wallets and we can work with the faucets.
 12422
 12:34:39,790 --> 12:34:42,730
 All decentralized applications have this website and have this setup where you connect your wallet 
-所有的去中心化应用都会有这样的网站和设置供你连接钱包
+所有的去中心化应用都会有这样的网站和设置，需要你连接钱包
 
 12423
 12:34:42,730 --> 12:34:45,310
@@ -181,7 +181,7 @@ and then you interact by clicking buttons,
 12424
 12:34:45,490 --> 12:34:48,250
 which make these function calls to the blockchain. 
-以在区块链上调用这些函数
+它们会在区块链上调用这些函数
 
 12425
 12:34:48,280 --> 12:34:50,980
@@ -191,17 +191,17 @@ And here's going to be our minimalistic website that does exactly that.
 12426
 12:34:50,980 --> 12:34:53,560
 So this section is just going to teach you what's going on under the hood. 
-所以这一节只是教你底层原理
+所以这一节只会教你底层运行原理
 
 12427
 12:34:53,560 --> 12:34:56,470
 So you can really understand how to build these applications at a professional level. 
-这样你就能明白如何以一个专业的水平来构建应用了
+这样你就可以明白如何以专业水平来构建应用
 
 12428
 12:34:56,470 --> 12:34:59,410
 So for this section, if you don't want to code along with me, 
-因此在这一节中，如果你不想跟着我的代码的话
+因此在这一节中，如果你不想跟着我写代码的话
 
 12429
 12:34:59,410 --> 12:35:01,750
@@ -215,37 +215,37 @@ however, coding along with me will definitely ingrain everything in your memory 
 
 12431
 12:35:04,930 --> 12:35:07,900
-
-
+So here's what an application is going to look like. 
+所以，这就是我们应用程序的样子
 
 12432
 12:35:07,900 --> 12:35:10,780
-
-
+We have our website here, which is connected to our hard hat, our local blockchain, 
+我们有这么一个网站，它可以连接到我们的 Hardhat，本地区块链
 
 12433
 12:35:10,780 --> 12:35:13,600
-
-
+but it's gonna run exactly the same as if it was on a real test net, 
+但它的运行就和在真实的测试网上完全一样
 
 12434
 12:35:13,630 --> 12:35:17,320
-So here's what an application is going to look like. We have our
+
 
 
 12435
 12:35:17,320 --> 12:35:20,680
-website here, which is connected to our hard hat, our local
+
 
 
 12436
 12:35:20,680 --> 12:35:24,460
-blockchain, but it's gonna run exactly the same as if it was on
+
 
 
 12437
 12:35:24,460 --> 12:35:27,580
-a real test net, the first thing you'll notice is in our meta
+the first thing you'll notice is in our meta
 
 
 12438
