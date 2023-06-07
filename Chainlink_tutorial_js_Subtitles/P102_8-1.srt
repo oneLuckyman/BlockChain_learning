@@ -230,182 +230,182 @@ but it's gonna run exactly the same as if it was on a real test net,
 
 12434
 12:35:13,630 --> 12:35:17,320
-
-
+the first thing you'll notice 
+你会注意到的第一件事是
 
 12435
 12:35:17,320 --> 12:35:20,680
-
-
+is in our meta mask, we are not connected. 
+我们的 MetaMask 还没有连接
 
 12436
 12:35:20,680 --> 12:35:24,460
-
-
+And we'll go ahead and hit Connect, 
+我们会点击 "Connect"(“连接”)
 
 12437
 12:35:24,460 --> 12:35:27,580
-the first thing you'll notice is in our meta
-
+and meta masks will pop up asking us if we want to connect, 
+MetaMask 会弹出来并向我们询问是否要进行连接
 
 12438
 12:35:27,580 --> 12:35:31,330
-mask, we are not connected. And we'll go ahead and hit Connect,
-
+we'll go ahead and connect to it. 
+我们继续，进行连接
 
 12439
 12:35:31,360 --> 12:35:34,420
-and meta masks will pop up asking us if we want to connect,
-
+And now we'll be able to interact with our heart at Funmi. 
+现在，我们就能与我们的 "Hardhat FundMe" 进行交互了
 
 12440
 12:35:34,540 --> 12:35:38,260
-we'll go ahead and connect to it. And now we'll be able to
-
+You'll notice two buttons here are functions that we're familiar with, 
+你可以看到，这里有两个我们熟悉的函数按钮
 
 12441
 12:35:38,260 --> 12:35:40,750
-interact with our heart at Funmi. You'll notice two buttons
-
+we have our withdrawal function, 
+我们有 "Withdraw" 函数
 
 12442
 12:35:40,750 --> 12:35:43,030
-here are functions that we're familiar with, we have our
-
+which is going to be our withdrawal function that we just created. 
+它正是我们刚刚创建的 `withdraw()` 函数
 
 12443
 12:35:43,030 --> 12:35:45,310
-withdrawal function, which is going to be our withdrawal
-
+And then of course, we also have our fund function here 
+当然了，我们在这里还有 `fund()` 函数
 
 12444
 12:35:45,310 --> 12:35:48,340
-function that we just created. And then of course, we also have
-
+where we push or we send Aetherium or Matic or whatever, native blockchain token 
+我们在这里提交或发送以太币或 Matic 币或是其它什么原生区块链代币
 
 12445
 12:35:48,370 --> 12:35:52,330
-our fund function here where we push or we send Aetherium or
-
+to our smart contract. 
+到我们的智能合约上
 
 12446
 12:35:52,540 --> 12:35:56,140
-Matic or whatever, native blockchain token to our smart
-
+So we can do it through this user interface. 
+现在我们可以通过用户界面来做到这些事
 
 12447
 12:35:56,140 --> 12:35:58,630
-contract. So we can do it through this user interface. So
-
+So once we're connected, if we want to see the balance, 
+完成连接之后，如果我们想查看余额
 
 12448
 12:35:58,630 --> 12:36:01,180
-once we're connected, if we want to see the balance, we can
-
+we can actually right click, hit Inspect, come over to our console. 
+可以点击右键，再点击 "inspect"，来到我们的控制台
 
 12449
 12:36:01,180 --> 12:36:04,660
-actually right click, hit Inspect, come over to our
-
+And we'll print out to the JavaScript console, the current balance of our smart contract. 
+我们将把智能合约的当前余额打印到 JavaScript 控制台上
 
 12450
 12:36:04,660 --> 12:36:08,500
-console. And we'll print out to the JavaScript console, the
-
+So nobody has funded this yet, 
+现在还没有人进行过资助
 
 12451
 12:36:08,500 --> 12:36:12,040
-current balance of our smart contract. So nobody has funded
-
+we can come down, we can choose an amount we want to fund. 
+我们可以拉下来，选择我们想要资助的金额
 
 12452
 12:36:12,040 --> 12:36:15,130
-this yet, we can come down, we can choose an amount we want to
-
+So for example, maybe 0.1, eath, 
+比如说，可能是 0.1 以太
 
 12453
 12:36:15,130 --> 12:36:19,210
-fund. So for example, maybe 0.1, eath, we'll go ahead, we'll hit
-
+we'll go ahead, we'll hit fund, 
+我们继续，点击 "Fund"
 
 12454
 12:36:19,210 --> 12:36:22,300
-fund, meta masks will pop up, we'll get a little council
-
+meta masks will pop up, we'll get a little council saying funding with 0.1. 
+MetaMask 会弹出来，并且我们会在控制台上看到 "Funding with 0.1"
 
 12455
 12:36:22,300 --> 12:36:25,720
-saying funding with 0.1. And it'll give us all the
-
+And it'll give us all the transaction details that we need to send 0.1 eath, to our smart contract, 
+它会为我们提供给我们的智能合约发送 0.1 以太所需的全部交易细节
 
 12456
 12:36:25,720 --> 12:36:30,190
-transaction details that we need to send 0.1 eath, to our smart
-
+we can go ahead and hit Confirm. 
+我们继续，点击 "Confirm"(“确认”)
 
 12457
 12:36:30,190 --> 12:36:33,580
-contract, we can go ahead and hit Confirm. And after it's been
-
+And after it's been confirmed after it's been mined on our local blockchain, 
+点击确认之后，等待其在我们的本地区块链上挖完矿
 
 12458
 12:36:33,580 --> 12:36:36,910
-confirmed after it's been mined on our local blockchain, we had
-
+we had get balance, we now see that it's 0.1. 
+我们再点击 "getBalance"，可以看到它是 0.1 了
 
 12459
 12:36:36,910 --> 12:36:41,260
-get balance, we now see that it's 0.1. We could call fund
-
+We could call fund again, 
+我们可以再次调用 "Fund"
 
 12460
 12:36:41,260 --> 12:36:44,050
-again, we could have multiple funders, we could switch between
-
+we could have multiple funders, 
+我们可以有多个资助者
 
 12461
 12:36:44,050 --> 12:36:46,690
-different accounts and fund with different amounts. And we can
-
+we could switch between different accounts and fund with different amounts. 
+我们可以在不同的账户之间切换并资助不同的金额
 
 12462
 12:36:46,690 --> 12:36:49,480
-see that funding amount increase, then we can call the
-
+And we can see that funding amount increase, 
+我们可以看到，资助的金额增加了
 
 12463
 12:36:49,480 --> 12:36:52,510
-withdrawal function. As long as we're the owner, we can confirm
-
+then we can call the withdrawal function. As long as we're the owner, 
+接着我们可以调用 "Withdraw" 函数，前提我们得是 "Owner"(“拥有者”)
 
 12464
 12:36:52,540 --> 12:36:54,490
-and we can pull out all the money out of our funding
-
+we can confirm and we can pull out all the money out of our funding contract. 
+我们点击 "Confirm"，接着我们就可以取出 "FundMe" 合约中的全部资金了
 
 12465
 12:36:54,490 --> 12:36:57,370
-contract. And we'll get balance. Now we'll see the balance is
-
+And we'll get balance. Now we'll see the balance is reset to zero. 
+我们点击 "getBalance"，可以看到余额已经被重置为 0 了
 
 12466
 12:36:57,370 --> 12:37:00,370
-reset to zero. So this is what we're going to be building. Are
-
+So this is what we're going to be building. 
+这就是我们要构建的东西
 
 12467
 12:37:00,370 --> 12:37:01,930
-you ready? I sure am.
-
+Are you ready? I sure am. Let's get into it. 
+你准备好了么？我已经准备好了，让我们开始吧
 
 12468
 12:37:01,960 --> 12:37:04,810
-Let's get into it. This is the introduction to building
-
+This is the introduction to building websites with web three. 
+开始这个关于构建 Web3 网站的介绍
 
 12469
 12:37:04,810 --> 12:37:07,810
-websites with web three. All the information here is available in
+All the information here is available in
 
 
 12470
