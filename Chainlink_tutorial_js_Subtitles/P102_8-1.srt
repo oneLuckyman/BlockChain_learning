@@ -396,7 +396,7 @@ So this is what we're going to be building.
 12467
 12:37:00,370 --> 12:37:01,930
 Are you ready? I sure am. Let's get into it. 
-你准备好了么？我已经准备好了，让我们开始吧
+你准备好了么？我确信我已经准备好了，让我们开始吧
 
 12468
 12:37:01,960 --> 12:37:04,810
@@ -405,264 +405,260 @@ This is the introduction to building websites with web three.
 
 12469
 12:37:04,810 --> 12:37:07,810
-All the information here is available in
-
+All the information here is available in our GitHub repo, 
+这里的所有信息都可以在我们的 GitHub 仓库中找到
 
 12470
 12:37:07,810 --> 12:37:10,840
-our GitHub repo, so feel free to follow along there. Alright, so
-
+so feel free to follow along there. 
+请随意参考这里的内容
 
 12471
 12:37:10,840 --> 12:37:14,440
-if you're in your heart head Funmi dash Free Code Camp repo,
-
+Alright, so if you're in your heart head Funmi dash Free Code Camp repo,
+如果你现在位于你的 "hardhat-fund-me-fcc" 仓库内
 
 12472
 12:37:14,470 --> 12:37:17,080
-we're still going to want to have this open as well. But
-
+we're still going to want to have this open as well. 
+我们还是需要同时打开它
 
 12473
 12:37:17,080 --> 12:37:20,290
-we're also going to want to create a new Visual Studio code
-
+But we're also going to want to create a new Visual Studio code for working with our new repo. 
+但我们也需要新建一个 "Visual Studio Code" 来处理我们的新仓库
 
 12474
 12:37:20,320 --> 12:37:24,490
-for working with our new repo. So let's go ahead and CD down a
-
+So let's go ahead and CD down a directory. 
+所以让我们继续， `cd` 到上一级目录
 
 12475
 12:37:24,490 --> 12:37:31,630
-directory. We'll type MK dir, we'll call this HTML, Fund Me
-
+We'll type MK dir, we'll call this HTML, Fund Me Free Code Camp. We'll cd into that. 
+输入 `mkdir html-fund-me-fcc` 接着 `cd` 进去
 
 12476
 12:37:32,050 --> 12:37:36,460
-Free Code Camp. We'll cd into that. And we'll open this up by
-
+And we'll open this up by typing code period. 
+然后我们输入 `code .` 来打开它
 
 12477
 12:37:36,460 --> 12:37:40,870
-typing code period. You can also do File Open Folder, but we just
-
+You can also do File Open Folder, 
+你也可以通过“打开文件夹”("Open Folder")的操作打开
 
 12478
 12:37:40,870 --> 12:37:45,460
-want to open this up in a new Visual Studio Code. New VS code
-
+but we just want to open this up in a new Visual Studio Code. 
+但我们只是想打开一个新的 "Visual Studio Code" 而已
 
 12479
 12:37:45,460 --> 12:37:49,450
-will pop up but before we flip over to that, we do want to CD
-
+New VS code will pop up but before we flip over to that, 
+新的 VSCode 会弹出来，但在我们切换过去之前
 
 12480
 12:37:49,450 --> 12:37:54,550
-down CD back into hard hat fun we Free Code Camp because we are
-
+we do want to CD down CD back into hard hat fun we Free Code Camp 
+我们要 `cd` 到上一级 `cd` 回到 `hardhat-fund-me-fcc`
 
 12481
 12:37:54,550 --> 12:37:57,130
-still going to use everything in here. We're still going to
-
+because we are still going to use everything in here. 
+因为我们仍然需要使用这里的所有东西
 
 12482
 12:37:57,130 --> 12:38:01,120
-deploy In a smart contract using this folder and using this repo,
-
+We're still going to deploy In a smart contract using this folder and using this repo,
+我们仍然要使用这个文件夹和仓库来部署智能合约
 
 12483
 12:38:01,180 --> 12:38:04,120
-when you're building daps, or websites that are connected to
-
+when you're building daps, or websites that are connected to the blockchain, 
+当你在构建 "Dapp"(“去中心化应用”)或是能连接到区块链的网站时
 
 12484
 12:38:04,120 --> 12:38:08,140
-the blockchain, you'll usually have two repositories or repos.
-
+you'll usually have two repositories or repos.
+你通常会有两个代码库
 
 12485
 12:38:08,470 --> 12:38:10,990
-One is going to be for the smart contracts, like what we see
-
+One is going to be for the smart contracts, like what we see here. 
+其中一个用于智能合约，就像我们在这里看到的
 
 12486
 12:38:10,990 --> 12:38:13,690
-here. This is our repo that has all the code for our smart
-
+This is our repo that has all the code for our smart contracts. 
+这是我们存放所有与智能合约相关的代码的仓库
 
 12487
 12:38:13,690 --> 12:38:16,480
-contracts. And then you'll also have one for the front end slash
-
+And then you'll also have one for the front end slash website. 
+同时你还会有一个 "front end / website"(“前端/网站”)
 
 12488
 12:38:16,480 --> 12:38:18,880
-website. And it's going to be the combination of these two
-
+And it's going to be the combination of these two repos, which makes up the full stack. 
+这两个代码库的结合就构成了所谓的“全栈”("full stack")
 
 12489
 12:38:18,880 --> 12:38:22,120
-repos, which makes up the full stack. So when people are
-
+So when people are talking about full stack, 
+所以当人们谈及 "Full Stack" 的时候
 
 12490
 12:38:22,120 --> 12:38:25,360
-talking about full stack, they're talking about the smart
-
+they're talking about the smart contracts, which is going to be our back end, 
+它们所指的就是智能合约("Smart Contracts")，也就是后端("backend")
 
 12491
 12:38:25,360 --> 12:38:31,150
-contracts, which is going to be our back end, plus, plus our
-
+plus, plus our HTML slash JavaScript slash website stuff, which is going to be our front end. 
+加上 "HTML / javascript / Website" 之类的东西，也就是前端("front end")
 
 12492
 12:38:31,150 --> 12:38:36,010
-HTML slash JavaScript slash website stuff, which is going to
-
+So smart contracts are the back end, 
+所以智能合约("Smart Contracts")就是后端("backend")
 
 12493
 12:38:36,010 --> 12:38:39,910
-be our front end. So smart contracts are the back end, HTML
-
+HTML slash JavaScript slash website stuff is going to be our front end. 
+"HTML / javascript / Website" 之类的东西就是前端("front end")
 
 12494
 12:38:39,910 --> 12:38:42,610
-slash JavaScript slash website stuff is going to be our front
-
+So we have our back end already. 
+我们已经拥有后端了
 
 12495
 12:38:42,610 --> 12:38:45,640
-end. So we have our back end already. And now we're going to
-
+And now we're going to build our front end, 
+所以我们现在要开始构建前端
 
 12496
 12:38:45,640 --> 12:38:48,040
-build our front end, we want to keep this up because we're going
-
+we want to keep this up because we're going to need it to test and interact with our front end. 
+我们需要保持这个打开，因为我们需要用它来对我们的前端进行测试和交互
 
 12497
 12:38:48,040 --> 12:38:51,940
-to need it to test and interact with our front end. Awesome. So
-
+Awesome. 
+非常好！
 
 12498
 12:38:52,150 --> 12:38:56,650
-we have this new folder now, HTML Funmi, Free Code Camp. Now
-
+So we have this new folder now, HTML Funmi, Free Code Camp. 
+现在我们有了这个新的文件夹 "html-fund-me-fcc"
 
 12499
 12:38:56,650 --> 12:38:59,860
-this course is not a how to learn front end course, we are
-
+Now this course is not a how to learn front end course, 
+这门课程并不是一个专门学习前端的课程
 
 12500
 12:38:59,860 --> 12:39:02,980
-going to teach you a number of front end concepts. But if you
-
+we are going to teach you a number of front end concepts. 
+我们会教你一些关于前端的概念
 
 12501
 12:39:02,980 --> 12:39:06,670
-want to learn a full traditional front end course, once again,
-
+But if you want to learn a full traditional front end course, 
+但如果你想要学习完整的传统前端课程
 
 12502
 12:39:06,670 --> 12:39:08,920
-you can check out Free Code Camp, they've got a ton of
-
+once again, you can check out Free Code Camp, 
+再次重申，你可以查看 "Free Code Camp"
 
 12503
 12:39:08,920 --> 12:39:11,710
-fantastic tutorials, I'm teaching you front end, if you
-
+they've got a ton of fantastic tutorials, I'm teaching you front end, 
+他们有一大堆很棒的教程可以教会你前端的知识
 
 12504
 12:39:11,710 --> 12:39:13,720
-go ahead and follow along with me, though, you'll definitely
-
+if you go ahead and follow along with me, though, 
+如果你继续跟着我来学习
 
 12505
 12:39:13,720 --> 12:39:17,200
-get a basic understanding of front end as well as front ends
-
+you'll definitely get a basic understanding of front end 
+那么你肯定会对前端有一个基本的理解
 
 12506
 12:39:17,200 --> 12:39:19,690
-and how it relates to our smart contracts. Additionally, you
-
+as well as front ends and how it relates to our smart contracts. 
+并且会明白它与我们的智能合约的关系
 
 12507
 12:39:19,690 --> 12:39:22,450
-don't have to do the front end parts or the full stack parts.
-
+Additionally, you don't have to do the front end parts or the full stack parts.
+此外，你并不一定需要前端或者全栈部分
 
 12508
 12:39:22,480 --> 12:39:25,900
-If you only want to take this course, to learn back end and to
-
+If you only want to take this course, to learn back end and to learn JavaScript, and to learn solidity 
+如果你参加这门课只是为了学习后端，学习 JavaScript，学习 Solidity
 
 12509
 12:39:25,900 --> 12:39:28,990
-learn JavaScript, and to learn solidity and learn how to do
-
+and learn how to do these smart contracts programmatically, 
+以及学习如何以编程的方式来创建智能合约的话
 
 12510
 12:39:28,990 --> 12:39:31,150
-these smart contracts programmatically, then you can
-
+then you can absolutely skip these front end parts. 
+那么你完全可以跳过这些前端部分
 
 12511
 12:39:31,180 --> 12:39:34,210
-absolutely skip these front end parts. However, if you want to
-
+However, if you want to learn to build exciting websites, 
+然而，如果你想要学习如何构建一个引人注目的网站
 
 12512
 12:39:34,210 --> 12:39:36,640
-learn to build exciting websites, and you want to have
-
+and you want to have other people other than developers interact with your protocols, 
+如果你想让开发者之外的其他人也使用你的协议进行交互
 
 12513
 12:39:36,670 --> 12:39:39,160
-other people other than developers interact with your
-
+you definitely want to watch this part. 
+那么你一定会很想观看这一部分的
 
 12514
 12:39:39,160 --> 12:39:41,800
-protocols, you definitely want to watch this part. Now before
-
+Now before we actually jump in here and start writing our code. 
+现在，在我们实际进入并开始编写代码之前
 
 12515
 12:39:41,800 --> 12:39:44,590
-we actually jump in here and start writing our code. We need
-
+We need to understand 
+我们需要了解一下
 
 12516
 12:39:44,590 --> 12:39:48,880
-to understand what exactly is going on when work with one of
-
+what exactly is going on when work with one of these websites that use the blockchain. 
+当我们使用这些能够使用区块链的网站时，到底发生了什么
 
 12517
 12:39:48,880 --> 12:39:51,910
-these websites that use the blockchain. So I actually made a
-
+So I actually made a video about this recently. 
+所以我最近专门为此制作了一个视频
 
 12518
 12:39:51,910 --> 12:39:55,030
-video about this recently. So let's watch a segment from that
-
+So let's watch a segment from that really quick, 
+让我们来快速观看其中的一部分片段
 
 12519
 12:39:55,030 --> 12:39:57,430
-really quick, just so that we can get up to speed with with
-
+just so that we can get up to speed 
+以让我们能尽快明白
 
 12520
 12:39:57,430 --> 12:40:00,520
-exactly what's going on behind the scenes of these websites
-
-
-12521
-12:40:00,730 --> 12:40:06,040
-that interact with the blockchain. 
+with with exactly what's going on behind the scenes of these websites that interact with the blockchain. 
+在这些网站与区块链交互的背后究竟发生了些什么
