@@ -1,0 +1,453 @@
+12521
+12:40:00,730 --> 12:40:06,040
+All right. So here we are, with a website or a front end 
+
+
+12522
+12:40:06,040 --> 12:40:10,000
+on top of some smart contracts that we've deployed, 
+
+
+12523
+12:40:10,000 --> 12:40:12,430
+doesn't really matter what it is
+
+
+12524
+12:40:12,430 --> 12:40:16,240
+right now. This is typically the interface that you'll see boiled
+
+
+12525
+12:40:16,240 --> 12:40:20,350
+down to a really, really minimalistic level. Typically,
+
+
+12526
+12:40:20,350 --> 12:40:22,270
+you'll see something like connect function, right, and
+
+
+12527
+12:40:22,270 --> 12:40:25,180
+Metamask, or some other wallet connector thing will pop up,
+
+
+12528
+12:40:25,390 --> 12:40:28,420
+we'll hit Next we'll connect here might even say something
+
+
+12529
+12:40:28,420 --> 12:40:30,970
+like connected. And we can also execute functions, we can
+
+
+12530
+12:40:31,000 --> 12:40:33,580
+interact with our smart contracts, we can confirm, etc.
+
+
+12531
+12:40:33,610 --> 12:40:35,950
+Right? This is something you might see something like Avi
+
+
+12532
+12:40:35,950 --> 12:40:39,010
+right, I'll hit Connect on the application, it'll say, hey, how
+
+
+12533
+12:40:39,010 --> 12:40:41,890
+would you like to connect? I'll choose Metamask. I'm going to
+
+
+12534
+12:40:41,950 --> 12:40:45,040
+change my Metamask to main net, but you get the picture, right?
+
+
+12535
+12:40:45,040 --> 12:40:48,760
+This is a simple example of what that would look like. So what is
+
+
+12536
+12:40:48,820 --> 12:40:52,630
+actually going on in the browser when we connect what is actually
+
+
+12537
+12:40:52,630 --> 12:40:55,450
+going on? And what do we actually need to do, we're going
+
+
+12538
+12:40:55,450 --> 12:40:59,500
+to right click, hit Inspect. And on the right side, we're gonna
+
+
+12539
+12:40:59,500 --> 12:41:04,810
+see our debugger here. Now if we go over to sources, on the top
+
+
+12540
+12:41:04,810 --> 12:41:09,790
+of our browser, you'll see a few things. If you look down over
+
+
+12541
+12:41:09,790 --> 12:41:14,050
+here, right, we'll see this URL, right, which right now is going
+
+
+12542
+12:41:14,050 --> 12:41:18,010
+to be my localhost. And we'll also see meta mask and Phantom
+
+
+12543
+12:41:18,010 --> 12:41:20,710
+and a whole bunch of other stuff. These other things that
+
+
+12544
+12:41:20,710 --> 12:41:24,130
+we see here are going to be what's injected from our browser
+
+
+12545
+12:41:24,130 --> 12:41:27,130
+extensions. The reason we see this meta mask thing here is
+
+
+12546
+12:41:27,130 --> 12:41:30,250
+because I've meta mask installed, right? The reason I
+
+
+12547
+12:41:30,250 --> 12:41:33,160
+see Phantom here is because I have the Phantom app installed.
+
+
+12548
+12:41:33,910 --> 12:41:37,630
+Meta masks, of course, being an EVM, wallet and Phantom being a
+
+
+12549
+12:41:37,630 --> 12:41:40,990
+Solana based wallet. Now what happens when we have these
+
+
+12550
+12:41:41,260 --> 12:41:45,010
+extensions installed is they automatically get injected into
+
+
+12551
+12:41:45,040 --> 12:41:49,240
+a window object in JavaScript, and in fact, we scroll down
+
+
+12552
+12:41:51,520 --> 12:41:54,880
+to here in the console, again, you can find console, you can
+
+
+12553
+12:41:54,880 --> 12:41:59,020
+click here and click anything up there. And we type in window.
+
+
+12554
+12:41:59,950 --> 12:42:02,890
+We'll see we have this big window object with all this
+
+
+12555
+12:42:02,890 --> 12:42:06,880
+stuff, right? This window object represents this our window
+
+
+12556
+12:42:06,970 --> 12:42:09,760
+basically right? Now if we scroll all the way to the bottom
+
+
+12557
+12:42:11,350 --> 12:42:16,180
+and we do window dot Aetherium. We also see an object here. Now
+
+
+12558
+12:42:16,180 --> 12:42:20,800
+this window dot Aetherium object only exists if you have a meta
+
+
+12559
+12:42:20,800 --> 12:42:25,210
+mask or meta mask like browser or if you want to look at some
+
+
+12560
+12:42:25,210 --> 12:42:29,320
+other web three wallet you do window dot Solana. So Alana
+
+
+12561
+12:42:30,010 --> 12:42:33,340
+right and we see this window dot Solana. Now let's look at a
+
+
+12562
+12:42:33,340 --> 12:42:36,610
+browser that doesn't have Metamask or phantom installed.
+
+
+12563
+12:42:36,640 --> 12:42:38,830
+What do you think is going to happen in the window now let's
+
+
+12564
+12:42:38,830 --> 12:42:41,140
+go ahead and right click hit Inspect. We'll go to the
+
+
+12565
+12:42:41,140 --> 12:42:45,130
+console. Now let's see what's going on in here. If we go to
+
+
+12566
+12:42:45,130 --> 12:42:48,880
+sources, we first off we don't see that Metamask or that Solana
+
+
+12567
+12:42:48,880 --> 12:42:52,990
+source here. And if we go to console, we still see window if
+
+
+12568
+12:42:52,990 --> 12:42:55,870
+I let me zoom in a little bit. We still see window here. But if
+
+
+12569
+12:42:55,870 --> 12:42:59,920
+I do window dot Aetherium If we get nothing, or if I do window
+
+
+12570
+12:42:59,920 --> 12:43:04,450
+dot Solana, we also get nothing. So in order for our browsers to
+
+
+12571
+12:43:04,450 --> 12:43:08,110
+know that there's a Metamask, or that there's a phantom, those
+
+
+12572
+12:43:08,110 --> 12:43:11,500
+extensions automatically add these to our window objects, and
+
+
+12573
+12:43:11,500 --> 12:43:14,740
+that's something that we can check for in our JavaScript. The
+
+
+12574
+12:43:14,740 --> 12:43:17,500
+reason these wallets are so important is built into them
+
+
+12575
+12:43:17,530 --> 12:43:21,310
+underneath the hood, they have a blockchain node connected to
+
+
+12576
+12:43:21,310 --> 12:43:24,340
+them. And in order to interact with the blockchain, we always
+
+
+12577
+12:43:24,340 --> 12:43:28,570
+need a note. And you might have seen URLs from alchemy, or in
+
+
+12578
+12:43:28,570 --> 12:43:31,600
+FIRA because you need them to interact with the blockchain,
+
+
+12579
+12:43:32,050 --> 12:43:35,410
+Alchemy, and infura are examples of third party blockchains that
+
+
+12580
+12:43:35,650 --> 12:43:38,530
+you can interact with and basically rent, right. But you
+
+
+12581
+12:43:38,530 --> 12:43:42,340
+need them to create a provider, or a node to send your
+
+
+12582
+12:43:42,340 --> 12:43:45,790
+transactions to. So you could do it in JavaScript, like something
+
+
+12583
+12:43:45,790 --> 12:43:48,370
+like this is the alchemy documentation where you take
+
+
+12584
+12:43:48,370 --> 12:43:52,600
+that alchemy URL, you stick it into some object and use that to
+
+
+12585
+12:43:52,600 --> 12:43:56,410
+send your transaction. This is a way that you could do it in the
+
+
+12586
+12:43:56,410 --> 12:43:59,440
+back end. But on the front end, what you normally want to use is
+
+
+12587
+12:43:59,440 --> 12:44:03,040
+you just want to use the user's Metamask, or their Solana or
+
+
+12588
+12:44:03,040 --> 12:44:06,970
+their wallet as the main wallet. Now, there are a ton of other
+
+
+12589
+12:44:06,970 --> 12:44:09,610
+different types of wallets to connect, like ledger, mu,
+
+
+12590
+12:44:09,610 --> 12:44:13,210
+Coinbase, wallet, connect, etc. And there are different ways to
+
+
+12591
+12:44:13,210 --> 12:44:17,380
+set those up. But they all do the same thing where they expose
+
+
+12592
+12:44:17,410 --> 12:44:21,460
+some URL, they expose some node under the hood, they give us
+
+
+12593
+12:44:21,460 --> 12:44:25,960
+that URL. They give us that provider. The way metamath Does
+
+
+12594
+12:44:25,960 --> 12:44:30,580
+it is with window dot Aetherium. Boom, this is now our URL. This
+
+
+12595
+12:44:30,580 --> 12:44:34,480
+is now our connection. In fact, if you go up to your Metamask,
+
+
+12596
+12:44:35,380 --> 12:44:41,740
+hit the little three dots, expand view. hit Add Network,
+
+
+12597
+12:44:42,160 --> 12:44:45,820
+and then just hit the X so we can get to networks. You can see
+
+
+12598
+12:44:45,850 --> 12:44:49,960
+all of these blockchains that I have in here all have an RPC
+
+
+12599
+12:44:49,960 --> 12:44:54,580
+URL, this the HTTP RPC URL connection of the blockchain No,
+
+
+12600
+12:44:54,580 --> 12:44:56,980
+that's running. I happen to have one running locally right now.
+
+
+12601
+12:44:59,260 --> 12:45:03,070
+All of these also have a node RPC URL and you can actually see
+
+
+12602
+12:45:03,070 --> 12:45:06,280
+them right in your meta mask right. This is connected to in
+
+
+12603
+12:45:06,280 --> 12:45:10,240
+Fira, these are all connected to in Fira. It's all the exact same
+
+
+12604
+12:45:10,240 --> 12:45:13,270
+thing. Meta mask just has a really nice way of taking that
+
+
+12605
+12:45:13,270 --> 12:45:16,960
+URL, sticking it in the browser for us in this window dot
+
+
+12606
+12:45:16,960 --> 12:45:21,310
+Aetherium or window dot Solana you know or whatever. So this is
+
+
+12607
+12:45:21,310 --> 12:45:23,920
+the main thing that we need to know we need. We always need a
+
+
+12608
+12:45:23,920 --> 12:45:27,460
+connection with the blockchain. And these browser wallets are an
+
+
+12609
+12:45:27,490 --> 12:45:31,360
+easy way to do that. Make sense? Great. Let's take this knowledge
+
+
+12610
+12:45:31,360 --> 12:45:32,230
+now. And let's
+
+
+12611
+12:45:32,260 --> 12:45:38,920
+apply it. 
