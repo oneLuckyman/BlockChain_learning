@@ -1,106 +1,106 @@
 12521
 12:40:00,730 --> 12:40:06,040
 All right. So here we are, with a website or a front end 
-
+好了，我们这里有一个网站或者说前端
 
 12522
 12:40:06,040 --> 12:40:10,000
 on top of some smart contracts that we've deployed, 
-
+它是建立在我们部署的智能合约之上的
 
 12523
 12:40:10,000 --> 12:40:12,430
-doesn't really matter what it is
-
+doesn't really matter what it is right now. 
+它具体是什么现在不太重要
 
 12524
 12:40:12,430 --> 12:40:16,240
-right now. This is typically the interface that you'll see boiled
-
+This is typically the interface that you'll see 
+这就是你通常能看到的界面
 
 12525
 12:40:16,240 --> 12:40:20,350
-down to a really, really minimalistic level. Typically,
-
+boiled down to a really, really minimalistic level. 
+一个真的非常非常简化的版本
 
 12526
 12:40:20,350 --> 12:40:22,270
-you'll see something like connect function, right, and
-
+Typically, you'll see something like connect function, right, 
+你通常会看到类似 "Connect" 这样的功能
 
 12527
 12:40:22,270 --> 12:40:25,180
-Metamask, or some other wallet connector thing will pop up,
-
+and Metamask, or some other wallet connector thing will pop up,
+紧接着 MetaMask 或是其它种类的钱包连接器就会弹出来
 
 12528
 12:40:25,390 --> 12:40:28,420
-we'll hit Next we'll connect here might even say something
-
+we'll hit Next we'll connect here 
+点击 "Next" 还有这里的 "Connect" 
 
 12529
 12:40:28,420 --> 12:40:30,970
-like connected. And we can also execute functions, we can
-
+might even say something like connected. 
+可能还会显示一些 "Connected"(“连接成功”) 的字样
 
 12530
 12:40:31,000 --> 12:40:33,580
-interact with our smart contracts, we can confirm, etc.
-
+And we can also execute functions, 
+我们同样可以点击这个 "Execute" 
 
 12531
 12:40:33,610 --> 12:40:35,950
-Right? This is something you might see something like Avi
-
+we can interact with our smart contracts, we can confirm, etc. 
+这样就可以与我们的智能合约进行交互，并且确认操作，等等
 
 12532
 12:40:35,950 --> 12:40:39,010
-right, I'll hit Connect on the application, it'll say, hey, how
-
+Right? This is something you might see something like Avi right, 
+好，这可能和你在 "AAVE" 上看到的内容类似，对吧？
 
 12533
 12:40:39,010 --> 12:40:41,890
-would you like to connect? I'll choose Metamask. I'm going to
-
+I'll hit Connect on the application, 
+我要在 "AAVE" 应用里点击 "Connect" 
 
 12534
 12:40:41,950 --> 12:40:45,040
-change my Metamask to main net, but you get the picture, right?
-
+it'll say, hey, how would you like to connect? 
+它会说，“嘿，你打算选择那个进行连接”
 
 12535
 12:40:45,040 --> 12:40:48,760
-This is a simple example of what that would look like. So what is
-
+I'll choose Metamask. I'm going to change my Metamask to main net, but you get the picture, right? 
+我会选择 MetaMask，并把它切换到主网络，你懂的，对吧？
 
 12536
 12:40:48,820 --> 12:40:52,630
-actually going on in the browser when we connect what is actually
-
+This is a simple example of what that would look like. 
+这是一个简单的例子，展示了它可能是什么样子的
 
 12537
 12:40:52,630 --> 12:40:55,450
-going on? And what do we actually need to do, we're going
-
+So what is actually going on in the browser when we connect 
+所以，当我们进行连接时，浏览器上究竟发生了些什么？
 
 12538
 12:40:55,450 --> 12:40:59,500
-to right click, hit Inspect. And on the right side, we're gonna
-
+what is actually going on? And what do we actually need to do, 
+它发生了什么？我们有需要做什么？
 
 12539
 12:40:59,500 --> 12:41:04,810
-see our debugger here. Now if we go over to sources, on the top
-
+we're going to right click, hit Inspect. 
+我们点击右键，选择 “检查”("Inspect")
 
 12540
 12:41:04,810 --> 12:41:09,790
-of our browser, you'll see a few things. If you look down over
-
+And on the right side, we're gonna see our debugger here. 
+然后在右侧，就可以看到我们的调试器
 
 12541
 12:41:09,790 --> 12:41:14,050
-here, right, we'll see this URL, right, which right now is going
+Now if we go over to sources, on the top of our browser, you'll see a few things. If you look down over here, right, we'll see this URL, right, which right now is going
 
 
 12542
