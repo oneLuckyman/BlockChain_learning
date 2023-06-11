@@ -321,133 +321,129 @@ you stick it into some object and use that to send your transaction.
 12585
 12:43:52,600 --> 12:43:56,410
 This is a way that you could do it in the back end. 
-这是你可以在后端实现该操作的一种方式
+这就是你在后端上可以使用的一种实现方式
 
 12586
 12:43:56,410 --> 12:43:59,440
-But on the front end, what you normally want to use 
-
+But on the front end, what you normally want to use is you just want to use the user's Metamask, 
+但在前端，你通常想用的是面向用户的 MetaMask
 
 12587
 12:43:59,440 --> 12:44:03,040
-is you just want to use the user's Metamask, 
-
+or their Solana or their wallet as the main wallet. 
+或是 Solana 或者其它主网络上的钱包
 
 12588
 12:44:03,040 --> 12:44:06,970
-or their Solana or their wallet as the main wallet. 
-
+Now, there are a ton of other different types of wallets to connect, 
+目前，有很多不同类型的钱包可供连接
 
 12589
 12:44:06,970 --> 12:44:09,610
-Now, there are a ton of other different types of wallets to connect, 
-
+like ledger, mu, Coinbase, wallet, connect, etc. 
+比如 "Ledger", "MEW", "Coinbase", "Wallet Connect" 等等等等
 
 12590
 12:44:09,610 --> 12:44:13,210
-like ledger, mu, Coinbase, wallet, connect, etc. 
-
+And there are different ways to set those up. 
+并且它们也有不同的设置方式
 
 12591
 12:44:13,210 --> 12:44:17,380
-And there are different ways to set those up. 
-
+But they all do the same thing where they expose some URL, 
+但它们做的事都是相同的，它们会在幕后提供一些 URL
 
 12592
 12:44:17,410 --> 12:44:21,460
-But they all do the same thing where they expose some URL, they expose some node under the hood, 
-
+they expose some node under the hood, 
+提供一些节点
 
 12593
 12:44:21,460 --> 12:44:25,960
 they give us that URL. They give us that provider. 
-
+他们给了我们 URL，给了我们 "provider"
 
 12594
 12:44:25,960 --> 12:44:30,580
 The way metamath Does it is with window dot Aetherium. 
-
+针对 MetaMask 的方式是 `window.ethereum` 
 
 12595
 12:44:30,580 --> 12:44:34,480
 Boom, this is now our URL. This is now our connection. 
-
+嘭，这就是我们的 URL，这就是我们的连接
 
 12596
 12:44:35,380 --> 12:44:41,740
 In fact, if you go up to your Metamask, hit the little three dots, expand view. hit Add Network,
-
+事实上，如果你打开你的 MetaMask，点击这里的三个小点，“展开视图”("Expand view")，点击“添加网络”("Add Network")
 
 12597
 12:44:42,160 --> 12:44:45,820
 and then just hit the X so we can get to networks. 
-
+然后点这个 X，这样我们就到了“网络”("Networks")界面
 
 12598
 12:44:45,850 --> 12:44:49,960
 You can see all of these blockchains that I have in here all have an RPC URL, 
-
+你可以看到，所有这里我拥有的区块链，都有一个 "RPC URL"
 
 12599
 12:44:49,960 --> 12:44:54,580
 this the HTTP RPC URL connection of the blockchain No, that's running. 
-
+这些连接在区块链节点上的 "http RPC URL" 正在运行
 
 12600
 12:44:54,580 --> 12:44:56,980
 I happen to have one running locally right now.
-
+我现在恰好有一个本地节点正在运行
 
 12601
 12:44:59,260 --> 12:45:03,070
 All of these also have a node RPC URL 
-
+它们全都有一个节点 "RPC URL"
 
 12602
 12:45:03,070 --> 12:45:06,280
 and you can actually see them right in your meta mask right. 
-
+你可以在你的 MetaMask 上查看它们
 
 12603
 12:45:06,280 --> 12:45:10,240
 This is connected to in Fira, these are all connected to in Fira. 
-
+这是连接在 "infura" 上的，这些都是连接在 "infura" 上的
 
 12604
 12:45:10,240 --> 12:45:13,270
 It's all the exact same thing. 
-
+它们都是完全相同的东西
 
 12605
 12:45:13,270 --> 12:45:16,960
 Meta mask just has a really nice way of taking that URL, 
-
+MetaMask 提供了一个非常好的获取 URL 的方式
 
 12606
 12:45:16,960 --> 12:45:21,310
 sticking it in the browser for us in this window dot Aetherium or window dot Solana you know or whatever. 
-
+来到我们的浏览器，输入 `window.ethereum` 或者 `window.solana` ，诸如此类的东西
 
 12607
 12:45:21,310 --> 12:45:23,920
 So this is the main thing that we need to know 
-
+这就是我们需要知道的主要内容
 
 12608
 12:45:23,920 --> 12:45:27,460
 we need. We always need a connection with the blockchain. 
-
+我们总是需要与区块链之间有一个连接
 
 12609
 12:45:27,490 --> 12:45:31,360
 And these browser wallets are an easy way to do that. 
-
+这些浏览器钱包就是一种简单的实现方式
 
 12610
 12:45:31,360 --> 12:45:32,230
-Make sense? Great. Let's take this knowledge now. 
-
-
-12611
-12:45:32,260 --> 12:45:38,920
-And let's apply it. 
+Make sense? Great. Let's take this knowledge now. And let's apply it. 
+懂了吧？非常好，让我们运用这些知识，开始实践吧
