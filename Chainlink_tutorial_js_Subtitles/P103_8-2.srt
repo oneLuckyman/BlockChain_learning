@@ -100,354 +100,354 @@ And on the right side, we're gonna see our debugger here.
 
 12541
 12:41:09,790 --> 12:41:14,050
-Now if we go over to sources, on the top of our browser, you'll see a few things. If you look down over here, right, we'll see this URL, right, which right now is going
-
+Now if we go over to sources, on the top of our browser, 
+现在，如果我们前往“源代码”("Sources")，就在浏览器的顶部
 
 12542
 12:41:14,050 --> 12:41:18,010
-to be my localhost. And we'll also see meta mask and Phantom
-
+you'll see a few things. 
+你就可以看到这么一些东西
 
 12543
 12:41:18,010 --> 12:41:20,710
-and a whole bunch of other stuff. These other things that
-
+If you look down over here, right, we'll see this URL, right, which right now is going to be my localhost. 
+如果你看这里，就能看到这个 URL，它就是我的本地主机
 
 12544
 12:41:20,710 --> 12:41:24,130
-we see here are going to be what's injected from our browser
-
+And we'll also see meta mask and Phantom and a whole bunch of other stuff. 
+我们还可以看到 MetaMask, "Phantom" 以及一大堆其它东西
 
 12545
 12:41:24,130 --> 12:41:27,130
-extensions. The reason we see this meta mask thing here is
-
+These other things that we see here are going to be what's injected from our browser extensions. 
+这些我们看到的其它内容都是从我们的浏览器插件中注入的
 
 12546
 12:41:27,130 --> 12:41:30,250
-because I've meta mask installed, right? The reason I
-
+The reason we see this meta mask thing here is because I've meta mask installed, right? 
+我们之所以能在这里看到这个 MetaMask 是因为我们安装了 MetaMask，对吧？
 
 12547
 12:41:30,250 --> 12:41:33,160
-see Phantom here is because I have the Phantom app installed.
-
+The reason I see Phantom here is because I have the Phantom app installed.
+而我能看到 "Phantom" 的原因是因为我安装了 "Phantom" 应用
 
 12548
 12:41:33,910 --> 12:41:37,630
-Meta masks, of course, being an EVM, wallet and Phantom being a
-
+Meta masks, of course, being an EVM, wallet and Phantom being a Solana based wallet. 
+MetaMask 是一个 EVM 钱包，而 "Phantom" 则是一个基于 "Solana" 的钱包
 
 12549
 12:41:37,630 --> 12:41:40,990
-Solana based wallet. Now what happens when we have these
-
+Now what happens when we have these extensions installed 
+现在，当我们安装完这些扩展后，会发生些什么呢？
 
 12550
 12:41:41,260 --> 12:41:45,010
-extensions installed is they automatically get injected into
-
+is they automatically get injected into a window object in JavaScript, 
+它们会自动注入到 JavaScript 中的“窗口”(window) 对象中
 
 12551
 12:41:45,040 --> 12:41:49,240
-a window object in JavaScript, and in fact, we scroll down
-
+and in fact, we scroll down to here in the console, 
+其实，我们往下拉，拉到这，在“控制台”("Console")里
 
 12552
 12:41:51,520 --> 12:41:54,880
-to here in the console, again, you can find console, you can
-
+again, you can find console, you can click here and click anything up there. 
+再提醒一下，你可以点击这里找到“Console”，以及，这上面的东西你都是可以点击的
 
 12553
 12:41:54,880 --> 12:41:59,020
-click here and click anything up there. And we type in window.
-
+And we type in window.
+然后我们输入 `window`
 
 12554
 12:41:59,950 --> 12:42:02,890
-We'll see we have this big window object with all this
-
+We'll see we have this big window object with all this stuff, right? 
+就可以看到这里有一个庞大的 "window" 对象，里面有一大堆东西
 
 12555
 12:42:02,890 --> 12:42:06,880
-stuff, right? This window object represents this our window
-
+This window object represents this our window basically right? 
+这个 "window" 对象基本上就表示我们的窗口
 
 12556
 12:42:06,970 --> 12:42:09,760
-basically right? Now if we scroll all the way to the bottom
-
+Now if we scroll all the way to the bottom
+现在，如果我们一直滑到底部
 
 12557
 12:42:11,350 --> 12:42:16,180
-and we do window dot Aetherium. We also see an object here. Now
-
+and we do window dot Aetherium. We also see an object here. 
+接着我们输入 `window.ethereum`，同样可以看到一个对象
 
 12558
 12:42:16,180 --> 12:42:20,800
-this window dot Aetherium object only exists if you have a meta
-
+Now this window dot Aetherium object only exists if you have a meta mask or meta mask like browser 
+这个 `window.ethereum` 对象只有在你拥有 MetaMask 或类似的浏览器插件时才会存在
 
 12559
 12:42:20,800 --> 12:42:25,210
-mask or meta mask like browser or if you want to look at some
-
+or if you want to look at some other web three wallet 
+或者，如果你想看看其它的 Web3 钱包
 
 12560
 12:42:25,210 --> 12:42:29,320
-other web three wallet you do window dot Solana. So Alana
-
+you do window dot Solana. So Alana right 
+你可以输入 `window.solana`
 
 12561
 12:42:30,010 --> 12:42:33,340
-right and we see this window dot Solana. Now let's look at a
-
+and we see this window dot Solana. 
+接着我们就会看到这个 "window.solana" 
 
 12562
 12:42:33,340 --> 12:42:36,610
-browser that doesn't have Metamask or phantom installed.
-
+Now let's look at a browser that doesn't have Metamask or phantom installed.
+现在让我们来看一个没有安装 MetaMask 或 Phantom 的浏览器
 
 12563
 12:42:36,640 --> 12:42:38,830
-What do you think is going to happen in the window now let's
-
+What do you think is going to happen in the window now 
+现在你觉得 "window" 里会发生什么？
 
 12564
 12:42:38,830 --> 12:42:41,140
-go ahead and right click hit Inspect. We'll go to the
-
+let's go ahead and right click hit Inspect. We'll go to the console. 
+我们来点击右键，"Inspect"，前往 "Console"
 
 12565
 12:42:41,140 --> 12:42:45,130
-console. Now let's see what's going on in here. If we go to
-
+Now let's see what's going on in here. 
+现在让我们来看看这里发生了些什么
 
 12566
 12:42:45,130 --> 12:42:48,880
-sources, we first off we don't see that Metamask or that Solana
-
+If we go to sources, we first off we don't see that Metamask or that Solana source here. 
+如果我们前往 "Sources"，首当其冲的是我们看不到 MetaMask 或 Solana 源了
 
 12567
 12:42:48,880 --> 12:42:52,990
-source here. And if we go to console, we still see window if
-
+And if we go to console, we still see window 
+如果我们前往 "Console"，仍然查看 `window`
 
 12568
 12:42:52,990 --> 12:42:55,870
-I let me zoom in a little bit. We still see window here. But if
-
+if I let me zoom in a little bit. We still see window here. 
+让我来放大一点，我们再次查看 `window`
 
 12569
 12:42:55,870 --> 12:42:59,920
-I do window dot Aetherium If we get nothing, or if I do window
-
+But if I do window dot Aetherium If we get nothing, 
+但如果我执行 `window.ethereum`，一无所获
 
 12570
 12:42:59,920 --> 12:43:04,450
-dot Solana, we also get nothing. So in order for our browsers to
-
+or if I do window dot Solana, we also get nothing. 
+或者执行 `window.solana`，同样一无所获
 
 12571
 12:43:04,450 --> 12:43:08,110
-know that there's a Metamask, or that there's a phantom, those
-
+So in order for our browsers to know that there's a Metamask, or that there's a phantom, 
+所以，为了让我们的浏览器知道 MetaMask 和 Phantom 的存在
 
 12572
 12:43:08,110 --> 12:43:11,500
-extensions automatically add these to our window objects, and
-
+those extensions automatically add these to our window objects, 
+我们需要这些扩展将它们自动添加到 "window" 对象中来
 
 12573
 12:43:11,500 --> 12:43:14,740
-that's something that we can check for in our JavaScript. The
-
+and that's something that we can check for in our JavaScript. 
+并且我们可以在 JavaScript 中进行检查
 
 12574
 12:43:14,740 --> 12:43:17,500
-reason these wallets are so important is built into them
-
+The reason these wallets are so important is built into them underneath the hood, 
+这些钱包之所以如此重要，是因为在内部构造中
 
 12575
 12:43:17,530 --> 12:43:21,310
-underneath the hood, they have a blockchain node connected to
-
+they have a blockchain node connected to them. 
+它们与一个区块链节点相连接
 
 12576
 12:43:21,310 --> 12:43:24,340
-them. And in order to interact with the blockchain, we always
-
+And in order to interact with the blockchain, we always need a note. 
+为了与区块链进行交互，我们始终都需要节点
 
 12577
 12:43:24,340 --> 12:43:28,570
-need a note. And you might have seen URLs from alchemy, or in
-
+And you might have seen URLs from alchemy, or in FIRA 
+你可能是从 "alchemy" 或 "INFURA" 上获取的 URL
 
 12578
 12:43:28,570 --> 12:43:31,600
-FIRA because you need them to interact with the blockchain,
-
+because you need them to interact with the blockchain,
+这是因为你需要它们才能同区块链进行交互
 
 12579
 12:43:32,050 --> 12:43:35,410
 Alchemy, and infura are examples of third party blockchains that
-
+"alchemy" 和 "INFURA" 是第三方区块链中的例子
 
 12580
 12:43:35,650 --> 12:43:38,530
-you can interact with and basically rent, right. But you
-
+you can interact with and basically rent, right. 
+你可以与它们进行交互，基本上就是租用的形式
 
 12581
 12:43:38,530 --> 12:43:42,340
-need them to create a provider, or a node to send your
-
+But you need them to create a provider, or a node to send your transactions to. 
+你需要它们创建一个 "provider" 或者说一个节点，才能发送你的交易
 
 12582
 12:43:42,340 --> 12:43:45,790
-transactions to. So you could do it in JavaScript, like something
-
+So you could do it in JavaScript, like something like this 
+所以你可以在 JavaScript 中进行这样的操作
 
 12583
 12:43:45,790 --> 12:43:48,370
-like this is the alchemy documentation where you take
-
+is the alchemy documentation where you take that alchemy URL, 
+这是 "alchemy" 文档中的一个示例，你可以把 "alchemy" 的 URL 放到这里
 
 12584
 12:43:48,370 --> 12:43:52,600
-that alchemy URL, you stick it into some object and use that to
-
+you stick it into some object and use that to send your transaction. 
+将其放入某个对象中，然后用它来发送你的交易
 
 12585
 12:43:52,600 --> 12:43:56,410
-send your transaction. This is a way that you could do it in the
-
+This is a way that you could do it in the back end. 
+这是你可以在后端实现该操作的一种方式
 
 12586
 12:43:56,410 --> 12:43:59,440
-back end. But on the front end, what you normally want to use is
+But on the front end, what you normally want to use 
 
 
 12587
 12:43:59,440 --> 12:44:03,040
-you just want to use the user's Metamask, or their Solana or
+is you just want to use the user's Metamask, 
 
 
 12588
 12:44:03,040 --> 12:44:06,970
-their wallet as the main wallet. Now, there are a ton of other
+or their Solana or their wallet as the main wallet. 
 
 
 12589
 12:44:06,970 --> 12:44:09,610
-different types of wallets to connect, like ledger, mu,
+Now, there are a ton of other different types of wallets to connect, 
 
 
 12590
 12:44:09,610 --> 12:44:13,210
-Coinbase, wallet, connect, etc. And there are different ways to
+like ledger, mu, Coinbase, wallet, connect, etc. 
 
 
 12591
 12:44:13,210 --> 12:44:17,380
-set those up. But they all do the same thing where they expose
+And there are different ways to set those up. 
 
 
 12592
 12:44:17,410 --> 12:44:21,460
-some URL, they expose some node under the hood, they give us
+But they all do the same thing where they expose some URL, they expose some node under the hood, 
 
 
 12593
 12:44:21,460 --> 12:44:25,960
-that URL. They give us that provider. The way metamath Does
+they give us that URL. They give us that provider. 
 
 
 12594
 12:44:25,960 --> 12:44:30,580
-it is with window dot Aetherium. Boom, this is now our URL. This
+The way metamath Does it is with window dot Aetherium. 
 
 
 12595
 12:44:30,580 --> 12:44:34,480
-is now our connection. In fact, if you go up to your Metamask,
+Boom, this is now our URL. This is now our connection. 
 
 
 12596
 12:44:35,380 --> 12:44:41,740
-hit the little three dots, expand view. hit Add Network,
+In fact, if you go up to your Metamask, hit the little three dots, expand view. hit Add Network,
 
 
 12597
 12:44:42,160 --> 12:44:45,820
-and then just hit the X so we can get to networks. You can see
+and then just hit the X so we can get to networks. 
 
 
 12598
 12:44:45,850 --> 12:44:49,960
-all of these blockchains that I have in here all have an RPC
+You can see all of these blockchains that I have in here all have an RPC URL, 
 
 
 12599
 12:44:49,960 --> 12:44:54,580
-URL, this the HTTP RPC URL connection of the blockchain No,
+this the HTTP RPC URL connection of the blockchain No, that's running. 
 
 
 12600
 12:44:54,580 --> 12:44:56,980
-that's running. I happen to have one running locally right now.
+I happen to have one running locally right now.
 
 
 12601
 12:44:59,260 --> 12:45:03,070
-All of these also have a node RPC URL and you can actually see
+All of these also have a node RPC URL 
 
 
 12602
 12:45:03,070 --> 12:45:06,280
-them right in your meta mask right. This is connected to in
+and you can actually see them right in your meta mask right. 
 
 
 12603
 12:45:06,280 --> 12:45:10,240
-Fira, these are all connected to in Fira. It's all the exact same
+This is connected to in Fira, these are all connected to in Fira. 
 
 
 12604
 12:45:10,240 --> 12:45:13,270
-thing. Meta mask just has a really nice way of taking that
+It's all the exact same thing. 
 
 
 12605
 12:45:13,270 --> 12:45:16,960
-URL, sticking it in the browser for us in this window dot
+Meta mask just has a really nice way of taking that URL, 
 
 
 12606
 12:45:16,960 --> 12:45:21,310
-Aetherium or window dot Solana you know or whatever. So this is
+sticking it in the browser for us in this window dot Aetherium or window dot Solana you know or whatever. 
 
 
 12607
 12:45:21,310 --> 12:45:23,920
-the main thing that we need to know we need. We always need a
+So this is the main thing that we need to know 
 
 
 12608
 12:45:23,920 --> 12:45:27,460
-connection with the blockchain. And these browser wallets are an
+we need. We always need a connection with the blockchain. 
 
 
 12609
 12:45:27,490 --> 12:45:31,360
-easy way to do that. Make sense? Great. Let's take this knowledge
+And these browser wallets are an easy way to do that. 
 
 
 12610
 12:45:31,360 --> 12:45:32,230
-now. And let's
+Make sense? Great. Let's take this knowledge now. 
 
 
 12611
 12:45:32,260 --> 12:45:38,920
-apply it. 
+And let's apply it. 
