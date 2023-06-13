@@ -1,0 +1,403 @@
+12611
+12:45:32,260 --> 12:45:38,920
+So in here, let's make a quick readme.md. 
+现在，让我们来快速创建一个 "README.md" 文件
+
+12612
+12:45:38,920 --> 12:45:40,990
+Just so we can talk about what we're going to be making here. 
+这样我们就可以讨论一下接下来我们要处理的内容
+
+12613
+12:45:40,990 --> 12:45:44,620
+So in this section, we're gonna be using raw HTML slash JavaScript 
+在这一节中，我们将先使用原始的 "HTML / JavaScript" 
+
+12614
+12:45:44,620 --> 12:45:47,470
+in conjunction with our smart contracts to build this website.
+结合我们的智能合约来构建这个网站
+
+12615
+12:45:47,590 --> 12:45:52,000
+Later on. We will use next Jas slash react, 
+接下来，我们要使用一种更加现代化的技术栈 
+
+12616
+12:45:52,000 --> 12:45:55,390
+which is a more modern stack to build our websites here. 
+"Nextjs / Reactjs" 来构建我们的网站
+
+12617
+12:45:55,420 --> 12:45:57,220
+But learning understanding how to do everything with HTML and JavaScript first, 
+但首先来学习和理解如何使用 HTML 和 JavaScript 来完成所有的操作
+
+12618
+12:45:57,220 --> 12:46:01,270
+is going to make our lives a lot easier come later on down the road. 
+会让我们之后的学习工作变得更轻松一些
+
+12619
+12:46:01,270 --> 12:46:05,440
+But as we know, all websites use HTML as kind of their scaffolding for what they look like. 
+但正如我们所知的，所有网站都使用 HTML 作为它们的骨架来支撑外观
+
+12620
+12:46:05,560 --> 12:46:08,620
+So let's go ahead and create our HTML for our website, 
+所以让我们继续，来为我们的网站创建一个 HTML 文件
+
+12621
+12:46:08,620 --> 12:46:12,610
+we'll call it index dot HTML. 
+我们把它命名为 "index.html" 
+
+12622
+12:46:12,640 --> 12:46:17,680
+And this is going to be the basic scaffolding or the
+
+
+12623
+12:46:17,680 --> 12:46:21,130
+basic bones of what our website is going to look like. Now, in
+
+
+12624
+12:46:21,130 --> 12:46:24,940
+VS code, if you go ahead and just type exclamation mark index
+
+
+12625
+12:46:24,940 --> 12:46:28,240
+dot HTML, and you click the first thing that pops up, it'll
+
+
+12626
+12:46:28,270 --> 12:46:32,350
+automatically populate your code your file here with some basic
+
+
+12627
+12:46:32,380 --> 12:46:36,760
+HTML setup. If it doesn't do this for you, feel free to copy
+
+
+12628
+12:46:36,760 --> 12:46:40,360
+paste the basic setup from the GitHub repository associated
+
+
+12629
+12:46:40,360 --> 12:46:43,840
+with this course, we have our doctype. HTML, we have some HTML
+
+
+12630
+12:46:43,840 --> 12:46:46,600
+tags telling us that everything in between here is going to be
+
+
+12631
+12:46:46,660 --> 12:46:49,600
+an HTML, which is great. However, for simplicity, we
+
+
+12632
+12:46:49,600 --> 12:46:51,550
+don't need most of this. So we're going to make this a
+
+
+12633
+12:46:51,550 --> 12:46:54,160
+little bit easier. We're going to delete this line, this line
+
+
+12634
+12:46:54,160 --> 12:46:56,950
+and this line. And we're just going to change the title to
+
+
+12635
+12:46:57,220 --> 12:47:01,090
+fund me app. And then inside of our body, we can do something
+
+
+12636
+12:47:01,090 --> 12:47:05,410
+like or Hello. And now we have the bare bones to create a
+
+
+12637
+12:47:05,410 --> 12:47:09,160
+website just with this. Now to show this on a website, we can
+
+
+12638
+12:47:09,160 --> 12:47:12,040
+do one of two things. If you are using Visual Studio code, I'm
+
+
+12639
+12:47:12,040 --> 12:47:16,240
+going to recommend you install the extension live server. And
+
+
+12640
+12:47:16,240 --> 12:47:18,610
+it looks like this. And I'll have the extension ID for this
+
+
+12641
+12:47:18,610 --> 12:47:21,310
+extension in the GitHub repository associated with this
+
+
+12642
+12:47:21,310 --> 12:47:23,920
+course, this is going to allow us to easily spin up an HTML
+
+
+12643
+12:47:23,920 --> 12:47:27,070
+website. So we'll go ahead and install this. And if you're not
+
+
+12644
+12:47:27,070 --> 12:47:29,890
+using Visual Studio Code, I'll show you a different way in just
+
+
+12645
+12:47:29,890 --> 12:47:33,340
+a second. Once this is installed, you should have this
+
+
+12646
+12:47:33,340 --> 12:47:36,880
+little go live button at the bottom. And if you don't, you
+
+
+12647
+12:47:36,880 --> 12:47:39,460
+can always open up your command palette, which again, you can
+
+
+12648
+12:47:39,460 --> 12:47:43,240
+open up by hitting View command palette, and you can type in
+
+
+12649
+12:47:43,270 --> 12:47:46,810
+live server and just say open with live server but we're going
+
+
+12650
+12:47:46,810 --> 12:47:49,240
+to just click this go live button. And it's going to say
+
+
+12651
+12:47:49,240 --> 12:47:53,680
+starting and it's actually going to open up your browser with our
+
+
+12652
+12:47:53,710 --> 12:47:57,460
+index dot HTML. We can actually see our website is being called
+
+
+12653
+12:47:57,490 --> 12:48:02,500
+Save on 120 7.0 point 0.1. This is known as the loopback, or
+
+
+12654
+12:48:02,530 --> 12:48:06,430
+local host endpoint, we're on port 5501. If you're not
+
+
+12655
+12:48:06,430 --> 12:48:09,010
+familiar with the ports, don't worry about that for now, we
+
+
+12656
+12:48:09,010 --> 12:48:12,310
+have our index dot HTML here. And if we change this to
+
+
+12657
+12:48:12,340 --> 12:48:16,630
+something like what's good, we hit save. If it doesn't
+
+
+12658
+12:48:16,630 --> 12:48:19,060
+automatically refresh, we'd come over here and refresh. And we'd
+
+
+12659
+12:48:19,060 --> 12:48:21,640
+see that being reflected here. If you've never created a
+
+
+12660
+12:48:21,640 --> 12:48:23,980
+website before, you've essentially just done it,
+
+
+12661
+12:48:24,040 --> 12:48:28,150
+congratulations, you might get this.vs code folder. a.vs code
+
+
+12662
+12:48:28,180 --> 12:48:32,680
+folder allows you to make settings specifically for the
+
+
+12663
+12:48:32,680 --> 12:48:35,530
+repo that you're working with, for your code editor for VS
+
+
+12664
+12:48:35,530 --> 12:48:38,740
+code, but we're going to mostly ignore it for now. Now, if
+
+
+12665
+12:48:38,740 --> 12:48:41,680
+you're not using Visual Studio Code, what you can do is you can
+
+
+12666
+12:48:41,680 --> 12:48:45,610
+just run this in the browser. So one thing you could do is you
+
+
+12667
+12:48:45,610 --> 12:48:48,340
+could right click it, and I'm using a Mac. So I'm going to hit
+
+
+12668
+12:48:48,340 --> 12:48:52,270
+Reveal in Finder, aka reveal where it's located. And you can
+
+
+12669
+12:48:52,270 --> 12:48:54,970
+just double click it, and boom, now it's running right in your
+
+
+12670
+12:48:54,970 --> 12:48:57,790
+browser. Instead of pointing to your localhost, it's going to be
+
+
+12671
+12:48:57,790 --> 12:49:01,660
+pointing directly to your local file path. Now one final version
+
+
+12672
+12:49:01,660 --> 12:49:03,970
+that we could do that I'm going to highly recommend you don't
+
+
+12673
+12:49:03,970 --> 12:49:06,850
+do. But it's another option, we're actually going to download
+
+
+12674
+12:49:06,850 --> 12:49:10,180
+a package for you using no Jas, which allows us to serve up
+
+
+12675
+12:49:10,210 --> 12:49:12,910
+HTTP. And we're gonna install it the exact same way we've
+
+
+12676
+12:49:12,910 --> 12:49:17,620
+installed our other packages, we can do yarn, add dash dash dev
+
+
+12677
+12:49:17,680 --> 12:49:22,870
+HTTP hyphen server. And you may still want to add it anyways.
+
+
+12678
+12:49:22,900 --> 12:49:26,470
+But now, we'll get some node modules for this HTTP server
+
+
+12679
+12:49:26,470 --> 12:49:30,010
+package, we'll get a package json, and of course, a yarn dot
+
+
+12680
+12:49:30,010 --> 12:49:34,180
+lock as well. And what we can do is we can stop this down here,
+
+
+12681
+12:49:34,210 --> 12:49:36,940
+stop that live server. And if we go back to our website, refresh,
+
+
+12682
+12:49:37,240 --> 12:49:42,400
+it'll now be blank. And we can run yarn HTTP server. And this
+
+
+12683
+12:49:42,400 --> 12:49:45,670
+will do the exact same thing. And we get, and if we come over,
+
+
+12684
+12:49:45,730 --> 12:49:49,060
+and we refresh, we'll see what's good. Now this one is a little
+
+
+12685
+12:49:49,060 --> 12:49:52,900
+bit more finicky. And after you make a change, like, Hey, what's
+
+
+12686
+12:49:52,900 --> 12:49:56,200
+good, you might have to close it, and then reopen it and then
+
+
+12687
+12:49:56,200 --> 12:50:00,100
+refresh. So I do recommend that if you're on Visual Studio code,
+
+
+12688
+12:50:00,280 --> 12:50:02,590
+you definitely just use this little go live button, because
+
+
+12689
+12:50:02,590 --> 12:50:04,390
+it'll reflect your changes a lot nicer.
+
+
+12690
+12:50:04,420 --> 12:50:07,000
+So let's go ahead and hit the Go Live button. Hey, what's good
+
+
+12691
+12:50:07,000 --> 12:50:10,000
+pops up. Okay, cool. Our HTML is working perfectly.
