@@ -55,349 +55,350 @@ we'll call it index dot HTML.
 
 12622
 12:46:12,640 --> 12:46:17,680
-And this is going to be the basic scaffolding or the
-
+And this is going to be the basic scaffolding or the basic bones of what our website is going to look like. 
+这将是我们网站的基本骨架，它决定了网站的基本结构和外观
 
 12623
 12:46:17,680 --> 12:46:21,130
-basic bones of what our website is going to look like. Now, in
-
+Now, in VS code, if you go ahead and just type exclamation mark index dot HTML, 
+现在到 VS Code 中，如果你在 "index.html" 中输入一个感叹号("!") 
 
 12624
 12:46:21,130 --> 12:46:24,940
-VS code, if you go ahead and just type exclamation mark index
-
+and you click the first thing that pops up, 
+然后点击弹出来的第一项
 
 12625
 12:46:24,940 --> 12:46:28,240
-dot HTML, and you click the first thing that pops up, it'll
-
+it'll automatically populate your code your file here with some basic HTML setup. 
+它就会自动在你的代码文件中填充一些基本的 HTML 设置
 
 12626
 12:46:28,270 --> 12:46:32,350
-automatically populate your code your file here with some basic
-
+If it doesn't do this for you, 
+如果它并不适合你
 
 12627
 12:46:32,380 --> 12:46:36,760
-HTML setup. If it doesn't do this for you, feel free to copy
-
+feel free to copy paste the basic setup from the GitHub repository associated with this course, 
+那么你可以复制粘贴课程关联的 GitHub 仓库中的基本设置
 
 12628
 12:46:36,760 --> 12:46:40,360
-paste the basic setup from the GitHub repository associated
-
+we have our doctype. HTML, 
+我们有 `<!DOCTYPE html>`
 
 12629
 12:46:40,360 --> 12:46:43,840
-with this course, we have our doctype. HTML, we have some HTML
-
+we have some HTML tags telling us that everything in between here is going to be an HTML, 
+还有一些 HTML 标签，告诉我们这里的所有内容都是 HTML
 
 12630
 12:46:43,840 --> 12:46:46,600
-tags telling us that everything in between here is going to be
-
+which is great. 
+非常好
 
 12631
 12:46:46,660 --> 12:46:49,600
-an HTML, which is great. However, for simplicity, we
-
+However, for simplicity, we don't need most of this. 
+然而，为了简单起见，我们并不需要其中的大多数内容
 
 12632
 12:46:49,600 --> 12:46:51,550
-don't need most of this. So we're going to make this a
-
+So we're going to make this a little bit easier. 
+所以我们要让它变得更简单一些
 
 12633
 12:46:51,550 --> 12:46:54,160
-little bit easier. We're going to delete this line, this line
-
+We're going to delete this line, this line and this line. 
+我们要删除这一行，这一行，还有这一行
 
 12634
 12:46:54,160 --> 12:46:56,950
-and this line. And we're just going to change the title to
-
+And we're just going to change the title to fund me app. 
+然后直接把标题改成 "Fund Me App" 
 
 12635
 12:46:57,220 --> 12:47:01,090
-fund me app. And then inside of our body, we can do something
-
+And then inside of our body, we can do something like or Hello. 
+接着在 `<body>` 内部，我们可以输入，比如说 `Hello!`
 
 12636
 12:47:01,090 --> 12:47:05,410
-like or Hello. And now we have the bare bones to create a
-
+And now we have the bare bones to create a website just with this. 
+现在我们就有了创建网站的基本骨架了，就是现在这些
 
 12637
 12:47:05,410 --> 12:47:09,160
-website just with this. Now to show this on a website, we can
-
+Now to show this on a website, we can do one of two things. 
+现在，要想把它展示到网站上，我们有两种方法可以选择
 
 12638
 12:47:09,160 --> 12:47:12,040
-do one of two things. If you are using Visual Studio code, I'm
-
+If you are using Visual Studio code, 
+如果你使用的是 Visual Studio Code 
 
 12639
 12:47:12,040 --> 12:47:16,240
-going to recommend you install the extension live server. And
-
+I'm going to recommend you install the extension live server. And it looks like this. 
+那么我建议你安装扩展 "live server"，就是这个
 
 12640
 12:47:16,240 --> 12:47:18,610
-it looks like this. And I'll have the extension ID for this
-
+And I'll have the extension ID for this extension in the GitHub repository associated with this course, 
+我会把这个扩展的 ID 放到课程关联的 GitHub 仓库中
 
 12641
 12:47:18,610 --> 12:47:21,310
-extension in the GitHub repository associated with this
-
+this is going to allow us to easily spin up an HTML website. 
+它可以让我们非常轻松的打开一个 HTML 网站
 
 12642
 12:47:21,310 --> 12:47:23,920
-course, this is going to allow us to easily spin up an HTML
-
+So we'll go ahead and install this. 
+所以我们继续，把它安装上
 
 12643
 12:47:23,920 --> 12:47:27,070
-website. So we'll go ahead and install this. And if you're not
-
+And if you're not using Visual Studio Code, 
+如果你不使用 Visual Studio Code 
 
 12644
 12:47:27,070 --> 12:47:29,890
-using Visual Studio Code, I'll show you a different way in just
-
+I'll show you a different way in just a second. 
+那么我稍后会向你展示一种不同的方式
 
 12645
 12:47:29,890 --> 12:47:33,340
-a second. Once this is installed, you should have this
-
+Once this is installed, you should have this little go live button at the bottom. 
+把这个安装好以后，你在底部就应该会有这么一个小的 "Go Live" 按钮
 
 12646
 12:47:33,340 --> 12:47:36,880
-little go live button at the bottom. And if you don't, you
-
+And if you don't, you can always open up your command palette, 
+如果没有的话，你总可以通过打开你的命令面板
 
 12647
 12:47:36,880 --> 12:47:39,460
-can always open up your command palette, which again, you can
-
+which again, you can open up by hitting View command palette, 
+再次提醒，你可以通过点击查看("View")来打开命令面板("Command Palette") 
 
 12648
 12:47:39,460 --> 12:47:43,240
-open up by hitting View command palette, and you can type in
-
+and you can type in live server 
+然后你可以输入 "live server" 
 
 12649
 12:47:43,270 --> 12:47:46,810
-live server and just say open with live server but we're going
-
+and just say open with live server 
+然后选择 "Open with Live Server"
 
 12650
 12:47:46,810 --> 12:47:49,240
-to just click this go live button. And it's going to say
-
+but we're going to just click this go live button. 
+但我们这里就直接点击这个 "Go Live" 按钮了
 
 12651
 12:47:49,240 --> 12:47:53,680
-starting and it's actually going to open up your browser with our
-
+And it's going to say starting 
+然后它就会显示 "Starting"
 
 12652
 12:47:53,710 --> 12:47:57,460
-index dot HTML. We can actually see our website is being called
-
+and it's actually going to open up your browser with our index dot HTML. 
+接着它就会打开你的浏览器，使用的就是我们的 "index.html"
 
 12653
 12:47:57,490 --> 12:48:02,500
-Save on 120 7.0 point 0.1. This is known as the loopback, or
-
+We can actually see our website is being called Save on 120 7.0 point 0.1. 
+我们可以看到，我们的网站托管在了 "127.0.0.1"
 
 12654
 12:48:02,530 --> 12:48:06,430
-local host endpoint, we're on port 5501. If you're not
-
+This is known as the loopback, or local host endpoint, we're on port 5501. 
+这就是所谓的“回环”("loopback")或者说本地主机端点("local host endpoint")，我们位于端口 5501
 
 12655
 12:48:06,430 --> 12:48:09,010
-familiar with the ports, don't worry about that for now, we
-
+If you're not familiar with the ports, don't worry about that for now, 
+如果对端口("port")并不熟悉，暂时也不用担心
 
 12656
 12:48:09,010 --> 12:48:12,310
-have our index dot HTML here. And if we change this to
-
+we have our index dot HTML here. 
+总之我们这里已经有了我们的 "index.html" 了
 
 12657
 12:48:12,340 --> 12:48:16,630
-something like what's good, we hit save. If it doesn't
-
+And if we change this to something like what's good, we hit save. 
+如果我们将其更改为，比如说 "Whats good?"，点击保存
 
 12658
 12:48:16,630 --> 12:48:19,060
-automatically refresh, we'd come over here and refresh. And we'd
-
+If it doesn't automatically refresh, we'd come over here and refresh. 
+如果它没有自动刷新，我们可以到这边来刷新一下
 
 12659
 12:48:19,060 --> 12:48:21,640
-see that being reflected here. If you've never created a
-
+And we'd see that being reflected here. 
+并且我们可以看到它已经反映在这里了
 
 12660
 12:48:21,640 --> 12:48:23,980
-website before, you've essentially just done it,
-
+If you've never created a website before, you've essentially just done it, congratulations, 
+如果你以前从来没创建过网站的话，那么你现在已经基本上做到了，恭喜你
 
 12661
 12:48:24,040 --> 12:48:28,150
-congratulations, you might get this.vs code folder. a.vs code
-
+you might get this.vs code folder. 
+你可能会获得这么一个 ".vscode" 文件夹
 
 12662
 12:48:28,180 --> 12:48:32,680
-folder allows you to make settings specifically for the
-
+a.vs code folder allows you to make settings specifically for the repo that you're working with, 
+这个 ".vscode" 文件夹允许你对正在使用的代码库进行专门的设置
 
 12663
 12:48:32,680 --> 12:48:35,530
-repo that you're working with, for your code editor for VS
-
+for your code editor for VS code, 
+它适用于 VS Code 代码编辑器
 
 12664
 12:48:35,530 --> 12:48:38,740
-code, but we're going to mostly ignore it for now. Now, if
-
+but we're going to mostly ignore it for now. 
+但我们现在暂时会忽略掉它
 
 12665
 12:48:38,740 --> 12:48:41,680
-you're not using Visual Studio Code, what you can do is you can
-
+Now, if you're not using Visual Studio Code, 
+现在，如果你使用的不是 Visual Studio Code 
 
 12666
 12:48:41,680 --> 12:48:45,610
-just run this in the browser. So one thing you could do is you
-
+what you can do is you can just run this in the browser. 
+那么你可以直接在浏览器中运行这个文件
 
 12667
 12:48:45,610 --> 12:48:48,340
-could right click it, and I'm using a Mac. So I'm going to hit
-
+So one thing you could do is you could right click it, and I'm using a Mac. So I'm going to hit Reveal in Finder, 
+你可以右键点击它，我用的是 Mac，所以我选择的是“在 Finder 中显示”
 
 12668
 12:48:48,340 --> 12:48:52,270
-Reveal in Finder, aka reveal where it's located. And you can
-
+aka reveal where it's located. 
+也就是显示它在本地的位置
 
 12669
 12:48:52,270 --> 12:48:54,970
-just double click it, and boom, now it's running right in your
-
+And you can just double click it, and boom, now it's running right in your browser. 
+接着，你可以直接双击打开它，嘭，它已经在你的浏览器中运行了
 
 12670
 12:48:54,970 --> 12:48:57,790
-browser. Instead of pointing to your localhost, it's going to be
-
+Instead of pointing to your localhost, it's going to be pointing directly to your local file path. 
+只不过不是指向你的本地主机，而是直接指向你的本地文件路径
 
 12671
 12:48:57,790 --> 12:49:01,660
-pointing directly to your local file path. Now one final version
-
+Now one final version that we could do 
+这里还有一个最终方案可以使用
 
 12672
 12:49:01,660 --> 12:49:03,970
-that we could do that I'm going to highly recommend you don't
-
+that I'm going to highly recommend you don't do. 
+但我强烈推荐你不要这么做
 
 12673
 12:49:03,970 --> 12:49:06,850
-do. But it's another option, we're actually going to download
-
+But it's another option, 
+不过这也是一种选择
 
 12674
 12:49:06,850 --> 12:49:10,180
-a package for you using no Jas, which allows us to serve up
-
+we're actually going to download a package for you using no Jas, which allows us to serve up HTTP. 
+我们要为你的 node.js 下载一个包，这个包允许你使用 HTTP 服务
 
 12675
 12:49:10,210 --> 12:49:12,910
-HTTP. And we're gonna install it the exact same way we've
-
+And we're gonna install it the exact same way we've installed our other packages, 
+安装它的方法就和安装其它包完全一样
 
 12676
 12:49:12,910 --> 12:49:17,620
-installed our other packages, we can do yarn, add dash dash dev
-
+we can do yarn, add dash dash dev HTTP hyphen server. 
+我们要执行 `yarn add --dev http-server`
 
 12677
 12:49:17,680 --> 12:49:22,870
-HTTP hyphen server. And you may still want to add it anyways.
-
+And you may still want to add it anyways.
+你可能仍然想要添加它
 
 12678
 12:49:22,900 --> 12:49:26,470
-But now, we'll get some node modules for this HTTP server
-
+But now, we'll get some node modules for this HTTP server package, 
+但是现在，我们要获取一些用于这个 "http-server" 的 node 模块。
 
 12679
 12:49:26,470 --> 12:49:30,010
-package, we'll get a package json, and of course, a yarn dot
-
+we'll get a package json, and of course, a yarn dot lock as well. 
+我们获得了 "package.json"，当然了，还有 "yarn.lock"
 
 12680
 12:49:30,010 --> 12:49:34,180
-lock as well. And what we can do is we can stop this down here,
-
+And what we can do is we can stop this down here, stop that live server. 
+我们先中断这里的 "Live Server" 
 
 12681
 12:49:34,210 --> 12:49:36,940
-stop that live server. And if we go back to our website, refresh,
-
+And if we go back to our website, refresh, it'll now be blank. 
+回到我们的网站，刷新，它现在是空的了
 
 12682
 12:49:37,240 --> 12:49:42,400
-it'll now be blank. And we can run yarn HTTP server. And this
-
+And we can run yarn HTTP server. 
+然后我们运行 `yarn http-server`
 
 12683
 12:49:42,400 --> 12:49:45,670
-will do the exact same thing. And we get, and if we come over,
-
+And this will do the exact same thing. 
+它做的就是完全相同的事
 
 12684
 12:49:45,730 --> 12:49:49,060
-and we refresh, we'll see what's good. Now this one is a little
-
+And we get, and if we come over, and we refresh, we'll see what's good. 
+如果我们转到这边，刷新一下，就会看到 "Whats good?"
 
 12685
 12:49:49,060 --> 12:49:52,900
-bit more finicky. And after you make a change, like, Hey, what's
-
+Now this one is a little bit more finicky. 
+这个有点麻烦的是
 
 12686
 12:49:52,900 --> 12:49:56,200
-good, you might have to close it, and then reopen it and then
-
+And after you make a change, like, Hey, what's good, 
+当你做了一些修改后，比如说 "Hey whats good?"
 
 12687
 12:49:56,200 --> 12:50:00,100
-refresh. So I do recommend that if you're on Visual Studio code,
-
+you might have to close it, and then reopen it and then refresh. 
+你可能需要先关掉它，然后重新打开，然后再刷新
 
 12688
 12:50:00,280 --> 12:50:02,590
-you definitely just use this little go live button, because
-
+So I do recommend that if you're on Visual Studio code, you definitely just use this little go live button, 
+所以我建议，如果你用的是 Visual Studio Code，那么你可以直接使用这个小的 "Go Live" 按钮
 
 12689
 12:50:02,590 --> 12:50:04,390
-it'll reflect your changes a lot nicer.
-
+because it'll reflect your changes a lot nicer. 
+因为它可以更好地反映你的更改
 
 12690
 12:50:04,420 --> 12:50:07,000
-So let's go ahead and hit the Go Live button. Hey, what's good
-
+So let's go ahead and hit the Go Live button. Hey, what's good pops up. 
+所以我们继续，点击 "Go Live" 按钮，"Hey whats good" 弹了出来
 
 12691
 12:50:07,000 --> 12:50:10,000
-pops up. Okay, cool. Our HTML is working perfectly.
+Okay, cool. Our HTML is working perfectly. 
+OK，酷~ 我们的 HTML 正在完美运行
