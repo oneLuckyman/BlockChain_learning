@@ -1,0 +1,748 @@
+12692
+12:50:12,790 --> 12:50:15,730
+So the title, of course, is going to be the Funmi app, which
+
+
+12693
+12:50:15,730 --> 12:50:19,180
+we see up here in the title section. So let's update this
+
+
+12694
+12:50:19,210 --> 12:50:22,270
+HTML, so that it has those buttons, and it can actually
+
+
+12695
+12:50:22,270 --> 12:50:25,210
+connect and work with our blockchain and work with any
+
+
+12696
+12:50:25,210 --> 12:50:27,910
+blockchain. Something else that you can do in HTML is you can
+
+
+12697
+12:50:27,910 --> 12:50:31,660
+actually write JavaScript inside your HTML. And the way we can do
+
+
+12698
+12:50:31,660 --> 12:50:35,440
+that is by doing this script tag, and then we'll do a closing
+
+
+12699
+12:50:35,440 --> 12:50:39,490
+script tag. And anything inside here inside of our script tags
+
+
+12700
+12:50:39,490 --> 12:50:42,910
+is going to be JavaScript. So I could do something like console
+
+
+12701
+12:50:42,970 --> 12:50:46,390
+dot log, hi, with a bunch of exclamation marks, I'm going to
+
+
+12702
+12:50:46,390 --> 12:50:49,600
+save it. We'll go back to our front end, we're going to right
+
+
+12703
+12:50:49,600 --> 12:50:53,320
+click, we'll hit Inspect, we'll go to the console. And we can
+
+
+12704
+12:50:53,320 --> 12:50:56,380
+see that Hi prints it out, we refresh, we can see the hi
+
+
+12705
+12:50:56,380 --> 12:51:00,730
+consistently printed out hi from script tag, we'll save it, we'll
+
+
+12706
+12:51:00,730 --> 12:51:04,000
+move back, we see hi from script tag printed out. I know it's a
+
+
+12707
+12:51:04,000 --> 12:51:08,680
+little bit small. So let me zoom in. Alright, great. So we can
+
+
+12708
+12:51:08,740 --> 12:51:12,220
+type our JavaScript in here, it's inside the script tag is
+
+
+12709
+12:51:12,220 --> 12:51:14,740
+where we're going to write our JavaScript to write the
+
+
+12710
+12:51:14,740 --> 12:51:17,830
+functions that our front end is going to interact with. Now, as
+
+
+12711
+12:51:17,830 --> 12:51:21,670
+we saw before, in this little console, we can check for window
+
+
+12712
+12:51:21,700 --> 12:51:26,230
+dot Etherium, to see if Metamask or is installed. And again, a
+
+
+12713
+12:51:26,230 --> 12:51:28,300
+lot of what we're working with is actually right in the
+
+
+12714
+12:51:28,300 --> 12:51:31,840
+Metamask documentation. If you go to their basic section, they
+
+
+12715
+12:51:31,840 --> 12:51:34,450
+talk a little bit about the provider, which is this window
+
+
+12716
+12:51:34,450 --> 12:51:37,750
+dot Aetherium, you can read how to actually interact directly
+
+
+12717
+12:51:37,750 --> 12:51:41,020
+with meta mask in the meta mask documentation as well. Now using
+
+
+12718
+12:51:41,020 --> 12:51:43,360
+window dot Aetherium is just one of the ways we're actually going
+
+
+12719
+12:51:43,360 --> 12:51:46,000
+to connect to the blockchain, there's actually multiple ways
+
+
+12720
+12:51:46,000 --> 12:51:48,010
+because there's multiple different kinds of wallets out
+
+
+12721
+12:51:48,010 --> 12:51:50,680
+there. But for now, we're just going to pretend that window dot
+
+
+12722
+12:51:50,680 --> 12:51:54,070
+Aetherium and meta mask is the only extension out there. So
+
+
+12723
+12:51:54,070 --> 12:51:56,710
+what we want to do is we want to check to see if this wind of
+
+
+12724
+12:51:56,710 --> 12:51:59,530
+that Aetherium exists. This is the first thing that we should
+
+
+12725
+12:51:59,530 --> 12:52:02,320
+be doing. Because if this doesn't exist, this means that
+
+
+12726
+12:52:02,350 --> 12:52:04,180
+they can't connect to the blockchain, one of the first
+
+
+12727
+12:52:04,180 --> 12:52:06,430
+things that we're going to want to do is we're going to want to
+
+
+12728
+12:52:06,430 --> 12:52:10,750
+check to see if that exists. So we can do something like if we
+
+
+12729
+12:52:10,750 --> 12:52:16,690
+can say type of window that Aetherium does not equal,
+
+
+12730
+12:52:17,110 --> 12:52:23,800
+undefined. Then we'll do console dot log, I see a meta mask. So
+
+
+12731
+12:52:23,800 --> 12:52:27,970
+now if we save, we come back to our front end, we do see I see a
+
+
+12732
+12:52:27,970 --> 12:52:31,450
+Metamask. I've got a Google Chrome up without Metamask that
+
+
+12733
+12:52:31,450 --> 12:52:35,680
+if we look in the console, and we hit refresh it the same URL
+
+
+12734
+12:52:35,680 --> 12:52:39,130
+where our live server is running. We don't see that I see
+
+
+12735
+12:52:39,130 --> 12:52:42,550
+a meta mask because it doesn't see a meta mask. We can do else.
+
+
+12736
+12:52:43,450 --> 12:52:49,090
+console dot log, no Metamask refresh, we still see ICD a meta
+
+
+12737
+12:52:49,090 --> 12:52:51,670
+mask where we have a meta mask. You don't have to open up a
+
+
+12738
+12:52:51,670 --> 12:52:54,940
+browser without one but we see no meta mask for Chrome because
+
+
+12739
+12:52:54,940 --> 12:52:57,730
+it doesn't see a meta mask. Now what we could do is We can
+
+
+12740
+12:52:57,760 --> 12:53:02,080
+automatically try to connect to meta mask if we see that there
+
+
+12741
+12:53:02,080 --> 12:53:04,960
+is a meta mask, right? Remember how before, when we hit that
+
+
+12742
+12:53:04,960 --> 12:53:07,150
+connect button meta mask popped up and said, Are you sure you
+
+
+12743
+12:53:07,150 --> 12:53:10,420
+want to connect? So what we can do is, and you can, again, you
+
+
+12744
+12:53:10,420 --> 12:53:13,870
+can find this in the meta mask docs, we can run this eath
+
+
+12745
+12:53:13,870 --> 12:53:17,200
+request accounts method, which is basically going to be how we
+
+
+12746
+12:53:17,200 --> 12:53:22,240
+connect our Metamask. Now, this is specified by a new EIP and an
+
+
+12747
+12:53:22,240 --> 12:53:25,000
+older documentations. And in older tutorials, you might see
+
+
+12748
+12:53:25,030 --> 12:53:27,940
+Aetherium dot enable, which essentially does the exact same
+
+
+12749
+12:53:27,940 --> 12:53:31,840
+thing. So what we could do here is we could say, a cerium, or
+
+
+12750
+12:53:31,840 --> 12:53:36,730
+excuse me, window dot Aetherium dot request. And we could put
+
+
+12751
+12:53:36,940 --> 12:53:43,360
+method F request accounts. And we'll save that. Now if we go
+
+
+12752
+12:53:43,360 --> 12:53:47,200
+back to our browser, we'll actually see, you'll actually
+
+
+12753
+12:53:47,200 --> 12:53:50,800
+see Metamask, go ahead and pop up and say, let's connect so we
+
+
+12754
+12:53:50,800 --> 12:53:54,820
+can choose an account. And we'll hit Connect, will automatically
+
+
+12755
+12:53:54,820 --> 12:53:58,270
+connect our meta mask to our website. And now if we look at
+
+
+12756
+12:53:58,270 --> 12:54:01,030
+our meta mask, we can see this little connected thing. It's
+
+
+12757
+12:54:01,030 --> 12:54:04,510
+saying that our account one is now connected to our website.
+
+
+12758
+12:54:04,780 --> 12:54:08,860
+This means that the website can now make API calls to our meta
+
+
+12759
+12:54:08,860 --> 12:54:12,280
+mask, we still have to be the ones to approve them. But it can
+
+
+12760
+12:54:12,280 --> 12:54:15,640
+go ahead and connect and try to run transactions, which is
+
+
+12761
+12:54:15,670 --> 12:54:18,310
+awesome, which is what we want. If you want to disconnect, we
+
+
+12762
+12:54:18,310 --> 12:54:20,890
+can go ahead and click that little button and hit disconnect
+
+
+12763
+12:54:20,890 --> 12:54:23,530
+this account. Well that we have our code currently is anytime we
+
+
+12764
+12:54:23,530 --> 12:54:25,930
+hit refresh, this is going to pop up which is going to be
+
+
+12765
+12:54:26,140 --> 12:54:29,440
+really annoying. So what we're going to do instead is we're
+
+
+12766
+12:54:29,440 --> 12:54:33,070
+going to wrap this up into an asynchronous function, the exact
+
+
+12767
+12:54:33,070 --> 12:54:35,530
+same as we've been doing, we'll do we'll create an async
+
+
+12768
+12:54:36,190 --> 12:54:40,330
+function called Connect. And we'll wrap it up these curly
+
+
+12769
+12:54:40,330 --> 12:54:43,570
+braces here. And then we'll just format this a little bit to make
+
+
+12770
+12:54:43,570 --> 12:54:47,350
+it look nicer. And now if we save, we go back to our website,
+
+
+12771
+12:54:47,410 --> 12:54:50,260
+and we refresh. And we go ahead and disconnect.
+
+
+12772
+12:54:51,550 --> 12:54:54,670
+If we refresh Metamask won't keep asking us Hey, do you want
+
+
+12773
+12:54:54,670 --> 12:54:56,110
+to connect Hey, do you want to connect here do you want to
+
+
+12774
+12:54:56,110 --> 12:54:58,960
+connect, because we need to call this connect function where we
+
+
+12775
+12:54:58,960 --> 12:55:01,960
+can do that is we can add a little button here. So right
+
+
+12776
+12:55:01,990 --> 12:55:06,160
+underneath our script tag, we're going to add a button tag. So
+
+
+12777
+12:55:06,160 --> 12:55:08,950
+this is the opening button tag. And then here's the closing
+
+
+12778
+12:55:08,950 --> 12:55:11,800
+button tag. And inside the opening button tag declaration,
+
+
+12779
+12:55:12,040 --> 12:55:16,690
+we'll give it an ID, which will be Connect button. And we'll say
+
+
+12780
+12:55:16,690 --> 12:55:23,440
+on click equals the Connect connects function. And we'll
+
+
+12781
+12:55:23,440 --> 12:55:25,930
+call this button connect in between these little button
+
+
+12782
+12:55:25,930 --> 12:55:29,560
+tags, we'll call it connect will say when we click it will call
+
+
+12783
+12:55:29,560 --> 12:55:32,950
+the Connect function. So if we save, and we go back to our
+
+
+12784
+12:55:32,950 --> 12:55:35,320
+front end, we can now see we have a little Connect button.
+
+
+12785
+12:55:35,620 --> 12:55:39,010
+And now if we press Connect, Metamask is going to pop up,
+
+
+12786
+12:55:39,190 --> 12:55:43,930
+we'll hit next and connect like that. And boom, now we are
+
+
+12787
+12:55:43,930 --> 12:55:47,950
+connected. And we can even do a little await here so that we
+
+
+12788
+12:55:47,980 --> 12:55:50,980
+wait for this to finish before moving on. And then after we
+
+
+12789
+12:55:50,980 --> 12:55:56,500
+connect, we can say console dot log connected. So let's actually
+
+
+12790
+12:55:56,500 --> 12:55:59,650
+go ahead and test this out, we'll go back to Metamask. we'll
+
+
+12791
+12:55:59,680 --> 12:56:03,730
+disconnect here, try to never be on Main net if we don't have to
+
+
+12792
+12:56:03,730 --> 12:56:07,510
+be. And let's go ahead run connect, we'll hit Next connect.
+
+
+12793
+12:56:07,720 --> 12:56:10,270
+And now we see a little console dot log come out saying
+
+
+12794
+12:56:10,300 --> 12:56:13,660
+connected. Okay, great. We can also update our website
+
+
+12795
+12:56:13,660 --> 12:56:16,870
+accordingly. So that we can let users know that we're connected.
+
+
+12796
+12:56:17,110 --> 12:56:20,950
+So we can grab the connect button element ID and say that
+
+
+12797
+12:56:20,950 --> 12:56:24,220
+we're connected once we're connected. So after we await to
+
+
+12798
+12:56:24,220 --> 12:56:30,370
+be connected, we can go ahead and do document dot get element
+
+
+12799
+12:56:30,940 --> 12:56:38,380
+by ID Connect button. And then we'll say dot inner HTML equals
+
+
+12800
+12:56:39,220 --> 12:56:42,730
+connected like that. And then instead of saying no minimize
+
+
+12801
+12:56:42,730 --> 12:56:45,700
+down here, we'll do just the opposite. So we'll copy this
+
+
+12802
+12:56:45,700 --> 12:56:51,280
+line. And instead of connected, we'll say please install meta
+
+
+12803
+12:56:51,280 --> 12:56:55,630
+mask. And we'll save we'll go back to our front end, we'll hit
+
+
+12804
+12:56:55,630 --> 12:56:58,780
+connect. And now if we're already connected, it'll just
+
+
+12805
+12:56:58,780 --> 12:57:01,150
+automatically go to connected. If we're not connected, it'll
+
+
+12806
+12:57:01,150 --> 12:57:03,550
+pop up, we'll get connected. And now we have this button that
+
+
+12807
+12:57:03,550 --> 12:57:06,700
+says connected, which is great. So now we already know that
+
+
+12808
+12:57:06,700 --> 12:57:12,790
+we're connected. So we've connected our Metamask to our
+
+
+12809
+12:57:12,790 --> 12:57:15,370
+front end. Now we want to actually go ahead and do some
+
+
+12810
+12:57:15,370 --> 12:57:18,010
+functions here. And this is where we want to create some
+
+
+12811
+12:57:18,010 --> 12:57:21,310
+more functions and some more buttons that are going to use
+
+
+12812
+12:57:21,370 --> 12:57:24,670
+ethers that package that we become so familiar with. Now, as
+
+
+12813
+12:57:24,670 --> 12:57:27,790
+we code, our script section is going to get bigger and bigger
+
+
+12814
+12:57:27,790 --> 12:57:31,240
+and bigger. So oftentimes, we actually want to put our code in
+
+
+12815
+12:57:31,270 --> 12:57:34,270
+a JavaScript file itself. So we're gonna go ahead, come over
+
+
+12816
+12:57:34,270 --> 12:57:37,270
+here, we're going to create a new file, and we'll call it
+
+
+12817
+12:57:37,330 --> 12:57:42,370
+index dot j s. And instead of putting our JavaScript in these
+
+
+12818
+12:57:42,400 --> 12:57:46,360
+script tags, we're going to put it in this index and then import
+
+
+12819
+12:57:46,390 --> 12:57:49,180
+this index file into our HTML. And the way that we're going to
+
+
+12820
+12:57:49,180 --> 12:57:51,580
+do that is we're actually just going to grab this function.
+
+
+12821
+12:57:52,360 --> 12:57:55,600
+We're going to copy it, delete everything for now. We're going
+
+
+12822
+12:57:55,600 --> 12:57:59,860
+to paste it into our end ext dot j s, and then in our index dot
+
+
+12823
+12:57:59,860 --> 12:58:05,890
+HTML, we're just going to tell our script tag to use index.js.
+
+
+12824
+12:58:06,550 --> 12:58:10,240
+So we're just going to say the source is going to be equal to
+
+
+12825
+12:58:10,270 --> 12:58:16,600
+dot slash index dot j s. And then we're going to say, the
+
+
+12826
+12:58:16,600 --> 12:58:21,550
+type of this is going to be text slash JavaScript. Now if we save
+
+
+12827
+12:58:21,550 --> 12:58:25,150
+that, and we save our index dot HTML, we come back to our front
+
+
+12828
+12:58:25,150 --> 12:58:28,720
+end, we do a little refresh. And we make sure that we go ahead
+
+
+12829
+12:58:29,320 --> 12:58:34,210
+and disconnect. And we do another refresh, we can see that
+
+
+12830
+12:58:34,240 --> 12:58:38,740
+even with our index.js in a different file, because we're
+
+
+12831
+12:58:38,740 --> 12:58:42,490
+doing src equals index.js, and we're importing it into our
+
+
+12832
+12:58:42,490 --> 12:58:46,120
+HTML, when we hit Connect, it still calls our Connect
+
+
+12833
+12:58:46,120 --> 12:58:49,900
+function. That's how we can kind of separate our JavaScript into
+
+
+12834
+12:58:49,900 --> 12:58:52,720
+its own js file that we're a little bit more familiar with.
+
+
+12835
+12:58:52,780 --> 12:58:55,000
+Now, if you look in the GitHub repo associated with this
+
+
+12836
+12:58:55,000 --> 12:58:58,570
+course, and you look in the index dot j s, you'll see our
+
+
+12837
+12:58:58,570 --> 12:59:01,360
+Connect function, we've added some quality of life stuff,
+
+
+12838
+12:59:01,720 --> 12:59:05,230
+we've added some try catches just to make handling errors a
+
+
+12839
+12:59:05,230 --> 12:59:08,020
+little bit better, you can go ahead and add those try catches
+
+
+12840
+12:59:08,020 --> 12:59:10,630
+in yourself if you'd like. But I'm not going to demo them in
+
+
+12841
+12:59:10,630 --> 12:59:11,110
+this video here. 
