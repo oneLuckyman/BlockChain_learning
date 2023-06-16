@@ -1,156 +1,156 @@
 12692
 12:50:12,790 --> 12:50:15,730
-So the title, of course, is going to be the Funmi app, which
-
+So the title, of course, is going to be the Funmi app, 
+标题当然就是 "Fund Me App"
 
 12693
 12:50:15,730 --> 12:50:19,180
-we see up here in the title section. So let's update this
-
+which we see up here in the title section. 
+我们可以在这里的标题部分看到它
 
 12694
 12:50:19,210 --> 12:50:22,270
-HTML, so that it has those buttons, and it can actually
-
+So let's update this HTML, so that it has those buttons, 
+让我们来更新一下这个 HTML，让它拥有那些按钮
 
 12695
 12:50:22,270 --> 12:50:25,210
-connect and work with our blockchain and work with any
-
+and it can actually connect and work with our blockchain and work with any blockchain. 
+这样它才能连接和使用我们的区块链以及任何区块链
 
 12696
 12:50:25,210 --> 12:50:27,910
-blockchain. Something else that you can do in HTML is you can
-
+Something else that you can do in HTML is you can actually write JavaScript inside your HTML. 
+其实你可以直接在 HTML 里面写 JavaScript 
 
 12697
 12:50:27,910 --> 12:50:31,660
-actually write JavaScript inside your HTML. And the way we can do
-
+And the way we can do that is by doing this script tag, 
+要想做到这一点，需要执行 `<script>`
 
 12698
 12:50:31,660 --> 12:50:35,440
-that is by doing this script tag, and then we'll do a closing
-
+and then we'll do a closing script tag. 
+接着要闭合它 `</script>`
 
 12699
 12:50:35,440 --> 12:50:39,490
-script tag. And anything inside here inside of our script tags
-
+And anything inside here inside of our script tags is going to be JavaScript. 
+在 "<script>" 标签内部的所有内容都是 JavaScript
 
 12700
 12:50:39,490 --> 12:50:42,910
-is going to be JavaScript. So I could do something like console
-
+So I could do something like 
+所以我们可以这样做
 
 12701
 12:50:42,970 --> 12:50:46,390
-dot log, hi, with a bunch of exclamation marks, I'm going to
-
+console dot log, hi, with a bunch of exclamation marks, I'm going to save it. 
+`console.log("Hi!!")，写一些感叹号，接着保存它
 
 12702
 12:50:46,390 --> 12:50:49,600
-save it. We'll go back to our front end, we're going to right
-
+We'll go back to our front end, we're going to right click, we'll hit Inspect, 
+我们回到前端，点击右键，选择“检查”("Inspect")
 
 12703
 12:50:49,600 --> 12:50:53,320
-click, we'll hit Inspect, we'll go to the console. And we can
-
+we'll go to the console. And we can see that Hi prints it out, 
+前往“控制台”("Console")，接着我们可以看到 "Hi" 被打印了出来
 
 12704
 12:50:53,320 --> 12:50:56,380
-see that Hi prints it out, we refresh, we can see the hi
-
+we refresh, we can see the hi consistently printed out 
+当我们刷新页面时，就可以看到 "Hi" 被持续打印出来
 
 12705
 12:50:56,380 --> 12:51:00,730
-consistently printed out hi from script tag, we'll save it, we'll
-
+hi from script tag, we'll save it, 
+"Hi from script tag!"，保存一下
 
 12706
 12:51:00,730 --> 12:51:04,000
-move back, we see hi from script tag printed out. I know it's a
-
+we'll move back, we see hi from script tag printed out. 
+回到前端，我们看到 "Hi from script tag!" 被打印了出来
 
 12707
 12:51:04,000 --> 12:51:08,680
-little bit small. So let me zoom in. Alright, great. So we can
-
+I know it's a little bit small. So let me zoom in. Alright, great. 
+这里有点小，我来放大一下，很好
 
 12708
 12:51:08,740 --> 12:51:12,220
-type our JavaScript in here, it's inside the script tag is
-
+So we can type our JavaScript in here, 
+所以，我们可以在这里输入 JavaScript 代码
 
 12709
 12:51:12,220 --> 12:51:14,740
-where we're going to write our JavaScript to write the
-
+it's inside the script tag is where we're going to write our JavaScript to write the functions that 
+在 "<script>" 标签内部编写 JavaScript 函数
 
 12710
 12:51:14,740 --> 12:51:17,830
-functions that our front end is going to interact with. Now, as
-
+our front end is going to interact with. 
+用它们来与前端进行交互
 
 12711
 12:51:17,830 --> 12:51:21,670
-we saw before, in this little console, we can check for window
-
+Now, as we saw before, in this little console, we can check for window dot Etherium, 
+就像我们之前见到过的，在这个小控制台中，我们可以使用 "window.ethereum" 进行检查
 
 12712
 12:51:21,700 --> 12:51:26,230
-dot Etherium, to see if Metamask or is installed. And again, a
-
+to see if Metamask or is installed. 
+来查看是否安装了 MetaMask
 
 12713
 12:51:26,230 --> 12:51:28,300
-lot of what we're working with is actually right in the
-
+And again, a lot of what we're working with is actually right in the Metamask documentation. 
+再次重申，我们使用到的很多东西其实都在 MetaMask 的文档里有
 
 12714
 12:51:28,300 --> 12:51:31,840
-Metamask documentation. If you go to their basic section, they
-
+If you go to their basic section, 
+如果你前往他们的基础部分
 
 12715
 12:51:31,840 --> 12:51:34,450
-talk a little bit about the provider, which is this window
-
+they talk a little bit about the provider, 
+他们会谈论一些关于 "Provider" 的内容
 
 12716
 12:51:34,450 --> 12:51:37,750
-dot Aetherium, you can read how to actually interact directly
-
+which is this window dot Aetherium, 
+正是这个 "window.ethereum"
 
 12717
 12:51:37,750 --> 12:51:41,020
-with meta mask in the meta mask documentation as well. Now using
-
+you can read how to actually interact directly with meta mask in the meta mask documentation as well. 
+你也可以在 MetaMask 的文档中读到直接与 MetaMask 进行交互的方法
 
 12718
 12:51:41,020 --> 12:51:43,360
-window dot Aetherium is just one of the ways we're actually going
-
+Now using window dot Aetherium is just one of the ways we're actually going to connect to the blockchain, 
+使用 "window.ethereum" 只是我们连接区块链的方式之一
 
 12719
 12:51:43,360 --> 12:51:46,000
-to connect to the blockchain, there's actually multiple ways
-
+there's actually multiple ways
+实际上还有很多其它方式
 
 12720
 12:51:46,000 --> 12:51:48,010
-because there's multiple different kinds of wallets out
-
+because there's multiple different kinds of wallets out there. 
+因为还有很多其它种类的钱包存在
 
 12721
 12:51:48,010 --> 12:51:50,680
-there. But for now, we're just going to pretend that window dot
-
+But for now, we're just going to pretend that window dot Aetherium and meta mask is the only extension out there. 
+但现在，我们只假设 "window.ethereum" 和 MetaMask 是唯一的扩展
 
 12722
 12:51:50,680 --> 12:51:54,070
-Aetherium and meta mask is the only extension out there. So
+So
 
 
 12723
