@@ -96,7 +96,7 @@ our front end is going to interact with.
 12711
 12:51:17,830 --> 12:51:21,670
 Now, as we saw before, in this little console, we can check for window dot Etherium, 
-就像我们之前见到过的，在这个小控制台中，我们可以使用 "window.ethereum" 进行检查
+就像我们之前见到过的，在这个小控制台("Console")中，我们可以使用 "window.ethereum" 进行检查
 
 12712
 12:51:21,700 --> 12:51:26,230
@@ -146,281 +146,281 @@ because there's multiple different kinds of wallets out there.
 12721
 12:51:48,010 --> 12:51:50,680
 But for now, we're just going to pretend that window dot Aetherium and meta mask is the only extension out there. 
-但现在，我们只假设 "window.ethereum" 和 MetaMask 是唯一的扩展
+但现在，我们只假设 "window.ethereum" 和 MetaMask 就是唯一的扩展
 
 12722
 12:51:50,680 --> 12:51:54,070
-So
-
+So what we want to do is we want to check to see if this wind of that Aetherium exists. 
+所以我们要做的就是检查这个 "window.ethereum" 是否存在
 
 12723
 12:51:54,070 --> 12:51:56,710
-what we want to do is we want to check to see if this wind of
-
+This is the first thing that we should be doing. 
+这是我们应该做的第一件事
 
 12724
 12:51:56,710 --> 12:51:59,530
-that Aetherium exists. This is the first thing that we should
-
+Because if this doesn't exist, this means that they can't connect to the blockchain, 
+因为，如果它不存在，那就意味着它们无法连接到区块链上
 
 12725
 12:51:59,530 --> 12:52:02,320
-be doing. Because if this doesn't exist, this means that
-
+one of the first things that we're going to want to do 
+所以我们要做的第一件事就是
 
 12726
 12:52:02,350 --> 12:52:04,180
-they can't connect to the blockchain, one of the first
-
+is we're going to want to check to see if that exists. 
+要检查它是否存在
 
 12727
 12:52:04,180 --> 12:52:06,430
-things that we're going to want to do is we're going to want to
-
+So we can do something like if we can say type of window that Aetherium does not equal, undefined. 
+我们可以这样做 `if (typeof window.ethereum !== "undefined")
 
 12728
 12:52:06,430 --> 12:52:10,750
-check to see if that exists. So we can do something like if we
-
+Then we'll do console dot log, I see a meta mask. 
+接着是 `console.log("I see a metamask!")`
 
 12729
 12:52:10,750 --> 12:52:16,690
-can say type of window that Aetherium does not equal,
-
+So now if we save, we come back to our front end, 
+现在，如果我们保存，返回前端
 
 12730
 12:52:17,110 --> 12:52:23,800
-undefined. Then we'll do console dot log, I see a meta mask. So
-
+we do see I see a Metamask. 
+我们确实看到了 "I see a metamask!"
 
 12731
 12:52:23,800 --> 12:52:27,970
-now if we save, we come back to our front end, we do see I see a
-
+I've got a Google Chrome up without Metamask that
+我有一个没安装 MetaMask 的 Google Chrome 浏览器
 
 12732
 12:52:27,970 --> 12:52:31,450
-Metamask. I've got a Google Chrome up without Metamask that
-
+if we look in the console, and we hit refresh 
+如果我们看一下控制台("Console")并点击刷新
 
 12733
 12:52:31,450 --> 12:52:35,680
-if we look in the console, and we hit refresh it the same URL
-
+it the same URL where our live server is running. 
+这和我们的 "Live Server" 运行的是同一个 URL 
 
 12734
 12:52:35,680 --> 12:52:39,130
-where our live server is running. We don't see that I see
-
+We don't see that I see a meta mask 
+我们没有看到 "I see a metamask!"
 
 12735
 12:52:39,130 --> 12:52:42,550
-a meta mask because it doesn't see a meta mask. We can do else.
-
+because it doesn't see a meta mask. 
+因为它确实没见到 MetaMask
 
 12736
 12:52:43,450 --> 12:52:49,090
-console dot log, no Metamask refresh, we still see ICD a meta
-
+We can do else. console dot log, no Metamask 
+我们可以这样 `else {console.log("No metamask!")}
 
 12737
 12:52:49,090 --> 12:52:51,670
-mask where we have a meta mask. You don't have to open up a
-
+refresh, we still see ICD a meta mask where we have a meta mask. 
+刷新，我们还是可以在有 MetaMask 的浏览器看到 "I see a metamask!"
 
 12738
 12:52:51,670 --> 12:52:54,940
-browser without one but we see no meta mask for Chrome because
-
+You don't have to open up a browser without one 
+你倒是不必非得打开一个没有 MetaMask 的浏览器
 
 12739
 12:52:54,940 --> 12:52:57,730
-it doesn't see a meta mask. Now what we could do is We can
-
+but we see no meta mask for Chrome because it doesn't see a meta mask. 
+但我们可以在 Chrome 浏览器中看到 "No metamask!"，因为它并没有看到 MetaMask 
 
 12740
 12:52:57,760 --> 12:53:02,080
-automatically try to connect to meta mask if we see that there
-
+Now what we could do is We can automatically try to connect to meta mask 
+现在我们可以尝试自动连接到 MetaMask
 
 12741
 12:53:02,080 --> 12:53:04,960
-is a meta mask, right? Remember how before, when we hit that
-
+if we see that there is a meta mask, right? 
+如果我们看到这里有 MetaMask 的话，对吧？
 
 12742
 12:53:04,960 --> 12:53:07,150
-connect button meta mask popped up and said, Are you sure you
-
+Remember how before, 
+还记得之前怎么做的么
 
 12743
 12:53:07,150 --> 12:53:10,420
-want to connect? So what we can do is, and you can, again, you
-
+when we hit that connect button meta mask popped up and said, Are you sure you want to connect? 
+当我们点击 "Connect" 按钮时 MetaMask 会弹出来，并询问你是否要进行连接
 
 12744
 12:53:10,420 --> 12:53:13,870
-can find this in the meta mask docs, we can run this eath
-
+So what we can do is, and you can, again, 
+所以我们该怎么做，再提醒一下
 
 12745
 12:53:13,870 --> 12:53:17,200
-request accounts method, which is basically going to be how we
-
+you can find this in the meta mask docs, we can run this eath request accounts method, 
+你可以在 MetaMask 的文档找到我们要运行的这个 "eth_requestAccounts" 方法
 
 12746
 12:53:17,200 --> 12:53:22,240
-connect our Metamask. Now, this is specified by a new EIP and an
-
+which is basically going to be how we connect our Metamask. 
+基本上它就是我们连接到 MetaMask 的方法
 
 12747
 12:53:22,240 --> 12:53:25,000
-older documentations. And in older tutorials, you might see
-
+Now, this is specified by a new EIP 
+现在，这是由一个新 EIP 进行规定的
 
 12748
 12:53:25,030 --> 12:53:27,940
-Aetherium dot enable, which essentially does the exact same
-
+and an older documentations. And in older tutorials, you might see Aetherium dot enable, 
+在一些旧的文档和旧的教程中，你可能会看到 "ethereum.enable()"
 
 12749
 12:53:27,940 --> 12:53:31,840
-thing. So what we could do here is we could say, a cerium, or
-
+which essentially does the exact same thing. 
+它们基本上就是同一个东西
 
 12750
 12:53:31,840 --> 12:53:36,730
-excuse me, window dot Aetherium dot request. And we could put
-
+So what we could do here is we could say, a cerium, or excuse me, window dot Aetherium dot request. 
+所以我们可以在这里说 `ethereum`，抱歉，应该是 `window.ethereum.request()`
 
 12751
 12:53:36,940 --> 12:53:43,360
-method F request accounts. And we'll save that. Now if we go
-
+And we could put method F request accounts. And we'll save that. 
+我们可以在里面放入 `{method: "eth_requestAccounts"}`，我们保存一下
 
 12752
 12:53:43,360 --> 12:53:47,200
-back to our browser, we'll actually see, you'll actually
-
+Now if we go back to our browser, we'll actually see, 
+现在，如果我们返回浏览器，我们就能看到
 
 12753
 12:53:47,200 --> 12:53:50,800
-see Metamask, go ahead and pop up and say, let's connect so we
-
+you'll actually see Metamask, go ahead and pop up and say, let's connect 
+你就可以看到 MetaMask 真的弹了出来，并让我们进行连接
 
 12754
 12:53:50,800 --> 12:53:54,820
-can choose an account. And we'll hit Connect, will automatically
-
+so we can choose an account. And we'll hit Connect, 
+我们可以选择一个账户，点击 "Connect" 
 
 12755
 12:53:54,820 --> 12:53:58,270
-connect our meta mask to our website. And now if we look at
-
+will automatically connect our meta mask to our website. 
+它会自动把我们的 MetaMask 连接到我们的网站
 
 12756
 12:53:58,270 --> 12:54:01,030
-our meta mask, we can see this little connected thing. It's
-
+And now if we look at our meta mask, we can see this little connected thing. 
+现在看一下我们的 MetaMask，我们可以看到这么一个小的“已连接”("Connected")
 
 12757
 12:54:01,030 --> 12:54:04,510
-saying that our account one is now connected to our website.
-
+It's saying that our account one is now connected to our website.
+它说的是，我们的 Account1 已经连接到了我们的网站上
 
 12758
 12:54:04,780 --> 12:54:08,860
-This means that the website can now make API calls to our meta
-
+This means that the website can now make API calls to our meta mask, 
+这意味着，这个网站可以对我们的 MetaMask 进行 API 调用了
 
 12759
 12:54:08,860 --> 12:54:12,280
-mask, we still have to be the ones to approve them. But it can
-
+we still have to be the ones to approve them. 
+我们仍然需要自己批准它们
 
 12760
 12:54:12,280 --> 12:54:15,640
-go ahead and connect and try to run transactions, which is
-
+But it can go ahead and connect and try to run transactions, 
+但它可以自行连接并尝试执行交易
 
 12761
 12:54:15,670 --> 12:54:18,310
-awesome, which is what we want. If you want to disconnect, we
-
+which is awesome, which is what we want. 
+很好，这正是我们想要的
 
 12762
 12:54:18,310 --> 12:54:20,890
-can go ahead and click that little button and hit disconnect
-
+If you want to disconnect, we can go ahead and click that little button and hit disconnect this account. 
+如果你想要断开连接，可以点击这个小按钮并点击“断开此账户的链接”("Disconnect this account")
 
 12763
 12:54:20,890 --> 12:54:23,530
-this account. Well that we have our code currently is anytime we
-
+Well that we have our code currently is 
+现在我们代码的情况是
 
 12764
 12:54:23,530 --> 12:54:25,930
-hit refresh, this is going to pop up which is going to be
-
+anytime we hit refresh, this is going to pop up which is going to be really annoying. 
+每次我们点击刷新，这个都会弹出来，真的是很烦人
 
 12765
 12:54:26,140 --> 12:54:29,440
-really annoying. So what we're going to do instead is we're
-
+So what we're going to do instead is 
+所以我们要做的是
 
 12766
 12:54:29,440 --> 12:54:33,070
-going to wrap this up into an asynchronous function, the exact
-
+we're going to wrap this up into an asynchronous function, 
+把这里封装成一个异步函数
 
 12767
 12:54:33,070 --> 12:54:35,530
-same as we've been doing, we'll do we'll create an async
-
+the exact same as we've been doing, 
+就和我们之前做的一样
 
 12768
 12:54:36,190 --> 12:54:40,330
-function called Connect. And we'll wrap it up these curly
-
+we'll do we'll create an async function called Connect. 
+我们来创建一个 `async function connect()`
 
 12769
 12:54:40,330 --> 12:54:43,570
-braces here. And then we'll just format this a little bit to make
-
+And we'll wrap it up these curly braces here. 
+并把这些内容包裹在这对花括号内
 
 12770
 12:54:43,570 --> 12:54:47,350
-it look nicer. And now if we save, we go back to our website,
-
+And then we'll just format this a little bit to make it look nicer. 
+接着我们稍微调整一下格式化，让它看起来更好看一些
 
 12771
 12:54:47,410 --> 12:54:50,260
-and we refresh. And we go ahead and disconnect.
-
+And now if we save, we go back to our website, and we refresh. And we go ahead and disconnect.
+现在如果我们保存并刷新网站，然后断开连接
 
 12772
 12:54:51,550 --> 12:54:54,670
-If we refresh Metamask won't keep asking us Hey, do you want
-
+If we refresh Metamask won't keep asking us 
+现在我们再次刷新，MetaMask 就不会一直再询问我们
 
 12773
 12:54:54,670 --> 12:54:56,110
-to connect Hey, do you want to connect here do you want to
-
+Hey, do you want to connect Hey, do you want to connect here do you want to connect, 
+是否要进行连接，是否要进行连接，是否要进行连接了
 
 12774
 12:54:56,110 --> 12:54:58,960
-connect, because we need to call this connect function where we
-
+because we need to call this connect function 
+因为我们还需要调用这个 "connect" 函数
 
 12775
 12:54:58,960 --> 12:55:01,960
-can do that is we can add a little button here. So right
-
+where we can do that is we can add a little button here. 
+我们可以在这里添加一个小按钮来实现这个功能
 
 12776
 12:55:01,990 --> 12:55:06,160
-underneath our script tag, we're going to add a button tag. So
+So right underneath our script tag, we're going to add a button tag. So
 
 
 12777
