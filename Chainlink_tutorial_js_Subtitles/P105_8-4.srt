@@ -420,329 +420,325 @@ where we can do that is we can add a little button here.
 
 12776
 12:55:01,990 --> 12:55:06,160
-So right underneath our script tag, we're going to add a button tag. So
-
+So right underneath our script tag, we're going to add a button tag. 
+所以在我们的 "<script>" 标签下面，我们要添加一个 "<button>" 标签
 
 12777
 12:55:06,160 --> 12:55:08,950
-this is the opening button tag. And then here's the closing
-
+So this is the opening button tag. And then here's the closing button tag. 
+这个是 "<button>" 标签的开头，而这个是 "</button>" 标签的结尾
 
 12778
 12:55:08,950 --> 12:55:11,800
-button tag. And inside the opening button tag declaration,
-
+And inside the opening button tag declaration,
+在这个开头的 "<button>" 标签声明内部
 
 12779
 12:55:12,040 --> 12:55:16,690
-we'll give it an ID, which will be Connect button. And we'll say
-
+we'll give it an ID, which will be Connect button. 
+我要给它一个 `id`，内容是 `connectButton`
 
 12780
 12:55:16,690 --> 12:55:23,440
-on click equals the Connect connects function. And we'll
-
+And we'll say on click equals the Connect connects function. 
+接着我们会说 `onclick="connect()"` 也就是 `connect()` 函数
 
 12781
 12:55:23,440 --> 12:55:25,930
-call this button connect in between these little button
-
+And we'll call this button connect 
+我们给这个按钮命名为 "Connect"
 
 12782
 12:55:25,930 --> 12:55:29,560
-tags, we'll call it connect will say when we click it will call
-
+in between these little button tags, we'll call it connect 
+在这两个 "<button>" 标签之间，我们把它称为 "Connect" 
 
 12783
 12:55:29,560 --> 12:55:32,950
-the Connect function. So if we save, and we go back to our
-
+will say when we click it will call the Connect function. 
+当我们点击它的时候就是在调用 `connect()` 函数
 
 12784
 12:55:32,950 --> 12:55:35,320
-front end, we can now see we have a little Connect button.
-
+So if we save, and we go back to our front end, 
+所以如果我们保存一下，然后回到我们的前端
 
 12785
 12:55:35,620 --> 12:55:39,010
-And now if we press Connect, Metamask is going to pop up,
-
+we can now see we have a little Connect button. 
+现在我们可以看到一个小小的 "Connect" 按钮
 
 12786
 12:55:39,190 --> 12:55:43,930
-we'll hit next and connect like that. And boom, now we are
-
+And now if we press Connect, Metamask is going to pop up, 
+现在如果我们按下 "Connect"，MetaMask 就会弹出来
 
 12787
 12:55:43,930 --> 12:55:47,950
-connected. And we can even do a little await here so that we
-
+we'll hit next and connect like that. And boom, now we are connected. 
+我们点击“下一步”("Next")然后是“连接”("Connect")，嘭，现在我们已经连接上了
 
 12788
 12:55:47,980 --> 12:55:50,980
-wait for this to finish before moving on. And then after we
-
+And we can even do a little await here so that we wait for this to finish before moving on. 
+我们甚至可以在这里加一个 `await` 这样我们就可以等待它完成以后再继续后续操作
 
 12789
 12:55:50,980 --> 12:55:56,500
-connect, we can say console dot log connected. So let's actually
-
+And then after we connect, we can say console dot log connected. 
+然后，在我们连接上以后，我们可以说 `console.log("connected")
 
 12790
 12:55:56,500 --> 12:55:59,650
-go ahead and test this out, we'll go back to Metamask. we'll
-
+So let's actually go ahead and test this out, we'll go back to Metamask. we'll disconnect here, 
+让我们来实际测试一下，回到 MetaMask 断开连接
 
 12791
 12:55:59,680 --> 12:56:03,730
-disconnect here, try to never be on Main net if we don't have to
-
+try to never be on Main net if we don't have to be. 
+如果没有必要，尽量不要使用主网络
 
 12792
 12:56:03,730 --> 12:56:07,510
-be. And let's go ahead run connect, we'll hit Next connect.
-
+And let's go ahead run connect, we'll hit Next connect.
+让我们继续，运行 "Connect" 点击“下一步”("Next")，“连接”("Connect")
 
 12793
 12:56:07,720 --> 12:56:10,270
-And now we see a little console dot log come out saying
-
+And now we see a little console dot log come out saying connected. Okay, great. 
+现在我们看倒，一个小的 "console.log" 出来说 "connected"，OK 很好
 
 12794
 12:56:10,300 --> 12:56:13,660
-connected. Okay, great. We can also update our website
-
+We can also update our website accordingly. 
+我们可以相应地更新我们的网站
 
 12795
 12:56:13,660 --> 12:56:16,870
-accordingly. So that we can let users know that we're connected.
-
+So that we can let users know that we're connected.
+这样我们就能让用户知道，我们已经连接上了
 
 12796
 12:56:17,110 --> 12:56:20,950
-So we can grab the connect button element ID and say that
-
+So we can grab the connect button element ID 
+所以我们可以获取这个 "Connect" 按钮的元素 "ID"
 
 12797
 12:56:20,950 --> 12:56:24,220
-we're connected once we're connected. So after we await to
-
+and say that we're connected once we're connected. 
+并且一旦连接成功，就说我们已经连接上了
 
 12798
 12:56:24,220 --> 12:56:30,370
-be connected, we can go ahead and do document dot get element
-
+So after we await to be connected, we can go ahead and do document dot get element by ID Connect button. 
+所以在我们等待连接完成之后，我们可以执行 `document.getElementById("connectButton")
 
 12799
 12:56:30,940 --> 12:56:38,380
-by ID Connect button. And then we'll say dot inner HTML equals
-
+And then we'll say dot inner HTML equals connected like that. 
+接着是 `.innerHTML = "Connected!"`
 
 12800
 12:56:39,220 --> 12:56:42,730
-connected like that. And then instead of saying no minimize
-
+And then instead of saying no minimize down here, we'll do just the opposite. 
+然后，这里就不再说 "No metamask" 了，我们要在这做相反的事
 
 12801
 12:56:42,730 --> 12:56:45,700
-down here, we'll do just the opposite. So we'll copy this
-
+So we'll copy this line. 
+所以我们复制这一行
 
 12802
 12:56:45,700 --> 12:56:51,280
-line. And instead of connected, we'll say please install meta
-
+And instead of connected, we'll say please install meta mask. 
+替换掉 "Connected!"，我们说 "Please install metamask!"
 
 12803
 12:56:51,280 --> 12:56:55,630
-mask. And we'll save we'll go back to our front end, we'll hit
-
+And we'll save we'll go back to our front end, we'll hit connect. 
+保存一下，然后回到前端，点击 "Connect"
 
 12804
 12:56:55,630 --> 12:56:58,780
-connect. And now if we're already connected, it'll just
-
+And now if we're already connected, it'll just automatically go to connected. 
+现在，如果我们已经连接过了，这里就会自动连接
 
 12805
 12:56:58,780 --> 12:57:01,150
-automatically go to connected. If we're not connected, it'll
-
+If we're not connected, it'll pop up, we'll get connected. 
+如果我们还没有连接，它就会弹出来，提示我们进行连接
 
 12806
 12:57:01,150 --> 12:57:03,550
-pop up, we'll get connected. And now we have this button that
-
+And now we have this button that says connected, which is great. 
+现在我们的按钮就会说 "Connected!"，非常好
 
 12807
 12:57:03,550 --> 12:57:06,700
-says connected, which is great. So now we already know that
-
+So now we already know that we're connected. 
+现在我们就知道我们已经连接成功了
 
 12808
 12:57:06,700 --> 12:57:12,790
-we're connected. So we've connected our Metamask to our
-
+So we've connected our Metamask to our front end. 
+所以，我们已经把 MetaMask 连接到我们的前端上了
 
 12809
 12:57:12,790 --> 12:57:15,370
-front end. Now we want to actually go ahead and do some
-
+Now we want to actually go ahead and do some functions here. 
+现在我们想要继续实现更多功能
 
 12810
 12:57:15,370 --> 12:57:18,010
-functions here. And this is where we want to create some
-
+And this is where we want to create some more functions and some more buttons 
+这里就是我们要创建更多函数和按钮的地方
 
 12811
 12:57:18,010 --> 12:57:21,310
-more functions and some more buttons that are going to use
-
+that are going to use ethers that package that we become so familiar with. 
+这些函数和按钮将使用我们非常熟悉的 ethers 包
 
 12812
 12:57:21,370 --> 12:57:24,670
-ethers that package that we become so familiar with. Now, as
-
+Now, as we code, 
+现在，随着我们编写代码
 
 12813
 12:57:24,670 --> 12:57:27,790
-we code, our script section is going to get bigger and bigger
-
+our script section is going to get bigger and bigger and bigger. 
+我们的 "<script>" 部分将会变得越来越大
 
 12814
 12:57:27,790 --> 12:57:31,240
-and bigger. So oftentimes, we actually want to put our code in
-
+So oftentimes, we actually want to put our code in a JavaScript file itself. 
+因此实际上，我们往往会将代码放在一个独立的 JavaScript 文件中
 
 12815
 12:57:31,270 --> 12:57:34,270
-a JavaScript file itself. So we're gonna go ahead, come over
-
+So we're gonna go ahead, come over here, we're going to create a new file, 
+所以我们继续，来这里，创建一个新文件
 
 12816
 12:57:34,270 --> 12:57:37,270
-here, we're going to create a new file, and we'll call it
-
+and we'll call it index dot j s. 
+我们称它为 "index.js"
 
 12817
 12:57:37,330 --> 12:57:42,370
-index dot j s. And instead of putting our JavaScript in these
-
+And instead of putting our JavaScript in these script tags, 
+我们不会再把 JavaScript 代码都放到这里的 "<script>" 标签里了
 
 12818
 12:57:42,400 --> 12:57:46,360
-script tags, we're going to put it in this index and then import
-
+we're going to put it in this index and then import this index file into our HTML. 
+而是会放到这个 "index" 文件里，并将它导入到我们的 HTML 中
 
 12819
 12:57:46,390 --> 12:57:49,180
-this index file into our HTML. And the way that we're going to
-
+And the way that we're going to do that 
+实现这个操作的方法是
 
 12820
 12:57:49,180 --> 12:57:51,580
-do that is we're actually just going to grab this function.
-
+is we're actually just going to grab this function.
+我们先获取这里的函数
 
 12821
 12:57:52,360 --> 12:57:55,600
-We're going to copy it, delete everything for now. We're going
-
+We're going to copy it, delete everything for now. 
+把它复制下来，暂时先删掉这些内容
 
 12822
 12:57:55,600 --> 12:57:59,860
-to paste it into our end ext dot j s, and then in our index dot
-
+We're going to paste it into our end ext dot j s, 
+然后粘贴到我们的 "index.js" 里来
 
 12823
 12:57:59,860 --> 12:58:05,890
-HTML, we're just going to tell our script tag to use index.js.
-
+and then in our index dot HTML, we're just going to tell our script tag to use index.js.
+接着在我们的 "index.html" 里，直接让我们的 "<script>" 标签使用 "index.js"
 
 12824
 12:58:06,550 --> 12:58:10,240
-So we're just going to say the source is going to be equal to
-
+So we're just going to say the source is going to be equal to dot slash index dot j s. 
+所以这里要这么写 `src="./index.js"`
 
 12825
 12:58:10,270 --> 12:58:16,600
-dot slash index dot j s. And then we're going to say, the
-
+And then we're going to say, the type of this is going to be text slash JavaScript. 
+接下来的内容是 `type="text/javascript"`
 
 12826
 12:58:16,600 --> 12:58:21,550
-type of this is going to be text slash JavaScript. Now if we save
-
+Now if we save that, and we save our index dot HTML, 
+现在，我们保存一下我们的 "index.html"
 
 12827
 12:58:21,550 --> 12:58:25,150
-that, and we save our index dot HTML, we come back to our front
-
+we come back to our front end, we do a little refresh. 
+回到我们的前端，稍微刷新一下
 
 12828
 12:58:25,150 --> 12:58:28,720
-end, we do a little refresh. And we make sure that we go ahead
-
+And we make sure that we go ahead and disconnect. 
+并且确保我们是断开连接的状态
 
 12829
 12:58:29,320 --> 12:58:34,210
-and disconnect. And we do another refresh, we can see that
-
+And we do another refresh, we can see 
+再刷新一次，我们可以看到
 
 12830
 12:58:34,240 --> 12:58:38,740
-even with our index.js in a different file, because we're
-
+that even with our index.js in a different file, 
+即使我们的 "index.js" 是在一个不同的文件中
 
 12831
 12:58:38,740 --> 12:58:42,490
-doing src equals index.js, and we're importing it into our
-
+because we're doing src equals index.js, and we're importing it into our HTML, 
+因为我们执行了 `src = index.js`，把它导入了我们的 HTML 中
 
 12832
 12:58:42,490 --> 12:58:46,120
-HTML, when we hit Connect, it still calls our Connect
-
+when we hit Connect, it still calls our Connect function. 
+所以当我们点击 "Connect" 的时候，它仍然会调用我们的 `connect()` 函数
 
 12833
 12:58:46,120 --> 12:58:49,900
-function. That's how we can kind of separate our JavaScript into
-
+That's how we can kind of separate our JavaScript into its own js file 
+这样我们就可以将我们的 JavaScript 代码分离到一个独立的 JS 文件中
 
 12834
 12:58:49,900 --> 12:58:52,720
-its own js file that we're a little bit more familiar with.
-
+that we're a little bit more familiar with. 
+这样的方式会让我们感到更加熟悉
 
 12835
 12:58:52,780 --> 12:58:55,000
-Now, if you look in the GitHub repo associated with this
-
+Now, if you look in the GitHub repo associated with this course, 
+现在，如果你查看一下课程关联的 GitHub 仓库
 
 12836
 12:58:55,000 --> 12:58:58,570
-course, and you look in the index dot j s, you'll see our
-
+and you look in the index dot j s, 
+并查看一下 "index.js" 
 
 12837
 12:58:58,570 --> 12:59:01,360
-Connect function, we've added some quality of life stuff,
-
+you'll see our Connect function, we've added some quality of life stuff,
+你会看到我们的 "connect()" 函数添加了一些优化的内容
 
 12838
 12:59:01,720 --> 12:59:05,230
-we've added some try catches just to make handling errors a
-
+we've added some try catches just to make handling errors a little bit better, 
+我们添加了一些 `try-catch` 语句，为了能够更好地处理错误情况
 
 12839
 12:59:05,230 --> 12:59:08,020
-little bit better, you can go ahead and add those try catches
-
+you can go ahead and add those try catches in yourself if you'd like. 
+如果你想的话，可以自行添加这些 `try-catch` 语句
 
 12840
 12:59:08,020 --> 12:59:10,630
-in yourself if you'd like. But I'm not going to demo them in
-
-
-12841
-12:59:10,630 --> 12:59:11,110
-this video here. 
+But I'm not going to demo them in this video here. 
+但我就不在视频里做演示了
