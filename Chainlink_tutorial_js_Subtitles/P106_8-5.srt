@@ -1,0 +1,643 @@
+12842
+12:59:11,110 --> 12:59:36,520
+Now we want to create our fun function. 
+现在我们要创建我们的 "fund" 函数
+
+12843
+12:59:36,520 --> 12:59:39,460
+And then later on, we're going to create our withdrawal function. 
+稍后我们还要创建我们的 "withdraw" 函数
+
+12844
+12:59:39,460 --> 12:59:44,140
+And this is where front end JavaScript code. And no Gs are a little bit different. 
+这里的是前端 JavaScript 代码，它和 Node.js 有一些小的不同
+
+12845
+12:59:44,140 --> 12:59:48,070
+In no JS, we've been using this require keyword to import dependencies 
+在 Node.js 中，我们一直用的是 `require` 关键字来导入依赖库
+
+12846
+12:59:48,100 --> 12:59:52,570
+in front end JavaScript,  you can't use require, and it won't exactly work. 
+而在前端 JavaScript 中，就不能使用 `require` 了，它是完全不工作的
+
+12847
+12:59:52,570 --> 12:59:56,230
+Now later on, we're going to use the Import keyword, 
+现在，我们要使用 `import` 关键字
+
+12848
+12:59:56,230 --> 12:59:59,500
+which is really the better way to do this. 
+它其实是处理这些操作更好的方式
+
+12849
+12:59:59,500 --> 13:00:02,680
+And this is where our first differences going to be
+这就是我们所遇到的第一处不同
+
+12850
+13:00:02,830 --> 13:00:06,340
+using the Import keyword for front end is much better than the require keyword, 
+在前端中使用 `import` 关键字要比使用 `require` 关键字好一些
+
+12851
+13:00:06,340 --> 13:00:09,160
+especially since the require keyword doesn't actually work. 
+尤其是 `require` 关键字其实并不能使用
+
+12852
+13:00:09,160 --> 13:00:12,430
+And for those you who might struggle with this disconnect in this change. 
+你们中的有些对此感到困惑人可能会对这种变化产生一些撕裂感
+
+12853
+13:00:12,430 --> 13:00:15,340
+Once again, in the GitHub repo associated with this, 
+所以再次强调，在与课程关联的 GitHub 仓库中
+
+12854
+13:00:15,340 --> 13:00:18,760
+we do have a Node js edition of this, 
+我们还提供了 Node.js 版本的代码
+
+12855
+13:00:18,760 --> 13:00:22,510
+where you can use the require keyword, 
+你可以在这里使用 `require` 关键字
+
+12856
+13:00:22,510 --> 13:00:24,700
+you just have to go through the readme and download some packages and run some scripts 
+你只需要阅读一下 "README"，并下载一些包，然后运行一些脚本
+
+12857
+13:00:24,700 --> 13:00:28,000
+that basically transform your code that uses require into code that works with imports. 
+这些脚本基本上就是将使用 `require` 的代码给转换为使用 `import`
+
+12858
+13:00:28,000 --> 13:00:32,380
+But we're going to teach you the way to work with your front end code here using imports. 
+但我们的教学方式是直接在前端代码中使用 `import`
+
+12859
+13:00:32,380 --> 13:00:35,260
+Now you'll see when we get to next Jas 
+现在你会看到，当我们进入到下一个 JS 脚本时
+
+12860
+13:00:35,260 --> 13:00:38,740
+that we will still download code from node modules 
+我们仍然会从 "node_modules" 中下载代码 
+
+12861
+13:00:38,740 --> 13:00:43,510
+and using a yarn lock and a package json etc. 
+并且仍然会使用 "yarn.lock" 和 "package.json" 等文件
+
+12862
+13:00:43,540 --> 13:00:47,650
+So summary in future seconds, we are still going to do yarn add. 
+所以归根结底，我们接下来仍然会继续使用 `yarn add`
+
+12863
+13:00:47,650 --> 13:00:51,400
+But outside of a framework 
+但在这个框架之外，
+
+12864
+13:00:51,400 --> 13:00:55,090
+when we're using this raw JavaScript, this raw HTML setup, like what we're working with here, 
+当我们使用原始的 JavaScript 和原始的 HTML 设置，就和我们此处的使用方式一样时
+
+12865
+13:00:55,090 --> 13:00:57,520
+we're not going to be doing yarn, add node modules 
+我们就不能使用 `yarn add node_modules` 了
+
+12866
+13:00:57,520 --> 13:01:00,430
+will add node modules for framework like next react. 
+所以接下来我们仍然会在这个框架内继续使用 "node_modules" 
+
+12867
+13:01:00,430 --> 13:01:03,220
+But for raw JavaScript, we'll be using a different syntax, 
+但在原始的 JavaScript 中，我们会使用不同的语法
+
+12868
+13:01:03,220 --> 13:01:05,710
+which I'll show you soon. 
+我马上就会展示这一点
+
+12869
+13:01:05,710 --> 13:01:08,470
+So let's go ahead and start building our fund function here. 
+让我们继续，开始在这里构建我们的 "fund" 函数吧
+
+12870
+13:01:08,470 --> 13:01:11,590
+To make our fun functions, what would we normally do? 
+为了构建我们的 "fund" 函数，我们通常是怎么做的呢？
+
+12871
+13:01:11,860 --> 13:01:14,950
+Well, we'd create an async function called fund. 
+我们要创建一个 `async function` 名为 `fund()`
+
+12872
+13:01:14,950 --> 13:01:18,610
+And in this function, we probably would want to take some ether mount as a parameter, 
+在这个函数中，我们大概想让它接收一些 "ethAmount" 作为参数
+
+12873
+13:01:18,610 --> 13:01:21,670
+because we're going to want to fund it with some amount of Aetherium. 
+因为我们要用一定数额的以太币来进行资助
+
+12874
+13:01:21,670 --> 13:01:26,740
+When we call this function, we might want to run console dot log 
+当我们调用这个函数时，我们可能想要运行 `console.log(``)`
+
+12875
+13:01:26,740 --> 13:01:31,720
+will do a little string interpolation here. 
+我们要在这里做一个字符串插值
+
+12876
+13:01:32,470 --> 13:01:36,460
+Funding with eth amount, dot dot dot, 
+`Funding with ${ethAmount}...`
+
+12877
+13:01:36,460 --> 13:01:40,630
+these semicolons are going to drive me absolutely insane. 
+这些分号绝对会让我疯掉
+
+12878
+13:01:40,750 --> 13:01:43,630
+So I'm going to add a our dot prettier dot our rc file into this, 
+所以我要在这里添加一个 ".prettierrc" 文件
+
+12879
+13:01:43,660 --> 13:01:46,630
+and I'm going to go ahead and add prettier in here. Otherwise, I'm going to lose my mind. 
+我要在这里添加 "prettier"，否则我会失去理智的
+
+12880
+13:01:46,630 --> 13:01:50,620
+So we're gonna do yarn add dash dash Dev, prettier, 
+所以我们来执行 `yarn add --dev prettier`
+
+12881
+13:01:50,620 --> 13:01:53,740
+just so we can format our JavaScript with prettier 
+这样我们就能使用 "prettier" 来格式化我们的 JavaScript 了
+
+12882
+13:01:53,740 --> 13:01:55,930
+come back to index.js. I'm gonna hit command S, 
+回到 "index.js"，按下 "Command S"
+
+12883
+13:01:55,930 --> 13:02:00,100
+and it looks like it does indeed, auto format with prettier now yay, no matter semicolons, 
+看起来它确实使用 "prettier" 进行自动格式化了，耶，没有分号了
+
+12884
+13:02:00,100 --> 13:02:04,060
+we can call this fun function the same way we call connect. So in in our index dot
+我们可以像调用 "connect()" 函数一样调用这个 "fund()" 函数
+
+12885
+13:02:04,060 --> 13:02:08,980
+HTML, maybe we'll create a new button. Button. We'll give it an
+
+
+12886
+13:02:08,980 --> 13:02:17,470
+ID of fund will say on click equals fund. And we'll say fund.
+
+
+12887
+13:02:18,100 --> 13:02:20,800
+And this will be our button here, we save it, we're looking
+
+
+12888
+13:02:20,800 --> 13:02:24,340
+at our front end. Now the fund button that if we call, we say
+
+
+12889
+13:02:24,340 --> 13:02:27,430
+funding with undefined because we're not passing it an amount
+
+
+12890
+13:02:27,430 --> 13:02:31,150
+here. So back in our index console dot log funding with and
+
+
+12891
+13:02:31,150 --> 13:02:33,550
+we'll just want to make sure that we can actually call that
+
+
+12892
+13:02:33,550 --> 13:02:37,540
+Funmi function. So we'll copy this line again and we'll say
+
+
+12893
+13:02:37,660 --> 13:02:40,630
+type of window dot Aetherium does not equal undefined. We'll
+
+
+12894
+13:02:40,630 --> 13:02:43,930
+go ahead and try to fund here to send a transaction. What are the
+
+
+12895
+13:02:43,930 --> 13:02:47,560
+things that we absolutely 100% Always need? Well, we need a
+
+
+12896
+13:02:47,560 --> 13:02:51,610
+provider slash connection to the blockchain. And we need a signer
+
+
+12897
+13:02:51,910 --> 13:02:57,340
+slash wallet, slash someone with some gas to actually send it and
+
+
+12898
+13:02:57,340 --> 13:03:01,390
+then And we're probably going to need the contract that we are
+
+
+12899
+13:03:01,390 --> 13:03:04,180
+interacting with. And to get that contract, we're going to
+
+
+12900
+13:03:04,180 --> 13:03:08,800
+need ABI and address. And with these all together, we can send
+
+
+12901
+13:03:08,800 --> 13:03:11,530
+any transaction. So to get our provider, we're going to
+
+
+12902
+13:03:11,530 --> 13:03:14,860
+actually go ahead and work with ethers again. Now, we're going
+
+
+12903
+13:03:14,860 --> 13:03:17,680
+to do it a little bit differently, though, before, the
+
+
+12904
+13:03:17,680 --> 13:03:23,380
+way we worked with ethers is we said const ethers equals require
+
+
+12905
+13:03:23,980 --> 13:03:27,160
+ethers, right. And this is how we pulled ethers. And now like I
+
+
+12906
+13:03:27,160 --> 13:03:30,190
+just said to you, though, require doesn't work in the
+
+
+12907
+13:03:30,190 --> 13:03:33,610
+front end. And we actually don't want to install ethers with a
+
+
+12908
+13:03:33,610 --> 13:03:37,510
+node modules package. So what we can actually do instead is let's
+
+
+12909
+13:03:37,510 --> 13:03:41,860
+go to the ethers documentation. If you go to the Getting Started
+
+
+12910
+13:03:41,860 --> 13:03:46,030
+section, scroll down, they have a section about importing using
+
+
+12911
+13:03:46,030 --> 13:03:50,950
+Node js, which uses require or imports. And then they also have
+
+
+12912
+13:03:51,070 --> 13:03:55,270
+some documentation for working with the web browser. So instead
+
+
+12913
+13:03:55,270 --> 13:03:59,110
+of us doing a node module, what we'll do is we'll copy the
+
+
+12914
+13:03:59,140 --> 13:04:02,500
+ethers library to our own directories and serve it
+
+
+12915
+13:04:02,500 --> 13:04:06,250
+ourselves. So what we do is we can come in here, we can copy
+
+
+12916
+13:04:06,250 --> 13:04:10,300
+this massive file, which is ethers, but in front end
+
+
+12917
+13:04:10,330 --> 13:04:14,410
+addition, and come back to our file. And we'll make a new file
+
+
+12918
+13:04:14,410 --> 13:04:14,860
+in here.
+
+
+12919
+13:04:16,540 --> 13:04:24,940
+Called ethers. We'll do 5.6 point esm.min.js. And we'll
+
+
+12920
+13:04:24,940 --> 13:04:28,150
+paste that massive thing in here. Now, since I have prettier
+
+
+12921
+13:04:28,150 --> 13:04:31,180
+when I save it, it's going to auto format. And it's just this
+
+
+12922
+13:04:31,210 --> 13:04:37,030
+huge file, which has everything ethers, but front end defied if
+
+
+12923
+13:04:37,030 --> 13:04:41,680
+you will. Now what we can do is we can import this into our
+
+
+12924
+13:04:41,680 --> 13:04:46,210
+index.js. So instead of using require in here, we'll say
+
+
+12925
+13:04:46,210 --> 13:04:51,400
+import ethers from and then we'll just refer to that file
+
+
+12926
+13:04:51,400 --> 13:05:00,760
+that we just got ethers dash 5.6 point esm.min.js. Now, we only
+
+
+12927
+13:05:00,760 --> 13:05:04,960
+need to do this weird copy pasting of the file import thing
+
+
+12928
+13:05:05,050 --> 13:05:09,430
+in this HTML JavaScript lesson. In future lessons with Node js,
+
+
+12929
+13:05:09,460 --> 13:05:12,580
+we are going to do yarn, add ethers, kinda like we've
+
+
+12930
+13:05:12,580 --> 13:05:15,790
+normally seen. The frameworks like React and next Jas that
+
+
+12931
+13:05:15,790 --> 13:05:19,900
+we're going to use are going to automatically convert those yarn
+
+
+12932
+13:05:19,930 --> 13:05:23,650
+added packages to their front end to five versions. But for
+
+
+12933
+13:05:23,650 --> 13:05:25,990
+this section, this is how we're going to actually import the
+
+
+12934
+13:05:25,990 --> 13:05:29,830
+ethers package. Now the other thing we'll have to do is on our
+
+
+12935
+13:05:29,830 --> 13:05:34,180
+front end, we'll have to change this from type text slash
+
+
+12936
+13:05:34,180 --> 13:05:39,340
+JavaScript to type module changes. The type module allows
+
+
+12937
+13:05:39,340 --> 13:05:42,040
+us to import modules into our code, which we're going to be
+
+
+12938
+13:05:42,040 --> 13:05:45,310
+importing this, and we're going to import another module as
+
+
+12939
+13:05:45,310 --> 13:05:49,900
+well. Awesome. And now though, if we go back to our front end,
+
+
+12940
+13:05:50,410 --> 13:05:53,830
+do a little refresh with the connect button, we get Connect
+
+
+12941
+13:05:53,830 --> 13:05:57,430
+is not defined at HTML button.on. Click, so instead of
+
+
+12942
+13:05:57,430 --> 13:06:00,580
+calling our Connect button from the front end here, we're going
+
+
+12943
+13:06:00,580 --> 13:06:05,980
+to remove these on clicks from our index dot HTML, and go into
+
+
+12944
+13:06:05,980 --> 13:06:10,660
+our index.js and add those connect buttons in here. So
+
+
+12945
+13:06:10,660 --> 13:06:17,980
+we'll say const. Connect button equals document, dot get element
+
+
+12946
+13:06:18,880 --> 13:06:27,280
+by ID, Connect button. And then we'll say const. One button
+
+
+12947
+13:06:27,880 --> 13:06:35,350
+equals Doc, you meant dot get element by ID. One button, the
+
+
+12948
+13:06:35,350 --> 13:06:37,810
+idea of the connect button is Connect button. The idea the fun
+
+
+12949
+13:06:37,810 --> 13:06:43,750
+button is fun button. And then we'll say connect button.on
+
+
+12950
+13:06:43,750 --> 13:06:53,380
+Click equals connect. And one button.on Click equals fond. We
+
+
+12951
+13:06:53,380 --> 13:06:56,530
+go back to our front end, do a little refresh. We'll hit
+
+
+12952
+13:06:56,530 --> 13:06:59,620
+connect now. And it's actually working, we'll go to our
+
+
+12953
+13:06:59,620 --> 13:07:05,050
+Metamask will disconnect, refresh, hit Connect, and boom,
+
+
+12954
+13:07:05,050 --> 13:07:08,320
+it's popping up again. This is just due to that type being
+
+
+12955
+13:07:08,350 --> 13:07:12,460
+module, if it was text slash JavaScript, that on click button
+
+
+12956
+13:07:12,460 --> 13:07:15,070
+adding in here, but since we're doing module, we're going to add
+
+
+12957
+13:07:15,070 --> 13:07:17,890
+those on clicks right in our JavaScript. But now that we've
+
+
+12958
+13:07:17,890 --> 13:07:20,920
+got ethers in here, what we can do is we can even do like a
+
+
+12959
+13:07:20,920 --> 13:07:25,540
+little console dot log, just paste ethers in here, or
+
+
+12960
+13:07:25,540 --> 13:07:28,330
+actually better yet. We'll add it right above the Connect
+
+
+12961
+13:07:28,330 --> 13:07:31,660
+button. Go back to our front end, we'll do a refresh and we
+
+
+12962
+13:07:31,660 --> 13:07:35,650
+see the entire ethers object right in our front end which is
+
+
+12963
+13:07:35,650 --> 13:07:38,950
+perfect, which is exactly what we want here. And since we've
+
+
+12964
+13:07:38,950 --> 13:07:43,000
+got these two variables here, we might as well update this to
+
+
+12965
+13:07:43,000 --> 13:07:47,260
+just say connect button dot innerHTML equals connected and
+
+
+12966
+13:07:47,260 --> 13:07:50,740
+here as well. Connects button dot innerHTML equals please
+
+
+12967
+13:07:50,740 --> 13:07:53,110
+install meta mask because now connect button is going to be
+
+
+12968
+13:07:53,110 --> 13:07:56,620
+the same as running this document dot get element by ID
+
+
+12969
+13:07:56,620 --> 13:07:56,800
+right
+
+
+12970
+13:07:56,800 --> 13:08:03,040
+here. 
