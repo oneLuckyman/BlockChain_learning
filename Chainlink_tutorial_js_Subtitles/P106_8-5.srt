@@ -86,7 +86,7 @@ But we're going to teach you the way to work with your front end code here using
 12859
 13:00:32,380 --> 13:00:35,260
 Now you'll see when we get to next Jas 
-现在你会看到，当我们进入到下一个 JS 脚本时
+之后你会看到，当我们进入到 Next.js 时
 
 12860
 13:00:35,260 --> 13:00:38,740
@@ -101,7 +101,7 @@ and using a yarn lock and a package json etc.
 12862
 13:00:43,540 --> 13:00:47,650
 So summary in future seconds, we are still going to do yarn add. 
-所以归根结底，我们接下来仍然会继续使用 `yarn add`
+所以归根结底，我们在未来仍然会继续使用 `yarn add`
 
 12863
 13:00:47,650 --> 13:00:51,400
@@ -111,7 +111,7 @@ But outside of a framework
 12864
 13:00:51,400 --> 13:00:55,090
 when we're using this raw JavaScript, this raw HTML setup, like what we're working with here, 
-当我们使用原始的 JavaScript 和原始的 HTML 设置，就和我们此处的使用方式一样时
+当我们使用原始的 JavaScript 和原始的 HTML 设置时，比如我们现在这样
 
 12865
 13:00:55,090 --> 13:00:57,520
@@ -121,7 +121,7 @@ we're not going to be doing yarn, add node modules
 12866
 13:00:57,520 --> 13:01:00,430
 will add node modules for framework like next react. 
-所以接下来我们仍然会在这个框架内继续使用 "node_modules" 
+未来我们还是会在诸如 "Next React" 等框架中继续使用 "node_modules" 
 
 12867
 13:01:00,430 --> 13:01:03,220
@@ -210,434 +210,426 @@ and it looks like it does indeed, auto format with prettier now yay, no matter s
 
 12884
 13:02:00,100 --> 13:02:04,060
-we can call this fun function the same way we call connect. So in in our index dot
+we can call this fun function the same way we call connect. 
 我们可以像调用 "connect()" 函数一样调用这个 "fund()" 函数
 
 12885
 13:02:04,060 --> 13:02:08,980
-HTML, maybe we'll create a new button. Button. We'll give it an
-
+So in in our index dot HTML, maybe we'll create a new button. 
+所以在我们的 "index.html" 中，我们需要创建一个新的按钮
 
 12886
 13:02:08,980 --> 13:02:17,470
-ID of fund will say on click equals fund. And we'll say fund.
-
+Button. We'll give it an ID of fund will say on click equals fund. 
+`<button` 我们给它一个 `id="fund"` 还有 `onclick="fund()">` 
 
 12887
 13:02:18,100 --> 13:02:20,800
-And this will be our button here, we save it, we're looking
-
+And we'll say fund. And this will be our button here, 
+接着是 `Fund` 最后是 `</button>`
 
 12888
 13:02:20,800 --> 13:02:24,340
-at our front end. Now the fund button that if we call, we say
-
+we save it, we're looking at our front end. 
+我们保存一下，然后再看看我们的前端
 
 12889
 13:02:24,340 --> 13:02:27,430
-funding with undefined because we're not passing it an amount
-
+Now the fund button that if we call, we say funding with undefined 
+现在就有了一个 "Fund" 按钮，如果我们调用它就会收到 "Funding with undefined"
 
 12890
 13:02:27,430 --> 13:02:31,150
-here. So back in our index console dot log funding with and
-
+because we're not passing it an amount here. 
+因为我们这里并没有给它任何金额
 
 12891
 13:02:31,150 --> 13:02:33,550
-we'll just want to make sure that we can actually call that
-
+So back in our index console dot log funding with 
+所以回到我们 "index" 的 `console.log(`Funding with`)`
 
 12892
 13:02:33,550 --> 13:02:37,540
-Funmi function. So we'll copy this line again and we'll say
-
+and we'll just want to make sure that we can actually call that Funmi function. 
+我们只需要确保我们能够实际调用那个 "FundMe()" 函数即可
 
 12893
 13:02:37,660 --> 13:02:40,630
-type of window dot Aetherium does not equal undefined. We'll
-
+So we'll copy this line again and we'll say type of window dot Aetherium does not equal undefined. 
+所以我们再次复制这一行 `typeof window.ethereum !== "undefined"`
 
 12894
 13:02:40,630 --> 13:02:43,930
-go ahead and try to fund here to send a transaction. What are the
-
+We'll go ahead and try to fund here 
+并在这里继续编写 "fund" 函数
 
 12895
 13:02:43,930 --> 13:02:47,560
-things that we absolutely 100% Always need? Well, we need a
-
+to send a transaction. What are the things that we absolutely 100% Always need? 
+要发送一笔交易，有什么东西是我们百分之百肯定需要的？
 
 12896
 13:02:47,560 --> 13:02:51,610
-provider slash connection to the blockchain. And we need a signer
-
+Well, we need a provider slash connection to the blockchain. 
+我们需要一个 "provider" 或者说连接到区块链上 ("/ connection to the blockchain")
 
 12897
 13:02:51,910 --> 13:02:57,340
-slash wallet, slash someone with some gas to actually send it and
-
+And we need a signer slash wallet, slash someone with some gas to actually send it 
+我们还需要一个 "signer / wallet" 或者说一个具有 gas 的人("/ some with some gas") 以实际发送交易
 
 12898
 13:02:57,340 --> 13:03:01,390
-then And we're probably going to need the contract that we are
-
+and then And we're probably going to need the contract that we are interacting with. 
+接着我们很可能还需要一个“能够与之交互的合约”("contract that we are interacting with")
 
 12899
 13:03:01,390 --> 13:03:04,180
-interacting with. And to get that contract, we're going to
-
+And to get that contract, we're going to need ABI and address. 
+为了获取这个合约，我们需要 "ABI" 还有地址 ("address")
 
 12900
 13:03:04,180 --> 13:03:08,800
-need ABI and address. And with these all together, we can send
-
+And with these all together, we can send any transaction. 
+有了这些，我们就可以发送任何交易了
 
 12901
 13:03:08,800 --> 13:03:11,530
-any transaction. So to get our provider, we're going to
-
+So to get our provider, we're going to actually go ahead and work with ethers again. 
+为了获取我们的 "provider"，我们要再次用到 ethers
 
 12902
 13:03:11,530 --> 13:03:14,860
-actually go ahead and work with ethers again. Now, we're going
-
+Now, we're going to do it a little bit differently, though, 
+现在，我们将以略微有点不同的方式来进行操作
 
 12903
 13:03:14,860 --> 13:03:17,680
-to do it a little bit differently, though, before, the
-
+before, the way we worked with ethers is we said const ethers equals require ethers, right. 
+之前我们使用 ethers 的方法是 `const {ethers} = require("ethers")` 对吧？
 
 12904
 13:03:17,680 --> 13:03:23,380
-way we worked with ethers is we said const ethers equals require
-
+And this is how we pulled ethers. 
+这就是我们获取 ethers 的方式
 
 12905
 13:03:23,980 --> 13:03:27,160
-ethers, right. And this is how we pulled ethers. And now like I
-
+And now like I just said to you, though, 
+现在，就像我刚才跟你说的那样
 
 12906
 13:03:27,160 --> 13:03:30,190
-just said to you, though, require doesn't work in the
-
+require doesn't work in the front end. 
+`require` 在前端中并不适用
 
 12907
 13:03:30,190 --> 13:03:33,610
-front end. And we actually don't want to install ethers with a
-
+And we actually don't want to install ethers with a node modules package. 
+而且我们并不想通过 "node_modules" 包来安装 ethers 
 
 12908
 13:03:33,610 --> 13:03:37,510
-node modules package. So what we can actually do instead is let's
-
+So what we can actually do instead 
+所以我们可以采用另一种方法
 
 12909
 13:03:37,510 --> 13:03:41,860
-go to the ethers documentation. If you go to the Getting Started
-
+is let's go to the ethers documentation. 
+让我们前往 ethers 的文档
 
 12910
 13:03:41,860 --> 13:03:46,030
-section, scroll down, they have a section about importing using
-
+If you go to the Getting Started section, scroll down, 
+如果你点开这个 "Getting Started" 部分，往下拉
 
 12911
 13:03:46,030 --> 13:03:50,950
-Node js, which uses require or imports. And then they also have
-
+they have a section about importing using Node js, which uses require or imports. 
+他们在这里有一个 "Importing" 部分，Node.js 下，可以使用 `require` 或 `import`
 
 12912
 13:03:51,070 --> 13:03:55,270
-some documentation for working with the web browser. So instead
-
+And then they also have some documentation for working with the web browser. 
+接下来，他们还有一个在 “Web 浏览器”("Web Browser")下的使用文档
 
 12913
 13:03:55,270 --> 13:03:59,110
-of us doing a node module, what we'll do is we'll copy the
-
+So instead of us doing a node module, what we'll do 
+所以我们不再使用 "node_modules" 
 
 12914
 13:03:59,140 --> 13:04:02,500
-ethers library to our own directories and serve it
-
+is we'll copy the ethers library to our own directories and serve it ourselves. 
+而是把 ethers 库复制到我们的目录中，自行使用服务
 
 12915
 13:04:02,500 --> 13:04:06,250
-ourselves. So what we do is we can come in here, we can copy
-
+So what we do is we can come in here, we can copy this massive file, 
+我们可以到这里来，复制这个巨大的文件
 
 12916
 13:04:06,250 --> 13:04:10,300
-this massive file, which is ethers, but in front end
-
+which is ethers, but in front end addition, 
+这个文件就是 ethers，只不过是前端版本
 
 12917
 13:04:10,330 --> 13:04:14,410
-addition, and come back to our file. And we'll make a new file
-
+and come back to our file. And we'll make a new file in here.
+回到我们的文件这里，然后创建一个新的文件
 
 12918
 13:04:14,410 --> 13:04:14,860
-in here.
-
+Called ethers. We'll do 5.6 point esm.min.js. 
+命名为 "ethers-5.6.esm.min.js"
 
 12919
 13:04:16,540 --> 13:04:24,940
-Called ethers. We'll do 5.6 point esm.min.js. And we'll
-
+And we'll paste that massive thing in here. 
+接着我们把这一大堆内容粘贴到这里来
 
 12920
 13:04:24,940 --> 13:04:28,150
-paste that massive thing in here. Now, since I have prettier
-
+Now, since I have prettier
+现在，由于我拥有 "prettier" 扩展
 
 12921
 13:04:28,150 --> 13:04:31,180
-when I save it, it's going to auto format. And it's just this
-
+when I save it, it's going to auto format. 
+所以当我保存时，它就会自动进行格式化
 
 12922
 13:04:31,210 --> 13:04:37,030
-huge file, which has everything ethers, but front end defied if
-
+And it's just this huge file, which has everything ethers, 
+这是一个巨--大的文件，其中包含了 ethers 的所有内容
 
 12923
 13:04:37,030 --> 13:04:41,680
-you will. Now what we can do is we can import this into our
-
+but front end defied if you will. 
+但却是前端化的
 
 12924
 13:04:41,680 --> 13:04:46,210
-index.js. So instead of using require in here, we'll say
-
+Now what we can do is we can import this into our index.js. 
+现在我们就可以将其导入到我们的 "index.js" 里了
 
 12925
 13:04:46,210 --> 13:04:51,400
-import ethers from and then we'll just refer to that file
-
+So instead of using require in here, we'll say import ethers from 
+所以我们就不在这里使用 `require` 了，而是 `import {ethers} from "./"`
 
 12926
 13:04:51,400 --> 13:05:00,760
-that we just got ethers dash 5.6 point esm.min.js. Now, we only
-
+and then we'll just refer to that file that we just got ethers dash 5.6 point esm.min.js. 
+然后指向我们刚刚获取的那个文件 `"ethers-5.6.esm.min.js"`
 
 12927
 13:05:00,760 --> 13:05:04,960
-need to do this weird copy pasting of the file import thing
-
+Now, we only need to do this weird copy pasting of the file import thing in this HTML JavaScript lesson. 
+现在，我们只会在这个 HTML JavaScript 课程中，使用这种奇怪的复制粘贴文件再导入的方式
 
 12928
 13:05:05,050 --> 13:05:09,430
-in this HTML JavaScript lesson. In future lessons with Node js,
-
+In future lessons with Node js, we are going to do yarn, add ethers, 
+在未来使用 Node.js 的课程中，我们还是会使用 `yarn add ethers`
 
 12929
 13:05:09,460 --> 13:05:12,580
-we are going to do yarn, add ethers, kinda like we've
-
+kinda like we've normally seen. 
+就和我们平常看到的一样
 
 12930
 13:05:12,580 --> 13:05:15,790
-normally seen. The frameworks like React and next Jas that
-
+The frameworks like React and next Jas that we're going to use 
+之后我们要使用的 "React" 和 "Next.js" 框架
 
 12931
 13:05:15,790 --> 13:05:19,900
-we're going to use are going to automatically convert those yarn
-
+are going to automatically convert those yarn added packages to their front end to five versions. 
+会把它们用 yarn 添加的包自动转换为适用前端的版本
 
 12932
 13:05:19,930 --> 13:05:23,650
-added packages to their front end to five versions. But for
-
+But for this section, this is how we're going to actually import the ethers package. 
+但在本节中，这就是我们导入 ethers 包的方式
 
 12933
 13:05:23,650 --> 13:05:25,990
-this section, this is how we're going to actually import the
-
+Now the other thing we'll have to do 
+现在我们还得处理另外一件事
 
 12934
 13:05:25,990 --> 13:05:29,830
-ethers package. Now the other thing we'll have to do is on our
-
+is on our front end, we'll have to change this from type text slash JavaScript to type module 
+在我们的前端中，我们要把这个 `type="text/javascript"` 修改为 `type="module"`
 
 12935
 13:05:29,830 --> 13:05:34,180
-front end, we'll have to change this from type text slash
-
+changes. The type module allows us to import modules into our code, 
+修改为 `type="module"` 可以允许我们在代码中导入模块
 
 12936
 13:05:34,180 --> 13:05:39,340
-JavaScript to type module changes. The type module allows
-
+which we're going to be importing this, and we're going to import another module as well. 
+我们要导入这个，以及另外一个模块
 
 12937
 13:05:39,340 --> 13:05:42,040
-us to import modules into our code, which we're going to be
-
+Awesome. 
+非常好
 
 12938
 13:05:42,040 --> 13:05:45,310
-importing this, and we're going to import another module as
-
+And now though, if we go back to our front end,
+现在如果回到我们的前端
 
 12939
 13:05:45,310 --> 13:05:49,900
-well. Awesome. And now though, if we go back to our front end,
-
+do a little refresh with the connect button, 
+刷新一下，然后点击 "Connect"
 
 12940
 13:05:50,410 --> 13:05:53,830
-do a little refresh with the connect button, we get Connect
-
+we get Connect is not defined at HTML button.on. Click, 
+我们会被提示 “connect 未在 HTMLButtonElement.onclick 中被定义”
+("connect is not defined at HTMLButtonElement.onclick")
 
 12941
 13:05:53,830 --> 13:05:57,430
-is not defined at HTML button.on. Click, so instead of
-
+so instead of calling our Connect button from the front end here, 
+所以我们不再继续在前端中调用 "Connect" 按钮了
 
 12942
 13:05:57,430 --> 13:06:00,580
-calling our Connect button from the front end here, we're going
-
+we're going to remove these on clicks from our index dot HTML, 
+而是把这些 "onclick" 从 "index.html" 中都删掉
 
 12943
 13:06:00,580 --> 13:06:05,980
-to remove these on clicks from our index dot HTML, and go into
-
+and go into our index.js and add those connect buttons in here. 
+然后来到我们的 "index.js"，并把 "Connect" 按钮添加到这里
 
 12944
 13:06:05,980 --> 13:06:10,660
-our index.js and add those connect buttons in here. So
-
+So we'll say const. Connect button equals document, dot get element by ID, Connect button. 
+`const connectButton = document.getElementById("connectButton")`
 
 12945
 13:06:10,660 --> 13:06:17,980
-we'll say const. Connect button equals document, dot get element
-
+And then we'll say const. One button equals Doc, you meant dot get element by ID. One button, 
+然后是 `const fundButton = document.getElementById("fundButton")
 
 12946
 13:06:18,880 --> 13:06:27,280
-by ID, Connect button. And then we'll say const. One button
-
+the idea of the connect button is Connect button. 
+"Connect" 按钮的 "id" 就是 "connectButton"
 
 12947
 13:06:27,880 --> 13:06:35,350
-equals Doc, you meant dot get element by ID. One button, the
-
+The idea the fun button is fun button. 
+"Fund" 按钮的 "id" 就是 "fundButton"
 
 12948
 13:06:35,350 --> 13:06:37,810
-idea of the connect button is Connect button. The idea the fun
-
+And then we'll say connect button.on Click equals connect. 
+现在我们要写 `connectButton.onclick = connect`
 
 12949
 13:06:37,810 --> 13:06:43,750
-button is fun button. And then we'll say connect button.on
-
+And one button.on Click equals fond. 
+以及 `fundButton.onclick = fund`
 
 12950
 13:06:43,750 --> 13:06:53,380
-Click equals connect. And one button.on Click equals fond. We
-
+We go back to our front end, do a little refresh. We'll hit connect now. 
+回到我们的前端，刷新一下，点击 "Connect"
 
 12951
 13:06:53,380 --> 13:06:56,530
-go back to our front end, do a little refresh. We'll hit
-
+And it's actually working, 
+它已经正常运行了
 
 12952
 13:06:56,530 --> 13:06:59,620
-connect now. And it's actually working, we'll go to our
-
+we'll go to our Metamask will disconnect, refresh, hit Connect, 
+打开我们的 MetaMask，断开连接，刷新，点击 "Connect"
 
 12953
 13:06:59,620 --> 13:07:05,050
-Metamask will disconnect, refresh, hit Connect, and boom,
-
+and boom, it's popping up again. 
+嘭，它再次弹出来了
 
 12954
 13:07:05,050 --> 13:07:08,320
-it's popping up again. This is just due to that type being
-
+This is just due to that type being module, 
+这一切都是由于这里改成了 `type="module"`
 
 12955
 13:07:08,350 --> 13:07:12,460
-module, if it was text slash JavaScript, that on click button
-
+if it was text slash JavaScript, that on click button adding in here, 
+如果这里还是 "text/javascript"，"onclick" 按钮就要添加在这里
 
 12956
 13:07:12,460 --> 13:07:15,070
-adding in here, but since we're doing module, we're going to add
-
+but since we're doing module, 
+但是由于我们使用了模块("module")
 
 12957
 13:07:15,070 --> 13:07:17,890
-those on clicks right in our JavaScript. But now that we've
-
+we're going to add those on clicks right in our JavaScript. 
+我们就可以把这些 "onclick" 添加到我们的 JavaScript 里了
 
 12958
 13:07:17,890 --> 13:07:20,920
-got ethers in here, what we can do is we can even do like a
-
+But now that we've got ethers in here, 
+但现在我们已经在这里有 ethers 了
 
 12959
 13:07:20,920 --> 13:07:25,540
-little console dot log, just paste ethers in here, or
-
+what we can do is we can even do like a little console dot log, just paste ethers in here, 
+所以我们甚至可以在这里写 `console.log(ethers)`
 
 12960
 13:07:25,540 --> 13:07:28,330
-actually better yet. We'll add it right above the Connect
-
+or actually better yet. 
+或者更好的方式是
 
 12961
 13:07:28,330 --> 13:07:31,660
-button. Go back to our front end, we'll do a refresh and we
-
+We'll add it right above the Connect button. 
+把它添加到 "connect" 按钮的上面
 
 12962
 13:07:31,660 --> 13:07:35,650
-see the entire ethers object right in our front end which is
-
+Go back to our front end, we'll do a refresh 
+回到我们的前端，刷新一下
 
 12963
 13:07:35,650 --> 13:07:38,950
-perfect, which is exactly what we want here. And since we've
-
+and we see the entire ethers object right in our front end which is perfect, 
+我们可以看到，整个 ethers 对象现在就在我们的前端里，简直完美
 
 12964
 13:07:38,950 --> 13:07:43,000
-got these two variables here, we might as well update this to
-
+which is exactly what we want here. 
+这正是我们想要看到的
 
 12965
 13:07:43,000 --> 13:07:47,260
-just say connect button dot innerHTML equals connected and
-
+And since we've got these two variables here, we might as well update this 
+因为我们这里有这两个变量了，所以我们不妨更新一下这里
 
 12966
 13:07:47,260 --> 13:07:50,740
-here as well. Connects button dot innerHTML equals please
-
+to just say connect button dot innerHTML equals connected 
+直接就说 `connectButton.innerHTML = "Connected"`
 
 12967
 13:07:50,740 --> 13:07:53,110
-install meta mask because now connect button is going to be
-
+and here as well. Connects button dot innerHTML equals please install meta mask 
+这里也是 `connectButton.innerHTML = "Please install MetaMask"`
 
 12968
 13:07:53,110 --> 13:07:56,620
-the same as running this document dot get element by ID
-
-
-12969
-13:07:56,620 --> 13:07:56,800
-right
-
-
-12970
-13:07:56,800 --> 13:08:03,040
-here. 
+because now connect button is going to be the same as running this document dot get element by ID right here. 
+因为现在 `connectButton` 就相当于运行这里的 `document.getElementById`
