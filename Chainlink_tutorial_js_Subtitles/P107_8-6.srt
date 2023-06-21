@@ -1,0 +1,843 @@
+12970
+13:07:56,800 --> 13:08:03,040
+and great. Let's go back to continuing our font function.
+
+
+12971
+13:08:03,280 --> 13:08:09,820
+So we'll say const provider equals new ethers dot providers
+
+
+12972
+13:08:09,880 --> 13:08:14,500
+dot web three provider, window dot Aetherium. Web three
+
+
+12973
+13:08:14,500 --> 13:08:18,670
+provider is an object in ethers that allows us to basically wrap
+
+
+12974
+13:08:18,670 --> 13:08:22,000
+around stuff like Metamask is web three provider is really
+
+
+12975
+13:08:22,000 --> 13:08:25,900
+similar to that JSON RPC provider, which we use before,
+
+
+12976
+13:08:25,930 --> 13:08:30,070
+which is where we put in exactly that endpoint, our alchemy
+
+
+12977
+13:08:30,070 --> 13:08:33,220
+endpoint, or when we're working with Metamask. Here, whatever
+
+
+12978
+13:08:33,220 --> 13:08:36,520
+endpoint that we have in our network section is web three
+
+
+12979
+13:08:36,520 --> 13:08:40,300
+provider takes that HTTP endpoint and automatically
+
+
+12980
+13:08:40,300 --> 13:08:44,200
+sticks it in ethers for us. So this line of code basically
+
+
+12981
+13:08:44,200 --> 13:08:47,920
+looks at our Metamask and goes, Ah, okay, I found the HTTP
+
+
+12982
+13:08:47,920 --> 13:08:50,890
+endpoint inside there, Metamask. That's going to be what we're
+
+
+12983
+13:08:50,890 --> 13:08:53,560
+going to use as our provider here. Since our provider is
+
+
+12984
+13:08:53,560 --> 13:08:57,160
+connected to our Metamask. Here, we can get a signer or we can
+
+
+12985
+13:08:57,160 --> 13:09:04,750
+get a wallet just by running const signer equals provider,
+
+
+12986
+13:09:05,140 --> 13:09:09,670
+dot get signer, this is going to return whichever wallet is
+
+
+12987
+13:09:09,670 --> 13:09:13,150
+connected from the provider, which again, our provider is our
+
+
+12988
+13:09:13,150 --> 13:09:17,770
+Metamask. So if we're connected with with account one, it's
+
+
+12989
+13:09:17,770 --> 13:09:20,530
+going to return account one as the signer connected with
+
+
+12990
+13:09:20,530 --> 13:09:28,240
+account two, it'll return account two, etc. Now, I'm going
+
+
+12991
+13:09:28,240 --> 13:09:31,810
+to add console dot log signer here, and then flip to the front
+
+
+12992
+13:09:31,810 --> 13:09:34,360
+end now and show you what happens when we hit the fund
+
+
+12993
+13:09:34,360 --> 13:09:38,440
+button. You can see in here we have our JSON RPC signer, the
+
+
+12994
+13:09:38,440 --> 13:09:42,010
+signer is going to be the account that we've connected to
+
+
+12995
+13:09:42,040 --> 13:09:45,850
+our front end. Now we have our provider, we have our signer.
+
+
+12996
+13:09:45,880 --> 13:09:49,210
+Now, we're going to need our contract by getting the API and
+
+
+12997
+13:09:49,210 --> 13:09:53,350
+the address. So we're gonna need to say const. Contract equals
+
+
+12998
+13:09:53,680 --> 13:09:57,520
+what? How are we going to get our contract? Well, this is
+
+
+12999
+13:09:57,520 --> 13:10:01,840
+where we're going to need to know the ABI and the address of
+
+
+13000
+13:10:01,840 --> 13:10:04,930
+a working with typically, what you'll see a lot of projects do
+
+
+13001
+13:10:04,960 --> 13:10:07,690
+since once a contract is deployed, the addresses are
+
+
+13002
+13:10:07,690 --> 13:10:10,330
+going to change is they're going to have some type of constants
+
+
+13003
+13:10:10,330 --> 13:10:15,400
+file. So they'll create a new file called constants, dot j s.
+
+
+13004
+13:10:17,500 --> 13:10:20,680
+And in here, they'll add the addresses and any API's and
+
+
+13005
+13:10:20,680 --> 13:10:25,240
+anything like that for us to use in our fund piece here. Now, as
+
+
+13006
+13:10:25,240 --> 13:10:27,670
+we're developing, and as we're building, this, the backend and
+
+
+13007
+13:10:27,670 --> 13:10:30,250
+the front end team are gonna have to interact a little bit,
+
+
+13008
+13:10:30,280 --> 13:10:32,860
+or if it's just you doing the full stack, you're gonna have to
+
+
+13009
+13:10:32,860 --> 13:10:36,070
+interact with their back end. So this is why it's so important to
+
+
+13010
+13:10:36,070 --> 13:10:40,900
+have both your front end and your back end code nearby. So if
+
+
+13011
+13:10:40,900 --> 13:10:45,280
+we go back to our Hardhead, fund me project that we just made, we
+
+
+13012
+13:10:45,280 --> 13:10:49,630
+can find the ABI in here. Once again, if we go to artifacts, go
+
+
+13013
+13:10:49,630 --> 13:10:54,370
+to contracts, we can go to fund me dot soul, fund me dot JSON,
+
+
+13014
+13:10:54,790 --> 13:10:58,660
+we can find the ABI right here, it's going to be this massive
+
+
+13015
+13:10:58,660 --> 13:11:01,480
+thing right here. So you can go ahead, you can even copy this
+
+
+13016
+13:11:01,480 --> 13:11:05,140
+whole thing in this little non squiggly bracket and this little
+
+
+13017
+13:11:05,140 --> 13:11:09,040
+bracket here, we can copy that. And then we can come back to our
+
+
+13018
+13:11:09,040 --> 13:11:12,580
+constant.js. And we can just save it as variable, we'll say
+
+
+13019
+13:11:12,670 --> 13:11:23,200
+Export const, Avi, e equals and paste that in there. And then
+
+
+13020
+13:11:23,200 --> 13:11:26,920
+back in our index dot j s, we can import it with import
+
+
+13021
+13:11:28,509 --> 13:11:38,529
+API from constants. Oops. Okay, great. So we have the API. Well,
+
+
+13022
+13:11:38,559 --> 13:11:41,439
+what about the address, since we're going to be running this
+
+
+13023
+13:11:41,439 --> 13:11:44,289
+locally, we want to get the contract address of this locally
+
+
+13024
+13:11:44,319 --> 13:11:48,039
+run contract, we can do that a couple of ways. One way is you
+
+
+13025
+13:11:48,039 --> 13:11:50,799
+can just have two windows open one with your front end code,
+
+
+13026
+13:11:50,829 --> 13:11:53,559
+one with your back end code, and the one with your back end code,
+
+
+13027
+13:11:53,559 --> 13:11:57,579
+you can run yarn, hard hat node, which will spin up our
+
+
+13028
+13:11:57,579 --> 13:12:01,839
+blockchain node for us, and give us the address in here. Or what
+
+
+13029
+13:12:01,839 --> 13:12:04,239
+we can do. And this will probably be a little bit easier
+
+
+13030
+13:12:04,329 --> 13:12:07,449
+is in your window with your front end code and create a new
+
+
+13031
+13:12:07,449 --> 13:12:10,569
+terminal. And now we'll have two terminals running. And then this
+
+
+13032
+13:12:10,599 --> 13:12:15,849
+second one, we're going to CD down CD dot dot, and then CD,
+
+
+13033
+13:12:16,329 --> 13:12:20,649
+hard hat on Me Free Code Camp. And in here, we're going to run
+
+
+13034
+13:12:20,649 --> 13:12:25,929
+yarn, art head node. And this is going to spin up our local
+
+
+13035
+13:12:25,929 --> 13:12:30,159
+blockchain in this second terminal in here, where we have
+
+
+13036
+13:12:30,459 --> 13:12:34,029
+deploying fund me deploy that address, blah, blah, blah, right
+
+
+13037
+13:12:34,029 --> 13:12:37,869
+here. And just a reminder, if I hit this x, it just hides the
+
+
+13038
+13:12:37,869 --> 13:12:41,619
+terminal. I can always pull it back up with terminal new
+
+
+13039
+13:12:41,619 --> 13:12:45,639
+terminal, and I can always hide it, but this is still running
+
+
+13040
+13:12:45,669 --> 13:12:48,399
+inside of my terminal. So I'm going to hide it. And what I can
+
+
+13041
+13:12:48,399 --> 13:12:51,699
+do is I can come back over to our constants folder, and at the
+
+
+13042
+13:12:51,699 --> 13:12:59,439
+top, we can do export const contract address. equals, we'll
+
+
+13043
+13:12:59,439 --> 13:13:04,059
+pull the terminal back up. And we'll go grab, where it says,
+
+
+13044
+13:13:04,929 --> 13:13:08,709
+pulling fund me deployed at right here. We'll copy that
+
+
+13045
+13:13:08,709 --> 13:13:12,999
+address, put some quotes, and we'll paste it in. And now we're
+
+
+13046
+13:13:12,999 --> 13:13:16,959
+also exporting the contract address, then in our index.js
+
+
+13047
+13:13:17,019 --> 13:13:22,749
+will import the contract address with comma, contract address.
+
+
+13048
+13:13:23,469 --> 13:13:28,149
+And now we have both the ABI and the contract address. So what we
+
+
+13049
+13:13:28,149 --> 13:13:33,249
+can do, we can say const contract equals new ethers dot
+
+
+13050
+13:13:33,249 --> 13:13:38,439
+contract of, we'll pass the contract address, pass the API,
+
+
+13051
+13:13:38,679 --> 13:13:41,649
+and we'll pass it the signer. Now we have an ethers contract
+
+
+13052
+13:13:41,649 --> 13:13:44,829
+object that's connected to our signer, and we have the contract
+
+
+13053
+13:13:44,829 --> 13:13:47,769
+address, and we have the contract abi, now that we have a
+
+
+13054
+13:13:47,769 --> 13:13:50,829
+contract object, we can go ahead and start making transactions
+
+
+13055
+13:13:51,009 --> 13:13:54,219
+the exact same way we've made transactions before we can just
+
+
+13056
+13:13:54,219 --> 13:14:02,739
+run const transaction response equals a weight contract dot
+
+
+13057
+13:14:02,799 --> 13:14:08,829
+fund. And then we'll pass a value of ethers dot utils dot
+
+
+13058
+13:14:09,039 --> 13:14:14,619
+parse, ether ether mount. So this is going to be how we're
+
+
+13059
+13:14:14,619 --> 13:14:18,219
+going to go ahead and create our transaction. And if you take
+
+
+13060
+13:14:18,219 --> 13:14:21,159
+this right now, and we go to our front, we give it a little
+
+
+13061
+13:14:21,159 --> 13:14:24,699
+refresh, make sure we're connected and we hit fund, we're
+
+
+13062
+13:14:24,699 --> 13:14:29,529
+gonna get this error value must be a string. That's because at
+
+
+13063
+13:14:29,529 --> 13:14:33,219
+the mount right now is being passed in as nothing. Now
+
+
+13064
+13:14:33,219 --> 13:14:36,669
+normally, we'll pass parameters directly to our functions. But
+
+
+13065
+13:14:36,789 --> 13:14:39,309
+what we're going to do is for now is we're just going to hard
+
+
+13066
+13:14:39,309 --> 13:14:43,629
+code this. So we'll say const. At the mount equals, we'll do
+
+
+13067
+13:14:43,629 --> 13:14:47,379
+like 77, or something we had fun. Now, what do you think's
+
+
+13068
+13:14:47,379 --> 13:14:51,669
+gonna happen? Well, we get this other air, insufficient funds
+
+
+13069
+13:14:51,699 --> 13:14:55,089
+for intrinsic transaction cost, or you might get some other
+
+
+13070
+13:14:55,089 --> 13:14:57,459
+error, but you're gonna get a weird error here. And that's
+
+
+13071
+13:14:57,459 --> 13:15:01,689
+because we're not actually connected to our local hard head
+
+
+13072
+13:15:01,689 --> 13:15:04,899
+node right now. Well, if we look at our Metamask, we're currently
+
+
+13073
+13:15:04,929 --> 13:15:08,409
+not connected to the right blockchain, we're connected to
+
+
+13074
+13:15:08,409 --> 13:15:12,729
+rink B, or main net or whatever, we need to get connected to our
+
+
+13075
+13:15:12,729 --> 13:15:16,209
+local host. If you look in your networks, you'll actually have a
+
+
+13076
+13:15:16,209 --> 13:15:19,869
+local host object here already. But let's just be super
+
+
+13077
+13:15:19,869 --> 13:15:23,079
+specific. And we'll add a new network here, we're going to add
+
+
+13078
+13:15:23,079 --> 13:15:27,099
+something called our hard hat, local host. And we'll hit Add
+
+
+13079
+13:15:27,099 --> 13:15:30,549
+Network and we'll add Hardhead. Local host in here, the RPC URL,
+
+
+13080
+13:15:30,789 --> 13:15:35,379
+we can find from our node area, which we scroll to where our
+
+
+13081
+13:15:35,379 --> 13:15:39,579
+node is running, we can copy this URL and paste it into new
+
+
+13082
+13:15:39,579 --> 13:15:44,859
+RPC URL, chain ID is going to be 31337 currency symbol is going
+
+
+13083
+13:15:44,859 --> 13:15:48,789
+to be go or ether. Even though this pop up says it might have a
+
+
+13084
+13:15:48,789 --> 13:15:51,159
+different currency symbol go, we're just going to put eath in
+
+
+13085
+13:15:51,159 --> 13:15:54,429
+here. And there is no block explorer, right? Because this is
+
+
+13086
+13:15:54,429 --> 13:15:57,249
+a local blockchain, we're not going to have a block Explorer.
+
+
+13087
+13:15:57,309 --> 13:15:58,809
+So we'll go ahead and hit Save.
+
+
+13088
+13:15:58,900 --> 13:16:01,870
+And now we have an account here, which is great. We're connected
+
+
+13089
+13:16:01,870 --> 13:16:04,990
+to our local blockchain. And if we switch our meta mask, we can
+
+
+13090
+13:16:04,990 --> 13:16:08,590
+see we're on the local hard hat. And we are connected. Awesome.
+
+
+13091
+13:16:08,770 --> 13:16:13,390
+Let's refresh. Let's run fund one more time. And we'll see a
+
+
+13092
+13:16:13,390 --> 13:16:17,740
+transaction does indeed pop up. This is great. But our account
+
+
+13093
+13:16:17,740 --> 13:16:21,190
+here doesn't have any money we have, we're broke, we don't have
+
+
+13094
+13:16:21,190 --> 13:16:24,880
+any local Hardhead Aetherium. So we're actually going to need to
+
+
+13095
+13:16:24,940 --> 13:16:29,230
+import one of our accounts from hard hat into our meta mask,
+
+
+13096
+13:16:29,530 --> 13:16:33,640
+which we can do so and you can actually do this for any account
+
+
+13097
+13:16:33,640 --> 13:16:36,940
+with a private key so hard that gives us these accounts. And
+
+
+13098
+13:16:36,940 --> 13:16:40,030
+we're going to import the private key of Count zero into
+
+
+13099
+13:16:40,060 --> 13:16:42,910
+our meta mask. So we're going to copy the private key, we're
+
+
+13100
+13:16:42,910 --> 13:16:45,790
+going to come back to our front end, click on our meta mask,
+
+
+13101
+13:16:46,090 --> 13:16:48,850
+we're gonna hit this big button, we're gonna hit import account.
+
+
+13102
+13:16:49,270 --> 13:16:52,450
+It's like type private key, and we're gonna paste our private
+
+
+13103
+13:16:52,450 --> 13:16:57,340
+key here. A quick note, if you choose json file, remember how
+
+
+13104
+13:16:57,340 --> 13:17:01,510
+back in that ether section, we encrypted our key into a JSON
+
+
+13105
+13:17:01,510 --> 13:17:05,830
+file with a password, you can actually import accounts with
+
+
+13106
+13:17:05,830 --> 13:17:08,770
+that JSON file with the password. So if you encrypt a
+
+
+13107
+13:17:08,770 --> 13:17:11,650
+key and you want to add it to meta mask, you can go ahead and
+
+
+13108
+13:17:11,650 --> 13:17:13,750
+add it in just like this. But for now, we're going to use
+
+
+13109
+13:17:13,750 --> 13:17:16,180
+private key, we'll paste the private key in and we'll hit
+
+
+13110
+13:17:16,180 --> 13:17:21,100
+import. And we can see we now have an account, a new account
+
+
+13111
+13:17:21,130 --> 13:17:26,380
+and account three, with a ton of eath from our local blockchain.
+
+
+13112
+13:17:26,650 --> 13:17:29,890
+So we'll refresh one more time, we'll go ahead and connect,
+
+
+13113
+13:17:29,920 --> 13:17:33,370
+we'll make sure that our account three is connected. And if it's
+
+
+13114
+13:17:33,370 --> 13:17:36,700
+not, we'll go ahead and hit this Connect button. So that now our
+
+
+13115
+13:17:36,700 --> 13:17:39,760
+account three is what's connected here. And we'll go
+
+
+13116
+13:17:39,760 --> 13:17:43,720
+ahead and hit fund. And we now see that we can fund this
+
+
+13117
+13:17:43,720 --> 13:17:48,340
+contract, we can go ahead and hit Confirm. And if we look and
+
+
+13118
+13:17:48,340 --> 13:17:50,230
+nothing's going to happen on our front end, because we didn't
+
+
+13119
+13:17:50,230 --> 13:17:52,450
+tell our front end to do anything once we confirm, but if
+
+
+13120
+13:17:52,450 --> 13:17:55,960
+we go to our blockchain, we can see our fun function was called
+
+
+13121
+13:17:55,990 --> 13:17:58,750
+we've just made our first transaction on a blockchain from
+
+
+13122
+13:17:58,750 --> 13:18:02,680
+our own front end, this is awesome, great work. But it's
+
+
+13123
+13:18:02,710 --> 13:18:05,440
+probably a little confusing to the user. If nothing happens
+
+
+13124
+13:18:05,440 --> 13:18:07,720
+here, they're going to hit the fun function. And it's going to
+
+
+13125
+13:18:07,720 --> 13:18:12,190
+be like, Oh, okay, cool. What, what happens? Now, we probably
+
+
+13126
+13:18:12,190 --> 13:18:14,740
+want to make it a little bit more obvious that something just
+
+
+13127
+13:18:14,740 --> 13:18:17,200
+happened. And one more thing I want to show you, you don't have
+
+
+13128
+13:18:17,200 --> 13:18:20,590
+to follow along here, if I hit fund, and then I hit reject,
+
+
+13129
+13:18:20,860 --> 13:18:23,470
+it's gonna freak out on us and be like, hey, like, you hit
+
+
+13130
+13:18:23,470 --> 13:18:25,720
+reject, I don't know what to do now. So we're going to make our
+
+
+13131
+13:18:25,720 --> 13:18:28,600
+code a little bit more robust by adding a try catch. So we'll
+
+
+13132
+13:18:28,600 --> 13:18:36,160
+tell JavaScript to try running this transaction. And then if it
+
+
+13133
+13:18:36,160 --> 13:18:41,980
+catches an error, just to console dot log, that error. So
+
+
+13134
+13:18:41,980 --> 13:18:46,330
+now, if I hit fund, and I hit reject, it's gonna, it'll still
+
+
+13135
+13:18:46,330 --> 13:18:49,060
+be a little bit mad, but at least we're catching it and it's
+
+
+13136
+13:18:49,060 --> 13:18:52,240
+not going to break and destroy everything. Okay, cool. We've
+
+
+13137
+13:18:52,240 --> 13:18:55,840
+got a transaction response here. And when we hit fund, our front
+
+
+13138
+13:18:55,840 --> 13:19:03,130
+end goes great. You've funded me I'm I'm super confused. 
