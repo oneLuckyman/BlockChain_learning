@@ -600,244 +600,245 @@ We're connected to our local blockchain.
 
 13090
 13:16:04,990 --> 13:16:08,590
-And if we switch our meta mask, we can see we're on the local hard hat. And we are connected. Awesome.
-
+And if we switch our meta mask, we can see we're on the local hard hat. 
+如果我们切换到我们的 MetaMask，就可以看到我们已经位于本地 Hardhat 上了
 
 13091
 13:16:08,770 --> 13:16:13,390
-Let's refresh. Let's run fund one more time. And we'll see a
-
+And we are connected. Awesome. 
+并且我们是已连接状态，棒极了
 
 13092
 13:16:13,390 --> 13:16:17,740
-transaction does indeed pop up. This is great. But our account
-
+Let's refresh. Let's run fund one more time. 
+让我们刷新一下，再运行一次 "Fund"
 
 13093
 13:16:17,740 --> 13:16:21,190
-here doesn't have any money we have, we're broke, we don't have
-
+And we'll see a transaction does indeed pop up. This is great. 
+我们会看到，确实会弹出一笔交易，太好了
 
 13094
 13:16:21,190 --> 13:16:24,880
-any local Hardhead Aetherium. So we're actually going to need to
-
+But our account here doesn't have any money we have, we're broke, 
+但是我们的账户里面没有钱，我们破产了！
 
 13095
 13:16:24,940 --> 13:16:29,230
-import one of our accounts from hard hat into our meta mask,
-
+we don't have any local Hardhead Aetherium. 
+我们没有任何本地 Hardhat 以太币
 
 13096
 13:16:29,530 --> 13:16:33,640
-which we can do so and you can actually do this for any account
-
+So we're actually going to need to import one of our accounts from hard hat into our meta mask, which we can do 
+所以我们需要从 Hardhat 中导入一个账户到我们的 MetaMask 里，确实是可以这样做的
 
 13097
 13:16:33,640 --> 13:16:36,940
-with a private key so hard that gives us these accounts. And
-
+so and you can actually do this for any account with a private key 
+实际上对任何具有私钥的账户你都可以进行这样的操作
 
 13098
 13:16:36,940 --> 13:16:40,030
-we're going to import the private key of Count zero into
-
+so hard that gives us these accounts. 
+Hardhat 给我们提供了这些账户
 
 13099
 13:16:40,060 --> 13:16:42,910
-our meta mask. So we're going to copy the private key, we're
-
+And we're going to import the private key of Count zero into our meta mask. 
+我们要导入 "Account #0" 的私钥到我们的 MetaMask 里
 
 13100
 13:16:42,910 --> 13:16:45,790
-going to come back to our front end, click on our meta mask,
-
+So we're going to copy the private key, we're going to come back to our front end, click on our meta mask,
+所以我们复制这个私钥，回到我们的前端，点击 MetaMask
 
 13101
 13:16:46,090 --> 13:16:48,850
 we're gonna hit this big button, we're gonna hit import account.
-
+点击这个大按钮，点击“导入账户”("Import Account")
 
 13102
 13:16:49,270 --> 13:16:52,450
-It's like type private key, and we're gonna paste our private
-
+It's like type private key, 
+“选择类型”("Select Type")是“私钥”("Private Key")
 
 13103
 13:16:52,450 --> 13:16:57,340
-key here. A quick note, if you choose json file, remember how
-
+and we're gonna paste our private key here. 
+然后把我们的私钥粘贴到这里
 
 13104
 13:16:57,340 --> 13:17:01,510
-back in that ether section, we encrypted our key into a JSON
-
+A quick note, if you choose json file, 
+补充一句，如果你选择“JSON 文件”("JSON File")
 
 13105
 13:17:01,510 --> 13:17:05,830
-file with a password, you can actually import accounts with
-
+remember how back in that ether section, we encrypted our key into a JSON file with a password, 
+还记得在 ethers 那一节中，我们把私钥加密到了一个带有密码 JSON 文件中
 
 13106
 13:17:05,830 --> 13:17:08,770
-that JSON file with the password. So if you encrypt a
-
+you can actually import accounts with that JSON file with the password. 
+你可以用这个带有密码的 JSON 文件来导入账户
 
 13107
 13:17:08,770 --> 13:17:11,650
-key and you want to add it to meta mask, you can go ahead and
-
+So if you encrypt a key and you want to add it to meta mask, 
+如果你加密了一个私钥，并且想把它添加到 MetaMask 的话
 
 13108
 13:17:11,650 --> 13:17:13,750
-add it in just like this. But for now, we're going to use
-
+you can go ahead and add it in just like this. 
+可以用这样的方式进行添加
 
 13109
 13:17:13,750 --> 13:17:16,180
-private key, we'll paste the private key in and we'll hit
-
+But for now, we're going to use private key, 
+但现在，我们打算直接使用私钥
 
 13110
 13:17:16,180 --> 13:17:21,100
-import. And we can see we now have an account, a new account
-
+we'll paste the private key in and we'll hit import. 
+我们把私钥粘贴进去，然后点击“导入”("Import")
 
 13111
 13:17:21,130 --> 13:17:26,380
-and account three, with a ton of eath from our local blockchain.
-
+And we can see we now have an account, a new account and account three, 
+可以看到，现在我们有了一个账户，一个新的账户 "Account3"
 
 13112
 13:17:26,650 --> 13:17:29,890
-So we'll refresh one more time, we'll go ahead and connect,
-
+with a ton of eath from our local blockchain. 
+它存有我们本地区块链上的大量以太币
 
 13113
 13:17:29,920 --> 13:17:33,370
-we'll make sure that our account three is connected. And if it's
-
+So we'll refresh one more time, we'll go ahead and connect, we'll make sure that our account three is connected. 
+我们再刷新一次，点击 "Connect" 确保我们的 "Account3" 已经连接上了
 
 13114
 13:17:33,370 --> 13:17:36,700
-not, we'll go ahead and hit this Connect button. So that now our
-
+And if it's not, we'll go ahead and hit this Connect button. 
+如果没有的话，就点击 "Connect" 按钮
 
 13115
 13:17:36,700 --> 13:17:39,760
-account three is what's connected here. And we'll go
-
+So that now our account three is what's connected here. 
+现在，我们的 "Account3" 就已经连接上了
 
 13116
 13:17:39,760 --> 13:17:43,720
-ahead and hit fund. And we now see that we can fund this
-
+And we'll go ahead and hit fund. 
+我们继续，点击 "Fund" 
 
 13117
 13:17:43,720 --> 13:17:48,340
-contract, we can go ahead and hit Confirm. And if we look and
-
+And we now see that we can fund this contract, 
+现在我们看到，可以对合约进行资助了
 
 13118
 13:17:48,340 --> 13:17:50,230
-nothing's going to happen on our front end, because we didn't
-
+we can go ahead and hit Confirm. 
+我们继续，点击“确认”("Confirm")
 
 13119
 13:17:50,230 --> 13:17:52,450
-tell our front end to do anything once we confirm, but if
-
+And if we look and nothing's going to happen on our front end, 
+如果我们查看一下，前端并没有任何事情发生
 
 13120
 13:17:52,450 --> 13:17:55,960
-we go to our blockchain, we can see our fun function was called
-
+because we didn't tell our front end to do anything once we confirm, 
+因为我们并没有告诉前端，确认后要做些什么
 
 13121
 13:17:55,990 --> 13:17:58,750
-we've just made our first transaction on a blockchain from
-
+but if we go to our blockchain, we can see our fun function was called 
+但如果前往我们的区块链，可以看到我们的 "fund" 函数已经被调用了
 
 13122
 13:17:58,750 --> 13:18:02,680
-our own front end, this is awesome, great work. But it's
-
+we've just made our first transaction on a blockchain from our own front end, 
+我们刚刚在我们的前端上完成了我们在区块链上的第一笔交易
 
 13123
 13:18:02,710 --> 13:18:05,440
-probably a little confusing to the user. If nothing happens
-
+this is awesome, great work. 
+真是太棒了，干得漂亮
 
 13124
 13:18:05,440 --> 13:18:07,720
-here, they're going to hit the fun function. And it's going to
-
+But it's probably a little confusing to the user. If nothing happens here, 
+但这可能会让用户有一些疑惑，如果这里什么都不发生的话
 
 13125
 13:18:07,720 --> 13:18:12,190
-be like, Oh, okay, cool. What, what happens? Now, we probably
-
+they're going to hit the fun function. And it's going to be like, Oh, okay, cool. What, what happens? 
+他们点击了 "Fund" 函数，然后就会像这样：哦，OK，酷~，发生什么了么？
 
 13126
 13:18:12,190 --> 13:18:14,740
-want to make it a little bit more obvious that something just
-
+Now, we probably want to make it a little bit more obvious that something just happened. 
+我们想让它对刚刚发生的事表现得尽量更明显一些
 
 13127
 13:18:14,740 --> 13:18:17,200
-happened. And one more thing I want to show you, you don't have
-
+And one more thing I want to show you, you don't have to follow along here, 
+还有一件事我要给你展示一下，这里你不用跟着做
 
 13128
 13:18:17,200 --> 13:18:20,590
-to follow along here, if I hit fund, and then I hit reject,
-
+if I hit fund, and then I hit reject,
+如果我点击 "Fund"，然后点击“拒绝”("Reject")
 
 13129
 13:18:20,860 --> 13:18:23,470
-it's gonna freak out on us and be like, hey, like, you hit
-
+it's gonna freak out on us and be like, 
+就会突然吓到我们，就好像说
 
 13130
 13:18:23,470 --> 13:18:25,720
-reject, I don't know what to do now. So we're going to make our
-
+hey, like, you hit reject, I don't know what to do now. 
+嘿，你点击了 "Reject"，我现在不知道该怎么办了
 
 13131
 13:18:25,720 --> 13:18:28,600
-code a little bit more robust by adding a try catch. So we'll
-
+So we're going to make our code a little bit more robust by adding a try catch. 
+所以我们要通过添加 "try-catch" 来让我们的代码更健壮一些
 
 13132
 13:18:28,600 --> 13:18:36,160
-tell JavaScript to try running this transaction. And then if it
-
+So we'll tell JavaScript to try running this transaction. 
+我们会告诉 JavaScript `try` (“尝试”)运行这个交易
 
 13133
 13:18:36,160 --> 13:18:41,980
-catches an error, just to console dot log, that error. So
-
+And then if it catches an error, just to console dot log, that error. 
+然后如果 `catch` (“发现”)了一个报错，就运行 `console.log(error)`
 
 13134
 13:18:41,980 --> 13:18:46,330
-now, if I hit fund, and I hit reject, it's gonna, it'll still
-
+So now, if I hit fund, and I hit reject, 
+现在，如果我点击 "Fund"，然后点击 "Reject"
 
 13135
 13:18:46,330 --> 13:18:49,060
-be a little bit mad, but at least we're catching it and it's
-
+it's gonna, it'll still be a little bit mad, but at least we're catching it and it's not going to break and destroy everything. 
+它仍然会有一些问题，但至少我们捕捉到了它，并且不会中断和破坏所有的一切
 
 13136
 13:18:49,060 --> 13:18:52,240
-not going to break and destroy everything. Okay, cool. We've
-
+Okay, cool. We've got a transaction response here. 
+OK，酷~ 我们在这里收到了 "transactionResponse"
 
 13137
 13:18:52,240 --> 13:18:55,840
-got a transaction response here. And when we hit fund, our front
-
+And when we hit fund, our front end goes great. 
+并且当我们点击 "Fund" 时，我们的前端一切正常
 
 13138
 13:18:55,840 --> 13:19:03,130
-end goes great. You've funded me I'm I'm super confused. 
+You've funded me I'm I'm super confused. 
+你资助了我，但我十分困惑
