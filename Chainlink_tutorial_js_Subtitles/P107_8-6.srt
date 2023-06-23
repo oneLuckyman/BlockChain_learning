@@ -1,606 +1,606 @@
 12970
 13:07:56,800 --> 13:08:03,040
 and great. Let's go back to continuing our font function.
-
+很好，让我们回来继续编写我们的 "fund" 函数
 
 12971
 13:08:03,280 --> 13:08:09,820
-So we'll say const provider equals new ethers dot providers
-
+So we'll say const provider equals new ethers dot providers dot web three provider, window dot Aetherium. 
+`const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 12972
 13:08:09,880 --> 13:08:14,500
-dot web three provider, window dot Aetherium. Web three
-
+Web three provider is an object in ethers that allows us to basically wrap around stuff like Metamask 
+"Web3Provider" 是一个 ethers 中的对象，它允许我们附在类似 MetaMask 这样的东西上
 
 12973
 13:08:14,500 --> 13:08:18,670
-provider is an object in ethers that allows us to basically wrap
-
+is web three provider is really similar to that JSON RPC provider, which we use before,
+"Web3Provider" 与我们过去用的 "JsonRpcProvider" 十分类似
 
 12974
 13:08:18,670 --> 13:08:22,000
-around stuff like Metamask is web three provider is really
-
+which is where we put in exactly that endpoint, our alchemy endpoint, 
+也就是我们放入端点的地方，比如我们的 Alchemy 端点
 
 12975
 13:08:22,000 --> 13:08:25,900
-similar to that JSON RPC provider, which we use before,
-
+or when we're working with Metamask. Here, 
+或者是我们在使用 MetaMask 时
 
 12976
 13:08:25,930 --> 13:08:30,070
-which is where we put in exactly that endpoint, our alchemy
-
+whatever endpoint that we have in our network section 
+"Networks" 选项中的任意端点
 
 12977
 13:08:30,070 --> 13:08:33,220
-endpoint, or when we're working with Metamask. Here, whatever
-
+is web three provider takes that HTTP endpoint 
+这个 "Web3Provider" 接收 HTTP 端点
 
 12978
 13:08:33,220 --> 13:08:36,520
-endpoint that we have in our network section is web three
-
+and automatically sticks it in ethers for us. 
+并自动将其导入到 ethers 中
 
 12979
 13:08:36,520 --> 13:08:40,300
-provider takes that HTTP endpoint and automatically
-
+So this line of code basically looks at our Metamask and goes, 
+所以这一行代码基本上就是在观察我们的 MetaMask 然后说
 
 12980
 13:08:40,300 --> 13:08:44,200
-sticks it in ethers for us. So this line of code basically
-
+Ah, okay, I found the HTTP endpoint inside there, Metamask. 
+啊，OK，我从 MetaMask 这里找到了 HTTP 端点
 
 12981
 13:08:44,200 --> 13:08:47,920
-looks at our Metamask and goes, Ah, okay, I found the HTTP
-
+That's going to be what we're going to use as our provider here. 
+我们就把它作为我们这里的 "provider" 
 
 12982
 13:08:47,920 --> 13:08:50,890
-endpoint inside there, Metamask. That's going to be what we're
-
+Since our provider is connected to our Metamask. Here, 
+由于我们的 "provider" 是连接在我们这里的 MetaMask 上的
 
 12983
 13:08:50,890 --> 13:08:53,560
-going to use as our provider here. Since our provider is
-
+we can get a signer or we can get a wallet just by running 
+所以我们可以通过运行以下代码来获取“签署者”("signer")或者钱包("wallet")
 
 12984
 13:08:53,560 --> 13:08:57,160
-connected to our Metamask. Here, we can get a signer or we can
-
+const signer equals provider, dot get signer, 
+`const signer = provider.getSigner()`
 
 12985
 13:08:57,160 --> 13:09:04,750
-get a wallet just by running const signer equals provider,
-
+this is going to return whichever wallet is connected from the provider, 
+它会返回连接在这个 "provider" 上的钱包
 
 12986
 13:09:05,140 --> 13:09:09,670
-dot get signer, this is going to return whichever wallet is
-
+which again, our provider is our Metamask. 
+再次强调，我们的 "provider" 就是我们的 MetaMask
 
 12987
 13:09:09,670 --> 13:09:13,150
-connected from the provider, which again, our provider is our
-
+So if we're connected with with account one, 
+所以，如果我们连接的是 "Account1"
 
 12988
 13:09:13,150 --> 13:09:17,770
-Metamask. So if we're connected with with account one, it's
-
+it's going to return account one as the signer 
+它就会返回 "Account1" 作为 "signer" 
 
 12989
 13:09:17,770 --> 13:09:20,530
-going to return account one as the signer connected with
-
+connected with account two, it'll return account two, etc. 
+连接的是 "Account2" 就会返回 "Account2"，以此类推
 
 12990
 13:09:20,530 --> 13:09:28,240
-account two, it'll return account two, etc. Now, I'm going
-
+Now, I'm going to add console dot log signer here, 
+现在我们在这里添加一句 `console.log(signer)`
 
 12991
 13:09:28,240 --> 13:09:31,810
-to add console dot log signer here, and then flip to the front
-
+and then flip to the front end now 
+然后回到前端
 
 12992
 13:09:31,810 --> 13:09:34,360
-end now and show you what happens when we hit the fund
-
+and show you what happens when we hit the fund button. 
+并且我们来看一下，点击 "Fund" 按钮会发生些什么
 
 12993
 13:09:34,360 --> 13:09:38,440
-button. You can see in here we have our JSON RPC signer, the
-
+You can see in here we have our JSON RPC signer, 
+我们可以看到，这里有我们的 "JsonRpcSigner"
 
 12994
 13:09:38,440 --> 13:09:42,010
-signer is going to be the account that we've connected to
-
+the signer is going to be the account that we've connected to our front end. 
+这个 "signer" 就是我们连接在前端上的账户
 
 12995
 13:09:42,040 --> 13:09:45,850
-our front end. Now we have our provider, we have our signer.
-
+Now we have our provider, we have our signer.
+现在我们有了 "provider" 还有了 "signer"
 
 12996
 13:09:45,880 --> 13:09:49,210
-Now, we're going to need our contract by getting the API and
-
+Now, we're going to need our contract by getting the API and the address. 
+现在，我们要通过获取 ABI 和地址来得到我们的合约了
 
 12997
 13:09:49,210 --> 13:09:53,350
-the address. So we're gonna need to say const. Contract equals
-
+So we're gonna need to say const. Contract equals what? 
+所以我们需要 `const contract = ""` 等于什么呢？
 
 12998
 13:09:53,680 --> 13:09:57,520
-what? How are we going to get our contract? Well, this is
-
+How are we going to get our contract? 
+我们该怎么获取我们的合约呢？
 
 12999
 13:09:57,520 --> 13:10:01,840
-where we're going to need to know the ABI and the address of
-
+Well, this is where we're going to need to know the ABI and the address of a working with 
+嗯，这就是我们需要知道所用合约的 ABI 和地址的地方了
 
 13000
 13:10:01,840 --> 13:10:04,930
-a working with typically, what you'll see a lot of projects do
-
+typically, what you'll see a lot of projects do
+通常，你会看到很多项目会这么做
 
 13001
 13:10:04,960 --> 13:10:07,690
-since once a contract is deployed, the addresses are
-
+since once a contract is deployed, the addresses are going to change 
+由于合约一旦被部署，地址就会发生改变
 
 13002
 13:10:07,690 --> 13:10:10,330
-going to change is they're going to have some type of constants
-
+is they're going to have some type of constants file. 
+所以他们会为此准备一些“常量文件”("constants file")
 
 13003
 13:10:10,330 --> 13:10:15,400
-file. So they'll create a new file called constants, dot j s.
-
+So they'll create a new file called constants, dot j s.
+他们会创建一个新的文件，名为 "constants.js"
 
 13004
 13:10:17,500 --> 13:10:20,680
-And in here, they'll add the addresses and any API's and
-
+And in here, they'll add the addresses and any API's and anything like that 
+他们会把地址和 ABI 之类的东西添加到这里来
 
 13005
 13:10:20,680 --> 13:10:25,240
-anything like that for us to use in our fund piece here. Now, as
-
+for us to use in our fund piece here. 
+以供我们在 "fund" 部分这里使用
 
 13006
 13:10:25,240 --> 13:10:27,670
-we're developing, and as we're building, this, the backend and
-
+Now, as we're developing, and as we're building, this, 
+在我们进行开发和构建过程中
 
 13007
 13:10:27,670 --> 13:10:30,250
-the front end team are gonna have to interact a little bit,
-
+the backend and the front end team are gonna have to interact a little bit,
+后端和前端团队需要有一定的互动
 
 13008
 13:10:30,280 --> 13:10:32,860
-or if it's just you doing the full stack, you're gonna have to
-
+or if it's just you doing the full stack, 
+或者，如果你是一个全栈开发者
 
 13009
 13:10:32,860 --> 13:10:36,070
-interact with their back end. So this is why it's so important to
-
+you're gonna have to interact with their back end. 
+你就需要自己与后端进行沟通
 
 13010
 13:10:36,070 --> 13:10:40,900
-have both your front end and your back end code nearby. So if
-
+So this is why it's so important to have both your front end and your back end code nearby. 
+所以，将前端和后端代码放在一起是非常重要的
 
 13011
 13:10:40,900 --> 13:10:45,280
-we go back to our Hardhead, fund me project that we just made, we
-
+So if we go back to our Hardhead, fund me project that we just made, 
+现在回到我们刚刚构建的 "hardhat-fund-me" 的项目
 
 13012
 13:10:45,280 --> 13:10:49,630
-can find the ABI in here. Once again, if we go to artifacts, go
-
+we can find the ABI in here. 
+我们可以在这里找到所需的 ABI
 
 13013
 13:10:49,630 --> 13:10:54,370
-to contracts, we can go to fund me dot soul, fund me dot JSON,
-
+Once again, if we go to artifacts, go to contracts, we can go to fund me dot soul, fund me dot JSON,
+再一次，我们来到 "artifacts - contracts - FundMe.sol - FundMe.json" 
 
 13014
 13:10:54,790 --> 13:10:58,660
-we can find the ABI right here, it's going to be this massive
-
+we can find the ABI right here, 
+我们就可以在这里找到 ABI 了
 
 13015
 13:10:58,660 --> 13:11:01,480
-thing right here. So you can go ahead, you can even copy this
-
+it's going to be this massive thing right here. 
+这是一块儿庞大的内容
 
 13016
 13:11:01,480 --> 13:11:05,140
-whole thing in this little non squiggly bracket and this little
-
+So you can go ahead, you can even copy this whole thing in this little non squiggly bracket and this little bracket here, 
+你可以复制这里的全部内容，就是这个非波浪形括号的内部
 
 13017
 13:11:05,140 --> 13:11:09,040
-bracket here, we can copy that. And then we can come back to our
-
+we can copy that. And then we can come back to our constant.js. 
+我们复制下来，然后回到我们的 "constants.js"
 
 13018
 13:11:09,040 --> 13:11:12,580
-constant.js. And we can just save it as variable, we'll say
-
+And we can just save it as variable, 
+我们可以直接把它保存为一个变量
 
 13019
 13:11:12,670 --> 13:11:23,200
-Export const, Avi, e equals and paste that in there. And then
-
+we'll say Export const, Avi, e equals and paste that in there. 
+`export const abi = ` 然后粘贴到这里
 
 13020
 13:11:23,200 --> 13:11:26,920
-back in our index dot j s, we can import it with import
-
+And then back in our index dot j s, we can import it 
+接着回到我们的 "index.js" 我们可以这样导入它
 
 13021
 13:11:28,509 --> 13:11:38,529
-API from constants. Oops. Okay, great. So we have the API. Well,
-
+with import API from constants. Oops. 
+`import {abi} from "./constants.js"
 
 13022
 13:11:38,559 --> 13:11:41,439
-what about the address, since we're going to be running this
-
+Okay, great. So we have the API. Well, what about the address, 
+OK 很好，现在我们就有了 ABI，但地址怎么办呢？
 
 13023
 13:11:41,439 --> 13:11:44,289
-locally, we want to get the contract address of this locally
-
+since we're going to be running this locally, we want to get the contract address of this locally run contract, 
+由于我们是本地运行，所以我们要获取本地运行的合约地址
 
 13024
 13:11:44,319 --> 13:11:48,039
-run contract, we can do that a couple of ways. One way is you
-
+we can do that a couple of ways. 
+有这么几种方法可以使用
 
 13025
 13:11:48,039 --> 13:11:50,799
-can just have two windows open one with your front end code,
-
+One way is you can just have two windows open 
+其中一个方法是，你可以打开两个窗口
 
 13026
 13:11:50,829 --> 13:11:53,559
-one with your back end code, and the one with your back end code,
-
+one with your front end code, one with your back end code, 
+一个是你的前端代码，一个是你的后端代码
 
 13027
 13:11:53,559 --> 13:11:57,579
-you can run yarn, hard hat node, which will spin up our
-
+and the one with your back end code, you can run yarn, hard hat node, 
+然后在你的后端代码这里，你可以运行 `yarn hardhat node`
 
 13028
 13:11:57,579 --> 13:12:01,839
-blockchain node for us, and give us the address in here. Or what
-
+which will spin up our blockchain node for us, and give us the address in here. 
+它会为我们启动一个区块链节点，并给我们相应的地址
 
 13029
 13:12:01,839 --> 13:12:04,239
-we can do. And this will probably be a little bit easier
-
+Or what we can do. And this will probably be a little bit easier
+或者我们可以这样做，这种方法可能还会更简单一点
 
 13030
 13:12:04,329 --> 13:12:07,449
-is in your window with your front end code and create a new
-
+is in your window with your front end code and create a new terminal. 
+在你的前端代码窗口中，创建一个新的终端
 
 13031
 13:12:07,449 --> 13:12:10,569
-terminal. And now we'll have two terminals running. And then this
-
+And now we'll have two terminals running. 
+现在，我们就运行了两个终端
 
 13032
 13:12:10,599 --> 13:12:15,849
-second one, we're going to CD down CD dot dot, and then CD,
-
+And then this second one, we're going to CD down CD dot dot, 
+然后在第二个终端这里，我们返回上一层 `cd ..`
 
 13033
 13:12:16,329 --> 13:12:20,649
-hard hat on Me Free Code Camp. And in here, we're going to run
-
+and then CD, hard hat on Me Free Code Camp. 
+接着 `cd hardhat-fund-me-fcc` 
 
 13034
 13:12:20,649 --> 13:12:25,929
-yarn, art head node. And this is going to spin up our local
-
+And in here, we're going to run yarn, art head node. 
+我们在这里运行 `yarn hardhat node`
 
 13035
 13:12:25,929 --> 13:12:30,159
-blockchain in this second terminal in here, where we have
-
+And this is going to spin up our local blockchain in this second terminal in here, 
+这样就在第二个终端里启动了我们的本地区块链
 
 13036
 13:12:30,459 --> 13:12:34,029
-deploying fund me deploy that address, blah, blah, blah, right
-
+where we have deploying fund me deploy that address, blah, blah, blah, right here. 
+这里可以找到 "deploying "FundMe" 以及 "deployed at" 的地址 bla bla bla
 
 13037
 13:12:34,029 --> 13:12:37,869
-here. And just a reminder, if I hit this x, it just hides the
-
+And just a reminder, if I hit this x, it just hides the terminal. 
+提醒一下，如果我点击这里的 X，它只会隐藏这里的终端
 
 13038
 13:12:37,869 --> 13:12:41,619
-terminal. I can always pull it back up with terminal new
-
+I can always pull it back up with terminal new terminal, 
+我可以随时通过“终端-新建终端”("Terminal-New Terminal")来把它拉回来
 
 13039
 13:12:41,619 --> 13:12:45,639
-terminal, and I can always hide it, but this is still running
-
+and I can always hide it, 
+也可以随时把它隐藏起来
 
 13040
 13:12:45,669 --> 13:12:48,399
-inside of my terminal. So I'm going to hide it. And what I can
-
+but this is still running inside of my terminal. 
+但是，我的终端内部仍然还在运行着
 
 13041
 13:12:48,399 --> 13:12:51,699
-do is I can come back over to our constants folder, and at the
-
+So I'm going to hide it. 
+我要把它隐藏起来
 
 13042
 13:12:51,699 --> 13:12:59,439
-top, we can do export const contract address. equals, we'll
-
+And what I can do is I can come back over to our constants folder, and at the top, we can do export const contract address. equals, 
+现在回到我们的 "constants" 文件，我可以在顶部执行 `export const contractAddress =`
 
 13043
 13:12:59,439 --> 13:13:04,059
-pull the terminal back up. And we'll go grab, where it says,
-
+we'll pull the terminal back up. And we'll go grab, where it says, pulling fund me deployed at right here. 
+我们把终端拉回来，找到 "deploying "FundMe"" 还有 "deployed at"
 
 13044
 13:13:04,929 --> 13:13:08,709
-pulling fund me deployed at right here. We'll copy that
-
+We'll copy that address, 
+复制这个地址
 
 13045
 13:13:08,709 --> 13:13:12,999
-address, put some quotes, and we'll paste it in. And now we're
-
+put some quotes, and we'll paste it in. 
+写一对儿引号，然后把它粘贴进去
 
 13046
 13:13:12,999 --> 13:13:16,959
-also exporting the contract address, then in our index.js
-
+And now we're also exporting the contract address, 
+现在我们就同时在导出合约地址了
 
 13047
 13:13:17,019 --> 13:13:22,749
-will import the contract address with comma, contract address.
-
+then in our index.js will import the contract address with comma, contract address.
+然后在我们的 "index.js" 里，我们要把合约地址导入进来 `, contractAddress`
 
 13048
 13:13:23,469 --> 13:13:28,149
-And now we have both the ABI and the contract address. So what we
-
+And now we have both the ABI and the contract address. 
+现在我们就同时拥有 ABI 以及合约地址了
 
 13049
 13:13:28,149 --> 13:13:33,249
-can do, we can say const contract equals new ethers dot
-
+So what we can do, we can say const contract equals new ethers dot contract of, 
+所以我们就可以开始写 `const contract = new ethers.Contract()`
 
 13050
 13:13:33,249 --> 13:13:38,439
-contract of, we'll pass the contract address, pass the API,
-
+we'll pass the contract address, pass the API, and we'll pass it the signer. 
+传入 `contractAddress` 和 `abi` 以及 `signer`
 
 13051
 13:13:38,679 --> 13:13:41,649
-and we'll pass it the signer. Now we have an ethers contract
-
+Now we have an ethers contract object 
+现在我们就有了一个 "ethers.Contract" 对象
 
 13052
 13:13:41,649 --> 13:13:44,829
-object that's connected to our signer, and we have the contract
-
+that's connected to our signer, and we have the contract address, and we have the contract abi, 
+它连接到了我们的 "signer" 并且我们还有了合约的地址以及 ABI 
 
 13053
 13:13:44,829 --> 13:13:47,769
-address, and we have the contract abi, now that we have a
-
+now that we have a contract object, we can go ahead and start making transactions
+现在我们有了一个合约对象，就可以开始创建交易了
 
 13054
 13:13:47,769 --> 13:13:50,829
-contract object, we can go ahead and start making transactions
-
+the exact same way we've made transactions before 
+就和我们之前创建交易的方式完全一样
 
 13055
 13:13:51,009 --> 13:13:54,219
-the exact same way we've made transactions before we can just
-
+we can just run const transaction response equals a weight contract dot fund. 
+我们可以直接运行 `const transactionResponse = await contract.fund()`
 
 13056
 13:13:54,219 --> 13:14:02,739
-run const transaction response equals a weight contract dot
-
+And then we'll pass a value of ethers dot utils dot parse, ether ether mount. 
+接着我们传入 `{value: ethers.utils.parseEther(ethAmount)}
 
 13057
 13:14:02,799 --> 13:14:08,829
-fund. And then we'll pass a value of ethers dot utils dot
-
+So this is going to be how we're going to go ahead and create our transaction. 
+这就是我们创建交易的方式
 
 13058
 13:14:09,039 --> 13:14:14,619
-parse, ether ether mount. So this is going to be how we're
-
+And if you take this right now, and we go to our front, we give it a little refresh, 
+如果你就保持现在这样，并且回到前端，刷新一下
 
 13059
 13:14:14,619 --> 13:14:18,219
-going to go ahead and create our transaction. And if you take
-
+make sure we're connected and we hit fund, 
+确保已经连接上了，然后我们点击 "Fund"
 
 13060
 13:14:18,219 --> 13:14:21,159
-this right now, and we go to our front, we give it a little
-
+we're gonna get this error value must be a string. 
+我们收到了一个报错 "value" 必须是一个字符串("Error: value must be a string")
 
 13061
 13:14:21,159 --> 13:14:24,699
-refresh, make sure we're connected and we hit fund, we're
-
+That's because at the mount right now is being passed in as nothing. 
+这是由于 "ethAmount" 现在还没有被传入任何值
 
 13062
 13:14:24,699 --> 13:14:29,529
-gonna get this error value must be a string. That's because at
-
+Now normally, we'll pass parameters directly to our functions. 
+一般来说，我们会直接给我们的函数传入这一参数
 
 13063
 13:14:29,529 --> 13:14:33,219
-the mount right now is being passed in as nothing. Now
-
+But what we're going to do is for now is we're just going to hard code this. 
+但目前，这里我们还是先用硬编码吧
 
 13064
 13:14:33,219 --> 13:14:36,669
-normally, we'll pass parameters directly to our functions. But
-
+So we'll say const. At the mount equals, we'll do like 77, or something 
+所以我们写下 `const ethAmount =` 比如说 77 吧，都一样
 
 13065
 13:14:36,789 --> 13:14:39,309
-what we're going to do is for now is we're just going to hard
-
+we had fun. Now, what do you think's gonna happen? 
+现在点击 "Fund" 你觉得会发生些什么？
 
 13066
 13:14:39,309 --> 13:14:43,629
-code this. So we'll say const. At the mount equals, we'll do
-
+Well, we get this other air, insufficient funds for intrinsic transaction cost, 
+好吧，我们收到了另一个报错，“内在交易费用不足”("insufficient funds for intrinsic transaction cost")
 
 13067
 13:14:43,629 --> 13:14:47,379
-like 77, or something we had fun. Now, what do you think's
-
+or you might get some other error, 
+或者你可能会遇到一些其它错误
 
 13068
 13:14:47,379 --> 13:14:51,669
-gonna happen? Well, we get this other air, insufficient funds
-
+but you're gonna get a weird error here. 
+总之你一定会在这里遇到某个奇怪的报错
 
 13069
 13:14:51,699 --> 13:14:55,089
-for intrinsic transaction cost, or you might get some other
-
+And that's because we're not actually connected to our local hard head node right now. 
+这是因为我们此时还没有实际连接到我们的本地 Hardhat 节点
 
 13070
 13:14:55,089 --> 13:14:57,459
-error, but you're gonna get a weird error here. And that's
-
+Well, if we look at our Metamask, 
+如果我们查看一下我们的 MetaMask 
 
 13071
 13:14:57,459 --> 13:15:01,689
-because we're not actually connected to our local hard head
-
+we're currently not connected to the right blockchain, 
+我们目前没有连接到正确的区块链上
 
 13072
 13:15:01,689 --> 13:15:04,899
-node right now. Well, if we look at our Metamask, we're currently
-
+we're connected to rink B, or main net or whatever, 
+我们连接的是 Rinkeby 或者主网络或者其它网络
 
 13073
 13:15:04,929 --> 13:15:08,409
-not connected to the right blockchain, we're connected to
-
+we need to get connected to our local host. 
+我们需要的是连接到我们的本地主机上
 
 13074
 13:15:08,409 --> 13:15:12,729
-rink B, or main net or whatever, we need to get connected to our
-
+If you look in your networks, 
+如果你查看一下你的 "Networks"
 
 13075
 13:15:12,729 --> 13:15:16,209
-local host. If you look in your networks, you'll actually have a
-
+you'll actually have a local host object here already. 
+实际上你已经有一个本地主机("Localhost")对象了
 
 13076
 13:15:16,209 --> 13:15:19,869
-local host object here already. But let's just be super
-
+But let's just be super specific. 
+但是让我们更具体一点
 
 13077
 13:15:19,869 --> 13:15:23,079
-specific. And we'll add a new network here, we're going to add
-
+And we'll add a new network here, 
+我们来添加一个新的网络
 
 13078
 13:15:23,079 --> 13:15:27,099
-something called our hard hat, local host. And we'll hit Add
-
+we're going to add something called our hard hat, local host. 
+添加一个名为 "Hardhat-Localhost" 的网络
 
 13079
 13:15:27,099 --> 13:15:30,549
-Network and we'll add Hardhead. Local host in here, the RPC URL,
-
+And we'll hit Add Network and we'll add Hardhead. Local host in here, 
+我们点击“添加网络”("Add a network") 然后在这里添加 "Hardhat-Localhost"
 
 13080
 13:15:30,789 --> 13:15:35,379
-we can find from our node area, which we scroll to where our
-
+the RPC URL, we can find from our node area, 
+而 "RPC URL"，我们可以在 "node" 中找到
 
 13081
 13:15:35,379 --> 13:15:39,579
-node is running, we can copy this URL and paste it into new
-
+which we scroll to where our node is running, 
+我们滑到还在运行的 "node" 这里
 
 13082
 13:15:39,579 --> 13:15:44,859
-RPC URL, chain ID is going to be 31337 currency symbol is going
-
+we can copy this URL and paste it into new RPC URL, 
+复制这里的 URL 并粘贴到到这边的 "New RPC URL" 里
 
 13083
 13:15:44,859 --> 13:15:48,789
-to be go or ether. Even though this pop up says it might have a
-
+chain ID is going to be 31337 currency symbol is going to be go or ether. 
+"Chain ID" 是 `31337`，"Currency Symbol" 是 "GO" 或者 "ETH"  
 
 13084
 13:15:48,789 --> 13:15:51,159
-different currency symbol go, we're just going to put eath in
-
+Even though this pop up says it might have a different currency symbol go, we're just going to put eath in here. 
+尽管这里可能会弹出来说有不同的货币符号 "GO"，但我们这里还是填 "ETH"
 
 13085
 13:15:51,159 --> 13:15:54,429
-here. And there is no block explorer, right? Because this is
-
+And there is no block explorer, right? 
+然后我们并没有区块浏览器，对吧？
 
 13086
 13:15:54,429 --> 13:15:57,249
-a local blockchain, we're not going to have a block Explorer.
-
+Because this is a local blockchain, we're not going to have a block Explorer.
+因为这是一个本地区块链，根本不可能区块浏览器
 
 13087
 13:15:57,309 --> 13:15:58,809
 So we'll go ahead and hit Save.
-
+我们继续，点击保存
 
 13088
 13:15:58,900 --> 13:16:01,870
-And now we have an account here, which is great. We're connected
-
+And now we have an account here, which is great. 
+现在我们在这就有了一个账户了，非常好
 
 13089
 13:16:01,870 --> 13:16:04,990
-to our local blockchain. And if we switch our meta mask, we can
-
+We're connected to our local blockchain. 
+我们已经连接到本地区块链上了
 
 13090
 13:16:04,990 --> 13:16:08,590
-see we're on the local hard hat. And we are connected. Awesome.
+And if we switch our meta mask, we can see we're on the local hard hat. And we are connected. Awesome.
 
 
 13091
