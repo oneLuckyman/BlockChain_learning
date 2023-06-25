@@ -1,98 +1,101 @@
 13138
 13:18:55,840 --> 13:19:03,130
-Oh, one
-
+Oh, one other point, 
+哦，还有一点
 
 13139
 13:19:03,130 --> 13:19:05,800
-other point, something that you'll probably run into
-
+something that you'll probably run into multiple times. As we're doing this. 
+在这个过程中有一件事你可能会遇到很多次
 
 13140
 13:19:05,830 --> 13:19:09,820
-multiple times. As we're doing this. If you get an error that
-
+If you get an error that looks like this 
+如果你遇到了一个类似这样的报错
 
 13141
 13:19:09,820 --> 13:19:13,360
-looks like this eath. JS query while formatting outputs from
-
+eath. JS query while formatting outputs from RPC, 
+“[ethjs-query] 在格式化来自 RPC 的输出时”
+("[ethjs-query] while formatting outputs from RPC")
 
 13142
 13:19:13,360 --> 13:19:17,200
-RPC, nonce to high expected not to be too but got form, you will
-
+nonce to high expected not to be too but got form, 
+“nonce 的数值过高，预期为 2 但收到的是 4”
+("nonce too high Expected nonce to be 2 but got 4")
 
 13143
 13:19:17,200 --> 13:19:20,560
-definitely see this a whole lot. Here's what you do to fix this.
-
+you will definitely see this a whole lot. 
+你肯定能看到它很多次
 
 13144
 13:19:20,680 --> 13:19:23,890
-The reason this happens is because you've closed your
-
+Here's what you do to fix this. 
+接下来是解决它的办法
 
 13145
 13:19:23,890 --> 13:19:27,490
-hardhat node and then restarted it, and your heart had node
-
+The reason this happens is because you've closed your hardhat node and then restarted it, 
+发生这种情况的原因是，你曾关闭并重启了 Hardhat 的节点
 
 13146
 13:19:27,490 --> 13:19:30,610
-goes, Okay, well, I'm starting fresh, I'm starting from zero.
-
+and your heart had node goes, Okay, well, I'm starting fresh, I'm starting from zero.
+你的 Hardhat 节点知道自己要刷新，要从零开始
 
 13147
 13:19:30,880 --> 13:19:34,240
-But Metamask isn't smart enough to know that, what we want to do
-
+But Metamask isn't smart enough to know that, 
+但 MetaMask 却不够智能，不知道要这样做
 
 13148
 13:19:34,300 --> 13:19:36,850
-is we want to come to our Metamask, we'll hit this big
-
+what we want to do is we want to come to our Metamask, 
+我们要做的是，前往我们的 MetaMask
 
 13149
 13:19:36,850 --> 13:19:40,540
-button, we'll go down to settings, we'll go to Advanced,
-
+we'll hit this big button, we'll go down to settings, we'll go to Advanced,
+点击这个大按钮，进入“设置”("Settings")，进入“高级”("Advanced")
 
 13150
 13:19:40,870 --> 13:19:44,050
-and we'll go to reset account. And yes, we're going to reset
-
+and we'll go to reset account. 
+然后点击“重置账户”("Reset Account")
 
 13151
 13:19:44,050 --> 13:19:48,100
-it. This isn't something ideally that you'd like to do with an
-
+And yes, we're going to reset it. 
+是的，我们要重置它
 
 13152
 13:19:48,100 --> 13:19:51,820
-actual account with actual money on a local network, this is
-
+This isn't something ideally that you'd like to do with an actual account with actual money 
+理想情况下我们并不喜欢对有实际资金的真实账户做这样的操作
 
 13153
 13:19:51,820 --> 13:19:54,940
-fine. Now if you reset the account, and you reset the node,
-
+on a local network, this is fine. 
+但在本地网络上，这样做是可以的
 
 13154
 13:19:55,090 --> 13:19:58,030
-we can go ahead and hit Confirm. And it doesn't give us that
-
+Now if you reset the account, and you reset the node, we can go ahead and hit Confirm. 
+现在，如果你重置了账户也重置了节点，就可以点击“确认”("Confirm")
 
 13155
 13:19:58,030 --> 13:20:01,180
-error anymore. So that's kind of the tip there, you want to reset
-
+And it doesn't give us that error anymore. 
+然后它就不会给我们报那个错误了
 
 13156
 13:20:01,180 --> 13:20:04,120
-the nuts so that our Metamask and our blockchain are in sync
-
+So that's kind of the tip there, 
+这就是这个小提示的全部内容
 
 13157
 13:20:04,120 --> 13:20:05,410
-with that nonce number.
+you want to reset the nuts so that our Metamask and our blockchain are in sync with that nonce number. 
+你需要重置 nonce 以使 MetaMask 和区块链的 nonce 值达到同步
