@@ -1,0 +1,1105 @@
+13158
+13:20:08,290 --> 13:20:10,810
+So we have this transaction response. 
+我们已经有了这个 `transactionResponse`
+
+13159
+13:20:10,810 --> 13:20:14,680
+And we probably want our front end to give the user some indication, 
+我们还希望我们的前端能尽可能多的给用户一些指示
+
+13160
+13:20:14,680 --> 13:20:17,590
+hey, the transaction went through. 
+“嘿，交易已经通过”
+
+13161
+13:20:17,590 --> 13:20:20,590
+So what we want to do is we want to listen to the blockchain for this to finish. 
+所以我们要做的就是监听区块链完成交易
+
+13162
+13:20:20,650 --> 13:20:26,860
+So we can either listen for the TX to be mined. 
+所以我们要“监听被开采的交易”
+("listen for the tx to be mined")
+
+13163
+13:20:27,130 --> 13:20:29,950
+Or we can listen for an event. 
+或者我们可以“监听一个事件”
+("listen for an event")
+
+13164
+13:20:29,950 --> 13:20:32,230
+We haven't learned about events yet. But we will. So for now, since we haven't learned about events yet, we're just going to
+我们还没有了解过关于“事件”("event")的内容
+
+13165
+13:20:32,230 --> 13:20:34,960
+listen for the TX to be mined. Or to listen for the transaction
+
+
+13166
+13:20:34,960 --> 13:20:37,240
+to be mined, we're actually going to create a new function
+
+
+13167
+13:20:37,510 --> 13:20:44,950
+called function, listen, or transaction mine in this is
+
+
+13168
+13:20:44,950 --> 13:20:49,360
+going to take as input a transaction response, and a
+
+
+13169
+13:20:49,360 --> 13:20:53,410
+provider. Now you'll notice this isn't an async function. For
+
+
+13170
+13:20:53,410 --> 13:20:56,050
+this section. This is intentional, we don't want this
+
+
+13171
+13:20:56,050 --> 13:20:57,970
+to be an async function. And you'll see why in a second.
+
+
+13172
+13:20:58,390 --> 13:21:00,970
+We're going to be using JavaScript promise JavaScript
+
+
+13173
+13:21:01,000 --> 13:21:04,270
+async functionality to its massive advantage. And this is
+
+
+13174
+13:21:04,270 --> 13:21:07,060
+why JavaScript actually works so well on the front end is because
+
+
+13175
+13:21:07,420 --> 13:21:09,790
+of how it's asynchronous. So we're going to create this
+
+
+13176
+13:21:09,790 --> 13:21:12,400
+function listen for transaction to be mined, we're going to
+
+
+13177
+13:21:12,400 --> 13:21:16,180
+await in our fund function. And we're going to have this return
+
+
+13178
+13:21:16,240 --> 13:21:19,270
+a promise. Let's go ahead, and let's learn how to build this.
+
+
+13179
+13:21:19,270 --> 13:21:22,750
+So we're gonna say console dot log, string interpolation, we'll
+
+
+13180
+13:21:22,750 --> 13:21:27,730
+say mining. And then in here, we'll say transaction, response
+
+
+13181
+13:21:27,730 --> 13:21:32,140
+dot hash. All of our transaction response objects have a hash,
+
+
+13182
+13:21:32,140 --> 13:21:36,100
+which just represent that hash. And we'll do a couple of data
+
+
+13183
+13:21:36,100 --> 13:21:39,280
+dot, we'll put in our console here, we're waiting for the
+
+
+13184
+13:21:39,280 --> 13:21:42,250
+transaction to be mined, then what we're going to do is we're
+
+
+13185
+13:21:42,250 --> 13:21:47,740
+going to return a new promise. And the reason we're going to
+
+
+13186
+13:21:47,740 --> 13:21:52,060
+return a promise is because we need to create a listener for
+
+
+13187
+13:21:52,060 --> 13:21:55,750
+the blockchain. We want to listen for this event to happen.
+
+
+13188
+13:21:55,780 --> 13:22:01,150
+But we want to tell JavaScript, hey, wait for this thing to
+
+
+13189
+13:22:01,150 --> 13:22:04,930
+finish looking, wait for this thing to finish looking. Now
+
+
+13190
+13:22:04,930 --> 13:22:07,270
+here's where this gets a little bit tricky. In our fund
+
+
+13191
+13:22:07,270 --> 13:22:10,960
+function. After we create the transaction, we basically want
+
+
+13192
+13:22:10,960 --> 13:22:17,260
+to tell JavaScript Hey, wait for this TX to finish. So our code
+
+
+13193
+13:22:17,290 --> 13:22:22,420
+is going to look as simple as await listen for transaction
+
+
+13194
+13:22:22,420 --> 13:22:28,330
+mine. And we're going to pass it the trans action response
+
+
+13195
+13:22:29,529 --> 13:22:32,469
+and our provider. So we're saying hey, listen for this
+
+
+13196
+13:22:32,469 --> 13:22:35,289
+transaction finish. And we're using this await keyword,
+
+
+13197
+13:22:35,469 --> 13:22:38,589
+because again, the await keyword says okay, we're gonna stop
+
+
+13198
+13:22:38,619 --> 13:22:40,599
+right here. We're gonna stop until this function is
+
+
+13199
+13:22:40,599 --> 13:22:43,899
+completely done. Now in this listen for transaction in mind,
+
+
+13200
+13:22:43,929 --> 13:22:46,539
+we have to define how we're actually going to listen for
+
+
+13201
+13:22:46,539 --> 13:22:50,289
+this. So we're going to say listen for this transaction to
+
+
+13202
+13:22:50,289 --> 13:22:54,399
+finish. Ethers actually comes with a way for us to listen for
+
+
+13203
+13:22:54,399 --> 13:22:57,279
+transactions and listen for events, which again, we haven't
+
+
+13204
+13:22:57,279 --> 13:23:00,159
+learned About, but don't worry about that yet. So we can go to
+
+
+13205
+13:23:00,159 --> 13:23:04,509
+the ethers docs. And we can look up once. Contract dot once.
+
+
+13206
+13:23:04,569 --> 13:23:08,019
+There's a whole bunch of listeners that we can use to
+
+
+13207
+13:23:08,049 --> 13:23:11,019
+listen for events and listen for different things to happen, we
+
+
+13208
+13:23:11,019 --> 13:23:13,749
+can do this thing called provider dot once where we
+
+
+13209
+13:23:13,749 --> 13:23:18,489
+listen for some event. And once that event fires, we call some
+
+
+13210
+13:23:18,519 --> 13:23:21,129
+other function that we've defined. Now, we haven't talked
+
+
+13211
+13:23:21,129 --> 13:23:24,099
+about events yet. And again, don't worry about this quite
+
+
+13212
+13:23:24,099 --> 13:23:27,099
+yet. One of the events that we can wait for is we can just wait
+
+
+13213
+13:23:27,099 --> 13:23:30,639
+for the transaction receipt to finish, right, because once we
+
+
+13214
+13:23:30,639 --> 13:23:33,999
+get a transaction receipt, that means that the transaction has
+
+
+13215
+13:23:33,999 --> 13:23:36,309
+actually finished going through. So we're going to use this
+
+
+13216
+13:23:36,309 --> 13:23:41,109
+provider dot once syntax to wait for the transaction receipt,
+
+
+13217
+13:23:41,259 --> 13:23:43,959
+which is going to be our event, which isn't really an event, but
+
+
+13218
+13:23:43,959 --> 13:23:45,849
+don't worry about that yet. And then we're going to call some
+
+
+13219
+13:23:45,849 --> 13:23:48,069
+listener function that we defined, you can also do
+
+
+13220
+13:23:48,069 --> 13:23:52,569
+provider.on, which will trigger anytime your event fires
+
+
+13221
+13:23:52,599 --> 13:23:56,199
+provider once just triggers one time, we only care about this
+
+
+13222
+13:23:56,199 --> 13:23:59,379
+transaction going through one time. So we're passing our
+
+
+13223
+13:23:59,379 --> 13:24:04,239
+provider object. So we're gonna say provider dot once our event
+
+
+13224
+13:24:04,269 --> 13:24:09,669
+which is just going to be transaction response, hash,
+
+
+13225
+13:24:09,999 --> 13:24:13,269
+provided on transaction response dot hash. So once we get this
+
+
+13226
+13:24:13,269 --> 13:24:16,119
+hash, which will pretty much get right away, we're going to call
+
+
+13227
+13:24:16,119 --> 13:24:20,349
+our listener function. Now we can create a function listener
+
+
+13228
+13:24:20,529 --> 13:24:23,739
+like this, and then just pass listener in here. But we're
+
+
+13229
+13:24:23,739 --> 13:24:25,869
+going to do an anonymous function here, because that's
+
+
+13230
+13:24:25,959 --> 13:24:28,239
+typically what we see as the syntax for these loops. And so
+
+
+13231
+13:24:28,239 --> 13:24:30,909
+far, we're doing provider dot once to do this anonymous
+
+
+13232
+13:24:30,909 --> 13:24:34,539
+function, we're going to do just two little parentheses here. And
+
+
+13233
+13:24:34,539 --> 13:24:39,069
+this arrow notation. So this by itself represents an anonymous
+
+
+13234
+13:24:39,069 --> 13:24:41,919
+function. So we're saying, hey, there's some function, it
+
+
+13235
+13:24:41,919 --> 13:24:45,039
+doesn't take any parameters, and it doesn't have any code, this
+
+
+13236
+13:24:45,039 --> 13:24:48,039
+arrow function, this whole thing is saying this is an anonymous
+
+
+13237
+13:24:48,039 --> 13:24:51,099
+function. So we're saying provided at once transaction
+
+
+13238
+13:24:51,099 --> 13:24:53,259
+hash happens, here's the function that you want to
+
+
+13239
+13:24:53,259 --> 13:24:56,709
+execute. It doesn't do anything right now. But let's have a do
+
+
+13240
+13:24:56,709 --> 13:24:58,959
+something. So once this transaction dot response
+
+
+13241
+13:24:58,989 --> 13:25:05,739
+finishes, we're going to take a trans transaction received as an
+
+
+13242
+13:25:05,739 --> 13:25:09,399
+input parameter, or our our callback function, or our
+
+
+13243
+13:25:09,399 --> 13:25:12,189
+listener function. And all we're going to do is we're gonna say
+
+
+13244
+13:25:12,189 --> 13:25:19,209
+console dot log, completed with a little string interpolation,
+
+
+13245
+13:25:19,449 --> 13:25:23,649
+transaction receipt, that confirmations, confirmations,
+
+
+13246
+13:25:24,069 --> 13:25:26,319
+and then completed with transaction receipt,
+
+
+13247
+13:25:26,349 --> 13:25:30,699
+confirmations, confirmations. So once this provider dot once sees
+
+
+13248
+13:25:30,699 --> 13:25:34,479
+that there's a transaction hash, it's going to give as an input
+
+
+13249
+13:25:34,479 --> 13:25:37,749
+rammer to our listener function, the transaction receipt, kind of
+
+
+13250
+13:25:37,749 --> 13:25:40,389
+that same syntax that we've been seeing this whole time, once a
+
+
+13251
+13:25:40,389 --> 13:25:43,179
+transaction response finishes, we get the transaction receipt,
+
+
+13252
+13:25:43,479 --> 13:25:45,729
+and we can do stuff with it. And we see how many block
+
+
+13253
+13:25:45,729 --> 13:25:48,909
+confirmations it has. For us, this pretty much should always
+
+
+13254
+13:25:48,909 --> 13:25:52,749
+be one. Now if we save this, go back to our front end, and we
+
+
+13255
+13:25:52,749 --> 13:25:56,319
+hit fund, it's going to work, we're going to give the user
+
+
+13256
+13:25:56,319 --> 13:25:59,409
+some indication that it worked, which is great. But it's not
+
+
+13257
+13:25:59,499 --> 13:26:02,229
+really going to work the way that we want it to work. We have
+
+
+13258
+13:26:02,229 --> 13:26:05,709
+this console dot log done right after we do the await, listen
+
+
+13259
+13:26:05,709 --> 13:26:09,789
+for transaction mine, and we come back and we hit fund, we
+
+
+13260
+13:26:09,789 --> 13:26:13,839
+hit confirm, it actually doesn't go in the order that we want it
+
+
+13261
+13:26:13,839 --> 13:26:18,489
+to go, it goes mining this thing that it says Done. And then it
+
+
+13262
+13:26:18,489 --> 13:26:21,879
+says completed with one trip confirmation what what's going
+
+
+13263
+13:26:21,879 --> 13:26:26,349
+on here, we should write completed before we write done,
+
+
+13264
+13:26:26,409 --> 13:26:28,929
+because that's the order that we have this in. But it looks like
+
+
+13265
+13:26:28,929 --> 13:26:32,199
+it's words, it's going out of order. What what's going on
+
+
+13266
+13:26:32,199 --> 13:26:35,709
+here, what's going to happen is when we call listen for
+
+
+13267
+13:26:35,709 --> 13:26:40,569
+transaction mine, or listen for transaction, mine function is
+
+
+13268
+13:26:40,569 --> 13:26:44,499
+going to kick off, but it's going to kick off provided on
+
+
+13269
+13:26:44,499 --> 13:26:49,059
+once as its own process. So await listen for transaction,
+
+
+13270
+13:26:49,059 --> 13:26:53,349
+mine will kick off the listener, but it doesn't wait for this
+
+
+13271
+13:26:53,349 --> 13:26:57,279
+listener to find the transaction response. So this function will
+
+
+13272
+13:26:57,279 --> 13:27:04,269
+actually finish before provider dot once finishes. So after it
+
+
+13273
+13:27:04,269 --> 13:27:08,079
+kicks off the listener, it'll run to the next line of our
+
+
+13274
+13:27:08,079 --> 13:27:12,369
+code, which is console dot log and done. Our front end we'll go
+
+
+13275
+13:27:12,369 --> 13:27:15,969
+oh, oh, you kicked off a listener earlier. Let me go back
+
+
+13276
+13:27:15,969 --> 13:27:20,049
+down and let me recheck to see if it's finished. And if it has
+
+
+13277
+13:27:20,049 --> 13:27:23,229
+finished, I'll go do what it told me to do. And this is where
+
+
+13278
+13:27:23,229 --> 13:27:25,029
+what's known as the event loop kicks in.
+
+
+13279
+13:27:25,389 --> 13:27:28,479
+We don't actually wait for this provider that wants to finish,
+
+
+13280
+13:27:28,809 --> 13:27:32,259
+we add this provided at once onto this queue called the event
+
+
+13281
+13:27:32,259 --> 13:27:36,399
+loop. And our front end is going to periodically check back to it
+
+
+13282
+13:27:36,399 --> 13:27:40,689
+to see if it's finished. So we want to adjust our code. So we
+
+
+13283
+13:27:40,689 --> 13:27:43,539
+wait for the listener to finish listening, which is where we're
+
+
+13284
+13:27:43,539 --> 13:27:47,079
+going to get into promises here. So what we want to do is we want
+
+
+13285
+13:27:47,079 --> 13:27:50,649
+to adjust this function to now return a promise. And we're
+
+
+13286
+13:27:50,649 --> 13:27:53,139
+going to use this syntax a couple of times in the future.
+
+
+13287
+13:27:53,169 --> 13:27:55,959
+So what we're going to do is we're going to say hey, we want
+
+
+13288
+13:27:55,959 --> 13:27:59,379
+to wait for the listener To finish listening, we're going to
+
+
+13289
+13:27:59,379 --> 13:28:02,739
+wrap this whole thing into a promise. And we're going to say
+
+
+13290
+13:28:02,739 --> 13:28:08,469
+return, new promise. And a promise takes a function itself
+
+
+13291
+13:28:08,499 --> 13:28:12,759
+as an input parameter. So again, we'll use kind of this anonymous
+
+
+13292
+13:28:12,759 --> 13:28:15,489
+function notation. And it will take two input parameters
+
+
+13293
+13:28:15,489 --> 13:28:21,189
+resolve and reject. So resolve says, hey, if this promise works
+
+
+13294
+13:28:21,189 --> 13:28:24,489
+correctly, call this resolve function. And for us, this
+
+
+13295
+13:28:24,489 --> 13:28:28,629
+promise is going to be done when the listener finishes listening.
+
+
+13296
+13:28:28,839 --> 13:28:31,899
+And then we would reject if there was some type of timeout,
+
+
+13297
+13:28:31,929 --> 13:28:34,599
+we're not going to write the reject function. But in the
+
+
+13298
+13:28:34,599 --> 13:28:37,479
+future, if you were to do this for production, you'd add some
+
+
+13299
+13:28:37,479 --> 13:28:40,299
+timeout as the reject parameter. Basically, you're saying, hey,
+
+
+13300
+13:28:40,449 --> 13:28:42,249
+once the listener finishes listening, we're going to
+
+
+13301
+13:28:42,249 --> 13:28:45,219
+resolve and if it takes too long, we're gonna say ask for
+
+
+13302
+13:28:45,219 --> 13:28:47,799
+you, you took too long, and instead of closing it off, here,
+
+
+13303
+13:28:47,949 --> 13:28:52,359
+we're going to close it off around this provider thing. So
+
+
+13304
+13:28:52,359 --> 13:28:55,599
+we're gonna say return new promise, resolve, reject. And
+
+
+13305
+13:28:55,629 --> 13:29:00,729
+only once this transaction gets fired, are we going to resolve
+
+
+13306
+13:29:00,759 --> 13:29:05,199
+this promise, like so. So what is happening here, so we're
+
+
+13307
+13:29:05,199 --> 13:29:10,269
+going to put the resolve inside of this provider at once. So
+
+
+13308
+13:29:10,269 --> 13:29:15,849
+we're saying, once this transaction hash is found, then
+
+
+13309
+13:29:15,849 --> 13:29:18,069
+we're going to call this function, we're gonna say
+
+
+13310
+13:29:18,069 --> 13:29:21,219
+console dot log, and then we're going to resolve so this promise
+
+
+13311
+13:29:21,249 --> 13:29:25,389
+only returns once a resolve or reject is called. And we're
+
+
+13312
+13:29:25,389 --> 13:29:30,759
+telling it only resolve only finish this function once.
+
+
+13313
+13:29:31,239 --> 13:29:34,329
+Transaction response dot hash is found, because it's going to be
+
+
+13314
+13:29:34,359 --> 13:29:38,349
+inside of these little squiggly parentheses for provider dot
+
+
+13315
+13:29:38,349 --> 13:29:43,569
+once, the promise right now only resolves after it's fired. It's
+
+
+13316
+13:29:43,569 --> 13:29:47,619
+event here. If this was really confusing, just copy paste this
+
+
+13317
+13:29:47,679 --> 13:29:50,859
+and move on, we're getting a little bit deeper into front end
+
+
+13318
+13:29:50,859 --> 13:29:54,339
+stuff here. So hopefully, this was clear, if not definitely
+
+
+13319
+13:29:54,339 --> 13:29:56,559
+jump in to the GitHub discussions to start asking
+
+
+13320
+13:29:56,559 --> 13:30:00,639
+about this stuff. But now that we've updated this, we can come
+
+
+13321
+13:30:00,639 --> 13:30:03,489
+back to our front end, we can hit the fund button. And
+
+
+13322
+13:30:03,489 --> 13:30:06,099
+hopefully this time, everything will go in order. We'll hit
+
+
+13323
+13:30:06,099 --> 13:30:10,749
+confirm, we see mining completed, and then we see done.
+
+
+13324
+13:30:10,959 --> 13:30:14,349
+And the reason for this is because again, our await keyword
+
+
+13325
+13:30:14,409 --> 13:30:17,469
+is now waiting, it says oh, you're returning a promise, I
+
+
+13326
+13:30:17,469 --> 13:30:21,489
+need to await I need to wait for it to resolve or reject. And we
+
+
+13327
+13:30:21,519 --> 13:30:25,029
+only resolve the promise once our provider finds this
+
+
+13328
+13:30:25,029 --> 13:30:27,969
+transaction hash and this transaction receipt, this is
+
+
+13329
+13:30:27,969 --> 13:30:31,269
+this listen for transaction mine. In future sections, all of
+
+
+13330
+13:30:31,269 --> 13:30:33,819
+this is going to be abstracted away for us. So life is going to
+
+
+13331
+13:30:33,819 --> 13:30:36,069
+be much easier, but it is important to understand what's
+
+
+13332
+13:30:36,069 --> 13:30:39,609
+actually going on here. Awesome. So now we're giving the front
+
+
+13333
+13:30:39,609 --> 13:30:47,079
+end some indication of what's going on. Our fun function is
+
+
+13334
+13:30:47,079 --> 13:30:52,359
+done well, no, not really. Why not? Well, because right now
+
+
+13335
+13:30:52,359 --> 13:30:55,659
+we're hard coding the eath amount to 0.1. And on the front
+
+
+13336
+13:30:55,659 --> 13:30:57,939
+end, we probably don't want to hard code it, we probably want
+
+
+13337
+13:30:57,939 --> 13:31:02,049
+to allow users to fund as much or as little as they want. So we
+
+
+13338
+13:31:02,049 --> 13:31:05,349
+actually need to change this from just a button to a input
+
+
+13339
+13:31:05,349 --> 13:31:09,639
+form. So to do this, we're gonna go back over into our HTML. So
+
+
+13340
+13:31:09,639 --> 13:31:13,149
+we'll go back to index dot HTML. And we're going to change this
+
+
+13341
+13:31:13,179 --> 13:31:15,939
+fun section here, we're going to add some form information. So
+
+
+13342
+13:31:15,939 --> 13:31:18,249
+we're going to keep this button as it is, or we're going to add
+
+
+13343
+13:31:18,249 --> 13:31:22,809
+like a little text box to input as much eath as they want. So
+
+
+13344
+13:31:22,839 --> 13:31:26,739
+I'm going to create a label, we're gonna say it's for, it's
+
+
+13345
+13:31:26,739 --> 13:31:29,889
+going to be fund and this label we're gonna say, is eath amount,
+
+
+13346
+13:31:30,549 --> 13:31:32,589
+and then we're gonna close label, this is basically just
+
+
+13347
+13:31:32,589 --> 13:31:34,959
+going to create a label. And if we go back to our front end, we
+
+
+13348
+13:31:34,959 --> 13:31:37,899
+now just have this Etham out label that isn't labeling
+
+
+13349
+13:31:37,929 --> 13:31:40,809
+anything. Now we're going to create an input, and we're going
+
+
+13350
+13:31:40,809 --> 13:31:45,249
+to give it an ID of eath amount. And we're going to give it a
+
+
+13351
+13:31:45,249 --> 13:31:46,059
+placeholder
+
+
+13352
+13:31:47,140 --> 13:31:53,470
+of 0.1. And then we're gonna close the input. So now if we
+
+
+13353
+13:31:53,470 --> 13:31:56,920
+flip to our front end, we have eath amount, labeling this
+
+
+13354
+13:31:56,920 --> 13:31:59,710
+little text box with a placeholder of 0.1. And we can
+
+
+13355
+13:31:59,710 --> 13:32:02,110
+add stuff in here, you know, blah, blah, whatever. And one
+
+
+13356
+13:32:02,110 --> 13:32:05,170
+more thing, if you have some tags, but you don't put anything
+
+
+13357
+13:32:05,170 --> 13:32:07,720
+in between them, you can actually shorten it by just
+
+
+13358
+13:32:07,960 --> 13:32:11,950
+putting the little closing thing at the back of it like this. So
+
+
+13359
+13:32:11,950 --> 13:32:13,600
+if you don't have anything between your tags, you can just
+
+
+13360
+13:32:13,600 --> 13:32:17,140
+close them like this, these two are equivalent, boom, boom,
+
+
+13361
+13:32:17,170 --> 13:32:20,230
+boom, boom, those are the same thing. Great. When we called
+
+
+13362
+13:32:20,230 --> 13:32:22,900
+fund right now we're calling fund and we're not passing any
+
+
+13363
+13:32:22,900 --> 13:32:27,130
+parameters. Let's update our fund to no longer be hardcoding
+
+
+13364
+13:32:27,160 --> 13:32:30,100
+eath amount in here, and we'll have and we'll have our fund
+
+
+13365
+13:32:30,130 --> 13:32:36,070
+function populated by whatever we put in this eath amount input
+
+
+13366
+13:32:36,070 --> 13:32:39,250
+box in our fund function, instead of saying const eath
+
+
+13367
+13:32:39,250 --> 13:32:45,400
+amount equals 0.1. We'll grab it from this eath amount ID and
+
+
+13368
+13:32:45,700 --> 13:32:53,830
+we'll say document dot get element by ID eath amount, dot
+
+
+13369
+13:32:53,830 --> 13:32:59,020
+value. So we're going to grab whatever value In this input box
+
+
+13370
+13:32:59,020 --> 13:33:02,800
+here, now, in our index.js, we have console dot log funding
+
+
+13371
+13:33:02,800 --> 13:33:07,540
+with eath amount, if in our front end, we do 1.7. And we hit
+
+
+13372
+13:33:07,540 --> 13:33:11,230
+fund, we now see in our console dot log, it says funding with
+
+
+13373
+13:33:11,230 --> 13:33:16,900
+1.7. And we'll get 1.7. And our little fun section confirm, it
+
+
+13374
+13:33:16,900 --> 13:33:20,620
+will mine it, it'll complete it, and then say, done. Awesome. So
+
+
+13375
+13:33:20,620 --> 13:33:24,280
+now we've added a little text box here. So people can fund as
+
+
+13376
+13:33:24,280 --> 13:33:27,670
+much or as little as they want. Perfect, this whole thing can
+
+
+13377
+13:33:27,670 --> 13:33:31,480
+kind of be considered a form. There's also a form tag, but
+
+
+13378
+13:33:31,480 --> 13:33:36,850
+we're going to just use this for now. 
