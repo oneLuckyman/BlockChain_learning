@@ -11,7 +11,7 @@ And we probably want our front end to give the user some indication,
 13160
 13:20:14,680 --> 13:20:17,590
 hey, the transaction went through. 
-“嘿，交易已经通过”
+比如 “嘿，交易已经通过”
 
 13161
 13:20:17,590 --> 13:20:20,590
@@ -21,7 +21,7 @@ So what we want to do is we want to listen to the blockchain for this to finish.
 13162
 13:20:20,650 --> 13:20:26,860
 So we can either listen for the TX to be mined. 
-所以我们要“监听被开采的交易”
+所以我们要“监听交易的挖掘”
 ("listen for the tx to be mined")
 
 13163
@@ -32,922 +32,926 @@ Or we can listen for an event.
 
 13164
 13:20:29,950 --> 13:20:32,230
-We haven't learned about events yet. But we will. So for now, since we haven't learned about events yet, we're just going to
-我们还没有了解过关于“事件”("event")的内容
+We haven't learned about events yet. But we will. 
+我们还没有了解过关于“事件”("event")的内容，但之后会的
+("<- we haven't learned about yet")
 
 13165
 13:20:32,230 --> 13:20:34,960
-listen for the TX to be mined. Or to listen for the transaction
-
+So for now, since we haven't learned about events yet, we're just going to listen for the TX to be mined. 
+所以现在，由于我们还没有学过“事件”，我们就选择监听交易的挖掘
 
 13166
 13:20:34,960 --> 13:20:37,240
-to be mined, we're actually going to create a new function
-
+Or to listen for the transaction to be mined, we're actually going to create a new function
+为了监听交易的挖掘，我们需要创建一个新的函数
 
 13167
 13:20:37,510 --> 13:20:44,950
-called function, listen, or transaction mine in this is
-
+called function, listen, or transaction mine 
+名为 `function listenForTransactionMine()
 
 13168
 13:20:44,950 --> 13:20:49,360
-going to take as input a transaction response, and a
-
+in this is going to take as input a transaction response, and a provider. 
+它接收的输入是 `(transactionResponse, provider)`
 
 13169
 13:20:49,360 --> 13:20:53,410
-provider. Now you'll notice this isn't an async function. For
-
+Now you'll notice this isn't an async function. 
+你应该会注意到，这并不是一个 async 函数
 
 13170
 13:20:53,410 --> 13:20:56,050
-this section. This is intentional, we don't want this
-
+For this section. This is intentional, 
+在本节中，这是刻意为之的
 
 13171
 13:20:56,050 --> 13:20:57,970
-to be an async function. And you'll see why in a second.
-
+we don't want this to be an async function. And you'll see why in a second. 
+我们不希望它是一个 async 函数，你马上就会明白这是为什么
 
 13172
 13:20:58,390 --> 13:21:00,970
-We're going to be using JavaScript promise JavaScript
-
+We're going to be using JavaScript promise JavaScript async functionality to its massive advantage. 
+我们将充分运用 JavaScript 的 "Promise" 和异步功能的优势
 
 13173
 13:21:01,000 --> 13:21:04,270
-async functionality to its massive advantage. And this is
-
+And this is why JavaScript actually works so well on the front end 
+这也是为什么 JavaScript 在前端中能够工作得如此出色
 
 13174
 13:21:04,270 --> 13:21:07,060
-why JavaScript actually works so well on the front end is because
-
+is because of how it's asynchronous. 
+就是因为它是异步的
 
 13175
 13:21:07,420 --> 13:21:09,790
-of how it's asynchronous. So we're going to create this
-
+So we're going to create this function listen for transaction to be mined, 
+所以我们要创建这个函数来监听交易的挖掘
 
 13176
 13:21:09,790 --> 13:21:12,400
-function listen for transaction to be mined, we're going to
-
+we're going to await in our fund function. 
+我们要在 "fund" 函数中使用 await 关键字
 
 13177
 13:21:12,400 --> 13:21:16,180
-await in our fund function. And we're going to have this return
-
+And we're going to have this return a promise. 
+并将其返回一个 "Promise" 对象
 
 13178
 13:21:16,240 --> 13:21:19,270
-a promise. Let's go ahead, and let's learn how to build this.
-
+Let's go ahead, and let's learn how to build this.
+让我们继续，来学习一下如何构建它们
 
 13179
 13:21:19,270 --> 13:21:22,750
-So we're gonna say console dot log, string interpolation, we'll
-
+So we're gonna say console dot log, string interpolation, we'll say mining. 
+首先是 `console.log(``)`，字符串插值  `Mining ${}` 
 
 13180
 13:21:22,750 --> 13:21:27,730
-say mining. And then in here, we'll say transaction, response
-
+And then in here, we'll say transaction, response dot hash. 
+接着这里是 `{transactionResponse.hash}`
 
 13181
 13:21:27,730 --> 13:21:32,140
-dot hash. All of our transaction response objects have a hash,
-
+All of our transaction response objects have a hash,
+所有的 `transactionResponse` 对象都有一个 "hash" 
 
 13182
 13:21:32,140 --> 13:21:36,100
-which just represent that hash. And we'll do a couple of data
-
+which just represent that hash. 
+它表示的就是这个对象的“哈希值”("hash")
 
 13183
 13:21:36,100 --> 13:21:39,280
-dot, we'll put in our console here, we're waiting for the
-
+And we'll do a couple of data dot, 
+再来写几个句号 `...`
 
 13184
 13:21:39,280 --> 13:21:42,250
-transaction to be mined, then what we're going to do is we're
-
+we'll put in our console here, we're waiting for the transaction to be mined, 
+我们把 console 放在这里，等待交易被挖掘出来
 
 13185
 13:21:42,250 --> 13:21:47,740
-going to return a new promise. And the reason we're going to
-
+then what we're going to do is we're going to return a new promise. 
+接着我们要做的是 `return new Promise`
 
 13186
 13:21:47,740 --> 13:21:52,060
-return a promise is because we need to create a listener for
-
+And the reason we're going to return a promise is because we need to create a listener for the blockchain. 
+我们要返回 "Promise" 的原因是，我们需要“创建一个用于区块链的监听器”
+("create a listener for the blockchain")
 
 13187
 13:21:52,060 --> 13:21:55,750
-the blockchain. We want to listen for this event to happen.
-
+We want to listen for this event to happen. But we want to tell JavaScript, 
+我们要监听这个事件的发生，但我们还想告诉 JavaScript
 
 13188
 13:21:55,780 --> 13:22:01,150
-But we want to tell JavaScript, hey, wait for this thing to
-
+hey, wait for this thing to finish looking, wait for this thing to finish looking. 
+嘿，先等这个任务完成，先等这个任务完成
 
 13189
 13:22:01,150 --> 13:22:04,930
-finish looking, wait for this thing to finish looking. Now
-
+Now here's where this gets a little bit tricky. 
+到了这里就有点麻烦了
 
 13190
 13:22:04,930 --> 13:22:07,270
-here's where this gets a little bit tricky. In our fund
-
+In our fund function. After we create the transaction, 
+在我们的 "fund" 函数中，在我们创建完这个交易之后
 
 13191
 13:22:07,270 --> 13:22:10,960
-function. After we create the transaction, we basically want
-
+we basically want to tell JavaScript 
+我们想要告诉 JavaScript
 
 13192
 13:22:10,960 --> 13:22:17,260
-to tell JavaScript Hey, wait for this TX to finish. So our code
-
+Hey, wait for this TX to finish. 
+“嘿，等待这个交易完成”
+("hey, wait for this TX to finish")
 
 13193
 13:22:17,290 --> 13:22:22,420
-is going to look as simple as await listen for transaction
-
+So our code is going to look as simple as 
+所以我们的代码看起来很简单，就像这样
 
 13194
 13:22:22,420 --> 13:22:28,330
-mine. And we're going to pass it the trans action response
-
+await listen for transaction mine. And we're going to pass it the trans action response and our provider. 
+`await listenForTransactionMine()`，然后我们传入 `(transactionResponse)` 和 `provider`
 
 13195
 13:22:29,529 --> 13:22:32,469
-and our provider. So we're saying hey, listen for this
-
+So we're saying hey, listen for this transaction finish. 
+所以我们就是在说 “嘿，监听这个交易完成”
 
 13196
 13:22:32,469 --> 13:22:35,289
-transaction finish. And we're using this await keyword,
-
+And we're using this await keyword,
+并且我们正在使用 await 关键字
 
 13197
 13:22:35,469 --> 13:22:38,589
-because again, the await keyword says okay, we're gonna stop
-
+because again, the await keyword says 
+因为，再次强调，await 关键字就是在说
 
 13198
 13:22:38,619 --> 13:22:40,599
-right here. We're gonna stop until this function is
-
+okay, we're gonna stop right here. We're gonna stop until this function is completely done. 
+OK 我们暂时停在这里，我们停在这一直到这个函数完全运行完毕
 
 13199
 13:22:40,599 --> 13:22:43,899
-completely done. Now in this listen for transaction in mind,
-
+Now in this listen for transaction in mind,
+现在，在这个 "listenForTransactionMine" 的内部
 
 13200
 13:22:43,929 --> 13:22:46,539
-we have to define how we're actually going to listen for
-
+we have to define how we're actually going to listen for this. 
+我们需要定义一下到底该怎么进行监听
 
 13201
 13:22:46,539 --> 13:22:50,289
-this. So we're going to say listen for this transaction to
-
+So we're going to say listen for this transaction to finish. 
+所以我们要做的就是 “监听这个交易完成”
+("listen for this transaction finish")
 
 13202
 13:22:50,289 --> 13:22:54,399
-finish. Ethers actually comes with a way for us to listen for
-
+Ethers actually comes with a way for us to listen for transactions and listen for events, 
+ethers 其实为我们提供了一种监听交易和事件的方法
 
 13203
 13:22:54,399 --> 13:22:57,279
-transactions and listen for events, which again, we haven't
-
+which again, we haven't learned About, but don't worry about that yet. 
+但是，我们还没学过那些，不过也不用担心那些
 
 13204
 13:22:57,279 --> 13:23:00,159
-learned About, but don't worry about that yet. So we can go to
-
+So we can go to the ethers docs. And we can look up once. Contract dot once. 
+我们可以前往 "ethers docs"，然后检索 "once", "contract.once"
 
 13205
 13:23:00,159 --> 13:23:04,509
-the ethers docs. And we can look up once. Contract dot once.
-
+There's a whole bunch of listeners that we can use 
+这里有一大堆“监听器”("listener")可以使用
 
 13206
 13:23:04,569 --> 13:23:08,019
-There's a whole bunch of listeners that we can use to
-
+to listen for events and listen for different things to happen, 
+它们用来监听事件以及各种不同事情的发生
 
 13207
 13:23:08,049 --> 13:23:11,019
-listen for events and listen for different things to happen, we
-
+we can do this thing called provider dot once 
+我们可以使用这个名为 "provider.once" 的方法
 
 13208
 13:23:11,019 --> 13:23:13,749
-can do this thing called provider dot once where we
-
+where we listen for some event. 
+来监听某个事件
 
 13209
 13:23:13,749 --> 13:23:18,489
-listen for some event. And once that event fires, we call some
-
+And once that event fires, we call some other function that we've defined. 
+一旦该事件被触发，我们就调用某个我们定义好的函数
 
 13210
 13:23:18,519 --> 13:23:21,129
-other function that we've defined. Now, we haven't talked
-
+Now, we haven't talked about events yet. 
+我们还没有谈论过关于“事件”("event")的内容
 
 13211
 13:23:21,129 --> 13:23:24,099
-about events yet. And again, don't worry about this quite
-
+And again, don't worry about this quite yet. 
+但再次提醒，完全都不用担心这个
 
 13212
 13:23:24,099 --> 13:23:27,099
-yet. One of the events that we can wait for is we can just wait
-
+One of the events that we can wait for is we can just wait for the transaction receipt to finish, right, 
+其中一个我们可以等待的事件就是，等待“交易回执”("transaction receipt")的完成，对吧？
 
 13213
 13:23:27,099 --> 13:23:30,639
-for the transaction receipt to finish, right, because once we
-
+because once we get a transaction receipt, 
+因为一旦我们获取到了交易回执
 
 13214
 13:23:30,639 --> 13:23:33,999
-get a transaction receipt, that means that the transaction has
-
+that means that the transaction has actually finished going through. 
+就意味着交易实际上已经完成了
 
 13215
 13:23:33,999 --> 13:23:36,309
-actually finished going through. So we're going to use this
-
+So we're going to use this provider dot once syntax 
+所以我们就要使用这个 "provider.once" 语法
 
 13216
 13:23:36,309 --> 13:23:41,109
-provider dot once syntax to wait for the transaction receipt,
-
+to wait for the transaction receipt, which is going to be our event, 
+来等待交易回执，也就是我们的事件
 
 13217
 13:23:41,259 --> 13:23:43,959
-which is going to be our event, which isn't really an event, but
-
+which isn't really an event, but don't worry about that yet. 
+它并不是一个真正的事件，但暂时不用管这个
 
 13218
 13:23:43,959 --> 13:23:45,849
-don't worry about that yet. And then we're going to call some
-
+And then we're going to call some listener function that we defined, 
+然后我们要调用某个我们定义的监听器函数
 
 13219
 13:23:45,849 --> 13:23:48,069
-listener function that we defined, you can also do
-
+you can also do provider.on, 
+你也可以使用 "provider.on"
 
 13220
 13:23:48,069 --> 13:23:52,569
-provider.on, which will trigger anytime your event fires
-
+which will trigger anytime your event fires
+它会在你的事件每次触发时都被触发
 
 13221
 13:23:52,599 --> 13:23:56,199
-provider once just triggers one time, we only care about this
-
+provider once just triggers one time, 
+而 "provider.once" 只会触发一次
 
 13222
 13:23:56,199 --> 13:23:59,379
-transaction going through one time. So we're passing our
-
+we only care about this transaction going through one time. 
+我们只关心这个交易是否通过了，一次
 
 13223
 13:23:59,379 --> 13:24:04,239
-provider object. So we're gonna say provider dot once our event
-
+So we're passing our provider object. So we're gonna say 
+我们传入了我们的 "provider" 对象，所以我们可以说
 
 13224
 13:24:04,269 --> 13:24:09,669
-which is just going to be transaction response, hash,
-
+provider dot once our event which is just going to be transaction response, hash,
+`provider.once()`，其中是我们的事件，也就是 `transactionResponse.hash`
 
 13225
 13:24:09,999 --> 13:24:13,269
-provided on transaction response dot hash. So once we get this
-
+provided on transaction response dot hash. 
+完整的就是 `provider.once(transactionResponse.hash)`
 
 13226
 13:24:13,269 --> 13:24:16,119
-hash, which will pretty much get right away, we're going to call
-
+So once we get this hash, 
+所以，一旦我们获取到了这个 "hash"
 
 13227
 13:24:16,119 --> 13:24:20,349
-our listener function. Now we can create a function listener
-
+which will pretty much get right away, we're going to call our listener function. 
+几乎就是立刻，我们就会调用我们的 `listener` 函数
 
 13228
 13:24:20,529 --> 13:24:23,739
-like this, and then just pass listener in here. But we're
-
+Now we can create a function listener like this, 
+现在我们可以创建一个 `function listener()` 就像这样
 
 13229
 13:24:23,739 --> 13:24:25,869
-going to do an anonymous function here, because that's
-
+and then just pass listener in here. 
+并把 `listener` 直接传入这里
 
 13230
 13:24:25,959 --> 13:24:28,239
-typically what we see as the syntax for these loops. And so
-
+But we're going to do an anonymous function here, because that's 
+但我们这里打算用一个匿名函数
 
 13231
 13:24:28,239 --> 13:24:30,909
-far, we're doing provider dot once to do this anonymous
-
+typically what we see as the syntax for these 
+因为这才是我们通常会看到的语法
 
 13232
 13:24:30,909 --> 13:24:34,539
-function, we're going to do just two little parentheses here. And
-
+loops. And so far, we're doing provider dot once 
+哎呀，抱歉，我们还在说 "provider.once" 呢
 
 13233
 13:24:34,539 --> 13:24:39,069
-this arrow notation. So this by itself represents an anonymous
-
+to do this anonymous function, we're going to do just two little parentheses here. And this arrow notation. 
+为了创建这个匿名函数，我们只需要在这里加上两个小括号，还有一个箭头符号
 
 13234
 13:24:39,069 --> 13:24:41,919
-function. So we're saying, hey, there's some function, it
-
+So this by itself represents an anonymous function. 
+这就表示了一个匿名函数
 
 13235
 13:24:41,919 --> 13:24:45,039
-doesn't take any parameters, and it doesn't have any code, this
-
+So we're saying, hey, there's some function, it doesn't take any parameters, and it doesn't have any code, 
+就相当于在说“嘿，这里有个函数，它不接收任何参数，也没有任何代码”
 
 13236
 13:24:45,039 --> 13:24:48,039
-arrow function, this whole thing is saying this is an anonymous
-
+this arrow function, this whole thing is saying this is an anonymous function. 
+这个箭头函数，整个就是在说，这是一个匿名函数
 
 13237
 13:24:48,039 --> 13:24:51,099
-function. So we're saying provided at once transaction
-
+So we're saying provided at once transaction hash happens, 
+所以我们说的就是 "provider.once(transactionResponse.hash)" 发生了
 
 13238
 13:24:51,099 --> 13:24:53,259
-hash happens, here's the function that you want to
-
+here's the function that you want to execute. 
+而这里是你想要启动的函数
 
 13239
 13:24:53,259 --> 13:24:56,709
-execute. It doesn't do anything right now. But let's have a do
-
+It doesn't do anything right now. 
+但它现在还并没有做任何事情
 
 13240
 13:24:56,709 --> 13:24:58,959
-something. So once this transaction dot response
-
+But let's have a do something. 
+不过让我们还是做点什么吧
 
 13241
 13:24:58,989 --> 13:25:05,739
-finishes, we're going to take a trans transaction received as an
-
+So once this transaction dot response finishes, 
+所以一旦这个 "transactionResponse" 完成了
 
 13242
 13:25:05,739 --> 13:25:09,399
-input parameter, or our our callback function, or our
-
+we're going to take a trans transaction received as an input parameter, 
+我们就要接收一个 `transactionReceipt` 作为输入参数
 
 13243
 13:25:09,399 --> 13:25:12,189
-listener function. And all we're going to do is we're gonna say
-
+or our our callback function, or our listener function. 
+可以说是我们的“回调函数”("callback function") 或者“监听器函数”("listener function")
 
 13244
 13:25:12,189 --> 13:25:19,209
-console dot log, completed with a little string interpolation,
-
+And all we're going to do is we're gonna say console dot log, completed with a little string interpolation,
+我们要做的就是 `console.log(`Completed with ${}`)` 一个字符串插值
 
 13245
 13:25:19,449 --> 13:25:23,649
 transaction receipt, that confirmations, confirmations,
-
+`transactionReceipt.confirmations`
 
 13246
 13:25:24,069 --> 13:25:26,319
-and then completed with transaction receipt,
-
+and then completed with transaction receipt, confirmations, confirmations. 
+接着是 `console.log(`Completed with ${transactionReceipt.confirmations} confirmations`)`
 
 13247
 13:25:26,349 --> 13:25:30,699
-confirmations, confirmations. So once this provider dot once sees
-
+So once this provider dot once sees that there's a transaction hash, 
+所以一旦 "provider.once" 看到了一个交易哈希
 
 13248
 13:25:30,699 --> 13:25:34,479
-that there's a transaction hash, it's going to give as an input
-
+it's going to give as an input rammer to our listener function, the transaction receipt, 
+它就会给监听器函数输入一个参数 "transactionReceipt"
 
 13249
 13:25:34,479 --> 13:25:37,749
-rammer to our listener function, the transaction receipt, kind of
-
+kind of that same syntax that we've been seeing this whole time, 
+类似的语法我们会一直见到
 
 13250
 13:25:37,749 --> 13:25:40,389
-that same syntax that we've been seeing this whole time, once a
-
+once a transaction response finishes, we get the transaction receipt, 
+一旦 "transactionResponse" 完成，就获取 "transactionReceipt"
 
 13251
 13:25:40,389 --> 13:25:43,179
-transaction response finishes, we get the transaction receipt,
-
+and we can do stuff with it. 
+我们可以以此来进行操作
 
 13252
 13:25:43,479 --> 13:25:45,729
-and we can do stuff with it. And we see how many block
-
+And we see how many block confirmations it has. 
+我们可以看看有多少区块已经确认了
 
 13253
 13:25:45,729 --> 13:25:48,909
-confirmations it has. For us, this pretty much should always
-
+For us, this pretty much should always be one. 
+对我们来说，基本上应该始终为 1 
 
 13254
 13:25:48,909 --> 13:25:52,749
-be one. Now if we save this, go back to our front end, and we
-
+Now if we save this, go back to our front end, and we hit fund, 
+现在，如果我们保存一下，然后回到我们的前端，并点击 "Fund" 
 
 13255
 13:25:52,749 --> 13:25:56,319
-hit fund, it's going to work, we're going to give the user
-
+it's going to work, we're going to give the user some indication that it worked, which is great. 
+它会正常工作，并且我们会给用户一些指示，说明它确实如此，非常好
 
 13256
 13:25:56,319 --> 13:25:59,409
-some indication that it worked, which is great. But it's not
-
+But it's not really going to work the way that we want it to work. 
+但这还不是我们希望它工作的方式
 
 13257
 13:25:59,499 --> 13:26:02,229
-really going to work the way that we want it to work. We have
-
+We have this console dot log done right after we do the await, listen for transaction mine, 
+我们在运行完 "await listenForTransactionMine" 之后添加这个 `console.log("Done!")`
 
 13258
 13:26:02,229 --> 13:26:05,709
-this console dot log done right after we do the await, listen
-
+and we come back and we hit fund, we hit confirm, 
+接着我们回来并点击 "Fund" 点击“确认”("Confirm")
 
 13259
 13:26:05,709 --> 13:26:09,789
-for transaction mine, and we come back and we hit fund, we
-
+it actually doesn't go in the order that we want it to go, 
+它实际上并没有按照我们想要的顺序进行操作
 
 13260
 13:26:09,789 --> 13:26:13,839
-hit confirm, it actually doesn't go in the order that we want it
-
+it goes mining this thing that it says Done. 
+它先说了“挖掘”("Mining")这个东西，然后它说了“完成”("Done!")
 
 13261
 13:26:13,839 --> 13:26:18,489
-to go, it goes mining this thing that it says Done. And then it
-
+And then it says completed with one trip confirmation 
+接着它说“完成了 1 次确认”("Completed with 1 confirmations")
 
 13262
 13:26:18,489 --> 13:26:21,879
-says completed with one trip confirmation what what's going
-
+what what's going on here, 
+这里发生了什么？
 
 13263
 13:26:21,879 --> 13:26:26,349
-on here, we should write completed before we write done,
-
+we should write completed before we write done,
+我们应该把 "Completed" 写在 "Done!" 的前面
 
 13264
 13:26:26,409 --> 13:26:28,929
-because that's the order that we have this in. But it looks like
-
+because that's the order that we have this in. 
+因为这才是我们想要的顺序
 
 13265
 13:26:28,929 --> 13:26:32,199
-it's words, it's going out of order. What what's going on
-
+But it looks like it's words, it's going out of order. What what's going on here, 
+但看起来这些单词的顺序错乱了，这里到底发生了什么？
 
 13266
 13:26:32,199 --> 13:26:35,709
-here, what's going to happen is when we call listen for
-
+what's going to happen is when we call listen for transaction mine, 
+当我们调用 "listenForTransactionMine" 时
 
 13267
 13:26:35,709 --> 13:26:40,569
-transaction mine, or listen for transaction, mine function is
-
+or listen for transaction, mine function is going to kick off, 
+或者说 "listenForTransactionMine" 启动时
 
 13268
 13:26:40,569 --> 13:26:44,499
-going to kick off, but it's going to kick off provided on
-
+but it's going to kick off provided on once as its own process. 
+它还会以自己的进程启动 `provider.once` 
 
 13269
 13:26:44,499 --> 13:26:49,059
-once as its own process. So await listen for transaction,
-
+So await listen for transaction, mine will kick off the listener, 
+所以 "await listenForTransactionMine" 会启动监听器
 
 13270
 13:26:49,059 --> 13:26:53,349
-mine will kick off the listener, but it doesn't wait for this
-
+but it doesn't wait for this listener to find the transaction response. 
+但却不会等待监听器查找 "transactionResponse"
 
 13271
 13:26:53,349 --> 13:26:57,279
-listener to find the transaction response. So this function will
-
+So this function will actually finish before provider dot once finishes. 
+所以这个函数在 "provider.once" 完成之前就结束了
 
 13272
 13:26:57,279 --> 13:27:04,269
-actually finish before provider dot once finishes. So after it
-
+So after it kicks off the listener, 
+所以，启动完监听器之后
 
 13273
 13:27:04,269 --> 13:27:08,079
-kicks off the listener, it'll run to the next line of our
-
+it'll run to the next line of our code, which is console dot log and done. 
+它就会运行我们的下一行代码，也就是 "console.log("Done!")"
 
 13274
 13:27:08,079 --> 13:27:12,369
-code, which is console dot log and done. Our front end we'll go
-
+Our front end we'll go
+我们的前端就会说
 
 13275
 13:27:12,369 --> 13:27:15,969
-oh, oh, you kicked off a listener earlier. Let me go back
-
+oh, oh, you kicked off a listener earlier. 
+哦，你早些时候启动了一个监听器
 
 13276
 13:27:15,969 --> 13:27:20,049
-down and let me recheck to see if it's finished. And if it has
-
+Let me go back down and let me recheck to see if it's finished. 
+让我回去重新检查一下，看看它完成了没有
 
 13277
 13:27:20,049 --> 13:27:23,229
-finished, I'll go do what it told me to do. And this is where
-
+And if it has finished, I'll go do what it told me to do. 
+如果它已经完成了，我就继续做它让我做的事
 
 13278
 13:27:23,229 --> 13:27:25,029
-what's known as the event loop kicks in.
-
+And this is where what's known as the event loop kicks in.
+这就是所谓的“事件循环”("event loop")要发挥作用的地方了
 
 13279
 13:27:25,389 --> 13:27:28,479
 We don't actually wait for this provider that wants to finish,
-
+我们实际上并不会等待这个应该完成的 "provider"
 
 13280
 13:27:28,809 --> 13:27:32,259
-we add this provided at once onto this queue called the event
-
+we add this provided at once onto this queue called the event loop. 
+而是把它添加到一个被称为“事件循环”的队列中
 
 13281
 13:27:32,259 --> 13:27:36,399
-loop. And our front end is going to periodically check back to it
-
+And our front end is going to periodically check back to it to see if it's finished. 
+前端会定期检查该队列以查看它是否已经完成
 
 13282
 13:27:36,399 --> 13:27:40,689
-to see if it's finished. So we want to adjust our code. So we
-
+So we want to adjust our code. So we wait for the listener to finish listening, 
+所以我们需要调整代码，等待监听器完成监听
 
 13283
 13:27:40,689 --> 13:27:43,539
-wait for the listener to finish listening, which is where we're
-
+which is where we're going to get into promises here. 
+这就是我们要深入探讨 "Promise" 的地方了
 
 13284
 13:27:43,539 --> 13:27:47,079
-going to get into promises here. So what we want to do is we want
-
+So what we want to do is we want to adjust this function to now return a promise. 
+所以我们要调整这个函数，让它现在返回一个 "Promise"
 
 13285
 13:27:47,079 --> 13:27:50,649
-to adjust this function to now return a promise. And we're
-
+And we're going to use this syntax a couple of times in the future.
+在未来，我们会经常用到这种语法
 
 13286
 13:27:50,649 --> 13:27:53,139
-going to use this syntax a couple of times in the future.
-
+So what we're going to do is we're going to say 
+所以我们要做的就是告诉它
 
 13287
 13:27:53,169 --> 13:27:55,959
-So what we're going to do is we're going to say hey, we want
-
+hey, we want to wait for the listener To finish listening, 
+嘿，我们要等待监听器完成监听
 
 13288
 13:27:55,959 --> 13:27:59,379
-to wait for the listener To finish listening, we're going to
-
+we're going to wrap this whole thing into a promise. 
+我们将把这一整个东西包装成一个 "Promise"
 
 13289
 13:27:59,379 --> 13:28:02,739
-wrap this whole thing into a promise. And we're going to say
-
+And we're going to say return, new promise. 
+所以我们要写 `return new Promise()`
 
 13290
 13:28:02,739 --> 13:28:08,469
-return, new promise. And a promise takes a function itself
-
+And a promise takes a function itself as an input parameter. 
+"Promise" 接收一个函数作为它的参数
 
 13291
 13:28:08,499 --> 13:28:12,759
-as an input parameter. So again, we'll use kind of this anonymous
-
+So again, we'll use kind of this anonymous function notation. 
+所以，我们又一次要使用到这种匿名函数表示
 
 13292
 13:28:12,759 --> 13:28:15,489
-function notation. And it will take two input parameters
-
+And it will take two input parameters resolve and reject. 
+而它接收两个输入参数 `resolve` 以及 `reject`
 
 13293
 13:28:15,489 --> 13:28:21,189
-resolve and reject. So resolve says, hey, if this promise works
-
+So resolve says, 
+"resolve" (“解析”)说的就是
 
 13294
 13:28:21,189 --> 13:28:24,489
-correctly, call this resolve function. And for us, this
-
+hey, if this promise works correctly, call this resolve function. 
+嘿，如果这个 "Promise" 工作正常，就调用这个 "resolve" 函数
 
 13295
 13:28:24,489 --> 13:28:28,629
-promise is going to be done when the listener finishes listening.
-
+And for us, this promise is going to be done when the listener finishes listening.
+对我们来说，这个 "Promise" 将在监听器完成监听的时候执行
 
 13296
 13:28:28,839 --> 13:28:31,899
 And then we would reject if there was some type of timeout,
-
+而在某种类型的超时出现时，我们就会选择“拒绝”("reject")
 
 13297
 13:28:31,929 --> 13:28:34,599
-we're not going to write the reject function. But in the
-
+we're not going to write the reject function. 
+我们并不会编写 "reject" 函数
 
 13298
 13:28:34,599 --> 13:28:37,479
-future, if you were to do this for production, you'd add some
-
+But in the future, if you were to do this for production, 
+但在将来，如果你要将其应用到产品上
 
 13299
 13:28:37,479 --> 13:28:40,299
-timeout as the reject parameter. Basically, you're saying, hey,
-
+you'd add some timeout as the reject parameter. 
+就要将超时时间作为 "reject" 的参数
 
 13300
 13:28:40,449 --> 13:28:42,249
-once the listener finishes listening, we're going to
-
+Basically, you're saying, hey, once the listener finishes listening, we're going to resolve 
+基本上就是，嘿，一旦监听器完成监听，我们就要运行 "resolve"
 
 13301
 13:28:42,249 --> 13:28:45,219
-resolve and if it takes too long, we're gonna say ask for
-
+and if it takes too long, we're gonna say ask for you, you took too long, 
+而如果时间过长，我们就会提示你，你花费的时间太长了
 
 13302
 13:28:45,219 --> 13:28:47,799
-you, you took too long, and instead of closing it off, here,
-
+and instead of closing it off, here,
+并不是在这里结束
 
 13303
 13:28:47,949 --> 13:28:52,359
-we're going to close it off around this provider thing. So
-
+we're going to close it off around this provider thing. 
+而是要把这个 "provider" 包起来再结束
 
 13304
 13:28:52,359 --> 13:28:55,599
-we're gonna say return new promise, resolve, reject. And
-
+So we're gonna say return new promise, resolve, reject. 
+所以就是 `return new Promise((resolve, reject))`
 
 13305
 13:28:55,629 --> 13:29:00,729
-only once this transaction gets fired, are we going to resolve
-
+And only once this transaction gets fired, are we going to resolve this promise, 
+并且只有在 "transactionResponse" 触发时，我们才 `resolve()`(“解析”)这个 Promise
 
 13306
 13:29:00,759 --> 13:29:05,199
-this promise, like so. So what is happening here, so we're
-
+like so. 
+就像这样
 
 13307
 13:29:05,199 --> 13:29:10,269
-going to put the resolve inside of this provider at once. So
-
+So what is happening here, 
+所以，这里发生了些什么呢？
 
 13308
 13:29:10,269 --> 13:29:15,849
-we're saying, once this transaction hash is found, then
-
+so we're going to put the resolve inside of this provider at once. 
+我们把 "resolve()" 放在了 "provider.once" 的内部
 
 13309
 13:29:15,849 --> 13:29:18,069
-we're going to call this function, we're gonna say
-
+So we're saying, once this transaction hash is found, then we're going to call this function, 
+也就是说，一旦这个交易的哈希值被找到，我们就调用这个函数
 
 13310
 13:29:18,069 --> 13:29:21,219
-console dot log, and then we're going to resolve so this promise
-
+we're gonna say console dot log, and then we're going to resolve 
+我们会输出 "console.log()" 接着执行 "resolve()"
 
 13311
 13:29:21,249 --> 13:29:25,389
-only returns once a resolve or reject is called. And we're
-
+so this promise only returns once a resolve or reject is called. 
+因此，这个 "Promise" 只有在 "resolve" 或 "reject" 被调用后才会返回
 
 13312
 13:29:25,389 --> 13:29:30,759
-telling it only resolve only finish this function once.
-
+And we're telling it 
+而我们告诉它
 
 13313
 13:29:31,239 --> 13:29:34,329
-Transaction response dot hash is found, because it's going to be
-
+only resolve only finish this function once. Transaction response dot hash is found, 
+"resolve()" 这个函数，只有在 "once(transactionResponse.hash)" 被找到时才会完成
 
 13314
 13:29:34,359 --> 13:29:38,349
-inside of these little squiggly parentheses for provider dot
-
+because it's going to be inside of these little squiggly parentheses for provider dot once, 
+因为它位于 "provider.once" 的小波浪线内部
 
 13315
 13:29:38,349 --> 13:29:43,569
-once, the promise right now only resolves after it's fired. It's
-
+the promise right now only resolves after it's fired. It's event here. 
+现在 "Promise" 只有在这个事件被触发之后才会被解析
 
 13316
 13:29:43,569 --> 13:29:47,619
-event here. If this was really confusing, just copy paste this
-
+If this was really confusing, 
+如果这里真的很令你感到困惑的话
 
 13317
 13:29:47,679 --> 13:29:50,859
-and move on, we're getting a little bit deeper into front end
-
+just copy paste this and move on, 
+直接复制粘贴，然后继续前进
 
 13318
 13:29:50,859 --> 13:29:54,339
-stuff here. So hopefully, this was clear, if not definitely
-
+we're getting a little bit deeper into front end stuff here. 
+我们还会更深入地探讨前端相关的内容
 
 13319
 13:29:54,339 --> 13:29:56,559
-jump in to the GitHub discussions to start asking
-
+So hopefully, this was clear, 
+希望这些已经讲清楚了
 
 13320
 13:29:56,559 --> 13:30:00,639
-about this stuff. But now that we've updated this, we can come
-
+if not definitely jump in to the GitHub discussions to start asking about this stuff. 
+如果没有的话，请一定要前往 GitHub 的讨论区询问这部分的相关内容
 
 13321
 13:30:00,639 --> 13:30:03,489
-back to our front end, we can hit the fund button. And
-
+But now that we've updated this, 
+总之，现在我们已经更新好了这个
 
 13322
 13:30:03,489 --> 13:30:06,099
-hopefully this time, everything will go in order. We'll hit
-
+we can come back to our front end, we can hit the fund button. 
+我们可以回到前端，点击 "Fund" 按钮
 
 13323
 13:30:06,099 --> 13:30:10,749
-confirm, we see mining completed, and then we see done.
-
+And hopefully this time, everything will go in order. 
+希望这一次，一切都能如期运行
 
 13324
 13:30:10,959 --> 13:30:14,349
-And the reason for this is because again, our await keyword
-
+We'll hit confirm, we see mining completed, and then we see done. 
+点击“确认”("Confirm")，可以看到 "Mining", "Completed" 然后我们才看到 "Done!"
 
 13325
 13:30:14,409 --> 13:30:17,469
-is now waiting, it says oh, you're returning a promise, I
-
+And the reason for this is because again, our await keyword is now waiting, it says 
+这一切的原因是，我们的 await 关键字正在等待，它在说
 
 13326
 13:30:17,469 --> 13:30:21,489
-need to await I need to wait for it to resolve or reject. And we
-
+oh, you're returning a promise, I need to await I need to wait for it to resolve or reject. 
+哦！你返回了一个 "Promise"，我需要等待它被解析或者被拒绝
 
 13327
 13:30:21,519 --> 13:30:25,029
-only resolve the promise once our provider finds this
-
+And we only resolve the promise once our provider finds this transaction hash and this transaction receipt, 
+并且，只有 "provider" 找到了这个交易的哈希值和回执后，我们才解析 "Promise"
 
 13328
 13:30:25,029 --> 13:30:27,969
-transaction hash and this transaction receipt, this is
-
+this is this listen for transaction mine. 
+这就是 "listenForTransactionMine"
 
 13329
 13:30:27,969 --> 13:30:31,269
-this listen for transaction mine. In future sections, all of
-
+In future sections, all of this is going to be abstracted away for us. 
+在未来的章节中，这些都会被抽象化处理
 
 13330
 13:30:31,269 --> 13:30:33,819
-this is going to be abstracted away for us. So life is going to
-
+So life is going to be much easier, 
+所以会变得更简单一些
 
 13331
 13:30:33,819 --> 13:30:36,069
-be much easier, but it is important to understand what's
-
+but it is important to understand what's actually going on here. 
+但理解它实际上是怎么运作的仍然非常重要
 
 13332
 13:30:36,069 --> 13:30:39,609
-actually going on here. Awesome. So now we're giving the front
-
+Awesome. So now we're giving the front end some indication of what's going on. 
+太棒了，现在我们就给了前端一些指示，表明了现在正在发生写什么
 
 13333
 13:30:39,609 --> 13:30:47,079
-end some indication of what's going on. Our fun function is
-
+Our fun function is done 
+我们的 "fund" 函数已经完成了
 
 13334
 13:30:47,079 --> 13:30:52,359
-done well, no, not really. Why not? Well, because right now
-
+well, no, not really. Why not? 
+好吧，其实并没有，为什么呢？
 
 13335
 13:30:52,359 --> 13:30:55,659
-we're hard coding the eath amount to 0.1. And on the front
-
+Well, because right now we're hard coding the eath amount to 0.1. 
+因为现在，我们还在把 "ethAmount" 硬编码为 0.1
 
 13336
 13:30:55,659 --> 13:30:57,939
-end, we probably don't want to hard code it, we probably want
-
+And on the front end, we probably don't want to hard code it, 
+在前端中，我们并不希望它是被硬编码的
 
 13337
 13:30:57,939 --> 13:31:02,049
-to allow users to fund as much or as little as they want. So we
-
+we probably want to allow users to fund as much or as little as they want. 
+我们希望用户可以自由的选择它们能够资助的金额
 
 13338
 13:31:02,049 --> 13:31:05,349
-actually need to change this from just a button to a input
-
+So we actually need to change this from just a button to a input form. 
+所以我们需要把这个按钮修改为一个“输入表单”("input form")
 
 13339
 13:31:05,349 --> 13:31:09,639
-form. So to do this, we're gonna go back over into our HTML. So
-
+So to do this, we're gonna go back over into our HTML. 
+要处理这一点，我们需要回到我们的 HTML
 
 13340
 13:31:09,639 --> 13:31:13,149
-we'll go back to index dot HTML. And we're going to change this
-
+So we'll go back to index dot HTML. 
+所以我们回到我们的 "index.html"
 
 13341
 13:31:13,179 --> 13:31:15,939
-fun section here, we're going to add some form information. So
-
+And we're going to change this fun section here, we're going to add some form information. 
+我们要修改一下这里的 "fund" 部分，添加一些表单信息
 
 13342
 13:31:15,939 --> 13:31:18,249
-we're going to keep this button as it is, or we're going to add
-
+So we're going to keep this button as it is, or we're going to add like a little text box 
+我们要保持这个按钮不变，但要添加一个小的文本框
 
 13343
 13:31:18,249 --> 13:31:22,809
-like a little text box to input as much eath as they want. So
-
+to input as much eath as they want. 
+用于输入他们想输入的以太币金额
 
 13344
 13:31:22,839 --> 13:31:26,739
-I'm going to create a label, we're gonna say it's for, it's
-
+So I'm going to create a label, we're gonna say it's for, it's going to be fund 
+所以我要创建一个 `<label for="fund">
 
 13345
 13:31:26,739 --> 13:31:29,889
-going to be fund and this label we're gonna say, is eath amount,
-
+and this label we're gonna say, is eath amount,
+这个 "label" 名字是 "ETH Amount"
 
 13346
 13:31:30,549 --> 13:31:32,589
-and then we're gonna close label, this is basically just
-
+and then we're gonna close label, 
+然后我们要关闭标签 "</label>"
 
 13347
 13:31:32,589 --> 13:31:34,959
-going to create a label. And if we go back to our front end, we
+this is basically just going to create a label. And if we go back to our front end, we
 
 
 13348
