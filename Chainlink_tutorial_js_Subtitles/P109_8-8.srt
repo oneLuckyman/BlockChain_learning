@@ -947,163 +947,164 @@ and this label we're gonna say, is eath amount,
 13346
 13:31:30,549 --> 13:31:32,589
 and then we're gonna close label, 
-然后我们要关闭标签 "</label>"
+然后我们要闭合标签 "</label>"
 
 13347
 13:31:32,589 --> 13:31:34,959
-this is basically just going to create a label. And if we go back to our front end, we
-
+this is basically just going to create a label. And if we go back to our front end, 
+这基本上就只是创建一个标签，如果我们回到我们的前端
 
 13348
 13:31:34,959 --> 13:31:37,899
-now just have this Etham out label that isn't labeling
-
+we now just have this Etham out label that isn't labeling anything. 
+现在就有了这么一个 "ETH Amount" 标签，然而并没有标记任何内容
 
 13349
 13:31:37,929 --> 13:31:40,809
-anything. Now we're going to create an input, and we're going
-
+Now we're going to create an input, and we're going to give it an ID of eath amount. And we're going to give it a placeholder of 0.1. 
+现在我们要创建一个输入 `<input id="ethAmount" placeholder="0.1"`
 
 13350
 13:31:40,809 --> 13:31:45,249
-to give it an ID of eath amount. And we're going to give it a
-
+And then we're gonna close the input. 
+然后我们闭合这个输入 `/>`
 
 13351
 13:31:45,249 --> 13:31:46,059
-placeholder
-
+So now if we flip to our front end, 
+现在如果我们回到我们的前端
 
 13352
 13:31:47,140 --> 13:31:53,470
-of 0.1. And then we're gonna close the input. So now if we
-
+we have eath amount, labeling this little text box with a placeholder of 0.1. 
+我们的 "ETH Amount" 就标记了一个小的文本框，占位符为 0.1
 
 13353
 13:31:53,470 --> 13:31:56,920
-flip to our front end, we have eath amount, labeling this
-
+And we can add stuff in here, you know, blah, blah, whatever. 
+我们可以在这里添加任何内容，总之就是，任何内容
 
 13354
 13:31:56,920 --> 13:31:59,710
-little text box with a placeholder of 0.1. And we can
-
+And one more thing, if you have some tags, 
+还有一件事，如果你有一些标签
 
 13355
 13:31:59,710 --> 13:32:02,110
-add stuff in here, you know, blah, blah, whatever. And one
-
+but you don't put anything in between them, 
+但在它们之间没有放置任何内容
 
 13356
 13:32:02,110 --> 13:32:05,170
-more thing, if you have some tags, but you don't put anything
-
+you can actually shorten it by just putting the little closing thing at the back of it like this. 
+那么你实际上可以通过将闭合标签放置在后面来缩短它，就像这样
 
 13357
 13:32:05,170 --> 13:32:07,720
-in between them, you can actually shorten it by just
-
+So if you don't have anything between your tags, 
+因此，如果你的标签之间没有任何内容
 
 13358
 13:32:07,960 --> 13:32:11,950
-putting the little closing thing at the back of it like this. So
-
+you can just close them like this, these two are equivalent, 
+那么你可以像这样闭合它们，两种做法是等价的
 
 13359
 13:32:11,950 --> 13:32:13,600
-if you don't have anything between your tags, you can just
-
+boom, boom, boom, boom, those are the same thing. 
+boom, boom, boom, boom, 都是相同的意思
 
 13360
 13:32:13,600 --> 13:32:17,140
-close them like this, these two are equivalent, boom, boom,
-
+Great. 
+很好
 
 13361
 13:32:17,170 --> 13:32:20,230
-boom, boom, those are the same thing. Great. When we called
-
+When we called fund 
+当我们调用 "fund" 时
 
 13362
 13:32:20,230 --> 13:32:22,900
-fund right now we're calling fund and we're not passing any
-
+right now we're calling fund and we're not passing any parameters. 
+现在我们调用 "fund" 时没有传入任何参数
 
 13363
 13:32:22,900 --> 13:32:27,130
-parameters. Let's update our fund to no longer be hardcoding
-
+Let's update our fund to no longer be hardcoding eath amount in here, 
+让我们来更新一下我们的 "fund" ，让这里的 "ethAmount" 不要再是硬编码的了
 
 13364
 13:32:27,160 --> 13:32:30,100
-eath amount in here, and we'll have and we'll have our fund
-
+and we'll have and we'll have our fund function populated by whatever we put in this eath amount input box 
+我们要在 "fund" 函数中填入我们在 "ethAmount" 输入框内输入的内容
 
 13365
 13:32:30,130 --> 13:32:36,070
-function populated by whatever we put in this eath amount input
-
+in our fund function, instead of saying const eath amount equals 0.1. 
+在我们的 "fund" 函数中，不再是 "const ethAmount = "0.1"" 了
 
 13366
 13:32:36,070 --> 13:32:39,250
-box in our fund function, instead of saying const eath
-
+We'll grab it from this eath amount ID and
+而是要从 "ethAmount id" 中获取 
 
 13367
 13:32:39,250 --> 13:32:45,400
-amount equals 0.1. We'll grab it from this eath amount ID and
-
+we'll say document dot get element by ID eath amount, dot value. 
+所以我们会说 `document.getElementById("ethAmount").value`
 
 13368
 13:32:45,700 --> 13:32:53,830
-we'll say document dot get element by ID eath amount, dot
-
+So we're going to grab whatever value In this input box here, 
+这样我们就能获取到输入框里的值了
 
 13369
 13:32:53,830 --> 13:32:59,020
-value. So we're going to grab whatever value In this input box
-
+now, in our index.js, we have console dot log funding with eath amount, 
+现在，在我们的 "index.js" 里，我们有 "console.log(`Funding with ${ethAmount}`)"
 
 13370
 13:32:59,020 --> 13:33:02,800
-here, now, in our index.js, we have console dot log funding
-
+if in our front end, we do 1.7. And we hit fund, 
+如果我们在前端中，输入 1.7，然后点击 "Fund"
 
 13371
 13:33:02,800 --> 13:33:07,540
-with eath amount, if in our front end, we do 1.7. And we hit
-
+we now see in our console dot log, it says funding with 1.7. 
+现在我们就能看到 "console.log" 在说 "Funding with 1.7"
 
 13372
 13:33:07,540 --> 13:33:11,230
-fund, we now see in our console dot log, it says funding with
-
+And we'll get 1.7. And our little fun section 
+并且我们在 "fund" 部分中也获取到了 1.7
 
 13373
 13:33:11,230 --> 13:33:16,900
-1.7. And we'll get 1.7. And our little fun section confirm, it
-
+confirm, it will mine it, it'll complete it, 
+点击“确认”("Confirm")，它将被“挖掘”("Mining")，然后“完成(块确认)”("Completed")
 
 13374
 13:33:16,900 --> 13:33:20,620
-will mine it, it'll complete it, and then say, done. Awesome. So
-
+and then say, done. Awesome. 
+最后它说“完成”("Done!")，太棒了！
 
 13375
 13:33:20,620 --> 13:33:24,280
-now we've added a little text box here. So people can fund as
-
+So now we've added a little text box here. 
+所以我们现在已经添加好了这个文本框
 
 13376
 13:33:24,280 --> 13:33:27,670
-much or as little as they want. Perfect, this whole thing can
-
+So people can fund as much or as little as they want. Perfect, 
+人们可以自由地选择他们想资助的金额了，完美！
 
 13377
 13:33:27,670 --> 13:33:31,480
-kind of be considered a form. There's also a form tag, but
-
+this whole thing can kind of be considered a form. 
+这一整个部分都可以被视为一个“表单”("form")
 
 13378
 13:33:31,480 --> 13:33:36,850
-we're going to just use this for now. 
+There's also a form tag, but we're going to just use this for now. 
+还有一种 "form" 标签，但暂时我们就用这个
