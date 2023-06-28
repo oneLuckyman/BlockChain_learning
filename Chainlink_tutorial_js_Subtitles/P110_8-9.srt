@@ -1,0 +1,154 @@
+13378
+13:33:31,480 --> 13:33:36,850
+All right, great. We're doing a lot of funding right, 
+非常好，我们已经做了很多注资的工作了，对吧？
+
+13379
+13:33:36,850 --> 13:33:39,580
+and we keep funding our contract with more and more Ethan, 
+并且我们在不断地为我们的合约注入更多的以太币资金
+
+13380
+13:33:39,580 --> 13:33:42,370
+we keep adding more and more stuff,
+我们还在不断的添加越来越多的内容
+
+13381
+13:33:42,400 --> 13:33:45,220
+we probably want a button to keep track of how much is actually in here. 
+我们还希望能有一个按钮，可以追踪到这里实际上已经有多少资金了
+
+13382
+13:33:45,220 --> 13:33:48,310
+So let's just add a really simple balance button. 
+所以让我们来添加一个简单的“余额”("balance")按钮
+
+13383
+13:33:48,310 --> 13:33:51,190
+And let me actually just move this down to the bottom here, much better. 
+让我来把它移动到底部这里，好看多了
+
+13384
+13:33:51,190 --> 13:33:56,140
+So we'll say button, id equals balance button. 
+我们来写下 `<button id="balanceButton">`
+
+13385
+13:33:56,140 --> 13:34:03,010
+We'll call it get balance. 
+我们给它命名为 `getBalance`
+
+13386
+13:34:03,010 --> 13:34:05,500
+Now we have a get balanced button. 
+现在我们就有了一个 "getBalance" 按钮
+
+13387
+13:34:05,500 --> 13:34:07,780
+And it's not going to do anything because we don't have a get balanced function. 
+它还没有任何作用，因为我们还没有用于获取余额的函数
+
+13388
+13:34:07,780 --> 13:34:11,500
+So let's go back to our index.js. And we'll create a get bounced function 
+所以回到我们的 "index.js"，我们来创建一个用于获取余额的函数
+
+13389
+13:34:13,300 --> 13:34:17,110
+async function get bounce. 
+`async function getBalance(){}`
+
+13390
+13:34:17,110 --> 13:34:23,140
+And we'll just do what we've been doing so far. 
+我们要做的就是迄今为止我们一直在做的事
+
+13391
+13:34:23,680 --> 13:34:27,670
+If type of window dot Aetherium does not equal, undefined, 
+`if(typeof window.ethereum != "undefined")`
+
+13392
+13:34:27,910 --> 13:34:34,540
+then we're going to do const provider equals new ethers, ethers, dot providers dot web three provider of window, that Aetherium 
+接着执行 `const provider = new ethers.providers.Web3Provider(window.ethereum)`
+
+13393
+13:34:34,540 --> 13:34:40,840
+then will do const balance equals awaits provider dot get balance, contract address, 
+然后是 `const balance = await provider.getBalance(contractAddress)`
+
+13394
+13:34:40,840 --> 13:34:46,810
+which again, we're importing way up at the top, 
+再次提醒，我们已经在顶部导入了它们
+
+13395
+13:34:46,840 --> 13:34:49,990
+and then we'll just do console dot log ethers dot utils dot format, ether, bounce 
+然后我们直接运行 `console.log(ethers.utils.formatEther(balance))`
+
+13396
+13:34:50,020 --> 13:34:59,680
+this format ether function ethers utils, which you can find in the documentation 
+这个 "formatEther" 是 "ethers.utils" 中的函数，你可以在文档中找到它
+
+13397
+13:34:59,680 --> 13:35:02,620
+to make reading ethers, formatted numbers much easier to read. 
+它的作用是格式化 ethers 输出的数字使其更加易读
+
+13398
+13:35:02,620 --> 13:35:06,910
+Then same as what we've been doing before,
+然后，就和我们之前做的一样
+
+13399
+13:35:06,910 --> 13:35:09,970
+we're going to go up, we're going to copy this fun button line, 
+翻到上面，复制 "fundButton" 这一行
+
+13400
+13:35:10,540 --> 13:35:13,390
+paste it will say balance button equals document dot get element by ID, 
+粘贴一下，然后改成 `balanceButton = document.getElementById()`
+
+13401
+13:35:13,390 --> 13:35:19,540
+balance button. 
+"balanceButton"
+
+13402
+13:35:19,540 --> 13:35:26,860
+And then we'll say balance button on click equals get balance, 
+接着我们说 `balanceButton.onclick = getBalance`
+
+13403
+13:35:26,860 --> 13:35:31,780
+we're gonna come back to our front end, we'll do a quick refresh, we'll do get balance. 
+我们回到前端，快速刷新一下，点击 "getBalance"
+
+13404
+13:35:31,780 --> 13:35:34,030
+And now we can see the balance in the console, 
+现在我们就可以在“控制台”("Console")中看到余额了
+
+13405
+13:35:34,030 --> 13:35:37,420
+we can fund with more like 1.8, 
+我们还可以注入更多资金，比如 1.8
+
+13406
+13:35:37,420 --> 13:35:42,550
+we'll hit fund metamath pops up, we'll go ahead and confirm 
+点击 "Fund"，MetaMask 弹了出来，继续点击“确认”("Confirm")
+
+13407
+13:35:42,550 --> 13:35:46,030
+mining completed done, 
+"Mining", "Completed", "Done!"
+
+13408
+13:35:46,030 --> 13:35:53,080
+we hit get balanced, and now we're at 3.8. Fantastic. 
+再次点击 "getBalance"，现在我们得到了 3.8，太棒了！
