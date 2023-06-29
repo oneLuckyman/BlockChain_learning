@@ -1,0 +1,215 @@
+13408
+13:35:46,030 --> 13:35:53,080
+Alright, let's keep it going. What do we need to do next, 
+好的，让我们继续，下一步我们该做些什么？
+
+13409
+13:35:53,080 --> 13:35:55,690
+we're gonna go ahead and eat our withdrawal function here. 
+我们要继续编写我们的提款函数
+
+13410
+13:35:55,690 --> 13:35:58,750
+So let's create that 
+我们来创建一下它
+
+13411
+13:35:58,750 --> 13:36:01,600
+this is gonna look really similar to everything we've done so far. 
+就和我们之前做的工作很相似
+
+13412
+13:36:01,600 --> 13:36:04,630
+So on our index dot HTML, let's create a new button 
+所以我们要在 "index.html" 里，创建一个新的按钮
+
+13413
+13:36:04,630 --> 13:36:09,190
+that we can do by copying this whole line, paste it underneath, 
+我们可以复制这一整行，粘贴到下面
+
+13414
+13:36:09,190 --> 13:36:13,930
+call this withdraw button, we'll call withdraw. And we'll call this withdraw. 
+命名为 "withdraw"，这里是 "withdraw"，这里是 "withdrawButton"
+
+13415
+13:36:13,960 --> 13:36:18,880
+And then in our index, do the same thing, 
+然后在 "index" 里，还是做一样的事
+
+13416
+13:36:18,880 --> 13:36:25,390
+we'll copy this, paste it below. 
+复制这个，粘贴到下面
+
+13417
+13:36:25,390 --> 13:36:31,180
+So with drop button was document get element by ID, withdraw button, 
+改成 `withdrawButton = document.getElementById("withdrawButton")`
+
+13418
+13:36:31,240 --> 13:36:34,780
+withdraw button.on Click equals withdraw. 
+`withdrawButton.onclick = withdraw`
+
+13419
+13:36:34,780 --> 13:36:39,400
+So let's make a withdrawal function down at the bottom. 
+让我们在底部创建一个 "withdraw" 函数
+
+13420
+13:36:40,930 --> 13:36:43,990
+We'll go ahead, say async. Function withdraw, 
+继续写 `async function withdraw()` 
+
+13421
+13:36:43,990 --> 13:36:48,430
+will do the exact same that we've done above. 
+接下来就和我们上面做的事完全一样
+
+13422
+13:36:48,430 --> 13:36:51,730
+And I can even just copy everything from the get balance and just remove the balance section. 
+我甚至可以复制 "getBalance" 的所有内容，然后删掉关于 "balance" 部分
+
+13423
+13:36:51,730 --> 13:36:56,320
+If type of window dot Aetherium does not equal to undefined, 
+`if (typeof window.ethereum != "undefined")`
+
+13424
+13:36:56,320 --> 13:37:00,430
+then we'll grab the provider here. 
+接着获取这里的 "provider"
+
+13425
+13:37:00,430 --> 13:37:03,910
+And same as the fund contract, we'll grab the signer and the contract. 
+然后就和 "fund" 合约一样，我们要获取 "signer" 以及 "contract"
+(译者注：这里指的应该是 "fund" 函数)
+
+13426
+13:37:03,910 --> 13:37:07,180
+So let's just grab those two lines. Paste them down here 
+所以让我们获取这两行，粘贴到这里
+
+13427
+13:37:07,180 --> 13:37:09,970
+called signer equals provider dot get signer. 
+`const signer = provider.getSigner()`
+
+13428
+13:37:09,970 --> 13:37:13,360
+Contract equals new contract, blah, blah, blah. Okay, cool. 
+`contract = new Contract` blah, blah, blah，OK 酷，
+
+13429
+13:37:13,360 --> 13:37:15,820
+Now we're gonna do the exact same here as we did with the fun function. 
+现在我们要进行的是和 "fund" 函数中完全一样的操作
+
+13430
+13:37:15,820 --> 13:37:21,970
+So we're gonna do a little try, catch, and then we'll even add the catch here, catch error, console dot log error. 
+也就是 `try-catch`，我们在这里添加一个 `catch(error){console.log(error)}`
+
+13431
+13:37:21,970 --> 13:37:29,080
+And inside of our try, we'll do const transaction response equals await, contracts dot withdraw. 
+在 "try" 的内部，我们要写 `const transactionResponse = await contract.withdraw()`
+
+13432
+13:37:29,110 --> 13:37:33,310
+We don't need to put any parameters in here. 
+我们不需要在这里放入任何参数
+
+13433
+13:37:33,310 --> 13:37:39,070
+Oh, then actually, let's do a little console dot log, withdrawing,
+哦，其实这里还有一句 `console.log("Withdrawing...")`
+
+13434
+13:37:39,220 --> 13:37:41,470
+and then we'll get this transaction response. 
+然后我们就会获得这个 "transactionResponse"
+
+13435
+13:37:41,470 --> 13:37:43,930
+And then we'll listen for this transaction to get mined as well. 
+接着我们就要监听这笔交易是否被挖掘了出来
+
+13436
+13:37:43,930 --> 13:37:52,480
+By running a Wait, listen for transaction mine transaction response comma, provider 
+运行 `await listenForTransactionMine(transactionResponse, provider)`
+
+13437
+13:37:52,480 --> 13:37:59,320
+And that's it, since we can reuse the functionality from our listen for transaction mine. 
+这就结束了，因为我们可以复用 "listenForTransactionMine" 这个函数
+
+13438
+13:37:59,320 --> 13:38:02,530
+So now we'll refresh, we'll make sure we're connected, 
+现在我们刷新一下，确保我们已经连接上了
+
+13439
+13:38:02,530 --> 13:38:05,350
+check the current balance, which is 3.8. 
+查看余额，是 3.8 
+
+13440
+13:38:05,350 --> 13:38:09,850
+Now we'll go ahead and withdraw.
+现在我们点击 "withdraw"
+
+13441
+13:38:11,050 --> 13:38:14,620
+We see our little withdrawing console dot log, we'll hit Confirm. 
+可以看到 "console.log" 输出的 "withdrawing"，点击“确认”("Confirm")
+
+13442
+13:38:14,620 --> 13:38:19,330
+And it looks like we've completed it, 
+看起来我们已经完成了
+
+13443
+13:38:19,330 --> 13:38:23,800
+if we look in our Metamask, our bounced will have been increased by the amount that was added here. 
+如果查看一下我们的 MetaMask，我们的账户余额将会增加刚刚添加的金额
+
+13444
+13:38:23,800 --> 13:38:27,760
+And now if we hit balance, we do indeed see zero, 
+现在如果我们点击一下余额，确实是变成 0 了
+
+13445
+13:38:27,820 --> 13:38:30,460
+we can even double check that this is actually working, 
+我们甚至可以再次确认一下这是否是真的生效了
+
+13446
+13:38:30,580 --> 13:38:34,600
+we can see our balance is 9.99. Let's go ahead and even fund this with 99 eath. 
+可以看到我们的余额是 9.99，我们注入 99 以太币的资金
+
+13447
+13:38:34,600 --> 13:38:39,520
+Good confirm, looks like it's completed. 
+点击“确认”("Confirm")，看起来已经完成了
+
+13448
+13:38:39,520 --> 13:38:44,320
+Our meta mask now shows 99.00. 
+现在我们的 MetaMask 显示 99.00
+
+13449
+13:38:44,860 --> 13:38:48,130
+And if we go ahead and withdraw, confirm, that withdrawal has gone through, 
+我们继续，点击 "withdraw"，“确认”("Confirm")，提款已经通过
+
+13450
+13:38:48,130 --> 13:38:55,030
+we can see our balance is back up to 9999. 
+我们可以看到，余额已经回到了 9999！
