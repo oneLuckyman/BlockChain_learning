@@ -1,0 +1,209 @@
+13450
+13:38:48,130 --> 13:38:55,030
+And now let's just go back and change. Hey, what's good. 
+现在，让我们回来修改一下这句 "Hey whats good?"
+
+13451
+13:38:55,030 --> 13:39:00,070
+We'll refresh our front end. And now we can see you've done it, 
+刷新一下前端，现在我们可以看到，已经完成了
+
+13452
+13:39:00,070 --> 13:39:03,910
+we've created a minimalistic website
+我们已经创建好了一个简化的网站
+
+13453
+13:39:04,090 --> 13:39:07,480
+that allows us to connect to the blockchain and call functions from a front end. And from a website, 
+它使我们能够从前端网站连接到区块链上并调用函数
+
+13454
+13:39:07,510 --> 13:39:10,750
+this is absolutely massive, 
+这绝对是一个巨大的成就
+
+13455
+13:39:10,780 --> 13:39:13,660
+you should be incredibly proud and incredibly excited with yourself. 
+你应当为自己感到无比的骄傲和自豪
+
+13456
+13:39:13,660 --> 13:39:16,780
+Now, this is definitely a minimalistic version. 
+但这肯定只是一个非常简化的版本
+
+13457
+13:39:16,780 --> 13:39:19,510
+And we're going to work with more powerful and more modern front end frameworks. 
+我们之后会使用更加强大，更加现代化的前端框架
+
+13458
+13:39:19,510 --> 13:39:22,330
+But this will give you an idea of exactly what's going on 
+但这能让你了解到，在我们使用更高级的前端时
+
+13459
+13:39:22,330 --> 13:39:25,780
+behind the scenes when we're working with those more advanced front ends, 
+它们的背后到底发生了些什么
+
+13460
+13:39:25,780 --> 13:39:28,840
+and we'll style them up. So they look a little bit better than this. 
+不过我们会进行一些样式设计，让它们看起来会比现在更加好看
+
+13461
+13:39:28,840 --> 13:39:31,780
+But with that being said, you've just learned the basics of how these front ends work. 
+不管怎么样，你刚刚已经学会了这些前端工作的基础知识
+
+13462
+13:39:31,780 --> 13:39:34,570
+And now that you know how to push things up to get, 
+之前你已经了解过如何把它们推送到 git 上了
+
+13463
+13:39:34,570 --> 13:39:37,210
+I highly recommend you start pushing all of these projects up to your GitHub, 
+我强烈推荐你把这些项目都推送到 GitHub 上
+
+13464
+13:39:37,210 --> 13:39:40,150
+they will be a record that you've actually done the work 
+它们会成为一种记录，以表明你确实已经完成了这些工作
+
+13465
+13:39:40,150 --> 13:39:43,150
+and you've built these smart contracts. 
+以及你已经构建过这些智能合约了
+
+13466
+13:39:43,150 --> 13:39:45,610
+And if you're looking to get an internship down the line, 
+如果你正在寻找实习的机会
+
+13467
+13:39:45,610 --> 13:39:47,800
+if you're looking to help other GitHub projects, 
+如果你想为其它 GitHub 项目提供帮助
+
+13468
+13:39:47,800 --> 13:39:51,190
+this will be a record of hey, I can do this, 
+这都将成为一种记录，就像在说，嘿，我能做到
+
+13469
+13:39:51,190 --> 13:39:54,280
+what I can build look at what I know how to do 
+看看我构建了些什么，我知道该怎么做
+
+13470
+13:39:54,280 --> 13:39:57,160
+so congratulations on your first full stack or your first front end application. 
+祝贺你完成了你的第一个前端应用，第一份全栈工作
+
+13471
+13:39:57,160 --> 13:40:00,250
+Before we move on, let's do a quick refresher of everything we've learned here. 
+在我们继续之前，让我们快速地回顾一下这一节中学习到的所有内容
+
+13472
+13:40:00,250 --> 13:40:03,250
+So number one, typically, 
+第一点是，通常情况下
+
+13473
+13:40:03,280 --> 13:40:07,210
+you want the repository or your code base. For your back end for your smart contracts to be a different repository than your front end, 
+你要将你的后端智能合约仓库或者说代码库，与前端分离
+
+13474
+13:40:07,210 --> 13:40:09,940
+your front end code is going to be a combination of HTML and JavaScript. 
+你的前端代码是 HTML 和 JavaScript 的组合
+
+13475
+13:40:09,940 --> 13:40:12,370
+When we have a wallet like meta mask, 
+当我们有一个类似 MetaMask 这样的钱包时
+
+13476
+13:40:12,370 --> 13:40:15,460
+we're injecting these browser based wallets into the window object of our browsers 
+我们会将这些基于浏览器的钱包注入到浏览器的 "window" 对象里
+
+13477
+13:40:15,490 --> 13:40:18,610
+like window dot Aetherium. 
+比如说 "window.ethereum"
+
+13478
+13:40:18,610 --> 13:40:21,940
+Each browser will have a different extension here, 
+不同的浏览器会有不同的扩展名
+
+13479
+13:40:21,940 --> 13:40:24,580
+reason we do this, 
+我们这样做的原因是
+
+13480
+13:40:24,580 --> 13:40:28,240
+we want to connect to the RPC URL that's built into our meta masks. 
+我们想连接到内置在 MetaMask 中的 "RPC URL"
+
+13481
+13:40:28,240 --> 13:40:31,300
+And in this way, we're making the same API calls to an RPC URL 
+在这种方式下，我们对 "RPC URL" 进行的 API 调用
+
+13482
+13:40:31,330 --> 13:40:34,870
+as we do in hard hat as we do in remix as we do in ethers, etc, 
+就和我们在 Hardhat, Remix, ethers 等工具中所做的完全一样
+
+13483
+13:40:34,870 --> 13:40:38,800
+we created our first promise based function
+我们创建了我们的第一个基于 "Promise" 的函数
+
+13484
+13:40:38,860 --> 13:40:42,400
+where we had a listener kickoff, and we wrapped it in a promise to say, 
+在这个函数中，我们有一个监听器启动器，并且把它包装进了一个 "Promise" 中，而且告诉它
+
+13485
+13:40:42,400 --> 13:40:46,480
+hey, we want to wait for our listener to finish 
+嘿，我们要等待监听器完成监听
+
+13486
+13:40:46,480 --> 13:40:49,600
+since this is a promise based function, 
+由于这是一个基于 "Promise" 的函数
+
+13487
+13:40:49,600 --> 13:40:52,120
+we set a weight listen for transaction mind and we waited for this transaction to finish 
+所以我们写的是 `await listenForTransactionMine` 并等待交易完成
+
+13488
+13:40:52,120 --> 13:40:55,270
+so that on our front end, once our transaction finished going through, 
+这样在我们的前端中，一旦我们的交易完成
+
+13489
+13:40:55,270 --> 13:40:57,910
+we can tell the user it's finished going through
+我们就可以告诉用户它已经完成了
+
+13490
+13:40:57,910 --> 13:41:00,430
+and we can continue doing other stuff. 
+这样我们就可以继续干其它事了
+
+13491
+13:41:00,430 --> 13:41:02,920
+Give yourself that round of applause and let's move on to the next section. 
+给自己鼓个掌吧，然后让我们进入到下一节中
