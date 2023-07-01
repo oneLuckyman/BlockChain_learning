@@ -1,0 +1,244 @@
+13492
+13:41:04,340 --> 13:41:08,090
+All right, welcome to the next section. 
+好的，欢迎来到下一节
+
+13493
+13:41:08,120 --> 13:41:11,990
+We are now on Lesson Nine, our hardhat smart contract lottery, 
+现在我们是第九节了：“Hardhat 智能合约彩票”("Hardhat Smart Contract Lottery")
+
+13494
+13:41:11,990 --> 13:41:15,290
+which again, all the code for this section is going to be available in the GitHub repo associated with this course. 
+还是提醒一下，本节中的所有代码都存在课程关联的 GitHub 仓库中
+
+13495
+13:41:15,290 --> 13:41:17,750
+Alright, so let me show you what we're about to build. 
+好的，让我来展示一下我们即将要构建的内容
+
+13496
+13:41:17,750 --> 13:41:20,000
+I'm going to show you the front end 
+我会向你展示相应的前端部分
+
+13497
+13:41:20,000 --> 13:41:22,400
+login, you don't have to do the front end, if you don't want. 
+但如果你不想参与前端工作的话，那也可以不用做
+
+13498
+13:41:22,400 --> 13:41:25,550
+But the front end does give us a nice way to visualize the lottery that we're building. Here, 
+但是前端可以为我们提供一种非常好的方式来可视化我们这里正在构建的彩票系统
+
+13499
+13:41:25,550 --> 13:41:27,620
+we're building an application that allows users completely decentralized 
+我们正在构建一个完全去中心化的应用程序
+
+13500
+13:41:27,620 --> 13:41:30,890
+to allow us to engage in a fair, a verifiably random lottery. 
+它能够让用户参与一个公平的，可验证的随机彩票活动
+
+13501
+13:41:30,890 --> 13:41:35,660
+This is the application that would actually fix the McDonald's issue that we talked about much earlier. 
+这个应用可以很好地解决之前提到过的麦当劳问题
+
+13502
+13:41:35,660 --> 13:41:39,080
+So first, we got this Kinect Wallet button that we're going to click to connect to meta mask. 
+首先，我们点击这个“连接钱包”("Connect Wallet")连接到 MetaMask 上
+
+13503
+13:41:39,080 --> 13:41:42,530
+And here, we're actually going to show you how to connect to more than just Metamask 
+这里，我将向你展示一下如何连接到 MetaMask 以外的钱包上
+
+13504
+13:41:42,560 --> 13:41:45,830
+wallet connect to trust wallet, math, wallet, 
+"WalletConnect", "Trust Wallet", "MathWallet"
+
+13505
+13:41:45,830 --> 13:41:48,020
+any of these wallets, and we'll show you how to customize even more. 
+无论是这里的哪一个钱包，我都会向你演示如何进行更多的自定义操作
+
+13506
+13:41:48,020 --> 13:41:51,260
+So we're going to connect to Metamask. Here, 
+现在我们先连接到 MetaMask 上
+
+13507
+13:41:51,260 --> 13:41:53,570
+we'll choose our account that we imported in from Hardhead, 
+我们选择从 Hardhat 中导入的这个账户
+
+13508
+13:41:53,570 --> 13:41:56,690
+we choose Next we're gonna choose Connect. 
+选择“下一步”("Next")，选择“连接”("Connect")
+
+13509
+13:41:56,690 --> 13:42:00,350
+And remember, for our front end bit, 
+还记得吧，在我们的前端中
+
+13510
+13:42:00,350 --> 13:42:03,050
+we're gonna go to Settings Advanced reset account, 
+我们需要前往“设置”("Settings") -> “高级”("Advanced") -> “重置账户”("Reset Account")
+
+13511
+13:42:03,050 --> 13:42:06,440
+if we're working with a brand new hard hat blockchain. 
+如果我们使用的是一个全新的 Hardhat 区块链的话
+
+13512
+13:42:06,500 --> 13:42:09,890
+Now, the front end doesn't look super nice, 
+目前，前端看起来还不是很好看
+
+13513
+13:42:09,890 --> 13:42:12,650
+but we have an enter raffle button. 
+但我们已经有一个 "Enter Raffle"(“进入抽奖”)的按钮了
+
+13514
+13:42:12,650 --> 13:42:15,980
+And we have a little bit of UI talking about 
+我们还有一些 UI，说明了
+
+13515
+13:42:15,980 --> 13:42:18,920
+the current number of players 
+“当前玩家数” ("The current number of players")
+
+13516
+13:42:18,920 --> 13:42:22,400
+and then the most previous winner of a raffle. 
+以及“上次抽奖的优胜者” ("The most previous winner")
+
+13517
+13:42:22,400 --> 13:42:27,590
+So we can go ahead and enter the raffle 
+我们继续，点击 "Enter Raffle"
+
+13518
+13:42:27,590 --> 13:42:30,590
+and allow anybody to pay 0.1 eath. To enter our smart contract, 
+我们允许任何人支付 0.1 的以太币到我们的智能合约中
+
+13519
+13:42:30,590 --> 13:42:33,800
+we get a little transaction saying transaction complete, 
+我们得到了一个小的交易提示 "Transaction Complete!"(“交易完成”)
+
+13520
+13:42:33,800 --> 13:42:37,310
+and we get the current number of players is one, 
+然后当前玩家数变成了 1 
+
+13521
+13:42:37,340 --> 13:42:40,130
+we can continue to enter the raffle and anybody can enter this raffle. 
+我们可以继续参加抽奖，任何人都可以参与这个抽奖
+
+13522
+13:42:40,130 --> 13:42:43,220
+And this, the smart contract will keep track of all the players in here, 
+并且智能合约会持续追踪所有的玩家
+
+13523
+13:42:43,220 --> 13:42:46,580
+we're going to run this on a timer, the lottery is going to automatically trigger somebody to win. 
+我们将在计时器上运行这个功能，彩票将自动触发某个人成为赢家
+
+13524
+13:42:46,580 --> 13:42:49,700
+And to do this, to get a pure verifiable random number, 
+要想达成这个效果，需要获取一个纯可验证的随机数
+
+13525
+13:42:49,700 --> 13:42:53,450
+we're going to be using chain link VRF to get a pure verifiably random number. 
+我们会使用 "Chainlink VRF" 来获取这个纯可验证的随机数
+
+13526
+13:42:53,450 --> 13:42:57,770
+And then we're gonna use chain link keepers to 
+接着我们要使用 "CHAINLINK KEEPERS" 
+
+13527
+13:42:57,830 --> 13:43:01,880
+trigger the automation to automatically have one of these winners get picked 
+来触发自动化程序，从而在每当时间间隔结束时
+
+13528
+13:43:01,880 --> 13:43:04,730
+every time one of those time intervals is up. 
+自动地选出一个优胜者
+
+13529
+13:43:04,730 --> 13:43:07,700
+Once the keepers kick it off, they will pick a winner, 
+一旦 "KEEPERS" 启动，它们就会选出一个优胜者
+
+13530
+13:43:07,700 --> 13:43:10,580
+our decentralized lottery will say the most previous winner is so and so.
+我们的去中心化彩票系统就会告知上一次的优胜者是谁
+
+13531
+13:43:10,820 --> 13:43:13,820
+And they will get all the money from this lottery making a perfectly fair decentralized lottery, 
+然后，他们就会从这个绝对公平的去中心化彩票系统中，拿到其中所有的钱
+
+13532
+13:43:13,820 --> 13:43:17,090
+we're going to call our contract, raffle dot soul 
+我们把这个合约命名为 "Raffle.sol"
+
+13533
+13:43:17,090 --> 13:43:20,150
+but you can call it lottery dot soul or really whatever you want. 
+你也可以把它叫做 "lottery.sol" 或是其它任何你想要的名字
+
+13534
+13:43:20,150 --> 13:43:22,400
+And we're going to make it look really, really nice. 
+我们会把它做的非常非常好
+
+13535
+13:43:22,400 --> 13:43:25,850
+So now we're back in our Visual Studio code. 
+现在，让我们回到我们的 Visual Studio Code
+
+13536
+13:43:25,850 --> 13:43:28,940
+This is going to be the project. If you learn this, 
+如果你学完了这个项目
+
+13537
+13:43:28,940 --> 13:43:31,880
+you have the skills to learn all the rest of the smart contract concepts, 
+那么你就已经掌握了剩余的所有智能合约概念
+
+13538
+13:43:31,880 --> 13:43:34,640
+and you are going to be able to do great things in the space. 
+届时你就有能力在这个领域中做出非常优秀的工作了
+
+13539
+13:43:34,640 --> 13:43:37,610
+This is going to be your flagship project, 
+这个项目将成为你的旗舰项目
+
+13540
+13:43:37,610 --> 13:43:40,070
+this is going to be the one that you can be the most excited and the most proud about for this tutorial. 
+也会是你在本教程中所做的最令人兴奋和自豪的项目
