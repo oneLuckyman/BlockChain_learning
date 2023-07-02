@@ -1,0 +1,290 @@
+13541
+13:43:40,070 --> 13:43:46,220
+So let's go ahead and let's create a new folder. 
+让我们继续，来创建一个新的文件夹
+
+13542
+13:43:46,220 --> 13:43:50,810
+So we're gonna do MK dir, hardhat, smart contract lottery, FCC 
+`mkdir hardhat-smartcontract-lottery-fcc`
+
+13543
+13:43:50,810 --> 13:43:55,130
+or smart contract, raffle, whatever you want to call it, 
+或者叫 `smartcontract-raffle`，随你的便了
+
+13544
+13:43:55,130 --> 13:43:58,160
+then we're going to cd into our hard hat, smart contract lottery Free Code Camp. 
+接着，我们 `cd` 进入到我们的 `hardhat-smartcontract-lottery-fcc`
+
+13545
+13:43:58,400 --> 13:44:01,160
+And we're going to type code period, 
+然后输入 `code .`
+
+13546
+13:44:01,160 --> 13:44:04,670
+or we're going to open this up in a new folder, however we choose to do. 
+或者我们也可以在一个新的文件夹中打开它，看你的选择了
+
+13547
+13:44:04,700 --> 13:44:07,430
+So now that we're in our new folder,
+现在我们已经有了一个新的文件夹
+
+13548
+13:44:07,460 --> 13:44:11,210
+we're going to create our new hard hat project. 
+可以开始创建我们新的 Hardhat 项目了
+
+13549
+13:44:11,210 --> 13:44:19,730
+So we're going to do yarn, add dash dash dev hard hat. 
+我们来执行 `yarn add --dev hardhat`
+
+13550
+13:44:19,730 --> 13:44:23,150
+And we'll get our node modules are package dot JSON and our yarn dot lock. 
+我们获得了 "node_modules", "package.json" 以及 "yarn.lock"
+
+13551
+13:44:23,150 --> 13:44:26,630
+Now we'll do yarn hardhat. To get started with a new project, 
+现在我们运行 `yarn hardhat`，开启一个新的项目
+
+13552
+13:44:26,630 --> 13:44:30,200
+and we're just going to select create an empty hard hat dot config dot j s 
+我们直接选择“创建一个空的 hardhat.config.js”
+("Create an empty hardhat.config.js")
+
+13553
+13:44:30,200 --> 13:44:32,900
+because we know what a basic project looks like. 
+因为我们知道一个基本的项目是什么样子的
+
+13554
+13:44:32,900 --> 13:44:35,150
+And we're gonna give this project the customizations that we want to see, 
+并且我们要对这个项目做一些我们想要的自定义配置
+
+13555
+13:44:35,150 --> 13:44:37,940
+we're going to create an empty hard hat dot config. 
+我们将创建一个空的 "hardhat.config"
+
+13556
+13:44:37,940 --> 13:44:42,140
+And now in here we have a blank hardhead.config.js with almost nothing in here. 
+现在，我们就有了这个空白的 "hardhat.config.js"，这里几乎没有任何内容
+
+13557
+13:44:42,140 --> 13:44:44,420
+So we're starting completely from scratch. 
+我们几乎是完全的从头开始
+
+13558
+13:44:44,420 --> 13:44:47,420
+Now we're going to add all of our dependencies in here.
+现在我们就要在这里添加我们所有的依赖项了
+
+13559
+13:44:47,450 --> 13:44:50,870
+And oftentimes, you'll add these sequentially as you build 
+通常，你会按照顺序来添加它们
+
+13560
+13:44:50,870 --> 13:44:54,110
+but we're just going to add them all in one line, 
+但我们打算直接一行就把它们全部都添加了
+
+13561
+13:44:54,110 --> 13:44:57,350
+and there are a lot of them. So we've left a copy, paste the whole section of the full blockchain solidity course, J S, 
+它们真的太多了，所以我们在 "full-blockchain-solidity-course-js" 中留下了一个可供复制粘贴的部分
+
+13562
+13:44:57,350 --> 13:45:00,320
+for you to just copy, paste, so you can install everything in one go. 
+这样你就可以直接复制粘贴，一次性安装所有内容了
+
+13563
+13:45:00,320 --> 13:45:03,530
+So grab that line, and it's going to have everything that we've been talking about. 
+获取这一行，它包含了我们要讨论的所有内容
+
+13564
+13:45:03,530 --> 13:45:05,420
+And we'll just hit enter, and we'll install all of these. 
+我们只要按下 Enter，就会安装所有的这些东西了
+
+13565
+13:45:05,420 --> 13:45:09,080
+And as you create more and more projects, 
+随着你创建的项目越来越多
+
+13566
+13:45:09,080 --> 13:45:09,560
+you'll get the feel of what you like for your dependencies 
+你会感知到哪些依赖库是你喜欢的
+
+13567
+13:45:10,820 --> 13:45:13,850
+and what tools that you like to use. 
+以及哪些工具是你爱用的
+
+13568
+13:45:13,850 --> 13:45:16,430
+Remember, at the end of the day, 
+记住，每当一天的工作结束时
+
+13569
+13:45:16,580 --> 13:45:20,060
+the tool that's best for you and best for the job is the tool that you like the most. 
+对你和你的工作而言，最好的工具就是你最喜欢的工具
+
+13570
+13:45:20,060 --> 13:45:23,240
+There never really is a one tool fits all,
+从来没有一种工具可以应对所有的情形
+
+13571
+13:45:23,240 --> 13:45:26,540
+there's almost always going to be trade offs. 
+几乎总是会有取舍
+
+13572
+13:45:26,570 --> 13:45:30,770
+Alright, now that we have all those dependencies installed, 
+好了，现在我们已经安装好了全部依赖
+
+13573
+13:45:30,770 --> 13:45:32,990
+if we look at our package, JSON will have this massive dev dependencies, 
+如果我们看一下 "package.json"，里面会有这么一大堆依赖库
+
+13574
+13:45:32,990 --> 13:45:36,020
+we'll have everything in Node modules will have everything in yarn dot lock. 
+我们所需的所有东西都已经在 "node_modules" 和 "yarn.lock" 里了
+
+13575
+13:45:36,020 --> 13:45:38,750
+And of course, as we know, in order for any of these to actually work, 
+当然了，我们都知道，要想让它们都能生效
+
+13576
+13:45:38,750 --> 13:45:41,810
+we need to add them into our Hardhead config.
+还需要把它们都添加进我们的 "hardhat.config" 中
+
+13577
+13:45:41,810 --> 13:45:45,140
+Now, there's a lot of stuff to add in here as well. 
+现在，还有一堆东西也需要添加
+
+13578
+13:45:45,380 --> 13:45:48,530
+So like once again, if you want to come to the heart at smart contract, lottery, FCC, 
+所以再一次，如果你愿意的话，可以来到 "hardhat-smartcontract-lottery-fcc" 这里
+
+13579
+13:45:48,530 --> 13:45:51,650
+and go to the Hardhead config, 
+打开 "hardhat.config"
+
+13580
+13:45:51,650 --> 13:45:55,700
+you can just copy paste everything and place it into your project 
+你可以直接复制粘贴这里的所有内容到你的项目中去
+
+13581
+13:45:55,700 --> 13:45:59,180
+so that you don't have to always type everything out yourself. 
+这样你就不用总是亲自输入这些内容了
+
+13582
+13:45:59,180 --> 13:46:02,450
+Meclabs Hardhead waffle anomic labs started ether scan harder to deploy 
+"nomiclabs/hardhat-waffle", "nomiclabs/hardhat-etherscan", "hardhat-deploy"
+
+13583
+13:46:02,450 --> 13:46:05,120
+slitted coverage, or had gas reporter heart had contract sizer, 
+"solidity-coverage", "hardhat-gas-reporter", "hardhat-contract-sizer"
+
+13584
+13:46:05,120 --> 13:46:08,090
+which we haven't talked about yet. But we will Don't worry. 
+有些我们还没有谈到过，但不用担心，之后会的
+
+13585
+13:46:08,090 --> 13:46:10,790
+And then require dot env dot config. 
+最后是 `require("dotenv").config()`
+
+13586
+13:46:10,790 --> 13:46:14,420
+And as you all know, all these little semicolons are popping up 
+还有，你是知道的，这些分号又出现了
+
+13587
+13:46:14,450 --> 13:46:17,030
+and those are going to drive me absolutely crazy. 
+它们会让我疯掉的
+
+13588
+13:46:17,030 --> 13:46:20,840
+So once again, we can create a dot prettier, RC. 
+所以再一次，我们创建一个 ".prettierrc"
+
+13589
+13:46:20,870 --> 13:46:25,220
+And if you want to copy this as well, 
+如果你愿意的话，这个也可以复制
+
+13590
+13:46:25,220 --> 13:46:29,300
+from one of your previous projects are free to do so. 
+就是从你之前的项目里，请自便吧
+
+13591
+13:46:29,300 --> 13:46:33,320
+One thing that I added in here was a print width of 100. 
+这里要额外添加一项的内容是 `"printWidth": 100`
+
+13592
+13:46:33,350 --> 13:46:36,320
+This just changes how long a line can be before it goes on to a new line. 
+它只是改变了一行文字可以有多长，超过该长度将换行显示
+
+13593
+13:46:36,320 --> 13:46:39,560
+That's the only difference here. 
+这就是唯一的区别
+
+13594
+13:46:39,560 --> 13:46:43,370
+Now if we go to our config and hit save, they go away, thank goodness. 
+现在我们前往 "config" 然后点击保存，哈，它们不见了，真是谢天谢地
+
+13595
+13:46:43,430 --> 13:46:47,000
+Now if we look at our solidity version, 
+现在我们再来看一下我们的 solidity 版本
+
+13596
+13:46:47,000 --> 13:46:50,780
+we're currently using zero point 7.3. 
+目前我们使用的是 "0.7.3"
+
+13597
+13:46:50,780 --> 13:46:53,990
+Let's go ahead and update that to 8.8 or 8.7, or whatever you want to use. 
+我们来把它更新到 "8.8" 或是 "8.7"，你想用哪个都行
+
+13598
+13:46:53,990 --> 13:47:00,140
+Now that we have all the basic setup, we can begin coding our smart contracts. 
+现在我们已经完成了所有的基本设置，可以开始编写智能合约了
