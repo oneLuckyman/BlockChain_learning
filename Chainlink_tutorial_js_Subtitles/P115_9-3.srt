@@ -1,0 +1,628 @@
+13598
+13:46:53,990 --> 13:47:00,140
+So we first need to create a new folder called contracts 
+首先我们需要创建一个名为 "contracts" 的文件夹
+
+13599
+13:47:00,170 --> 13:47:03,290
+where we're going to store all of our contracts. 
+这是我们存储所有合约的地方
+
+13600
+13:47:03,290 --> 13:47:07,430
+And let's go ahead and create a new file 
+我们继续，创建一个新文件
+
+13601
+13:47:07,430 --> 13:47:09,950
+called lottery dot soul or raffle dot soul or whatever you want to call it. 
+可以命名为 "Lottery.sol" 或是 "Raffle.sol" 或者你想叫什么就叫什么吧
+
+13602
+13:47:09,950 --> 13:47:13,550
+I'm going to call mine raffle dot soul. 
+我要命名成 "Raffle.sol" 
+
+13603
+13:47:13,550 --> 13:47:16,430
+And you might see this indexing thing happened from time to time. 
+你可能会看到这个 "Indexing" 什么什么的经常出现
+
+13604
+13:47:16,430 --> 13:47:20,630
+It's our hard hat, solidity extension, indexing all of our node modules. 
+这是我们的 "Hardhat Solidity" 扩展正在索引所有的 "node_modules"
+
+13605
+13:47:20,630 --> 13:47:22,460
+So it knows how to highlight things and knows how to work with everything in our solidity files. 
+这样它就会知道如何高亮显示和处理 Solidity 文件中的内容了
+
+13606
+13:47:22,490 --> 13:47:25,310
+So that's what happens when that pops up. 
+这就是这些窗口弹出的原因
+
+13607
+13:47:25,310 --> 13:47:28,400
+Now before we jump in and create it, let's figure out what we're going to do. 
+在开始动手之前，让我们先搞清楚我们到底是要做些什么
+
+13608
+13:47:28,430 --> 13:47:31,310
+So we're going to create our raffle contract. 
+我们要创建一个抽奖("Raffle")合约
+
+13609
+13:47:31,310 --> 13:47:34,370
+And what do we want people able to do? 
+那么我们希望人们都能够做些什么呢？
+
+13610
+13:47:34,370 --> 13:47:37,400
+Well, we probably want people be able to enter the lottery, you know, paying some amount, 
+我们希望人们能够进入到彩票系统中，也就是，付一些钱
+("Enter the lottery (paying some amount)")
+
+13611
+13:47:37,430 --> 13:47:40,970
+we're probably going to want to be able to pick a random winner. 
+我们还希望能够，随机地选出一个优胜者
+("Pick a random winner")
+
+13612
+13:47:40,970 --> 13:47:44,630
+But we want this to be verifiably random, 
+但我们还希望，这是一个可以验证的随机
+("verifiably random")
+
+13613
+13:47:44,660 --> 13:47:47,930
+we want this to be untampered with a bowl.
+我们希望它是不可篡改的
+
+13614
+13:47:47,960 --> 13:47:53,480
+And we also want winner to be selected every X minutes or years or months, 
+我们同时还希望，每隔 X 分钟，年或月就能选出一名优胜者
+("Winner to be selected every X minutes")
+
+13615
+13:47:53,480 --> 13:47:57,260
+aka we want this to be completely automated. 
+也就是说，我们希望这个过程是完全自动化的
+("-> completly automated")
+
+13616
+13:47:57,290 --> 13:48:00,470
+So we want to deploy the smart contract and almost have no maintenance 
+所以我们希望部署的智能合约几乎不需要维护
+
+13617
+13:48:00,470 --> 13:48:03,020
+almost have nobody ever have to touch it again. 
+几乎不需要有人再进行操作
+
+13618
+13:48:03,020 --> 13:48:05,810
+And it'll just automatically run forever. 
+它自己就会永远自动地运行下去
+
+13619
+13:48:05,810 --> 13:48:08,390
+This is the power of smart contracts. 
+这就是智能合约的力量
+
+13620
+13:48:08,390 --> 13:48:12,530
+As we know, since we're picking a random number, and we have some event driven execution, we know that
+
+
+13621
+13:48:12,530 --> 13:48:15,680
+we're going to need to use a chain link Oracle, since we're
+
+
+13622
+13:48:15,680 --> 13:48:17,840
+going to need to get the randomness from outside the
+
+
+13623
+13:48:17,840 --> 13:48:21,290
+blockchain. And we're going to need to have that automated
+
+
+13624
+13:48:21,320 --> 13:48:25,160
+execution. Because a smart contract can execute itself, we
+
+
+13625
+13:48:25,160 --> 13:48:28,250
+need somebody to automatically trigger these. So to trigger
+
+
+13626
+13:48:28,280 --> 13:48:31,070
+selecting a winner, we're gonna have to use the chain link
+
+
+13627
+13:48:31,100 --> 13:48:34,400
+keepers. And that's pretty much going to be our entire code.
+
+
+13628
+13:48:34,490 --> 13:48:37,160
+Now, I usually like to do this before I start any project. And
+
+
+13629
+13:48:37,160 --> 13:48:39,440
+the reason that I do a little bit of brainstorming is because
+
+
+13630
+13:48:39,440 --> 13:48:42,710
+we don't want to just jump in and really do anything, we want
+
+
+13631
+13:48:42,710 --> 13:48:45,590
+to have a good idea of what we're trying to build so that we
+
+
+13632
+13:48:45,590 --> 13:48:48,140
+can write tests for it, so that we can know if we're going in
+
+
+13633
+13:48:48,140 --> 13:48:50,870
+the right direction, etc. Now that we have a good idea of
+
+
+13634
+13:48:50,870 --> 13:48:55,280
+where we're going, let's build it. So per usual, let's do spdx
+
+
+13635
+13:48:55,310 --> 13:49:01,430
+license identifier. And my team will do pragma solidity little
+
+
+13636
+13:49:01,430 --> 13:49:05,360
+caret here, zero point 8.7, even zoom out, just a hair will trash
+
+
+13637
+13:49:05,360 --> 13:49:09,530
+that and we'll say contract, raffle, we can even make sure
+
+
+13638
+13:49:09,560 --> 13:49:12,440
+that we're not going crazy by doing a little yarn Hardhead
+
+
+13639
+13:49:12,440 --> 13:49:15,440
+compile and compiled successfully, we want it to be
+
+
+13640
+13:49:15,440 --> 13:49:18,650
+able to enter the lottery want us to be able to enter it. So
+
+
+13641
+13:49:18,800 --> 13:49:22,460
+maybe we'll create a function called enter raffle. What else
+
+
+13642
+13:49:22,460 --> 13:49:25,400
+do we want to do, we want to be able to pick a random winner. So
+
+
+13643
+13:49:25,400 --> 13:49:30,800
+maybe we'll create a function called pick a random winner, and
+
+
+13644
+13:49:30,800 --> 13:49:33,500
+boom. So let's comment out pick random winner for now. And let's
+
+
+13645
+13:49:33,500 --> 13:49:36,440
+just work on this enter raffle thing. In the past, we've
+
+
+13646
+13:49:36,440 --> 13:49:39,470
+created projects like Funmi, where people can send ether to
+
+
+13647
+13:49:39,470 --> 13:49:42,440
+our contracts or send whatever native blockchain token to our
+
+
+13648
+13:49:42,440 --> 13:49:45,830
+smart contracts using the message dot value based off of
+
+
+13649
+13:49:45,860 --> 13:49:48,260
+some USD value. For this one, we're just going to have the
+
+
+13650
+13:49:48,260 --> 13:49:50,990
+entrance fee instead be USD based, it's just going to be
+
+
+13651
+13:49:51,020 --> 13:49:53,900
+that native asset. So for our enter raffle, we don't have to
+
+
+13652
+13:49:53,900 --> 13:49:57,410
+set a USD price, we can just set a minimum eath price. So up at
+
+
+13653
+13:49:57,410 --> 13:50:01,490
+the top, let's pick our minimum price. So we'll do a un 256
+
+
+13654
+13:50:01,910 --> 13:50:05,330
+entrance fee. And now some of our learnings from our last
+
+
+13655
+13:50:05,330 --> 13:50:09,260
+section should come in here, we now know that this entrance fee
+
+
+13656
+13:50:09,320 --> 13:50:12,230
+is going to be a what, it's going to be a storage variable.
+
+
+13657
+13:50:12,260 --> 13:50:15,800
+So let's prepend it with s underscore let's make a private
+
+
+13658
+13:50:15,800 --> 13:50:18,920
+variable because we always want to set our visibility. But let's
+
+
+13659
+13:50:18,920 --> 13:50:21,530
+have the entrance fee be configurable. Well, let's create
+
+
+13660
+13:50:21,530 --> 13:50:24,170
+a constructor now. And we'll have this entrance fee be
+
+
+13661
+13:50:24,170 --> 13:50:27,380
+settable in our constructor, so our constructor will take a UNT
+
+
+13662
+13:50:27,410 --> 13:50:32,810
+two to the sixth entrance fee, s underscore entrance fee equals
+
+
+13663
+13:50:33,350 --> 13:50:36,680
+entrance fee. Well, if we're gonna only set this one time, we
+
+
+13664
+13:50:36,680 --> 13:50:38,780
+might as well make this a constant or an immutable
+
+
+13665
+13:50:38,780 --> 13:50:41,690
+variable. So let's make this an immutable variable so that we
+
+
+13666
+13:50:41,690 --> 13:50:46,610
+save some gas we'll change this from S to I and now we're saying
+
+
+13667
+13:50:46,640 --> 13:50:50,060
+you interviewed six private immutable I entrance fee equals
+
+
+13668
+13:50:50,060 --> 13:50:53,090
+entrance fee. Now we probably are going to want other users to
+
+
+13669
+13:50:53,090 --> 13:50:56,240
+see the entrance fee. So down below, we can create function
+
+
+13670
+13:50:56,270 --> 13:50:59,930
+get entrance fee, and this will be a public view function which
+
+
+13671
+13:50:59,930 --> 13:51:03,560
+will returns a UN to the set Next, and we'll just say return
+
+
+13672
+13:51:04,010 --> 13:51:07,280
+entrance fee. Now we have a function that users can call to
+
+
+13673
+13:51:07,280 --> 13:51:10,610
+get the entrance fee. But we, as developers can use this AI
+
+
+13674
+13:51:10,610 --> 13:51:13,730
+entrance fee to know this is an immutable variable. This is
+
+
+13675
+13:51:13,730 --> 13:51:17,210
+pretty cheap gas wise for us to read from in our enter raffle,
+
+
+13676
+13:51:17,240 --> 13:51:20,180
+we've done a ton of these before, all we need to do is we
+
+
+13677
+13:51:20,180 --> 13:51:24,560
+just need to require the message dot value is greater than that I
+
+
+13678
+13:51:24,560 --> 13:51:27,770
+underscore entrance fee, what we've learned before about those
+
+
+13679
+13:51:27,800 --> 13:51:32,570
+error codes, so we could use require message dot value, or we
+
+
+13680
+13:51:32,570 --> 13:51:35,360
+could do one of these customers, which is going to be a lot more
+
+
+13681
+13:51:35,360 --> 13:51:38,150
+gas efficient, because instead of storing this string, we're
+
+
+13682
+13:51:38,150 --> 13:51:41,030
+just going to store an error code in our smart contract. So
+
+
+13683
+13:51:41,030 --> 13:51:44,900
+let's do that. Instead, we'll say if the message dot value is
+
+
+13684
+13:51:44,930 --> 13:51:47,180
+less than our eye entrance fee,
+
+
+13685
+13:51:48,620 --> 13:51:52,010
+then we're just going to revert the whole transaction with some
+
+
+13686
+13:51:52,010 --> 13:51:56,540
+error code. And we'll use a best practice naming raffle
+
+
+13687
+13:51:56,720 --> 13:52:02,930
+underscore underscore not enough eath entered. And we'll grab
+
+
+13688
+13:52:02,930 --> 13:52:06,110
+this arrow code. And we'll have if the user doesn't send enough
+
+
+13689
+13:52:06,110 --> 13:52:10,130
+value will revert with not enough eath entered now that we
+
+
+13690
+13:52:10,130 --> 13:52:13,490
+know they're calling into raffle with enough value, we're
+
+
+13691
+13:52:13,490 --> 13:52:16,250
+probably going to want to keep track of all the users who
+
+
+13692
+13:52:16,250 --> 13:52:19,640
+actually enter our raffle. That way, when we pick a winner, we
+
+
+13693
+13:52:19,640 --> 13:52:22,880
+know who's in the running. So let's create an array of players
+
+
+13694
+13:52:22,910 --> 13:52:26,300
+at the top error here. And then just to make this look even
+
+
+13695
+13:52:26,300 --> 13:52:29,300
+nicer, we'll do a little comment here. And we'll say state
+
+
+13696
+13:52:29,360 --> 13:52:32,780
+variables. And we'll combine both our storage and are not
+
+
+13697
+13:52:32,780 --> 13:52:35,510
+storage variables just in this state variable section. So we'll
+
+
+13698
+13:52:35,510 --> 13:52:41,030
+do address array players. Now players, of course, is going to
+
+
+13699
+13:52:41,030 --> 13:52:43,520
+have to be in storage, because we're going to modify this a
+
+
+13700
+13:52:43,520 --> 13:52:45,980
+lot, we're going to be adding and subtracting players all the
+
+
+13701
+13:52:45,980 --> 13:52:49,580
+time. So we're going to do s players will make this private
+
+
+13702
+13:52:49,580 --> 13:52:53,210
+as well. And we're going to make this address payable players
+
+
+13703
+13:52:53,240 --> 13:52:55,340
+because one of these players wins, we're going to need to
+
+
+13704
+13:52:55,340 --> 13:52:59,060
+have to pay them. So we'll make this address payable private as
+
+
+13705
+13:52:59,060 --> 13:53:01,460
+players. And since we're going to make this private, and it's
+
+
+13706
+13:53:01,460 --> 13:53:04,730
+probably good that we know who's in the players array, we'll even
+
+
+13707
+13:53:04,730 --> 13:53:09,800
+do function it player. This will be a public view that returns an
+
+
+13708
+13:53:09,800 --> 13:53:14,870
+address of one of these players. And we'll just return s players
+
+
+13709
+13:53:15,230 --> 13:53:19,880
+of index will have this function, take a un 256 index as
+
+
+13710
+13:53:19,880 --> 13:53:22,370
+an input parameter, we know that players is going to be a storage
+
+
+13711
+13:53:22,370 --> 13:53:25,640
+variable. And we're going to add it to our enter raffle Oh, and
+
+
+13712
+13:53:25,640 --> 13:53:29,210
+we definitely want our Inter raffle to be public and to be
+
+
+13713
+13:53:29,210 --> 13:53:33,290
+payable. Since we're having people send message dot value,
+
+
+13714
+13:53:33,350 --> 13:53:36,260
+and we want anyone to be able to enter our raffle. So it'll be
+
+
+13715
+13:53:36,260 --> 13:53:39,140
+public, it'll be payable, it'll be perfect. Now that we have our
+
+
+13716
+13:53:39,170 --> 13:53:43,910
+array, and someone's entered the raffle, we'll do s players dot
+
+
+13717
+13:53:43,970 --> 13:53:49,160
+push message dot sender. Now, this doesn't actually work
+
+
+13718
+13:53:49,220 --> 13:53:52,580
+because message dot sender isn't a payable address. So we'll need
+
+
+13719
+13:53:52,580 --> 13:53:56,600
+to typecast it as a payable address just by wrapping it in
+
+
+13720
+13:53:56,600 --> 13:53:59,510
+payable. So now we have a way to keep track of all the players
+
+
+13721
+13:53:59,540 --> 13:54:00,200
+that are entering
+
+
+13722
+13:54:00,230 --> 13:54:05,300
+a raffle. 
