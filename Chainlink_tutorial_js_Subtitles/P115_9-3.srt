@@ -115,127 +115,127 @@ This is the power of smart contracts.
 
 13620
 13:48:08,390 --> 13:48:12,530
-As we know, since we're picking a random number, and we have some event driven execution, we know that
-
+As we know, since we're picking a random number, 
+现在我们知道，我们要获取一个随机数
 
 13621
 13:48:12,530 --> 13:48:15,680
-we're going to need to use a chain link Oracle, since we're
-
+and we have some event driven execution, 
+同时我们还有一些事件驱动的执行
 
 13622
 13:48:15,680 --> 13:48:17,840
-going to need to get the randomness from outside the
-
+we know that we're going to need to use a chain link Oracle, 
+因此我们需要使用到 Chainlink 的预言机("Chainlink Oracle")
 
 13623
 13:48:17,840 --> 13:48:21,290
-blockchain. And we're going to need to have that automated
-
+since we're going to need to get the randomness from outside the blockchain. 
+我们需要从区块链的外部来获取随机性("Randomness")
 
 13624
 13:48:21,320 --> 13:48:25,160
-execution. Because a smart contract can execute itself, we
-
+And we're going to need to have that automated execution. 
+并且，我们还需要它能自动执行("Automated Execution")
 
 13625
 13:48:25,160 --> 13:48:28,250
-need somebody to automatically trigger these. So to trigger
-
+Because a smart contract can execute itself, we need somebody to automatically trigger these. 
+因为智能合约无法自行启动，我们需要有人来自动触发它们
 
 13626
 13:48:28,280 --> 13:48:31,070
-selecting a winner, we're gonna have to use the chain link
-
+So to trigger selecting a winner, we're gonna have to use the chain link keepers. 
+因此，为了触发遴选优胜者，我们需要使用 "Chainlink Keepers"
 
 13627
 13:48:31,100 --> 13:48:34,400
-keepers. And that's pretty much going to be our entire code.
-
+And that's pretty much going to be our entire code.
+这几乎就是我们全部的代码了
 
 13628
 13:48:34,490 --> 13:48:37,160
-Now, I usually like to do this before I start any project. And
-
+Now, I usually like to do this before I start any project. 
+通常，在开启任何项目之前我都喜欢进行这样的处理
 
 13629
 13:48:37,160 --> 13:48:39,440
-the reason that I do a little bit of brainstorming is because
-
+And the reason that I do a little bit of brainstorming is because we don't want to just jump in and really do anything, 
+之所以要进行这样的思考是因为我不希望我们盲目地开工
 
 13630
 13:48:39,440 --> 13:48:42,710
-we don't want to just jump in and really do anything, we want
-
+we want to have a good idea of what we're trying to build 
+我希望我们对所要构建的内容能有一个清晰的设想
 
 13631
 13:48:42,710 --> 13:48:45,590
-to have a good idea of what we're trying to build so that we
-
+so that we can write tests for it, 
+这样我们才能编写相应的测试
 
 13632
 13:48:45,590 --> 13:48:48,140
-can write tests for it, so that we can know if we're going in
-
+so that we can know if we're going in the right direction, etc. 
+这样我们才能知道我们是否走在正确的方向上
 
 13633
 13:48:48,140 --> 13:48:50,870
-the right direction, etc. Now that we have a good idea of
-
+Now that we have a good idea of where we're going, let's build it. 
+现在我们已经有了一个清晰的构想了，让我们开始构建它吧
 
 13634
 13:48:50,870 --> 13:48:55,280
-where we're going, let's build it. So per usual, let's do spdx
-
+So per usual, let's do spdx license identifier. And my team 
+通常，我们会先写一句 `SPDX-License-Identifier: MIT`
 
 13635
 13:48:55,310 --> 13:49:01,430
-license identifier. And my team will do pragma solidity little
-
+will do pragma solidity little caret here, zero point 8.7, 
+然后是 `pragma solidity ^0.8.7;`
 
 13636
 13:49:01,430 --> 13:49:05,360
-caret here, zero point 8.7, even zoom out, just a hair will trash
-
+even zoom out, just a hair will trash that 
+视图稍微缩小一点，把这个删掉
 
 13637
 13:49:05,360 --> 13:49:09,530
-that and we'll say contract, raffle, we can even make sure
-
+and we'll say contract, raffle, 
+接着是 `contract Raffle {}`
 
 13638
 13:49:09,560 --> 13:49:12,440
-that we're not going crazy by doing a little yarn Hardhead
-
+we can even make sure that we're not going crazy 
+我们甚至可以这样做，来确保不要出问题
 
 13639
 13:49:12,440 --> 13:49:15,440
-compile and compiled successfully, we want it to be
-
+by doing a little yarn Hardhead compile and compiled successfully, 
+`yarn hardhat compile`，编译成功
 
 13640
 13:49:15,440 --> 13:49:18,650
-able to enter the lottery want us to be able to enter it. So
-
+we want it to be able to enter the lottery want us to be able to enter it. 
+我们希望能够进入到彩票系统中("Enter the lottery")，能够参与其中
 
 13641
 13:49:18,800 --> 13:49:22,460
-maybe we'll create a function called enter raffle. What else
-
+So maybe we'll create a function called enter raffle. 
+所以我们可能要创建一个 `function enterRaffle(){}`
 
 13642
 13:49:22,460 --> 13:49:25,400
-do we want to do, we want to be able to pick a random winner. So
-
+What else do we want to do, we want to be able to pick a random winner. 
+我们还要做些什么？我们希望能够选出一个随机的优胜者
 
 13643
 13:49:25,400 --> 13:49:30,800
-maybe we'll create a function called pick a random winner, and
-
+So maybe we'll create a function called pick a random winner, 
+所以我们可能需要创建一个 `function pickRandomWinner() {}`
 
 13644
 13:49:30,800 --> 13:49:33,500
-boom. So let's comment out pick random winner for now. And let's
+and boom. So let's comment out pick random winner for now. And let's
 
 
 13645
