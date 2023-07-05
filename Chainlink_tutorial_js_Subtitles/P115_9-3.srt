@@ -230,399 +230,397 @@ What else do we want to do, we want to be able to pick a random winner.
 
 13643
 13:49:25,400 --> 13:49:30,800
-So maybe we'll create a function called pick a random winner, 
-所以我们可能需要创建一个 `function pickRandomWinner() {}`
+So maybe we'll create a function called pick a random winner, and boom. 
+所以我们可能需要创建一个 `function pickRandomWinner() {}`，好了
 
 13644
 13:49:30,800 --> 13:49:33,500
-and boom. So let's comment out pick random winner for now. And let's
-
+So let's comment out pick random winner for now. 
+现在，让我们先注释掉 "pickRandomWinner"
 
 13645
 13:49:33,500 --> 13:49:36,440
-just work on this enter raffle thing. In the past, we've
-
+And let's just work on this enter raffle thing. 
+先来处理一下这个 "enterRaffle"
 
 13646
 13:49:36,440 --> 13:49:39,470
-created projects like Funmi, where people can send ether to
-
+In the past, we've created projects like Funmi, 
+过去，在我们创建类似 "FundMe" 这样的项目时
 
 13647
 13:49:39,470 --> 13:49:42,440
-our contracts or send whatever native blockchain token to our
-
+where people can send ether to our contracts or send whatever native blockchain token to our smart contracts 
+人们可以使用基于美元价值的 "message.value" 
 
 13648
 13:49:42,440 --> 13:49:45,830
-smart contracts using the message dot value based off of
-
+using the message dot value based off of some USD value. 
+向我们的合约发送以太币或是其它区块链原生代币
 
 13649
 13:49:45,860 --> 13:49:48,260
-some USD value. For this one, we're just going to have the
-
+For this one, we're just going to have the entrance fee instead be USD based, 
+但这次，我们打算直接使用入场费而不是美元
 
 13650
 13:49:48,260 --> 13:49:50,990
-entrance fee instead be USD based, it's just going to be
-
+it's just going to be that native asset. 
+它将直接成为原生资产
 
 13651
 13:49:51,020 --> 13:49:53,900
-that native asset. So for our enter raffle, we don't have to
-
+So for our enter raffle, we don't have to set a USD price, 
+所以对于我们的 "enterRaffle"，我们不再设置美元价格
 
 13652
 13:49:53,900 --> 13:49:57,410
-set a USD price, we can just set a minimum eath price. So up at
-
+we can just set a minimum eath price. 
+而是直接设置最低以太币价格
 
 13653
 13:49:57,410 --> 13:50:01,490
-the top, let's pick our minimum price. So we'll do a un 256
-
+So up at the top, let's pick our minimum price. 
+来到顶部，让我们来设置一下最低价格
 
 13654
 13:50:01,910 --> 13:50:05,330
-entrance fee. And now some of our learnings from our last
-
+So we'll do a un 256 entrance fee. 
+`uint256 entranceFee;`
 
 13655
 13:50:05,330 --> 13:50:09,260
-section should come in here, we now know that this entrance fee
-
+And now some of our learnings from our last section should come in here, 
+现在，就要用到我们在上一节中学到的某些东西了
 
 13656
 13:50:09,320 --> 13:50:12,230
-is going to be a what, it's going to be a storage variable.
-
+we now know that this entrance fee is going to be a what, it's going to be a storage variable. 
+我们现在已经知道这个 "entranceFee" 是什么东西了，它是一个 storage 变量
 
 13657
 13:50:12,260 --> 13:50:15,800
-So let's prepend it with s underscore let's make a private
-
+So let's prepend it with s underscore let's make a private variable 
+让我们在它前面加上 "s_" 将其设置为一个 "private" 变量
 
 13658
 13:50:15,800 --> 13:50:18,920
-variable because we always want to set our visibility. But let's
-
+because we always want to set our visibility. 
+因为我们总是希望明确指定可见性("visibility")
 
 13659
 13:50:18,920 --> 13:50:21,530
-have the entrance fee be configurable. Well, let's create
-
+But let's have the entrance fee be configurable. 
+但是我们要把它设置为可配置的
 
 13660
 13:50:21,530 --> 13:50:24,170
-a constructor now. And we'll have this entrance fee be
-
+Well, let's create a constructor now. 
+好了，让我们现在开始创建构造函数吧 `constructor()`
 
 13661
 13:50:24,170 --> 13:50:27,380
-settable in our constructor, so our constructor will take a UNT
-
+And we'll have this entrance fee be settable in our constructor, 
+并且，我们要让 "entranceFee" 在构造函数中是可设置的
 
 13662
 13:50:27,410 --> 13:50:32,810
-two to the sixth entrance fee, s underscore entrance fee equals
-
+so our constructor will take a UNT two to the sixth entrance fee, 
+因此我们的构造函数要接收一个 `uint256 entranceFee`
 
 13663
 13:50:33,350 --> 13:50:36,680
-entrance fee. Well, if we're gonna only set this one time, we
-
+s underscore entrance fee equals entrance fee. 
+`s_entranceFee = entranceFee`
 
 13664
 13:50:36,680 --> 13:50:38,780
-might as well make this a constant or an immutable
-
+Well, if we're gonna only set this one time, we might as well make this a constant or an immutable variable. 
+嗯，如果我们只设置它一次，那么我们将其创建为一个 "constant" 或者 "immutable" 变量可能会更好
 
 13665
 13:50:38,780 --> 13:50:41,690
-variable. So let's make this an immutable variable so that we
-
+So let's make this an immutable variable so that we save some gas 
+我们来把它设置成一个 "immutable" 变量，这样可以节省一些 gas
 
 13666
 13:50:41,690 --> 13:50:46,610
-save some gas we'll change this from S to I and now we're saying
-
+we'll change this from S to I and now we're saying
+我们要把 "s" 变成 "i"，现在我们说的就是
 
 13667
 13:50:46,640 --> 13:50:50,060
-you interviewed six private immutable I entrance fee equals
-
+you interviewed six private immutable I entrance fee equals entrance fee. 
+"uint256 private immutable i_entranceFee = entranceFee"
 
 13668
 13:50:50,060 --> 13:50:53,090
-entrance fee. Now we probably are going to want other users to
-
+Now we probably are going to want other users to see the entrance fee. 
+我们可能还想要其他用户也可以看到这个 "entranceFee"
 
 13669
 13:50:53,090 --> 13:50:56,240
-see the entrance fee. So down below, we can create function
-
+So down below, we can create function get entrance fee, 
+所以划到下面，创建 `function getEntranceFee()`
 
 13670
 13:50:56,270 --> 13:50:59,930
-get entrance fee, and this will be a public view function which
-
+and this will be a public view function which will returns a UN to the set Next, 
+它是一个 `public view` 函数，返回一个 `uint256`
 
 13671
 13:50:59,930 --> 13:51:03,560
-will returns a UN to the set Next, and we'll just say return
-
+and we'll just say return entrance fee. 
+然后我们直接写 `return entranceFee`
 
 13672
 13:51:04,010 --> 13:51:07,280
-entrance fee. Now we have a function that users can call to
-
+Now we have a function that users can call to get the entrance fee. 
+现在我们就有了一个函数，可以让用户调取 "entranceFee" 了
 
 13673
 13:51:07,280 --> 13:51:10,610
-get the entrance fee. But we, as developers can use this AI
-
+But we, as developers can use this AI entrance fee to know this is an immutable variable. 
+但我们作为开发者，可以直接使用这个 "i_entranceFee" 并且知道它是一个 "immutable" 变量
 
 13674
 13:51:10,610 --> 13:51:13,730
-entrance fee to know this is an immutable variable. This is
-
+This is pretty cheap gas wise for us to read from 
+这样我们读取时花费的 gas 就会相当便宜
 
 13675
 13:51:13,730 --> 13:51:17,210
-pretty cheap gas wise for us to read from in our enter raffle,
-
+in our enter raffle, we've done a ton of these before, 
+在我们的 "enterRaffle" 中，我们之前已经做过不少类似的工作了
 
 13676
 13:51:17,240 --> 13:51:20,180
-we've done a ton of these before, all we need to do is we
-
+all we need to do 
+所有我们需要做的事就是
 
 13677
 13:51:20,180 --> 13:51:24,560
-just need to require the message dot value is greater than that I
-
+is we just need to require the message dot value is greater than that I underscore entrance fee, 
+限制 `msg.value` 要大于 "i_entranceFee"
+("require msg.value > i_entranceFee")
 
 13678
 13:51:24,560 --> 13:51:27,770
-underscore entrance fee, what we've learned before about those
-
+what we've learned before about those error codes, 
+但我们之前学过一些关于错误代码的知识
 
 13679
 13:51:27,800 --> 13:51:32,570
-error codes, so we could use require message dot value, or we
-
+so we could use require message dot value, or we could do one of these customers, 
+我们可以使用 "require msg.value" 也可以创建一个自定义错误类型
 
 13680
 13:51:32,570 --> 13:51:35,360
-could do one of these customers, which is going to be a lot more
-
+which is going to be a lot more gas efficient, 
+它具有更高的 gas 使用效率
 
 13681
 13:51:35,360 --> 13:51:38,150
-gas efficient, because instead of storing this string, we're
-
+because instead of storing this string, 
+因为它不再是存储一段字符串
 
 13682
 13:51:38,150 --> 13:51:41,030
-just going to store an error code in our smart contract. So
-
+we're just going to store an error code in our smart contract. 
+而是把错误代码直接存储在了我们的智能合约中
 
 13683
 13:51:41,030 --> 13:51:44,900
-let's do that. Instead, we'll say if the message dot value is
-
+So let's do that. Instead, 
+所以让我们来替换一下吧
 
 13684
 13:51:44,930 --> 13:51:47,180
-less than our eye entrance fee,
-
+we'll say if the message dot value is less than our eye entrance fee,
+`if(msg.value < i_entranceFee)` 
+(如果 "msg.value" 小于 "i_entranceFee")
 
 13685
 13:51:48,620 --> 13:51:52,010
-then we're just going to revert the whole transaction with some
-
+then we're just going to revert the whole transaction with some error code. 
+就使用某些错误代码回滚整个交易 (`{revert}`)
 
 13686
 13:51:52,010 --> 13:51:56,540
-error code. And we'll use a best practice naming raffle
-
+And we'll use a best practice naming raffle underscore underscore not enough eath entered. 
+接着我们使用主流的写法 `Raffle__NotEnoughETHEntered();`
 
 13687
 13:51:56,720 --> 13:52:02,930
-underscore underscore not enough eath entered. And we'll grab
-
+And we'll grab this arrow code. 
+我们获取这段错误代码
 
 13688
 13:52:02,930 --> 13:52:06,110
-this arrow code. And we'll have if the user doesn't send enough
-
+And we'll have if the user doesn't send enough value 
+接着，如果用户没有发送足够的价值
 
 13689
 13:52:06,110 --> 13:52:10,130
-value will revert with not enough eath entered now that we
-
+will revert with not enough eath entered 
+就执行 `{revert Raffle__NotEnoughETHEntered}`
 
 13690
 13:52:10,130 --> 13:52:13,490
-know they're calling into raffle with enough value, we're
-
+now that we know they're calling into raffle with enough value, 
+现在，既然我们已经知道他们使用了足够的价值调用 "enterRaffle" 了
 
 13691
 13:52:13,490 --> 13:52:16,250
-probably going to want to keep track of all the users who
-
+we're probably going to want to keep track of all the users who actually enter our raffle. 
+那么我们可能就要持续追踪所有成功进入抽奖的用户了
 
 13692
 13:52:16,250 --> 13:52:19,640
-actually enter our raffle. That way, when we pick a winner, we
-
+That way, when we pick a winner, we know who's in the running. 
+这样，我们才能在选出优胜者的时候，搞清楚都有谁在参与竞争
 
 13693
 13:52:19,640 --> 13:52:22,880
-know who's in the running. So let's create an array of players
-
+So let's create an array of players at the top 
+所以我们要在顶部创建一个玩家("players")数组
 
 13694
 13:52:22,910 --> 13:52:26,300
-at the top error here. And then just to make this look even
-
+error here. 
+这里还有个 `error`
 
 13695
 13:52:26,300 --> 13:52:29,300
-nicer, we'll do a little comment here. And we'll say state
-
+And then just to make this look even nicer, we'll do a little comment here. 
+还有，为了能让这里更好看一些，我们可以在这里做一些注释
 
 13696
 13:52:29,360 --> 13:52:32,780
-variables. And we'll combine both our storage and are not
-
+And we'll say state variables. 
+我们就说，状态变量 (`/* State Variables */`)
 
 13697
 13:52:32,780 --> 13:52:35,510
-storage variables just in this state variable section. So we'll
-
+And we'll combine both our storage and are not storage variables just in this state variable section. 
+我们将把我们的 storage 变量和非 storage 变量都存放在这个 "State Variables" 部分里
 
 13698
 13:52:35,510 --> 13:52:41,030
-do address array players. Now players, of course, is going to
-
+So we'll do address array players. 
+接着我们写 `address[] players`
 
 13699
 13:52:41,030 --> 13:52:43,520
-have to be in storage, because we're going to modify this a
-
+Now players, of course, is going to have to be in storage, 
+当然了，"players" 必须要存放在 storage 里
 
 13700
 13:52:43,520 --> 13:52:45,980
-lot, we're going to be adding and subtracting players all the
-
+because we're going to modify this a lot, we're going to be adding and subtracting players all the time. 
+因为我们要经常对其进行修改，会一直增加和移除玩家
 
 13701
 13:52:45,980 --> 13:52:49,580
-time. So we're going to do s players will make this private
-
+So we're going to do s players will make this private as well. 
+我们把这个也改成私有的 `private s_players`
 
 13702
 13:52:49,580 --> 13:52:53,210
-as well. And we're going to make this address payable players
-
+And we're going to make this address payable players
+同时我们要让这些地址是 `payable` 的
 
 13703
 13:52:53,240 --> 13:52:55,340
-because one of these players wins, we're going to need to
-
+because one of these players wins, we're going to need to have to pay them. 
+因为最终会有一位玩家胜出，我们需要把钱支付给他们
 
 13704
 13:52:55,340 --> 13:52:59,060
-have to pay them. So we'll make this address payable private as
-
+So we'll make this address payable private as players. 
+所以我们要这么创建 `address payable[] private s_players`
 
 13705
 13:52:59,060 --> 13:53:01,460
-players. And since we're going to make this private, and it's
-
+And since we're going to make this private, 
+由于我们把它变成私有的了
 
 13706
 13:53:01,460 --> 13:53:04,730
-probably good that we know who's in the players array, we'll even
-
+and it's probably good that we know who's in the players array, 
+所以我们需要知道都有谁在这个 "players" 数组里
 
 13707
 13:53:04,730 --> 13:53:09,800
-do function it player. This will be a public view that returns an
-
+we'll even do function it player. This will be a public view 
+我们可以这样做 `function getPlayer()` 它也是 `public view` 的
 
 13708
 13:53:09,800 --> 13:53:14,870
-address of one of these players. And we'll just return s players
-
+that returns an address of one of these players. 
+然后返回一个玩家的地址 `returns(address)`
 
 13709
 13:53:15,230 --> 13:53:19,880
-of index will have this function, take a un 256 index as
-
+And we'll just return s players of index 
+接着我们直接返回 `return s_players[index]`
 
 13710
 13:53:19,880 --> 13:53:22,370
-an input parameter, we know that players is going to be a storage
-
+will have this function, take a un 256 index as an input parameter, 
+我们要让这个函数，接收一个 `uint256 index` 作为输入参数
 
 13711
 13:53:22,370 --> 13:53:25,640
-variable. And we're going to add it to our enter raffle Oh, and
-
+we know that players is going to be a storage variable. 
+我们知道 "players" 是一个 storage 变量
 
 13712
 13:53:25,640 --> 13:53:29,210
-we definitely want our Inter raffle to be public and to be
-
+And we're going to add it to our enter raffle 
+并且我们会把它添加进我们的 "enterRaffle" 里
 
 13713
 13:53:29,210 --> 13:53:33,290
-payable. Since we're having people send message dot value,
-
+Oh, and we definitely want our Inter raffle to be public and to be payable. 
+哦！我们肯定是要让 "enterRaffle" 是 `public` 以及 `payable` 的
 
 13714
 13:53:33,350 --> 13:53:36,260
-and we want anyone to be able to enter our raffle. So it'll be
-
+Since we're having people send message dot value, and we want anyone to be able to enter our raffle. 
+因为我们需要人们发送 "msg.value"，并且我们还需要他们能够进入到我们的抽奖中来
 
 13715
 13:53:36,260 --> 13:53:39,140
-public, it'll be payable, it'll be perfect. Now that we have our
-
+So it'll be public, it'll be payable, it'll be perfect. 
+所以它是 "public" 的，也是 "payable" 的，非常完美
 
 13716
 13:53:39,170 --> 13:53:43,910
-array, and someone's entered the raffle, we'll do s players dot
-
+Now that we have our array, and someone's entered the raffle, 
+现在我们有了这个数组，并且某个人已经进入到抽奖中了
 
 13717
 13:53:43,970 --> 13:53:49,160
-push message dot sender. Now, this doesn't actually work
-
+we'll do s players dot push message dot sender. 
+我们执行 `s_players.push(msg.sender);`
 
 13718
 13:53:49,220 --> 13:53:52,580
-because message dot sender isn't a payable address. So we'll need
-
+Now, this doesn't actually work because message dot sender isn't a payable address. 
+目前，它还无法实际运行，因为 "msg.sender" 还不是一个 `payable` 的地址
 
 13719
 13:53:52,580 --> 13:53:56,600
-to typecast it as a payable address just by wrapping it in
-
+So we'll need to typecast it as a payable address 
+所以我们需要做一个类型转换，把它变成一个 "payable" 的地址
 
 13720
 13:53:56,600 --> 13:53:59,510
-payable. So now we have a way to keep track of all the players
-
+just by wrapping it in payable. 
+直接放进 `payable()` 里就行了
 
 13721
 13:53:59,540 --> 13:54:00,200
-that are entering
-
-
-13722
-13:54:00,230 --> 13:54:05,300
-a raffle. 
+So now we have a way to keep track of all the players that are entering a raffle. 
+现在我们已经成功追踪到所有进入到抽奖中的玩家了
