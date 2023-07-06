@@ -1,0 +1,763 @@
+13722
+13:54:00,230 --> 13:54:05,300
+Now one of the concepts that we haven't gone over yet is actually going to be events. 
+现在还有一个概念我们没有介绍，那就是“事件”("Events")
+
+13723
+13:54:05,300 --> 13:54:08,510
+And events are really important to our smart contracts. 
+对于智能合约来说 "Events" 是非常重要的
+
+13724
+13:54:08,510 --> 13:54:11,840
+Whenever we update a dynamic object, like an array or a mapping, 
+当我们更新动态对象，比如说数组或映射时
+
+13725
+13:54:11,840 --> 13:54:15,920
+we always want to omit an event 
+我们总是希望能触发 Event
+
+13726
+13:54:15,950 --> 13:54:18,890
+when we get to less than 10. 
+当我们前进到 "Lesson 10" 的时候
+
+13727
+13:54:18,920 --> 13:54:22,850
+And then especially less than 15 with the next Jas and if T marketplace,
+尤其是 "Lesson 15: NextJS NFT Marketplace" 
+
+13728
+13:54:22,880 --> 13:54:25,940
+these events will make a ton of sense, especially for front end developers. 
+这些 Events 就会变得更有意义，尤其是对前端开发者来说
+
+13729
+13:54:25,940 --> 13:54:29,780
+So right now events might be a little bit of a weird thing for you as we explain it. 
+现在，我们对 Event 的解释可能会让你感觉有些奇怪
+
+13730
+13:54:29,780 --> 13:54:32,330
+But as we continue on, they'll start to make more and more sense. 
+但让我们保持前进，它们会开始变得越来越有意义的
+
+13731
+13:54:32,330 --> 13:54:34,700
+So we're going to start adding events to our smart contracts. 
+因此，我们要为我们的智能合约添加 Event
+
+13732
+13:54:34,700 --> 13:54:37,460
+Whenever we update one of these dynamically sized data structures. 
+每当我们更新动态大小的数据结构时
+
+13733
+13:54:37,460 --> 13:54:40,310
+And to learn more about events and how to use them. 
+要想了解更多有关 Events 的信息以及如何使用它们
+
+13734
+13:54:40,310 --> 13:54:42,800
+We're gonna watch another video that explains all about events. 
+我们可以观看另一个视频，它解释了有关 Events 的所有内容
+
+13735
+13:54:42,800 --> 13:54:45,620
+You can actually follow along with this video as a side project. 
+你可以把这个视频当做一个并行项目
+
+13736
+13:54:45,620 --> 13:54:48,500
+But let's learn all about events. 
+让我们来全面了解一下 Events 
+
+13737
+13:54:48,500 --> 13:54:50,930
+Now, if you've worked with solidity, 
+如果你正在使用 Solidity 工作
+
+13738
+13:54:50,930 --> 13:54:54,230
+you've probably seen these things called events before 
+那么你可能之前见到过这些被称为 Events 的东西
+
+13739
+13:54:54,230 --> 13:54:56,450
+or maybe you haven't seen something like events. 
+或者也可能并没有见过
+
+13740
+13:54:56,450 --> 13:54:59,390
+But you've always wondered how chain link or the graph or some of these other off chain protocols work under the hood. 
+但你或许会经常好奇 Chainlink、The Graph 或是其它离链协议的底层工作原理
+
+13741
+13:54:59,390 --> 13:55:02,120
+And in this video, we're gonna learn about logging and events in solidity, 
+在这个视频中，我们会了解 Solidity 中的 "Logging" 以及 "Events" 
+
+13742
+13:55:02,120 --> 13:55:05,240
+viewing those events on ether scan, 
+在 etherscan 上查看 Events
+
+13743
+13:55:05,240 --> 13:55:08,360
+and then working with them in hard hat. 
+以及在 Hardhat 中使用它们
+
+13744
+13:55:08,360 --> 13:55:12,080
+Now it's the Ethereum virtual machine, or EVM. 
+"Ethereum Virtual Machine" 或者说 "EVM" 
+
+13745
+13:55:12,080 --> 13:55:15,470
+That makes a lot of these block chains tick, like Aetherium. 
+是驱动许多区块链平台的核心，比如以太坊
+
+13746
+13:55:15,470 --> 13:55:19,100
+And the EVM has this functionality called a logging functionality.
+EVM 有一种名为 "Logging" 的功能
+
+13747
+13:55:19,280 --> 13:55:22,550
+When things happen on a blockchain, 
+当区块链上发生某些事情的时候
+
+13748
+13:55:22,550 --> 13:55:26,150
+the EVM writes these things to a specific data structure called its log, 
+EVM 会把这些事情写入到一种名为 "Logs" 的特殊数据结构中
+
+13749
+13:55:26,150 --> 13:55:28,940
+we can actually read these logs from our blockchain nodes that we run. 
+我们可以从我们运行的区块链节点中阅读这些 "Logs" 
+
+13750
+13:55:28,940 --> 13:55:32,090
+In fact, if you run a node or you connect to a node, 
+事实上，如果你运行一个节点或连接到一个节点
+
+13751
+13:55:32,090 --> 13:55:37,130
+you can make a F get logs call to get the logs. 
+你就可以通过调用 "eth_getLogs" 来获取 "Logs"
+
+13752
+13:55:37,130 --> 13:55:40,970
+Now inside these logs is an important piece of logging called events. 
+在 Logging 中有一个很重要的部分，名为 "Events" 
+
+13753
+13:55:40,970 --> 13:55:42,950
+And this is the main piece that we're gonna be talking about today.
+这就是我们今天要主要谈论的部分
+
+13754
+13:55:43,040 --> 13:55:46,940
+events allow you to print information to this logging structure 
+Events 可以让你将信息打印到 Logging 结构中
+
+13755
+13:55:46,940 --> 13:55:49,910
+in a way that's more gas efficient than actually saving it to something like a storage variable. 
+这种方式要比实际保存到诸如 storage 变量的方式更节省 gas 
+
+13756
+13:55:49,910 --> 13:55:53,150
+These events and logs live in this special data structure that isn't accessible to smart contracts. 
+Events 和 Logs 存在于一种智能合约无法访问的特殊数据结构中
+
+13757
+13:55:53,150 --> 13:55:56,690
+That's why it's cheaper because smart contracts can access them 
+这就是为什么它更加便宜，因为智能合约无法访问它们
+
+13758
+13:55:56,720 --> 13:56:00,050
+so that If the trade off here,
+
+
+13759
+13:56:00,050 --> 13:56:02,600
+
+
+
+13760
+13:56:02,630 --> 13:56:05,270
+we can still print some information that's important to
+
+
+13761
+13:56:05,270 --> 13:56:09,140
+us without having to save it in a storage variable, which is
+
+
+13762
+13:56:09,140 --> 13:56:12,620
+going to take up much more gas. Each one of these events is tied
+
+
+13763
+13:56:12,620 --> 13:56:16,550
+to the smart contract or account address that emitted this event
+
+
+13764
+13:56:16,580 --> 13:56:19,880
+in these transactions. listening for these events is incredibly
+
+
+13765
+13:56:19,880 --> 13:56:22,790
+helpful. Let's say for example, you want to do something every
+
+
+13766
+13:56:22,790 --> 13:56:26,450
+time somebody calls a transfer function. Instead of always
+
+
+13767
+13:56:26,450 --> 13:56:29,540
+reading all the variables and looking for something to flip
+
+
+13768
+13:56:29,540 --> 13:56:34,220
+and switch, all you have to do is say, listen for event. So a
+
+
+13769
+13:56:34,220 --> 13:56:37,010
+transaction happened, an event is emitted. And we can listen
+
+
+13770
+13:56:37,010 --> 13:56:40,460
+for these events. This is how a lot of off chain infrastructure
+
+
+13771
+13:56:40,490 --> 13:56:44,210
+works. When you're on a website, and that website reloads when a
+
+
+13772
+13:56:44,210 --> 13:56:47,510
+transaction completes, it actually was listening for that
+
+
+13773
+13:56:47,510 --> 13:56:51,200
+transaction to finish listening for that event to be emitted, so
+
+
+13774
+13:56:51,200 --> 13:56:53,870
+that it could reload or it could do something else. It's
+
+
+13775
+13:56:53,870 --> 13:56:57,020
+incredibly important for front ends. It's also incredibly
+
+
+13776
+13:56:57,020 --> 13:57:00,770
+important for things like chain link, and the graph in the chain
+
+
+13777
+13:57:00,770 --> 13:57:03,620
+link network. A chain link node is actually listening for
+
+
+13778
+13:57:03,650 --> 13:57:07,850
+request data events for to get a random number, make an API call,
+
+
+13779
+13:57:07,850 --> 13:57:11,780
+or etc. Sometimes there are way too many events. And you need to
+
+
+13780
+13:57:11,930 --> 13:57:15,170
+index them in a way that makes sense that you can query all
+
+
+13781
+13:57:15,170 --> 13:57:18,620
+these events that happen at a later date. The graph listens
+
+
+13782
+13:57:18,620 --> 13:57:21,620
+for these events and stores them in the graph so that they're
+
+
+13783
+13:57:21,650 --> 13:57:25,280
+easy to query later on. So events are incredibly powerful.
+
+
+13784
+13:57:25,280 --> 13:57:27,590
+And they have a wide range of uses. They're also good for
+
+
+13785
+13:57:27,590 --> 13:57:30,290
+testing and some other stuff, but you get the picture. They're
+
+
+13786
+13:57:30,290 --> 13:57:33,110
+really sick. Now that we know what events are, let's look at
+
+
+13787
+13:57:33,110 --> 13:57:36,500
+what they look like how we can use them and how we might use
+
+
+13788
+13:57:36,500 --> 13:57:39,590
+them in our smart contract development suite. Now here's
+
+
+13789
+13:57:39,590 --> 13:57:42,680
+what an event is going to look like. We have an event here
+
+
+13790
+13:57:42,680 --> 13:57:46,490
+called stored number. So we have basically a new type of event
+
+
+13791
+13:57:46,520 --> 13:57:49,880
+called stored number. We're saying, hey, solidity, hey,
+
+
+13792
+13:57:49,880 --> 13:57:53,300
+smart contract, we have this new event thing, we're going to be
+
+
+13793
+13:57:53,330 --> 13:57:57,290
+omitting things of typed stored number in the future. When we
+
+
+13794
+13:57:57,320 --> 13:58:00,110
+emit this event, it's going to have these four parameters, it's
+
+
+13795
+13:58:00,110 --> 13:58:03,770
+going to have a unique 256. For called old number. Are you
+
+
+13796
+13:58:03,770 --> 13:58:06,260
+interested? Is it called new number are you intimidated six
+
+
+13797
+13:58:06,260 --> 13:58:09,440
+called add a number and an address called center. Now for
+
+
+13798
+13:58:09,440 --> 13:58:10,580
+the astute people here, you
+
+
+13799
+13:58:10,580 --> 13:58:13,790
+might have noticed that there was another keyword in here, the
+
+
+13800
+13:58:13,820 --> 13:58:17,360
+index to keyword and this is a really important keyword. When
+
+
+13801
+13:58:17,360 --> 13:58:19,580
+we omit one of these events, there are two kinds of
+
+
+13802
+13:58:19,580 --> 13:58:23,240
+parameters, there are the index parameters and the non indexed
+
+
+13803
+13:58:23,240 --> 13:58:27,380
+parameters, you can have up to three index parameters. And
+
+
+13804
+13:58:27,380 --> 13:58:30,830
+they're also known as topics. So if you see a topic, you know
+
+
+13805
+13:58:30,830 --> 13:58:33,590
+that that's going to be an indexed parameter. Index
+
+
+13806
+13:58:33,590 --> 13:58:37,100
+parameters are parameters that are much easier to search for,
+
+
+13807
+13:58:37,160 --> 13:58:40,550
+and much easier to query than the non index parameters. In
+
+
+13808
+13:58:40,550 --> 13:58:43,910
+fact, we recommend F get logs function, it even has a
+
+
+13809
+13:58:43,910 --> 13:58:46,940
+parameter allows us to search for specific topics. So it's
+
+
+13810
+13:58:46,940 --> 13:58:50,540
+much more searchable than the non indexed ones. The non
+
+
+13811
+13:58:50,540 --> 13:58:53,450
+indexed ones are harder to search because they get ABI
+
+
+13812
+13:58:53,450 --> 13:58:56,090
+encoded, and you have to know the API in order to decode them.
+
+
+13813
+13:58:56,120 --> 13:58:58,400
+Now, this is told our smart contract that there is a new
+
+
+13814
+13:58:58,400 --> 13:59:02,630
+type of stored number, a new kind of event here, we need to
+
+
+13815
+13:59:02,630 --> 13:59:06,230
+actually emit that event in order to store that data into
+
+
+13816
+13:59:06,230 --> 13:59:10,640
+the logging data structure of the EVM. To do that, we need to
+
+
+13817
+13:59:10,640 --> 13:59:13,580
+do something that looks like this. This is what it looks like
+
+
+13818
+13:59:13,580 --> 13:59:16,730
+when we emit an event, it looks very similar to calling a
+
+
+13819
+13:59:16,730 --> 13:59:21,230
+function. So you call a mitt and then the name of the event. And
+
+
+13820
+13:59:21,230 --> 13:59:24,140
+then you add all the parameters in there that you like. Here's
+
+
+13821
+13:59:24,140 --> 13:59:27,560
+the full example of a smart contract that has an event and
+
+
+13822
+13:59:27,560 --> 13:59:30,290
+is going to be the example that we walked through in hard hat.
+
+
+13823
+13:59:30,320 --> 13:59:33,530
+Now in this smart contract, whenever anybody calls the store
+
+
+13824
+13:59:33,530 --> 13:59:37,400
+function, we're going to omit this event. Here's an example of
+
+
+13825
+13:59:37,400 --> 13:59:41,180
+a transaction where we call the store function with a value of
+
+
+13826
+13:59:41,330 --> 13:59:45,950
+one, let's look into the logs to see what this event actually is
+
+
+13827
+13:59:45,950 --> 13:59:49,010
+going to look like an event is going to be broken down like so
+
+
+13828
+13:59:49,040 --> 13:59:52,490
+the address of the contract or account, the event is emitted
+
+
+13829
+13:59:52,490 --> 13:59:56,750
+from the topics or the index parameters of the event data.
+
+
+13830
+13:59:56,900 --> 14:00:00,680
+This is the ABI encoded non index parameters of the event.
+
+
+13831
+14:00:01,250 --> 14:00:04,070
+What does this mean? This means that we took those parameters
+
+
+13832
+14:00:04,070 --> 14:00:08,810
+that were non indexed, we match them together with their API or
+
+
+13833
+14:00:08,810 --> 14:00:11,480
+application binary interface, pumped them through an encoding
+
+
+13834
+14:00:11,480 --> 14:00:14,240
+algorithm, and boom, this is what we got. If you have the
+
+
+13835
+14:00:14,240 --> 14:00:17,360
+API, they're very easy to decode. If you don't have the
+
+
+13836
+14:00:17,360 --> 14:00:22,310
+ABI they are very hard to decode these non indexed parameters
+
+
+13837
+14:00:22,340 --> 14:00:26,180
+cost less gas to pump into the logs. Now in this particular
+
+
+13838
+14:00:26,180 --> 14:00:29,690
+contract, since we have verified the code, we verified the
+
+
+13839
+14:00:29,690 --> 14:00:33,020
+contract ether scan knows what the ABI is, and we can view this
+
+
+13840
+14:00:33,020 --> 14:00:37,940
+in Deke or decoded mode. Hex mode is obviously the non
+
+
+13841
+14:00:37,940 --> 14:00:41,690
+decoded mode, or in its raw, hex or hexadecimal or encoded mode.
+
+
+13842
+14:00:41,810 --> 14:00:44,780
+You can read more about the layout of these events in the
+
+
+13843
+14:00:44,780 --> 14:00:50,180
+solidity docs. Now, so that's the basic introduction of
+
+
+13844
+14:00:50,180 --> 14:00:52,580
+events. And for those of you who want to watch the rest of that
+
+
+13845
+14:00:52,580 --> 14:00:55,460
+video, and who wants to actually practice using events yourself,
+
+
+13846
+14:00:55,520 --> 14:00:58,070
+there's a link to these videos and the code repository
+
+
+13847
+14:00:58,100 --> 14:01:00,500
+associated with that video, if you want to play with it, and if
+
+
+13848
+14:01:00,500 --> 14:01:02,750
+you want to learn more, so feel free Ready to refer back to the
+
+
+13849
+14:01:02,750 --> 14:01:05,570
+full blockchain solidity course, Jas, if you want to go deeper
+
+
+13850
+14:01:05,570 --> 14:01:07,790
+into events now that we're back, and we've learned a little bit
+
+
+13851
+14:01:07,790 --> 14:01:10,730
+more about events, let's add some events to this contract.
+
+
+13852
+14:01:10,850 --> 14:01:13,610
+Remember, these events get emitted to a data storage
+
+
+13853
+14:01:13,640 --> 14:01:16,640
+outside of this smart contract. Let's create an event called
+
+
+13854
+14:01:16,670 --> 14:01:21,140
+raffle enter a good syntax for naming events, name events, with
+
+
+13855
+14:01:21,140 --> 14:01:25,490
+the function name reversed. So for enter raffle, we're gonna
+
+
+13856
+14:01:25,490 --> 14:01:28,880
+say raffle entered. So up at the top below our state variables,
+
+
+13857
+14:01:28,880 --> 14:01:32,390
+but above our constructor, we'll create a new section called
+
+
+13858
+14:01:32,420 --> 14:01:36,890
+events. And we'll create our first event. So we'll do event,
+
+
+13859
+14:01:37,520 --> 14:01:40,790
+raffle, Enter. And we'll just have this raffle enter take one
+
+
+13860
+14:01:40,820 --> 14:01:45,440
+index parameter, it'll be an address indexed player. So in
+
+
+13861
+14:01:45,440 --> 14:01:49,910
+our Inter raffle, we're going to say omit raffle enter. And we're
+
+
+13862
+14:01:49,910 --> 14:01:52,880
+just going to pass it message dot sender. I'm going to remove
+
+
+13863
+14:01:52,880 --> 14:01:55,430
+these comments for now. But feel free to leave them in as you
+
+
+13864
+14:01:55,430 --> 14:01:59,210
+code along. Now in this part of my raffle coding or my lottery
+
+
+13865
+14:01:59,210 --> 14:02:02,480
+coding process, I probably would start already writing some tests
+
+
+13866
+14:02:02,480 --> 14:02:05,330
+and already writing some deploy scripts. The reason that we do
+
+
+13867
+14:02:05,330 --> 14:02:08,300
+this is it's good to test our functionality as we progress.
+
+
+13868
+14:02:08,360 --> 14:02:11,030
+And oftentimes, when I'm writing smart contracts, I'm constantly
+
+
+13869
+14:02:11,030 --> 14:02:14,000
+flipping back and forth between my deploy scripts, my contracts
+
+
+13870
+14:02:14,030 --> 14:02:17,060
+and my tests to make sure everything is doing exactly what
+
+
+13871
+14:02:17,060 --> 14:02:19,700
+I want it to do for the purpose of this course. And just to make
+
+
+13872
+14:02:19,700 --> 14:02:22,340
+it easy for you to learn and follow along, we're not going to
+
+
+13873
+14:02:22,340 --> 14:02:24,800
+do that. And we're just going to keep writing our smart contract
+
+
+13874
+14:02:24,830 --> 14:02:28,040
+almost to complete and then move to our deploy scripts and tests.
