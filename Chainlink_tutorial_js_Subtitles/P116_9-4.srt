@@ -21,12 +21,12 @@ we always want to omit an event
 13726
 13:54:15,950 --> 13:54:18,890
 when we get to less than 10. 
-当我们前进到 "Lesson 10" 的时候
+当我们前进到 "Lesson 10" 
 
 13727
 13:54:18,920 --> 13:54:22,850
 And then especially less than 15 with the next Jas and if T marketplace,
-尤其是 "Lesson 15: NextJS NFT Marketplace" 
+尤其是 "Lesson 15: NextJS NFT Marketplace" 的时候
 
 13728
 13:54:22,880 --> 13:54:25,940
@@ -180,277 +180,277 @@ That's why it's cheaper because smart contracts can access them
 
 13758
 13:55:56,720 --> 13:56:00,050
-so that If the trade off here,
-
+so that If the trade off here, we can still print some information that's important to us 
+在这种权衡下，我们仍然可以给自己打印一些关键的信息
 
 13759
 13:56:00,050 --> 13:56:02,600
-
-
+without having to save it in a storage variable, which is going to take up much more gas. 
+但无需再保存到 storage 变量中了，因为这样做会消耗我们更多的 gas 
 
 13760
 13:56:02,630 --> 13:56:05,270
-we can still print some information that's important to
-
+Each one of these events is tied to the smart contract or account address that emitted this event in these transactions. 
+每一个 Event 都与在交易中发出该 Event 的智能合约或账户地址相关联
 
 13761
 13:56:05,270 --> 13:56:09,140
-us without having to save it in a storage variable, which is
-
+listening for these events is incredibly helpful. 
+监听这些 Events 是非常有帮助的
 
 13762
 13:56:09,140 --> 13:56:12,620
-going to take up much more gas. Each one of these events is tied
-
+Let's say for example, you want to do something every time somebody calls a transfer function. 
+让我们来举个例子，假设你想要在每次有人调用转账函数时执行某个操作
 
 13763
 13:56:12,620 --> 13:56:16,550
-to the smart contract or account address that emitted this event
-
+Instead of always reading all the variables and looking for something to flip and switch, 
+与其总是读取所有变量然后寻找需要转换的内容
 
 13764
 13:56:16,580 --> 13:56:19,880
-in these transactions. listening for these events is incredibly
-
+all you have to do is say, listen for event. 
+你倒不如直接监听 Event
 
 13765
 13:56:19,880 --> 13:56:22,790
-helpful. Let's say for example, you want to do something every
-
+So a transaction happened, an event is emitted. And we can listen for these events. 
+也就是说，某个交易发生，接着 Event 触发，然后我们就可以监听这些 Event 
 
 13766
 13:56:22,790 --> 13:56:26,450
-time somebody calls a transfer function. Instead of always
-
+This is how a lot of off chain infrastructure works. 
+这就是许多离链基础设施的工作方式
 
 13767
 13:56:26,450 --> 13:56:29,540
-reading all the variables and looking for something to flip
-
+When you're on a website, and that website reloads when a transaction completes, 
+当你使用网页时，它会在交易完成的时候自动刷新
 
 13768
 13:56:29,540 --> 13:56:34,220
-and switch, all you have to do is say, listen for event. So a
-
+it actually was listening for that transaction to finish listening for that event to be emitted, 
+实际上它做的就是监听这个交易完成时触发的 Event 
 
 13769
 13:56:34,220 --> 13:56:37,010
-transaction happened, an event is emitted. And we can listen
-
+so that it could reload or it could do something else. 
+这样它就可以进而刷新，或者做一些别的什么事了
 
 13770
 13:56:37,010 --> 13:56:40,460
-for these events. This is how a lot of off chain infrastructure
-
+It's incredibly important for front ends. 
+这对于前端来说尤其重要
 
 13771
 13:56:40,490 --> 13:56:44,210
-works. When you're on a website, and that website reloads when a
-
+It's also incredibly important for things like chain link, and the graph 
+对于 Chainlink 和 "The Graph" 来说，这同样非常重要
 
 13772
 13:56:44,210 --> 13:56:47,510
-transaction completes, it actually was listening for that
-
+in the chain link network. A chain link node is actually listening for request data events 
+在 Chainlink 网络中，一个 Chainlink 节点所做的事，实际上就是监听请求数据的 Event 
 
 13773
 13:56:47,510 --> 13:56:51,200
-transaction to finish listening for that event to be emitted, so
-
+for to get a random number, make an API call, or etc. 
+以执行获取随机数，调用 API 等操作
 
 13774
 13:56:51,200 --> 13:56:53,870
-that it could reload or it could do something else. It's
-
+Sometimes there are way too many events. And you need to index them in a way that makes sense 
+有的时候 Event 太多了，你就需要以某种有意义的方式来进行索引
 
 13775
 13:56:53,870 --> 13:56:57,020
-incredibly important for front ends. It's also incredibly
-
+that you can query all these events that happen at a later date. 
+以便在未来的某个日子里查询所有这些已发生的 Event 
 
 13776
 13:56:57,020 --> 13:57:00,770
-important for things like chain link, and the graph in the chain
-
+The graph listens for these events and stores them in the graph so that they're easy to query later on. 
+"The Graph" 会监听并存储这些 Event，以便以后可以轻松地进行查询
 
 13777
 13:57:00,770 --> 13:57:03,620
-link network. A chain link node is actually listening for
-
+So events are incredibly powerful. And they have a wide range of uses. 
+Event 十分强大，并且受到了广泛地应用
 
 13778
 13:57:03,650 --> 13:57:07,850
-request data events for to get a random number, make an API call,
-
+They're also good for testing and some other stuff, but you get the picture. They're really sick. 
+它们对于测试和其它一些事情同样非常有用，懂了吧，它们真的很牛
 
 13779
 13:57:07,850 --> 13:57:11,780
-or etc. Sometimes there are way too many events. And you need to
-
+Now that we know what events are, let's look at what they look like 
+现在我们已经知道 Event 是什么了，让我们来看一下它们到底是什么样的
 
 13780
 13:57:11,930 --> 13:57:15,170
-index them in a way that makes sense that you can query all
-
+how we can use them and how we might use them in our smart contract development suite. 
+以及我们该如何使用它们，尤其是在智能合约开发包中如何使用它们
 
 13781
 13:57:15,170 --> 13:57:18,620
-these events that happen at a later date. The graph listens
-
+Now here's what an event is going to look like. We have an event here called stored number. 
+那么，一个 Event 就是长这样的，这是一个名为 "storedNumber" 的 Event 
 
 13782
 13:57:18,620 --> 13:57:21,620
-for these events and stores them in the graph so that they're
-
+So we have basically a new type of event called stored number. 
+基本上意思就是，我们有了一种新的 Event 数据类型名为 "storedNumber" 
 
 13783
 13:57:21,650 --> 13:57:25,280
-easy to query later on. So events are incredibly powerful.
-
+We're saying, hey, solidity, hey, smart contract, we have this new event thing, 
+相当于再说，嘿，Solidity，嘿，智能合约，我们有一个新的 Event 
 
 13784
 13:57:25,280 --> 13:57:27,590
-And they have a wide range of uses. They're also good for
-
+we're going to be omitting things of typed stored number in the future. 
+未来我们会触发这种 "storedNumber" 类型的 Event 
 
 13785
 13:57:27,590 --> 13:57:30,290
-testing and some other stuff, but you get the picture. They're
-
+When we emit this event, it's going to have these four parameters, 
+我们要触发的这个 Event 有四个参数
 
 13786
 13:57:30,290 --> 13:57:33,110
-really sick. Now that we know what events are, let's look at
-
+it's going to have a unique 256. For called old number. Are you interested? Is it called new number are you intimidated six called add a number and an address called center. 
+分别是 "uint256 oldNumber", "uint256 newNumber", "uint256 addedNumber" 以及 "address sender"
 
 13787
 13:57:33,110 --> 13:57:36,500
-what they look like how we can use them and how we might use
-
+Now for the astute people here, you might have noticed that there was another keyword in here, 
+有些机智的人可能已经注意到了，这里还有另外一个关键字
 
 13788
 13:57:36,500 --> 13:57:39,590
-them in our smart contract development suite. Now here's
-
+the index to keyword and this is a really important keyword. 
+就是 "indexed" 关键字，这是一个非常重要的关键字
 
 13789
 13:57:39,590 --> 13:57:42,680
-what an event is going to look like. We have an event here
-
+When we omit one of these events, there are two kinds of parameters, 
+当我们触发某个 Event 的时候，它会有两种参数
 
 13790
 13:57:42,680 --> 13:57:46,490
-called stored number. So we have basically a new type of event
-
+there are the index parameters and the non indexed parameters, 
+分别是 "indexed" 参数以及非 "indexed" 参数
 
 13791
 13:57:46,520 --> 13:57:49,880
-called stored number. We're saying, hey, solidity, hey,
-
+you can have up to three index parameters. And they're also known as topics. 
+你最多可以有三个 "indexed" 参数，它们也被称为 "Topics"
 
 13792
 13:57:49,880 --> 13:57:53,300
-smart contract, we have this new event thing, we're going to be
-
+So if you see a topic, you know that that's going to be an indexed parameter. 
+所以如果你看到了 "Topic" 就会知道，这是一个 "indexed" 参数
 
 13793
 13:57:53,330 --> 13:57:57,290
-omitting things of typed stored number in the future. When we
-
+Index parameters are parameters that are much easier to search for, and much easier to query than the non index parameters. 
+"indexed" 参数是一种更容易搜索的参数，相比于非 "indexed" 参数而言
 
 13794
 13:57:57,320 --> 13:58:00,110
-emit this event, it's going to have these four parameters, it's
-
+In fact, we recommend F get logs function, it even has a parameter allows us to search for specific topics. 
+事实上，我们推荐使用 "eth_getLogs" 函数，它甚至有一个参数可以让我们直接搜索特定的 "Topic"
 
 13795
 13:58:00,110 --> 13:58:03,770
-going to have a unique 256. For called old number. Are you
-
+So it's much more searchable than the non indexed ones. 
+所以相对于非 "indexed" 参数而言，它的可搜索性要更强
 
 13796
 13:58:03,770 --> 13:58:06,260
-interested? Is it called new number are you intimidated six
+The non indexed ones are harder to search because they get ABI encoded, and you have to know the API in order to decode them.
 
 
 13797
 13:58:06,260 --> 13:58:09,440
-called add a number and an address called center. Now for
+
 
 
 13798
 13:58:09,440 --> 13:58:10,580
-the astute people here, you
+
 
 
 13799
 13:58:10,580 --> 13:58:13,790
-might have noticed that there was another keyword in here, the
+
 
 
 13800
 13:58:13,820 --> 13:58:17,360
-index to keyword and this is a really important keyword. When
+
 
 
 13801
 13:58:17,360 --> 13:58:19,580
-we omit one of these events, there are two kinds of
+
 
 
 13802
 13:58:19,580 --> 13:58:23,240
-parameters, there are the index parameters and the non indexed
+
 
 
 13803
 13:58:23,240 --> 13:58:27,380
-parameters, you can have up to three index parameters. And
+
 
 
 13804
 13:58:27,380 --> 13:58:30,830
-they're also known as topics. So if you see a topic, you know
+ 
 
 
 13805
 13:58:30,830 --> 13:58:33,590
-that that's going to be an indexed parameter. Index
+
 
 
 13806
 13:58:33,590 --> 13:58:37,100
-parameters are parameters that are much easier to search for,
+
 
 
 13807
 13:58:37,160 --> 13:58:40,550
-and much easier to query than the non index parameters. In
+
 
 
 13808
 13:58:40,550 --> 13:58:43,910
-fact, we recommend F get logs function, it even has a
+
 
 
 13809
 13:58:43,910 --> 13:58:46,940
-parameter allows us to search for specific topics. So it's
+
 
 
 13810
 13:58:46,940 --> 13:58:50,540
-much more searchable than the non indexed ones. The non
+
 
 
 13811
 13:58:50,540 --> 13:58:53,450
-indexed ones are harder to search because they get ABI
+
 
 
 13812
 13:58:53,450 --> 13:58:56,090
-encoded, and you have to know the API in order to decode them.
+
 
 
 13813
