@@ -241,7 +241,7 @@ so that it could reload or it could do something else.
 13770
 13:56:37,010 --> 13:56:40,460
 It's incredibly important for front ends. 
-这对于前端来说尤其重要
+对于前端来说这尤为重要
 
 13771
 13:56:40,490 --> 13:56:44,210
@@ -371,393 +371,251 @@ So it's much more searchable than the non indexed ones.
 13796
 13:58:03,770 --> 13:58:06,260
 The non indexed ones are harder to search because they get ABI encoded, and you have to know the API in order to decode them.
-
+非 "indexed" 参数由于被 ABI 编码过，因此搜索起来更加困难，你必须要知道相应的 ABI 才能对它们进行解码
 
 13797
 13:58:06,260 --> 13:58:09,440
-
-
+Now, this is told our smart contract that there is a new type of stored number, a new kind of event here, 
+现在，我们已经告诉智能合约，这里有一种新的 "storedNumber" 类型，一个新的 Event 
 
 13798
 13:58:09,440 --> 13:58:10,580
-
-
+we need to actually emit that event in order to store that data into the logging data structure of the EVM. 
+我们需要实际触发这个 Event，才能将数据存储到 Logging 数据结构中
 
 13799
 13:58:10,580 --> 13:58:13,790
-
-
+To do that, we need to do something that looks like this. 
+为了做到这一点，我们需要像这样做
 
 13800
 13:58:13,820 --> 13:58:17,360
-
-
+This is what it looks like when we emit an event, it looks very similar to calling a function. 
+当我们触发("emit") Event 时就会呈现这样的效果，看起来和调用函数非常类似
 
 13801
 13:58:17,360 --> 13:58:19,580
-
-
+So you call a mitt and then the name of the event. 
+也就是，调用 "emit" 后面跟着的是这个 Event 的名字
 
 13802
 13:58:19,580 --> 13:58:23,240
-
-
+And then you add all the parameters in there that you like. 
+然后你可以添加你想要的所有参数
 
 13803
 13:58:23,240 --> 13:58:27,380
-
-
+Here's the full example of a smart contract that has an event and is going to be the example that we walked through in hard hat. 
+这是一个完整的包含 Event 的智能合约示例，并且我们也会在 Hardhat 中使用这个例子
 
 13804
 13:58:27,380 --> 13:58:30,830
- 
-
+Now in this smart contract, whenever anybody calls the store function, we're going to omit this event. 
+现在在这个智能合约里，每当有人调用 "store" 函数，我们就会触发这个 Event 
 
 13805
 13:58:30,830 --> 13:58:33,590
-
-
+Here's an example of a transaction where we call the store function with a value of one, 
+这里有一个交易的例子，其中我们使用数字 1 调用了 "store" 函数
+（译者注：屏幕上实际显示的数字是 0 和 77）
 
 13806
 13:58:33,590 --> 13:58:37,100
-
-
+let's look into the logs to see what this event actually is going to look like 
+让我们来查看一下 Logs 看看这个 Event 实际上是什么样子的
 
 13807
 13:58:37,160 --> 13:58:40,550
-
-
+an event is going to be broken down like so
+一个 Event 会被解析为以下这样
 
 13808
 13:58:40,550 --> 13:58:43,910
-
-
+the address of the contract or account, the event is emitted from 
+这是是合约或账户的地址("Address")，也是 Event 被触发的来源
 
 13809
 13:58:43,910 --> 13:58:46,940
-
-
+the topics or the index parameters of the event 
+这里是 Event 的 "Topics" 或者说 "indexed" 参数
 
 13810
 13:58:46,940 --> 13:58:50,540
-
-
+data. This is the ABI encoded non index parameters of the event. 
+"Data"，这是 Event 中经过 ABI 解码后的非 "indexed" 参数
 
 13811
 13:58:50,540 --> 13:58:53,450
-
-
+What does this mean? This means that we took those parameters that were non indexed, 
+这意味着什么呢？这意味着我们获取了这些非 "indexed" 参数
 
 13812
 13:58:53,450 --> 13:58:56,090
-
-
+we match them together with their API or application binary interface, 
+并将它们与 ABI 或者说 "Application Binary Interface" 进行了匹配
 
 13813
 13:58:56,120 --> 13:58:58,400
-Now, this is told our smart contract that there is a new
-
+pumped them through an encoding algorithm, and boom, this is what we got. 
+我们将它们扔进了编码算法中，然后嘭，这就是我们得到的结果
 
 13814
 13:58:58,400 --> 13:59:02,630
-type of stored number, a new kind of event here, we need to
-
+If you have the API, they're very easy to decode. 
+如果你拥有 ABI，它们就非常容易解码
 
 13815
 13:59:02,630 --> 13:59:06,230
-actually emit that event in order to store that data into
-
+If you don't have the ABI they are very hard to decode 
+如果你没有 ABI ，它们就非常不容易解码
 
 13816
 13:59:06,230 --> 13:59:10,640
-the logging data structure of the EVM. To do that, we need to
-
+these non indexed parameters cost less gas to pump into the logs. 
+这些非 "indexed" 参数放入 Logs 的时候会消耗更少的 gas 
 
 13817
 13:59:10,640 --> 13:59:13,580
-do something that looks like this. This is what it looks like
-
+Now in this particular contract, since we have verified the code, we verified the contract 
+现在，在这个合约中，由于我们已经验证过了代码，验证过了合约
 
 13818
 13:59:13,580 --> 13:59:16,730
-when we emit an event, it looks very similar to calling a
-
+ether scan knows what the ABI is, and we can view this in Deke or decoded mode. 
+所以 etherscan 知道它的 ABI 是什么，因此我们可以使用 "Dec" 或者说解码模式("Decoded Mode")来进行查看
 
 13819
 13:59:16,730 --> 13:59:21,230
-function. So you call a mitt and then the name of the event. And
-
+Hex mode is obviously the non decoded mode, or in its raw, hex or hexadecimal or encoded mode.
+"Hex" 模式显然就是非解码模式，或者说它是原始的，十六进制的，编码模式的
 
 13820
 13:59:21,230 --> 13:59:24,140
-then you add all the parameters in there that you like. Here's
-
+You can read more about the layout of these events in the solidity docs. 
+你可以在 Solidity 文档中阅读到更多这些有关 Event 布局的内容
 
 13821
 13:59:24,140 --> 13:59:27,560
-the full example of a smart contract that has an event and
-
+Now, so that's the basic introduction of events. 
+这就是 Event 的一个基础的介绍
 
 13822
 13:59:27,560 --> 13:59:30,290
-is going to be the example that we walked through in hard hat.
-
+And for those of you who want to watch the rest of that video, and who wants to actually practice using events yourself,
+对于那些想要观看该视频剩余部分，以及想亲自练习使用 Event 的人来说
 
 13823
 13:59:30,320 --> 13:59:33,530
-Now in this smart contract, whenever anybody calls the store
-
+there's a link to these videos and the code repository associated with that video, 
+这里有这个视频以及这个视频相关的代码库的链接
 
 13824
 13:59:33,530 --> 13:59:37,400
-function, we're going to omit this event. Here's an example of
-
+if you want to play with it, and if you want to learn more, 
+如果你要亲自试一试或者学习更多内容的话
 
 13825
 13:59:37,400 --> 13:59:41,180
-a transaction where we call the store function with a value of
-
+so feel free Ready to refer back to the full blockchain solidity course, Jas, if you want to go deeper into events 
+如果你要更深入地了解 Event 的话，可以自由选择何时回到 "full-blockchain-solidity-course-js" 这里来
 
 13826
 13:59:41,330 --> 13:59:45,950
-one, let's look into the logs to see what this event actually is
-
+now that we're back, and we've learned a little bit more about events, let's add some events to this contract. 
+现在我们回来了，并且已经学习了一些关于 Event 的知识，让我们来给这个合约添加一些 Event 吧
 
 13827
 13:59:45,950 --> 13:59:49,010
-going to look like an event is going to be broken down like so
-
+Remember, these events get emitted to a data storage outside of this smart contract. 
+请记住，这些被触发的 Event 会被送到智能合约之外的数据存储中
 
 13828
 13:59:49,040 --> 13:59:52,490
-the address of the contract or account, the event is emitted
-
+Let's create an event called raffle enter a good syntax for naming events, 
+让我们来创建一个名为 "RaffleEnter" 的 Event，这是一个很好的 Event 命名法
 
 13829
 13:59:52,490 --> 13:59:56,750
-from the topics or the index parameters of the event data.
-
+name events, with the function name reversed. 
+`// Named events with the function name reversed`
+（“把函数名反过来以命名 Event”）
 
 13830
 13:59:56,900 --> 14:00:00,680
-This is the ABI encoded non index parameters of the event.
-
+So for enter raffle, we're gonna say raffle entered. 
+所以对于 "enterRaffle" 来说我们要命名成 "RaffleEnter"
 
 13831
 14:00:01,250 --> 14:00:04,070
-What does this mean? This means that we took those parameters
-
+So up at the top below our state variables, but above our constructor, 
+所以来到顶部，在我们的 "State Variables" 的下面，"constructor" 的上面
 
 13832
 14:00:04,070 --> 14:00:08,810
-that were non indexed, we match them together with their API or
-
+we'll create a new section called events. 
+我们要创建一个新的部分，名为 `/* Events */`
 
 13833
 14:00:08,810 --> 14:00:11,480
-application binary interface, pumped them through an encoding
-
+And we'll create our first event. 
+接着我们来创建一下我们的第一个 Event 
 
 13834
 14:00:11,480 --> 14:00:14,240
-algorithm, and boom, this is what we got. If you have the
-
+So we'll do event, raffle, Enter. 
+`event RaffleEnter()`
 
 13835
 14:00:14,240 --> 14:00:17,360
-API, they're very easy to decode. If you don't have the
-
+And we'll just have this raffle enter take one index parameter, it'll be an address indexed player. 
+我们在 "RaffleEnter" 中只输入一个 "indexed" 参数，也就是 `address indexed player`
 
 13836
 14:00:17,360 --> 14:00:22,310
-ABI they are very hard to decode these non indexed parameters
-
+So in our Inter raffle, we're going to say omit raffle enter. And we're just going to pass it message dot sender. 
+在我们的 "enterRaffle" 里，我们要写 `emit RaffleEnter()` 传入 `msg.sender` 作为参数
 
 13837
 14:00:22,340 --> 14:00:26,180
-cost less gas to pump into the logs. Now in this particular
-
+I'm going to remove these comments for now. But feel free to leave them in as you code along. 
+我现在要把这些注释都删掉，你自己写代码的时候可以选择保留下来
 
 13838
 14:00:26,180 --> 14:00:29,690
-contract, since we have verified the code, we verified the
-
+Now in this part of my raffle coding or my lottery coding process, 
+在我们的抽奖或者说彩票的代码编写过程中
 
 13839
 14:00:29,690 --> 14:00:33,020
-contract ether scan knows what the ABI is, and we can view this
-
+I probably would start already writing some tests and already writing some deploy scripts. 
+我可能会提前开始编写测试还有部署脚本
 
 13840
 14:00:33,020 --> 14:00:37,940
-in Deke or decoded mode. Hex mode is obviously the non
-
+The reason that we do this is it's good to test our functionality as we progress. 
+之所以要这样做是为了在编程的过程中测试我们的功能是否完善良好
 
 13841
 14:00:37,940 --> 14:00:41,690
-decoded mode, or in its raw, hex or hexadecimal or encoded mode.
-
+And oftentimes, when I'm writing smart contracts, I'm constantly flipping back and forth between my deploy scripts, my contracts and my tests 
+通常，在我编写智能合约时，我会不断地在部署脚本，合约以及测试之间来回切换
 
 13842
 14:00:41,810 --> 14:00:44,780
-You can read more about the layout of these events in the
-
+to make sure everything is doing exactly what I want it to do 
+以确保所有的事情都能完全按照我的期望进行
 
 13843
 14:00:44,780 --> 14:00:50,180
-solidity docs. Now, so that's the basic introduction of
-
+for the purpose of this course. And just to make it easy for you to learn and follow along, we're not going to do that. 
+为了达到这门课的目的，也为了能让你们的学习和跟进能够更加轻松，我们就不这么做了
 
 13844
 14:00:50,180 --> 14:00:52,580
-events. And for those of you who want to watch the rest of that
-
+And we're just going to keep writing our smart contract 
+我们会持续编写我们的智能合约
 
 13845
 14:00:52,580 --> 14:00:55,460
-video, and who wants to actually practice using events yourself,
-
-
-13846
-14:00:55,520 --> 14:00:58,070
-there's a link to these videos and the code repository
-
-
-13847
-14:00:58,100 --> 14:01:00,500
-associated with that video, if you want to play with it, and if
-
-
-13848
-14:01:00,500 --> 14:01:02,750
-you want to learn more, so feel free Ready to refer back to the
-
-
-13849
-14:01:02,750 --> 14:01:05,570
-full blockchain solidity course, Jas, if you want to go deeper
-
-
-13850
-14:01:05,570 --> 14:01:07,790
-into events now that we're back, and we've learned a little bit
-
-
-13851
-14:01:07,790 --> 14:01:10,730
-more about events, let's add some events to this contract.
-
-
-13852
-14:01:10,850 --> 14:01:13,610
-Remember, these events get emitted to a data storage
-
-
-13853
-14:01:13,640 --> 14:01:16,640
-outside of this smart contract. Let's create an event called
-
-
-13854
-14:01:16,670 --> 14:01:21,140
-raffle enter a good syntax for naming events, name events, with
-
-
-13855
-14:01:21,140 --> 14:01:25,490
-the function name reversed. So for enter raffle, we're gonna
-
-
-13856
-14:01:25,490 --> 14:01:28,880
-say raffle entered. So up at the top below our state variables,
-
-
-13857
-14:01:28,880 --> 14:01:32,390
-but above our constructor, we'll create a new section called
-
-
-13858
-14:01:32,420 --> 14:01:36,890
-events. And we'll create our first event. So we'll do event,
-
-
-13859
-14:01:37,520 --> 14:01:40,790
-raffle, Enter. And we'll just have this raffle enter take one
-
-
-13860
-14:01:40,820 --> 14:01:45,440
-index parameter, it'll be an address indexed player. So in
-
-
-13861
-14:01:45,440 --> 14:01:49,910
-our Inter raffle, we're going to say omit raffle enter. And we're
-
-
-13862
-14:01:49,910 --> 14:01:52,880
-just going to pass it message dot sender. I'm going to remove
-
-
-13863
-14:01:52,880 --> 14:01:55,430
-these comments for now. But feel free to leave them in as you
-
-
-13864
-14:01:55,430 --> 14:01:59,210
-code along. Now in this part of my raffle coding or my lottery
-
-
-13865
-14:01:59,210 --> 14:02:02,480
-coding process, I probably would start already writing some tests
-
-
-13866
-14:02:02,480 --> 14:02:05,330
-and already writing some deploy scripts. The reason that we do
-
-
-13867
-14:02:05,330 --> 14:02:08,300
-this is it's good to test our functionality as we progress.
-
-
-13868
-14:02:08,360 --> 14:02:11,030
-And oftentimes, when I'm writing smart contracts, I'm constantly
-
-
-13869
-14:02:11,030 --> 14:02:14,000
-flipping back and forth between my deploy scripts, my contracts
-
-
-13870
-14:02:14,030 --> 14:02:17,060
-and my tests to make sure everything is doing exactly what
-
-
-13871
-14:02:17,060 --> 14:02:19,700
-I want it to do for the purpose of this course. And just to make
-
-
-13872
-14:02:19,700 --> 14:02:22,340
-it easy for you to learn and follow along, we're not going to
-
-
-13873
-14:02:22,340 --> 14:02:24,800
-do that. And we're just going to keep writing our smart contract
-
-
-13874
-14:02:24,830 --> 14:02:28,040
-almost to complete and then move to our deploy scripts and tests.
+almost to complete and then move to our deploy scripts and tests. 
+直到几乎完成之后才会转向部署脚本和测试上
