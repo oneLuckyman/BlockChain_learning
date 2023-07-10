@@ -85,137 +85,137 @@ And so it's going to go through a few the requirements of some of the technology
 
 13892
 14:03:18,620 --> 14:03:21,200
-
-
+And the first thing it's going to ask us to do is to make sure that we are on the Rinkeby test net. 
+首先我们要做的是，确保我们已经连上了 Rinkeby 测试网
 
 13893
 14:03:21,200 --> 14:03:24,380
-
-
+So let's go ahead and jump over to Rinkeby. Make sure my meta mask is unlocked here. 
+所以让我们先连上 Rinkeby，解锁我的 MetaMask
 
 13894
 14:03:24,620 --> 14:03:27,170
-
-
+And now that I'm on Rinkeby, great, 
+现在我已经在 Rinkeby 上了，非常好
 
 13895
 14:03:27,170 --> 14:03:31,550
-
-
+I should be able to use the VIP version to test net. 
+我应该能够在测试网上使用 VRF 版本 2 
 
 13896
 14:03:31,550 --> 14:03:34,760
-
-
+Now we're going to jump over to subscription manager. 
+现在我要进入“订阅管理”("Subscription Manager")
 
 13897
 14:03:34,760 --> 14:03:37,730
-
-
+And the subscription manager is where we're going to manage our subscription account. 
+"Subscription Manager" 是我们管理订阅账户的地方
 
 13898
 14:03:37,730 --> 14:03:40,700
-
-
+Basically, this is the place that you put the funds in order to be able to use it across a bunch of different chains. 
+基本上，这就是你放置资金的地方，以便你能够进行跨链使用
 
 13899
 14:03:40,700 --> 14:03:43,160
-
-
+So we're going to go ahead and connect our wallet here in order to use the subscription app. 
+我们继续，连接我们的钱包以使用订阅应用
 
 13900
 14:03:43,160 --> 14:03:44,870
-
-
+And then we're going to go ahead and create a new subscription. 
+接着我们来创建一个新的订阅("Create subscription")
 
 13901
 14:03:44,870 --> 14:03:47,630
-And the first thing it's going to ask us to do is to make
-
+So we'll just use my address as the subscription address here. 
+这里我直接用我的地址作为订阅地址
 
 13902
 14:03:47,630 --> 14:03:50,120
-sure that we are on the Rinkeby test net. So let's go ahead and
-
+I'll approve the creation. 
+同意创建
 
 13903
 14:03:50,120 --> 14:03:53,720
-jump over to Rinkeby. Make sure my meta mask is unlocked here.
-
+And as soon as that transaction is confirmed, our subscription should be created. 
+一旦交易确认，我们的订阅应该也就创建好了
 
 13904
 14:03:54,200 --> 14:03:57,890
-And now that I'm on Rinkeby, great, I should be able to use
-
+Alright, now we have a subscription. Basically, this is the account where we're going to fund it. 
+好的，现在我们有了一个订阅，也就是我们要注入资金的账户
 
 13905
 14:03:58,220 --> 14:04:02,420
-the VIP version to test net. Now we're going to jump over to
-
+And then we can use that account for all of our random Miss requests. 
+接着我们就可以用这个账户来进行我们所有的随机数请求
 
 13906
 14:04:02,420 --> 14:04:05,630
-subscription manager. And the subscription manager is where
+So I'm gonna go ahead and just put in 10 link here, 
 
 
 13907
 14:04:05,630 --> 14:04:07,580
-we're going to manage our subscription account. Basically,
+
 
 
 13908
 14:04:07,640 --> 14:04:10,370
-this is the place that you put the funds in order to be able to
+
 
 
 13909
 14:04:10,370 --> 14:04:13,130
-use it across a bunch of different chains. So we're going
+
 
 
 13910
 14:04:13,130 --> 14:04:16,010
-to go ahead and connect our wallet here in order to use the
+
 
 
 13911
 14:04:16,010 --> 14:04:20,090
-subscription app. And then we're going to go ahead and create a
+
 
 
 13912
 14:04:20,150 --> 14:04:22,760
-new subscription. So we'll just use my address as the
+
 
 
 13913
 14:04:22,760 --> 14:04:27,200
-subscription address here. I'll approve the creation. And as
+
 
 
 13914
 14:04:27,200 --> 14:04:29,420
-soon as that transaction is confirmed, our subscription
+
 
 
 13915
 14:04:29,420 --> 14:04:33,230
-should be created. Alright, now we have a subscription.
+
 
 
 13916
 14:04:33,230 --> 14:04:35,300
-Basically, this is the account where we're going to fund it.
+
 
 
 13917
 14:04:35,510 --> 14:04:38,990
-And then we can use that account for all of our random Miss
+
 
 
 13918
 14:04:38,990 --> 14:04:42,140
-requests. So I'm gonna go ahead and just put in 10 link here,
+
 
 
 13919
