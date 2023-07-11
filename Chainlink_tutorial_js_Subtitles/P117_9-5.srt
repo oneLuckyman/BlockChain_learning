@@ -155,8 +155,8 @@ And then we can use that account for all of our random Miss requests.
 
 13906
 14:04:02,420 --> 14:04:05,630
-So I'm gonna go ahead and just put in 10 link here, 
-
+So I'm gonna go ahead and just put in 10 link here, you can put in however much you want. 
+我这里直接放入 10 个 "LINK"，你们可以自行选择要放多少
 
 13907
 14:04:05,630 --> 14:04:07,580
@@ -220,7 +220,7 @@ So I'm gonna go ahead and just put in 10 link here,
 
 13919
 14:04:42,140 --> 14:04:46,880
-you can put in however much you want. The price and link of
+The price and link of
 
 
 13920
