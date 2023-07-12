@@ -156,291 +156,291 @@ And then we can use that account for all of our random Miss requests.
 13906
 14:04:02,420 --> 14:04:05,630
 So I'm gonna go ahead and just put in 10 link here, you can put in however much you want. 
-我这里直接放入 10 个 "LINK"，你们可以自行选择要放多少
+我这里只放入 10 个 "LINK"，你们可以投入任意数额
 
 13907
 14:04:05,630 --> 14:04:07,580
-
-
+The price and link of every random number you request, it's going to be based on the current gas rates on a given chain, as well as the gasoline that you've chosen. 
+每次你请求随机数所要花费的价格和 Link 都取决于给定链上当前的 gas 费率，以及你选择的 gas 量
 
 13908
 14:04:07,640 --> 14:04:10,370
-
-
+On our funds have been added, let's go ahead and add a consumer contract. 
+好了，资金已添加完毕("Funds added")，让我们开始添加用户合约吧
 
 13909
 14:04:10,370 --> 14:04:13,130
-
-
+So it's asking us for consumer address, we don't actually have a consumer address yet. 
+它要求我们提供用户地址，我们其实还没有用户地址
 
 13910
 14:04:13,130 --> 14:04:16,010
-
-
+So let's go ahead and jump over to the documentation and create a contract that is going to request a number. 
+所以让我们前往文档并创建一个请求数字的合约
 
 13911
 14:04:16,010 --> 14:04:20,090
-
-
+So if you scroll down, you're going to see this Vera fee to consumer that soul contract 
+如果你往下滑，就会看到这里的 "VRFv2Consumer.sol" 合约
 
 13912
 14:04:20,150 --> 14:04:22,760
-
-
+that we can open it in remix, let's just jump right there. 
+我们可以直接在 Remix 中打开它，让我们现在转到那里
 
 13913
 14:04:22,760 --> 14:04:27,200
-
-
+We're gonna notice a few different things in this contract 
+我们注意到，合约中有这么几个不同的东西
 
 13914
 14:04:27,200 --> 14:04:29,420
-
-
+at the top, we've got some input. So now you've got VRF, consumer base version two, we've got an interface for the VRF coordinator, 
+在顶部，我们有一些 "import"，这样你就有了 "VRFConsumerBaseV2" 以及 "VRFCoordinator" 的接口
 
 13915
 14:04:29,420 --> 14:04:33,230
-
-
+and then also a reference to the link token interface. 
+并且还同时引用了 "LinkTokenInterface" 
 
 13916
 14:04:33,230 --> 14:04:35,300
-
-
+So all of those are specified for you on the Rinkeby network here in the example code. 
+所有这些都为你指定好了 Rinkeby 网络上的信息，这里是代码示例
 
 13917
 14:04:35,510 --> 14:04:38,990
-
-
+And then you can refer to the documentation for whatever chain you're going to be deploying to. 
+你可以参考你要部署到的链的文档，以获取这些信息
 
 13918
 14:04:38,990 --> 14:04:42,140
-
-
+And then you're going to see a few new options here. 
+在这里你还能看到一些新的选项
 
 13919
 14:04:42,140 --> 14:04:46,880
-The price and link of
-
+So the key hash option is the way that you specify that gasoline that was described in the documentation. 
+"KeyHash" 选项是你在文档中描述指定 gas 使用量的方式
 
 13920
 14:04:46,880 --> 14:04:49,520
-every random number you request, it's going to be based on the
-
+So depending on the key hash you choose for the given chain you're on the gas limit will be set differently for your random number requests. 
+根据给定链上你的 "KeyHash" 选择不同，请求随机数时的 gas 限制的设置也会有所不同
 
 13921
 14:04:49,550 --> 14:04:54,320
-current gas rates on a given chain, as well as the gasoline
-
+So for example, on a theory main net, we have a 200 way key hash 500 Wiki hash and 1000 graykey hash. 
+举个例子，在以太坊主网上，我们有 "200 gwei KeyHash"，"500 gwei KeyHash" 以及 "1000 gwei KeyHash"
 
 13922
 14:04:54,320 --> 14:04:57,320
-that you've chosen. On our funds have been added, let's go ahead
-
+You can also see in our contract Hear that we have a callback estimate that you're in charge of. So 
+你还可以看到，在我们合约中有一个负责 "callbackGasLimit" 的选项
 
 13923
 14:04:57,320 --> 14:05:00,290
-and add a consumer contract. So it's asking us for consumer
-
+depending on how much gas you're willing to spend in the fulfill random number, 
+它取决于你在生成随机数的过程中愿意花费多少的 gas 
 
 13924
 14:05:00,290 --> 14:05:02,780
-address, we don't actually have a consumer address yet. So let's
-
+you should set this value appropriately. 
+你应当适当地设置这个值
 
 13925
 14:05:02,780 --> 14:05:06,380
-go ahead and jump over to the documentation and create a
-
+Next up is request confirmations. 
+下一个是 "requestConfirmations"
 
 13926
 14:05:06,380 --> 14:05:09,560
-contract that is going to request a number. So if you
-
+So this was something in verify would be one that you could not control. 
+在 VRF 中，这是一个我们不希望受你控制的一个量
 
 13927
 14:05:09,560 --> 14:05:12,320
-scroll down, you're going to see this Vera fee to consumer that
-
+But here now, depending on the chain you're on, depending on the request and the type nature of the request you want to make, 
+但根据你所在的链，根据你想要发起的请求的类型和性质
 
 13928
 14:05:12,320 --> 14:05:14,960
-soul contract that we can open it in remix, let's just jump
-
+you can actually change this number. 
+你实际上是可以更改这个数字的
 
 13929
 14:05:14,990 --> 14:05:18,290
-right there. We're gonna notice a few different things in this
-
+And then one of the most important and useful features that gives you a lot more flexibility and control of your VRF 
+接下来是一个最重要且最有用的功能，它能为你的 VRF 提供更高的灵活性和可控性
 
 13930
 14:05:18,290 --> 14:05:20,870
-contract at the top, we've got some input. So now you've got
-
+is you can actually specify the number of random numbers you want. 
+那就是你可以指定你想要的随机数的数量
 
 13931
 14:05:20,870 --> 14:05:23,720
-VRF, consumer base version two, we've got an interface for the
-
+And so you specify the number words, and then that will specify how many random you went to 56 as you get back from the network. 
+你可以通过指定 "numWords"，进而指定从网络返回多少个 uint256 
 
 13932
 14:05:23,720 --> 14:05:27,320
-VRF coordinator, and then also a reference to the link token
-
+All right here in the constructor, 
+这里是构造函数 "constructor"
 
 13933
 14:05:27,320 --> 14:05:30,530
-interface. So all of those are specified for you on the Rinkeby
-
+we're gonna see a address for the coordinator and address for the link token. 
+我们可以看到 "Coordinator" 的地址以及 "LinkToken"
 
 13934
 14:05:30,530 --> 14:05:33,620
-network here in the example code. And then you can refer to
-
+And then you'll see that the subscription ID is going to be created as we deploy the contract. 
+还有我们部署合约时要创建的 "subscriptionID"
 
 13935
 14:05:33,620 --> 14:05:35,570
-the documentation for whatever chain you're going to be
-
+And so I'm gonna go ahead and get that. 
+我们继续，获取它
 
 13936
 14:05:35,570 --> 14:05:39,620
-deploying to. And then you're going to see a few new options
-
+So if you remember when we created the subscription after we found it, and we see this subscription ID, 
+不知道你是否还记得，当我们资金到位后创建订阅时，我们就能看到这个 "Subscription ID"
 
 13937
 14:05:39,620 --> 14:05:43,190
-here. So the key hash option is the way that you specify that
-
+and now when I deploy this, I'm going to use that subscription ID. 
+当我部署它时，就需要用到那个 "subscription ID"
 
 13938
 14:05:43,190 --> 14:05:46,370
-gasoline that was described in the documentation. So depending
-
+And we've got two methods that should look very familiar, 
+这里有两个看起来十分相似的方法
 
 13939
 14:05:46,370 --> 14:05:49,640
-on the key hash you choose for the given chain you're on the
+we've got fulfill randomness 
 
 
 13940
 14:05:49,640 --> 14:05:53,480
-gas limit will be set differently for your random
+
 
 
 13941
 14:05:53,480 --> 14:05:56,510
-number requests. So for example, on a theory main net, we have a
+
 
 
 13942
 14:05:56,510 --> 14:06:00,680
-200 way key hash 500 Wiki hash and 1000 graykey hash. You can
+
 
 
 13943
 14:06:00,680 --> 14:06:03,410
-also see in our contract Hear that we have a callback estimate
+
 
 
 13944
 14:06:03,410 --> 14:06:06,290
-that you're in charge of. So depending on how much gas you're
+
 
 
 13945
 14:06:06,290 --> 14:06:09,530
-willing to spend in the fulfill random number, you should set
+
 
 
 13946
 14:06:09,530 --> 14:06:13,640
-this value appropriately. Next up is request confirmations. So
+
 
 
 13947
 14:06:13,640 --> 14:06:15,950
-this was something in verify would be one that you could not
+
 
 
 13948
 14:06:15,950 --> 14:06:18,050
-control. But here now, depending on the chain you're on,
+
 
 
 13949
 14:06:18,050 --> 14:06:20,600
-depending on the request and the type nature of the request you
+
 
 
 13950
 14:06:20,600 --> 14:06:24,200
-want to make, you can actually change this number. And then one
+
 
 
 13951
 14:06:24,200 --> 14:06:26,600
-of the most important and useful features that gives you a lot
+
 
 
 13952
 14:06:26,600 --> 14:06:30,350
-more flexibility and control of your VRF is you can actually
+
 
 
 13953
 14:06:30,350 --> 14:06:34,010
-specify the number of random numbers you want. And so you
+
 
 
 13954
 14:06:34,010 --> 14:06:36,800
-specify the number words, and then that will specify how many
+
 
 
 13955
 14:06:36,800 --> 14:06:42,560
-random you went to 56 as you get back from the network. All right
+
 
 
 13956
 14:06:42,560 --> 14:06:45,800
-here in the constructor, we're gonna see a address for the
+
 
 
 13957
 14:06:45,800 --> 14:06:48,380
-coordinator and address for the link token. And then you'll see
+
 
 
 13958
 14:06:48,380 --> 14:06:50,810
-that the subscription ID is going to be created as we deploy
+
 
 
 13959
 14:06:50,810 --> 14:06:54,260
-the contract. And so I'm gonna go ahead and get that. So if you
+
 
 
 13960
 14:06:54,260 --> 14:06:56,330
-remember when we created the subscription after we found it,
+
 
 
 13961
 14:06:56,330 --> 14:06:59,060
-and we see this subscription ID, and now when I deploy this, I'm
+
 
 
 13962
 14:06:59,060 --> 14:07:01,520
-going to use that subscription ID. And we've got two methods
+
 
 
 13963
 14:07:01,520 --> 14:07:05,000
-that should look very familiar, we've got fulfill randomness
+
 
 
 13964
