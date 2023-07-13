@@ -21,7 +21,7 @@ We've made some videos about these before. So we're just going to play these vid
 13879
 14:02:43,340 --> 14:02:46,550
 So you can learn about how taling VRF version two works, and also how chain link keepers works, 
-你可以学到关于 Chainlink VRF 版本 2 还有 Chainlink Keepers 的工作原理
+你可以学到关于 Chainlink VRF 版本二还有 Chainlink Keepers 的工作原理
 
 13880
 14:02:46,550 --> 14:02:49,340
@@ -41,12 +41,12 @@ And we'll just get to building them here.
 13883
 14:02:54,350 --> 14:02:56,870
 Hi, my name is Steven fluid. And today we're going to be taking a look at chain links VRF. version two, 
-大家好，我是 Stephen Fluin，今天我们要来看一下 Chainlink VRF 版本 2
+大家好，我是 Stephen Fluin，今天我们要来看一下 Chainlink VRF 版本二
 
 13884
 14:02:56,870 --> 14:02:59,090
 version two has a few different mental models that we should be aware of. 
-VRF 版本 2 具有一些不同的思维模式，我们应当注意到这一点
+VRF 版本二具有一些不同的思维模式，我们应当注意到这一点
 
 13885
 14:02:59,090 --> 14:03:01,340
@@ -56,12 +56,12 @@ And I want to show you what it feels like to be using it.
 13886
 14:03:01,340 --> 14:03:03,710
 The big important thing to know about Vera version two is that instead of the Vera one model 
-VRF 版本 2 和版本 1 的模式相比有一个重要的事情需要知道
+VRF 版本二和版本一的模式相比有一个重要的差别需要知道
 
 13887
 14:03:04,160 --> 14:03:06,680
 where you'd be funding your contract with Link, instead, you're going to be funding a subscription, 
-你不再是通过 Link 向你的合约输入资金，而是资助一个订阅
+那就是你不再是通过 Link 向你的合约输入资金，而是资助一个订阅
 
 13888
 14:03:06,680 --> 14:03:10,160
@@ -71,7 +71,7 @@ which is basically an account that allows you to fund and maintain balance for m
 13889
 14:03:10,160 --> 14:03:12,890
 Let's dive into the docs and see what using Vera fie two looks and feels like. 
-让我们深入到文档中，看一下 VRF 版本 2 的外观和使用体验
+让我们深入到文档中，看一下 VRF 版本二的样子以及它的使用体验
 
 13890
 14:03:12,890 --> 14:03:15,440
@@ -101,7 +101,7 @@ And now that I'm on Rinkeby, great,
 13895
 14:03:27,170 --> 14:03:31,550
 I should be able to use the VIP version to test net. 
-我应该能够在测试网上使用 VRF 版本 2 
+我应该能够在测试网上使用 VRF 版本二
 
 13896
 14:03:31,550 --> 14:03:34,760
@@ -306,7 +306,7 @@ And so I'm gonna go ahead and get that.
 13936
 14:05:35,570 --> 14:05:39,620
 So if you remember when we created the subscription after we found it, and we see this subscription ID, 
-不知道你是否还记得，当我们资金到位后创建订阅时，我们就能看到这个 "Subscription ID"
+不知道你是否还记得，在我们资金到位后创建订阅时，我们会看到这个 "Subscription ID"
 
 13937
 14:05:39,620 --> 14:05:43,190
@@ -316,403 +316,204 @@ and now when I deploy this, I'm going to use that subscription ID.
 13938
 14:05:43,190 --> 14:05:46,370
 And we've got two methods that should look very familiar, 
-这里有两个看起来十分相似的方法
+这里有两个方法，应该看起来很熟悉
 
 13939
 14:05:46,370 --> 14:05:49,640
-we've got fulfill randomness 
-
+we've got fulfill randomness method that takes in randomness is going to be fulfilled by the Bureau of Oracle, 
+我们有一个 "fulfillRandom"，它接收一个随机数作为参数，并由预言机的 VRF 完成
 
 13940
 14:05:49,640 --> 14:05:53,480
-
-
+as well as you got request random words, which is how we're actually going to initiate the request to the Oracle. 
+还有一个 "requestRandomWords"，它就是我们向预言机发起请求的方法
 
 13941
 14:05:53,480 --> 14:05:56,510
-
-
+So I think we're actually are already ready to go ahead and deploy this. 
+我认为我们已经准备好部署它了
 
 13942
 14:05:56,510 --> 14:06:00,680
-
-
+So let's jump to the deploy screen here 
+所以让我们转到这里的部署窗口
 
 13943
 14:06:00,680 --> 14:06:03,410
-
-
+and select the right contract, which in our case, is your FB to consumer. 
+选择正确的合约，也就是我们的 "VRFv2Consumer"
 
 13944
 14:06:03,410 --> 14:06:06,290
-
-
+And I'm going to make sure that I am on injected web three so that we can actually deploy to the Rinkeby network. 
+确保选中的是 "Injected Web3" 这样我们才能把它部署到 Rinkeby 网络上
 
 13945
 14:06:06,290 --> 14:06:09,530
-
-
+And I'm going to paste in the subscription ID here. And I'm going to deploy, 
+我要把 "Subscription ID" 粘贴到这里，然后就可以开始部署了
 
 13946
 14:06:09,530 --> 14:06:13,640
-
-
+let's go ahead and pay for that transaction.
+让我们继续，支付这笔交易
 
 13947
 14:06:13,640 --> 14:06:15,950
-
-
+And as soon as that is confirmed by the network will show up here, 
+一旦网络确认，它就会在这里显示出来
 
 13948
 14:06:15,950 --> 14:06:18,050
-
-
+and we'll be able to copy this address, and then add that as a consumer and authorize this contract to use my subscription account. 
+接着我就能复制这个地址，然后将其添加为用户，授权此合约使用我的订阅账户
 
 13949
 14:06:18,050 --> 14:06:20,600
-
-
+So let's go ahead and authorize this with them another Metamask transaction. 
+使用 MetaMask 继续进行授权操作
 
 13950
 14:06:20,600 --> 14:06:24,200
-
-
+Alright, we can have your subscription, we can see how much link we funded it with. And we can see our consumer contract. 
+好了，现在我们可以查看你的订阅情况，以及我们存入了多少 Link 资金，还可以查看我们的用户合约
 
 13951
 14:06:24,200 --> 14:06:26,600
-
-
+So now by doing this, we've authorized our consumer contract to make requests for randomness. 
+通过这些操作，我们已经授权用户合约可以发起随机数请求了
 
 13952
 14:06:26,600 --> 14:06:30,350
-
-
+So let's go ahead and make a request for randomness here. 
+所以让我们继续，在这里发起一个随机数请求
 
 13953
 14:06:30,350 --> 14:06:34,010
-
-
+So we're gonna go back to our contract that we deployed here. 
+我们回到这里部署的合约
 
 13954
 14:06:34,010 --> 14:06:36,800
-
-
+And we're just gonna use the remix interface here to keep things simple. 
+简单起见，我们这里直接使用 Remix 的接口
 
 13955
 14:06:36,800 --> 14:06:42,560
-
-
+And I'm going to request some randomness. 
+我将请求一些随机数
 
 13956
 14:06:42,560 --> 14:06:45,800
-
-
+So obviously, this is going to use all of the configuration that I specified in my contract, 
+显然，它将使用我在合约中指定的所有配置
 
 13957
 14:06:45,800 --> 14:06:48,380
-
-
+just kind of hard coded here. So we're gonna get to words of random is here. 
+都是硬编码的，所以我们会获得 2 个随机数
 
 13958
 14:06:48,380 --> 14:06:50,810
-
-
+So we're gonna hit request randomness, confirm the Rigby transaction. 
+点击请求随机数，确认 Rinkeby 的交易
 
 13959
 14:06:50,810 --> 14:06:54,260
-
-
+And then as soon as that transaction comes back, we should notice that we actually have a request. 
+一旦交易返回，我们就会注意到有一个请求
 
 13960
 14:06:54,260 --> 14:06:56,330
-
-
+And then what we'll be doing is we'll be waiting for the Oracle to call fulfill random words on our contract. 
+然后我们就要等待预言机在我们的合约上调用 "fulfillRandomWords"
 
 13961
 14:06:56,330 --> 14:06:59,060
-
-
+And then we'll be storing all of those random words in this s random words, storage variable. 
+接着我们会把这些随机数存到这个 "s_randomWords" 里，它是一个 storage 变量
 
 13962
 14:06:59,060 --> 14:07:01,520
-
-
+Let's go ahead and check to see if our random numbers come back from the Oracle. 
+让我们来检查一下预言机是否已经返回了随机数
 
 13963
 14:07:01,520 --> 14:07:05,000
-
-
+So I'll go in here into random words. And let's request the zeroeth item of the array 
+来到这里的 "s_randomWords"，并请求数组的第 "0" 个元素
 
 13964
 14:07:05,000 --> 14:07:07,940
-method that takes in randomness is going to be fulfilled by the
-
+looks like we've got a random number there. 
+看起来我们已经获取到随机数了
 
 13965
 14:07:07,940 --> 14:07:10,970
-Bureau of Oracle, as well as you got request random words, which
-
+And because we requested two random numbers, we should also have an item in index one. 
+因为我们请求的是两个随机数，所以我们还可以把选项设置为 "1" 
 
 13966
 14:07:10,970 --> 14:07:13,130
-is how we're actually going to initiate the request to the
-
+All right, we we've got our randomness there. 
+很好，我们获取到了相应的随机数
 
 13967
 14:07:13,130 --> 14:07:15,830
-Oracle. So I think we're actually are already ready to go
-
+And if we go back to the subscription manager app, 
+如果我们回到 "Subscription Manager" 这里
 
 13968
 14:07:15,830 --> 14:07:18,620
-ahead and deploy this. So let's jump to the deploy screen here
-
+you're going to see that there's actually an event history item here, 
+你会看到这里有一个 Events 历史记录("History")
 
 13969
 14:07:19,010 --> 14:07:21,800
-and select the right contract, which in our case, is your FB to
-
+we'll see that we spent about point three, three link to get those two random numbers, 
+可以看到请求两个随机数花费了大约 "0.33" Link 
 
 13970
 14:07:21,800 --> 14:07:24,800
-consumer. And I'm going to make sure that I am on injected web
-
+we've just taken a journey to see what it looks like and feels like to use Veera version two, 
+我们已经完成了对 VRF 版本二以及它使用体验的探索
 
 13971
 14:07:24,800 --> 14:07:26,900
-three so that we can actually deploy to the Rinkeby network.
-
+now that we've learned a little bit more about chainlink VRF, 
+现在我们已经对 Chainlink VRF 有了一些更多的了解
 
 13972
 14:07:27,770 --> 14:07:29,990
-And I'm going to paste in the subscription ID here. And I'm
-
+I hope that you took some time to go to doxa chain link and play around with it a little bit 
+希望你可以前往 "docs.chain.link" 并且花一些时间体验和使用一下它
 
 13973
 14:07:29,990 --> 14:07:33,140
-going to deploy, let's go ahead and pay for that transaction.
-
+so that you understand what's really going on, 
+这样你才能真正理解它是如何运作的
 
 13974
 14:07:35,870 --> 14:07:38,660
-And as soon as that is confirmed by the network will show up
-
+we're going to use this sample contract in here to create our function that's going to pick our random winner.
+我们将使用这里的示例合约来创建一个函数，用它来选出我们的随机优胜者
 
 13975
 14:07:38,660 --> 14:07:41,690
-here, and we'll be able to copy this address, and then add that
-
+This is an on chain contract that coordinates with a verifiably random chain link node to give us a random number, 
+这是一个链上合约，它与可验证的随机 Chainlink 节点协作，为我们提供随机数
 
 13976
 14:07:41,690 --> 14:07:45,860
-as a consumer and authorize this contract to use my subscription
-
+you could look at the code directly on chain, or you can come right to the chain link GitHub and 
+你可以直接在 "chain" 上查看代码，或是来到 Chainlink 的 GitHub 
 
 13977
 14:07:45,860 --> 14:07:51,830
-account. So let's go ahead and authorize this with them another
-
+look at all the code for how this is actually happening provably and randomly. 
+查看所有代码，以了解它是如何可验证和随机的
 
 13978
 14:07:51,830 --> 14:07:52,790
-Metamask transaction.
-
-
-13979
-14:07:56,390 --> 14:07:58,130
-Alright, we can have your subscription, we can see how
-
-
-13980
-14:07:58,130 --> 14:08:00,830
-much link we funded it with. And we can see our consumer
-
-
-13981
-14:08:00,830 --> 14:08:04,190
-contract. So now by doing this, we've authorized our consumer
-
-
-13982
-14:08:04,190 --> 14:08:08,360
-contract to make requests for randomness. So let's go ahead
-
-
-13983
-14:08:08,360 --> 14:08:10,820
-and make a request for randomness here. So we're gonna
-
-
-13984
-14:08:10,820 --> 14:08:14,000
-go back to our contract that we deployed here. And we're just
-
-
-13985
-14:08:14,000 --> 14:08:16,460
-gonna use the remix interface here to keep things simple. And
-
-
-13986
-14:08:16,460 --> 14:08:19,460
-I'm going to request some randomness. So obviously, this
-
-
-13987
-14:08:19,460 --> 14:08:23,090
-is going to use all of the configuration that I specified
-
-
-13988
-14:08:23,090 --> 14:08:25,250
-in my contract, just kind of hard coded here. So we're gonna
-
-
-13989
-14:08:25,250 --> 14:08:27,890
-get to words of random is here. So we're gonna hit request
-
-
-13990
-14:08:27,890 --> 14:08:32,450
-randomness, confirm the Rigby transaction. And then as soon as
-
-
-13991
-14:08:32,450 --> 14:08:35,000
-that transaction comes back, we should notice that we actually
-
-
-13992
-14:08:35,000 --> 14:08:38,360
-have a request. And then what we'll be doing is we'll be
-
-
-13993
-14:08:38,360 --> 14:08:41,930
-waiting for the Oracle to call fulfill random words on our
-
-
-13994
-14:08:41,930 --> 14:08:44,390
-contract. And then we'll be storing all of those random
-
-
-13995
-14:08:44,390 --> 14:08:48,710
-words in this s random words, storage variable. Let's go ahead
-
-
-13996
-14:08:48,710 --> 14:08:50,750
-and check to see if our random numbers come back from the
-
-
-13997
-14:08:50,750 --> 14:08:53,630
-Oracle. So I'll go in here into random words. And let's request
-
-
-13998
-14:08:53,630 --> 14:08:56,330
-the zeroeth item of the array looks like we've got a random
-
-
-13999
-14:08:56,330 --> 14:08:58,970
-number there. And because we requested two random numbers, we
-
-
-14000
-14:08:58,970 --> 14:09:03,800
-should also have an item in index one. All right, we we've
-
-
-14001
-14:09:03,800 --> 14:09:06,470
-got our randomness there. And if we go back to the subscription
-
-
-14002
-14:09:06,470 --> 14:09:09,620
-manager app, you're going to see that there's actually an event
-
-
-14003
-14:09:09,620 --> 14:09:11,960
-history item here, we'll see that we spent about point three,
-
-
-14004
-14:09:11,960 --> 14:09:16,370
-three link to get those two random numbers, we've just taken
-
-
-14005
-14:09:16,370 --> 14:09:19,250
-a journey to see what it looks like and feels like to use Veera
-
-
-14006
-14:09:19,250 --> 14:09:20,030
-version two,
-
-
-14007
-14:09:20,180 --> 14:09:22,730
-now that we've learned a little bit more about chainlink VRF, I
-
-
-14008
-14:09:22,760 --> 14:09:25,520
-hope that you took some time to go to doxa chain link and play
-
-
-14009
-14:09:25,520 --> 14:09:28,070
-around with it a little bit so that you understand what's
-
-
-14010
-14:09:28,070 --> 14:09:31,520
-really going on, we're going to use this sample contract in here
-
-
-14011
-14:09:31,580 --> 14:09:34,340
-to create our function that's going to pick our random winner.
-
-
-14012
-14:09:34,400 --> 14:09:36,740
-This is an on chain contract that coordinates with a
-
-
-14013
-14:09:36,740 --> 14:09:40,340
-verifiably random chain link node to give us a random number,
-
-
-14014
-14:09:40,370 --> 14:09:42,590
-you could look at the code directly on chain, or you can
-
-
-14015
-14:09:42,590 --> 14:09:46,130
-come right to the chain link GitHub and look at all the code
-
-
-14016
-14:09:46,130 --> 14:09:49,040
-for how this is actually happening provably and randomly.
-
-
-14017
-14:09:49,100 --> 14:09:51,440
-And we'll have a link to this in the GitHub repo associated with
-
-
-14018
-14:09:51,440 --> 14:09:56,540
-this course. 
+And we'll have a link to this in the GitHub repo associated with this course. 
+我们会在课程关联的 GitHub 仓库中提供这个链接
