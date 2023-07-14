@@ -1,0 +1,403 @@
+14018
+14:09:51,440 --> 14:09:56,540
+So we're going to create our function here called
+
+
+14019
+14:09:56,660 --> 14:09:59,150
+pick a random winner, this function is going to be called
+
+
+14020
+14:09:59,150 --> 14:10:01,670
+by the chain link keepers network so that this can
+
+
+14021
+14:10:01,700 --> 14:10:04,490
+automatically run without us having to interact with it. And
+
+
+14022
+14:10:04,490 --> 14:10:07,340
+actually, while we're updating this, I want to add some some
+
+
+14023
+14:10:07,340 --> 14:10:11,660
+stars here saying view slash pure functions. Now our pick
+
+
+14024
+14:10:11,660 --> 14:10:13,670
+random winner function, we're actually not going to make
+
+
+14025
+14:10:13,670 --> 14:10:16,940
+public we're going to make external, external functions are
+
+
+14026
+14:10:16,940 --> 14:10:19,670
+a little bit cheaper than public functions. Because solidity
+
+
+14027
+14:10:19,670 --> 14:10:22,250
+knows that our own contract can call this, we're actually going
+
+
+14028
+14:10:22,250 --> 14:10:25,130
+to change the name of this function, as well, very soon,
+
+
+14029
+14:10:25,130 --> 14:10:27,500
+but we'll get to that in a little bit. So in order for us
+
+
+14030
+14:10:27,500 --> 14:10:30,500
+to pick a random winner, we actually have to do two things,
+
+
+14031
+14:10:30,560 --> 14:10:34,190
+we first have to request the random number. And then once we
+
+
+14032
+14:10:34,190 --> 14:10:38,330
+get it, do something with it. So chainlink VRF is a two
+
+
+14033
+14:10:38,330 --> 14:10:42,470
+transaction process. And this is actually intentional. Having
+
+
+14034
+14:10:42,470 --> 14:10:45,590
+random numbers in two transactions is actually also
+
+
+14035
+14:10:45,620 --> 14:10:48,380
+much better than having it in one. If it's just one
+
+
+14036
+14:10:48,380 --> 14:10:51,140
+transaction, then people could just brute force tries
+
+
+14037
+14:10:51,140 --> 14:10:53,900
+simulating calling this transaction and we'll learn how
+
+
+14038
+14:10:53,900 --> 14:10:56,810
+to simulate calls soon simulate calling these transactions to
+
+
+14039
+14:10:56,810 --> 14:10:59,030
+see what they can manipulate to make sure that they are the
+
+
+14040
+14:10:59,030 --> 14:11:01,700
+winner. We want to make sure that this is absolutely fair.
+
+
+14041
+14:11:01,730 --> 14:11:05,240
+Nobody can manipulate our smart contract into having them be the
+
+
+14042
+14:11:05,240 --> 14:11:07,880
+winner of the lottery, this function is actually going to
+
+
+14043
+14:11:07,880 --> 14:11:10,850
+request it. And then in a second func the random number is going
+
+
+14044
+14:11:10,850 --> 14:11:13,640
+to be returned. And in the transaction that we actually get
+
+
+14045
+14:11:13,640 --> 14:11:16,760
+the random number from the chain link network, that's when we're
+
+
+14046
+14:11:16,760 --> 14:11:19,460
+going to actually send the money to the winner. And if we go to
+
+
+14047
+14:11:19,460 --> 14:11:21,830
+the chain link documentation, the function that the chain link
+
+
+14048
+14:11:21,830 --> 14:11:24,710
+node calls is this function called fulfill random words,
+
+
+14049
+14:11:24,770 --> 14:11:27,080
+this is going to be the requesting one, which we could
+
+
+14050
+14:11:27,080 --> 14:11:30,200
+even change this to request random winner to make it more
+
+
+14051
+14:11:30,200 --> 14:11:35,330
+clear, and then we'll make a function fulfill random words.
+
+
+14052
+14:11:36,080 --> 14:11:38,900
+And this is going to be an internal override, which we'll
+
+
+14053
+14:11:38,900 --> 14:11:42,380
+explain in a little bit, now fulfill fulfill random words
+
+
+14054
+14:11:42,380 --> 14:11:45,620
+basically means we're fulfilling random numbers. The word comes
+
+
+14055
+14:11:45,620 --> 14:11:47,780
+from a computer science terminology, but you can
+
+
+14056
+14:11:47,780 --> 14:11:50,570
+basically just think of this as fulfill random numbers, because
+
+
+14057
+14:11:50,570 --> 14:11:53,150
+we can get multiple random numbers. Now in order to make
+
+
+14058
+14:11:53,150 --> 14:11:57,140
+our raffle contract VRF a bowl, we have to import the chain link
+
+
+14059
+14:11:57,140 --> 14:11:59,690
+code, we can go back to the documentation, and we're just
+
+
+14060
+14:11:59,690 --> 14:12:02,930
+going to grab this bottom line and we'll grab the top line in a
+
+
+14061
+14:12:02,930 --> 14:12:06,350
+second. So we're going to do import, I'm going to write it
+
+
+14062
+14:12:06,350 --> 14:12:09,140
+out. But if you want to copy paste, you can at chain link
+
+
+14063
+14:12:09,170 --> 14:12:15,950
+slash contracts slash SRC slash V 0.8, slash V RF, consumer
+
+
+14064
+14:12:15,980 --> 14:12:20,420
+base, b two dot Sol. And since we're importing at chainlink,
+
+
+14065
+14:12:20,420 --> 14:12:23,570
+slash contracts, we're gonna need to add that in by running
+
+
+14066
+14:12:23,570 --> 14:12:28,700
+yarn, add dash dash dev at chainlink slash contracts. And
+
+
+14067
+14:12:29,810 --> 14:12:32,720
+now that we have this in here, we should be able to import like
+
+
+14068
+14:12:32,720 --> 14:12:36,380
+so. And we're going to need to make our raffle VRF consumer
+
+
+14069
+14:12:36,380 --> 14:12:39,980
+base double, we're gonna need to inherit VRF consumer base go
+
+
+14070
+14:12:39,980 --> 14:12:46,160
+into our node modules at chain link src, V 08 VRF, consumer
+
+
+14071
+14:12:46,160 --> 14:12:50,360
+base V two, it comes with this function fulfill random words.
+
+
+14072
+14:12:50,390 --> 14:12:54,740
+And you can see it's an internal virtual function, virtual means
+
+
+14073
+14:12:54,770 --> 14:12:57,200
+it's expecting to be overwritten, the reason that
+
+
+14074
+14:12:57,200 --> 14:13:00,410
+it's in the sphere of consumer base V two is so that the VRF
+
+
+14075
+14:13:00,410 --> 14:13:03,380
+coordinator, which we'll use in a bit knows that it can call
+
+
+14076
+14:13:03,380 --> 14:13:06,110
+this fulfill random words function. And this is the
+
+
+14077
+14:13:06,110 --> 14:13:09,410
+function that we're overriding. So back in our raffle dot salt,
+
+
+14078
+14:13:09,410 --> 14:13:13,670
+we're going to inherit it by doing is VRF consumer base V
+
+
+14079
+14:13:13,670 --> 14:13:18,170
+two. And now if we scroll down to fulfill random words, we can
+
+
+14080
+14:13:18,170 --> 14:13:20,960
+add in the input parameters fulfilled pill random words,
+
+
+14081
+14:13:21,020 --> 14:13:28,400
+which are going to be un 256, Request ID and un 256, a memory
+
+
+14082
+14:13:28,430 --> 14:13:32,660
+array random words. And if we hit Save Our linter will now
+
+
+14083
+14:13:32,660 --> 14:13:36,440
+notice, okay, this is what I'm expecting, I'm expecting us to
+
+
+14084
+14:13:36,440 --> 14:13:39,740
+override the Fill random words, which takes these parameters.
+
+
+14085
+14:13:39,770 --> 14:13:43,370
+Now if we look in our docs in our constructor, we need to pass
+
+
+14086
+14:13:43,400 --> 14:13:46,850
+the VRF consumer base V TOS constructor and pass that VRF
+
+
+14087
+14:13:46,850 --> 14:13:49,790
+coordinator. Again, this V RF coordinator is the address of
+
+
+14088
+14:13:49,790 --> 14:13:52,490
+the contract that does the random number verification. So
+
+
+14089
+14:13:52,490 --> 14:13:57,530
+right next to our constructor will add the VRF consumer base V
+
+
+14090
+14:13:57,530 --> 14:14:02,180
+to constructor and we need to pass the VRF coordinator v2
+
+
+14091
+14:14:02,210 --> 14:14:04,790
+address. So in our main constructor, we'll add that as a
+
+
+14092
+14:14:04,790 --> 14:14:07,040
+parameter as well. So we'll say address
+
+
+14093
+14:14:08,540 --> 14:14:13,970
+VRF core to Nate Torre v two, and then we'll pass this as a
+
+
+14094
+14:14:13,970 --> 14:14:17,540
+parameter for the VRF consumer basically till now that we have
+
+
+14095
+14:14:17,540 --> 14:14:20,390
+that we shouldn't see that little underscore anymore. And
+
+
+14096
+14:14:20,390 --> 14:14:25,250
+we should be able to run yarn aren't had compiled. Awesome.
+
+
+14097
+14:14:25,280 --> 14:14:28,370
+And we can see compiled two files successfully and our code
+
+
+14098
+14:14:28,370 --> 14:14:34,400
+is working great. 
