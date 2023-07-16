@@ -1,0 +1,55 @@
+14098
+14:14:28,370 --> 14:14:34,400
+Now something that I often do is I actually hate running yarn hard hat all the time, 
+实际上，有一件我经常要做但我又很不喜欢做的事，那就是我要一直运行 `yarn hardhat` 
+
+14099
+14:14:34,400 --> 14:14:37,820
+because that's too many keys for my little brain to work with. 
+因为对我这个小脑袋来说，命令实在太多了
+
+14100
+14:14:37,820 --> 14:14:40,610
+I would prefer to write as little keys as possible 
+我希望写的时候命令尽可能可以少一些
+
+14101
+14:14:40,610 --> 14:14:43,820
+So hard hat comes with a shorthand and autocomplete 
+因此 Hardhat 提供了“缩写”("Shorthand")和“自动完成”("autocomplete")的功能
+
+14102
+14:14:43,820 --> 14:14:46,280
+hard hat shorthand is an NPM package that installs a globally accessible binary called H H,
+"hardhat-shorthand" 是一个 NPM 包，它安装了一个全局可用的二进制文件，名为 "hh"
+
+14103
+14:14:46,310 --> 14:14:49,670
+that runs the project's locally installed hard hat and supports shell auto completion for tasks. 
+用于运行项目本地安装的 "hardhat" 并支持 shell 自动完成任务
+
+14104
+14:14:49,670 --> 14:14:53,420
+So what we can do is we're going to start with NPM, like this, 
+我们可以像这样用 npm 进行安装
+
+14105
+14:14:53,480 --> 14:14:56,030
+but we're gonna install it with yarn, we're going to run yarn, global, add hardhat shorthand. 
+但我们用 yarn 安装，运行 `yarn global add hardhat-shorthand`
+
+14106
+14:14:56,060 --> 14:14:59,000
+And what this is going to do, we can see here installed hard hat shorthand with binaries H, H, and Hardhead completion. 
+结果怎么样呢？我们可以看这里，"hardhat-shorthand" 二进制文件安装完成，还有 "hh" 以及 "hardhat-completion "
+("Installed "hardhat-shorthand" with binaries")
+
+14107
+14:14:59,000 --> 14:15:01,640
+Now instead of running yarn, Hardhead compile, which we can still run, we can just run h h compile, 
+现在就不需要运行 `yarn hardhat compile` 而是可以运行 `hh compile` 了
+
+14108
+14:15:01,640 --> 14:15:07,160
+running h h is going to be the same thing as if we had just run the Hardhead command for our local directory. 
+运行 "hh" 就相当于在本地目录运行 "hardhat" 命令
