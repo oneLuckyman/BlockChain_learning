@@ -1,0 +1,628 @@
+14114
+14:15:27,500 --> 14:15:33,410
+So now we need to actually have our
+
+
+14115
+14:15:33,410 --> 14:15:36,560
+request random winner function requests a random winner. So
+
+
+14116
+14:15:36,560 --> 14:15:38,840
+let's go back to the documentation. And we'll see how
+
+
+14117
+14:15:38,840 --> 14:15:41,900
+to do that. We can look at this function request random words
+
+
+14118
+14:15:42,020 --> 14:15:45,920
+and see exactly how it works. On the Vera of coordinator address.
+
+
+14119
+14:15:45,950 --> 14:15:48,800
+We go ahead and call this request random words function,
+
+
+14120
+14:15:48,830 --> 14:15:51,500
+we're going to need to call this function on the coordinator
+
+
+14121
+14:15:51,530 --> 14:15:54,380
+contract to get the coordinator contract. We're going to use the
+
+
+14122
+14:15:54,380 --> 14:15:57,590
+Vera v2 coordinator interface and the Vir of coordinator
+
+
+14123
+14:15:57,590 --> 14:16:00,230
+address. So we're going to want to keep track of those. We can
+
+
+14124
+14:16:00,230 --> 14:16:03,140
+do that once again in Arkansas. factor, we have the address
+
+
+14125
+14:16:03,170 --> 14:16:06,020
+being passed to our Bureau of consumer base. Let's also keep
+
+
+14126
+14:16:06,020 --> 14:16:09,020
+it as a state variable for us. First, let's get the interface
+
+
+14127
+14:16:09,050 --> 14:16:11,510
+so we can interact with that contract, we can import that
+
+
+14128
+14:16:11,510 --> 14:16:14,810
+from chain link as well by doing import at chain link slash
+
+
+14129
+14:16:14,810 --> 14:16:24,440
+contracts, slash SRC slash fees 0.8, slash inter faces slash VRF
+
+
+14130
+14:16:24,830 --> 14:16:30,500
+cord to mentor V to interface dot Sol. And now that we import
+
+
+14131
+14:16:30,500 --> 14:16:34,550
+this interface, same as we did with price feeds, we can do VRF,
+
+
+14132
+14:16:34,550 --> 14:16:40,070
+coordinator v2, interface VRF coordinator. And then we can
+
+
+14133
+14:16:40,070 --> 14:16:44,180
+save the sphere of coordinator using the address so we can say
+
+
+14134
+14:16:44,210 --> 14:16:48,770
+VRF coordinator equals this address VRF coordinator veto.
+
+
+14135
+14:16:48,860 --> 14:16:50,810
+And we're just going to wrap that address around the
+
+
+14136
+14:16:50,810 --> 14:16:53,810
+interface so that now we can work with this VRF coordinator
+
+
+14137
+14:16:53,810 --> 14:16:56,870
+contract. Now we're only going to set our VRF coordinator one
+
+
+14138
+14:16:56,870 --> 14:16:59,900
+time right in our constructor. So what's the best thing that we
+
+
+14139
+14:16:59,900 --> 14:17:03,140
+can do here, private, immutable, you Gosh, darn. Right, let's do
+
+
+14140
+14:17:03,140 --> 14:17:06,800
+private, immutable, you have coordinator and we'll change the
+
+
+14141
+14:17:06,800 --> 14:17:10,730
+name to I underscore the ref coordinator so that we know that
+
+
+14142
+14:17:10,760 --> 14:17:13,970
+your coordinator is indeed an immutable variable. In order to
+
+
+14143
+14:17:14,000 --> 14:17:16,640
+request the random word, we need to give it a number of
+
+
+14144
+14:17:16,640 --> 14:17:20,120
+parameters, I'm gonna go ahead and copy this line into our
+
+
+14145
+14:17:20,120 --> 14:17:22,820
+contract just so that we can talk about exactly what's going
+
+
+14146
+14:17:22,820 --> 14:17:26,090
+on with it. And we don't need the AES Request ID. And instead
+
+
+14147
+14:17:26,090 --> 14:17:29,270
+of coordinator we're going to do I underscore fear of
+
+
+14148
+14:17:29,270 --> 14:17:32,000
+coordinator. So we're going to call request random words on
+
+
+14149
+14:17:32,000 --> 14:17:35,150
+that VRF coordinator contract, and we need to pass it the key
+
+
+14150
+14:17:35,150 --> 14:17:39,230
+hash or the gasoline, I prefer calling it the gas lane, we go
+
+
+14151
+14:17:39,230 --> 14:17:42,140
+to the chain link, Doc's go to contract addresses. And we
+
+
+14152
+14:17:42,140 --> 14:17:44,660
+scroll down we can see different gas lanes a different
+
+
+14153
+14:17:44,660 --> 14:17:47,900
+configuration parameters for different networks is key hash
+
+
+14154
+14:17:47,930 --> 14:17:50,690
+is going to be the gasoline of the key hash, which tells the
+
+
+14155
+14:17:50,690 --> 14:17:53,450
+chain link node the maximum price you're willing to pay for
+
+
+14156
+14:17:53,450 --> 14:17:57,170
+your guests and way if for example, gas prices skyrocket,
+
+
+14157
+14:17:57,200 --> 14:17:59,270
+and it's going to cost you a ton of money to get that random
+
+
+14158
+14:17:59,270 --> 14:18:02,300
+number setting a ceiling, we'll make it so that random number
+
+
+14159
+14:18:02,300 --> 14:18:04,850
+doesn't come back. For us to pick a gas lane, we're probably
+
+
+14160
+14:18:04,850 --> 14:18:07,940
+going to want to have this gas lane or this key hash stored
+
+
+14161
+14:18:07,940 --> 14:18:10,670
+somewhere. So let's go ahead and make that a parameter of our
+
+
+14162
+14:18:10,670 --> 14:18:13,220
+constructor as well. And we'll save that as a state variable.
+
+
+14163
+14:18:13,430 --> 14:18:18,350
+So we'll do comma bytes 32, gasoline or key hash or whatever
+
+
+14164
+14:18:18,350 --> 14:18:20,750
+you want to call it. And then we'll make a new state variable.
+
+
+14165
+14:18:21,890 --> 14:18:24,050
+And we're only going to set this once. So we'll make this a
+
+
+14166
+14:18:24,050 --> 14:18:32,810
+private, immutable. I underscore gasoline, and then we'll say
+
+
+14167
+14:18:33,860 --> 14:18:37,070
+gasoline equals gasoline.
+
+
+14168
+14:18:38,120 --> 14:18:42,020
+So now, we can just swap this out, or I underscore gasoline.
+
+
+14169
+14:18:42,140 --> 14:18:44,900
+Okay, what's next, we need a subscription ID, the
+
+
+14170
+14:18:44,900 --> 14:18:47,210
+subscription ID is going to be the subscription that we need
+
+
+14171
+14:18:47,210 --> 14:18:50,060
+for funding our requests. There's actually a contract on
+
+
+14172
+14:18:50,060 --> 14:18:53,360
+chain, which we can use to fund any subscription for any of
+
+
+14173
+14:18:53,360 --> 14:18:56,360
+these external data or external computation bits. And in this
+
+
+14174
+14:18:56,360 --> 14:18:59,270
+contract, there's a list of these subscriptions for people
+
+
+14175
+14:18:59,270 --> 14:19:02,900
+to make requests to. So we need the ID of the subscription that
+
+
+14176
+14:19:02,900 --> 14:19:06,230
+we're using to request our random numbers and pay the link
+
+
+14177
+14:19:06,230 --> 14:19:09,140
+Oracle gas, the subscription ID is probably also going to be
+
+
+14178
+14:19:09,140 --> 14:19:12,710
+something we're going to pass as a parameter to our lottery. So
+
+
+14179
+14:19:12,710 --> 14:19:15,350
+once again, let's scroll up to our constructor, we'll add a new
+
+
+14180
+14:19:15,350 --> 14:19:18,290
+parameter. And our subscription ID actually doesn't need to be a
+
+
+14181
+14:19:18,290 --> 14:19:22,640
+un 256, it can actually be a little bit smaller with a un 64.
+
+
+14182
+14:19:22,760 --> 14:19:28,100
+So we'll pass a un 64 sub scription ID, we'll make a UNT
+
+
+14183
+14:19:28,340 --> 14:19:31,700
+64. Since we're only going to set this once we'll make this a
+
+
+14184
+14:19:31,700 --> 14:19:37,250
+private, immutable. I underscore sub scription ID down here and
+
+
+14185
+14:19:37,250 --> 14:19:42,980
+we'll say I subscription ID equals sub subscription ID.
+
+
+14186
+14:19:43,520 --> 14:19:46,910
+Alright, awesome. So now we can change this to our subscription
+
+
+14187
+14:19:46,910 --> 14:19:50,780
+ID. Okay, what's next? Request confirmations request
+
+
+14188
+14:19:50,780 --> 14:19:54,620
+confirmations is a un 16, which says how many confirmations the
+
+
+14189
+14:19:54,620 --> 14:19:57,350
+chain link node should wait before responding. So if you
+
+
+14190
+14:19:57,350 --> 14:20:00,350
+make a request, and there's only one block confirmation, maybe
+
+
+14191
+14:20:00,350 --> 14:20:02,870
+you don't actually send it because you don't you're afraid
+
+
+14192
+14:20:02,870 --> 14:20:05,300
+of some type of blockchain reorganization or something,
+
+
+14193
+14:20:05,330 --> 14:20:07,190
+we're not going to worry too much about this. And we're
+
+
+14194
+14:20:07,190 --> 14:20:09,950
+actually just going to make this a constant of three. So we're
+
+
+14195
+14:20:09,950 --> 14:20:12,890
+not even going to have this be per amortizable we're gonna have
+
+
+14196
+14:20:12,890 --> 14:20:17,840
+this one be a constant. So we'll say a you int 16 Private
+
+
+14197
+14:20:17,960 --> 14:20:24,530
+constant request, confirmations equals three, and we're using
+
+
+14198
+14:20:24,560 --> 14:20:28,280
+the capslock and underscores for our constant variables here. And
+
+
+14199
+14:20:28,280 --> 14:20:31,250
+now we'll grab request confirmations and stick it in
+
+
+14200
+14:20:31,280 --> 14:20:34,700
+right here. What's next callback gas limit callback gas limit is
+
+
+14201
+14:20:34,700 --> 14:20:37,580
+going to be the limit for how much gas to use for the callback
+
+
+14202
+14:20:37,580 --> 14:20:40,640
+request your contracts fulfill random words, this sets a limit
+
+
+14203
+14:20:40,640 --> 14:20:44,270
+for how much computation are fulfilled random words can be
+
+
+14204
+14:20:44,300 --> 14:20:47,000
+this is a good way to protect ourselves from spending way too
+
+
+14205
+14:20:47,000 --> 14:20:50,270
+much gas. If, for example, we accidentally code our contract
+
+
+14206
+14:20:50,270 --> 14:20:53,690
+in a way where fulfill random words is incredibly gas
+
+
+14207
+14:20:53,690 --> 14:20:56,360
+expensive. It'll block the random number from responding.
+
+
+14208
+14:20:56,420 --> 14:20:58,880
+We are going to make this parameter sizable because we
+
+
+14209
+14:20:58,880 --> 14:21:01,610
+want to change it depending on how we code our fulfill random
+
+
+14210
+14:21:01,610 --> 14:21:04,970
+word. So in our constructor, let's add one more, we'll add
+
+
+14211
+14:21:05,120 --> 14:21:10,910
+you int 32. Since the size of this is a un 32, callback, gas
+
+
+14212
+14:21:10,910 --> 14:21:17,300
+limit, and we'll save the sub top as a UNT 32, private,
+
+
+14213
+14:21:17,300 --> 14:21:23,810
+immutable, I underscore call back. Yes limit. And we'll save
+
+
+14214
+14:21:23,810 --> 14:21:30,140
+this. I call back gas limit equals call back Yes, limit. And
+
+
+14215
+14:21:30,140 --> 14:21:32,600
+then we'll take this, and we'll stick it here. All right, we got
+
+
+14216
+14:21:32,600 --> 14:21:35,810
+one more number of words, this is going to be how many random
+
+
+14217
+14:21:35,810 --> 14:21:38,780
+numbers that we want to get, we only want one. So we're gonna go
+
+
+14218
+14:21:38,780 --> 14:21:42,590
+back up to the top, we're going to create a you int 32. And
+
+
+14219
+14:21:42,590 --> 14:21:47,480
+we'll make this also a private constant. Num words equals one,
+
+
+14220
+14:21:47,600 --> 14:21:49,850
+because we only want one random number. And then that'll be the
+
+
+14221
+14:21:49,850 --> 14:21:54,320
+last thing we need to add for our IVF coordinator dot request
+
+
+14222
+14:21:54,320 --> 14:21:57,740
+random words. Now this request random words function returns a
+
+
+14223
+14:21:57,770 --> 14:22:02,840
+request ID a un 256 Request ID a unique ID that defines who's
+
+
+14224
+14:22:02,840 --> 14:22:05,570
+requesting this and all this other information. If we want to
+
+
+14225
+14:22:05,570 --> 14:22:10,550
+save it, we can do u and 256. Request ID IVF coordinator
+
+
+14226
+14:22:10,580 --> 14:22:13,820
+requests random words. Now for now, we are going to emit an
+
+
+14227
+14:22:13,820 --> 14:22:17,240
+event with this request ID. And we'll go over why we're going to
+
+
+14228
+14:22:17,240 --> 14:22:20,390
+do that a little bit later, create a new event at the top.
+
+
+14229
+14:22:20,570 --> 14:22:22,700
+And we're not going to follow the naming convention here.
+
+
+14230
+14:22:23,420 --> 14:22:25,160
+Because we're going to change the name of our functions a
+
+
+14231
+14:22:25,160 --> 14:22:29,630
+little bit, we're going to call this requested raffle winner.
+
+
+14232
+14:22:30,200 --> 14:22:37,760
+And we're going to take a un 256 indexed Request ID. Down here,
+
+
+14233
+14:22:37,790 --> 14:22:42,260
+we're gonna do omit requested raffle winner Request ID. And
+
+
+14234
+14:22:42,260 --> 14:22:45,140
+now we have a function that we can use to request a random
+
+
+14235
+14:22:45,140 --> 14:22:47,780
+winner using chain link VRF. Now again, we're going to set this
+
+
+14236
+14:22:47,780 --> 14:22:50,030
+up so that the chain link keepers call this on an
+
+
+14237
+14:22:50,030 --> 14:22:52,820
+interval, but we'll do that in a little bit. For now, let's
+
+
+14238
+14:22:52,820 --> 14:22:54,620
+figure out what to do once we get that
+
+
+14239
+14:22:54,620 --> 14:23:02,510
+random number. 
