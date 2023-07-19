@@ -161,7 +161,7 @@ So I'm gonna go ahead and just put in 10 link here, you can put in however much 
 13907
 14:04:05,630 --> 14:04:07,580
 The price and link of every random number you request, it's going to be based on the current gas rates on a given chain, as well as the gasoline that you've chosen. 
-每次你请求随机数所要花费的价格和 Link 都取决于给定链上当前的 gas 费率，以及你选择的 gas 量
+每次你请求随机数所要花费的价格和 Link 都取决于给定链上当前的 gas 费率也就是你选择的 "gas lane"("gas 通道")
 
 13908
 14:04:07,640 --> 14:04:10,370
@@ -221,12 +221,12 @@ And then you're going to see a few new options here.
 13919
 14:04:42,140 --> 14:04:46,880
 So the key hash option is the way that you specify that gasoline that was described in the documentation. 
-"KeyHash" 选项是你在文档中描述指定 gas 使用量的方式
+"KeyHash" 选项是你在文档中描述指定 "gas lane" 的方式
 
 13920
 14:04:46,880 --> 14:04:49,520
 So depending on the key hash you choose for the given chain you're on the gas limit will be set differently for your random number requests. 
-根据给定链上你的 "KeyHash" 选择不同，请求随机数时的 gas 限制的设置也会有所不同
+根据给定链上你的 "KeyHash" 选择不同，请求随机数时的 gas 上限的设置也会有所不同
 
 13921
 14:04:49,550 --> 14:04:54,320
