@@ -85,147 +85,147 @@ And we're just going to wrap that address around the interface so that now we ca
 
 14131
 14:16:30,500 --> 14:16:34,550
-
-
+Now we're only going to set our VRF coordinator one time right in our constructor. 
+我们只在构造函数中对 "vrfCoordinator" 设置一次
 
 14132
 14:16:34,550 --> 14:16:40,070
-
-
+So what's the best thing that we can do here, private, immutable, you Gosh, darn. Right, 
+那我们此处最好的处理方式是什么？ "private immutable" 么？你说对了，就是这样
 
 14133
 14:16:40,070 --> 14:16:44,180
-
-
+let's do private, immutable, you have coordinator and we'll change the name to I underscore the ref coordinator 
+让我们加上 `private immutable vrfCoordinator` 并且把名字改成 `i_vrfCoordinator`
 
 14134
 14:16:44,210 --> 14:16:48,770
-
-
+so that we know that your coordinator is indeed an immutable variable. 
+这样我们就知道 "vrfCoordinator" 是一个 "immutable" 变量了
 
 14135
 14:16:48,860 --> 14:16:50,810
-
-
+In order to request the random word, we need to give it a number of parameters, 
+为了请求随机数，我们还需要提供几个参数
 
 14136
 14:16:50,810 --> 14:16:53,810
-
-
+I'm gonna go ahead and copy this line into our contract just so that we can talk about exactly what's going on with it. 
+我要把这几行复制到我们的合约里，这样我们才能详细讨论其中的内容
 
 14137
 14:16:53,810 --> 14:16:56,870
-Now we're only going to set our VRF coordinator one
-
+And we don't need the AES Request ID. 
+但我们并不需要这个 "s_requestId"
 
 14138
 14:16:56,870 --> 14:16:59,900
-time right in our constructor. So what's the best thing that we
-
+And instead of coordinator we're going to do I underscore fear of coordinator. 
+而且这里不是 "COORDINATOR" 而是 "i_vrfCoordinator"
 
 14139
 14:16:59,900 --> 14:17:03,140
-can do here, private, immutable, you Gosh, darn. Right, let's do
-
+So we're going to call request random words on that VRF coordinator contract, 
+所以我们就是在 "i_vrfCoordinator" 上调用 "requestRandomWords"
 
 14140
 14:17:03,140 --> 14:17:06,800
-private, immutable, you have coordinator and we'll change the
-
+and we need to pass it the key hash or the gasoline, I prefer calling it the gas lane, 
+我们需要传入 "KeyHash" 或者说 "gasLane" 我更喜欢叫它 "gasLane"
 
 14141
 14:17:06,800 --> 14:17:10,730
-name to I underscore the ref coordinator so that we know that
-
+we go to the chain link, Doc's go to contract addresses. 
+我们前往 Chainlink 的文档，然后到 "Contract Addresses"
 
 14142
 14:17:10,760 --> 14:17:13,970
-your coordinator is indeed an immutable variable. In order to
-
+And we scroll down we can see different gas lanes a different configuration parameters for different networks 
+往下拉，我们可以看到在不同的网络上有不同的 "gasLane" 配置参数
 
 14143
 14:17:14,000 --> 14:17:16,640
-request the random word, we need to give it a number of
-
+is key hash is going to be the gasoline of the key hash, 
+这个 "KeyHash" 也就是 "gasLane" 的 "Key Hash" 值
 
 14144
 14:17:16,640 --> 14:17:20,120
-parameters, I'm gonna go ahead and copy this line into our
-
+which tells the chain link node the maximum price you're willing to pay for your guests and way 
+它告诉 Chainlink 节点你所能接受的以 wei 为单位支付的最高 gas 价格
 
 14145
 14:17:20,120 --> 14:17:22,820
-contract just so that we can talk about exactly what's going
-
+if for example, gas prices skyrocket, and it's going to cost you a ton of money to get that random number setting a ceiling, we'll make it so that random number doesn't come back. 
+比如说，gas 价格飙升，获取随机数将花费你大量的资金，通过设定上限，我们能确保随机数不会返回
 
 14146
 14:17:22,820 --> 14:17:26,090
-on with it. And we don't need the AES Request ID. And instead
+
 
 
 14147
 14:17:26,090 --> 14:17:29,270
-of coordinator we're going to do I underscore fear of
+
 
 
 14148
 14:17:29,270 --> 14:17:32,000
-coordinator. So we're going to call request random words on
+
 
 
 14149
 14:17:32,000 --> 14:17:35,150
-that VRF coordinator contract, and we need to pass it the key
+
 
 
 14150
 14:17:35,150 --> 14:17:39,230
-hash or the gasoline, I prefer calling it the gas lane, we go
+
 
 
 14151
 14:17:39,230 --> 14:17:42,140
-to the chain link, Doc's go to contract addresses. And we
+
 
 
 14152
 14:17:42,140 --> 14:17:44,660
-scroll down we can see different gas lanes a different
+
 
 
 14153
 14:17:44,660 --> 14:17:47,900
-configuration parameters for different networks is key hash
+
 
 
 14154
 14:17:47,930 --> 14:17:50,690
-is going to be the gasoline of the key hash, which tells the
+
 
 
 14155
 14:17:50,690 --> 14:17:53,450
-chain link node the maximum price you're willing to pay for
+
 
 
 14156
 14:17:53,450 --> 14:17:57,170
-your guests and way if for example, gas prices skyrocket,
+
 
 
 14157
 14:17:57,200 --> 14:17:59,270
-and it's going to cost you a ton of money to get that random
+
 
 
 14158
 14:17:59,270 --> 14:18:02,300
-number setting a ceiling, we'll make it so that random number
+
 
 
 14159
 14:18:02,300 --> 14:18:04,850
-doesn't come back. For us to pick a gas lane, we're probably
+For us to pick a gas lane, we're probably
 
 
 14160
