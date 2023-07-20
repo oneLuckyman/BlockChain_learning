@@ -131,7 +131,7 @@ So we're going to call request random words on that VRF coordinator contract,
 14140
 14:17:03,140 --> 14:17:06,800
 and we need to pass it the key hash or the gasoline, I prefer calling it the gas lane, 
-我们需要传入 "KeyHash" 或者说 "gasLane" 我更喜欢叫它 "gasLane"
+我们需要传入 "keyHash" 或者说 "gasLane" 我更喜欢叫它 "gasLane"(“gas 通道”)
 
 14141
 14:17:06,800 --> 14:17:10,730
@@ -146,7 +146,7 @@ And we scroll down we can see different gas lanes a different configuration para
 14143
 14:17:14,000 --> 14:17:16,640
 is key hash is going to be the gasoline of the key hash, 
-这个 "KeyHash" 也就是 "gasLane" 的 "Key Hash" 值
+这个 "keyHash" 也就是 "gasLane" 的 "Key Hash" 值
 
 14144
 14:17:16,640 --> 14:17:20,120
@@ -160,212 +160,212 @@ if for example, gas prices skyrocket, and it's going to cost you a ton of money 
 
 14146
 14:17:22,820 --> 14:17:26,090
-
-
+For us to pick a gas lane, we're probably going to want to have this gas lane or this key hash stored somewhere. 
+为了我们能够获取到 "gas lane"，我们会把 "gasLane" 或者说 "keyHash" 存储到某处
 
 14147
 14:17:26,090 --> 14:17:29,270
-
-
+So let's go ahead and make that a parameter of our constructor as well. And we'll save that as a state variable. 
+所以让我们继续，把它也作为构造函数的一个参数，并将其保存为一个状态变量
 
 14148
 14:17:29,270 --> 14:17:32,000
-
-
+So we'll do comma bytes 32, gasoline or key hash or whatever you want to call it. And then we'll make a new state variable. 
+`, bytes32 gasLane` 或者 "keyHash" 或者你想怎么叫都可以，接着我们创建一个新的状态变量
 
 14149
 14:17:32,000 --> 14:17:35,150
-
-
+And we're only going to set this once. So we'll make this a private, immutable. I underscore gasoline, 
+我们对它只设置一次，所以创建为 `private immutable i_gasLane`
 
 14150
 14:17:35,150 --> 14:17:39,230
-
-
+and then we'll say gasoline equals gasoline. 
+然后我们说 `i_gasLane = gasLane`
 
 14151
 14:17:39,230 --> 14:17:42,140
-
-
+So now, we can just swap this out, or I underscore gasoline.
+现在，我们把这里替换成 `i_gasLane`
 
 14152
 14:17:42,140 --> 14:17:44,660
-
-
+Okay, what's next, we need a subscription ID, 
+好，下一个是什么，我们需要一个 "subscriptionId"(“订阅 ID”)
 
 14153
 14:17:44,660 --> 14:17:47,900
-
-
+the subscription ID is going to be the subscription that we need for funding our requests. 
+"subscriptionId" 是我们用于资助请求的订阅
 
 14154
 14:17:47,930 --> 14:17:50,690
-
-
+There's actually a contract on chain, which we can use to fund any subscription for any of these external data or external computation bits. 
+实际上它是一个链上合约，我们可以使用它来为外部数据和外部计算的订阅提供资金
 
 14155
 14:17:50,690 --> 14:17:53,450
-
-
+And in this contract, there's a list of these subscriptions for people to make requests to. 
+在这个合约中，有一个列表列出了这些订阅，供用户发起请求
 
 14156
 14:17:53,450 --> 14:17:57,170
-
-
+So we need the ID of the subscription that we're using to request our random numbers and pay the link Oracle gas, 
+所以我们需要一个用于请求随机数并支付 "Oracle gas"(“预言机 gas”)所需 Link 的订阅 ID
 
 14157
 14:17:57,200 --> 14:17:59,270
-
-
+the subscription ID is probably also going to be something we're going to pass as a parameter to our lottery. 
+"subscription ID" 也是我们传给彩票合约的参数之一
 
 14158
 14:17:59,270 --> 14:18:02,300
-
-
+So once again, let's scroll up to our constructor, we'll add a new parameter. 
+所以，让我们再次回到构造函数，添加一个新的参数
 
 14159
 14:18:02,300 --> 14:18:04,850
-For us to pick a gas lane, we're probably
-
+And our subscription ID actually doesn't need to be a un 256, it can actually be a little bit smaller with a un 64. 
+实际上 "subscription ID" 并不需要用到 uint256，它可以使用更小的 uint64
 
 14160
 14:18:04,850 --> 14:18:07,940
-going to want to have this gas lane or this key hash stored
-
+So we'll pass a un 64 sub scription ID, we'll make a UNT 64. 
+所以我们传进去一个 `uint64 subscriptionId` 再创建一个 `uint64` 
 
 14161
 14:18:07,940 --> 14:18:10,670
-somewhere. So let's go ahead and make that a parameter of our
-
+Since we're only going to set this once we'll make this a private, immutable. I underscore sub scription ID 
+因为只设置一次所以创建为 `private immutable i_subscriptionId`
 
 14162
 14:18:10,670 --> 14:18:13,220
-constructor as well. And we'll save that as a state variable.
-
+down here and we'll say I subscription ID equals sub subscription ID. 
+拉下来，我们写 `i_subscriptionId = subscriptionId`
 
 14163
 14:18:13,430 --> 14:18:18,350
-So we'll do comma bytes 32, gasoline or key hash or whatever
-
+Alright, awesome. So now we can change this to our subscription ID. 
+很好，现在我们把这个改成 `i_subscriptionId`
 
 14164
 14:18:18,350 --> 14:18:20,750
-you want to call it. And then we'll make a new state variable.
-
+Okay, what's next? Request confirmations 
+OK，下一个是什么？ "requestConfirmations"
 
 14165
 14:18:21,890 --> 14:18:24,050
-And we're only going to set this once. So we'll make this a
+
 
 
 14166
 14:18:24,050 --> 14:18:32,810
-private, immutable. I underscore gasoline, and then we'll say
+
 
 
 14167
 14:18:33,860 --> 14:18:37,070
-gasoline equals gasoline.
+
 
 
 14168
 14:18:38,120 --> 14:18:42,020
-So now, we can just swap this out, or I underscore gasoline.
+
 
 
 14169
 14:18:42,140 --> 14:18:44,900
-Okay, what's next, we need a subscription ID, the
+
 
 
 14170
 14:18:44,900 --> 14:18:47,210
-subscription ID is going to be the subscription that we need
+
 
 
 14171
 14:18:47,210 --> 14:18:50,060
-for funding our requests. There's actually a contract on
+
 
 
 14172
 14:18:50,060 --> 14:18:53,360
-chain, which we can use to fund any subscription for any of
+
 
 
 14173
 14:18:53,360 --> 14:18:56,360
-these external data or external computation bits. And in this
+
 
 
 14174
 14:18:56,360 --> 14:18:59,270
-contract, there's a list of these subscriptions for people
+
 
 
 14175
 14:18:59,270 --> 14:19:02,900
-to make requests to. So we need the ID of the subscription that
+
 
 
 14176
 14:19:02,900 --> 14:19:06,230
-we're using to request our random numbers and pay the link
+
 
 
 14177
 14:19:06,230 --> 14:19:09,140
-Oracle gas, the subscription ID is probably also going to be
+
 
 
 14178
 14:19:09,140 --> 14:19:12,710
-something we're going to pass as a parameter to our lottery. So
+
 
 
 14179
 14:19:12,710 --> 14:19:15,350
-once again, let's scroll up to our constructor, we'll add a new
+
 
 
 14180
 14:19:15,350 --> 14:19:18,290
-parameter. And our subscription ID actually doesn't need to be a
+
 
 
 14181
 14:19:18,290 --> 14:19:22,640
-un 256, it can actually be a little bit smaller with a un 64.
+
 
 
 14182
 14:19:22,760 --> 14:19:28,100
-So we'll pass a un 64 sub scription ID, we'll make a UNT
+
 
 
 14183
 14:19:28,340 --> 14:19:31,700
-64. Since we're only going to set this once we'll make this a
+
 
 
 14184
 14:19:31,700 --> 14:19:37,250
-private, immutable. I underscore sub scription ID down here and
+
 
 
 14185
 14:19:37,250 --> 14:19:42,980
-we'll say I subscription ID equals sub subscription ID.
+
 
 
 14186
 14:19:43,520 --> 14:19:46,910
-Alright, awesome. So now we can change this to our subscription
+
 
 
 14187
 14:19:46,910 --> 14:19:50,780
-ID. Okay, what's next? Request confirmations request
+request
 
 
 14188
