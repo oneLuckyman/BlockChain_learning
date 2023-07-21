@@ -255,374 +255,185 @@ OK，下一个是什么？ "requestConfirmations"
 
 14165
 14:18:21,890 --> 14:18:24,050
-
-
+request confirmations is a un 16, which says how many confirmations the chain link node should wait before responding. 
+"requestConfirmations" 是一个 uint16，它指的是 Chainlink 节点在响应前该等待多少“确认”
 
 14166
 14:18:24,050 --> 14:18:32,810
-
-
+So if you make a request, and there's only one block confirmation, maybe you don't actually send it 
+如果你发起了一个请求，然后只有一个区块确认，那么你可能并不会实际发送它
 
 14167
 14:18:33,860 --> 14:18:37,070
-
-
+because you don't you're afraid of some type of blockchain reorganization or something, 
+因为你会担心区块链重组之类的事情
 
 14168
 14:18:38,120 --> 14:18:42,020
-
-
+we're not going to worry too much about this. And we're actually just going to make this a constant of three. 
+我们不会过多操心这个问题，而是会直接将其设置为常数 "3" 
 
 14169
 14:18:42,140 --> 14:18:44,900
-
-
+So we're not even going to have this be per amortizable we're gonna have this one be a constant. 
+因此我们不会让它参数化，而是设置为一个 "constant"
 
 14170
 14:18:44,900 --> 14:18:47,210
-
-
+So we'll say a you int 16 Private constant request, confirmations equals three, 
+所以我们说 `uint16 private constant REQUEST_CONFIRMATIONS = 3`
 
 14171
 14:18:47,210 --> 14:18:50,060
-
-
+and we're using the capslock and underscores for our constant variables here. 
+我们用大写加下划线的组合来表示常量
 
 14172
 14:18:50,060 --> 14:18:53,360
-
-
+And now we'll grab request confirmations and stick it in right here. 
+现在我们获取 "REQUEST_CONFIRMATIONS" 并粘贴到这里
 
 14173
 14:18:53,360 --> 14:18:56,360
-
-
+What's next callback gas limit 
+下一个是什么？ "callbackGasLimit"
 
 14174
 14:18:56,360 --> 14:18:59,270
-
-
+callback gas limit is going to be the limit for how much gas to use for the callback request your contracts fulfill random words, 
+"callbackGasLimit" 是指回调你合约的 "fulfillRandomWords" 请求时对应的 gas 使用上限
 
 14175
 14:18:59,270 --> 14:19:02,900
-
-
+this sets a limit for how much computation are fulfilled random words can be
+它设置了一个 "fulfillRandomWords" 能够使用的计算量上限
 
 14176
 14:19:02,900 --> 14:19:06,230
-
-
+this is a good way to protect ourselves from spending way too much gas. 
+这是一个防止我们消耗过多 gas 的一个很好的方式
 
 14177
 14:19:06,230 --> 14:19:09,140
-
-
+If, for example, we accidentally code our contract in a way where fulfill random words is incredibly gas expensive. 
+举个例子，如果我们不小心为 "fulfillRandomWords" 编写了某种很昂贵的 gas 使用方式
 
 14178
 14:19:09,140 --> 14:19:12,710
-
-
+It'll block the random number from responding. 
+它就会锁定随机数的响应
 
 14179
 14:19:12,710 --> 14:19:15,350
-
-
+We are going to make this parameter sizable because we want to change it depending on how we code our fulfill random word. 
+我们会把它设置为参数化的，因为我们会根据 "fulfillRandomWords" 的具体编写形式来对它做出改变
 
 14180
 14:19:15,350 --> 14:19:18,290
-
-
+So in our constructor, let's add one more, we'll add you int 32. Since the size of this is a un 32, 
+所以在我们的构造函数中，来添加一个新的参数 `uint32`，因为它的大小就是 uint32
 
 14181
 14:19:18,290 --> 14:19:22,640
-
-
+callback, gas limit, and we'll save the sub top as a UNT 32, private, immutable, I underscore call back. Yes limit. 
+`callbackGasLimit`，保存后来到顶部 `uint32 private immutable i_callbackGasLimit`
 
 14182
 14:19:22,760 --> 14:19:28,100
-
-
+And we'll save this. I call back gas limit equals call back Yes, limit. 
+再保存一下 `i_callbackGasLimit = callbackGasLimit`
 
 14183
 14:19:28,340 --> 14:19:31,700
-
-
+And then we'll take this, and we'll stick it here. 
+接着获取它，并粘贴到这里
 
 14184
 14:19:31,700 --> 14:19:37,250
-
-
+All right, we got one more number of words, 
+好了，还剩最后一个 "numWords" 
 
 14185
 14:19:37,250 --> 14:19:42,980
-
-
+this is going to be how many random numbers that we want to get, 
+它代表我们想要获取的随机数数量
 
 14186
 14:19:43,520 --> 14:19:46,910
-
-
+we only want one. So we're gonna go back up to the top, 
+我们只想要一个，所以退回到顶部
 
 14187
 14:19:46,910 --> 14:19:50,780
-request
-
+we're going to create a you int 32. And we'll make this also a private constant. Num words equals one, because we only want one random number. 
+我们创建一个 `uint32` 同样设置为 `private constant NUM_WORDS = 1` 因为我们只想要一个随机数
 
 14188
 14:19:50,780 --> 14:19:54,620
-confirmations is a un 16, which says how many confirmations the
-
+And then that'll be the last thing we need to add for our IVF coordinator dot request random words. 
+然后是最后一件事，我们需要把它添加到我们的 "i_vrfCoordinator.requestRandomWords" 里
 
 14189
 14:19:54,620 --> 14:19:57,350
-chain link node should wait before responding. So if you
-
+Now this request random words function returns a request ID a un 256 Request ID 
+这个 "requestRandomWords" 函数会返回一个“请求 ID”，一个 uint256 的“请求 ID” 
 
 14190
 14:19:57,350 --> 14:20:00,350
-make a request, and there's only one block confirmation, maybe
-
+a unique ID that defines who's requesting this and all this other information. 
+它是一个独一无二的 ID，定义了请求的发起者以及其它一切信息
 
 14191
 14:20:00,350 --> 14:20:02,870
-you don't actually send it because you don't you're afraid
-
+If we want to save it, we can do u and 256. Request ID IVF coordinator requests random words. 
+如果我们想把它保存下来，可以这么做 `uint256 requestId = i_vrfCoordinator.requestRandomWords` 
 
 14192
 14:20:02,870 --> 14:20:05,300
-of some type of blockchain reorganization or something,
-
+Now for now, we are going to emit an event with this request ID. 
+现在，我们就要用这个 "requestId" 触发一个事件
 
 14193
 14:20:05,330 --> 14:20:07,190
-we're not going to worry too much about this. And we're
-
+And we'll go over why we're going to do that a little bit later, 
+稍后我们会解释为什么要这么做
 
 14194
 14:20:07,190 --> 14:20:09,950
-actually just going to make this a constant of three. So we're
-
+create a new event at the top. And we're not going to follow the naming convention here. 
+在顶部创建一个新的 `event`，我们这里先不遵循命名惯例
 
 14195
 14:20:09,950 --> 14:20:12,890
-not even going to have this be per amortizable we're gonna have
-
+Because we're going to change the name of our functions a little bit, 
+因为我们稍后还会修改函数的名字
 
 14196
 14:20:12,890 --> 14:20:17,840
-this one be a constant. So we'll say a you int 16 Private
-
+we're going to call this requested raffle winner. 
+我们把它命名为 `RequestedRaffleWinner`
 
 14197
 14:20:17,960 --> 14:20:24,530
-constant request, confirmations equals three, and we're using
-
+And we're going to take a un 256 indexed Request ID. 
+并且我们让它接收一个 `uint256 indexed requestId`
 
 14198
 14:20:24,560 --> 14:20:28,280
-the capslock and underscores for our constant variables here. And
-
+Down here, we're gonna do omit requested raffle winner Request ID. 
+拉下来，这里写 `emit RequestedRaffleWinner(requestId)`
 
 14199
 14:20:28,280 --> 14:20:31,250
-now we'll grab request confirmations and stick it in
-
+And now we have a function that we can use to request a random winner using chain link VRF. 
+现在我们就有了一个函数，让我们能够使用 Chainlink VRF 请求一个随机的优胜者了
 
 14200
 14:20:31,280 --> 14:20:34,700
-right here. What's next callback gas limit callback gas limit is
-
+Now again, we're going to set this up so that the chain link keepers call this on an interval, but we'll do that in a little bit. 
+我们还会为它配置 "Chainlink Keepers" 以便能定期调用，但这个要之后再说
 
 14201
 14:20:34,700 --> 14:20:37,580
-going to be the limit for how much gas to use for the callback
-
-
-14202
-14:20:37,580 --> 14:20:40,640
-request your contracts fulfill random words, this sets a limit
-
-
-14203
-14:20:40,640 --> 14:20:44,270
-for how much computation are fulfilled random words can be
-
-
-14204
-14:20:44,300 --> 14:20:47,000
-this is a good way to protect ourselves from spending way too
-
-
-14205
-14:20:47,000 --> 14:20:50,270
-much gas. If, for example, we accidentally code our contract
-
-
-14206
-14:20:50,270 --> 14:20:53,690
-in a way where fulfill random words is incredibly gas
-
-
-14207
-14:20:53,690 --> 14:20:56,360
-expensive. It'll block the random number from responding.
-
-
-14208
-14:20:56,420 --> 14:20:58,880
-We are going to make this parameter sizable because we
-
-
-14209
-14:20:58,880 --> 14:21:01,610
-want to change it depending on how we code our fulfill random
-
-
-14210
-14:21:01,610 --> 14:21:04,970
-word. So in our constructor, let's add one more, we'll add
-
-
-14211
-14:21:05,120 --> 14:21:10,910
-you int 32. Since the size of this is a un 32, callback, gas
-
-
-14212
-14:21:10,910 --> 14:21:17,300
-limit, and we'll save the sub top as a UNT 32, private,
-
-
-14213
-14:21:17,300 --> 14:21:23,810
-immutable, I underscore call back. Yes limit. And we'll save
-
-
-14214
-14:21:23,810 --> 14:21:30,140
-this. I call back gas limit equals call back Yes, limit. And
-
-
-14215
-14:21:30,140 --> 14:21:32,600
-then we'll take this, and we'll stick it here. All right, we got
-
-
-14216
-14:21:32,600 --> 14:21:35,810
-one more number of words, this is going to be how many random
-
-
-14217
-14:21:35,810 --> 14:21:38,780
-numbers that we want to get, we only want one. So we're gonna go
-
-
-14218
-14:21:38,780 --> 14:21:42,590
-back up to the top, we're going to create a you int 32. And
-
-
-14219
-14:21:42,590 --> 14:21:47,480
-we'll make this also a private constant. Num words equals one,
-
-
-14220
-14:21:47,600 --> 14:21:49,850
-because we only want one random number. And then that'll be the
-
-
-14221
-14:21:49,850 --> 14:21:54,320
-last thing we need to add for our IVF coordinator dot request
-
-
-14222
-14:21:54,320 --> 14:21:57,740
-random words. Now this request random words function returns a
-
-
-14223
-14:21:57,770 --> 14:22:02,840
-request ID a un 256 Request ID a unique ID that defines who's
-
-
-14224
-14:22:02,840 --> 14:22:05,570
-requesting this and all this other information. If we want to
-
-
-14225
-14:22:05,570 --> 14:22:10,550
-save it, we can do u and 256. Request ID IVF coordinator
-
-
-14226
-14:22:10,580 --> 14:22:13,820
-requests random words. Now for now, we are going to emit an
-
-
-14227
-14:22:13,820 --> 14:22:17,240
-event with this request ID. And we'll go over why we're going to
-
-
-14228
-14:22:17,240 --> 14:22:20,390
-do that a little bit later, create a new event at the top.
-
-
-14229
-14:22:20,570 --> 14:22:22,700
-And we're not going to follow the naming convention here.
-
-
-14230
-14:22:23,420 --> 14:22:25,160
-Because we're going to change the name of our functions a
-
-
-14231
-14:22:25,160 --> 14:22:29,630
-little bit, we're going to call this requested raffle winner.
-
-
-14232
-14:22:30,200 --> 14:22:37,760
-And we're going to take a un 256 indexed Request ID. Down here,
-
-
-14233
-14:22:37,790 --> 14:22:42,260
-we're gonna do omit requested raffle winner Request ID. And
-
-
-14234
-14:22:42,260 --> 14:22:45,140
-now we have a function that we can use to request a random
-
-
-14235
-14:22:45,140 --> 14:22:47,780
-winner using chain link VRF. Now again, we're going to set this
-
-
-14236
-14:22:47,780 --> 14:22:50,030
-up so that the chain link keepers call this on an
-
-
-14237
-14:22:50,030 --> 14:22:52,820
-interval, but we'll do that in a little bit. For now, let's
-
-
-14238
-14:22:52,820 --> 14:22:54,620
-figure out what to do once we get that
-
-
-14239
-14:22:54,620 --> 14:23:02,510
-random number. 
+For now, let's figure out what to do once we get that random number. 
+现在，我们来看看获取到随机数之后该怎么做
