@@ -1,66 +1,66 @@
 14239
 14:22:54,620 --> 14:23:02,510
-Once we get that random number, we're going to
-
+Once we get that random number, we're going to want to pick a random winner from our array of players up here. 
+一旦我们获取到了随机数，就要从上面的玩家数组中获取一个随机的优胜者了
 
 14240
 14:23:02,510 --> 14:23:06,890
-want to pick a random winner from our array of players up
-
+So what do we do? Well, let's go in here. 
+我们该怎么做呢？让我们先来到这
 
 14241
 14:23:06,890 --> 14:23:10,760
-here. So what do we do? Well, let's go in here. And let's pick
-
+And let's pick a random winner using something called the module function. 
+我们要使用一种被称为“取模函数”("modulo function")的方法来选择一个随机优胜者
 
 14242
 14:23:10,790 --> 14:23:14,660
-a random winner using something called the module function. Now
-
+Now we're gonna get an array back of random words, or random numbers, if you will, 
+现在我们得到了一个包含随机数的数组
 
 14243
 14:23:14,690 --> 14:23:18,020
-we're gonna get an array back of random words, or random numbers,
-
+since we're only requesting one random word, this random words array is going to be of size one with one random word in it. 
+因为我们只请求了一个随机数，所以这个随机数数组的大小就是一，也就是包含一个随机数
 
 14244
 14:23:18,020 --> 14:23:21,290
-if you will, since we're only requesting one random word, this
-
+Now this random word is a un 256. So this random word could be something like this. 
+这个随机数是一个 uint256，所以它会是，这————样————的
 
 14245
 14:23:21,290 --> 14:23:24,140
-random words array is going to be of size one with one random
-
+Well, obviously without the hyphens, but it could be something absolutely massive like that 
+当然，肯定没有连字符，反正它就是一个很大的数
 
 14246
 14:23:24,140 --> 14:23:27,860
-word in it. Now this random word is a un 256. So this random word
-
+our players array is only going to be so big. So how do we get a random winner from this potentially massive random number, 
+我们的玩家数组不会太大，那么我们该如何从这个巨大的随机数中获取到一个随机的优胜者呢
 
 14247
 14:23:27,860 --> 14:23:31,880
-could be something like this. Well, obviously without the
+
 
 
 14248
 14:23:31,880 --> 14:23:34,310
-hyphens, but it could be something absolutely massive
+
 
 
 14249
 14:23:34,340 --> 14:23:37,760
-like that our players array is only going to be so big. So how
+
 
 
 14250
 14:23:37,760 --> 14:23:41,360
-do we get a random winner from this potentially massive random
+
 
 
 14251
 14:23:41,360 --> 14:23:43,910
-number, we can use something called the modulo function, the
+we can use something called the modulo function, the
 
 
 14252
