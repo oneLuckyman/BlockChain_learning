@@ -11,7 +11,7 @@ So what do we do? Well, let's go in here.
 14241
 14:23:06,890 --> 14:23:10,760
 And let's pick a random winner using something called the module function. 
-我们要使用一种被称为“取模函数”("modulo function")的方法来选择一个随机优胜者
+我们要使用一种被称为“模函数”("modulo function")的方法来选择一个随机优胜者
 
 14242
 14:23:10,790 --> 14:23:14,660
@@ -36,131 +36,132 @@ Well, obviously without the hyphens, but it could be something absolutely massiv
 14246
 14:23:24,140 --> 14:23:27,860
 our players array is only going to be so big. So how do we get a random winner from this potentially massive random number, 
-我们的玩家数组不会太大，那么我们该如何从这个巨大的随机数中获取到一个随机的优胜者呢
+我们的 "players" 数组不会太大，那我们该如何从这个巨大的随机数中获取到一个随机的优胜者呢？
 
 14247
 14:23:27,860 --> 14:23:31,880
-
-
+we can use something called the modulo function, 
+我们可以用模函数来解决这个问题
 
 14248
 14:23:31,880 --> 14:23:34,310
-
-
+the module operation, a mod N yields, the remainder are after the division of an operand a by the blah, blah, blah, blah, blah. 
+模运算 "a % n" 得到的是 "a" 除以 "n" 的余数 "r"，blah, blah, blah
 
 14249
 14:23:34,340 --> 14:23:37,760
-
-
+So what does this mean? Well, we can use the mod function to get a random number out of our players array. 
+这是什么意思？我们可以用模函数来从我们的 "players" 数组中获取一个随机数
 
 14250
 14:23:37,760 --> 14:23:41,360
-
-
+So let's say our players array or excuse me, our s players array is of size 10. And a random number is 200. 
+假设我们的 "players" 数组，不好意思，是 "s_players" 数组的大小是 10，而随机数时 200 
 
 14251
 14:23:41,360 --> 14:23:43,910
-we can use something called the modulo function, the
-
+So how do we pick a random person out of this players array, or, let's say our random number is 202. 
+我们该如何从 "s_players" 数组中随机选一个人呢，或者假设我们的随机数是 202 吧
 
 14252
 14:23:43,910 --> 14:23:48,500
-module operation, a mod N yields, the remainder are after
-
+If we do 202, which is our random number, mod 10, 
+如果我们运行 202，也就是我们的随机数，对 10 取模("202 % 10")
 
 14253
 14:23:48,500 --> 14:23:51,200
-the division of an operand a by the blah, blah, blah, blah,
-
+we're gonna basically do 202 divided by 10. 
+基本上我们做的就是 202 除以 10 
 
 14254
 14:23:51,200 --> 14:23:53,900
-blah. So what does this mean? Well, we can use the mod
-
+But instead of having the decimals, we're just going to say, 
+但我们不再需要小数部分了，而是要这样的考虑
 
 14255
 14:23:53,900 --> 14:23:57,050
-function to get a random number out of our players array. So
-
+Okay, how many times is 10 evenly divide into 202. And what's the remainder, 
+10 可以被 202 整除多少次，以及余数是多少？
 
 14256
 14:23:57,050 --> 14:23:59,990
-let's say our players array or excuse me, our s players array
-
+what doesn't divide evenly into 202? 
+什么不能被 202 整除的？
+("what's doesn't divide evenly into 202?")
 
 14257
 14:24:00,020 --> 14:24:05,000
-is of size 10. And a random number is 200. So how do we pick
-
+Well, 20 times 10 equals 200, with two leftover, 
+20 乘以 10 等于 200，剩下一个 2
 
 14258
 14:24:05,060 --> 14:24:08,300
-a random person out of this players array, or, let's say our
-
+so two doesn't evenly divide, or multiply into 200. 
+所以 2 不能被整除，或者说它们的乘积是 200 
 
 14259
 14:24:08,300 --> 14:24:12,860
-random number is 202. If we do 202, which is our random number,
-
+So that means 202 mod 10 is going to equal to two. So that's how the module function works. 
+意思就是 "202 % 10 = 2"，这就是模函数的原理
 
 14260
 14:24:12,890 --> 14:24:18,380
-mod 10, we're gonna basically do 202 divided by 10. But instead
-
+And we can use that so we're always going to get a number between. So we're always going to get a number here between zero and nine, 
+我们可以利用这一点，来使我们总能得到一个介于 0 到 9 之间的数
 
 14261
 14:24:18,380 --> 14:24:20,570
-of having the decimals, we're just going to say, Okay, how
-
+which works out perfectly because that which works out perfectly, because those are the indexes of the 10 people in our array. 
+这很完美，因为这正是我们数组中 10 个人的索引
 
 14262
 14:24:20,570 --> 14:24:24,800
-many times is 10 evenly divide into 202. And what's the
+
 
 
 14263
 14:24:24,800 --> 14:24:29,990
-remainder, what doesn't divide evenly into 202? Well, 20 times
+
 
 
 14264
 14:24:29,990 --> 14:24:34,550
-10 equals 200, with two leftover, so two doesn't evenly
+
 
 
 14265
 14:24:34,550 --> 14:24:40,460
-divide, or multiply into 200. So that means 202 mod 10 is going
+
 
 
 14266
 14:24:40,460 --> 14:24:43,250
-to equal to two. So that's how the module function works. And
+
 
 
 14267
 14:24:43,250 --> 14:24:46,160
-we can use that so we're always going to get a number between.
+
 
 
 14268
 14:24:46,280 --> 14:24:48,530
-So we're always going to get a number here between zero and
+
 
 
 14269
 14:24:48,530 --> 14:24:51,560
-nine, which works out perfectly because that which works out
+
 
 
 14270
 14:24:51,560 --> 14:24:54,800
-perfectly, because those are the indexes of the 10 people in our
+
 
 
 14271
 14:24:54,800 --> 14:24:58,670
-array. So let's use that here. We'll say a un 256 index of
+So let's use that here. We'll say a un 256 index of
 
 
 14272
