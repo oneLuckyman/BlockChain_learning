@@ -92,7 +92,7 @@ what doesn't divide evenly into 202?
 14257
 14:24:00,020 --> 14:24:05,000
 Well, 20 times 10 equals 200, with two leftover, 
-20 乘以 10 等于 200，剩下一个 2
+20 乘以 10 等于 200，剩下一个 2 
 
 14258
 14:24:05,060 --> 14:24:08,300
@@ -107,161 +107,161 @@ So that means 202 mod 10 is going to equal to two. So that's how the module func
 14260
 14:24:12,890 --> 14:24:18,380
 And we can use that so we're always going to get a number between. So we're always going to get a number here between zero and nine, 
-我们可以利用这一点，来使我们总能得到一个介于 0 到 9 之间的数
+通过使用它，我们总是能够得到一个介于 0 到 9 之间的数
 
 14261
 14:24:18,380 --> 14:24:20,570
 which works out perfectly because that which works out perfectly, because those are the indexes of the 10 people in our array. 
-这很完美，因为这正是我们数组中 10 个人的索引
+这很完美，因为这正好就是我们数组中 10 个人的索引
 
 14262
 14:24:20,570 --> 14:24:24,800
-
-
+So let's use that here. We'll say a un 256 index of winner is going to be equal to random words, 
+让我们来实际用一下 `uint256 indexOfWinner = randomWords` 
 
 14263
 14:24:24,800 --> 14:24:29,990
-
-
+at index zero, because we're only getting one random word 
+索引是 `[0]`，因为我们只获取了一个随机数
 
 14264
 14:24:29,990 --> 14:24:34,550
-
-
+module, the S underscore players dot length. 
+`% s_players.length`
 
 14265
 14:24:34,550 --> 14:24:40,460
-
-
+So this will give us the index of our random winner 
+这就会为我们提供一个随机优胜者的索引
 
 14266
 14:24:40,460 --> 14:24:43,250
-
-
+to get that address of the winner will do 
+为了获取优胜者的地址，要这样做
 
 14267
 14:24:43,250 --> 14:24:46,160
-
-
+address payable, recent winner equals s players at this index of winner 
+`address payable recentWinner = s_players` 位置是这个 "indexOfWinner"
 
 14268
 14:24:46,280 --> 14:24:48,530
-
-
+so awesome. So now we'll have the address of the person that got this random number, the person's that's going to be our verifiably random winner. 
+非常好，现在我们就有了这个随机数所对应的这个人的地址，这个人将成为我们可验证的随机优胜者
 
 14269
 14:24:48,530 --> 14:24:51,560
-
-
+Now, it might be kind of cool to brag to people that you're the recent winner. 
+向别人炫耀自己是最近的优胜者或许是一件很酷的事
 
 14270
 14:24:51,560 --> 14:24:54,800
-
-
+So let's go ahead to the top and we'll create a new state variable for our most recent winner 
+所以让我们来到顶部，为我们最近的优胜者创建一个新的状态变量
 
 14271
 14:24:54,800 --> 14:24:58,670
-So let's use that here. We'll say a un 256 index of
-
+make this state variable in a new section called lottery variables. 
+把这个状态变量放到一个新的部分中，称为 "Lottery Variables"
 
 14272
 14:24:58,670 --> 14:25:04,670
-winner is going to be equal to random words, at index zero,
-
+We'll say address private s underscore recent winner 
+接着写 `address private s_recentWinner`
 
 14273
 14:25:04,670 --> 14:25:08,150
-because we're only getting one random word module, the S
-
+and it'll start out as nobody but as we get winners update it with s recent winner equals recent winner 
+它里面一开始没有人，但随着优胜者被更新 `s_recentWinner = recentWinner`
 
 14274
 14:25:08,180 --> 14:25:12,080
-underscore players dot length. So this will give us the index
-
+and we'll probably want people to know who this is winter is so down below, 
+我们希望人们能知道优胜者到底是谁，所以来到下面
 
 14275
 14:25:12,080 --> 14:25:14,960
-of our random winner to get that address of the winner will do
-
+we can do function get recent winner, it's going to be a public view that's going to return that address. 
+我们可以创建 `function getRecentWinner() public view returns(address)`
 
 14276
 14:25:14,960 --> 14:25:24,200
-address payable, recent winner equals s players at this index
-
+And then we'll just say return s underscore recent winner, since again, the recent winner is going to be a storage variable. 
+接着我们说 `return s_recentWinner`，提醒一下，这个 "recentWinner" 是一个 storage 变量
 
 14277
 14:25:24,230 --> 14:25:26,840
-of winner so awesome. So now we'll have the address of the
+
 
 
 14278
 14:25:26,840 --> 14:25:29,060
-person that got this random number, the person's that's
+
 
 
 14279
 14:25:29,060 --> 14:25:34,520
-going to be our verifiably random winner. Now, it might be
+
 
 
 14280
 14:25:34,520 --> 14:25:37,400
-kind of cool to brag to people that you're the recent winner.
+
 
 
 14281
 14:25:37,550 --> 14:25:40,370
-So let's go ahead to the top and we'll create a new state
+
 
 
 14282
 14:25:40,370 --> 14:25:43,610
-variable for our most recent winner make this state variable
+
 
 
 14283
 14:25:43,640 --> 14:25:47,240
-in a new section called lottery variables. We'll say address
+
 
 
 14284
 14:25:48,110 --> 14:25:52,940
-private s underscore recent winner and it'll start out as
+
 
 
 14285
 14:25:52,940 --> 14:25:56,510
-nobody but as we get winners update it with s recent winner
+
 
 
 14286
 14:25:56,540 --> 14:26:01,460
-equals recent winner and we'll probably want people to know who
+
 
 
 14287
 14:26:01,460 --> 14:26:05,720
-this is winter is so down below, we can do function get recent
+
 
 
 14288
 14:26:05,720 --> 14:26:09,320
-winner, it's going to be a public view that's going to
+
 
 
 14289
 14:26:09,320 --> 14:26:14,210
-return that address. And then we'll just say return s
+
 
 
 14290
 14:26:14,210 --> 14:26:17,270
-underscore recent winner, since again, the recent winner is
+
 
 
 14291
 14:26:17,270 --> 14:26:19,970
-going to be a storage variable. So now that we have a recent
+So now that we have a recent
 
 
 14292
