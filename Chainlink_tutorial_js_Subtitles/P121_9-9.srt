@@ -97,7 +97,7 @@ Well, 20 times 10 equals 200, with two leftover,
 14258
 14:24:05,060 --> 14:24:08,300
 so two doesn't evenly divide, or multiply into 200. 
-所以 2 不能被整除，或者说它们的乘积是 200 
+它们的乘积是 200，所以剩下的 2 不能被继续整除
 
 14259
 14:24:08,300 --> 14:24:12,860
@@ -191,28 +191,28 @@ And then we'll just say return s underscore recent winner, since again, the rece
 
 14277
 14:25:24,230 --> 14:25:26,840
-
-
+So now that we have a recent winner, what else are we gonna do? 
+现在我们有了最近的优胜者，下一步该做什么？
 
 14278
 14:25:26,840 --> 14:25:29,060
-
-
+Well, we're probably going to want to send them the money in this contract. 
+我们应该在合约里给他们打钱了
 
 14279
 14:25:29,060 --> 14:25:34,520
-
-
+So we're going to do exactly what we did before with sending the money, 
+发送资金的操作和我们之前的做法一样
 
 14280
 14:25:34,520 --> 14:25:37,400
-
-
+we're going to do that bull success, comma, blank equals recent winner, call, I'm gonna say value, it's going to be address of this dot balance, 
+我们写下 `(bool success, ) = recentWinner.call{value: address(this).balance}
 
 14281
 14:25:37,550 --> 14:25:40,370
-
-
+we're going to send all the money in this contract, and we're going to pass it no data. 
+我们要发送这个合约里的全部资金，这里不传入任何数据
 
 14282
 14:25:40,370 --> 14:25:43,610
@@ -261,52 +261,52 @@ And then we'll just say return s underscore recent winner, since again, the rece
 
 14291
 14:26:17,270 --> 14:26:19,970
-So now that we have a recent
+
 
 
 14292
 14:26:19,970 --> 14:26:22,610
-winner, what else are we gonna do? Well, we're probably going
+
 
 
 14293
 14:26:22,610 --> 14:26:24,860
-to want to send them the money in this contract. So we're going
+
 
 
 14294
 14:26:24,860 --> 14:26:27,860
-to do exactly what we did before with sending the money, we're
+
 
 
 14295
 14:26:27,860 --> 14:26:34,850
-going to do that bull success, comma, blank equals recent
+
 
 
 14296
 14:26:35,150 --> 14:26:40,940
-winner, call, I'm gonna say value, it's going to be address
+
 
 
 14297
 14:26:41,870 --> 14:26:45,080
-of this dot balance, we're going to send all the money in this
+
 
 
 14298
 14:26:45,080 --> 14:26:48,800
-contract, and we're going to pass it no data. And now we
+And now we could say require, you know, success, whatever, we're going to be a little bit more gas efficient here. 
 
 
 14299
 14:26:48,800 --> 14:26:52,160
-could say require, you know, success, whatever, we're going
+
 
 
 14300
 14:26:52,160 --> 14:26:54,290
-to be a little bit more gas efficient here. And we're just
+And we're just
 
 
 14301
