@@ -216,7 +216,7 @@ we're going to send all the money in this contract, and we're going to pass it n
 
 14282
 14:25:40,370 --> 14:25:43,610
-
+And now we could say require, you know, success, whatever, we're going to be a little bit more gas efficient here. 
 
 
 14283
@@ -296,7 +296,7 @@ we're going to send all the money in this contract, and we're going to pass it n
 
 14298
 14:26:45,080 --> 14:26:48,800
-And now we could say require, you know, success, whatever, we're going to be a little bit more gas efficient here. 
+
 
 
 14299
