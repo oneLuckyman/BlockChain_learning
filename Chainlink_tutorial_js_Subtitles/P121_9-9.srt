@@ -212,47 +212,47 @@ we're going to do that bull success, comma, blank equals recent winner, call, I'
 14281
 14:25:37,550 --> 14:25:40,370
 we're going to send all the money in this contract, and we're going to pass it no data. 
-我们要发送这个合约里的全部资金，这里不传入任何数据
+我们要发送这个合约里的全部资金，所以这里不传入任何数据
 
 14282
 14:25:40,370 --> 14:25:43,610
 And now we could say require, you know, success, whatever, we're going to be a little bit more gas efficient here. 
-
+现在我们可以写 `require(success)` 总之，我们要在这里实现更高的 gas 效率
 
 14283
 14:25:43,640 --> 14:25:47,240
-
-
+And we're just gonna say, if not success, then we're going to revert a new transfer failed error. 
+我们只需要说 `if(!success)` 接着我们要 `revert` 一个新的转账失败错误
 
 14284
 14:25:48,110 --> 14:25:52,940
-
-
+So we're gonna go to the top, or say, error name of the contract is raffle, underscore, underscore, transfer failed, like that, 
+所以我们来到顶部，`error` 然后是合约的名字 `Raffle__TransferFailed`
 
 14285
 14:25:52,940 --> 14:25:56,510
-
-
+then go back down, and we can now do revert, raffle transfer failed like that. 
+再回到底下，执行 `revert Raffle__TransferFailed`，就像这样
 
 14286
 14:25:56,540 --> 14:26:01,460
-
-
+And now that we've picked a winner, right now, we don't have a way to actually keep track of the list of previous winners. 
+现在我们已经选出了一个优胜者，但目前我们还没办法追踪之前的优胜者名单
 
 14287
 14:26:01,460 --> 14:26:05,720
-
-
+So we're just going to omit an event. So there's always going to be that easily query double history of event winners. 
+我们只需要触发一个事件，这样就可以很容易地查询过去的优胜者记录了
 
 14288
 14:26:05,720 --> 14:26:09,320
-
-
+So we're going to create a new event in the events section called the event winner picked. 
+所以我们来 "Event" 部分创建一个新的事件 `event WinnerPicked`
 
 14289
 14:26:09,320 --> 14:26:14,210
-
-
+And this is going to be an address indexed winner. 
+里面是 `address indexed winner`
 
 14290
 14:26:14,210 --> 14:26:17,270
@@ -306,62 +306,62 @@ And now we could say require, you know, success, whatever, we're going to be a l
 
 14300
 14:26:52,160 --> 14:26:54,290
-And we're just
+
 
 
 14301
 14:26:54,290 --> 14:26:59,000
-gonna say, if not success, then we're going to revert a new
+
 
 
 14302
 14:26:59,000 --> 14:27:01,910
-transfer failed error. So we're gonna go to the top, or say,
+
 
 
 14303
 14:27:01,940 --> 14:27:05,390
-error name of the contract is raffle, underscore, underscore,
+
 
 
 14304
 14:27:05,750 --> 14:27:10,790
-transfer failed, like that, then go back down, and we can now do
+
 
 
 14305
 14:27:10,790 --> 14:27:14,750
-revert, raffle transfer failed like that. And now that we've
+
 
 
 14306
 14:27:14,780 --> 14:27:17,540
-picked a winner, right now, we don't have a way to actually
+
 
 
 14307
 14:27:17,540 --> 14:27:20,570
-keep track of the list of previous winners. So we're just
+
 
 
 14308
 14:27:20,570 --> 14:27:23,120
-going to omit an event. So there's always going to be that
+
 
 
 14309
 14:27:23,390 --> 14:27:26,660
-easily query double history of event winners. So we're going to
+
 
 
 14310
 14:27:26,660 --> 14:27:30,410
-create a new event in the events section called the event winner
+
 
 
 14311
 14:27:30,410 --> 14:27:37,160
-picked. And this is going to be an address indexed winner. And
+And
 
 
 14312
