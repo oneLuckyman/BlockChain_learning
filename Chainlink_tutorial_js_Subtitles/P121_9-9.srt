@@ -256,53 +256,53 @@ And this is going to be an address indexed winner.
 
 14290
 14:26:14,210 --> 14:26:17,270
-
-
+And we'll scroll down and we'll do MIT winner picked the address of the recent winner. 
+我们拉下来，执行 `emit WinnerPicked(recentWinner)`
 
 14291
 14:26:17,270 --> 14:26:19,970
-
-
+This looks pretty good. This looks pretty good here. 
+看起来很不错，真的很不错
 
 14292
 14:26:19,970 --> 14:26:22,610
-
-
+Now you'll notice our request ID as this little underscore here and saying, hey, it's an unused function parameter, 
+现在你会发现，我们的 "requestId" 有一段下划线，它是在说，这是一个未使用的函数参数
 
 14293
 14:26:22,610 --> 14:26:24,860
-
-
+since we don't use this, but we still need fulfill random words to take a request ID and a random words array. 
+尽管我们不使用它，但我们仍然需要让 "fulfillRandomWords" 获取 "requestId" 和 "randomWords" 数组
 
 14294
 14:26:24,860 --> 14:26:27,860
-
-
+But we don't use Request ID, we can just comment out just the request ID part like this, 
+但我们用不到 "requestId"，我们可以直接把 "requestId" 部分给注释掉，就像这样
 
 14295
 14:26:27,860 --> 14:26:34,850
-
-
+this tells our function, hey, yes, we know that you need a un 256. 
+它告诉我们的函数，是的我知道你需要一个 uint256
 
 14296
 14:26:35,150 --> 14:26:40,940
-
-
+But we're not going to use the request ID. So we'll leave it in here. But we'll leave it blank. 
+但我们不打算使用 "requestId" 所以我们这里就保持留白
 
 14297
 14:26:41,870 --> 14:26:45,080
-
-
+Now let's run a little compile here. We'll use yarn, hard hat, compile, 
+现在让我们来编译一下，我们使用 `yarn hardhat compile`
 
 14298
 14:26:45,080 --> 14:26:48,800
-
-
+or hh compile, we'll see if we're coding things correctly. 
+或者 `hh compile`，我们可以看到代码全部正确
 
 14299
 14:26:48,800 --> 14:26:52,160
-
-
+And indeed, we don't see any errors. So perfect, we can continue. 
+并且我们没有看到任何报错，非常完美，我们可以继续了
 
 14300
 14:26:52,160 --> 14:26:54,290
@@ -361,77 +361,77 @@ And this is going to be an address indexed winner.
 
 14311
 14:27:30,410 --> 14:27:37,160
-And
+
 
 
 14312
 14:27:37,160 --> 14:27:43,850
-we'll scroll down and we'll do MIT winner picked the address of
+
 
 
 14313
 14:27:43,850 --> 14:27:46,730
-the recent winner. This looks pretty good.
+
 
 
 14314
 14:27:46,820 --> 14:27:49,820
-This looks pretty good here. Now you'll notice our request ID as
+
 
 
 14315
 14:27:49,820 --> 14:27:53,210
-this little underscore here and saying, hey, it's an unused
+
 
 
 14316
 14:27:53,210 --> 14:27:56,090
-function parameter, since we don't use this, but we still
+
 
 
 14317
 14:27:56,090 --> 14:27:59,810
-need fulfill random words to take a request ID and a random
+
 
 
 14318
 14:27:59,810 --> 14:28:02,600
-words array. But we don't use Request ID, we can just comment
+
 
 
 14319
 14:28:02,600 --> 14:28:06,140
-out just the request ID part like this, this tells our
+
 
 
 14320
 14:28:06,140 --> 14:28:10,490
-function, hey, yes, we know that you need a un 256. But we're not
+
 
 
 14321
 14:28:10,490 --> 14:28:12,740
-going to use the request ID. So we'll leave it in here. But
+
 
 
 14322
 14:28:12,740 --> 14:28:16,010
-we'll leave it blank. Now let's run a little compile here. We'll
+
 
 
 14323
 14:28:16,010 --> 14:28:21,410
-use yarn, hard hat, compile, or hh compile, we'll see if we're
+
 
 
 14324
 14:28:21,410 --> 14:28:24,110
-coding things correctly. And indeed, we don't see any errors.
+
 
 
 14325
 14:28:24,140 --> 14:28:30,350
-So perfect, we can continue. So we've added the chain link VRF,
+So we've added the chain link VRF,
 
 
 14326
