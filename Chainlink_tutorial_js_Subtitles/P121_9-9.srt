@@ -306,102 +306,102 @@ And indeed, we don't see any errors. So perfect, we can continue.
 
 14300
 14:26:52,160 --> 14:26:54,290
-
-
+So we've added the chain link VRF, where we have a way to verifiably get a random winner. 
+我们已经添加了 Chainlink VRF，这样我们就有了一种可验证的获取随机优胜者的方法
 
 14301
 14:26:54,290 --> 14:26:59,000
-
-
+This is fantastic. Now let's update this contract 
+这真是太棒了，现在让我们更新这个合约
 
 14302
 14:26:59,000 --> 14:27:01,910
-
-
+so that not only can it pick a verifiable winner, but it can also do this all programmatically 
+这样我们不仅可以选出一个可验证的优胜者，还可以通过程序化的方式
 
 14303
 14:27:01,940 --> 14:27:05,390
-
-
+and automatically trigger picking a random winner based off of some time interval without us having to interact with it. 
+自动地在一定时间间隔内触发选择随机优胜者，而无需我们的任何操作
 
 14304
 14:27:05,750 --> 14:27:10,790
-
-
+And in a decentralized context. 
+而且还是在一个去中心化的环境中
 
 14305
 14:27:10,790 --> 14:27:14,750
-
-
+In order for us to automatically trigger smart contracts based off of some parameter 
+为了能自动根据某些参数触发智能合约
 
 14306
 14:27:14,780 --> 14:27:17,540
-
-
+be a time parameter, maybe the price of some asset is some number, 
+比如时间参数，也可能是某些资产的价格
 
 14307
 14:27:17,540 --> 14:27:20,570
-
-
+maybe there's a certain amount of money in the liquidity pool or really whatever trigger that you want, 
+也可能是某些流动资金池中的金额，或是任何你想要的触发条件
 
 14308
 14:27:20,570 --> 14:27:23,120
-
-
+we can use chain link keepers. To do this. 
+我们可以使用 "Chainlink Keepers" 来做到这一点
 
 14309
 14:27:23,390 --> 14:27:26,660
-
-
+Steven fluid has done once again, an amazing introduction to chain the keepers. 
+Stephen Fluin 会再次向我们介绍 "Chainlink Keepers" 
 
 14310
 14:27:26,660 --> 14:27:30,410
-
-
+So we're going to follow along with another sub video section of Steven explaining chain link keeper sauce, 
+我们将进入 Stephen 的另一个解释 "Chainlink Keepers" 的子视频部分
 
 14311
 14:27:30,410 --> 14:27:37,160
-
-
+he's going to be using the COVID test net, but be sure to use whatever test net is in the documentation. When you play with this and you try this. 
+它会使用 Kovan 测试网，但当你尝试和使用时，要确保使用的是这个文档中要求的测试网
 
 14312
 14:27:37,160 --> 14:27:43,850
-
-
+My name is Steven foon. Today, 
+大家好，我是 Stephen Fluin 
 
 14313
 14:27:43,850 --> 14:27:46,730
-
-
+I want to show you how to use the chain link keeper network 
+我将向你们展示如何使用 "Chainlink Keepers" 网络
 
 14314
 14:27:46,820 --> 14:27:49,820
-
-
+in order to automate your contracts and give them access to off chain computation. 
+来自动化你的合约并使它们获得链外计算的能力
 
 14315
 14:27:49,820 --> 14:27:53,210
-
-
+Let's go ahead and dive in. So what we're going to look at today is we're going to start on the chain link documentation webpage. 
+让我们开始吧，今天我们要看的内容位于 Chainlink 的文档页面
 
 14316
 14:27:53,210 --> 14:27:56,090
-
-
+And if you just scroll down a little bit, you're going to find using chain link keepers. 
+往下拉一点，你就会找到这个 "USING CHAINLINK KEEPERS"
 
 14317
 14:27:56,090 --> 14:27:59,810
-
-
+Now there's really two parts to building a chain link keeper up kept smart contract. 
+构建一个 "Chainlink Keepers Upkeep" 智能合约实际上需要两步 
 
 14318
 14:27:59,810 --> 14:28:02,600
-
-
+So the first thing is you need to write a smart contract that's compatible by implementing these two methods. 
+首先，你需要编写一个智能合约，通过实现这两个方法使其得到兼容
 
 14319
 14:28:02,600 --> 14:28:06,140
-
+And then second, you want to register that smart contract for upkeep with the channeling keeper network. 
 
 
 14320
@@ -431,192 +431,192 @@ And indeed, we don't see any errors. So perfect, we can continue.
 
 14325
 14:28:24,140 --> 14:28:30,350
-So we've added the chain link VRF,
+
 
 
 14326
 14:28:30,350 --> 14:28:34,100
-where we have a way to verifiably get a random winner.
+
 
 
 14327
 14:28:34,340 --> 14:28:38,030
-This is fantastic. Now let's update this contract so that not
+
 
 
 14328
 14:28:38,030 --> 14:28:42,110
-only can it pick a verifiable winner, but it can also do this
+
 
 
 14329
 14:28:42,140 --> 14:28:45,260
-all programmatically and automatically trigger picking a
+
 
 
 14330
 14:28:45,260 --> 14:28:49,400
-random winner based off of some time interval without us having
+
 
 
 14331
 14:28:49,400 --> 14:28:52,880
-to interact with it. And in a decentralized context. In order
+
 
 
 14332
 14:28:52,880 --> 14:28:55,640
-for us to automatically trigger smart contracts based off of
+
 
 
 14333
 14:28:55,670 --> 14:28:59,240
-some parameter be a time parameter, maybe the price of
+
 
 
 14334
 14:28:59,240 --> 14:29:02,210
-some asset is some number, maybe there's a certain amount of
+
 
 
 14335
 14:29:02,210 --> 14:29:05,420
-money in the liquidity pool or really whatever trigger that you
+
 
 
 14336
 14:29:05,420 --> 14:29:08,810
-want, we can use chain link keepers. To do this. Steven
+
 
 
 14337
 14:29:08,810 --> 14:29:11,960
-fluid has done once again, an amazing introduction to chain
+
 
 
 14338
 14:29:11,960 --> 14:29:14,390
-the keepers. So we're going to follow along with another sub
+
 
 
 14339
 14:29:14,390 --> 14:29:16,760
-video section of Steven explaining chain link keeper
+
 
 
 14340
 14:29:16,760 --> 14:29:19,430
-sauce, he's going to be using the COVID test net, but be sure
+
 
 
 14341
 14:29:19,430 --> 14:29:22,430
-to use whatever test net is in the documentation. When you play
+
 
 
 14342
 14:29:22,430 --> 14:29:23,630
-with this and you try this.
+
 
 
 14343
 14:29:23,659 --> 14:29:26,299
-My name is Steven foon. Today, I want to show you how to use the
+
 
 
 14344
 14:29:26,299 --> 14:29:29,779
-chain link keeper network in order to automate your contracts
+
 
 
 14345
 14:29:29,929 --> 14:29:32,659
-and give them access to off chain computation. Let's go
+
 
 
 14346
 14:29:32,659 --> 14:29:34,789
-ahead and dive in. So what we're going to look at today is we're
+
 
 
 14347
 14:29:34,789 --> 14:29:37,339
-going to start on the chain link documentation webpage. And if
+
 
 
 14348
 14:29:37,339 --> 14:29:39,799
-you just scroll down a little bit, you're going to find using
+
 
 
 14349
 14:29:39,799 --> 14:29:43,789
-chain link keepers. Now there's really two parts to building a
+
 
 
 14350
 14:29:43,849 --> 14:29:46,999
-chain link keeper up kept smart contract. So the first thing is
+
 
 
 14351
 14:29:46,999 --> 14:29:49,159
-you need to write a smart contract that's compatible by
+
 
 
 14352
 14:29:49,159 --> 14:29:51,589
-implementing these two methods. And then second, you want to
+
 
 
 14353
 14:29:51,589 --> 14:29:54,979
-register that smart contract for upkeep with the channeling
+
 
 
 14354
 14:29:54,979 --> 14:29:57,259
-keeper network. So let's go ahead and do both of those
+So let's go ahead and do both of those things. 
 
 
 14355
 14:29:57,259 --> 14:30:00,409
-things. So let's start off just by copying and deploying this
+So let's start off just by copying and deploying this sample code that we've got. 
 
 
 14356
 14:30:00,439 --> 14:30:04,339
-sample code that we've got. With this one click to remix, what
+With this one click to remix, 
 
 
 14357
 14:30:04,339 --> 14:30:07,069
-we're gonna see here is a very, very simple contract. That is
+what we're gonna see here is a very, very simple contract. 
 
 
 14358
 14:30:07,069 --> 14:30:11,599
-just a simple counter. So we can see it's got a counter here. So
+That is just a simple counter. So we can see it's got a counter here. So it's got just a simple number. 
 
 
 14359
 14:30:11,599 --> 14:30:16,489
-it's got just a simple number. And then you're able to specify
+And then you're able to specify when you create the contract and update interval, 
 
 
 14360
 14:30:16,489 --> 14:30:19,579
-when you create the contract and update interval, and then the
+and then the contract is going to verify 
 
 
 14361
 14:30:19,579 --> 14:30:22,039
-contract is going to verify Hey, has enough time passed. And if
+Hey, has enough time passed. And if it has, let's update the counter. 
 
 
 14362
 14:30:22,039 --> 14:30:24,769
-it has, let's update the counter. And you're going to
+And you're going to
 
 
 14363
