@@ -86,7 +86,7 @@ in our code. We're going to do
 14459
 14:35:38,719 --> 14:35:41,269
 import at chain link slash contracts slash SRC slash V 0.8 point two interfaces slash keeper compatible interface that soul 
-`import "@chainlink/contracts/src/v0.8.interfaces/KeeperCompatibleInterface.sol"
+`import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol"
 
 14460
 14:35:41,329 --> 14:35:43,819
@@ -111,228 +111,144 @@ And if we look back at the docs we can see checkup keep takes a bytes called Dat
 14464
 14:35:54,499 --> 14:35:56,869
 So we'll do bytes called data. Check data as a parameter. 
-
+所以我们写下 `bytes calldata checkData` 作为参数
 
 14465
 14:35:56,869 --> 14:36:04,909
-
-
+Now this check upkeep bytes call data allows us to specify really anything that we want when we call this check upkeep function. 
+这个 "bytes calldata" 允许我们在调用 "checkUpkeep" 时指定我们想要指定的任何内容
 
 14466
 14:36:04,909 --> 14:36:13,129
-
-
+Having this check data be of type bytes means that we can even specify this to call other functions, 
+"checkData" 类型为 "bytes" 意味着我们甚至可以指定这里去调用其他函数
 
 14467
 14:36:13,129 --> 14:36:16,549
-
-
+there's a lot of advanced things you can do by just having an input parameter as type of bytes 
+通过将输入参数设置为 "bytes" 类型，你可以实现许多高级功能
 
 14468
 14:36:16,549 --> 14:36:19,999
-
-
+for us though, we're going to keep it a little bit simple. 
+不过，对于我们来说，要做的会简单一些
 
 14469
 14:36:19,999 --> 14:36:22,669
-
-
+And we're actually not going to use this check data piece. 
+实际上，我们并不会使用到这个 "checkData" 部分
 
 14470
 14:36:22,669 --> 14:36:25,639
-
-
+So similar to how below we're not using Request ID, we can just comment it out. 
+就和下面的 "requestId" 类似，我们用不到它，所以就直接给注释掉了
 
 14471
 14:36:25,639 --> 14:36:28,339
-
-
+However, we still need to make sure that this parameter is type of bytes called data. 
+但我们仍然需要确保这里的参数类型是 "bytes calldata"
 
 14472
 14:36:28,339 --> 14:36:32,359
-
-
+Now anyways, let's go ahead and annotate this check upkeep function, 
+不管怎么样，让我们继续对这个 "checkUpkeep" 函数进行注释吧
 
 14473
 14:36:32,359 --> 14:36:37,339
-
-
+we'll say this is the function that the chain link keeper nodes call they look for the to return true. 
+我们说“这个函数由 Chainlink Keeper 节点调用，它们会检查 `upkeepNeeded` 是否返回 true”
 
 14474
 14:36:37,339 --> 14:36:40,699
-Now this check upkeep bytes call data allows us
-
+Look back at the documentation, we can see that this check upkeep returns both and upkeep needed and to perform data, 
+我们再看一下文档，可以看到 "checkUpkeep" 同时返回 "upkeepNeeded" 以及 "performData"
 
 14475
 14:36:40,699 --> 14:36:44,539
-to specify really anything that we want when we call this check
-
+which again, we're going to ignore 
+不过 "performData" 同样也被忽略掉了
 
 14476
 14:36:44,569 --> 14:36:47,629
-upkeep function. Having this check data be of type bytes
-
+this upkeep needed is going to be true or false. 
+这个 "upkeepNeeded" 可以是 true 或者 false 
 
 14477
 14:36:47,659 --> 14:36:51,649
-means that we can even specify this to call other functions,
-
+If it's true, that means it's time to get a new random number 
+如果它为 true，那么就意味着是时候获取一个新的随机数了
 
 14478
 14:36:51,709 --> 14:36:54,709
-there's a lot of advanced things you can do by just having an
-
+following should be true in order to return true. 
+要想返回 true，应当满足以下条件
 
 14479
 14:36:54,709 --> 14:36:58,399
-input parameter as type of bytes for us though, we're going to
-
+So in order for it to be time to request a random winner, what should happen, 
+为了能在合适的时机执行 "requestRandomWinner"，应当做些什么呢？
 
 14480
 14:36:58,399 --> 14:37:00,949
-keep it a little bit simple. And we're actually not going to use
-
+our time interval should have passed, which we haven't defined yet. But we will 
+我们的时间间隔应当满足，虽然还没定义，但之后会的
 
 14481
 14:37:00,949 --> 14:37:03,739
-this check data piece. So similar to how below we're not
-
+lottery should have at least one player and have some eath. 
+彩票系统里应当至少有一位玩家，并且里面有一些以太币
 
 14482
 14:37:03,739 --> 14:37:06,559
-using Request ID, we can just comment it out. However, we
-
+And then our subscription is funded with Link 
+然后是，我们的订阅已经注入了 Link 资金
 
 14483
 14:37:06,559 --> 14:37:09,589
-still need to make sure that this parameter is type of bytes
-
+similar to how with channeling Vir f your subscription needs to be funded with Link, 
+就和使用 Chainlink VRF 订阅时需要使用 Link 资金类似
 
 14484
 14:37:09,589 --> 14:37:12,469
-called data. Now anyways, let's go ahead and annotate this check
-
+the same thing needs to happen for check upkeep and keepers to run your subscription needs to be funded with link. 
+对于 "checkUpkeep" 以及 "Keepers" 来说，订阅同样也需要使用 Link 资金
 
 14485
 14:37:12,499 --> 14:37:16,819
-upkeep function, we'll say this is the function that the chain
-
+Now we're going to add one more additional piece here, 
+我们需要在这里增加一个新的部分
 
 14486
 14:37:16,819 --> 14:37:25,849
-link keeper nodes call they look for the to return true. Look
-
+we're going to say for the lottery should be in an open state, 
+`4.彩票应当处于 "open" 状态`
 
 14487
 14:37:25,849 --> 14:37:28,879
-back at the documentation, we can see that this check upkeep
-
+something that we want to avoid 
+有一些事是我们想要避免的
 
 14488
 14:37:28,999 --> 14:37:33,169
-returns both and upkeep needed and to perform data, which
-
+when we're waiting for a random number to return. And when we've requested a random winner. 
+当我们在等待一个随机数返回以及请求了一个随机优胜者时
 
 14489
 14:37:33,199 --> 14:37:36,679
-again, we're going to ignore this upkeep needed is going to
-
+We're technically in this weird limbo state where we're waiting for a random number to be returned. 
+实际上，我们正处于一种奇怪的悬而未决的状态，我们正在等待一个随机数的返回
 
 14490
 14:37:36,679 --> 14:37:41,029
-be true or false. If it's true, that means it's time to get a
-
+And we really shouldn't allow any new players to join. 
+此时我们不应该允许任何新玩家加入
 
 14491
 14:37:41,029 --> 14:37:46,129
-new random number following should be true in order to
-
+So what we actually want to do is create some state variable telling us whether the lottery is open or not. 
+所以，我们要创建一些状态变量来表明彩票是否正在开放
 
 14492
 14:37:46,279 --> 14:37:50,599
-return true. So in order for it to be time to request a random
-
-
-14493
-14:37:50,599 --> 14:37:54,019
-winner, what should happen, our time interval should have
-
-
-14494
-14:37:54,019 --> 14:37:58,489
-passed, which we haven't defined yet. But we will lottery should
-
-
-14495
-14:37:58,489 --> 14:38:04,429
-have at least one player and have some eath. And then our
-
-
-14496
-14:38:04,429 --> 14:38:09,439
-subscription is funded with Link similar to how with channeling
-
-
-14497
-14:38:09,439 --> 14:38:12,499
-Vir f your subscription needs to be funded with Link, the same
-
-
-14498
-14:38:12,499 --> 14:38:15,919
-thing needs to happen for check upkeep and keepers to run your
-
-
-14499
-14:38:15,919 --> 14:38:18,019
-subscription needs to be funded with link. Now we're going to
-
-
-14500
-14:38:18,019 --> 14:38:21,319
-add one more additional piece here, we're going to say for the
-
-
-14501
-14:38:21,319 --> 14:38:26,359
-lottery should be in an open state, something that we want to
-
-
-14502
-14:38:26,359 --> 14:38:30,349
-avoid when we're waiting for a random number to return. And
-
-
-14503
-14:38:30,349 --> 14:38:33,199
-when we've requested a random winner. We're technically in
-
-
-14504
-14:38:33,199 --> 14:38:35,779
-this weird limbo state where we're waiting for a random
-
-
-14505
-14:38:35,779 --> 14:38:38,479
-number to be returned. And we really shouldn't allow any new
-
-
-14506
-14:38:38,479 --> 14:38:40,729
-players to join. So what we actually want to do is create
-
-
-14507
-14:38:40,729 --> 14:38:43,999
-some state variable telling us whether the lottery is open or
-
-
-14508
-14:38:43,999 --> 14:38:46,879
-not. And while we're waiting for our random number to get back,
-
-
-14509
-14:38:46,909 --> 14:38:49,189
-we'll be in a closed or a calculating state.
+And while we're waiting for our random number to get back, we'll be in a closed or a calculating state. 
+而在我们等待随机数返回期间，我们应当处于关闭或者计算状态
