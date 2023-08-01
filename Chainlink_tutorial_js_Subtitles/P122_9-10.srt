@@ -1,0 +1,338 @@
+14442
+14:34:42,469 --> 14:34:47,419
+So now let's update our code so that this request random numbers automatically happens using chain link keepers. 
+现在让我们来更新代码，使用 "Chainlink keepers" 自动执行这个 "requestRandomWinner" 
+
+14443
+14:34:47,449 --> 14:34:50,629
+And if we look at the example contract can actually read more about what's really important for this to work. 
+如果我们看一下这个示例合约，就可以更多地了解对于这项工作来说真正重要的事情
+
+14444
+14:34:50,659 --> 14:34:53,479
+And we need a check upkeep and a perform upkeep function in our code. 
+我们需要在代码中实现一个 "checkUpkeep" 和一个 "performUpkeep" 函数
+
+14445
+14:34:53,479 --> 14:34:56,389
+So instead of request random winner, this is going to be the PErforM upkeep that we're going to change. 
+所以我们不再是使用 "requestRandomWinner" 而是需要把它改成 "performUpkeep" 
+
+14446
+14:34:56,419 --> 14:34:59,779
+But first let's make this check upkeep 
+但首先要做的还是创建 "checkUpkeep" 
+
+14447
+14:34:59,809 --> 14:35:03,769
+checkup keep function is basically going to be checking to see is it time for us to get a random number to update the recent winner and to send them all the funds. 
+"checkUpkeep" 函数就是用来查看是否到了我们该获取随机数，更新最近优胜者，以及给他们打钱的时间了
+
+14448
+14:35:03,769 --> 14:35:06,799
+So let's go ahead and make that function. 
+让我们来创建一下这个函数
+
+14449
+14:35:06,799 --> 14:35:09,799
+I'm going to add some notes here, just so that it's clear what's going on. 
+我会在这里添加一些注释，这样可以清晰地说明这里正在发生些什么
+
+14450
+14:35:09,799 --> 14:35:12,709
+And maybe I'll even do natspec To tell developers what's going on with this function. 
+我甚至可能会使用 "Natspec" (“自然语言规范”)来告诉开发者们这个函数的功能是什么
+
+14451
+14:35:12,709 --> 14:35:15,529
+So we're going to create this function check upkeep. 
+所以我们来创建这个函数 `function checkUpkeep()`
+
+14452
+14:35:15,529 --> 14:35:17,929
+And if we look at what this needs, it needs to be external override 
+并且我们可以看一下它需要哪些关键字，它需要的是 "external override"
+
+14453
+14:35:17,929 --> 14:35:20,209
+external override. 
+`external override`
+
+14454
+14:35:20,209 --> 14:35:23,629
+And if we see this override keyword, this means that okay, there's probably a perform upkeep somewhere else. 
+我们看一下这个 "override" 关键字，它的意思是可能其它地方还会有一个 "performUpkeep" 方法
+
+14455
+14:35:23,629 --> 14:35:26,179
+And if we scroll to the top, and we're going to import this keeper compatible interface, 
+我们拉到顶部，这个地方会导入这个 "KeeperCompatibleInterface"
+
+14456
+14:35:26,179 --> 14:35:30,439
+so that we make sure that we implement both check upkeep and perform upkeep in our code here. 
+这样我们可以确保代码会实现 "checkUpkeep" 以及 "performUpkeep" 这两个方法
+
+14457
+14:35:30,469 --> 14:35:34,669
+If you want you can just import keeper compatible in here or just the keeper compatible interface 
+如果你想的话，你可以只导入 "KeeperCompatible" 或是直接使用 "KeeperCompatibleInterface"
+
+14458
+14:35:35,779 --> 14:35:38,719
+in our code. We're going to do 
+在我们的代码中，我们的做法是
+
+14459
+14:35:38,719 --> 14:35:41,269
+import at chain link slash contracts slash SRC slash V 0.8 point two interfaces slash keeper compatible interface that soul 
+`import "@chainlink/contracts/src/v0.8.interfaces/KeeperCompatibleInterface.sol"
+
+14460
+14:35:41,329 --> 14:35:43,819
+and now we're just gonna say contract raffle is Veera of consumer base V two and keeper compatible interface 
+现在我们的合约 "Raffle" 就是 "VRFConsumerBaseV2" 以及 "KeeperCompatibleInterface"
+
+14461
+14:35:43,849 --> 14:35:46,759
+and this keeper compatible interface inheritance just make sure that we add checkup keep and perform upkeep, 
+继承这个 "KeeperCompatibleInterface" 只是为了确保我们添加的有 "checkUpkeep" 以及 "performUpkeep" 
+
+14462
+14:35:46,759 --> 14:35:50,869
+which we're going to add in a little bit. 
+稍后我们再自行添加
+
+14463
+14:35:51,049 --> 14:35:54,499
+And if we look back at the docs we can see checkup keep takes a bytes called Data check data as an input parameter. 
+我们回来看一下文档，可以发现 "checkUpkeep" 接收一个 "bytes calldata checkData" 作为输入参数 
+
+14464
+14:35:54,499 --> 14:35:56,869
+So we'll do bytes called data. Check data as a parameter. 
+
+
+14465
+14:35:56,869 --> 14:36:04,909
+
+
+
+14466
+14:36:04,909 --> 14:36:13,129
+
+
+
+14467
+14:36:13,129 --> 14:36:16,549
+
+
+
+14468
+14:36:16,549 --> 14:36:19,999
+
+
+
+14469
+14:36:19,999 --> 14:36:22,669
+
+
+
+14470
+14:36:22,669 --> 14:36:25,639
+
+
+
+14471
+14:36:25,639 --> 14:36:28,339
+
+
+
+14472
+14:36:28,339 --> 14:36:32,359
+
+
+
+14473
+14:36:32,359 --> 14:36:37,339
+
+
+
+14474
+14:36:37,339 --> 14:36:40,699
+Now this check upkeep bytes call data allows us
+
+
+14475
+14:36:40,699 --> 14:36:44,539
+to specify really anything that we want when we call this check
+
+
+14476
+14:36:44,569 --> 14:36:47,629
+upkeep function. Having this check data be of type bytes
+
+
+14477
+14:36:47,659 --> 14:36:51,649
+means that we can even specify this to call other functions,
+
+
+14478
+14:36:51,709 --> 14:36:54,709
+there's a lot of advanced things you can do by just having an
+
+
+14479
+14:36:54,709 --> 14:36:58,399
+input parameter as type of bytes for us though, we're going to
+
+
+14480
+14:36:58,399 --> 14:37:00,949
+keep it a little bit simple. And we're actually not going to use
+
+
+14481
+14:37:00,949 --> 14:37:03,739
+this check data piece. So similar to how below we're not
+
+
+14482
+14:37:03,739 --> 14:37:06,559
+using Request ID, we can just comment it out. However, we
+
+
+14483
+14:37:06,559 --> 14:37:09,589
+still need to make sure that this parameter is type of bytes
+
+
+14484
+14:37:09,589 --> 14:37:12,469
+called data. Now anyways, let's go ahead and annotate this check
+
+
+14485
+14:37:12,499 --> 14:37:16,819
+upkeep function, we'll say this is the function that the chain
+
+
+14486
+14:37:16,819 --> 14:37:25,849
+link keeper nodes call they look for the to return true. Look
+
+
+14487
+14:37:25,849 --> 14:37:28,879
+back at the documentation, we can see that this check upkeep
+
+
+14488
+14:37:28,999 --> 14:37:33,169
+returns both and upkeep needed and to perform data, which
+
+
+14489
+14:37:33,199 --> 14:37:36,679
+again, we're going to ignore this upkeep needed is going to
+
+
+14490
+14:37:36,679 --> 14:37:41,029
+be true or false. If it's true, that means it's time to get a
+
+
+14491
+14:37:41,029 --> 14:37:46,129
+new random number following should be true in order to
+
+
+14492
+14:37:46,279 --> 14:37:50,599
+return true. So in order for it to be time to request a random
+
+
+14493
+14:37:50,599 --> 14:37:54,019
+winner, what should happen, our time interval should have
+
+
+14494
+14:37:54,019 --> 14:37:58,489
+passed, which we haven't defined yet. But we will lottery should
+
+
+14495
+14:37:58,489 --> 14:38:04,429
+have at least one player and have some eath. And then our
+
+
+14496
+14:38:04,429 --> 14:38:09,439
+subscription is funded with Link similar to how with channeling
+
+
+14497
+14:38:09,439 --> 14:38:12,499
+Vir f your subscription needs to be funded with Link, the same
+
+
+14498
+14:38:12,499 --> 14:38:15,919
+thing needs to happen for check upkeep and keepers to run your
+
+
+14499
+14:38:15,919 --> 14:38:18,019
+subscription needs to be funded with link. Now we're going to
+
+
+14500
+14:38:18,019 --> 14:38:21,319
+add one more additional piece here, we're going to say for the
+
+
+14501
+14:38:21,319 --> 14:38:26,359
+lottery should be in an open state, something that we want to
+
+
+14502
+14:38:26,359 --> 14:38:30,349
+avoid when we're waiting for a random number to return. And
+
+
+14503
+14:38:30,349 --> 14:38:33,199
+when we've requested a random winner. We're technically in
+
+
+14504
+14:38:33,199 --> 14:38:35,779
+this weird limbo state where we're waiting for a random
+
+
+14505
+14:38:35,779 --> 14:38:38,479
+number to be returned. And we really shouldn't allow any new
+
+
+14506
+14:38:38,479 --> 14:38:40,729
+players to join. So what we actually want to do is create
+
+
+14507
+14:38:40,729 --> 14:38:43,999
+some state variable telling us whether the lottery is open or
+
+
+14508
+14:38:43,999 --> 14:38:46,879
+not. And while we're waiting for our random number to get back,
+
+
+14509
+14:38:46,909 --> 14:38:49,189
+we'll be in a closed or a calculating state.
