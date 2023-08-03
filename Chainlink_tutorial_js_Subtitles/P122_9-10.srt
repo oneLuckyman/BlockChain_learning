@@ -251,4 +251,4 @@ So what we actually want to do is create some state variable telling us whether 
 14492
 14:37:46,279 --> 14:37:50,599
 And while we're waiting for our random number to get back, we'll be in a closed or a calculating state. 
-而在我们等待随机数返回期间，我们应当处于关闭或者计算状态
+而在我们等待随机数返回的期间，我们应当处于关闭或者计算状态

@@ -1,0 +1,248 @@
+14510
+14:38:51,770 --> 14:38:54,650
+Now what we could do at the top of our contract, we can just say
+
+
+14511
+14:38:54,710 --> 14:38:59,420
+Boolean, private, s underscore is open. And we can just set
+
+
+14512
+14:38:59,420 --> 14:39:03,080
+this to true if we're open otherwise false. Well, what if
+
+
+14513
+14:39:03,080 --> 14:39:05,600
+we have a ton of different states? What if we want it to be
+
+
+14514
+14:39:05,600 --> 14:39:10,790
+like pending, open, closed, calculating, etc? What do we
+
+
+14515
+14:39:10,790 --> 14:39:14,360
+have a ton of different states? Well, we could make this a U and
+
+
+14516
+14:39:14,360 --> 14:39:18,530
+256. Private s underscore state. And we could just keep track of
+
+
+14517
+14:39:18,530 --> 14:39:21,860
+the state having like zero b pending a one reopen to be
+
+
+14518
+14:39:21,860 --> 14:39:24,830
+closed, three, be calculating, etc. But this can be a little
+
+
+14519
+14:39:24,830 --> 14:39:27,710
+tricky to keep track of. So a better way to actually keep
+
+
+14520
+14:39:27,710 --> 14:39:31,220
+track of all this in our code is to use an enum enums, can be
+
+
+14521
+14:39:31,220 --> 14:39:35,270
+used to create custom types with a finite set of constant values.
+
+
+14522
+14:39:35,300 --> 14:39:39,110
+So we can create, for example, a state created locked inactive,
+
+
+14523
+14:39:39,200 --> 14:39:42,680
+and it's basically a new type for a smart contract for us,
+
+
+14524
+14:39:42,710 --> 14:39:45,080
+we're going to create a new type. And if we go back to the
+
+
+14525
+14:39:45,080 --> 14:39:48,170
+layout of variables, and our smart contract types should
+
+
+14526
+14:39:48,170 --> 14:39:50,840
+actually be first thing in our contract. So we're going to
+
+
+14527
+14:39:50,840 --> 14:39:54,920
+create an E new called raffle state. And for now, and we're
+
+
+14528
+14:39:54,920 --> 14:39:57,590
+just going to have it be open, we're just gonna have to be open
+
+
+14529
+14:39:57,650 --> 14:40:02,570
+or calculating. Now when we create an enum like this, we're
+
+
+14530
+14:40:02,570 --> 14:40:07,610
+kind of secretly creating a un 256, where zero equals open, and
+
+
+14531
+14:40:07,610 --> 14:40:12,020
+one equals calculating. However, this is much more explicit that
+
+
+14532
+14:40:12,020 --> 14:40:15,080
+we know what each one of these numbers actually means. Now that
+
+
+14533
+14:40:15,080 --> 14:40:18,290
+we've created this new type called raffle state, we can
+
+
+14534
+14:40:18,290 --> 14:40:21,980
+create a new lottery state variable of type raffle state.
+
+
+14535
+14:40:22,100 --> 14:40:25,190
+So the exact same way we declare any other variable, we'll name
+
+
+14536
+14:40:25,190 --> 14:40:28,070
+its type, which is going to be raffle state. And this is going
+
+
+14537
+14:40:28,070 --> 14:40:31,520
+to be a storage variable. So we'll go ahead and do private s
+
+
+14538
+14:40:31,550 --> 14:40:34,910
+underscore raffle state in our constructor, right when we
+
+
+14539
+14:40:34,910 --> 14:40:38,060
+launched this contract, we should open up this raffle. So
+
+
+14540
+14:40:38,060 --> 14:40:43,340
+we'll say s, raffle state equals and we could use a un 256.
+
+
+14541
+14:40:43,730 --> 14:40:48,260
+Wrapped in type raffle state like so. Or we can be more
+
+
+14542
+14:40:48,260 --> 14:40:52,460
+explicit and say raffle state DOT open. Now we know that the
+
+
+14543
+14:40:52,460 --> 14:40:55,760
+raffle state is in an open state and we only want checkup keep to
+
+
+14544
+14:40:55,760 --> 14:40:59,090
+work is if the lottery is actually open. Additionally, we
+
+
+14545
+14:40:59,090 --> 14:41:01,730
+probably only want people to be able to enter if the law
+
+
+14546
+14:41:01,730 --> 14:41:04,730
+battery's open. So let's go ahead and create another if
+
+
+14547
+14:41:04,730 --> 14:41:07,760
+statement and revert if the lottery isn't open. So we can
+
+
+14548
+14:41:07,760 --> 14:41:14,630
+say if s underscore raffle state does not equal raffle state DOT
+
+
+14549
+14:41:14,630 --> 14:41:19,400
+open, then we're going to revert with a new error, we're going to
+
+
+14550
+14:41:19,400 --> 14:41:24,530
+create raffle underscore underscore, not open. And of
+
+
+14551
+14:41:24,530 --> 14:41:29,990
+course, at the top will create error, raffle not open. Now
+
+
+14552
+14:41:29,990 --> 14:41:33,980
+additionally, let's go down when we're requesting a random word.
+
+
+14553
+14:41:34,100 --> 14:41:37,310
+Let's update the state to be calculating so other people
+
+
+14554
+14:41:37,310 --> 14:41:41,300
+can't jump in here. So right above our VRF coordinator dot
+
+
+14555
+14:41:41,300 --> 14:41:45,890
+request, random words will do s underscore raffle state equals
+
+
+14556
+14:41:46,700 --> 14:41:51,950
+raffle state DOT calculating so that nobody can enter our
+
+
+14557
+14:41:51,950 --> 14:41:56,060
+lottery and nobody can trigger a new update. And then once we
+
+
+14558
+14:41:56,060 --> 14:41:59,960
+fulfill after we pick our winner, we'll say s raffle state
+
+
+14559
+14:41:59,990 --> 14:42:07,070
+equals raffle state DOT open again. 
