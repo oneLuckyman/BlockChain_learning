@@ -1,248 +1,199 @@
 14510
 14:38:51,770 --> 14:38:54,650
-Now what we could do at the top of our contract, we can just say
-
+Now what we could do at the top of our contract, we can just say Boolean, private, s underscore is open. 
+现在我们可以在合约的顶部这样做，`bool private s_isOpen`
 
 14511
 14:38:54,710 --> 14:38:59,420
-Boolean, private, s underscore is open. And we can just set
-
+And we can just set this to true if we're open otherwise false. 
+我们把它设置为开放时为 true 反之为 false 
 
 14512
 14:38:59,420 --> 14:39:03,080
-this to true if we're open otherwise false. Well, what if
-
+Well, what if we have a ton of different states? 
+但如果我们有很多种不同的状态呢？
 
 14513
 14:39:03,080 --> 14:39:05,600
-we have a ton of different states? What if we want it to be
-
+What if we want it to be like pending, open, closed, calculating, etc? What do we have a ton of different states? 
+如果我们想要有：“等待”("pending")，“开放”("open")，“关闭”("closed")，“计算中”("calculating")，等等这么多不同的状态呢？
 
 14514
 14:39:05,600 --> 14:39:10,790
-like pending, open, closed, calculating, etc? What do we
-
+Well, we could make this a U and 256. Private s underscore state. 
+我们可以把这个设置为 `uint256 private s_state`
 
 14515
 14:39:10,790 --> 14:39:14,360
-have a ton of different states? Well, we could make this a U and
-
+And we could just keep track of the state having like zero b pending a one reopen to be closed, three, be calculating, etc. 
+我们可以通过把 "pending" 设置为 0, "open" 为 1, "closed" 为 2, "calculating" 为 3 来跟踪状态
 
 14516
 14:39:14,360 --> 14:39:18,530
-256. Private s underscore state. And we could just keep track of
-
+But this can be a little tricky to keep track of. 
+但这样追踪可能会有些麻烦
 
 14517
 14:39:18,530 --> 14:39:21,860
-the state having like zero b pending a one reopen to be
-
+So a better way to actually keep track of all this in our code is to use an enum 
+因此，在代码中更好的跟踪方式是使用“枚举”("Enum")
 
 14518
 14:39:21,860 --> 14:39:24,830
-closed, three, be calculating, etc. But this can be a little
-
+enums, can be used to create custom types with a finite set of constant values. 
+Enum 可以用于创建具有一组有限常量的自定义类型
 
 14519
 14:39:24,830 --> 14:39:27,710
-tricky to keep track of. So a better way to actually keep
-
+So we can create, for example, a state created locked inactive, and it's basically a new type for a smart contract 
+我们可以这样创建，例如 "State {Created, Locked, Inactive}"，它是智能合约中的一种新类型
 
 14520
 14:39:27,710 --> 14:39:31,220
-track of all this in our code is to use an enum enums, can be
-
+for us, we're going to create a new type. 
+对我们来说，要做的就是创建一种新的类型
 
 14521
 14:39:31,220 --> 14:39:35,270
-used to create custom types with a finite set of constant values.
-
+And if we go back to the layout of variables, and our smart contract 
+我们回到智能合约的变量布局这里
 
 14522
 14:39:35,300 --> 14:39:39,110
-So we can create, for example, a state created locked inactive,
-
+types should actually be first thing in our contract. 
+类型("Type") 应该作为我们合约中的第一部分
 
 14523
 14:39:39,200 --> 14:39:42,680
-and it's basically a new type for a smart contract for us,
-
+So we're going to create an E new called raffle state. 
+我们创建一个 `enum RaffleState` 
 
 14524
 14:39:42,710 --> 14:39:45,080
-we're going to create a new type. And if we go back to the
-
+And for now, and we're just going to have it be open, 
+目前我们只有 `Open`
 
 14525
 14:39:45,080 --> 14:39:48,170
-layout of variables, and our smart contract types should
-
+we're just gonna have to be open or calculating. 
+我们只有 `OPEN` 和 `CALCULATING`
 
 14526
 14:39:48,170 --> 14:39:50,840
-actually be first thing in our contract. So we're going to
-
+Now when we create an enum like this, 
+当我们像这样创建了一个 enum 时
 
 14527
 14:39:50,840 --> 14:39:54,920
-create an E new called raffle state. And for now, and we're
-
+we're kind of secretly creating a un 256, where zero equals open, and one equals calculating. 
+我们实际上就是创建了一个 `uint256 0 = OPEN, 1 = CALCULATING`
 
 14528
 14:39:54,920 --> 14:39:57,590
-just going to have it be open, we're just gonna have to be open
-
+However, this is much more explicit that we know what each one of these numbers actually means. 
+然而，这样做更加明确，我们能知道每个数字实际上代表的意义
 
 14529
 14:39:57,650 --> 14:40:02,570
-or calculating. Now when we create an enum like this, we're
-
+Now that we've created this new type called raffle state, 
+我们已经创建了一种名为 "RaffleState" 的新类型
 
 14530
 14:40:02,570 --> 14:40:07,610
-kind of secretly creating a un 256, where zero equals open, and
-
+we can create a new lottery state variable of type raffle state. 
+现在我们就可以创建一个新的状态变量，其类型就为 "RaffleState"
 
 14531
 14:40:07,610 --> 14:40:12,020
-one equals calculating. However, this is much more explicit that
-
+So the exact same way we declare any other variable, 
+就和我们声明其它变量一样
 
 14532
 14:40:12,020 --> 14:40:15,080
-we know what each one of these numbers actually means. Now that
-
+we'll name its type, which is going to be raffle state. 
+先写出它的类型，也就是 `RaffleState`
 
 14533
 14:40:15,080 --> 14:40:18,290
-we've created this new type called raffle state, we can
-
+And this is going to be a storage variable. So we'll go ahead and do private s underscore raffle state 
+并且这是一个 storage 变量，所以就是 `private s_raffleState`
 
 14534
 14:40:18,290 --> 14:40:21,980
-create a new lottery state variable of type raffle state.
-
+in our constructor, right when we launched this contract, we should open up this raffle. 
+在构造函数中，当我们启动这个合约时，我们应该开放抽奖
 
 14535
 14:40:22,100 --> 14:40:25,190
-So the exact same way we declare any other variable, we'll name
-
+So we'll say s, raffle state equals and we could use a un 256. Wrapped in type raffle state like so. 
+所以我们写 `s_raffleState =` 我们可以用一个 uint256 包装进 `RaffleState` 就像这样
 
 14536
 14:40:25,190 --> 14:40:28,070
-its type, which is going to be raffle state. And this is going
-
+Or we can be more explicit and say raffle state DOT open. 
+或者我们可以更明确一些 `RaffleState.OPEN`
 
 14537
 14:40:28,070 --> 14:40:31,520
-to be a storage variable. So we'll go ahead and do private s
-
+Now we know that the raffle state is in an open state 
+现在我们就知道 "RaffleState" 处于 "OPEN" 状态了
 
 14538
 14:40:31,550 --> 14:40:34,910
-underscore raffle state in our constructor, right when we
-
+and we only want checkup keep to work is if the lottery is actually open. 
+我们希望只有当抽奖开放时 "checkUpkeep" 才会运行
 
 14539
 14:40:34,910 --> 14:40:38,060
-launched this contract, we should open up this raffle. So
-
+Additionally, we probably only want people to be able to enter if the law battery's open. 
+并且，我们还希望只有在抽奖处于开放状态时才允许人们参与
 
 14540
 14:40:38,060 --> 14:40:43,340
-we'll say s, raffle state equals and we could use a un 256.
-
+So let's go ahead and create another if statement and revert if the lottery isn't open. 
+因此，让我们创建一组 "if" 语句，并在抽奖未开放时执行回滚操作
 
 14541
 14:40:43,730 --> 14:40:48,260
-Wrapped in type raffle state like so. Or we can be more
-
+So we can say if s underscore raffle state does not equal raffle state DOT open, 
+所以我们说 `if (s_raffleState != RaffleState.OPEN)
 
 14542
 14:40:48,260 --> 14:40:52,460
-explicit and say raffle state DOT open. Now we know that the
-
+then we're going to revert with a new error, we're going to create raffle underscore underscore, not open. 
+然后 `revert` 回滚一种将要创建的新错误类型 `Raffle__NotOpen`
 
 14543
 14:40:52,460 --> 14:40:55,760
-raffle state is in an open state and we only want checkup keep to
-
+And of course, at the top will create error, raffle not open. 
+当然了，要在顶部创建一个 `error Raffle__NotOpen`
 
 14544
 14:40:55,760 --> 14:40:59,090
-work is if the lottery is actually open. Additionally, we
-
+Now additionally, let's go down when we're requesting a random word. 
+接着让我们来到下面，当我们请求一个随机数的时候
 
 14545
 14:40:59,090 --> 14:41:01,730
-probably only want people to be able to enter if the law
-
+Let's update the state to be calculating so other people can't jump in here. 
+我们要更新状态为 "CALCULATING" 这样其它人就无法参与了
 
 14546
 14:41:01,730 --> 14:41:04,730
-battery's open. So let's go ahead and create another if
-
+So right above our VRF coordinator dot request, random words 
+所以，在 "vrfCoordinator.requestRandomWords" 上面
 
 14547
 14:41:04,730 --> 14:41:07,760
-statement and revert if the lottery isn't open. So we can
-
+will do s underscore raffle state equals raffle state DOT calculating 
+我们执行 `s_raffleState = RaffleState.CALCULATING`
 
 14548
 14:41:07,760 --> 14:41:14,630
-say if s underscore raffle state does not equal raffle state DOT
-
+so that nobody can enter our lottery and nobody can trigger a new update. 
+这样就没有人能参与进我们的抽奖，也没人能触发新的更新了
 
 14549
 14:41:14,630 --> 14:41:19,400
-open, then we're going to revert with a new error, we're going to
-
-
-14550
-14:41:19,400 --> 14:41:24,530
-create raffle underscore underscore, not open. And of
-
-
-14551
-14:41:24,530 --> 14:41:29,990
-course, at the top will create error, raffle not open. Now
-
-
-14552
-14:41:29,990 --> 14:41:33,980
-additionally, let's go down when we're requesting a random word.
-
-
-14553
-14:41:34,100 --> 14:41:37,310
-Let's update the state to be calculating so other people
-
-
-14554
-14:41:37,310 --> 14:41:41,300
-can't jump in here. So right above our VRF coordinator dot
-
-
-14555
-14:41:41,300 --> 14:41:45,890
-request, random words will do s underscore raffle state equals
-
-
-14556
-14:41:46,700 --> 14:41:51,950
-raffle state DOT calculating so that nobody can enter our
-
-
-14557
-14:41:51,950 --> 14:41:56,060
-lottery and nobody can trigger a new update. And then once we
-
-
-14558
-14:41:56,060 --> 14:41:59,960
-fulfill after we pick our winner, we'll say s raffle state
-
-
-14559
-14:41:59,990 --> 14:42:07,070
-equals raffle state DOT open again. 
+And then once we fulfill after we pick our winner, we'll say s raffle state equals raffle state DOT open again. 
+然后一旦我们选出了优胜者，就可以再次说 `s_raffleState = RaffleState.OPEN`
