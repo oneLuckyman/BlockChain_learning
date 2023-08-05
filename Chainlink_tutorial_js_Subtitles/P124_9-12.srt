@@ -1,0 +1,398 @@
+14559
+14:41:59,990 --> 14:42:07,070
+Something else that we
+
+
+14560
+14:42:07,070 --> 14:42:10,880
+forgot to do was after we pick a winner from s players, we need
+
+
+14561
+14:42:10,880 --> 14:42:14,180
+to reset our players array. So let's add that in here as well
+
+
+14562
+14:42:14,690 --> 14:42:21,890
+as players equals new address payable. array of size zero. So
+
+
+14563
+14:42:21,890 --> 14:42:24,980
+we'll reset the raffle state. And we'll reset our players
+
+
+14564
+14:42:24,980 --> 14:42:27,350
+array. Alright, great. So now that we've learned about enum,
+
+
+14565
+14:42:27,530 --> 14:42:30,230
+let's add it to our checkup keep here, we're going to check these
+
+
+14566
+14:42:30,230 --> 14:42:33,650
+four things. And if they all pass checkup keys will be true
+
+
+14567
+14:42:33,680 --> 14:42:36,890
+and will trigger the chain the keepers to request a new random
+
+
+14568
+14:42:36,890 --> 14:42:41,510
+winner. So first, we'll say bool is open. It's going to be equal
+
+
+14569
+14:42:41,510 --> 14:42:48,590
+to raffle state. That open equals equals s underscore
+
+
+14570
+14:42:49,640 --> 14:42:53,900
+raffle state. So you can think of that as this boolean is open
+
+
+14571
+14:42:53,990 --> 14:42:58,100
+is going to be true if raffle state is in an open state, and
+
+
+14572
+14:42:58,100 --> 14:43:01,550
+it will be false if raffle state is in any other state. So great.
+
+
+14573
+14:43:01,580 --> 14:43:04,820
+We haven't is open Boolean that we can check later on. What else
+
+
+14574
+14:43:04,820 --> 14:43:07,250
+do we need? Well, we need to check to make sure our time
+
+
+14575
+14:43:07,250 --> 14:43:10,850
+interval is past well, we don't have a time interval yet. So
+
+
+14576
+14:43:10,850 --> 14:43:14,030
+let's create a time interval. In order to check the time we can
+
+
+14577
+14:43:14,030 --> 14:43:17,420
+use another one a solidity is globally available variables
+
+
+14578
+14:43:17,480 --> 14:43:20,840
+with block dot timestamp block that timestamp returns the
+
+
+14579
+14:43:20,840 --> 14:43:23,300
+current timestamp of the blockchain to get the current
+
+
+14580
+14:43:23,300 --> 14:43:26,090
+timestamp, we're gonna need block dot timestamp. But to get
+
+
+14581
+14:43:26,090 --> 14:43:28,640
+if enough time has passed, we're going to need to get the current
+
+
+14582
+14:43:28,640 --> 14:43:33,260
+block dot timestamp minus the last block timestamp, which we
+
+
+14583
+14:43:33,260 --> 14:43:35,900
+don't have yet. Let's go ahead and create a state variable to
+
+
+14584
+14:43:35,900 --> 14:43:39,350
+keep track of the previous block timestamp. So this is going to
+
+
+14585
+14:43:39,350 --> 14:43:41,660
+be a new state variable that we're going to make. I'm gonna
+
+
+14586
+14:43:41,660 --> 14:43:47,570
+say u and 256. Private s underscore last timestamp.
+
+
+14587
+14:43:49,250 --> 14:43:52,280
+And right when we deploy this contract, we'll update this with
+
+
+14588
+14:43:52,280 --> 14:43:56,360
+the current timestamp s last timestamp equals block dot
+
+
+14589
+14:43:56,390 --> 14:44:01,910
+timestamp. Alright, awesome. Now we have a last block timestamp.
+
+
+14590
+14:44:01,940 --> 14:44:04,430
+But we're going to need to check that the difference between the
+
+
+14591
+14:44:04,430 --> 14:44:07,940
+current timestamp and the last timestamp is greater than some
+
+
+14592
+14:44:07,940 --> 14:44:10,670
+interval. So we also need to create an interval. And this is
+
+
+14593
+14:44:10,670 --> 14:44:13,430
+going to be some interval, this is going to be some number in
+
+
+14594
+14:44:13,430 --> 14:44:18,110
+seconds of how long we want to wait between lottery runs. So
+
+
+14595
+14:44:18,110 --> 14:44:21,590
+let's go ahead and add this to our constructor as well. And do
+
+
+14596
+14:44:21,590 --> 14:44:25,820
+a comma here. And we'll do u and 256. Interval. And we're going
+
+
+14597
+14:44:25,820 --> 14:44:31,070
+to create another global variable u and 256 Private s
+
+
+14598
+14:44:31,100 --> 14:44:34,970
+underscore interval. And in our constructor and we'll say s
+
+
+14599
+14:44:34,970 --> 14:44:38,780
+interval equals interval. Now interval isn't going to change
+
+
+14600
+14:44:38,780 --> 14:44:42,290
+after we set it. So instead of making a storage variable, let's
+
+
+14601
+14:44:42,290 --> 14:44:46,340
+make it an immutable variable to save some gas. Okay, perfect.
+
+
+14602
+14:44:46,400 --> 14:44:48,920
+Now that we have all this, I'm actually create a boolean to
+
+
+14603
+14:44:48,920 --> 14:44:51,800
+check to see if enough time has passed. So we'll say Boolean
+
+
+14604
+14:44:52,280 --> 14:44:59,900
+time passed equals the current block that timestamp minus s
+
+
+14605
+14:44:59,930 --> 14:45:05,510
+underscore last timestamp. And we should check to see that this
+
+
+14606
+14:45:05,570 --> 14:45:09,680
+is actually greater than I underscore interval. So we have
+
+
+14607
+14:45:09,680 --> 14:45:12,680
+a Boolean check to see if we're open. It'll be true if we're
+
+
+14608
+14:45:12,680 --> 14:45:15,560
+open and we'll have a boolean to see if enough time has passed.
+
+
+14609
+14:45:15,590 --> 14:45:18,140
+This will be true if enough time has passed. What else should we
+
+
+14610
+14:45:18,140 --> 14:45:21,110
+check? While we should check to see if we have enough players.
+
+
+14611
+14:45:21,200 --> 14:45:26,300
+So we'll do Boolean has players equals and we'll check to see if
+
+
+14612
+14:45:26,300 --> 14:45:32,240
+s underscore players dot length is greater than zero. If s
+
+
+14613
+14:45:32,240 --> 14:45:34,970
+players dot length is greater than zero as players will be
+
+
+14614
+14:45:34,970 --> 14:45:38,210
+true, otherwise it'll be false. And we'll also see if we have a
+
+
+14615
+14:45:38,210 --> 14:45:44,840
+balance so we'll do Boolean has balance equals address. This dot
+
+
+14616
+14:45:44,840 --> 14:45:48,680
+balance is greater than zero. Then finally, we're going to
+
+
+14617
+14:45:48,680 --> 14:45:52,280
+take all these booleans and turn them into the return variable
+
+
+14618
+14:45:52,310 --> 14:45:54,950
+that we're looking for. We're gonna say Boolean up keep
+
+
+14619
+14:45:54,950 --> 14:46:06,980
+needed. Equals is open and time passed. And as players and as
+
+
+14620
+14:46:06,980 --> 14:46:11,330
+balance, like that, so all these combined is gonna be this
+
+
+14621
+14:46:11,330 --> 14:46:15,020
+Boolean upkeep needed. And if this returns true, it's time to
+
+
+14622
+14:46:15,020 --> 14:46:18,800
+request a new random number and it's time to end the lottery. If
+
+
+14623
+14:46:18,800 --> 14:46:21,440
+this is false, it's not time yet, it's not time to end the
+
+
+14624
+14:46:21,440 --> 14:46:24,290
+lottery up. Now again, if we go to the chainlink, documentation
+
+
+14625
+14:46:24,440 --> 14:46:28,100
+upkeep needed, actually needs to return that Boolean upkeep
+
+
+14626
+14:46:28,100 --> 14:46:30,890
+needed and some bytes memory perform data. So we need to
+
+
+14627
+14:46:30,890 --> 14:46:34,850
+update we need to update our function here. And say returns
+
+
+14628
+14:46:35,360 --> 14:46:44,300
+full upkeep needed, comma, bytes memory, perform data star slash.
+
+
+14629
+14:46:44,480 --> 14:46:47,120
+And since we've initialized Boolean up, keep needed up here,
+
+
+14630
+14:46:47,150 --> 14:46:51,770
+we don't need to say what type of upkeep needed is down here.
+
+
+14631
+14:46:52,040 --> 14:46:55,130
+Since this will automatically get returned performed data is
+
+
+14632
+14:46:55,130 --> 14:46:58,610
+something that we can use. If we want to have checkup, keep do
+
+
+14633
+14:46:58,610 --> 14:47:02,060
+some other stuff. Depending on how this checkup keep went. We
+
+
+14634
+14:47:02,060 --> 14:47:04,100
+don't really need it to do anything else. So we can just
+
+
+14635
+14:47:04,100 --> 14:47:07,580
+leave it as such. Right. So now we have a check upkeep, we have
+
+
+14636
+14:47:07,580 --> 14:47:11,000
+a way to check to see if it's time to trigger picking our
+
+
+14637
+14:47:11,000 --> 14:47:12,830
+random winner of our lottery
+
+
+14638
+14:47:12,920 --> 14:47:18,170
+or our raffle. 
