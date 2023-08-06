@@ -1,398 +1,294 @@
 14559
 14:41:59,990 --> 14:42:07,070
-Something else that we
-
+Something else that we forgot to do 
+还有一件我们之前忘记做的事是
 
 14560
 14:42:07,070 --> 14:42:10,880
-forgot to do was after we pick a winner from s players, we need
-
+was after we pick a winner from s players, we need to reset our players array. 
+在我们从 "s_players" 中选出优胜者之后，我们需要重置 "players" 数组
 
 14561
 14:42:10,880 --> 14:42:14,180
-to reset our players array. So let's add that in here as well
-
+So let's add that in here as well
+让我们在这里添加一下
 
 14562
 14:42:14,690 --> 14:42:21,890
-as players equals new address payable. array of size zero. So
-
+as players equals new address payable. array of size zero. 
+`s_players = new address payable[](0)`（大小为 0 的数组）
 
 14563
 14:42:21,890 --> 14:42:24,980
-we'll reset the raffle state. And we'll reset our players
-
+So we'll reset the raffle state. And we'll reset our players array. 
+这样我们就重置好了 "RaffleState" 以及 "players" 数组
 
 14564
 14:42:24,980 --> 14:42:27,350
-array. Alright, great. So now that we've learned about enum,
-
+Alright, great. So now that we've learned about enum,
+很好，我们已经了解过了有关 "enum" 的内容
 
 14565
 14:42:27,530 --> 14:42:30,230
-let's add it to our checkup keep here, we're going to check these
-
+let's add it to our checkup keep here, 
+让我们在 "checkUpkeep" 这里添加一下它
 
 14566
 14:42:30,230 --> 14:42:33,650
-four things. And if they all pass checkup keys will be true
-
+we're going to check these four things. And if they all pass checkup keys will be true
+我们要检查这四个东西，当他们全部通过，即 "checkUpkeep" 为 true 时
 
 14567
 14:42:33,680 --> 14:42:36,890
-and will trigger the chain the keepers to request a new random
-
+and will trigger the chain the keepers to request a new random winner. 
+我们就会触发 "Chainlink Keepers" 请求一个新的随机优胜者
 
 14568
 14:42:36,890 --> 14:42:41,510
-winner. So first, we'll say bool is open. It's going to be equal
-
+So first, we'll say bool is open. It's going to be equal to raffle state. That open equals equals s underscore raffle state. 
+首先，我们说 `bool isOpen = RaffleState.OPEN == s_raffleState`
 
 14569
 14:42:41,510 --> 14:42:48,590
-to raffle state. That open equals equals s underscore
-
+So you can think of that as this boolean is open is going to be true if raffle state is in an open state, 
+你可以这样想，这个布尔值 "isOpen" 只有当 "raffleState" 是 "OPEN" 状态时，才为 true
 
 14570
 14:42:49,640 --> 14:42:53,900
-raffle state. So you can think of that as this boolean is open
-
+and it will be false if raffle state is in any other state. 
+而在其它状态时，它为 false 
 
 14571
 14:42:53,990 --> 14:42:58,100
-is going to be true if raffle state is in an open state, and
-
+So great. We haven't is open Boolean that we can check later on. 
+很好，我们有了布尔值 "isOpen"，这样就可以开始进行检查了
 
 14572
 14:42:58,100 --> 14:43:01,550
-it will be false if raffle state is in any other state. So great.
-
+What else do we need? 
+还需要些什么呢？
 
 14573
 14:43:01,580 --> 14:43:04,820
-We haven't is open Boolean that we can check later on. What else
-
+Well, we need to check to make sure our time interval is past 
+我们还需要检查时间间隔的要求是否已经得到了满足
 
 14574
 14:43:04,820 --> 14:43:07,250
-do we need? Well, we need to check to make sure our time
-
+well, we don't have a time interval yet. So let's create a time interval. 
+我们之前并没有创建时间间隔的变量，让我们来创建一下
 
 14575
 14:43:07,250 --> 14:43:10,850
-interval is past well, we don't have a time interval yet. So
-
+In order to check the time we can use another one a solidity is globally available variables with block dot timestamp 
+要想检查时间，我们可以使用 Solidity 中的另一个全局可用变量，即 "block.timestamp"
 
 14576
 14:43:10,850 --> 14:43:14,030
-let's create a time interval. In order to check the time we can
-
+block that timestamp returns the current timestamp of the blockchain 
+"block.timestamp" 会返回区块链的当前时间戳
 
 14577
 14:43:14,030 --> 14:43:17,420
-use another one a solidity is globally available variables
-
+to get the current timestamp, we're gonna need block dot timestamp. 
+要想得到当前的时间戳，我们就需要用到这个 "block.timestamp"
 
 14578
 14:43:17,480 --> 14:43:20,840
-with block dot timestamp block that timestamp returns the
-
+But to get if enough time has passed, we're going to need to get the current block dot timestamp minus the last block timestamp, 
+但要想确定时间是否已经满足了要求，我们还需要获取当前的 "block.timestamp" 减去上一个区块时间戳的值
 
 14579
 14:43:20,840 --> 14:43:23,300
-current timestamp of the blockchain to get the current
-
+which we don't have yet. 
+但我们并没有（上一个区块时间戳）
 
 14580
 14:43:23,300 --> 14:43:26,090
-timestamp, we're gonna need block dot timestamp. But to get
-
+Let's go ahead and create a state variable to keep track of the previous block timestamp. 
+让我们来创建一个状态变量，用于追踪先前的区块时间戳
 
 14581
 14:43:26,090 --> 14:43:28,640
-if enough time has passed, we're going to need to get the current
-
+So this is going to be a new state variable that we're going to make. I'm gonna say u and 256. Private s underscore last timestamp. 
+所以我们要创建一个新的状态变量 `uint256 private s_lastTimeStamp`
 
 14582
 14:43:28,640 --> 14:43:33,260
-block dot timestamp minus the last block timestamp, which we
-
+And right when we deploy this contract, we'll update this with the current timestamp 
+然后，当我们部署这个合约时，我们就把它更新为当前的时间戳
 
 14583
 14:43:33,260 --> 14:43:35,900
-don't have yet. Let's go ahead and create a state variable to
-
+s last timestamp equals block dot timestamp. 
+`s_lastTimeStamp = block.timestamp`
 
 14584
 14:43:35,900 --> 14:43:39,350
-keep track of the previous block timestamp. So this is going to
-
+Alright, awesome. Now we have a last block timestamp. 
+很好，现在我们就有了上一个区块时间戳
 
 14585
 14:43:39,350 --> 14:43:41,660
-be a new state variable that we're going to make. I'm gonna
-
+But we're going to need to check that the difference between the current timestamp and the last timestamp is greater than some interval. 
+不过我们还需要检查当前时间戳和上一个时间戳之间的差值是否大于某个间隔("interval")
 
 14586
 14:43:41,660 --> 14:43:47,570
-say u and 256. Private s underscore last timestamp.
-
+So we also need to create an interval. 
+所以我们还需要创建一个间隔
 
 14587
 14:43:49,250 --> 14:43:52,280
-And right when we deploy this contract, we'll update this with
-
+And this is going to be some interval, this is going to be some number in seconds of how long we want to wait between lottery runs. 
+这个 "interval" 是某个以秒为单位的数字，它代表我们想在两次抽奖之间等待多久
 
 14588
 14:43:52,280 --> 14:43:56,360
-the current timestamp s last timestamp equals block dot
-
+So let's go ahead and add this to our constructor as well. 
+所以让我们同样把它添加进我们的构造函数内
 
 14589
 14:43:56,390 --> 14:44:01,910
-timestamp. Alright, awesome. Now we have a last block timestamp.
-
+And do a comma here. And we'll do u and 256. Interval. 
+在这里写一个逗号，然后是 `uint256 interval`
 
 14590
 14:44:01,940 --> 14:44:04,430
-But we're going to need to check that the difference between the
-
+And we're going to create another global variable u and 256 Private s underscore interval. 
+而且我们还要创建另一个全局变量 `uint256 private s_interval`
 
 14591
 14:44:04,430 --> 14:44:07,940
-current timestamp and the last timestamp is greater than some
-
+And in our constructor and we'll say s interval equals interval. 
+然后在构造函数内部，我们要让 `s_interval = interval`
 
 14592
 14:44:07,940 --> 14:44:10,670
-interval. So we also need to create an interval. And this is
-
+Now interval isn't going to change after we set it. 
+设置好 "interval" 之后就不应该再修改了
 
 14593
 14:44:10,670 --> 14:44:13,430
-going to be some interval, this is going to be some number in
-
+So instead of making a storage variable, let's make it an immutable variable to save some gas. 
+所以不要创建成 storage 变量，要创建成一个 `immutable` 变量，这样可以节省一些 gas 
 
 14594
 14:44:13,430 --> 14:44:18,110
-seconds of how long we want to wait between lottery runs. So
-
+Okay, perfect. Now that we have all this, I'm actually create a boolean to check to see if enough time has passed. 
+OK 完美，现在我们有了这些，就可以实际创建一个布尔值来检查时间上的要求是否满足了
 
 14595
 14:44:18,110 --> 14:44:21,590
-let's go ahead and add this to our constructor as well. And do
-
+So we'll say Boolean time passed equals the current block that timestamp minus s underscore last timestamp. 
+`bool timePassed = (block.timestamp - s_lastTimeStamp)`
 
 14596
 14:44:21,590 --> 14:44:25,820
-a comma here. And we'll do u and 256. Interval. And we're going
-
+And we should check to see that this is actually greater than I underscore interval. 
+并且我们应该检查它是否满足 `> i_interval`
 
 14597
 14:44:25,820 --> 14:44:31,070
-to create another global variable u and 256 Private s
-
+So we have a Boolean check to see if we're open. It'll be true if we're open 
+这样我们就有了一个布尔值，用来检查是否处于 "OPEN" 状态，如果是，它就为 true
 
 14598
 14:44:31,100 --> 14:44:34,970
-underscore interval. And in our constructor and we'll say s
-
+and we'll have a boolean to see if enough time has passed. This will be true if enough time has passed. 
+以及另一个布尔值，用来检查时间上的要求是否满足，如果满足了，它就为 true 
 
 14599
 14:44:34,970 --> 14:44:38,780
-interval equals interval. Now interval isn't going to change
-
+What else should we check? 
+我们还要检查什么？
 
 14600
 14:44:38,780 --> 14:44:42,290
-after we set it. So instead of making a storage variable, let's
-
+While we should check to see if we have enough players.
+我们还应该检查玩家数量是否足够
 
 14601
 14:44:42,290 --> 14:44:46,340
-make it an immutable variable to save some gas. Okay, perfect.
-
+So we'll do Boolean has players equals and we'll check to see if s underscore players dot length is greater than zero. 
+所以我们要这么做 `bool hasPlayers =`，我们要检查的是 `(s_players.length > 0)`
 
 14602
 14:44:46,400 --> 14:44:48,920
-Now that we have all this, I'm actually create a boolean to
-
+If s players dot length is greater than zero as players will be true, otherwise it'll be false. 
+如果 "s_players.length" 大于 0, "hasPlayers" 就为 true 否则就为 false
 
 14603
 14:44:48,920 --> 14:44:51,800
-check to see if enough time has passed. So we'll say Boolean
-
+And we'll also see if we have a balance so we'll do Boolean has balance equals address. This dot balance is greater than zero. 
+我们还需要看一下我们是否还有余额 `bool hasBalance = address(this).balance > 0`
 
 14604
 14:44:52,280 --> 14:44:59,900
-time passed equals the current block that timestamp minus s
-
+Then finally, we're going to take all these booleans and turn them into the return variable that we're looking for. 
+最终，我们要获取全部这些布尔值，并把它们返回成我们需要的变量
 
 14605
 14:44:59,930 --> 14:45:05,510
-underscore last timestamp. And we should check to see that this
-
+We're gonna say Boolean up keep needed. Equals is open and time passed. And as players and as balance, like that, 
+我们要这样做 `bool upkeepNeeded = (isOpen && timePassed && hasPlayers && hasBalance)` 就是这样
 
 14606
 14:45:05,570 --> 14:45:09,680
-is actually greater than I underscore interval. So we have
-
+so all these combined is gonna be this Boolean upkeep needed. 
+全部这些结合起来，就是这个 "upkeepNeeded" 
 
 14607
 14:45:09,680 --> 14:45:12,680
-a Boolean check to see if we're open. It'll be true if we're
-
+And if this returns true, it's time to request a new random number and it's time to end the lottery. 
+如果这里返回的是 true，那么就是时候请求一个新的随机数，结束本次抽奖了
 
 14608
 14:45:12,680 --> 14:45:15,560
-open and we'll have a boolean to see if enough time has passed.
-
+If this is false, it's not time yet, it's not time to end the lottery up. 
+如果这里是 false 那就是时候未到，还不到结束抽奖的时候
 
 14609
 14:45:15,590 --> 14:45:18,140
-This will be true if enough time has passed. What else should we
-
+Now again, if we go to the chainlink, documentation upkeep needed, 
+我们再一次回到 Chainlink 的文档 "upkeepNeeded" 这里
 
 14610
 14:45:18,140 --> 14:45:21,110
-check? While we should check to see if we have enough players.
-
+actually needs to return that Boolean upkeep needed and some bytes memory perform data. 
+实际上返回的是 "bool upkeepNeeded" 以及某些 "bytes memory /* performData */"
 
 14611
 14:45:21,200 --> 14:45:26,300
-So we'll do Boolean has players equals and we'll check to see if
-
+So we need to update we need to update our function here. 
+所以我们需要更新这里的函数
 
 14612
 14:45:26,300 --> 14:45:32,240
-s underscore players dot length is greater than zero. If s
-
+And say returns full upkeep needed, comma, bytes memory, perform data star slash.
+`returns (bool upkeepNeeded, bytes memory /* performData */)
 
 14613
 14:45:32,240 --> 14:45:34,970
-players dot length is greater than zero as players will be
-
+And since we've initialized Boolean up, keep needed up here, we don't need to say what type of upkeep needed is down here. 
+由于我们在上面已经把 "upkeepNeeded" 初始化为 "bool" 了，所以下面这里就不用再说 "upkeepNeeded" 是什么类型了
 
 14614
 14:45:34,970 --> 14:45:38,210
-true, otherwise it'll be false. And we'll also see if we have a
-
+Since this will automatically get returned 
+因为这里会自动返回
 
 14615
 14:45:38,210 --> 14:45:44,840
-balance so we'll do Boolean has balance equals address. This dot
-
+performed data is something that we can use. If we want to have checkup, keep do some other stuff. Depending on how this checkup keep went. 
+我们可以用 "performData" 来让 "checkUpkeep" 做一些其它操作，具体取决于本次 "checkUpkeep" 的执行情况
 
 14616
 14:45:44,840 --> 14:45:48,680
-balance is greater than zero. Then finally, we're going to
-
+We don't really need it to do anything else. So we can just leave it as such. 
+但我们并不需要它做些什么，所以就不用管它了
 
 14617
 14:45:48,680 --> 14:45:52,280
-take all these booleans and turn them into the return variable
-
-
-14618
-14:45:52,310 --> 14:45:54,950
-that we're looking for. We're gonna say Boolean up keep
-
-
-14619
-14:45:54,950 --> 14:46:06,980
-needed. Equals is open and time passed. And as players and as
-
-
-14620
-14:46:06,980 --> 14:46:11,330
-balance, like that, so all these combined is gonna be this
-
-
-14621
-14:46:11,330 --> 14:46:15,020
-Boolean upkeep needed. And if this returns true, it's time to
-
-
-14622
-14:46:15,020 --> 14:46:18,800
-request a new random number and it's time to end the lottery. If
-
-
-14623
-14:46:18,800 --> 14:46:21,440
-this is false, it's not time yet, it's not time to end the
-
-
-14624
-14:46:21,440 --> 14:46:24,290
-lottery up. Now again, if we go to the chainlink, documentation
-
-
-14625
-14:46:24,440 --> 14:46:28,100
-upkeep needed, actually needs to return that Boolean upkeep
-
-
-14626
-14:46:28,100 --> 14:46:30,890
-needed and some bytes memory perform data. So we need to
-
-
-14627
-14:46:30,890 --> 14:46:34,850
-update we need to update our function here. And say returns
-
-
-14628
-14:46:35,360 --> 14:46:44,300
-full upkeep needed, comma, bytes memory, perform data star slash.
-
-
-14629
-14:46:44,480 --> 14:46:47,120
-And since we've initialized Boolean up, keep needed up here,
-
-
-14630
-14:46:47,150 --> 14:46:51,770
-we don't need to say what type of upkeep needed is down here.
-
-
-14631
-14:46:52,040 --> 14:46:55,130
-Since this will automatically get returned performed data is
-
-
-14632
-14:46:55,130 --> 14:46:58,610
-something that we can use. If we want to have checkup, keep do
-
-
-14633
-14:46:58,610 --> 14:47:02,060
-some other stuff. Depending on how this checkup keep went. We
-
-
-14634
-14:47:02,060 --> 14:47:04,100
-don't really need it to do anything else. So we can just
-
-
-14635
-14:47:04,100 --> 14:47:07,580
-leave it as such. Right. So now we have a check upkeep, we have
-
-
-14636
-14:47:07,580 --> 14:47:11,000
-a way to check to see if it's time to trigger picking our
-
-
-14637
-14:47:11,000 --> 14:47:12,830
-random winner of our lottery
-
-
-14638
-14:47:12,920 --> 14:47:18,170
-or our raffle. 
+Right. So now we have a check upkeep, we have a way to check to see if it's time to trigger picking our random winner of our lottery or our raffle. 
+现在，我们就可以用 "checkUpkeep" 来检查，是否到了该从我们的彩票或者说抽奖中，触发遴选随机优胜者的时候了
