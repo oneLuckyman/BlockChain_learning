@@ -1,0 +1,283 @@
+14638
+14:47:12,920 --> 14:47:18,170
+Now that we learned how to actually do this
+
+
+14639
+14:47:18,170 --> 14:47:21,260
+trigger, let's write the function that gets executed
+
+
+14640
+14:47:21,290 --> 14:47:25,130
+after this returns true. This is going to be our perform upkeep
+
+
+14641
+14:47:25,130 --> 14:47:28,280
+function, which we can see an example again in the chainlink
+
+
+14642
+14:47:28,280 --> 14:47:31,730
+documentation. Now when it's time to pick a random winner,
+
+
+14643
+14:47:31,790 --> 14:47:34,160
+actually, what we're going to do is just we're just going to call
+
+
+14644
+14:47:34,160 --> 14:47:36,770
+this request random winner function. So instead of having
+
+
+14645
+14:47:36,770 --> 14:47:40,160
+this extra function, let's just transform our request random
+
+
+14646
+14:47:40,160 --> 14:47:44,030
+winner function into this perform upkeep. Since once check
+
+
+14647
+14:47:44,060 --> 14:47:47,000
+upkeep returns true, the chain link nodes will automatically
+
+
+14648
+14:47:47,000 --> 14:47:50,270
+call this perform upkeep function. So in function request
+
+
+14649
+14:47:50,270 --> 14:47:54,380
+random winner, let's rename this to perform upkeep. And we'll
+
+
+14650
+14:47:54,380 --> 14:47:58,070
+have it take the input parameter bytes called Data perform data
+
+
+14651
+14:47:58,400 --> 14:48:03,650
+bytes, called data, perform data. In our checkup, keep we
+
+
+14652
+14:48:03,650 --> 14:48:06,560
+had to perform data, we would automatically pass it to our
+
+
+14653
+14:48:06,560 --> 14:48:08,780
+performance keep, we're not going to pass anything to
+
+
+14654
+14:48:08,780 --> 14:48:11,840
+perform upkeep, we can leave it commented out like this. Since
+
+
+14655
+14:48:11,840 --> 14:48:14,630
+perform upkeep is actually identified in the keeper
+
+
+14656
+14:48:14,630 --> 14:48:17,360
+compatible interface, this is now going to have to override
+
+
+14657
+14:48:17,390 --> 14:48:20,150
+that function. Now we want to do a little bit of validation
+
+
+14658
+14:48:20,150 --> 14:48:24,050
+before we continue here. Because right now anybody can call our
+
+
+14659
+14:48:24,050 --> 14:48:26,930
+perform upkeep function. So we want to make sure that it only
+
+
+14660
+14:48:26,930 --> 14:48:30,710
+gets called when checkup keep is true. An easy way for us to do
+
+
+14661
+14:48:30,710 --> 14:48:33,740
+that is to actually call our own checkup, keep function. Now
+
+
+14662
+14:48:33,740 --> 14:48:36,980
+right now, checkup keep it's an external. So we actually can't
+
+
+14663
+14:48:36,980 --> 14:48:39,830
+call our own checkup keep function. So let's change it to
+
+
+14664
+14:48:39,830 --> 14:48:42,950
+public so that even our own smart contracts can call this
+
+
+14665
+14:48:42,950 --> 14:48:45,950
+checkup keep function. Now that we've made it public in perform
+
+
+14666
+14:48:45,950 --> 14:48:49,400
+upkeep, we can call checkup, keep passing nothing, and then
+
+
+14667
+14:48:49,400 --> 14:48:52,400
+return the upkeep needed and perform data which we don't
+
+
+14668
+14:48:52,400 --> 14:48:56,660
+really care about. So we'll get we'll get that ball up keep
+
+
+14669
+14:48:57,860 --> 14:49:01,640
+needed. And then we don't care about perform data. So we'll
+
+
+14670
+14:49:01,640 --> 14:49:06,500
+leave that blank equals check up keep. And we'll pass it a blank
+
+
+14671
+14:49:06,530 --> 14:49:10,280
+called data. Now, we want to make sure that this is true in
+
+
+14672
+14:49:10,280 --> 14:49:12,680
+order to keep going with the function. So we could write a
+
+
+14673
+14:49:12,680 --> 14:49:19,280
+require here, but we're going to do if not up keep needed, then
+
+
+14674
+14:49:19,280 --> 14:49:22,640
+we're going to revert with a new error that we create raffle.
+
+
+14675
+14:49:24,529 --> 14:49:29,269
+upkeep not needed. And we're going to pass some variables to
+
+
+14676
+14:49:29,269 --> 14:49:29,719
+this error
+
+
+14677
+14:49:29,720 --> 14:49:32,690
+so that whoever was running into this bug can hopefully see why
+
+
+14678
+14:49:32,690 --> 14:49:34,940
+they're getting this error. So we'll pass the balance of this
+
+
+14679
+14:49:34,940 --> 14:49:38,360
+contract just in case there's no ether in here. We'll add the
+
+
+14680
+14:49:38,360 --> 14:49:41,990
+players dot length, just in case there's no players. And we'll
+
+
+14681
+14:49:41,990 --> 14:49:47,990
+add a un 256 s underscore raffle state. Make sure that the
+
+
+14682
+14:49:47,990 --> 14:49:52,130
+raffles actually open. And then of course, we'll need to create
+
+
+14683
+14:49:52,130 --> 14:49:56,030
+this air at the top air, raffle upkeep not needed, which is
+
+
+14684
+14:49:56,030 --> 14:50:03,710
+going to take a un 256 current balance un 256 non players and
+
+
+14685
+14:50:03,710 --> 14:50:08,720
+you went to fit six raffle state. Our code is starting to
+
+
+14686
+14:50:08,720 --> 14:50:11,960
+look really professional. This is awesome. Now something that
+
+
+14687
+14:50:11,960 --> 14:50:14,630
+we forgot to do back in the fulfill random words because we
+
+
+14688
+14:50:14,630 --> 14:50:17,960
+actually forgot to reset timestamp every time a winner is
+
+
+14689
+14:50:17,960 --> 14:50:21,230
+picked. We want to reset the timestamp as well so that we can
+
+
+14690
+14:50:21,230 --> 14:50:23,720
+wait another interval and let people participate in the
+
+
+14691
+14:50:23,720 --> 14:50:27,110
+lottery for that interval. So we'll scroll down into fulfill
+
+
+14692
+14:50:27,110 --> 14:50:31,430
+random words. And right after we reset players will also reset
+
+
+14693
+14:50:31,460 --> 14:50:34,490
+the timestamp. Okay great and I think we're just about done
+
+
+14694
+14:50:34,490 --> 14:50:40,730
+here. 
