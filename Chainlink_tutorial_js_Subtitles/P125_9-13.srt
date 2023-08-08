@@ -1,146 +1,146 @@
 14638
 14:47:12,920 --> 14:47:18,170
-Now that we learned how to actually do this
-
+Now that we learned how to actually do this trigger, 
+我们已经学习了如何执行触发
 
 14639
 14:47:18,170 --> 14:47:21,260
-trigger, let's write the function that gets executed
-
+let's write the function that gets executed after this returns true. 
+现在让我们来写一下这里返回 true 之后要用到的启动函数
 
 14640
 14:47:21,290 --> 14:47:25,130
-after this returns true. This is going to be our perform upkeep
-
+This is going to be our perform upkeep function, 
+也就是所谓的 "performUpkeep" 函数
 
 14641
 14:47:25,130 --> 14:47:28,280
-function, which we can see an example again in the chainlink
-
+which we can see an example again in the chainlink documentation. 
+我们同样可以在 Chainlink 文档中找到它的例子
 
 14642
 14:47:28,280 --> 14:47:31,730
-documentation. Now when it's time to pick a random winner,
-
+Now when it's time to pick a random winner,
+当要开始遴选随机优胜者时
 
 14643
 14:47:31,790 --> 14:47:34,160
-actually, what we're going to do is just we're just going to call
-
+actually, what we're going to do is just we're just going to call this request random winner function. 
+我们实际上要做的就是调用这个 "requestRandomWinner" 函数
 
 14644
 14:47:34,160 --> 14:47:36,770
-this request random winner function. So instead of having
-
+So instead of having this extra function, 
+所以我们不需要创建额外的函数
 
 14645
 14:47:36,770 --> 14:47:40,160
-this extra function, let's just transform our request random
-
+let's just transform our request random winner function into this perform upkeep. 
+而是直接把 "requestRandomWinner" 函数改成 "performUpkeep"
 
 14646
 14:47:40,160 --> 14:47:44,030
-winner function into this perform upkeep. Since once check
-
+Since once check upkeep returns true, the chain link nodes will automatically call this perform upkeep function. 
+一旦 "checkUpkeep" 返回了 true，Chainlink 节点就会自动调用这个 "performUpkeep" 函数
 
 14647
 14:47:44,060 --> 14:47:47,000
-upkeep returns true, the chain link nodes will automatically
-
+So in function request random winner, let's rename this to perform upkeep. 
+所以我们要把 "requestRandomWinner" 重新命名为 "performUpkeep"
 
 14648
 14:47:47,000 --> 14:47:50,270
-call this perform upkeep function. So in function request
-
+And we'll have it take the input parameter bytes called Data perform data
+并且我们要让它获取相应的输入参数 "bytes calldata /* performData */"
 
 14649
 14:47:50,270 --> 14:47:54,380
-random winner, let's rename this to perform upkeep. And we'll
-
+bytes, called data, perform data. 
+`bytes calldata /* performData */`
 
 14650
 14:47:54,380 --> 14:47:58,070
-have it take the input parameter bytes called Data perform data
-
+In our checkup, keep we had to perform data, 
+如果我们的 "checkUpkeep" 中存在 "performData"
 
 14651
 14:47:58,400 --> 14:48:03,650
-bytes, called data, perform data. In our checkup, keep we
-
+we would automatically pass it to our performance keep, 
+我们就会自动将其传入我们的 "performUpkeep" 
 
 14652
 14:48:03,650 --> 14:48:06,560
-had to perform data, we would automatically pass it to our
-
+we're not going to pass anything to perform upkeep, we can leave it commented out like this. 
+我们并不会给 "performUpkeep" 传入任何内容，直接把它注释掉就行了，就像这样
 
 14653
 14:48:06,560 --> 14:48:08,780
-performance keep, we're not going to pass anything to
-
+Since perform upkeep is actually identified in the keeper compatible interface, 
+由于 "performUpkeep" 实际上是在 "KeeperCompatibleInterface" 中识别的
 
 14654
 14:48:08,780 --> 14:48:11,840
-perform upkeep, we can leave it commented out like this. Since
-
+this is now going to have to override that function. 
+这样做实际上会重写这个函数
 
 14655
 14:48:11,840 --> 14:48:14,630
-perform upkeep is actually identified in the keeper
-
+Now we want to do a little bit of validation before we continue here. 
+在继续之前，我们打算做一点小小的验证
 
 14656
 14:48:14,630 --> 14:48:17,360
-compatible interface, this is now going to have to override
-
+Because right now anybody can call our perform upkeep function. 
+因为现在任何人都可以调用我们的 "performUpkeep" 函数
 
 14657
 14:48:17,390 --> 14:48:20,150
-that function. Now we want to do a little bit of validation
-
+So we want to make sure that it only gets called when checkup keep is true. 
+我们要确保它只会在 "checkUpkeep" 返回 true 时才会被调用
 
 14658
 14:48:20,150 --> 14:48:24,050
-before we continue here. Because right now anybody can call our
-
+An easy way for us to do that is to actually call our own checkup, keep function. 
+要想达到这一点，一个简单的方法就是调用我们的 "checkUpkeep" 函数
 
 14659
 14:48:24,050 --> 14:48:26,930
-perform upkeep function. So we want to make sure that it only
-
+Now right now, checkup keep it's an external. So we actually can't call our own checkup keep function. 
+现在 "checkUpkeep" 是一个 external，所以我们自己还无法调用 "checkUpkeep" 函数
 
 14660
 14:48:26,930 --> 14:48:30,710
-gets called when checkup keep is true. An easy way for us to do
-
+So let's change it to public so that even our own smart contracts can call this checkup keep function. 
+让我们把它改成 public 这样即使是我们自己的智能合约也可以调用这个 "checkUpkeep" 
 
 14661
 14:48:30,710 --> 14:48:33,740
-that is to actually call our own checkup, keep function. Now
+Now that we've made it public in perform upkeep, 
 
 
 14662
 14:48:33,740 --> 14:48:36,980
-right now, checkup keep it's an external. So we actually can't
+
 
 
 14663
 14:48:36,980 --> 14:48:39,830
-call our own checkup keep function. So let's change it to
+
 
 
 14664
 14:48:39,830 --> 14:48:42,950
-public so that even our own smart contracts can call this
+
 
 
 14665
 14:48:42,950 --> 14:48:45,950
-checkup keep function. Now that we've made it public in perform
+
 
 
 14666
 14:48:45,950 --> 14:48:49,400
-upkeep, we can call checkup, keep passing nothing, and then
+we can call checkup, keep passing nothing, and then
 
 
 14667
