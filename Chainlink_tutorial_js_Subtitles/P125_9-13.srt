@@ -115,169 +115,110 @@ So let's change it to public so that even our own smart contracts can call this 
 
 14661
 14:48:30,710 --> 14:48:33,740
-Now that we've made it public in perform upkeep, 
-
+Now that we've made it public in perform upkeep, we can call checkup, keep passing nothing, 
+现在我们把 "performUpkeep" 变成 public 的，然后就可以不传入任何参数调用 "checkUpkeep" 
 
 14662
 14:48:33,740 --> 14:48:36,980
-
-
+and then return the upkeep needed and perform data which we don't really care about. 
+并返回 "upkeepNeeded" 以及我们并不关心的 "performData"
 
 14663
 14:48:36,980 --> 14:48:39,830
-
-
+So we'll get we'll get that ball up keep needed. And then we don't care about perform data. 
+所以我们获取这个 `bool upkeepNeeded` 然后，我们并不关心 "performData"
 
 14664
 14:48:39,830 --> 14:48:42,950
-
-
+So we'll leave that blank equals check up keep. And we'll pass it a blank called data. 
+所以我们把这里留白，然后 `= checkUpkeep` 传入一个空白的 "calldata"
 
 14665
 14:48:42,950 --> 14:48:45,950
-
-
+Now, we want to make sure that this is true in order to keep going with the function. 
+现在，我们想在这个为 true 的时候继续运行函数
 
 14666
 14:48:45,950 --> 14:48:49,400
-we can call checkup, keep passing nothing, and then
-
+So we could write a require here, but we're going to do if not up keep needed, 
+我们可以写 "require" 但我们要用 `if(!upkeepNeeded)`
 
 14667
 14:48:49,400 --> 14:48:52,400
-return the upkeep needed and perform data which we don't
-
+then we're going to revert with a new error that we create raffle. upkeep not needed. 
+然后我们 `revert` 一个新的错误类型 `Raffle__UpkeepNotNeeded`
 
 14668
 14:48:52,400 --> 14:48:56,660
-really care about. So we'll get we'll get that ball up keep
-
+And we're going to pass some variables to this error so that 
+我们要给这个报错传入某些变量
 
 14669
 14:48:57,860 --> 14:49:01,640
-needed. And then we don't care about perform data. So we'll
-
+whoever was running into this bug can hopefully see why they're getting this error. 
+这样无论是谁运行出这个 bug 都可以看到为什么会收到这个报错
 
 14670
 14:49:01,640 --> 14:49:06,500
-leave that blank equals check up keep. And we'll pass it a blank
-
+So we'll pass the balance of this contract just in case there's no ether in here. 
+所以我们传入这个合约的余额，以没有以太币
 
 14671
 14:49:06,530 --> 14:49:10,280
-called data. Now, we want to make sure that this is true in
-
+We'll add the players dot length, just in case there's no players. 
+然后添加 `players.length`，以防没有玩家
 
 14672
 14:49:10,280 --> 14:49:12,680
-order to keep going with the function. So we could write a
-
+And we'll add a un 256 s underscore raffle state. 
+再添加 `uint256(s_raffleState)
 
 14673
 14:49:12,680 --> 14:49:19,280
-require here, but we're going to do if not up keep needed, then
-
+Make sure that the raffles actually open. 
+确保抽奖状态为开放
 
 14674
 14:49:19,280 --> 14:49:22,640
-we're going to revert with a new error that we create raffle.
-
+And then of course, we'll need to create this air at the top 
+当然了，我们还需要在顶部把这个错误创建出来
 
 14675
 14:49:24,529 --> 14:49:29,269
-upkeep not needed. And we're going to pass some variables to
-
+air, raffle upkeep not needed, which is going to take a un 256 current balance un 256 non players and you went to fit six raffle state. 
+`error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState)
 
 14676
 14:49:29,269 --> 14:49:29,719
-this error
-
+Our code is starting to look really professional. This is awesome. 
+我们的代码看起来真是越来越专业了
 
 14677
 14:49:29,720 --> 14:49:32,690
-so that whoever was running into this bug can hopefully see why
-
+Now something that we forgot to do back in the fulfill random words because we actually forgot to reset timestamp 
+我们还忘做了某件事，回到 "fulfillRandomWords"，我们忘记重置时间戳了
 
 14678
 14:49:32,690 --> 14:49:34,940
-they're getting this error. So we'll pass the balance of this
-
+every time a winner is picked. We want to reset the timestamp as well 
+每当选出一个优胜者，我们就要重置一下时间戳
 
 14679
 14:49:34,940 --> 14:49:38,360
-contract just in case there's no ether in here. We'll add the
-
+so that we can wait another interval and let people participate in the lottery for that interval. 
+这样我们才能开启下一个间隔，并让人们能在这段时间里加入到抽奖中来
 
 14680
 14:49:38,360 --> 14:49:41,990
-players dot length, just in case there's no players. And we'll
-
+So we'll scroll down into fulfill random words. 
+所以我们拉到下面，到 "fulfillRandomWords" 里
 
 14681
 14:49:41,990 --> 14:49:47,990
-add a un 256 s underscore raffle state. Make sure that the
-
+And right after we reset players will also reset the timestamp. 
+在重置 "players" 之后，我们同样重置时间戳
 
 14682
 14:49:47,990 --> 14:49:52,130
-raffles actually open. And then of course, we'll need to create
-
-
-14683
-14:49:52,130 --> 14:49:56,030
-this air at the top air, raffle upkeep not needed, which is
-
-
-14684
-14:49:56,030 --> 14:50:03,710
-going to take a un 256 current balance un 256 non players and
-
-
-14685
-14:50:03,710 --> 14:50:08,720
-you went to fit six raffle state. Our code is starting to
-
-
-14686
-14:50:08,720 --> 14:50:11,960
-look really professional. This is awesome. Now something that
-
-
-14687
-14:50:11,960 --> 14:50:14,630
-we forgot to do back in the fulfill random words because we
-
-
-14688
-14:50:14,630 --> 14:50:17,960
-actually forgot to reset timestamp every time a winner is
-
-
-14689
-14:50:17,960 --> 14:50:21,230
-picked. We want to reset the timestamp as well so that we can
-
-
-14690
-14:50:21,230 --> 14:50:23,720
-wait another interval and let people participate in the
-
-
-14691
-14:50:23,720 --> 14:50:27,110
-lottery for that interval. So we'll scroll down into fulfill
-
-
-14692
-14:50:27,110 --> 14:50:31,430
-random words. And right after we reset players will also reset
-
-
-14693
-14:50:31,460 --> 14:50:34,490
-the timestamp. Okay great and I think we're just about done
-
-
-14694
-14:50:34,490 --> 14:50:40,730
-here. 
+Okay great and I think we're just about done here. 
+非常好，我想我们已经完成这一部分了
