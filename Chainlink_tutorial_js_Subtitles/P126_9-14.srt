@@ -1,0 +1,403 @@
+14694
+14:50:34,490 --> 14:50:40,730
+Let's add a little bit of natspec to make this look even
+
+
+14695
+14:50:40,730 --> 14:50:43,040
+more professional and and give people who are reading our
+
+
+14696
+14:50:43,040 --> 14:50:48,020
+contract even more information. So let's add title here at title
+
+
+14697
+14:50:48,230 --> 14:50:52,220
+and we'll say a sample raffle contract will say an author is
+
+
+14698
+14:50:52,220 --> 14:50:55,400
+going to be me Patrick Collins or you can put your own name
+
+
+14699
+14:50:55,400 --> 14:51:00,980
+there as well at notice. This contract is for creating and
+
+
+14700
+14:51:01,010 --> 14:51:05,900
+untampered orrible decentralized smart contract. And then we'll
+
+
+14701
+14:51:05,900 --> 14:51:12,470
+do add Dev, this implements chain link VRF v two, and chain
+
+
+14702
+14:51:12,470 --> 14:51:16,220
+link keepers. Alright, awesome. We've got our type declarations,
+
+
+14703
+14:51:16,250 --> 14:51:19,250
+we've got our state variables, we've got lottery variables,
+
+
+14704
+14:51:19,250 --> 14:51:22,430
+which are still state variables, we've got our events. Now it's
+
+
+14705
+14:51:22,430 --> 14:51:26,480
+time for our functions. Afterwards, we've done a little
+
+
+14706
+14:51:26,480 --> 14:51:29,360
+bit of natspec, at least on our check upkeep. If you want to add
+
+
+14707
+14:51:29,360 --> 14:51:32,600
+some more natspec on things like enter, raffle, perform upkeep,
+
+
+14708
+14:51:32,600 --> 14:51:35,720
+etc, you can absolutely do so. And then down at the bottom, we
+
+
+14709
+14:51:35,720 --> 14:51:38,720
+have our views slash pure getter functions. Let's see, do we want
+
+
+14710
+14:51:38,720 --> 14:51:41,540
+any other getter functions here? Well, we probably want to give
+
+
+14711
+14:51:41,540 --> 14:51:43,760
+people the chance to get a raffle state. So we'll do
+
+
+14712
+14:51:43,760 --> 14:51:50,270
+function, get raffle state, this will be a public, you returns a
+
+
+14713
+14:51:50,810 --> 14:51:57,440
+raffle state. We'll say return s underscore raffle state, we
+
+
+14714
+14:51:57,440 --> 14:52:00,080
+probably want to give people the chance to get the number of
+
+
+14715
+14:52:00,080 --> 14:52:03,020
+words. And this is going to be a little bit interesting here
+
+
+14716
+14:52:03,290 --> 14:52:09,890
+running. So if we do function, get num words, public view
+
+
+14717
+14:52:10,010 --> 14:52:15,380
+returns, you went to the six return num words, you'll see
+
+
+14718
+14:52:15,380 --> 14:52:19,640
+something interesting happened here. We pull up our compiler
+
+
+14719
+14:52:19,970 --> 14:52:24,260
+and run hh compile. Hopefully everything works here. Oh, and
+
+
+14720
+14:52:24,260 --> 14:52:27,890
+everything doesn't work because I didn't import this correctly.
+
+
+14721
+14:52:28,250 --> 14:52:30,470
+Let's fix that. Let's try again.
+
+
+14722
+14:52:31,520 --> 14:52:35,150
+Oh, there's a couple things I missed. Let's fix es players.
+
+
+14723
+14:52:35,240 --> 14:52:37,760
+This is why it's good to compile as you code as players dot
+
+
+14724
+14:52:37,760 --> 14:52:42,320
+length. Let's try again. And I spelt interval wrong. I
+
+
+14725
+14:52:42,320 --> 14:52:47,420
+underscore inter vol strike to compile again, see how many more
+
+
+14726
+14:52:47,420 --> 14:52:51,560
+spelling mistakes I made. And there it is. I underscore in
+
+
+14727
+14:52:51,800 --> 14:52:56,270
+error go to paste that and we do get another error here. Invalid
+
+
+14728
+14:52:56,270 --> 14:52:59,210
+type for argument in a function call invalid implicit conversion
+
+
+14729
+14:52:59,210 --> 14:53:02,300
+from literal string to bytes called data requested. Since
+
+
+14730
+14:53:02,300 --> 14:53:06,020
+we're passing this empty string here. And checkup keep needs a
+
+
+14731
+14:53:06,020 --> 14:53:09,140
+call data called data actually doesn't work with strings. So we
+
+
+14732
+14:53:09,140 --> 14:53:12,590
+need to make this bytes memory instead. And our compiler is now
+
+
+14733
+14:53:12,590 --> 14:53:15,650
+happy with us. And I spell it the timestamp wrong. That's a
+
+
+14734
+14:53:15,650 --> 14:53:19,820
+lowercase s so and you might see some squiggles here on Check
+
+
+14735
+14:53:20,000 --> 14:53:23,210
+upkeep, we could make this a view function since we're not
+
+
+14736
+14:53:23,210 --> 14:53:26,210
+actually modifying any state. But I want to keep it public for
+
+
+14737
+14:53:26,210 --> 14:53:29,330
+reasons I'll show you a little bit later. But finally we get
+
+
+14738
+14:53:29,330 --> 14:53:32,360
+the the yellow squiggly that I was looking for here. And if we
+
+
+14739
+14:53:32,360 --> 14:53:37,100
+run hh compile, we should see a warning in our compiler as well.
+
+
+14740
+14:53:37,220 --> 14:53:39,950
+Okay, so we see all those yellow squigglies here. Unnamed return
+
+
+14741
+14:53:39,950 --> 14:53:43,490
+variable can remain unassigned. We need this bytes memory in
+
+
+14742
+14:53:43,490 --> 14:53:46,250
+here because that's what the keepers are looking for. Morning
+
+
+14743
+14:53:46,280 --> 14:53:49,310
+function state mutability can be restricted to view for our
+
+
+14744
+14:53:49,310 --> 14:53:52,520
+function checkup key. You can make a view if you want, but I'm
+
+
+14745
+14:53:52,520 --> 14:53:54,890
+going to keep it public for reasons I'll show you a little
+
+
+14746
+14:53:54,890 --> 14:53:58,160
+bit later. And finally, function state mutability can be
+
+
+14747
+14:53:58,160 --> 14:54:01,880
+restricted to pure this is what I wanted to show you since num
+
+
+14748
+14:54:01,880 --> 14:54:05,420
+words is actually in the bytecode, since it's a constant
+
+
+14749
+14:54:05,420 --> 14:54:08,570
+variable technically isn't reading from storage, and
+
+
+14750
+14:54:08,570 --> 14:54:13,250
+therefore this can be a pure function. Returning num words
+
+
+14751
+14:54:13,280 --> 14:54:16,250
+doesn't actually read in storage, it literally will go
+
+
+14752
+14:54:16,280 --> 14:54:20,900
+and read the number one. So doing get num words in solidity
+
+
+14753
+14:54:20,930 --> 14:54:23,600
+with num words being a constant variable, it's going to
+
+
+14754
+14:54:23,600 --> 14:54:27,110
+literally be the exact same as saying get one and we would
+
+
+14755
+14:54:27,110 --> 14:54:29,450
+return one here, we might also want to get the number of
+
+
+14756
+14:54:29,450 --> 14:54:34,100
+players. So we'll create a function get number of players.
+
+
+14757
+14:54:35,510 --> 14:54:42,140
+And this will be a public view, returns a un 256. Turn s
+
+
+14758
+14:54:42,140 --> 14:54:47,840
+underscore players dot length. We're also probably going to
+
+
+14759
+14:54:47,840 --> 14:54:51,590
+want the latest timestamp. So we'll do function get latest
+
+
+14760
+14:54:51,860 --> 14:54:58,610
+timestamp. public view returns you in 256. And we're just going
+
+
+14761
+14:54:58,610 --> 14:55:05,270
+to return s underscore last timestamp. And maybe we'll want
+
+
+14762
+14:55:05,270 --> 14:55:09,020
+to do request confirmation. So we'll do function GET request
+
+
+14763
+14:55:09,380 --> 14:55:14,270
+confirmations. Public pure since request confirmations is also a
+
+
+14764
+14:55:14,270 --> 14:55:19,790
+constant function returns you went to you went to 56 Turn
+
+
+14765
+14:55:20,060 --> 14:55:25,430
+request confirmations. All right, we've got some wonderful
+
+
+14766
+14:55:25,430 --> 14:55:28,940
+getters here. Some views slash pure functions, we have a way to
+
+
+14767
+14:55:28,940 --> 14:55:32,870
+get a random number we have a way in a decentralized context.
+
+
+14768
+14:55:33,080 --> 14:55:36,500
+Automatic automatically execute. picking a random winner we have
+
+
+14769
+14:55:36,500 --> 14:55:40,340
+a way for people to enter our raffle to enter this lottery.
+
+
+14770
+14:55:40,550 --> 14:55:46,340
+And we have a bullet proof way to solve creating a truly fair
+
+
+14771
+14:55:46,370 --> 14:55:50,180
+decentralized lottery. Oh my goodness. Let's do one more
+
+
+14772
+14:55:50,180 --> 14:55:54,380
+compile for good measure H H compile. And these are just
+
+
+14773
+14:55:54,380 --> 14:55:57,560
+warnings. So we're good to go here. Our code is compiling
+
+
+14774
+14:55:57,590 --> 14:56:03,620
+successfully. 
