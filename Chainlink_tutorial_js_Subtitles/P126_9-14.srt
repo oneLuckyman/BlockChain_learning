@@ -1,61 +1,63 @@
 14694
 14:50:34,490 --> 14:50:40,730
-Let's add a little bit of natspec to make this look even
-
+Let's add a little bit of natspec to make this look even more professional 
+让我们添加一些自然语言规范来让我们的合约更专业一些
 
 14695
 14:50:40,730 --> 14:50:43,040
-more professional and and give people who are reading our
-
+and and give people who are reading our contract even more information. 
+同时也为了给阅读我们合约的人们提供更多的信息
 
 14696
 14:50:43,040 --> 14:50:48,020
-contract even more information. So let's add title here at title
-
+So let's add title here at title and we'll say a sample raffle contract 
+让我们先添加一个标题 `@title A sample Raffle Contract` (“标题：一个抽奖合约示例”)
 
 14697
 14:50:48,230 --> 14:50:52,220
-and we'll say a sample raffle contract will say an author is
-
+will say an author is going to be me Patrick Collins or 
+然后是 `@author` (“作者”)也就是我 `Patrick Collins` 
 
 14698
 14:50:52,220 --> 14:50:55,400
-going to be me Patrick Collins or you can put your own name
-
+you can put your own name there as well 
+或者你也可以写你自己的名字
 
 14699
 14:50:55,400 --> 14:51:00,980
-there as well at notice. This contract is for creating and
-
+at notice. This contract is for creating and untampered orrible decentralized smart contract. 
+`@notice This contract is for creating an untamperable decentralized smart contract`
+(“说明：本合约旨在创建一个不可篡改的去中心化智能合约”)
 
 14700
 14:51:01,010 --> 14:51:05,900
-untampered orrible decentralized smart contract. And then we'll
-
+And then we'll do add Dev, this implements chain link VRF v two, and chain link keepers. 
+接下来是 `@dev This implements Chainlink VRF v2 and Chainlink Keepers`
+(“对开发者：实现了 Chainlink VRF v2 以及 Chainlink Keepers”)
 
 14701
 14:51:05,900 --> 14:51:12,470
-do add Dev, this implements chain link VRF v two, and chain
-
+Alright, awesome. We've got our type declarations, 
+非常好，我们已经有了 "Type declarations" (“类型声明”)
 
 14702
 14:51:12,470 --> 14:51:16,220
-link keepers. Alright, awesome. We've got our type declarations,
-
+we've got our state variables, 
+还有了 "State Variables"(“状态变量”)
 
 14703
 14:51:16,250 --> 14:51:19,250
-we've got our state variables, we've got lottery variables,
-
+we've got lottery variables, which are still state variables, 
+还有了 "Lottery Variables"(“抽奖变量”)，它们也是状态变量的一部分
 
 14704
 14:51:19,250 --> 14:51:22,430
-which are still state variables, we've got our events. Now it's
-
+we've got our events. Now it's time for our functions. 
+我们还已经有了 "Events"(“事件”)，现在该轮到我们的 "Functions"(“函数”)了
 
 14705
 14:51:22,430 --> 14:51:26,480
-time for our functions. Afterwards, we've done a little
+Afterwards, we've done a little
 
 
 14706
