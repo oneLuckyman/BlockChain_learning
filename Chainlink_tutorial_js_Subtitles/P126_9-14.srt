@@ -1,7 +1,7 @@
 14694
 14:50:34,490 --> 14:50:40,730
 Let's add a little bit of natspec to make this look even more professional 
-让我们添加一些自然语言规范来让我们的合约更专业一些
+让我们添加一些自然语言规范("natspec")来让我们的合约更专业一些
 
 14695
 14:50:40,730 --> 14:50:43,040
@@ -52,37 +52,37 @@ we've got lottery variables, which are still state variables,
 
 14704
 14:51:19,250 --> 14:51:22,430
-we've got our events. Now it's time for our functions. 
+we've got our events. Now it's time for our functions. Afterwards, 
 我们还已经有了 "Events"(“事件”)，现在该轮到我们的 "Functions"(“函数”)了
 
 14705
 14:51:22,430 --> 14:51:26,480
-Afterwards, we've done a little
-
+we've done a little bit of natspec, at least on our check upkeep. 
+我们已经在这一部分写了一些 natspec 了，至少在 "checkUpkeep" 这里是的
 
 14706
 14:51:26,480 --> 14:51:29,360
-bit of natspec, at least on our check upkeep. If you want to add
-
+If you want to add some more natspec on things like enter, raffle, perform upkeep, etc, 
+如果你想要添加一些更多的 natspec 比如说 "enterRaffle", "performUpkeep" 等等
 
 14707
 14:51:29,360 --> 14:51:32,600
-some more natspec on things like enter, raffle, perform upkeep,
-
+you can absolutely do so. And then down at the bottom, 
+当然是可以这样做的，先拉到下面
 
 14708
 14:51:32,600 --> 14:51:35,720
-etc, you can absolutely do so. And then down at the bottom, we
+we have our views slash pure getter functions. 
 
 
 14709
 14:51:35,720 --> 14:51:38,720
-have our views slash pure getter functions. Let's see, do we want
+Let's see, do we want any other getter functions here? 
 
 
 14710
 14:51:38,720 --> 14:51:41,540
-any other getter functions here? Well, we probably want to give
+Well, we probably want to give
 
 
 14711
