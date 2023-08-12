@@ -67,112 +67,112 @@ If you want to add some more natspec on things like enter, raffle, perform upkee
 
 14707
 14:51:29,360 --> 14:51:32,600
-you can absolutely do so. And then down at the bottom, 
-当然是可以这样做的，先拉到下面
+you can absolutely do so. And then down at the bottom, we have our views slash pure getter functions. 
+当然是可以这样做的，先拉到下面，我们有一些 "View / Pure" 类型的 "getter" 函数
 
 14708
 14:51:32,600 --> 14:51:35,720
-we have our views slash pure getter functions. 
-
+Let's see, do we want any other getter functions here? 
+我们看一下，还需要别的 "getter" 函数么？
 
 14709
 14:51:35,720 --> 14:51:38,720
-Let's see, do we want any other getter functions here? 
-
+Well, we probably want to give people the chance to get a raffle state. 
+我们应该还需要为人们提供一个获取抽奖状态的方法
 
 14710
 14:51:38,720 --> 14:51:41,540
-Well, we probably want to give
-
+So we'll do function, get raffle state, this will be a public, you returns a raffle state. 
+所以创建一个 `function getRaffleState() public view returns (RaffleState)`
 
 14711
 14:51:41,540 --> 14:51:43,760
-people the chance to get a raffle state. So we'll do
-
+We'll say return s underscore raffle state, 
+接着是 `return s_raffleState` 
 
 14712
 14:51:43,760 --> 14:51:50,270
-function, get raffle state, this will be a public, you returns a
-
+we probably want to give people the chance to get the number of words. 
+我们还需要给人们提供一个获取随机数数量的方法
 
 14713
 14:51:50,810 --> 14:51:57,440
-raffle state. We'll say return s underscore raffle state, we
-
+And this is going to be a little bit interesting here
+这件事其实还挺有意思的
 
 14714
 14:51:57,440 --> 14:52:00,080
-probably want to give people the chance to get the number of
-
+running. So if we do function, get num words, public view returns, you went to the six 
+开始吧 `function getNumWords() public view returns(uint256)`
 
 14715
 14:52:00,080 --> 14:52:03,020
-words. And this is going to be a little bit interesting here
-
+return num words, you'll see something interesting happened here. 
+`return NUM_WORDS` 你将会看到一些有趣的事发生
 
 14716
 14:52:03,290 --> 14:52:09,890
-running. So if we do function, get num words, public view
-
+We pull up our compiler and run hh compile. 
+我们打开编译器，运行 `hh compile`
 
 14717
 14:52:10,010 --> 14:52:15,380
-returns, you went to the six return num words, you'll see
-
+Hopefully everything works here. 
+希望一切运行正常
 
 14718
 14:52:15,380 --> 14:52:19,640
-something interesting happened here. We pull up our compiler
-
+Oh, and everything doesn't work because I didn't import this correctly. 
+哦，并没有正常运行，因为这里的导入不正确
 
 14719
 14:52:19,970 --> 14:52:24,260
-and run hh compile. Hopefully everything works here. Oh, and
-
+Let's fix that. Let's try again. 
+把它改正，再试一次
 
 14720
 14:52:24,260 --> 14:52:27,890
-everything doesn't work because I didn't import this correctly.
-
+Oh, there's a couple things I missed. Let's fix es players.
+哦，这里还有一些错误，把它改成 `s_players` 
 
 14721
 14:52:28,250 --> 14:52:30,470
-Let's fix that. Let's try again.
-
+This is why it's good to compile as you code  
+这就是为什么最好要在编写代码的时候多进行编译
 
 14722
 14:52:31,520 --> 14:52:35,150
-Oh, there's a couple things I missed. Let's fix es players.
-
+as players dot length. Let's try again. 
+改成 "players.length" 再试一次
 
 14723
 14:52:35,240 --> 14:52:37,760
-This is why it's good to compile as you code as players dot
-
+And I spelt interval wrong. 
+"interval" 拼错了（笑）
 
 14724
 14:52:37,760 --> 14:52:42,320
-length. Let's try again. And I spelt interval wrong. I
-
+I underscore inter vol strike to compile again, 
+`i_interval` 再编译一次
 
 14725
 14:52:42,320 --> 14:52:47,420
-underscore inter vol strike to compile again, see how many more
-
+see how many more spelling mistakes I made. And there it is. 
+看一下还有没有其它拼写错误，是有的
 
 14726
 14:52:47,420 --> 14:52:51,560
-spelling mistakes I made. And there it is. I underscore in
-
+I underscore in error go to paste that 
+`i_in` 错误在这，粘贴上去
 
 14727
 14:52:51,800 --> 14:52:56,270
-error go to paste that and we do get another error here. Invalid
-
+and we do get another error here. 
+这里还有另外一处错误
 
 14728
 14:52:56,270 --> 14:52:59,210
-type for argument in a function call invalid implicit conversion
+Invalid type for argument in a function call invalid implicit conversion
 
 
 14729
