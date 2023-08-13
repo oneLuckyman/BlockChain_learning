@@ -172,87 +172,87 @@ and we do get another error here.
 
 14728
 14:52:56,270 --> 14:52:59,210
-Invalid type for argument in a function call invalid implicit conversion
-
+Invalid type for argument in a function call 
+函数调用中的参数类型无效
 
 14729
 14:52:59,210 --> 14:53:02,300
-from literal string to bytes called data requested. Since
-
+invalid implicit conversion from literal string to bytes called data requested. 
+从字面字符串 "" 到 "bytes calldata" 的请求存在无效的隐式转换
 
 14730
 14:53:02,300 --> 14:53:06,020
-we're passing this empty string here. And checkup keep needs a
-
+Since we're passing this empty string here. And checkup keep needs a call data 
+这是由于我们在这里传入了一个空字符串，而 "checkUpkeep" 需要的是一个 calldata
 
 14731
 14:53:06,020 --> 14:53:09,140
-call data called data actually doesn't work with strings. So we
-
+called data actually doesn't work with strings. 
+calldata 不能使用字符串
 
 14732
 14:53:09,140 --> 14:53:12,590
-need to make this bytes memory instead. And our compiler is now
-
+So we need to make this bytes memory instead. And our compiler is now happy with us. 
+所以我们需要把这里替换为 `bytes memory`，这下我们的编译应该可以通过了
 
 14733
 14:53:12,590 --> 14:53:15,650
-happy with us. And I spell it the timestamp wrong. That's a
-
+And I spell it the timestamp wrong. That's a lowercase s 
+这里的 "timestamp" 拼错了，应该是小写的 "s"
 
 14734
 14:53:15,650 --> 14:53:19,820
-lowercase s so and you might see some squiggles here on Check
-
+so and you might see some squiggles here on Check upkeep, 
+你可能会注意到 "checkUpkeep" 这里有一些波浪线
 
 14735
 14:53:20,000 --> 14:53:23,210
-upkeep, we could make this a view function since we're not
-
+we could make this a view function since we're not actually modifying any state. 
+我们可以把它变成一个 "view" 函数，因为我实际上并没有修改任何状态
 
 14736
 14:53:23,210 --> 14:53:26,210
-actually modifying any state. But I want to keep it public for
-
+But I want to keep it public for reasons I'll show you a little bit later. 
+但我仍然会把它设置为 public，原因我稍后会向你展示
 
 14737
 14:53:26,210 --> 14:53:29,330
-reasons I'll show you a little bit later. But finally we get
-
+But finally we get the the yellow squiggly that I was looking for here. 
+最终我们还是得到了这些黄色的波浪线
 
 14738
 14:53:29,330 --> 14:53:32,360
-the the yellow squiggly that I was looking for here. And if we
-
+And if we run hh compile, we should see a warning in our compiler as well.
+如果我们运行 `hh compile`，应该会在编译器里看到这些警告
 
 14739
 14:53:32,360 --> 14:53:37,100
-run hh compile, we should see a warning in our compiler as well.
-
+Okay, so we see all those yellow squigglies here. 
+好的，我们在这里看到了所有的黄色波浪线
 
 14740
 14:53:37,220 --> 14:53:39,950
-Okay, so we see all those yellow squigglies here. Unnamed return
-
+Unnamed return variable can remain unassigned. 
+未命名的返回变量可以保持未分配状态
 
 14741
 14:53:39,950 --> 14:53:43,490
-variable can remain unassigned. We need this bytes memory in
-
+We need this bytes memory in here because that's what the keepers are looking for. 
+我们需要保留这个 "bytes memory" 因为这是 Keepers 所需要的
 
 14742
 14:53:43,490 --> 14:53:46,250
-here because that's what the keepers are looking for. Morning
-
+Morning function state mutability can be restricted to view for our function checkup key. 
+警告：函数的状态可变性可限制为 "view"，说的是我们的函数 "checkUpkeep"
 
 14743
 14:53:46,280 --> 14:53:49,310
-function state mutability can be restricted to view for our
+
 
 
 14744
 14:53:49,310 --> 14:53:52,520
-function checkup key. You can make a view if you want, but I'm
+You can make a view if you want, but I'm
 
 
 14745
