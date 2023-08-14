@@ -247,159 +247,140 @@ Morning function state mutability can be restricted to view for our function che
 
 14743
 14:53:46,280 --> 14:53:49,310
-
-
+You can make a view if you want, but I'm going to keep it public for reasons I'll show you a little bit later. 
+你可以改成 "view"，但我会保持为 "public" 至于原因我稍后会向你解释
 
 14744
 14:53:49,310 --> 14:53:52,520
-You can make a view if you want, but I'm
-
+And finally, function state mutability can be restricted to pure 
+最后一个，函数的状态可变性可限制为 "pure"
 
 14745
 14:53:52,520 --> 14:53:54,890
-going to keep it public for reasons I'll show you a little
-
+this is what I wanted to show you 
+这才是我要向你展示的内容
 
 14746
 14:53:54,890 --> 14:53:58,160
-bit later. And finally, function state mutability can be
-
+since num words is actually in the bytecode, since it's a constant variable 
+因为 "NUM_WORDS" 实际上存在于字节码中，是一个常量
 
 14747
 14:53:58,160 --> 14:54:01,880
-restricted to pure this is what I wanted to show you since num
-
+technically isn't reading from storage, and therefore this can be a pure function. 
+技术上来说它并没有从 "storage" 中读取内容，因此这里可以设置为 "pure" 函数
 
 14748
 14:54:01,880 --> 14:54:05,420
-words is actually in the bytecode, since it's a constant
-
+Returning num words doesn't actually read in storage, it literally will go and read the number one. 
+返回 "NUM_WORDS" 并不需要从 "storage" 中读取，而是可以直接读取这里的数字 1 
 
 14749
 14:54:05,420 --> 14:54:08,570
-variable technically isn't reading from storage, and
-
+So doing get num words in solidity with num words being a constant variable, 
+所以在 Solidity 中，在 "NUM_WORDS" 是常量的情况下执行 "getNumWords"
 
 14750
 14:54:08,570 --> 14:54:13,250
-therefore this can be a pure function. Returning num words
-
+it's going to literally be the exact same as saying get one and we would return one here, 
+就和直接获取并返回 "1" 是同一个意思
 
 14751
 14:54:13,280 --> 14:54:16,250
-doesn't actually read in storage, it literally will go
-
+we might also want to get the number of players. 
+我们可能还需要获取玩家数量的数值
 
 14752
 14:54:16,280 --> 14:54:20,900
-and read the number one. So doing get num words in solidity
-
+So we'll create a function get number of players.
+所以我们创建一个函数 `funciton getNumberOfPlayers()`
 
 14753
 14:54:20,930 --> 14:54:23,600
-with num words being a constant variable, it's going to
-
+And this will be a public view, returns a un 256. 
+这里是 `public view returns(uint256)`
 
 14754
 14:54:23,600 --> 14:54:27,110
-literally be the exact same as saying get one and we would
-
+Turn s underscore players dot length. 
+返回 `s_players.length`
 
 14755
 14:54:27,110 --> 14:54:29,450
-return one here, we might also want to get the number of
-
+We're also probably going to want the latest timestamp. 
+我们可能还需要获取最近的时间戳
 
 14756
 14:54:29,450 --> 14:54:34,100
-players. So we'll create a function get number of players.
-
+So we'll do function get latest timestamp. public view returns you in 256. 
+创建一个函数 `function getLatestTimeStamp() public view returns(uint256)`
 
 14757
 14:54:35,510 --> 14:54:42,140
-And this will be a public view, returns a un 256. Turn s
-
+And we're just going to return s underscore last timestamp. 
+然后这里是 `return s_lastTimeStamp`
 
 14758
 14:54:42,140 --> 14:54:47,840
-underscore players dot length. We're also probably going to
-
+And maybe we'll want to do request confirmation. 
+我们可能还需要一个请求确认
 
 14759
 14:54:47,840 --> 14:54:51,590
-want the latest timestamp. So we'll do function get latest
-
+So we'll do function GET request confirmations. Public pure 
+所以我们要创建一个 `function getRequestConfirmations() public pure`
 
 14760
 14:54:51,860 --> 14:54:58,610
-timestamp. public view returns you in 256. And we're just going
-
+since request confirmations is also a constant function 
+因为 "REQUEST_CONFIRMATIONS" 也是一个常量
 
 14761
 14:54:58,610 --> 14:55:05,270
-to return s underscore last timestamp. And maybe we'll want
-
+returns you went to you went to 56 
+`returns(uint256)`
 
 14762
 14:55:05,270 --> 14:55:09,020
-to do request confirmation. So we'll do function GET request
-
+Turn request confirmations. 
+`return REQUEST_CONFIRMATIONS`
 
 14763
 14:55:09,380 --> 14:55:14,270
-confirmations. Public pure since request confirmations is also a
-
+All right, we've got some wonderful getters here. Some views slash pure functions, 
+好的，我们这里已经有了一些很不错的 "getter" 函数，一些 "View / Pure" 函数
 
 14764
 14:55:14,270 --> 14:55:19,790
-constant function returns you went to you went to 56 Turn
-
+we have a way to get a random number 
+我们有了获取随机数的方法
 
 14765
 14:55:20,060 --> 14:55:25,430
-request confirmations. All right, we've got some wonderful
-
+we have a way in a decentralized context. Automatic automatically execute. picking a random winner 
+并且在去中心化的背景下，实现了自动执行，选出了随机优胜者
 
 14766
 14:55:25,430 --> 14:55:28,940
-getters here. Some views slash pure functions, we have a way to
-
+we have a way for people to enter our raffle to enter this lottery. 
+还有了能让人们参与进我们的抽奖和彩票的途径
 
 14767
 14:55:28,940 --> 14:55:32,870
-get a random number we have a way in a decentralized context.
-
+And we have a bullet proof way to solve creating a truly fair decentralized lottery. 
+并且我们使用了一种坚不可摧的方式，创建了一个真正实现了公平的去中心化彩票系统
 
 14768
 14:55:33,080 --> 14:55:36,500
-Automatic automatically execute. picking a random winner we have
-
+Oh my goodness. Let's do one more compile for good measure H H compile. 
+哦，我的天呐，保险起见，让我们再编译一次 `hh compile`
 
 14769
 14:55:36,500 --> 14:55:40,340
-a way for people to enter our raffle to enter this lottery.
-
+And these are just warnings. So we're good to go here. 
+只有警告，所以一切运行良好
 
 14770
 14:55:40,550 --> 14:55:46,340
-And we have a bullet proof way to solve creating a truly fair
-
-
-14771
-14:55:46,370 --> 14:55:50,180
-decentralized lottery. Oh my goodness. Let's do one more
-
-
-14772
-14:55:50,180 --> 14:55:54,380
-compile for good measure H H compile. And these are just
-
-
-14773
-14:55:54,380 --> 14:55:57,560
-warnings. So we're good to go here. Our code is compiling
-
-
-14774
-14:55:57,590 --> 14:56:03,620
-successfully. 
+Our code is compiling successfully. 
+我们的代码编译非常成功
