@@ -1,151 +1,151 @@
 14774
 14:55:57,590 --> 14:56:03,620
 Like I said Normally, this definitely isn't going to be the way that you're going to write your smart contracts, 
-就像我说过的，通常来说，这并不是你编写智能合约的方式
+就像我说过的，通常来说，这并不是你编写智能合约该用的方式
 
 14775
 14:56:03,650 --> 14:56:05,840
-it's almost impossible to write a full smart contract without making any mistakes. 
-
+it's almost impossible to write a full smart contract without making any mistakes. And without flipping back and forth between documentation, 
+你几乎不太可能在不参考文档而且不犯任何错误的前提下直接写完一份完整的智能合约
 
 14776
 14:56:05,840 --> 14:56:09,410
-
-
+I have already written this contract many times myself, and I still made a whole bunch of mistakes. 
+我自己已经多次编写过这个合约了，然而我仍然会犯很多错误
 
 14777
 14:56:09,410 --> 14:56:11,900
-And without flipping
-
+So it is totally reasonable and totally rational for anybody and everybody to make mistakes going through this. 
+所以对任何人来说，在这个过程中出错都是完全可以理解的
 
 14778
 14:56:11,900 --> 14:56:14,840
-back and forth between documentation, I have already
-
+And to use resources and to write tests along the way. 
+同样的，在这个过程中参考资源，编写测试也是很合理的
 
 14779
 14:56:14,840 --> 14:56:18,800
-written this contract many times myself, and I still made a whole
-
+Now that we have our raffle dot Seoul created, 
+现在我们已经把 "Raffle.sol" 写完了
 
 14780
 14:56:18,800 --> 14:56:21,950
-bunch of mistakes. So it is totally reasonable and totally
-
+it's time to add everything else. 
+是时候添加其他内容了
 
 14781
 14:56:21,950 --> 14:56:25,340
-rational for anybody and everybody to make mistakes going
-
+So we're going to come over here, we're gonna create a new folder, and add our deploy folder per usual.
+所以我们来到这边，新建一个文件夹，也就是我们通常会添加的 "deploy" 文件夹
 
 14782
 14:56:25,340 --> 14:56:28,040
-through this. And to use resources and to write tests
-
+And we're going to do exactly what we've already done a couple of times, 
+而且做法就和我们之前几次完全一样
 
 14783
 14:56:28,070 --> 14:56:31,070
-along the way. Now that we have our raffle dot Seoul created,
-
+we're going to create some scripts to deploy our raffle contract. 
+我们要创建一些脚本来部署我们的 "Raffle" 合约
 
 14784
 14:56:31,370 --> 14:56:34,700
-it's time to add everything else. So we're going to come
-
+Now with our raffle contract, there's a couple of things in here that we want to make note of 
+现在，关于我们的 "Raffle" 合约，有几点需要注意的地方
 
 14785
 14:56:34,700 --> 14:56:38,210
-over here, we're gonna create a new folder, and add our deploy
-
+first thing is that our constructor right now is absolutely massive. 
+首先是，我们的构造函数现在真的是挺大的了
 
 14786
 14:56:38,210 --> 14:56:39,350
-folder per usual.
-
+There are a ton of parameters in here that we need to account for. 
+这里有许多参数需要我们去考虑
 
 14787
 14:56:39,440 --> 14:56:41,840
-And we're going to do exactly what we've already done a couple
-
+Let's take a look at our constructors and see if there's any contracts that we're already interacting with. 
+让我们来看一下我们的构造函数，看看是否有我们已经正在交互的合约
 
 14788
 14:56:41,840 --> 14:56:44,420
-of times, we're going to create some scripts to deploy our
-
+Okay, VRF, coordinator v2. This is a contract address, 
+OK，"VRFCoordinatorV2"，这是一个合约地址
 
 14789
 14:56:44,420 --> 14:56:46,910
-raffle contract. Now with our raffle contract, there's a
-
+entrance fee, no gasline, no subscription ID no callback, guestimate No, and interval. No. 
+"entranceFee" 不是，"gasLane" 不是，"subscriptionId" 不是，"callbackGasLimit" 不是，以及 "interval" 也不是
 
 14790
 14:56:46,910 --> 14:56:49,340
-couple of things in here that we want to make note of first thing
-
+So knowing that this is an address should be a tip that Ah, 
+那么，知道这是一个地址也就意味着有这么一个提示
 
 14791
 14:56:49,340 --> 14:56:53,000
-is that our constructor right now is absolutely massive. There
-
+okay, we're probably going to need to deploy some mocks. For this, 
+啊，我们很可能需要为它部署一些 "mock" 
 
 14792
 14:56:53,000 --> 14:56:56,120
-are a ton of parameters in here that we need to account for.
-
+since we're going to need to interact with a VRF coordinator contract that's outside of our project. 
+因为我们要交互的 "vrfCoordinator" 合约来自于我们的外部项目
 
 14793
 14:56:56,210 --> 14:56:58,520
-Let's take a look at our constructors and see if there's
-
+But let's go ahead and start working on our raffle deployment script 
+现在让我们开始编写我们的 "Raffle" 部署脚本
 
 14794
 14:56:58,520 --> 14:57:01,340
-any contracts that we're already interacting with. Okay, VRF,
-
+first, and we know we're going to have to deploy some mocks. So we'll just keep that in mind. 
+首先我们知道要部署一些 "mock"，我们要记住这一点
 
 14795
 14:57:01,340 --> 14:57:05,450
-coordinator v2. This is a contract address, entrance fee,
+
 
 
 14796
 14:57:05,450 --> 14:57:09,650
-no gasline, no subscription ID no callback, guestimate No, and
+
 
 
 14797
 14:57:09,650 --> 14:57:13,190
-interval. No. So knowing that this is an address should be a
+
 
 
 14798
 14:57:13,190 --> 14:57:15,890
-tip that Ah, okay, we're probably going to need to deploy
+
 
 
 14799
 14:57:15,920 --> 14:57:19,040
-some mocks. For this, since we're going to need to interact
+
 
 
 14800
 14:57:19,040 --> 14:57:22,520
-with a VRF coordinator contract that's outside of our project.
+
 
 
 14801
 14:57:22,550 --> 14:57:24,650
-But let's go ahead and start working on our raffle deployment
+
 
 
 14802
 14:57:24,650 --> 14:57:27,770
-script first, and we know we're going to have to deploy some
+
 
 
 14803
 14:57:27,770 --> 14:57:30,770
-mocks. So we'll just keep that in mind. So let's create a new
+So let's create a new
 
 
 14804
