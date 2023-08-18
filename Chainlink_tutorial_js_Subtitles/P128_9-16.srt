@@ -1,0 +1,453 @@
+14905
+15:04:29,510 --> 15:04:33,560
+We go to the chainlink. GitHub again, we go to contracts. So C 0.8, 
+
+
+14906
+15:04:33,980 --> 15:04:39,470
+actually have a mocks folder with VF coordinator v2 Mach dot Sol, 
+
+
+14907
+15:04:39,470 --> 15:04:42,680
+and we're just going to use this as our mock.
+
+
+14908
+15:04:42,800 --> 15:04:45,800
+So in our contracts folder, we're gonna create a new file
+
+
+14909
+15:04:45,830 --> 15:04:53,270
+called test new file called V RF core, in a core, the two mock
+
+
+14910
+15:04:53,330 --> 15:04:56,960
+dot Sol, and we're just going to import this mock and have it be
+
+
+14911
+15:04:56,960 --> 15:05:03,710
+our mock. So we'll do spdx. We'll do pragma, solidity,
+
+
+14912
+15:05:04,130 --> 15:05:08,870
+carrot zero, point 8.0, or seven or whatever we want to do, we'll
+
+
+14913
+15:05:08,870 --> 15:05:14,990
+do import at chainlink slash contracts slash SRC slash v 0.8.
+
+
+14914
+15:05:15,410 --> 15:05:23,210
+Slash, mocks, slash VRF. Pour did a tour B to mock that soul.
+
+
+14915
+15:05:23,450 --> 15:05:25,460
+And we'll just check to see if it compiles with Hardhead
+
+
+14916
+15:05:25,460 --> 15:05:28,850
+compile, and it looks like it's compiling as well. Awesome. So
+
+
+14917
+15:05:28,850 --> 15:05:31,730
+now that we have our mock contract, we can actually go
+
+
+14918
+15:05:31,730 --> 15:05:38,450
+ahead and deploy it. So we'll do a weight loi, the RF core de ne
+
+
+14919
+15:05:38,450 --> 15:05:40,070
+Tor V to Mach
+
+
+14920
+15:05:41,120 --> 15:05:44,420
+comma, and then we'll give it our parameters in here. We'll
+
+
+14921
+15:05:44,420 --> 15:05:49,880
+say from Deployer. Log is going to be true, and then we're going
+
+
+14922
+15:05:49,880 --> 15:05:53,570
+to do our arguments. Now, what are the arguments of this VRF
+
+
+14923
+15:05:53,690 --> 15:05:57,050
+coordinator, v2 Mk. Well, if we open the VRF coordinator v2
+
+
+14924
+15:05:57,050 --> 15:06:01,670
+Mock, right in our VS code, or on GitHub, we can actually see
+
+
+14925
+15:06:02,030 --> 15:06:05,060
+We will roll over to the constructor that it takes two
+
+
+14926
+15:06:05,060 --> 15:06:10,010
+things. It takes a base fee and a gas price link. What are these
+
+
+14927
+15:06:10,040 --> 15:06:14,390
+first one? Well, the first one is this const base fee. If we go
+
+
+14928
+15:06:14,390 --> 15:06:17,510
+back to the documentation, we can see that there's this
+
+
+14929
+15:06:17,510 --> 15:06:22,550
+premium section of 0.25 Link rink B, this means that for each
+
+
+14930
+15:06:22,550 --> 15:06:27,920
+request, there's a base fee of 0.25 link for every request. So
+
+
+14931
+15:06:27,920 --> 15:06:30,980
+anytime we want to request a random number on Rinckey, it's
+
+
+14932
+15:06:30,980 --> 15:06:35,480
+going to cost us 0.25. Link, or you can think of it as 0.25
+
+
+14933
+15:06:35,510 --> 15:06:39,770
+Oracle gas to make this request. So back in our deploy mocks, we
+
+
+14934
+15:06:39,770 --> 15:06:44,300
+can say base V equals, we could resemble Rinckey here and do 25,
+
+
+14935
+15:06:44,300 --> 15:06:49,490
+blah, blah, blah, or we could do ethers dot utils dot parse eath,
+
+
+14936
+15:06:49,670 --> 15:06:55,730
+of 0.25. And I'll even put a little comment here, say 0.25 is
+
+
+14937
+15:06:55,730 --> 15:07:02,180
+the premium, it costs 0.25 Link per request. And remember, the
+
+
+14938
+15:07:02,180 --> 15:07:06,410
+reason that this cost 0.25 Link per request versus the price
+
+
+14939
+15:07:06,410 --> 15:07:09,320
+feeds didn't cost anything is because the price feeds. If we
+
+
+14940
+15:07:09,320 --> 15:07:13,610
+look back at a chain that link, each one of these price feeds is
+
+
+14941
+15:07:13,610 --> 15:07:17,810
+being sponsored by a group of protocols who are paying for all
+
+
+14942
+15:07:17,810 --> 15:07:20,630
+these requests already, since there isn't a sponsor for this,
+
+
+14943
+15:07:20,660 --> 15:07:24,110
+we are the only ones requesting the randomness, we get to be the
+
+
+14944
+15:07:24,110 --> 15:07:26,720
+ones to actually sponsor getting this random number, then the
+
+
+14945
+15:07:26,720 --> 15:07:30,230
+second thing here is going to be the gas price link. So let's
+
+
+14946
+15:07:30,230 --> 15:07:35,990
+create another const here to const. gas price link. But what
+
+
+14947
+15:07:35,990 --> 15:07:39,920
+this is, is actually a calculated value is a calculated
+
+
+14948
+15:07:39,920 --> 15:07:44,750
+value based on the gas price of the chain. Here's an example if
+
+
+14949
+15:07:44,750 --> 15:07:47,360
+we were to request a random number on Aetherium, and the
+
+
+14950
+15:07:47,360 --> 15:07:52,010
+eath price skyrocketed up to like to like a billion dollars,
+
+
+14951
+15:07:52,070 --> 15:07:55,370
+gas would be incredibly, incredibly expensive. Now when
+
+
+14952
+15:07:55,370 --> 15:07:59,780
+chain link nodes respond chain link nodes pay the gas fees, who
+
+
+14953
+15:07:59,990 --> 15:08:05,330
+give us randomness, and do external execution, the chain
+
+
+14954
+15:08:05,330 --> 15:08:07,730
+link nodes are actually the ones that pay the gas when returning
+
+
+14955
+15:08:07,730 --> 15:08:11,570
+randomness or executing an upkeep or etc. If we go to our
+
+
+14956
+15:08:11,570 --> 15:08:15,860
+raffle dot soul, and scroll down to perform upkeep, or fulfill
+
+
+14957
+15:08:15,860 --> 15:08:18,770
+random words, it's actually the chain link nodes that are
+
+
+14958
+15:08:18,770 --> 15:08:21,260
+calling these two functions and paying the gas for it, they get
+
+
+14959
+15:08:21,260 --> 15:08:24,920
+paid in Oracle gas to offset those costs. But if the price of
+
+
+14960
+15:08:24,950 --> 15:08:28,490
+eath, or any native blockchain skyrocketed the chain that nodes
+
+
+14961
+15:08:28,490 --> 15:08:31,610
+itself to pay the gas fee. So the chain link nodes have a
+
+
+14962
+15:08:31,610 --> 15:08:34,310
+calculated price have a calculated variable called the
+
+
+14963
+15:08:34,310 --> 15:08:37,880
+gas price per link, which fluctuates based off the price
+
+
+14964
+15:08:37,880 --> 15:08:40,790
+of the actual chain, so that they never go bankrupt.
+
+
+14965
+15:08:41,000 --> 15:08:43,610
+Basically, the price of a request changes based off the
+
+
+14966
+15:08:43,610 --> 15:08:45,830
+price of gas for that blockchain, you can kind of
+
+
+14967
+15:08:45,830 --> 15:08:49,700
+think of this as the link per gas, if you will, for now we can
+
+
+14968
+15:08:49,700 --> 15:08:52,340
+kind of just set it to whatever we want. And we'll just set it
+
+
+14969
+15:08:52,340 --> 15:08:58,250
+to one e nine, which is going to be equivalent to 1123456789. So
+
+
+14970
+15:08:58,250 --> 15:09:01,700
+now that we have the base fee, and the gas price link, we'll
+
+
+14971
+15:09:01,700 --> 15:09:05,420
+grab this base fee, we'll have these be the arguments for our
+
+
+14972
+15:09:05,450 --> 15:09:08,420
+VR chord, enter V to mock, so we'll say and actually we can
+
+
+14973
+15:09:08,420 --> 15:09:14,990
+delete that will say const, args equals base fee, and gas price
+
+
+14974
+15:09:15,290 --> 15:09:18,920
+link, then we can take this args variable and just plop it in
+
+
+14975
+15:09:18,920 --> 15:09:23,480
+here. Now we can do log mocks deployed, then we can do log
+
+
+14976
+15:09:23,570 --> 15:09:26,330
+that a little line like this to let people know that this deploy
+
+
+14977
+15:09:26,330 --> 15:09:29,720
+script is done, then we'll just do a module that exports dot
+
+
+14978
+15:09:29,720 --> 15:09:35,600
+tags equals all and mocks. So now that we have a view of
+
+
+14979
+15:09:35,600 --> 15:09:38,690
+coordinator v2 Mock deployed, we'll come back over to our
+
+
+14980
+15:09:38,690 --> 15:09:42,200
+raffle and make some code around it. Similar to what we just did
+
+
+14981
+15:09:42,230 --> 15:09:46,790
+with our deploy mocks. We can say if development chains that
+
+
+14982
+15:09:46,820 --> 15:09:51,440
+includes network dot name, we'll do some stuff. And we need to
+
+
+14983
+15:09:51,470 --> 15:09:54,650
+import development chains from our helper Hardhead config. And
+
+
+14984
+15:09:54,650 --> 15:09:57,290
+we need to import network from hard hat. My VS code
+
+
+14985
+15:09:57,290 --> 15:10:00,320
+automatically added them Wow, thanks VS code. Let's even just
+
+
+14986
+15:10:00,320 --> 15:10:03,890
+do const args and make this variable down here. Stick it in
+
+
+14987
+15:10:03,890 --> 15:10:07,610
+args. Our first argument is going to need to be this Vera fi
+
+
+14988
+15:10:07,610 --> 15:10:12,290
+to coordinator so let's make a variable we'll say let VRF core
+
+
+14989
+15:10:12,770 --> 15:10:17,270
+need torby to address and if we're on a development chain,
+
+
+14990
+15:10:17,300 --> 15:10:21,020
+we're going to grab that mock contract. So we'll say const
+
+
+14991
+15:10:21,050 --> 15:10:28,010
+PRF, Cor de ATAR V to mock equals await ethers dot get
+
+
+14992
+15:10:28,040 --> 15:10:35,990
+contract, the RF cord the cord to NATO Tor v two MK, and then
+
+
+14993
+15:10:35,990 --> 15:10:40,820
+we can set the RF coordinator v two address equals VRF core
+
+
+14994
+15:10:40,850 --> 15:10:43,490
+denater V two mach dot
+
+
+14995
+15:10:43,520 --> 15:10:50,780
+address. 
