@@ -1,91 +1,92 @@
 14905
 15:04:29,510 --> 15:04:33,560
 We go to the chainlink. GitHub again, we go to contracts. So C 0.8, 
-
+我们再一次来到 Chainlink 的 GitHub，前往 "/contracts/src/v0.8/" 
 
 14906
 15:04:33,980 --> 15:04:39,470
 actually have a mocks folder with VF coordinator v2 Mach dot Sol, 
-
+这里有一个 "mocks" 文件夹，里面有一个 "VRFCoordinatorV2Mock.sol" 
 
 14907
 15:04:39,470 --> 15:04:42,680
 and we're just going to use this as our mock.
-
+我们就用它来作为我们的 "mock" 
 
 14908
 15:04:42,800 --> 15:04:45,800
-So in our contracts folder, we're gonna create a new file
-
+So in our contracts folder, we're gonna create a new file called test 
+所以在我们的 "contracts" 文件夹里，我们要创建一个新的文件，名为 "test"
+（实际上应为创建一个新的文件夹，名为 "test"）
 
 14909
 15:04:45,830 --> 15:04:53,270
-called test new file called V RF core, in a core, the two mock
-
+new file called V RF core, in a core, the two mock dot Sol, 
+再新建一个文件，名为 "VRFCoordinatorV2Mock.sol"
 
 14910
 15:04:53,330 --> 15:04:56,960
-dot Sol, and we're just going to import this mock and have it be
-
+and we're just going to import this mock and have it be our mock. 
+然后我们直接导入这个 "Mock" 作为我们的 "mock" 
 
 14911
 15:04:56,960 --> 15:05:03,710
-our mock. So we'll do spdx. We'll do pragma, solidity,
-
+So we'll do spdx. 
+我们先写下 `SPDX` 
 
 14912
 15:05:04,130 --> 15:05:08,870
-carrot zero, point 8.0, or seven or whatever we want to do, we'll
-
+We'll do pragma, solidity, carrot zero, point 8.0, or seven or whatever we want to do, 
+再写下 `pragma solidity ^0.8.0`，或者是 7，或是任何我们想要版本
 
 14913
 15:05:08,870 --> 15:05:14,990
-do import at chainlink slash contracts slash SRC slash v 0.8.
-
+we'll do import at chainlink slash contracts slash SRC slash v 0.8. Slash, mocks, slash VRF. Pour did a tour B to mock that soul. 
+接着是 `import @chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol`
 
 14914
 15:05:15,410 --> 15:05:23,210
-Slash, mocks, slash VRF. Pour did a tour B to mock that soul.
-
+And we'll just check to see if it compiles with Hardhead compile, 
+我们用 hardhat 编译一下，看它是否能编译通过
 
 14915
 15:05:23,450 --> 15:05:25,460
-And we'll just check to see if it compiles with Hardhead
-
+and it looks like it's compiling as well. Awesome. 
+看起来编译过程一切正常，非常好
 
 14916
 15:05:25,460 --> 15:05:28,850
-compile, and it looks like it's compiling as well. Awesome. So
-
+So now that we have our mock contract, we can actually go ahead and deploy it. 
+现在我们有了 "mock" 合约，就可以继续进行部署了
 
 14917
 15:05:28,850 --> 15:05:31,730
-now that we have our mock contract, we can actually go
-
+So we'll do a weight loi, the RF core de ne Tor V to Mach comma, 
+这里我们写 `await deploy("VRFCoordinatorV2Mock", )`
 
 14918
 15:05:31,730 --> 15:05:38,450
-ahead and deploy it. So we'll do a weight loi, the RF core de ne
-
+and then we'll give it our parameters in here. 
+然后在这里把我们的参数传递进去
 
 14919
 15:05:38,450 --> 15:05:40,070
-Tor V to Mach
-
+We'll say from Deployer. 
+我们告诉它 `from: deployer`
 
 14920
 15:05:41,120 --> 15:05:44,420
-comma, and then we'll give it our parameters in here. We'll
-
+Log is going to be true, 
+`log: true`
 
 14921
 15:05:44,420 --> 15:05:49,880
-say from Deployer. Log is going to be true, and then we're going
-
+and then we're going to do our arguments. 
+接下来是我们的 `args` 
 
 14922
 15:05:49,880 --> 15:05:53,570
-to do our arguments. Now, what are the arguments of this VRF
+Now, what are the arguments of this VRF
 
 
 14923
