@@ -1,0 +1,693 @@
+14995
+15:10:43,520 --> 15:10:50,780
+Cool. We have that address here. Else if we're not
+
+
+14996
+15:10:50,780 --> 15:10:54,290
+on a local network, the VRF v2 coordinator address is simply
+
+
+14997
+15:10:54,290 --> 15:10:58,010
+going to be derived from our network config. So let's import
+
+
+14998
+15:10:58,010 --> 15:11:01,640
+the network config as well from our helper Hardhead config and
+
+
+14999
+15:11:01,640 --> 15:11:06,530
+we'll say else VRF coordinator v2 address equals network config
+
+
+15000
+15:11:07,160 --> 15:11:11,390
+of our chain ID. Let's which actually sorry, we do need the
+
+
+15001
+15:11:11,390 --> 15:11:16,310
+chain ID cons chain ID equals network dot config dot chain ID,
+
+
+15002
+15:11:16,850 --> 15:11:23,390
+chain ID of VR coordinator V to chain ID. You're a coordinator
+
+
+15003
+15:11:23,420 --> 15:11:27,200
+v2. Alright, perfect. We've got the setup to work with our VRF
+
+
+15004
+15:11:27,200 --> 15:11:29,990
+coordinator v2 address. What else do we need from our raffle?
+
+
+15005
+15:11:30,110 --> 15:11:33,020
+Well, we need an entrance fee, we probably want to change the
+
+
+15006
+15:11:33,020 --> 15:11:35,690
+entrance fee depending on what chain we're on, we're on a more
+
+
+15007
+15:11:35,690 --> 15:11:38,270
+expensive chain, we might want to make this higher than others.
+
+
+15008
+15:11:38,540 --> 15:11:41,990
+So let's go ahead back to our helper Hardhead config and make
+
+
+15009
+15:11:42,020 --> 15:11:47,210
+an entrance fee based off of the blockchain, so for NP, maybe we
+
+
+15010
+15:11:47,210 --> 15:11:52,040
+want to make it 0.01 eath. So we could say ethers dot utils,
+
+
+15011
+15:11:52,400 --> 15:11:58,640
+parse ether of 0.01. And once again, thank you VS code for
+
+
+15012
+15:11:58,640 --> 15:12:01,070
+automatically dropping that in for me. And we're also going to
+
+
+15013
+15:12:01,070 --> 15:12:03,800
+want an entrance fee for our heart app, we can also set a
+
+
+15014
+15:12:03,800 --> 15:12:07,190
+default in here, but let's just be a little more explicit. So
+
+
+15015
+15:12:07,190 --> 15:12:12,350
+we'll say 31337. The name of this is Art app, we don't need
+
+
+15016
+15:12:12,350 --> 15:12:14,720
+to give it a veneer of coordinator v2 address because
+
+
+15017
+15:12:14,720 --> 15:12:17,540
+we're going to deploy a mock. But we do want an entrance fee.
+
+
+15018
+15:12:17,600 --> 15:12:20,360
+And let's just give it the exact same entrance fee here. So we'll
+
+
+15019
+15:12:20,360 --> 15:12:24,890
+say ethers dot utils dot parse ether 0.01 E. Alright, great. So
+
+
+15020
+15:12:24,890 --> 15:12:30,350
+on our deploy here, we can just say const entrance fee equals
+
+
+15021
+15:12:31,220 --> 15:12:39,140
+network config. Chain ID of entrance fee. Let's start
+
+
+15022
+15:12:39,140 --> 15:12:42,290
+populating our arcs here. So the first one is going to be your Fe
+
+
+15023
+15:12:42,290 --> 15:12:44,930
+two coordinator address. Next one is going to be our entrance
+
+
+15024
+15:12:44,930 --> 15:12:49,820
+fee. Got it? Got it. Now we need our gas lane. On Rigby and other
+
+
+15025
+15:12:49,820 --> 15:12:52,100
+networks, there are different gas lanes that we can choose
+
+
+15026
+15:12:52,100 --> 15:12:55,970
+from, let's grab the only gas Lane from Rinckey, the 30, gray
+
+
+15027
+15:12:56,060 --> 15:13:00,050
+key hash, let's drop this, of course into our network config
+
+
+15028
+15:13:00,110 --> 15:13:03,230
+as gasoline, pop it in here, we're hard hat, our mock
+
+
+15029
+15:13:03,230 --> 15:13:05,600
+actually doesn't care what gas line we're working on, because
+
+
+15030
+15:13:05,600 --> 15:13:07,850
+we're going to be mocking the gasoline anyways. So we can just
+
+
+15031
+15:13:07,850 --> 15:13:10,910
+say gas lane, we can just go ahead and use the same one or
+
+
+15032
+15:13:10,940 --> 15:13:13,610
+really anything here, it doesn't really matter. Now here we'll
+
+
+15033
+15:13:13,610 --> 15:13:16,880
+say const, gasoline equals network config.
+
+
+15034
+15:13:18,260 --> 15:13:23,810
+Chain ID, gasoline, and we'll grab the gas lane. And we'll
+
+
+15035
+15:13:23,810 --> 15:13:26,540
+stick it into our argument array, we've got this one, we've
+
+
+15036
+15:13:26,540 --> 15:13:28,970
+got this one, we've got this one. Now it's time for the
+
+
+15037
+15:13:28,970 --> 15:13:32,150
+subscription ID. Now if you haven't run through docstoc
+
+
+15038
+15:13:32,150 --> 15:13:35,510
+chain link for the chain link VRF, I highly recommend you do
+
+
+15039
+15:13:35,510 --> 15:13:38,630
+so so that you can understand what this subscription ID is we
+
+
+15040
+15:13:38,630 --> 15:13:41,570
+know that we can actually make a subscription ID using that front
+
+
+15041
+15:13:41,570 --> 15:13:45,440
+end using that website VRF dot chain dot link, which is great
+
+
+15042
+15:13:45,440 --> 15:13:48,800
+and all but what if we're on all local chains, we can get a
+
+
+15043
+15:13:48,800 --> 15:13:52,100
+subscription ID no problem in here. But it's a little bit
+
+
+15044
+15:13:52,100 --> 15:13:55,160
+harder on a local network. Now I'm actually going to teach you
+
+
+15045
+15:13:55,160 --> 15:13:57,770
+how to create and fund subscription it is completely
+
+
+15046
+15:13:57,770 --> 15:14:00,920
+programmatically. So you don't even need to use the UI if you
+
+
+15047
+15:14:00,920 --> 15:14:03,170
+don't want to. However, for the purpose of this course, we're
+
+
+15048
+15:14:03,170 --> 15:14:05,060
+still going to use the user interface, we're still going to
+
+
+15049
+15:14:05,060 --> 15:14:08,360
+use that website for us to get our own subscription IDs. But
+
+
+15050
+15:14:08,360 --> 15:14:11,780
+you could 100% automate the process of creating a
+
+
+15051
+15:14:11,780 --> 15:14:14,870
+subscription ID and funding a subscription ID. Because when
+
+
+15052
+15:14:14,870 --> 15:14:17,690
+you create and fund subscription IDs, you're just calling create
+
+
+15053
+15:14:17,690 --> 15:14:20,540
+subscription and fund subscription on that smart
+
+
+15054
+15:14:20,540 --> 15:14:23,690
+contract. So on our development chain, we have our V RF
+
+
+15055
+15:14:23,690 --> 15:14:26,450
+coordinator v2 Mock, and what we're going to do and on our
+
+
+15056
+15:14:26,450 --> 15:14:29,090
+development chain, we're going to create that subscription. So
+
+
+15057
+15:14:29,090 --> 15:14:33,650
+we're gonna say const, transaction, response equals
+
+
+15058
+15:14:33,680 --> 15:14:42,290
+await VRF coordinator v2 Mock dot create sub scription. And
+
+
+15059
+15:14:42,290 --> 15:14:48,560
+then we'll run const transaction receipt equals weight trends
+
+
+15060
+15:14:48,590 --> 15:14:54,080
+action response, dot Wait, wait one block confirmation. And
+
+
+15061
+15:14:54,110 --> 15:14:57,770
+inside this transaction receipt, there's actually an event that's
+
+
+15062
+15:14:57,770 --> 15:15:00,860
+emitted with our subscription that we can get this is another
+
+
+15063
+15:15:00,860 --> 15:15:04,670
+place where emitting events is incredibly helpful. So in fact,
+
+
+15064
+15:15:04,700 --> 15:15:08,270
+if we open back up a Vera v2 coordinator mark, and we look
+
+
+15065
+15:15:08,270 --> 15:15:13,250
+for create subscription, we see we emit subscription created
+
+
+15066
+15:15:13,310 --> 15:15:17,060
+with the subscription ID, we can actually get this event emitted
+
+
+15067
+15:15:17,090 --> 15:15:20,510
+from our transaction receipt. Now to assign it, let's go ahead
+
+
+15068
+15:15:20,510 --> 15:15:24,530
+and create a sub subscription ID up here. And then we'll say
+
+
+15069
+15:15:24,560 --> 15:15:30,590
+subscription ID equals transaction receipt that events
+
+
+15070
+15:15:31,190 --> 15:15:37,040
+of zero dot args dot sub ID. And again, be sure to watch that
+
+
+15071
+15:15:37,040 --> 15:15:39,830
+events video if you want to learn more about how to work
+
+
+15072
+15:15:39,830 --> 15:15:42,500
+with events in hardware. Now that we have a subscription, we
+
+
+15073
+15:15:42,500 --> 15:15:45,800
+need to fund the subscription on a real network, you'd need the
+
+
+15074
+15:15:45,800 --> 15:15:48,590
+link token to actually fund the subscription. The current
+
+
+15075
+15:15:48,590 --> 15:15:51,350
+iteration of the mock allows you to fund a subscription without
+
+
+15076
+15:15:51,350 --> 15:15:54,890
+the link token. So what we can do is we can just run a wait
+
+
+15077
+15:15:54,920 --> 15:16:01,700
+your F corps inator Mark, if coordinator B to Mach dot fund
+
+
+15078
+15:16:02,120 --> 15:16:07,280
+subscription, and we'll give it the subscription ID and we'll
+
+
+15079
+15:16:07,280 --> 15:16:09,950
+need to do some fundamental this, we can just create some
+
+
+15080
+15:16:09,950 --> 15:16:15,680
+variable, we'll say const VRF, subscription fund amount equals
+
+
+15081
+15:16:15,710 --> 15:16:22,100
+ethers dot utils, dot parse ether, of, we'll say 30 VRF
+
+
+15082
+15:16:22,130 --> 15:16:26,480
+subscription, fundament. We'll just paste that down here. We
+
+
+15083
+15:16:26,480 --> 15:16:29,840
+could do this as well for a real test net or live networks. But
+
+
+15084
+15:16:29,840 --> 15:16:32,510
+just so that we become familiar with the user interface, we're
+
+
+15085
+15:16:32,510 --> 15:16:35,630
+not going to do a test net programmatically. And for a test
+
+
+15086
+15:16:35,630 --> 15:16:37,880
+net, we're just going to use exactly what we've been doing so
+
+
+15087
+15:16:37,880 --> 15:16:40,430
+far. Or we can put a subscription ID and our helper
+
+
+15088
+15:16:40,430 --> 15:16:44,870
+config. So we'll say subscription ID, we'll put
+
+
+15089
+15:16:44,870 --> 15:16:47,240
+something in here right now, we'll just leave it as zero. But
+
+
+15090
+15:16:47,240 --> 15:16:50,060
+later on, when we actually create a subscription, we'll
+
+
+15091
+15:16:50,060 --> 15:16:55,040
+update our subscription ID. And so we'll say subscription ID
+
+
+15092
+15:16:55,610 --> 15:17:04,670
+equals network config. Change ID of subscription ID. Perfect. Now
+
+
+15093
+15:17:04,670 --> 15:17:09,230
+we can add this to our arguments array. What else do we need
+
+
+15094
+15:17:09,230 --> 15:17:12,500
+subscription ID, we need a callback gas limit or callback,
+
+
+15095
+15:17:12,500 --> 15:17:15,380
+gas limit is going to vary network to network. So once
+
+
+15096
+15:17:15,380 --> 15:17:18,710
+again, we're gonna go into our helper configure callback gas
+
+
+15097
+15:17:18,740 --> 15:17:23,480
+limit. And for us, we'll set a pretty high limit of 500,000
+
+
+15098
+15:17:23,480 --> 15:17:29,450
+gas. So we'll say call a gas limit of 5.123 500,000. Gas. And
+
+
+15099
+15:17:29,450 --> 15:17:32,570
+for hard hat, we'll do the same thing. So we can say const,
+
+
+15100
+15:17:32,870 --> 15:17:38,480
+callback, gas limit equals network config, chain ID,
+
+
+15101
+15:17:39,860 --> 15:17:44,120
+callback, gas limit, grab this, put it into our argument array.
+
+
+15102
+15:17:44,510 --> 15:17:47,870
+What else do we need? All we need now is the interval. So we
+
+
+15103
+15:17:47,870 --> 15:17:51,500
+can change this network to network as well. Rigby will say,
+
+
+15104
+15:17:51,770 --> 15:17:56,060
+interval will ever just be 30 seconds for both hard hat and
+
+
+15105
+15:17:56,060 --> 15:17:59,120
+for Rigby. So we'll do the same thing here. Say const.
+
+
+15106
+15:17:59,150 --> 15:18:07,910
+Interval equals network config. Chain ID, interval, and we'll
+
+
+15107
+15:18:07,910 --> 15:18:12,110
+grab this, pop it in the end of our array. All right, awesome.
+
+
+15108
+15:18:12,140 --> 15:18:15,230
+Now we have an argument array and drop it right in here and
+
+
+15109
+15:18:15,230 --> 15:18:18,200
+perfect. Everything in our constructor for our raffle
+
+
+15110
+15:18:18,200 --> 15:18:21,440
+contract. Great. This is looking fantastic. We've got wait
+
+
+15111
+15:18:21,440 --> 15:18:25,430
+confirmations we got logging arguments Deployer. Okay, well,
+
+
+15112
+15:18:25,460 --> 15:18:29,330
+what next? Well, let's go ahead and add that verification piece.
+
+
+15113
+15:18:29,630 --> 15:18:34,310
+So once again, create a new folder utils, new file
+
+
+15114
+15:18:34,790 --> 15:18:38,060
+verify.js. We can either copy paste this from our last
+
+
+15115
+15:18:38,060 --> 15:18:41,180
+project, or we can grab this from the GitHub repo associated
+
+
+15116
+15:18:41,180 --> 15:18:43,940
+with this course, once we have our verify script in here, we're
+
+
+15117
+15:18:43,940 --> 15:18:51,230
+going to import it by saying const. Verify equals require dot
+
+
+15118
+15:18:51,230 --> 15:18:57,140
+dot slash helper Hardhead config. And then we can add that
+
+
+15119
+15:18:57,140 --> 15:19:00,950
+same bit of code down here to verify our contract, we'll say
+
+
+15120
+15:19:00,980 --> 15:19:11,810
+if we're not on a development chain. And we have process
+
+
+15121
+15:19:11,810 --> 15:19:16,400
+studying v dot ether scan API key, then we're going to log
+
+
+15122
+15:19:16,430 --> 15:19:22,490
+verifying dot dot and then await verify raffle dot address and
+
+
+15123
+15:19:22,490 --> 15:19:26,090
+the arcs. Now we'll just do a log of a whole bunch of hyphens
+
+
+15124
+15:19:26,150 --> 15:19:31,070
+say that this script is done module dot exports dot tags
+
+
+15125
+15:19:31,100 --> 15:19:36,200
+equals say this will be all and raffle. All right, so let's test
+
+
+15126
+15:19:36,200 --> 15:19:41,450
+this out. We'll do hardhat deploy, or yarn, hard hat deploy
+
+
+15127
+15:19:41,690 --> 15:19:45,020
+and see if this script works correctly. Looks like we ran
+
+
+15128
+15:19:45,020 --> 15:19:49,250
+into an error network config not defined. So let's spell this
+
+
+15129
+15:19:49,250 --> 15:19:52,760
+right. Network config. There we go. And that looks much better.
+
+
+15130
+15:19:52,850 --> 15:19:55,700
+Let's try this again. It looks like our deploy scripts are
+
+
+15131
+15:19:55,700 --> 15:19:58,640
+working well. local networks protected, deploying mocks
+
+
+15132
+15:19:58,700 --> 15:20:02,300
+deployed VRF coordinator v2 Mock mocks deployed and then we went
+
+
+15133
+15:20:02,330 --> 15:20:08,750
+ahead and deployed our raffle. Awesome, this is massive. 
