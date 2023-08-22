@@ -1,236 +1,236 @@
 14995
 15:10:43,520 --> 15:10:50,780
-Cool. We have that address here. Else if we're not
-
+Cool. We have that address here. Else if we're not on a local network, 
+酷~ 我们这里已经有地址了 `else` 如果我们没有在本地网络上的话
 
 14996
 15:10:50,780 --> 15:10:54,290
-on a local network, the VRF v2 coordinator address is simply
-
+the VRF v2 coordinator address is simply going to be derived from our network config. 
+`vrfCoordinatorV2Address` 就是很简单的源于我们的 "networkConfig"
 
 14997
 15:10:54,290 --> 15:10:58,010
-going to be derived from our network config. So let's import
-
+So let's import the network config as well from our helper Hardhead config 
+所以让我们把 `networkConfig` 也从 "helper-hardhat-config" 中导入进来
 
 14998
 15:10:58,010 --> 15:11:01,640
-the network config as well from our helper Hardhead config and
-
+and we'll say else VRF coordinator v2 address equals network config of our chain ID. 
+并且执行 `else {vrfCoordinatorV2Address = networkConfig[chainId]}`
 
 14999
 15:11:01,640 --> 15:11:06,530
-we'll say else VRF coordinator v2 address equals network config
-
+Let's which actually sorry, we do need the chain ID 
+不好意思，我们还没有创建 "chainId" 
 
 15000
 15:11:07,160 --> 15:11:11,390
-of our chain ID. Let's which actually sorry, we do need the
-
+cons chain ID equals network dot config dot chain ID, 
+`const chainId = network.config.chainId`
 
 15001
 15:11:11,390 --> 15:11:16,310
-chain ID cons chain ID equals network dot config dot chain ID,
-
+chain ID of VR coordinator V to 
+我们需要的是 "vrfCoordinatorV2" 的 "chainId"
 
 15002
 15:11:16,850 --> 15:11:23,390
-chain ID of VR coordinator V to chain ID. You're a coordinator
-
+chain ID. You're a coordinator v2. 
+`[chainId]["vrfCoordinatorV2"]`
 
 15003
 15:11:23,420 --> 15:11:27,200
-v2. Alright, perfect. We've got the setup to work with our VRF
-
+Alright, perfect. We've got the setup to work with our VRF coordinator v2 address. 
+非常完美，我们已经配置好了涉及 `vrfCoordinatorV2Address` 的部分
 
 15004
 15:11:27,200 --> 15:11:29,990
-coordinator v2 address. What else do we need from our raffle?
-
+What else do we need from our raffle?
+我们还需要为我们的 "Raffle" 做点什么呢？
 
 15005
 15:11:30,110 --> 15:11:33,020
-Well, we need an entrance fee, we probably want to change the
-
+Well, we need an entrance fee, 
+嗯，我们还需要一个 "entranceFee" 
 
 15006
 15:11:33,020 --> 15:11:35,690
-entrance fee depending on what chain we're on, we're on a more
-
+we probably want to change the entrance fee depending on what chain we're on, 
+我们希望根据我们所在链的不同而改变 "entranceFee"
 
 15007
 15:11:35,690 --> 15:11:38,270
-expensive chain, we might want to make this higher than others.
-
+we're on a more expensive chain, we might want to make this higher than others.
+如果我们位于一条比较贵的链上，那我们可能就希望这个数值比较大
 
 15008
 15:11:38,540 --> 15:11:41,990
-So let's go ahead back to our helper Hardhead config and make
-
+So let's go ahead back to our helper Hardhead config and make an entrance fee based off of the blockchain, 
+所以让我们回到 "helper-hardhat-config" 并创建一个基于区块链的 "entranceFee"
 
 15009
 15:11:42,020 --> 15:11:47,210
-an entrance fee based off of the blockchain, so for NP, maybe we
-
+so for NP, maybe we want to make it 0.01 eath. 
+对于 Rinkeby 我们可能想设置为 0.01 以太
 
 15010
 15:11:47,210 --> 15:11:52,040
-want to make it 0.01 eath. So we could say ethers dot utils,
-
+So we could say ethers dot utils, parse ether of 0.01. 
+所以我们执行 `ethers.utils.parseEther("0.01")`
 
 15011
 15:11:52,400 --> 15:11:58,640
-parse ether of 0.01. And once again, thank you VS code for
-
+And once again, thank you VS code for automatically dropping that in for me. 
+再一次，感谢 VS Code 帮我自动添加了这些
 
 15012
 15:11:58,640 --> 15:12:01,070
-automatically dropping that in for me. And we're also going to
-
+And we're also going to want an entrance fee for our heart app, 
+我们同样需要给我们的 hardhat 也提供一个 "entranceFee"
 
 15013
 15:12:01,070 --> 15:12:03,800
-want an entrance fee for our heart app, we can also set a
-
+we can also set a default in here, but let's just be a little more explicit. 
+我们也可以将其设置为默认，不过我们还是让它更明确一些吧
 
 15014
 15:12:03,800 --> 15:12:07,190
-default in here, but let's just be a little more explicit. So
-
+So we'll say 31337. The name of this is Art app, 
+所以我们写下 `31337: {name: "hardhat"}`
 
 15015
 15:12:07,190 --> 15:12:12,350
-we'll say 31337. The name of this is Art app, we don't need
-
+we don't need to give it a veneer of coordinator v2 address 
+我们并不需要为其提供 "vrfCoordinatorV2Address"
 
 15016
 15:12:12,350 --> 15:12:14,720
-to give it a veneer of coordinator v2 address because
-
+because we're going to deploy a mock. 
+因为我们要为其部署一个 "mock"
 
 15017
 15:12:14,720 --> 15:12:17,540
-we're going to deploy a mock. But we do want an entrance fee.
-
+But we do want an entrance fee.
+但我们希望给它一个 "entranceFee"
 
 15018
 15:12:17,600 --> 15:12:20,360
-And let's just give it the exact same entrance fee here. So we'll
-
+And let's just give it the exact same entrance fee here. 
+让我们给他一个完全相同的 "entranceFee" 吧
 
 15019
 15:12:20,360 --> 15:12:24,890
-say ethers dot utils dot parse ether 0.01 E. Alright, great. So
-
+So we'll say ethers dot utils dot parse ether 0.01 E. 
+也就是 `ethers.utils.parseEther("0.01")`
 
 15020
 15:12:24,890 --> 15:12:30,350
-on our deploy here, we can just say const entrance fee equals
-
+Alright, great. So on our deploy here, we can just say const entrance fee equals network config. Chain ID of entrance fee. 
+好的，现在在我们的部署脚本这里，我们可以执行 `const entranceFee = networkConfig[chainId][entranceFee]`
 
 15021
 15:12:31,220 --> 15:12:39,140
-network config. Chain ID of entrance fee. Let's start
-
+Let's start populating our arcs here. 
+让我们开始填充这里的 "args"
 
 15022
 15:12:39,140 --> 15:12:42,290
-populating our arcs here. So the first one is going to be your Fe
-
+So the first one is going to be your Fe two coordinator address. Next one is going to be our entrance fee. 
+第一个是你的 `vrfCoordinatorV2Address`，下一个是我们的 `entranceFee`
 
 15023
 15:12:42,290 --> 15:12:44,930
-two coordinator address. Next one is going to be our entrance
-
+Got it? Got it. Now we need our gas lane. 
+懂了吧？应该都懂了，现在来处理我们的 "gasLane" 
 
 15024
 15:12:44,930 --> 15:12:49,820
-fee. Got it? Got it. Now we need our gas lane. On Rigby and other
-
+On Rigby and other networks, there are different gas lanes that we can choose from, 
+在 Rinkeby 或是其它网络上，它们都有不同的 "gasLane" 供我们选择
 
 15025
 15:12:49,820 --> 15:12:52,100
-networks, there are different gas lanes that we can choose
-
+let's grab the only gas Lane from Rinckey, the 30, gray key hash, 
+让我们获取 Rinkeby 上唯一的 "gasLane"，"30 gwei Key Hash"
 
 15026
 15:12:52,100 --> 15:12:55,970
-from, let's grab the only gas Lane from Rinckey, the 30, gray
-
+let's drop this, of course into our network config as gasoline, pop it in here, 
+获取它，并将其放入我们的 "networkConfig"，就放在这里 `gasLane` 
 
 15027
 15:12:56,060 --> 15:13:00,050
-key hash, let's drop this, of course into our network config
-
+we're hard hat, our mock actually doesn't care what gas line we're working on, 
+至于 hardhat，我们的 "mock" 实际上并不在乎我们用的是什么 "gasLane" 
 
 15028
 15:13:00,110 --> 15:13:03,230
-as gasoline, pop it in here, we're hard hat, our mock
-
+because we're going to be mocking the gasoline anyways. 
+因为无论是什么 gasLane 最终都是它模拟的
 
 15029
 15:13:03,230 --> 15:13:05,600
-actually doesn't care what gas line we're working on, because
-
+So we can just say gas lane, we can just go ahead and use the same one 
+所以我们可以直接写 `gasLane` 并使用和上面相同的一个
 
 15030
 15:13:05,600 --> 15:13:07,850
-we're going to be mocking the gasoline anyways. So we can just
-
+or really anything here, it doesn't really matter. 
+或者是任何一个，这并不重要
 
 15031
 15:13:07,850 --> 15:13:10,910
-say gas lane, we can just go ahead and use the same one or
-
+Now here we'll say const, gasoline equals network config. Chain ID, gasoline, 
+现在我们可以写 `const gasLane = networkConfig[chainId]["gasLane"]`
 
 15032
 15:13:10,940 --> 15:13:13,610
-really anything here, it doesn't really matter. Now here we'll
-
+and we'll grab the gas lane. And we'll stick it into our argument array, 
+获取 "gasLane" 并把它粘贴进我们的 "args" 数组
 
 15033
 15:13:13,610 --> 15:13:16,880
-say const, gasoline equals network config.
-
+we've got this one, we've got this one, we've got this one. 
+我们搞定了这个，而且搞定了这个，还搞定了这个
 
 15034
 15:13:18,260 --> 15:13:23,810
-Chain ID, gasoline, and we'll grab the gas lane. And we'll
-
+Now it's time for the subscription ID. 
+现在轮到 "subscriptionId" 了
 
 15035
 15:13:23,810 --> 15:13:26,540
-stick it into our argument array, we've got this one, we've
-
+Now if you haven't run through docstoc chain link for the chain link VRF, 
+如果你还没有通过 "docs.chain.link" 运行过 "Chainlink VRF"
 
 15036
 15:13:26,540 --> 15:13:28,970
-got this one, we've got this one. Now it's time for the
-
+I highly recommend you do so so that you can understand what this subscription ID is 
+那我强烈推荐你去试一下，这样你才能理解 "subscriptionID" 是什么
 
 15037
 15:13:28,970 --> 15:13:32,150
-subscription ID. Now if you haven't run through docstoc
-
+we know that we can actually make a subscription ID using that front end using that website VRF dot chain dot link, 
+我们知道，我们可以通过创建一个 "subscriptionId" 来使用前端网址 "vrf.chain.link" 
 
 15038
 15:13:32,150 --> 15:13:35,510
-chain link for the chain link VRF, I highly recommend you do
+
 
 
 15039
 15:13:35,510 --> 15:13:38,630
-so so that you can understand what this subscription ID is we
+
 
 
 15040
 15:13:38,630 --> 15:13:41,570
-know that we can actually make a subscription ID using that front
+
 
 
 15041
 15:13:41,570 --> 15:13:45,440
-end using that website VRF dot chain dot link, which is great
+which is great
 
 
 15042
