@@ -211,483 +211,453 @@ I highly recommend you do so so that you can understand what this subscription I
 15037
 15:13:28,970 --> 15:13:32,150
 we know that we can actually make a subscription ID using that front end using that website VRF dot chain dot link, 
-我们知道，我们可以通过创建一个 "subscriptionId" 来使用前端网址 "vrf.chain.link" 
+我们知道，我们可以使用前端网址 "vrf.chain.link" 来创建一个 "subscriptionId"
 
 15038
 15:13:32,150 --> 15:13:35,510
-
-
+which is great and all but what if we're on all local chains, 
+这很好，但如果我们是在本地链上呢？
 
 15039
 15:13:35,510 --> 15:13:38,630
-
-
+we can get a subscription ID no problem in here. 
+我们可以毫无障碍的从这里获取到 "subscriptionId"
 
 15040
 15:13:38,630 --> 15:13:41,570
-
-
+But it's a little bit harder on a local network. 
+但在本地网络上这就有点难了
 
 15041
 15:13:41,570 --> 15:13:45,440
-which is great
-
+Now I'm actually going to teach you how to create and fund subscription it is completely programmatically. 
+现在我会教你如何完全程序化地创建和资助一个订阅
 
 15042
 15:13:45,440 --> 15:13:48,800
-and all but what if we're on all local chains, we can get a
-
+So you don't even need to use the UI if you don't want to. 
+这样的话，如果你不想，甚至可以不使用 UI 
 
 15043
 15:13:48,800 --> 15:13:52,100
-subscription ID no problem in here. But it's a little bit
-
+However, for the purpose of this course, we're still going to use the user interface, 
+然而，为了达到这门课的目的，我们仍然会使用用户界面
 
 15044
 15:13:52,100 --> 15:13:55,160
-harder on a local network. Now I'm actually going to teach you
-
+we're still going to use that website for us to get our own subscription IDs. 
+仍然会使用网站来获取我们的 "subscriptionId"
 
 15045
 15:13:55,160 --> 15:13:57,770
-how to create and fund subscription it is completely
-
+But you could 100% automate the process of creating a subscription ID and funding a subscription ID. 
+但你完全可以自动化创建和资助 "subscriptionId" 的过程
 
 15046
 15:13:57,770 --> 15:14:00,920
-programmatically. So you don't even need to use the UI if you
-
+Because when you create and fund subscription IDs, 
+因为当你创建和资助 "subscriptionId" 时
 
 15047
 15:14:00,920 --> 15:14:03,170
-don't want to. However, for the purpose of this course, we're
-
+you're just calling create subscription and fund subscription on that smart contract. 
+你只是调用智能合约上的创建订阅和资助订阅罢了
 
 15048
 15:14:03,170 --> 15:14:05,060
-still going to use the user interface, we're still going to
-
+So on our development chain, we have our V RF coordinator v2 Mock, 
+在开发链上，我们有这个 "vrfCoordinatorV2Mock"
 
 15049
 15:14:05,060 --> 15:14:08,360
-use that website for us to get our own subscription IDs. But
-
+and what we're going to do and on our development chain, we're going to create that subscription. 
+接下来我们要做的是，在开发链上创建订阅
 
 15050
 15:14:08,360 --> 15:14:11,780
-you could 100% automate the process of creating a
-
+So we're gonna say const, transaction, response equals await VRF coordinator v2 Mock dot create sub scription. 
+我们要这么写 `const transactionResponse = await vrfCoordinatorV2Mock.createSubscription()`
 
 15051
 15:14:11,780 --> 15:14:14,870
-subscription ID and funding a subscription ID. Because when
-
+And then we'll run const transaction receipt equals weight trends action response, dot Wait, 
+然后运行 `const transactionReceipt = await transactionResponse.wait()` 
 
 15052
 15:14:14,870 --> 15:14:17,690
-you create and fund subscription IDs, you're just calling create
-
+wait one block confirmation. 
+等待一个区块确认
 
 15053
 15:14:17,690 --> 15:14:20,540
-subscription and fund subscription on that smart
-
+And inside this transaction receipt, there's actually an event that's emitted 
+在这个 "transactionReceipt" 的内部，实际上有一个事件
 
 15054
 15:14:20,540 --> 15:14:23,690
-contract. So on our development chain, we have our V RF
-
+with our subscription that we can get 
+它会被我们获取的订阅触发
 
 15055
 15:14:23,690 --> 15:14:26,450
-coordinator v2 Mock, and what we're going to do and on our
-
+this is another place where emitting events is incredibly helpful. 
+这是另一处证明事件触发很有用的地方
 
 15056
 15:14:26,450 --> 15:14:29,090
-development chain, we're going to create that subscription. So
-
+So in fact, if we open back up a Vera v2 coordinator mark, and we look for create subscription, 
+事实上，如果我们回去打开 "VRFCoordinatorV2Mock" 检索 "createSubscription"
 
 15057
 15:14:29,090 --> 15:14:33,650
-we're gonna say const, transaction, response equals
-
+we see we emit subscription created with the subscription ID, 
+就会看到 "emit SubscriptionCreated()" 参数就是 "subscriptionId"
 
 15058
 15:14:33,680 --> 15:14:42,290
-await VRF coordinator v2 Mock dot create sub scription. And
-
+we can actually get this event emitted from our transaction receipt. 
+我们可以从 "transactionReceipt" 中获取到这个被触发的 "event"
 
 15059
 15:14:42,290 --> 15:14:48,560
-then we'll run const transaction receipt equals weight trends
-
+Now to assign it, let's go ahead and create a sub subscription ID up here. 
+现在来分配一下，在这里创建一个 `subscriptionId`
 
 15060
 15:14:48,590 --> 15:14:54,080
-action response, dot Wait, wait one block confirmation. And
-
+And then we'll say subscription ID equals transaction receipt that events of zero dot args dot sub ID. 
+然后下面是 `subscriptionId = transactionReceipt.events[0].args.subId`
 
 15061
 15:14:54,110 --> 15:14:57,770
-inside this transaction receipt, there's actually an event that's
-
+And again, be sure to watch that events video 
+再提醒一下，如果你想深入了解 "event" 是如何在 Hardhat 中生效的
 
 15062
 15:14:57,770 --> 15:15:00,860
-emitted with our subscription that we can get this is another
-
+if you want to learn more about how to work with events in hardware. 
+那么一定要去看一下那个关于 "event" 的视频
 
 15063
 15:15:00,860 --> 15:15:04,670
-place where emitting events is incredibly helpful. So in fact,
-
+Now that we have a subscription, we need to fund the subscription 
+现在我们有了一个订阅，我们还需要资助这个订阅
 
 15064
 15:15:04,700 --> 15:15:08,270
-if we open back up a Vera v2 coordinator mark, and we look
-
+on a real network, you'd need the link token to actually fund the subscription. 
+在真实网络上，你还需要有 Link 代币才能真正资助这个订阅
 
 15065
 15:15:08,270 --> 15:15:13,250
-for create subscription, we see we emit subscription created
-
+The current iteration of the mock allows you to fund a subscription without the link token. 
+当前的 "mock" 版本允许你在没有 Link 代币的情况下资助订阅
 
 15066
 15:15:13,310 --> 15:15:17,060
-with the subscription ID, we can actually get this event emitted
-
+So what we can do is we can just run a wait your F corps inator Mark, 
+所以我们要做的就是运行 `await vrfCoordinatorMock`
 
 15067
 15:15:17,090 --> 15:15:20,510
-from our transaction receipt. Now to assign it, let's go ahead
-
+if coordinator B to Mach dot fund subscription, and we'll give it the subscription ID 
+应该是 `vrfCoordinatorV2Mock.fundSubscription(subscriptionId)`
 
 15068
 15:15:20,510 --> 15:15:24,530
-and create a sub subscription ID up here. And then we'll say
-
+and we'll need to do some fundamental 
+并提供相应的资助金额
 
 15069
 15:15:24,560 --> 15:15:30,590
-subscription ID equals transaction receipt that events
-
+this, we can just create some variable, 
+我们可以创建一些变量
 
 15070
 15:15:31,190 --> 15:15:37,040
-of zero dot args dot sub ID. And again, be sure to watch that
-
+we'll say const VRF, subscription fund amount equals ethers dot utils, dot parse ether, of, we'll say 30 
+`const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("30")`
 
 15071
 15:15:37,040 --> 15:15:39,830
-events video if you want to learn more about how to work
-
+VRF subscription, fundament. We'll just paste that down here. 
+"VRF_SUB_FUND_AMOUNT" 直接粘贴到下面这里
 
 15072
 15:15:39,830 --> 15:15:42,500
-with events in hardware. Now that we have a subscription, we
-
+We could do this as well for a real test net or live networks. 
+我们可以对实际的测试网络或真实网络做同样的操作
 
 15073
 15:15:42,500 --> 15:15:45,800
-need to fund the subscription on a real network, you'd need the
-
+But just so that we become familiar with the user interface, we're not going to do a test net programmatically. 
+但为了让我们熟悉用户界面，我们就不在测试网上进行程序化操作了
 
 15074
 15:15:45,800 --> 15:15:48,590
-link token to actually fund the subscription. The current
-
+And for a test net, we're just going to use exactly what we've been doing so far. 
+对测试网来说，我们要使用和之前完全相同的做法
 
 15075
 15:15:48,590 --> 15:15:51,350
-iteration of the mock allows you to fund a subscription without
-
+Or we can put a subscription ID and our helper config. 
+或者我们可以把 "subscriptionId" 放进我们的 "helper-config" 中
 
 15076
 15:15:51,350 --> 15:15:54,890
-the link token. So what we can do is we can just run a wait
-
+So we'll say subscription ID, we'll put something in here right now, 
+所以我们写 `subscriptionId` 并在这里放上一些内容
 
 15077
 15:15:54,920 --> 15:16:01,700
-your F corps inator Mark, if coordinator B to Mach dot fund
-
+we'll just leave it as zero. But later on, when we actually create a subscription, we'll update our subscription ID. 
+目前我们设置为 0，但等我们创建完订阅之后，就会把它更新为我们的 "subscriptionId"
 
 15078
 15:16:02,120 --> 15:16:07,280
-subscription, and we'll give it the subscription ID and we'll
-
+And so we'll say subscription ID equals network config. Change ID of subscription ID. 
+接着我们写 `subscriptionId = networkConfig[chainId]["subscriptionId"]`
 
 15079
 15:16:07,280 --> 15:16:09,950
-need to do some fundamental this, we can just create some
-
+Perfect. 
+完美!
 
 15080
 15:16:09,950 --> 15:16:15,680
-variable, we'll say const VRF, subscription fund amount equals
-
+Now we can add this to our arguments array. 
+现在我们可以把它添加进我们的 "args" 数组
 
 15081
 15:16:15,710 --> 15:16:22,100
-ethers dot utils, dot parse ether, of, we'll say 30 VRF
-
+What else do we need
+我们还需要些什么？
 
 15082
 15:16:22,130 --> 15:16:26,480
-subscription, fundament. We'll just paste that down here. We
-
+subscription ID, we need a callback gas limit 
+"subscriptionId" 下面是 "callbackGasLimit"
 
 15083
 15:16:26,480 --> 15:16:29,840
-could do this as well for a real test net or live networks. But
-
+or callback, gas limit is going to vary network to network. 
+"callbackGasLimit" 会随着网络的变化而变化
 
 15084
 15:16:29,840 --> 15:16:32,510
-just so that we become familiar with the user interface, we're
-
+So once again, we're gonna go into our helper configure callback gas limit. 
+所以再一次回到我们的 "helper-config" 写下 `callbackGasLimit`
 
 15085
 15:16:32,510 --> 15:16:35,630
-not going to do a test net programmatically. And for a test
-
+And for us, we'll set a pretty high limit of 500,000 gas. 
+我们要设置一个比较大的限制，500,000 gas 
 
 15086
 15:16:35,630 --> 15:16:37,880
-net, we're just going to use exactly what we've been doing so
-
+So we'll say call a gas limit of 5.123 500,000. Gas. 
+所以我们说 `callbackGasLimit: "500000"` 也就是 500,000 gas 
 
 15087
 15:16:37,880 --> 15:16:40,430
-far. Or we can put a subscription ID and our helper
-
+And for hard hat, we'll do the same thing. 
+对 hardhat 来说，我们要做的事情相同
 
 15088
 15:16:40,430 --> 15:16:44,870
-config. So we'll say subscription ID, we'll put
-
+So we can say const, callback, gas limit equals network config, chain ID, callback, gas limit, 
+现在我们就可以写 `const callbackGasLimit = networkConfig[chainId]["callbackGasLimit"]`
 
 15089
 15:16:44,870 --> 15:16:47,240
-something in here right now, we'll just leave it as zero. But
-
+grab this, put it into our argument array. 
+获取它，并且放到我们的 "args" 数组中
 
 15090
 15:16:47,240 --> 15:16:50,060
-later on, when we actually create a subscription, we'll
-
+What else do we need? All we need now is the interval. 
+我们还需要些什么？现在轮到 "interval" 了
 
 15091
 15:16:50,060 --> 15:16:55,040
-update our subscription ID. And so we'll say subscription ID
-
+So we can change this network to network as well. 
+我们同样可以让它随着网络的变化而变化
 
 15092
 15:16:55,610 --> 15:17:04,670
-equals network config. Change ID of subscription ID. Perfect. Now
-
+Rigby will say, interval will ever just be 30 seconds for both hard hat and for Rigby. 
+对 Rinkeby 来说 `interval`，然后直接把 Rinkeby 和 hardhat 都设置为 `30` 秒
 
 15093
 15:17:04,670 --> 15:17:09,230
-we can add this to our arguments array. What else do we need
-
+So we'll do the same thing here. 
+接下来要做的事情还是一样
 
 15094
 15:17:09,230 --> 15:17:12,500
-subscription ID, we need a callback gas limit or callback,
-
+Say const. Interval equals network config. Chain ID, interval, 
+`const intercal = networkConfig[chainId]["interval"]`
 
 15095
 15:17:12,500 --> 15:17:15,380
-gas limit is going to vary network to network. So once
-
+and we'll grab this, pop it in the end of our array. 
+然后我们获取它，并把它放进我们数组的末尾处
 
 15096
 15:17:15,380 --> 15:17:18,710
-again, we're gonna go into our helper configure callback gas
-
+All right, awesome. 
+干得好，非常好
 
 15097
 15:17:18,740 --> 15:17:23,480
-limit. And for us, we'll set a pretty high limit of 500,000
-
+Now we have an argument array and drop it right in here 
+现在我们有了参数数组，并且把它放进了这里
 
 15098
 15:17:23,480 --> 15:17:29,450
-gas. So we'll say call a gas limit of 5.123 500,000. Gas. And
-
+and perfect. Everything in our constructor for our raffle contract. 
+完美，这就是我们 "Raffle" 合约的构造函数所需要的一切
 
 15099
 15:17:29,450 --> 15:17:32,570
-for hard hat, we'll do the same thing. So we can say const,
-
+Great. This is looking fantastic. 
+很好，看起来好极了
 
 15100
 15:17:32,870 --> 15:17:38,480
-callback, gas limit equals network config, chain ID,
-
+We've got wait confirmations we got logging arguments Deployer. 
+我们有了 "waitConfirmations" 还有 "log, args, deployer"
 
 15101
 15:17:39,860 --> 15:17:44,120
-callback, gas limit, grab this, put it into our argument array.
-
+Okay, well, what next? 
+好的，下一个是什么？
 
 15102
 15:17:44,510 --> 15:17:47,870
-What else do we need? All we need now is the interval. So we
-
+Well, let's go ahead and add that verification piece. 
+嗯，让我们继续，添加验证环节
 
 15103
 15:17:47,870 --> 15:17:51,500
-can change this network to network as well. Rigby will say,
-
+So once again, create a new folder utils, new file verify.js. 
+再次新建文件夹 `utils`，新建文件 `verify.js`
 
 15104
 15:17:51,770 --> 15:17:56,060
-interval will ever just be 30 seconds for both hard hat and
-
+We can either copy paste this from our last project, 
+我们可以直接从上一个项目中复制粘贴
 
 15105
 15:17:56,060 --> 15:17:59,120
-for Rigby. So we'll do the same thing here. Say const.
-
+or we can grab this from the GitHub repo associated with this course, 
+或是从课程关联的 GitHub 仓库中获取
 
 15106
 15:17:59,150 --> 15:18:07,910
-Interval equals network config. Chain ID, interval, and we'll
-
+once we have our verify script in here, 
+一旦有了验证脚本之后
 
 15107
 15:18:07,910 --> 15:18:12,110
-grab this, pop it in the end of our array. All right, awesome.
-
+we're going to import it by saying const. Verify equals require dot dot slash helper Hardhead config. 
+我们就把它导入进来 `const { verify } = require("../helper-hardhat-config")`
 
 15108
 15:18:12,140 --> 15:18:15,230
-Now we have an argument array and drop it right in here and
-
+And then we can add that same bit of code down here to verify our contract, 
+然后我们可以在下面添加相同的代码来验证我们的合约
 
 15109
 15:18:15,230 --> 15:18:18,200
-perfect. Everything in our constructor for our raffle
-
+we'll say if we're not on a development chain. 
+我们写 `if()` 如果我们不在开发链上
 
 15110
 15:18:18,200 --> 15:18:21,440
-contract. Great. This is looking fantastic. We've got wait
-
+And we have process studying v dot ether scan API key, 
+并且我们还拥有 `process.env.ETHERSCAN_API_KEY` 的话
 
 15111
 15:18:21,440 --> 15:18:25,430
-confirmations we got logging arguments Deployer. Okay, well,
-
+then we're going to log verifying dot dot 
+就执行 `log("Verifying...")`
 
 15112
 15:18:25,460 --> 15:18:29,330
-what next? Well, let's go ahead and add that verification piece.
-
+and then await verify raffle dot address and the arcs. 
+然后是 `await verify(raffle.address, args)`
 
 15113
 15:18:29,630 --> 15:18:34,310
-So once again, create a new folder utils, new file
-
+Now we'll just do a log of a whole bunch of hyphens say that this script is done 
+再执行 `log()` 里面是一堆连字符，表明这个脚本已经完成了
 
 15114
 15:18:34,790 --> 15:18:38,060
-verify.js. We can either copy paste this from our last
-
+module dot exports dot tags equals say this will be all and raffle. 
+`module.exports.tags = ["all", "raffle"]`
 
 15115
 15:18:38,060 --> 15:18:41,180
-project, or we can grab this from the GitHub repo associated
-
+All right, so let's test this out. 
+好的，让我们来测试一下它
 
 15116
 15:18:41,180 --> 15:18:43,940
-with this course, once we have our verify script in here, we're
-
+We'll do hardhat deploy, or yarn, hard hat deploy
+我们执行 `hh deploy` 或是 `yarn hardhat deploy`
 
 15117
 15:18:43,940 --> 15:18:51,230
-going to import it by saying const. Verify equals require dot
-
+and see if this script works correctly. 
+看一下这个脚本是否能正确运行
 
 15118
 15:18:51,230 --> 15:18:57,140
-dot slash helper Hardhead config. And then we can add that
-
+Looks like we ran into an error network config not defined. 
+看起来我们运行出了一个错误 "netwrokConfig is not defined"
+（“netwrokConfig 未被定义”） 
 
 15119
 15:18:57,140 --> 15:19:00,950
-same bit of code down here to verify our contract, we'll say
-
+So let's spell this right. Network config. 
+让我们把它拼对 `networkConfig`
 
 15120
 15:19:00,980 --> 15:19:11,810
-if we're not on a development chain. And we have process
-
+There we go. And that looks much better. Let's try this again. 
+好的，这样看起来好多了，再试一次
 
 15121
 15:19:11,810 --> 15:19:16,400
-studying v dot ether scan API key, then we're going to log
-
+It looks like our deploy scripts are working well. 
+看起来我们的部署脚本运行良好
 
 15122
 15:19:16,430 --> 15:19:22,490
-verifying dot dot and then await verify raffle dot address and
-
+local networks protected, deploying mocks
+"Local network detected! Deploying mocks..."
+（检测到本地网络！正在部署 mocks）
 
 15123
 15:19:22,490 --> 15:19:26,090
-the arcs. Now we'll just do a log of a whole bunch of hyphens
-
+deployed VRF coordinator v2 Mock 
+'deploying "VRFCoordinatorV2Mock"'
+（正在部署 "VRFCoordinatorV2Mock"）
 
 15124
 15:19:26,150 --> 15:19:31,070
-say that this script is done module dot exports dot tags
-
+mocks deployed 
+"Mocks Deployed"
+（Mocks 部署完成）
 
 15125
 15:19:31,100 --> 15:19:36,200
-equals say this will be all and raffle. All right, so let's test
-
+and then we went ahead and deployed our raffle. 
+接着我们继续部署完了我们的 "Raffle"
 
 15126
 15:19:36,200 --> 15:19:41,450
-this out. We'll do hardhat deploy, or yarn, hard hat deploy
-
-
-15127
-15:19:41,690 --> 15:19:45,020
-and see if this script works correctly. Looks like we ran
-
-
-15128
-15:19:45,020 --> 15:19:49,250
-into an error network config not defined. So let's spell this
-
-
-15129
-15:19:49,250 --> 15:19:52,760
-right. Network config. There we go. And that looks much better.
-
-
-15130
-15:19:52,850 --> 15:19:55,700
-Let's try this again. It looks like our deploy scripts are
-
-
-15131
-15:19:55,700 --> 15:19:58,640
-working well. local networks protected, deploying mocks
-
-
-15132
-15:19:58,700 --> 15:20:02,300
-deployed VRF coordinator v2 Mock mocks deployed and then we went
-
-
-15133
-15:20:02,330 --> 15:20:08,750
-ahead and deployed our raffle. Awesome, this is massive. 
+Awesome, this is massive. 
+太棒了，巨大的成功
