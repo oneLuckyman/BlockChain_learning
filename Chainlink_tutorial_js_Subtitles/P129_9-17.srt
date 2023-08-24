@@ -660,4 +660,4 @@ and then we went ahead and deployed our raffle.
 15126
 15:19:36,200 --> 15:19:41,450
 Awesome, this is massive. 
-太棒了，巨大的成功
+太棒了，简直是巨大的进展

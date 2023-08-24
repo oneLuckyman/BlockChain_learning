@@ -1,0 +1,758 @@
+15133
+15:20:02,330 --> 15:20:08,750
+Now
+
+
+15134
+15:20:08,750 --> 15:20:11,030
+we're not going to test the deploying this to a test net
+
+
+15135
+15:20:11,030 --> 15:20:14,120
+quite yet, because well, we don't have any unit tests yet.
+
+
+15136
+15:20:14,180 --> 15:20:17,390
+We need to write unit tests before we want to ever test
+
+
+15137
+15:20:17,390 --> 15:20:20,240
+running this on a test net. So we have our deploy script, we
+
+
+15138
+15:20:20,240 --> 15:20:23,510
+have our contracts, that means it's time for us to write some
+
+
+15139
+15:20:23,510 --> 15:20:26,420
+tests. We'll come over here we'll create a new folder called
+
+
+15140
+15:20:26,420 --> 15:20:29,840
+test. And for now, we'll just make our unit tests. So unit
+
+
+15141
+15:20:29,930 --> 15:20:35,030
+tests, and in here we create a new file called raffle.test.js.
+
+
+15142
+15:20:35,090 --> 15:20:38,360
+And let's write some unit tests. Now for these unit tests, we are
+
+
+15143
+15:20:38,360 --> 15:20:40,640
+going to be a little bit verbose here, we're going to make our
+
+
+15144
+15:20:40,640 --> 15:20:43,370
+coverage really, really good here. It's not gonna be perfect,
+
+
+15145
+15:20:43,370 --> 15:20:46,370
+but this is going to be pretty verbose. So I'm gonna go pretty
+
+
+15146
+15:20:46,370 --> 15:20:49,340
+quickly here. So you can feel free to pause, slow me down,
+
+
+15147
+15:20:49,340 --> 15:20:53,600
+speed me up whatever you need to learn this section. It is really
+
+
+15148
+15:20:53,600 --> 15:20:56,060
+good muscle memory to go through writing these tests and
+
+
+15149
+15:20:56,060 --> 15:20:58,850
+understand what you should be thinking about when you're
+
+
+15150
+15:20:58,850 --> 15:21:01,940
+writing these tests. So feel free to speed up the parts You
+
+
+15151
+15:21:01,940 --> 15:21:04,520
+already know and slow down the new parts. Because we are going
+
+
+15152
+15:21:04,520 --> 15:21:08,300
+to go over some new information here. writing tests may seem
+
+
+15153
+15:21:08,300 --> 15:21:11,390
+like a tedious process. But I promise as you get better at
+
+
+15154
+15:21:11,390 --> 15:21:13,940
+writing these tests, you'll realize that these are the
+
+
+15155
+15:21:13,940 --> 15:21:17,300
+things that you can rely on when stuff doesn't work. And when
+
+
+15156
+15:21:17,300 --> 15:21:19,520
+you're not sure how to code, something, getting this muscle
+
+
+15157
+15:21:19,520 --> 15:21:23,000
+memory down, writing these tests is going to make you a fantastic
+
+
+15158
+15:21:23,000 --> 15:21:25,310
+engineer. So let's go through and we'll write some of these
+
+
+15159
+15:21:25,340 --> 15:21:28,520
+verbose tests here to try to make this really good and have
+
+
+15160
+15:21:28,520 --> 15:21:30,920
+this have really good coverage. And if you want to go back later
+
+
+15161
+15:21:30,920 --> 15:21:33,320
+on, and see if you can give it even more coverage, and even
+
+
+15162
+15:21:33,320 --> 15:21:36,560
+better tests, please feel free to do so. But let's get started.
+
+
+15163
+15:21:36,590 --> 15:21:39,350
+Let's write some tests. So we're going to start out pretty much
+
+
+15164
+15:21:39,350 --> 15:21:41,390
+the same way we've been starting everything out, we're going to
+
+
+15165
+15:21:41,390 --> 15:21:44,660
+grab our development chains, so that we only run our unit tests
+
+
+15166
+15:21:44,690 --> 15:21:48,680
+on a development chain. So we'll do const development chains,
+
+
+15167
+15:21:49,070 --> 15:21:55,610
+equals require dot dot slash dot dot slash helper, RD, hard hat
+
+
+15168
+15:21:55,640 --> 15:22:00,230
+config, and then we'll say not development chains, that
+
+
+15169
+15:22:00,230 --> 15:22:07,490
+includes network dot name, and describe that skip. Otherwise,
+
+
+15170
+15:22:07,520 --> 15:22:10,460
+we'll do describe, so this first describe is going to be our
+
+
+15171
+15:22:10,490 --> 15:22:16,130
+raffle unit tests. And this is going to be an async. function.
+
+
+15172
+15:22:16,280 --> 15:22:19,160
+So raffle unit tests so that it comes on the next line, it looks
+
+
+15173
+15:22:19,160 --> 15:22:21,050
+a little bit better. Alright, great. Now, what are some of the
+
+
+15174
+15:22:21,050 --> 15:22:23,420
+main things that we're going to need to deploy? Well, we're
+
+
+15175
+15:22:23,420 --> 15:22:26,000
+gonna need to deploy a raffle, we're probably going to want a
+
+
+15176
+15:22:26,000 --> 15:22:31,370
+VRF core to a tour be to mock graded before each, that's going
+
+
+15177
+15:22:31,370 --> 15:22:35,420
+to be an async function, where we go ahead and we get these
+
+
+15178
+15:22:35,570 --> 15:22:40,760
+will say const. Employer equals await, get named accounts.
+
+
+15179
+15:22:41,540 --> 15:22:44,540
+So we're gonna need to import get named accounts or require
+
+
+15180
+15:22:44,540 --> 15:22:47,000
+get name accounts from hard hat, then we're going to want to
+
+
+15181
+15:22:47,000 --> 15:22:51,770
+deploy these using our fixtures. So we can say await deployments.
+
+
+15182
+15:22:51,890 --> 15:22:55,250
+And then we're going to import deployments as well from hardhat
+
+
+15183
+15:22:55,280 --> 15:23:00,230
+dot fixture, and we're going to call all, we're going to deploy
+
+
+15184
+15:23:00,290 --> 15:23:03,800
+everything. And again, if we look at our one, our raffle has
+
+
+15185
+15:23:03,800 --> 15:23:07,910
+the alt tag, and our Oh, our mocks also have the alt tag,
+
+
+15186
+15:23:07,940 --> 15:23:12,080
+okay, perfect. Once we deploy everything, we can say raffle
+
+
+15187
+15:23:12,290 --> 15:23:17,270
+equals await ethers dot get to contract. And we got to import
+
+
+15188
+15:23:17,300 --> 15:23:21,200
+ethers from hard hat, like so. And we'll say it will get the
+
+
+15189
+15:23:21,200 --> 15:23:27,380
+raffle contract and we'll connect it to our Deployer. And
+
+
+15190
+15:23:27,380 --> 15:23:30,050
+then we're going to do the same thing with VRF coordinator v2
+
+
+15191
+15:23:30,050 --> 15:23:37,550
+Mock equals await ethers dot get contract, the RF coordinator, B
+
+
+15192
+15:23:37,550 --> 15:23:41,150
+to MK connect this to deployer as well. Alright, great, our
+
+
+15193
+15:23:41,150 --> 15:23:44,270
+first set of tests describe, they're going to be the
+
+
+15194
+15:23:44,270 --> 15:23:50,330
+constructor. And this is going to be an async function. And
+
+
+15195
+15:23:50,330 --> 15:23:55,340
+let's do this. Let's create an IT initial initializes the
+
+
+15196
+15:23:55,340 --> 15:24:02,270
+raffle correctly, this is going to be an async function. Now I
+
+
+15197
+15:24:02,270 --> 15:24:06,440
+just want to make a note, because ideally, we make our
+
+
+15198
+15:24:06,440 --> 15:24:12,200
+tests have just one assert, or it just keep that in mind is
+
+
+15199
+15:24:12,200 --> 15:24:14,450
+that ideally, we want to have just one assert for it. But
+
+
+15200
+15:24:14,450 --> 15:24:17,060
+we're going to have a bunch because like I said, we're being
+
+
+15201
+15:24:17,060 --> 15:24:19,520
+a little bit loose here. So we want to just make sure that our
+
+
+15202
+15:24:19,520 --> 15:24:24,860
+raffle is initialized correctly. So we'll say const raffle state,
+
+
+15203
+15:24:24,980 --> 15:24:27,860
+and we'll get that raffle state because we want to make sure
+
+
+15204
+15:24:28,010 --> 15:24:31,430
+that we start in an open raffle state. So we'll say const,
+
+
+15205
+15:24:31,430 --> 15:24:39,470
+raffle state equals await raffle dot get raffle state. And then
+
+
+15206
+15:24:39,470 --> 15:24:43,460
+we want to say assert dot equal ope and then we need to import
+
+
+15207
+15:24:43,520 --> 15:24:47,960
+assert from Chai. So assert equals require Chai assert dot
+
+
+15208
+15:24:47,960 --> 15:24:53,630
+equal raffle state.to string because again, raffle state is
+
+
+15209
+15:24:53,630 --> 15:24:57,860
+going to be a big number. And even though a raffle state is of
+
+
+15210
+15:24:57,860 --> 15:25:01,820
+type raffle state, it'll return a zero if it's open and a one if
+
+
+15211
+15:25:01,820 --> 15:25:06,410
+it's calculating. So this gets transformed just into a un 256.
+
+
+15212
+15:25:06,440 --> 15:25:09,710
+When we call it like this, a raffle state variable here will
+
+
+15213
+15:25:09,710 --> 15:25:13,280
+be a big number. So we want to just to string a file. So assert
+
+
+15214
+15:25:13,280 --> 15:25:16,880
+dot equal raffle state DOT two string zero. We'll also make
+
+
+15215
+15:25:16,880 --> 15:25:20,060
+sure our interval gets set correctly. So we'll do const
+
+
+15216
+15:25:20,240 --> 15:25:28,580
+interval equals await raffle dot get interval. And I don't know
+
+
+15217
+15:25:28,580 --> 15:25:32,840
+if we have one of those it's actually C inter ball see if we
+
+
+15218
+15:25:32,840 --> 15:25:35,990
+have one of those. We don't have a good interval let's go ahead
+
+
+15219
+15:25:35,990 --> 15:25:39,680
+and add again interval function so we'll do function get in
+
+
+15220
+15:25:40,850 --> 15:25:48,500
+trouble. We have public view returns you went to six return I
+
+
+15221
+15:25:48,500 --> 15:25:53,780
+underscore interval will have good interval will say raffle
+
+
+15222
+15:25:53,780 --> 15:25:58,910
+dot get interval and will also say assert dot equal interval.to
+
+
+15223
+15:25:58,910 --> 15:26:04,010
+string. It should equal one Ever is in our helper config, right?
+
+
+15224
+15:26:04,040 --> 15:26:06,860
+Because we're using the interval and helper config. So we say
+
+
+15225
+15:26:06,860 --> 15:26:11,120
+interval.to string should equal. So we'll import that as well.
+
+
+15226
+15:26:11,690 --> 15:26:15,770
+Network config. And we'll say the interval should equal
+
+
+15227
+15:26:16,010 --> 15:26:22,550
+network config. Of let's also make, get our chain ID up here,
+
+
+15228
+15:26:22,610 --> 15:26:29,510
+chain ID, say const. Chain ID equals network dot config, a
+
+
+15229
+15:26:29,510 --> 15:26:35,780
+chain ID, network config of the chain ID of interval. Alright,
+
+
+15230
+15:26:35,780 --> 15:26:40,130
+cool. So let's test this so far, HH test or yarn, hard hat test.
+
+
+15231
+15:26:41,390 --> 15:26:44,210
+And cool looks like it passed. And we have our little gas
+
+
+15232
+15:26:44,210 --> 15:26:47,600
+output here. Awesome. Let's go to our Hardhead config, just so
+
+
+15233
+15:26:47,600 --> 15:26:50,600
+that it doesn't always print out at gas, but there for now. So
+
+
+15234
+15:26:50,600 --> 15:26:54,020
+I'm going to copy paste the gas reporter section from our last
+
+
+15235
+15:26:54,020 --> 15:26:57,140
+project, like so. And we're going to have enabled gas be
+
+
+15236
+15:26:57,200 --> 15:27:00,080
+false for now. So now if we run a Hardhead test, again, we
+
+
+15237
+15:27:00,080 --> 15:27:02,480
+shouldn't have that gas bid printed out, we should just see
+
+
+15238
+15:27:02,480 --> 15:27:05,390
+the tests and perfect, that's what we see. And our constructor
+
+
+15239
+15:27:05,390 --> 15:27:09,470
+test passes. Yay, what's next, got our constructor. And we
+
+
+15240
+15:27:09,470 --> 15:27:11,690
+probably could have written more tests for the rest of these. But
+
+
+15241
+15:27:11,720 --> 15:27:14,090
+let's just move on. Alright, enter raffle, that's going to be
+
+
+15242
+15:27:14,090 --> 15:27:17,240
+our next describe block. So it will do describe,
+
+
+15243
+15:27:19,850 --> 15:27:24,980
+enter, raffle. And this is going to be an async function. And
+
+
+15244
+15:27:24,980 --> 15:27:30,200
+we'll say it reverts when you don't pay enough, right, because
+
+
+15245
+15:27:30,200 --> 15:27:32,780
+one of the first things that we check is that they're paying
+
+
+15246
+15:27:32,780 --> 15:27:36,020
+enough. So we want to make sure that this actually reverts if
+
+
+15247
+15:27:36,020 --> 15:27:40,910
+they don't pay enough. So this will be an async function. Where
+
+
+15248
+15:27:40,940 --> 15:27:44,750
+we're going to do that same expect await thing. So we're
+
+
+15249
+15:27:44,750 --> 15:27:48,590
+going to import expect from Chai, which comes from those
+
+
+15250
+15:27:48,620 --> 15:27:55,100
+waffle matchers. And we're gonna say await, expect raffle dot
+
+
+15251
+15:27:55,190 --> 15:27:59,870
+enter a raffle. And we're not going to pass any value here,
+
+
+15252
+15:27:59,930 --> 15:28:06,320
+we're going to expect it to dot b dot reverted with. And if we
+
+
+15253
+15:28:06,320 --> 15:28:09,980
+look here, we want it to be reverted with this raffle not
+
+
+15254
+15:28:09,980 --> 15:28:13,970
+enough eath entered. So we can put that in quotes raffle not
+
+
+15255
+15:28:14,000 --> 15:28:17,810
+enough eath entered. Now we can try this out. Make sure that it
+
+
+15256
+15:28:17,810 --> 15:28:22,670
+actually works. Ah ah test dash dash grep. Put this in quotes
+
+
+15257
+15:28:22,670 --> 15:28:26,420
+that you don't pay enough. And awesome. We're passing there.
+
+
+15258
+15:28:26,450 --> 15:28:29,060
+What else do we want to test? Well, we want to test that if
+
+
+15259
+15:28:29,060 --> 15:28:31,940
+the raffle isn't open, we also revert but we'll test that in a
+
+
+15260
+15:28:31,940 --> 15:28:34,730
+little bit. As we kind of test the rest of the functionality.
+
+
+15261
+15:28:34,760 --> 15:28:40,280
+We want to see that it records players when they enter. So this
+
+
+15262
+15:28:40,280 --> 15:28:44,450
+will be an async function. And now we'll enter the raffle.
+
+
+15263
+15:28:44,480 --> 15:28:47,060
+First we're going to need that raffle entrance fee. Let's go
+
+
+15264
+15:28:47,060 --> 15:28:50,720
+ahead and save that at the top. So we'll say let raffle VRF
+
+
+15265
+15:28:50,720 --> 15:28:54,440
+coordinator be to mock raffle entrance fee and then our before
+
+
+15266
+15:28:54,440 --> 15:28:59,210
+each will say raffle entrance fee equals a weight ethers dot
+
+
+15267
+15:28:59,480 --> 15:29:05,300
+get entrance fee. This should be raffle dot get entrance fee. So
+
+
+15268
+15:29:05,330 --> 15:29:08,450
+now we have this raffle entrance fee, you can use it to enter the
+
+
+15269
+15:29:08,450 --> 15:29:15,380
+raffle we'll say a weight raffle dot enter raffle with a value of
+
+
+15270
+15:29:15,860 --> 15:29:20,180
+raffle entrance fee. And we can make sure that our Deployer here
+
+
+15271
+15:29:20,180 --> 15:29:23,270
+has been correctly recorded. So since right now we're connected
+
+
+15272
+15:29:23,270 --> 15:29:26,690
+to the Deployer. We'll just make sure that that deployer actually
+
+
+15273
+15:29:26,720 --> 15:29:31,910
+is in our contract. So we'll say const player from contract
+
+
+15274
+15:29:32,030 --> 15:29:38,720
+equals await raffle dot get player of zero, because we
+
+
+15275
+15:29:38,720 --> 15:29:42,500
+record them in our players array and we have our get players
+
+
+15276
+15:29:42,500 --> 15:29:46,160
+function which pulls them out. And then we'll say assert dot
+
+
+15277
+15:29:46,160 --> 15:29:51,050
+equal player, player from contract should be the Deployer.
+
+
+15278
+15:29:51,770 --> 15:29:54,650
+So now we can grep for this in our hard head test. Make sure
+
+
+15279
+15:29:54,650 --> 15:30:00,350
+this works. HH test dash dash grep. Deployer is not defined.
+
+
+15280
+15:30:00,410 --> 15:30:02,600
+We've got it up here. But we actually didn't save it
+
+
+15281
+15:30:02,600 --> 15:30:07,520
+globally. So we got to do let common Deployer. And we'll say
+
+
+15282
+15:30:07,880 --> 15:30:11,720
+deployer equals await get named accounts. And we'll wrap it like
+
+
+15283
+15:30:11,720 --> 15:30:15,740
+this to get the deployer Awesome. Let's try this again.
+
+
+15284
+15:30:16,280 --> 15:30:21,980
+And awesome. What else should this do? 
