@@ -1,346 +1,347 @@
 15133
 15:20:02,330 --> 15:20:08,750
-Now
-
+Now we're not going to test the deploying this to a test net quite yet, 
+我们暂时还不打算把它部署到测试网上
 
 15134
 15:20:08,750 --> 15:20:11,030
-we're not going to test the deploying this to a test net
-
+because well, we don't have any unit tests yet. 
+因为我们还没有进行任何的 Unit 测试
 
 15135
 15:20:11,030 --> 15:20:14,120
-quite yet, because well, we don't have any unit tests yet.
-
+We need to write unit tests before we want to ever test running this on a test net. 
+我们要在测试网上进行测试之前编写 Unit 测试
 
 15136
 15:20:14,180 --> 15:20:17,390
-We need to write unit tests before we want to ever test
-
+So we have our deploy script, we have our contracts, that means it's time for us to write some tests. 
+现在我们有了部署脚本，还有了合约，这意味着我们该编写一些测试了
 
 15137
 15:20:17,390 --> 15:20:20,240
-running this on a test net. So we have our deploy script, we
-
+We'll come over here we'll create a new folder called test. 
+我们在这里创建一个新的文件夹，命名为 `test`
 
 15138
 15:20:20,240 --> 15:20:23,510
-have our contracts, that means it's time for us to write some
-
+And for now, we'll just make our unit tests. 
+现在我们开始创建我们的 Unit 测试
 
 15139
 15:20:23,510 --> 15:20:26,420
-tests. We'll come over here we'll create a new folder called
-
+So unit tests, and in here we create a new file called raffle.test.js. 
+新建一个名为 `Raffle.test.js` 的文件
 
 15140
 15:20:26,420 --> 15:20:29,840
-test. And for now, we'll just make our unit tests. So unit
-
+And let's write some unit tests. 
+让我们开始编写 Unit 测试
 
 15141
 15:20:29,930 --> 15:20:35,030
-tests, and in here we create a new file called raffle.test.js.
-
+Now for these unit tests, we are going to be a little bit verbose here, 
+对 Unit 测试来说，它的内容会有些冗长
 
 15142
 15:20:35,090 --> 15:20:38,360
-And let's write some unit tests. Now for these unit tests, we are
-
+we're going to make our coverage really, really good here. 
+我们会尽量覆盖所有方面
 
 15143
 15:20:38,360 --> 15:20:40,640
-going to be a little bit verbose here, we're going to make our
-
+It's not gonna be perfect, but this is going to be pretty verbose. 
+可能不会特别完美，但会足够详细
 
 15144
 15:20:40,640 --> 15:20:43,370
-coverage really, really good here. It's not gonna be perfect,
-
+So I'm gonna go pretty quickly here. 
+让我们快速过一遍这里
 
 15145
 15:20:43,370 --> 15:20:46,370
-but this is going to be pretty verbose. So I'm gonna go pretty
-
+So you can feel free to pause, slow me down, speed me up whatever you need to learn this section. 
+你可以随时按照自己的学习需要选择暂停，放慢速度，或是加快速度
 
 15146
 15:20:46,370 --> 15:20:49,340
-quickly here. So you can feel free to pause, slow me down,
-
+It is really good muscle memory to go through writing these tests 
+编写这些测试对形成肌肉记忆很有帮助
 
 15147
 15:20:49,340 --> 15:20:53,600
-speed me up whatever you need to learn this section. It is really
-
+and understand what you should be thinking about when you're writing these tests. 
+还能让你理解编写测试时该思考哪些东西
 
 15148
 15:20:53,600 --> 15:20:56,060
-good muscle memory to go through writing these tests and
-
+So feel free to speed up the parts You already know and slow down the new parts. 
+所以请自由选择加速你已经了解的部分或是放慢不了解的新部分
 
 15149
 15:20:56,060 --> 15:20:58,850
-understand what you should be thinking about when you're
-
+Because we are going to go over some new information here. 
+因为我们会在这里介绍一些新的信息
 
 15150
 15:20:58,850 --> 15:21:01,940
-writing these tests. So feel free to speed up the parts You
-
+writing tests may seem like a tedious process. 
+编写测试的过程看起来可能会比较枯燥
 
 15151
 15:21:01,940 --> 15:21:04,520
-already know and slow down the new parts. Because we are going
-
+But I promise as you get better at writing these tests, 
+但我保证，随着你编写测试的熟练度不断提高
 
 15152
 15:21:04,520 --> 15:21:08,300
-to go over some new information here. writing tests may seem
-
+you'll realize that these are the things that you can rely on
+你就会意识到，当你工程不顺，或是代码不知道怎么处理的时候
 
 15153
 15:21:08,300 --> 15:21:11,390
-like a tedious process. But I promise as you get better at
-
+when stuff doesn't work. And when you're not sure how to code, something, 
+这些才是你可以依靠的东西
 
 15154
 15:21:11,390 --> 15:21:13,940
-writing these tests, you'll realize that these are the
-
+getting this muscle memory down, writing these tests is going to make you a fantastic engineer. 
+编写这些测试，获取这些肌肉记忆可以让你成为一个优秀的工程师
 
 15155
 15:21:13,940 --> 15:21:17,300
-things that you can rely on when stuff doesn't work. And when
-
+So let's go through and we'll write some of these verbose tests here 
+让我们继续，编写一些详细的测试
 
 15156
 15:21:17,300 --> 15:21:19,520
-you're not sure how to code, something, getting this muscle
-
+to try to make this really good and have this have really good coverage. 
+并尽量确保较高的覆盖率
 
 15157
 15:21:19,520 --> 15:21:23,000
-memory down, writing these tests is going to make you a fantastic
-
+And if you want to go back later on, and see if you can give it even more coverage, 
+如果你以后想回来，看看是否能给它更高的覆盖率
 
 15158
 15:21:23,000 --> 15:21:25,310
-engineer. So let's go through and we'll write some of these
-
+and even better tests, please feel free to do so. 
+甚至是更好的测试，也请随意如此
 
 15159
 15:21:25,340 --> 15:21:28,520
-verbose tests here to try to make this really good and have
-
+But let's get started. Let's write some tests. 
+让我们开始吧，来编写一些测试
 
 15160
 15:21:28,520 --> 15:21:30,920
-this have really good coverage. And if you want to go back later
-
+So we're going to start out pretty much the same way we've been starting everything out, 
+我们将以与之前几乎相同的方式开始
 
 15161
 15:21:30,920 --> 15:21:33,320
-on, and see if you can give it even more coverage, and even
-
+we're going to grab our development chains, 
+我们会先获取我们的开发链
 
 15162
 15:21:33,320 --> 15:21:36,560
-better tests, please feel free to do so. But let's get started.
-
+so that we only run our unit tests on a development chain. 
+这样我们就只会在开发链上运行我们的 Unit 测试了
 
 15163
 15:21:36,590 --> 15:21:39,350
-Let's write some tests. So we're going to start out pretty much
-
+So we'll do const development chains, equals require dot dot slash dot dot slash helper, RD, hard hat config, 
+首先写 `cosnt { developmentChains } = require("../../helper-hardhat-config")`
 
 15164
 15:21:39,350 --> 15:21:41,390
-the same way we've been starting everything out, we're going to
-
+and then we'll say not development chains, that includes network dot name, and describe that skip. 
+接着写 `!developmentChains.includes(network.name) ? describe.skip`
 
 15165
 15:21:41,390 --> 15:21:44,660
-grab our development chains, so that we only run our unit tests
-
+Otherwise, we'll do describe, 
+否则就执行 `describe()`
+(译者注："C ? T : F" 是一种名为三元条件运算符的简化 if 语句)
 
 15166
 15:21:44,690 --> 15:21:48,680
-on a development chain. So we'll do const development chains,
-
+so this first describe is going to be our raffle unit tests. 
+第一个 "describe" 是我们的 `"Raffle"` Unit 测试
 
 15167
 15:21:49,070 --> 15:21:55,610
-equals require dot dot slash dot dot slash helper, RD, hard hat
-
+And this is going to be an async. function.
+然后这里是一个 `async function`
 
 15168
 15:21:55,640 --> 15:22:00,230
-config, and then we'll say not development chains, that
-
+So raffle unit tests so that it comes on the next line, it looks a little bit better. Alright, great. 
+"Raffle Unit Tests" 被放到了下一行，看起来更好看一点，非常好
 
 15169
 15:22:00,230 --> 15:22:07,490
-includes network dot name, and describe that skip. Otherwise,
-
+Now, what are some of the main things that we're going to need to deploy? 
+现在，我们主要需要部署的是哪些东西
 
 15170
 15:22:07,520 --> 15:22:10,460
-we'll do describe, so this first describe is going to be our
-
+Well, we're gonna need to deploy a raffle, we're probably going to want a VRF core to a tour be to mock 
+嗯，我们需要部署 `raffle, vrfCoordinatorV2Mock`
 
 15171
 15:22:10,490 --> 15:22:16,130
-raffle unit tests. And this is going to be an async. function.
-
+graded before each, that's going to be an async function, 
+测试前是 `beforeEach(async function())`
 
 15172
 15:22:16,280 --> 15:22:19,160
-So raffle unit tests so that it comes on the next line, it looks
-
+where we go ahead and we get these
+我们就在这里获取它们
 
 15173
 15:22:19,160 --> 15:22:21,050
-a little bit better. Alright, great. Now, what are some of the
-
+will say const. Employer equals await, get named accounts. 
+我们要写 `const { deployer } = await getNamedAccounts()`
 
 15174
 15:22:21,050 --> 15:22:23,420
-main things that we're going to need to deploy? Well, we're
-
+So we're gonna need to import get named accounts or require get name accounts from hard hat, 
+所以我们需要导入 "getNamedAccounts" 或者说从 "hardhat" 中 "require getNamedAccounts"
 
 15175
 15:22:23,420 --> 15:22:26,000
-gonna need to deploy a raffle, we're probably going to want a
-
+then we're going to want to deploy these using our fixtures. 
+接下来我们要用 "fixture" 部署它们
 
 15176
 15:22:26,000 --> 15:22:31,370
-VRF core to a tour be to mock graded before each, that's going
-
+So we can say await deployments.
+我们可以写 `await deployments`
 
 15177
 15:22:31,370 --> 15:22:35,420
-to be an async function, where we go ahead and we get these
-
+And then we're going to import deployments as well from hardhat
+我们同样需要从 "hardhat" 中把 "deployments" 导入进来
 
 15178
 15:22:35,570 --> 15:22:40,760
-will say const. Employer equals await, get named accounts.
-
+dot fixture, and we're going to call all, 
+然后是 `.fixture()` 并调用 `["all"]`
 
 15179
 15:22:41,540 --> 15:22:44,540
-So we're gonna need to import get named accounts or require
-
+we're going to deploy everything. 
+表明我们要部署所有内容
 
 15180
 15:22:44,540 --> 15:22:47,000
-get name accounts from hard hat, then we're going to want to
-
+And again, if we look at our one, our raffle has the alt tag, 
+如果我们看一下 "01" 我们的 "raffle" 具有标签 "all" 
 
 15181
 15:22:47,000 --> 15:22:51,770
-deploy these using our fixtures. So we can say await deployments.
-
+and our Oh, our mocks also have the alt tag,
+再看一下 "00" 我们的 "mocks" 同样具有 "all" 标签
 
 15182
 15:22:51,890 --> 15:22:55,250
-And then we're going to import deployments as well from hardhat
-
+okay, perfect. 
+OK 非常完美
 
 15183
 15:22:55,280 --> 15:23:00,230
-dot fixture, and we're going to call all, we're going to deploy
-
+Once we deploy everything, 
+一旦我们部署了所有的内容
 
 15184
 15:23:00,290 --> 15:23:03,800
-everything. And again, if we look at our one, our raffle has
-
+we can say raffle equals await ethers dot get to contract. 
+我们就可以执行 `raffle = await ethers.getContract`
 
 15185
 15:23:03,800 --> 15:23:07,910
-the alt tag, and our Oh, our mocks also have the alt tag,
-
+And we got to import ethers from hard hat, like so. 
+同样需要把 "ethers" 从 "hardhat" 中导入进来，就像这样 
 
 15186
 15:23:07,940 --> 15:23:12,080
-okay, perfect. Once we deploy everything, we can say raffle
-
+And we'll say it will get the raffle contract and we'll connect it to our Deployer. 
+然后我们要写上 `"Raffle"` 合约，并将其连接至我们的 "deployer"
 
 15187
 15:23:12,290 --> 15:23:17,270
-equals await ethers dot get to contract. And we got to import
-
+And then we're going to do the same thing with VRF coordinator v2 Mock equals await ethers dot get contract, the RF coordinator, B to MK 
+然后同样的操作 `vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")`
 
 15188
 15:23:17,300 --> 15:23:21,200
-ethers from hard hat, like so. And we'll say it will get the
-
+connect this to deployer as well. 
+并将其同样连接至 "deployer"
 
 15189
 15:23:21,200 --> 15:23:27,380
-raffle contract and we'll connect it to our Deployer. And
-
+Alright, great, our first set of tests describe, they're going to be the constructor. 
+好的，下面是我们的第一组测试 `describe("constructor")`
 
 15190
 15:23:27,380 --> 15:23:30,050
-then we're going to do the same thing with VRF coordinator v2
-
+And this is going to be an async function. 
+然后是 `async function`
 
 15191
 15:23:30,050 --> 15:23:37,550
-Mock equals await ethers dot get contract, the RF coordinator, B
-
+And let's do this. Let's create an IT initial initializes the raffle correctly, 
+让我们开始吧，创建一个 `it("initializes the raffle correctly")`
 
 15192
 15:23:37,550 --> 15:23:41,150
-to MK connect this to deployer as well. Alright, great, our
-
+this is going to be an async function. 
+还有一个 `async function()`
 
 15193
 15:23:41,150 --> 15:23:44,270
-first set of tests describe, they're going to be the
-
+Now I just want to make a note, because ideally, we make our tests have just one assert, or it 
+现在我要提醒一下，“理想情况下，我们要让测试中的每个 "it" 都只拥有一处断言”
 
 15194
 15:23:44,270 --> 15:23:50,330
-constructor. And this is going to be an async function. And
-
+just keep that in mind is that ideally, we want to have just one assert for it. 
+只需要记住这一点，理想情况下，我们希望每个 "it" 都只有一处断言
 
 15195
 15:23:50,330 --> 15:23:55,340
-let's do this. Let's create an IT initial initializes the
-
+But we're going to have a bunch because like I said, we're being a little bit loose here. 
+但我们会出现存在多处断言的情况，因为，我们的要求不那么严格
 
 15196
 15:23:55,340 --> 15:24:02,270
-raffle correctly, this is going to be an async function. Now I
+
 
 
 15197
 15:24:02,270 --> 15:24:06,440
-just want to make a note, because ideally, we make our
+
 
 
 15198
 15:24:06,440 --> 15:24:12,200
-tests have just one assert, or it just keep that in mind is
+
 
 
 15199
 15:24:12,200 --> 15:24:14,450
-that ideally, we want to have just one assert for it. But
+
 
 
 15200
 15:24:14,450 --> 15:24:17,060
-we're going to have a bunch because like I said, we're being
+
 
 
 15201
 15:24:17,060 --> 15:24:19,520
-a little bit loose here. So we want to just make sure that our
+So we want to just make sure that our
 
 
 15202
