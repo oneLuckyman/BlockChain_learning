@@ -316,82 +316,82 @@ But we're going to have a bunch because like I said, we're being a little bit lo
 
 15196
 15:23:55,340 --> 15:24:02,270
-
-
+So we want to just make sure that our raffle is initialized correctly. 
+首先我们要确保抽奖会被正确地初始化
 
 15197
 15:24:02,270 --> 15:24:06,440
-
-
+So we'll say const raffle state, and we'll get that raffle state 
+所以我们说 `const raffleState` 然后我们获取对应的抽奖状态
 
 15198
 15:24:06,440 --> 15:24:12,200
-
-
+because we want to make sure that we start in an open raffle state. 
+因为我们要确保开始时抽奖要处于开放状态
 
 15199
 15:24:12,200 --> 15:24:14,450
-
-
+So we'll say const, raffle state equals await raffle dot get raffle state. 
+所以我们说 `const raffleState = await raffle.getRaffleState()`
 
 15200
 15:24:14,450 --> 15:24:17,060
-
-
+And then we want to say assert dot equal 
+然后我们写 `assert.equal`
 
 15201
 15:24:17,060 --> 15:24:19,520
-So we want to just make sure that our
-
+ope and then we need to import assert from Chai. 
+哦，我们还需要从 "chai" 中导入 "assert"
 
 15202
 15:24:19,520 --> 15:24:24,860
-raffle is initialized correctly. So we'll say const raffle state,
-
+So assert equals require Chai 
+也就是 `{ assert } = require("chai")`
 
 15203
 15:24:24,980 --> 15:24:27,860
-and we'll get that raffle state because we want to make sure
-
+assert dot equal raffle state.to string because again, raffle state is going to be a big number. 
+`assert.equal(raffleState.toString())`，因为 "raffleState" 会是一个大数
 
 15204
 15:24:28,010 --> 15:24:31,430
-that we start in an open raffle state. So we'll say const,
-
+And even though a raffle state is of type raffle state, 
+尽管抽奖状态是一个 "RaffleState" 类型
 
 15205
 15:24:31,430 --> 15:24:39,470
-raffle state equals await raffle dot get raffle state. And then
-
+it'll return a zero if it's open and a one if it's calculating. 
+如果它是 "OPEN" 就会返回 "0"，如果它是 "CALCULATING" 就会返回 "1"
 
 15206
 15:24:39,470 --> 15:24:43,460
-we want to say assert dot equal ope and then we need to import
-
+So this gets transformed just into a un 256.
+但它会被转换为 uint256 
 
 15207
 15:24:43,520 --> 15:24:47,960
-assert from Chai. So assert equals require Chai assert dot
+
 
 
 15208
 15:24:47,960 --> 15:24:53,630
-equal raffle state.to string because again, raffle state is
+
 
 
 15209
 15:24:53,630 --> 15:24:57,860
-going to be a big number. And even though a raffle state is of
+
 
 
 15210
 15:24:57,860 --> 15:25:01,820
-type raffle state, it'll return a zero if it's open and a one if
+
 
 
 15211
 15:25:01,820 --> 15:25:06,410
-it's calculating. So this gets transformed just into a un 256.
+
 
 
 15212
