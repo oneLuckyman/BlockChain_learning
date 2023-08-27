@@ -371,122 +371,122 @@ So this gets transformed just into a un 256.
 
 15207
 15:24:43,520 --> 15:24:47,960
-
-
+When we call it like this, a raffle state variable here will be a big number. 
+当我们像这样调用它的时候，这里的 "raffleState" 就会是大数
 
 15208
 15:24:47,960 --> 15:24:53,630
-
-
+So we want to just to string a file. 
+因此我们要对它使用 "toString" 
 
 15209
 15:24:53,630 --> 15:24:57,860
-
-
+So assert dot equal raffle state DOT two string zero. 
+所以就是 `assert.equal(raffleState.toString(), "0")`
 
 15210
 15:24:57,860 --> 15:25:01,820
-
-
+We'll also make sure our interval gets set correctly. 
+我们还要确保我们的 "interval" 也能够被正确获取
 
 15211
 15:25:01,820 --> 15:25:06,410
-
-
+So we'll do const interval equals await raffle dot get interval. 
+所以我们要写 `const interval = await raffle.getInterval`
 
 15212
 15:25:06,440 --> 15:25:09,710
-When we call it like this, a raffle state variable here will
-
+And I don't know if we have one of those 
+不清楚我是不是还没有这个函数
 
 15213
 15:25:09,710 --> 15:25:13,280
-be a big number. So we want to just to string a file. So assert
-
+it's actually C inter ball see if we have one of those. 
+来看一下我们是不是有这个函数
 
 15214
 15:25:13,280 --> 15:25:16,880
-dot equal raffle state DOT two string zero. We'll also make
-
+We don't have a good interval let's go ahead and add again interval function 
+我们还没有 "getInterval" 让我们来添加一个 "getInterval" 函数
 
 15215
 15:25:16,880 --> 15:25:20,060
-sure our interval gets set correctly. So we'll do const
-
+so we'll do function get in trouble. We have public view returns you went to six 
+所以我们要创建一个 `function getInterval() public view returns(uint256)`
 
 15216
 15:25:20,240 --> 15:25:28,580
-interval equals await raffle dot get interval. And I don't know
-
+return I underscore interval 
+`return i_interval`
 
 15217
 15:25:28,580 --> 15:25:32,840
-if we have one of those it's actually C inter ball see if we
-
+will have good interval will say raffle dot get interval 
+我们有了 "getInterval" 这样就可以写 "raffle.getInterval()" 了
 
 15218
 15:25:32,840 --> 15:25:35,990
-have one of those. We don't have a good interval let's go ahead
-
+and will also say assert dot equal interval.to string. 
+然后我们接着写 `assert.equal(interval.toString())`
 
 15219
 15:25:35,990 --> 15:25:39,680
-and add again interval function so we'll do function get in
-
+It should equal one Ever is in our helper config, right?
+它应该等于我们在 "helper-config" 中的设定，对吧？
 
 15220
 15:25:40,850 --> 15:25:48,500
-trouble. We have public view returns you went to six return I
-
+Because we're using the interval and helper config. 
+因为我们是在 "helper-config" 中提到的 "interval" 
 
 15221
 15:25:48,500 --> 15:25:53,780
-underscore interval will have good interval will say raffle
-
+So we say interval.to string should equal. 
+所以我们说 `interval.toString()` 它应该等于
 
 15222
 15:25:53,780 --> 15:25:58,910
-dot get interval and will also say assert dot equal interval.to
-
+So we'll import that as well. Network config. 
+我们把它也导入进来 `networkConfig`
 
 15223
 15:25:58,910 --> 15:26:04,010
-string. It should equal one Ever is in our helper config, right?
-
+And we'll say the interval should equal network config. Of 
+然后我们说 "interval" 应该等于 `networkConfig[]`
 
 15224
 15:26:04,040 --> 15:26:06,860
-Because we're using the interval and helper config. So we say
-
+let's also make, get our chain ID up here, chain ID, 
+让我们在这里把 "chainId" 也创建出来 `chainId`
 
 15225
 15:26:06,860 --> 15:26:11,120
-interval.to string should equal. So we'll import that as well.
-
+say const. Chain ID equals network dot config, a chain ID, 
+`const chainId = network.config.chainId`
 
 15226
 15:26:11,690 --> 15:26:15,770
-Network config. And we'll say the interval should equal
-
+network config of the chain ID of interval. 
+`networkConfig[chainId]["interval"]`
 
 15227
 15:26:16,010 --> 15:26:22,550
-network config. Of let's also make, get our chain ID up here,
-
+Alright, cool. So let's test this so far, 
+好的，酷~，让我们来测试一下吧
 
 15228
 15:26:22,610 --> 15:26:29,510
-chain ID, say const. Chain ID equals network dot config, a
+
 
 
 15229
 15:26:29,510 --> 15:26:35,780
-chain ID, network config of the chain ID of interval. Alright,
+
 
 
 15230
 15:26:35,780 --> 15:26:40,130
-cool. So let's test this so far, HH test or yarn, hard hat test.
+HH test or yarn, hard hat test.
 
 
 15231
