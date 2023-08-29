@@ -568,193 +568,190 @@ Where we're going to do that same expect await thing.
 15246
 15:27:32,780 --> 15:27:36,020
 So we're going to import expect from Chai, which comes from those waffle matchers. 
-所以我们要从 "waffle" 匹配器的 "chai" 中导入 `expect` 
+所以我们要从 "waffle matchers" 的 "chai" 中导入 `expect` 
 
 15247
 15:27:36,020 --> 15:27:40,910
-
-
+And we're gonna say await, expect raffle dot enter a raffle. 
+然后我们再写 `await expect(raffle.enterRaffle())`
 
 15248
 15:27:40,940 --> 15:27:44,750
-
-
+And we're not going to pass any value here,
+我们还没有向里面传入任何数值
 
 15249
 15:27:44,750 --> 15:27:48,590
-
-
+we're going to expect it to dot b dot reverted with. 
+接下来继续 `expect().to.be.revertedWith()`
 
 15250
 15:27:48,620 --> 15:27:55,100
-And we're gonna say await, expect raffle dot
-
+And if we look here, 
+如果我们看一下这里
 
 15251
 15:27:55,190 --> 15:27:59,870
-enter a raffle. And we're not going to pass any value here,
-
+we want it to be reverted with this raffle not enough eath entered. 
+我们要使用 "Raffle__NotEnoughETHEntered" 进行回滚
 
 15252
 15:27:59,930 --> 15:28:06,320
-we're going to expect it to dot b dot reverted with. And if we
-
+So we can put that in quotes raffle not enough eath entered. 
+所以我们把它放到引号里 `"Raffle__NotEnoughETHEntered"`
 
 15253
 15:28:06,320 --> 15:28:09,980
-look here, we want it to be reverted with this raffle not
-
+Now we can try this out. Make sure that it actually works. 
+现在我们可以尝试一下，确保它能正常工作
 
 15254
 15:28:09,980 --> 15:28:13,970
-enough eath entered. So we can put that in quotes raffle not
-
+Ah ah test dash dash grep. Put this in quotes that you don't pay enough. 
+`hh test --grep "you don't pay enough"`
 
 15255
 15:28:14,000 --> 15:28:17,810
-enough eath entered. Now we can try this out. Make sure that it
-
+And awesome. We're passing there. 
+很好，我们通过了
 
 15256
 15:28:17,810 --> 15:28:22,670
-actually works. Ah ah test dash dash grep. Put this in quotes
-
+What else do we want to test? 
+我们还要测试些什么
 
 15257
 15:28:22,670 --> 15:28:26,420
-that you don't pay enough. And awesome. We're passing there.
-
+Well, we want to test that if the raffle isn't open, we also revert 
+嗯，我们想测试一下，如果抽奖没有开放，同样要进行回滚
 
 15258
 15:28:26,450 --> 15:28:29,060
-What else do we want to test? Well, we want to test that if
-
+but we'll test that in a little bit. As we kind of test the rest of the functionality.
+但我们会稍后再测试它，和剩余的其他功能一起测试
 
 15259
 15:28:29,060 --> 15:28:31,940
-the raffle isn't open, we also revert but we'll test that in a
-
+We want to see that it records players when they enter. 
+接下来我们想看一下 `it("records players when they enter")`
+（“当玩家进入时记录下来”）
 
 15260
 15:28:31,940 --> 15:28:34,730
-little bit. As we kind of test the rest of the functionality.
-
+So this will be an async function. 
+这里还有 `async function`
 
 15261
 15:28:34,760 --> 15:28:40,280
-We want to see that it records players when they enter. So this
-
+And now we'll enter the raffle. First we're going to need that raffle entrance fee. 
+当我们进入抽奖时，首先我们需要一笔 "raffleEntranceFee"（“抽奖入场费”）
 
 15262
 15:28:40,280 --> 15:28:44,450
-will be an async function. And now we'll enter the raffle.
-
+Let's go ahead and save that at the top. 
+让我们先保存一下，然后来到顶部
 
 15263
 15:28:44,480 --> 15:28:47,060
-First we're going to need that raffle entrance fee. Let's go
-
+So we'll say let raffle VRF coordinator be to mock raffle entrance fee 
+我们要写 `let raffle, vrfCoordinatorMock, raffleEntranceFee`
 
 15264
 15:28:47,060 --> 15:28:50,720
-ahead and save that at the top. So we'll say let raffle VRF
-
+and then our before each will say raffle entrance fee equals a weight ethers dot get entrance fee. 
+然后在我们的 "beforeEach" 中，写 `raffleEntranceFee = await ethers.getEntranceFee()`
 
 15265
 15:28:50,720 --> 15:28:54,440
-coordinator be to mock raffle entrance fee and then our before
-
+This should be raffle dot get entrance fee. 
+这里应该是 `raffle.getEntranceFee()`
 
 15266
 15:28:54,440 --> 15:28:59,210
-each will say raffle entrance fee equals a weight ethers dot
-
+So now we have this raffle entrance fee, you can use it to enter the raffle 
+现在我们有了 "raffleEntranceFee" 就可以用它来进入抽奖了
 
 15267
 15:28:59,480 --> 15:29:05,300
-get entrance fee. This should be raffle dot get entrance fee. So
-
+we'll say a weight raffle dot enter raffle with a value of raffle entrance fee. 
+我们写 `await raffle.enterRaffle({ value: raffleEntranceFee })
 
 15268
 15:29:05,330 --> 15:29:08,450
-now we have this raffle entrance fee, you can use it to enter the
-
+And we can make sure that our Deployer here has been correctly recorded. 
+我们可以检查一下我们的 "deployer" 是否被正确地记录了
 
 15269
 15:29:08,450 --> 15:29:15,380
-raffle we'll say a weight raffle dot enter raffle with a value of
-
+So since right now we're connected to the Deployer. 
+因为我们现在已经连接到了 "deployer" 上
 
 15270
 15:29:15,860 --> 15:29:20,180
-raffle entrance fee. And we can make sure that our Deployer here
-
+We'll just make sure that that deployer actually is in our contract. 
+所以我们只需要确认 "deployer" 是否在我们的合约内就行了
 
 15271
 15:29:20,180 --> 15:29:23,270
-has been correctly recorded. So since right now we're connected
-
+So we'll say const player from contract equals await raffle dot get player of zero, 
+所以我们说 `const playerFromContract = await raffle.getPlayer(0)`
 
 15272
 15:29:23,270 --> 15:29:26,690
-to the Deployer. We'll just make sure that that deployer actually
-
+because we record them in our players array 
+因为我们把他们都记录在了我们的 "players" 数组里
 
 15273
 15:29:26,720 --> 15:29:31,910
-is in our contract. So we'll say const player from contract
-
+and we have our get players function which pulls them out. 
+而且我们还有一个 "getPlayer" 函数能把他们输出出来
 
 15274
 15:29:32,030 --> 15:29:38,720
-equals await raffle dot get player of zero, because we
-
+And then we'll say assert dot equal player, player from contract should be the Deployer.
+所以我们说 `assert.equal(playerFromContract, deployer)`
 
 15275
 15:29:38,720 --> 15:29:42,500
-record them in our players array and we have our get players
-
+So now we can grep for this in our hard head test. Make sure this works. 
+现在我们可以在 hardhat 中测试一下了，确保它能正常工作
 
 15276
 15:29:42,500 --> 15:29:46,160
-function which pulls them out. And then we'll say assert dot
-
+HH test dash dash grep. 
+`hh test --grep` 
 
 15277
 15:29:46,160 --> 15:29:51,050
-equal player, player from contract should be the Deployer.
-
+Deployer is not defined. 
+"deployer is not defined"（“deployer 未被定义”）
 
 15278
 15:29:51,770 --> 15:29:54,650
-So now we can grep for this in our hard head test. Make sure
-
+We've got it up here. But we actually didn't save it globally. 
+我们已经在这里定义过了，但没有把它保存为全局变量
 
 15279
 15:29:54,650 --> 15:30:00,350
-this works. HH test dash dash grep. Deployer is not defined.
-
+So we got to do let common Deployer. 
+所以我们执行 `let , deployer`
 
 15280
 15:30:00,410 --> 15:30:02,600
-We've got it up here. But we actually didn't save it
-
+And we'll say deployer equals await get named accounts. 
+再接着写 `deployer = await getNamedAccounts`
 
 15281
 15:30:02,600 --> 15:30:07,520
-globally. So we got to do let common Deployer. And we'll say
-
+And we'll wrap it like this to get the deployer 
+然后再把它像这样包起来，获取 `deployer`
 
 15282
 15:30:07,880 --> 15:30:11,720
-deployer equals await get named accounts. And we'll wrap it like
-
+Awesome. Let's try this again. 
+很好，让我们再试一次
 
 15283
 15:30:11,720 --> 15:30:15,740
-this to get the deployer Awesome. Let's try this again.
-
-
-15284
-15:30:16,280 --> 15:30:21,980
 And awesome. What else should this do? 
+好极了，我们还要做些什么？
