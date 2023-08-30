@@ -1,0 +1,69 @@
+15284
+15:30:16,280 --> 15:30:21,980
+Well, it's also emitting an event. 
+嗯，这里还有 "event" 的触发
+
+15285
+15:30:22,010 --> 15:30:25,430
+So let's make sure it emits an event. 
+我们要确保这个 "event" 会被正常触发
+
+15286
+15:30:25,430 --> 15:30:31,070
+So we'll say it emits event on enter. 
+所以我们要写 `it("emits event on enter")`
+
+15287
+15:30:31,370 --> 15:30:34,700
+This will be an async function as well. 
+这里同样是一个 `async function`
+
+15288
+15:30:34,700 --> 15:30:38,270
+And this will be the first time that we're testing to make sure a function emits an event 
+这是我们首次测试用于触发 "event" 的函数
+
+15289
+15:30:38,270 --> 15:30:41,870
+and the syntax is going to look really similar to what we test for when we check to see if an error is fired. 
+它的语法和我们检查是否触发报错的测试很像
+
+15290
+15:30:41,870 --> 15:30:47,450
+So we're gonna say await expect raffle dot enter raffle with value of raffle entrance fee dot two dot omit 
+所以我们写 `await expect(raffle.enterRaffle({value: raffleEntranceFee})).to.emit`
+
+15291
+15:30:47,450 --> 15:30:57,560
+and this.to dot emit we get from During woful, these chime matches for emitting events 
+这个 ".to.emit" 我们要从 "ethereum-waffle" 的 "Chai mathcers" 的 "Emitting events" 部分获取
+
+15292
+15:30:57,590 --> 15:31:03,380
+we can do a wait expect to emit,
+我们可以执行 `await expect().to.emit`
+
+15293
+15:31:03,380 --> 15:31:07,100
+and then the event that we're expecting to emit. 
+然后 "event" 就会被我们预期触发
+
+15294
+15:31:07,160 --> 15:31:09,830
+So we're saying to omit the raffle contract to emit a raffle enter event. 
+所以我们说 `to.emit(raffle)` 触发的是 `"RaffleEnter"` 事件
+
+15295
+15:31:09,830 --> 15:31:15,590
+We can copy this, try to test this in our terminal. 
+我们把这个复制下来，尝试在终端中测试一下
+
+15296
+15:31:15,620 --> 15:31:19,850
+So we'll say hard hat. Test dash dash grep. Just put this in quotes. 
+也就是 `hh test --grep` 再把它放到引号内
+
+15297
+15:31:19,850 --> 15:31:24,470
+And that passes as well. Great. 
+已经通过了，非常好
