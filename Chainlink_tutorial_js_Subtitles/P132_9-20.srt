@@ -1,131 +1,131 @@
 15298
 15:31:24,470 --> 15:31:32,060
-Let's now go ahead and
-
+Let's now go ahead and test to make sure that we can't enter the raffle whenever this raffle is not open or it's calculating. 
+让我们来测试一下，确保我们在未开放或是计算状态下确实是无法进入抽奖的
 
 15299
 15:31:32,060 --> 15:31:35,300
-test to make sure that we can't enter the raffle whenever this
-
+So we'll say it doesn't allow entrance, when raffle is Cal cumulating. 
+所以我们写 `it("doesnt allow entrance when raffle is calculating")`
 
 15300
 15:31:35,300 --> 15:31:39,200
-raffle is not open or it's calculating. So we'll say it
-
+And this will be an async function. 
+这里还是 `async function`
 
 15301
 15:31:39,560 --> 15:31:46,580
-doesn't allow entrance, when raffle is Cal cumulating. And
-
+And first we'll enter will say await raffle dot enter raffle value is raffle entrance fee. 
+首先我们要写 `await raffle.enterRaffle({ value: raffleEntranceFee })`
 
 15302
 15:31:46,580 --> 15:31:51,890
-this will be an async function. And first we'll enter will say
-
+Now what we want to do we want to get this raffle into a closed state. 
+现在我们要让抽奖进入到关闭状态
 
 15303
 15:31:51,890 --> 15:31:55,040
-await raffle dot enter raffle
-
+So we want to get it out of its open state. 
+也就是我们想让它脱离开放状态
 
 15304
 15:31:56,600 --> 15:32:03,140
-value is raffle entrance fee. Now what we want to do we want
-
+Well, how do we move this raffle from raffle dot open to raffle dot closed 
+那么我们该如何才能把抽奖从 "Raffle.OPEN" 转移到 "Raffle.CLOSE" 呢
 
 15305
 15:32:03,140 --> 15:32:07,370
-to get this raffle into a closed state. So we want to get it out
-
+in perform upkeep, remove the raffle from raffle that open to raffle dot calculating 
+在 "performUpkeep" 中，我们把抽奖从 "Raffle.OPEN" 转移到了 "Raffle.CALCULATING" 上
 
 15306
 15:32:07,370 --> 15:32:10,730
-of its open state. Well, how do we move this raffle from raffle
-
+but perform upkeep can only be called if check upkeep returns true. 
+但 "performUpkeep" 只有在 "checkUpkeep" 返回 true 时才会被调用
 
 15307
 15:32:10,730 --> 15:32:14,540
-dot open to raffle dot closed in perform upkeep, remove the
-
+Otherwise, it'll revert with raffle upkeep not needed.
+否则它就会使用 "Raffle__UpkeepNotNeeded" 进行回滚
 
 15308
 15:32:14,540 --> 15:32:18,350
-raffle from raffle that open to raffle dot calculating but
-
+So what we need to do is we need to make check upkeep return true. 
+所以我们需要做的就是让 "checkUpkeep" 返回 true 
 
 15309
 15:32:18,380 --> 15:32:22,430
-perform upkeep can only be called if check upkeep returns
-
+And we will pretend to be the channeling keeper network 
+接着我们假装是 "Chainlink Keeper" 网络
 
 15310
 15:32:22,430 --> 15:32:26,150
-true. Otherwise, it'll revert with raffle upkeep not needed.
-
+to keep calling checkup keep waiting for it to be true. 
+去对 "checkUpkeep" 保持调用并等待它返回 true 
 
 15311
 15:32:26,300 --> 15:32:29,660
-So what we need to do is we need to make check upkeep return
-
+And once we make it true, then we'll pretend to be the channeling keepers and call perform upkeep 
+一旦我们获得了 true，我们就假装成 "Chainlink Keepers" 去调用 "performUpkeep" 
 
 15312
 15:32:29,660 --> 15:32:33,590
-true. And we will pretend to be the channeling keeper network to
-
+to put this contract in a state of calculating. 
+并把合约的状态改为 "CALCULATING"
 
 15313
 15:32:33,590 --> 15:32:36,080
-keep calling checkup keep waiting for it to be true. And
-
+Now how do we actually do that? 
+那我们该怎么做呢？
 
 15314
 15:32:36,080 --> 15:32:38,480
-once we make it true, then we'll pretend to be the channeling
-
+Well, in order for checkup keep to be true, we first need to see that we are indeed open, 
+嗯，为了让 "checkUpkeep" 为 true，首先就需要确保我们处于开放状态
 
 15315
 15:32:38,480 --> 15:32:42,140
-keepers and call perform upkeep to put this contract in a state
-
+which we are. 
+我们也的确是的
 
 15316
 15:32:42,170 --> 15:32:48,350
-of calculating. Now how do we actually do that? Well, in order
-
+The next thing that we need to do though, is we need to do this time passed bit. 
+下一个需要做的是满足 "timePassed" 的要求
 
 15317
 15:32:48,350 --> 15:32:51,350
-for checkup keep to be true, we first need to see that we are
-
+We need to actually wait that 30 seconds for time to pass. 
+我们需要等待 30 秒以通过这个时间
 
 15318
 15:32:51,350 --> 15:32:54,590
-indeed open, which we are. The next thing that we need to do
-
+Now, that kind of sounds awful. 
+但这听起来有点扯
 
 15319
 15:32:54,590 --> 15:32:57,890
-though, is we need to do this time passed bit. We need to
-
+Do we have to wait 30 seconds for all of our tests? 
+难道我们必须要在所有测试中都等待 30 秒么？
 
 15320
 15:32:57,890 --> 15:33:02,540
-actually wait that 30 seconds for time to pass. Now, that kind
-
+What if our interval was 10 days 
+如果我们的 "interval" 是 10 天呢？
 
 15321
 15:33:02,540 --> 15:33:05,840
-of sounds awful. Do we have to wait 30 seconds for all of our
-
+when we have to wait 10 days to run our tests? 
+我们就真在运行测试的时候等 10 天？
 
 15322
 15:33:05,840 --> 15:33:09,860
-tests? What if our interval was 10 days when we have to wait 10
-
+It sounds ridiculous. 
+这就有点搞笑了
 
 15323
 15:33:09,860 --> 15:33:13,820
-days to run our tests? It sounds ridiculous. Well, hard hat
+Well, hard hat
 
 
 15324
