@@ -101,7 +101,7 @@ We need to actually wait that 30 seconds for time to pass.
 15318
 15:32:51,350 --> 15:32:54,590
 Now, that kind of sounds awful. 
-但这听起来有点扯
+但这听起来有点扯啊
 
 15319
 15:32:54,590 --> 15:32:57,890
@@ -125,62 +125,62 @@ It sounds ridiculous.
 
 15323
 15:33:09,860 --> 15:33:13,820
-Well, hard hat
-
+Well, hard hat actually comes built in with a ton of functions for us to manipulate our blockchain to do literally whatever we want it to do. 
+实际上 hardhat 内置了大量的函数，让我们可以控制区块链以达到我们想要的目的
 
 15324
 15:33:13,820 --> 15:33:17,390
-actually comes built in with a ton of functions for us to
-
+In the hard hat documentation. 
+在 hardhat 的文档中，
 
 15325
 15:33:17,390 --> 15:33:20,810
-manipulate our blockchain to do literally whatever we want it to
-
+There's a section called Hard Hat Network reference inside the Hard Hat Network section. 
+有一个名为 "Hardhat Network Reference" 的部分，它在 "Hardhat Network" 部分里
 
 15326
 15:33:20,810 --> 15:33:23,390
-do. In the hard hat documentation. There's a section
-
+And in here, there's a ton of information about how the hard hat network actually works and different configs that we can do with it. 
+这里有大量有关 Hardhat 网络如何运作以及我们能做哪些配置的信息
 
 15327
 15:33:23,390 --> 15:33:26,210
-called Hard Hat Network reference inside the Hard Hat
-
+If we scroll down low enough, we can see the JSON RPC methods that we can use on this blockchain, 
+如果我们往下拉，就可以看到我们会在链上用到的 "JSON-RPC methods" 
 
 15328
 15:33:26,240 --> 15:33:29,570
-Network section. And in here, there's a ton of information
-
+we can do eath accounts block number call chinetti. We can do all these RPC methods that a normal blockchain has. 
+我们可以使用 "eth_accounts, blockNumber, call, chainId" 等所有一般区块链都有的 "RPC" 方法
 
 15329
 15:33:29,630 --> 15:33:32,030
-about how the hard hat network actually works and different
+
 
 
 15330
 15:33:32,030 --> 15:33:35,210
-configs that we can do with it. If we scroll down low enough, we
+
 
 
 15331
 15:33:35,210 --> 15:33:38,780
-can see the JSON RPC methods that we can use on this
+
 
 
 15332
 15:33:38,780 --> 15:33:41,240
-blockchain, we can do eath accounts block number call
+
 
 
 15333
 15:33:41,240 --> 15:33:44,090
-chinetti. We can do all these RPC methods that a normal
+
 
 
 15334
 15:33:44,090 --> 15:33:47,870
-blockchain has. Additionally, we can do even more than that, we
+Additionally, we can do even more than that, we
 
 
 15335
