@@ -1,0 +1,114 @@
+15401
+15:38:20,360 --> 15:38:27,950
+Now we're going to call check upkeep. 
+现在我们就要调用 "checkUpkeep" 了
+
+15402
+15:38:27,950 --> 15:38:31,100
+Now here's the thing, check. upkeep is a public function.
+现在是这么一回事，"checkUpkeep" 是一个 "public" 函数
+
+15403
+15:38:31,490 --> 15:38:36,380
+So if we just run await, raffle dot check upkeep, and we pass nothing in 
+如果我们直接运行 `await raffle.checkUpkeep()` 并且不传入任何参数
+
+15404
+15:38:36,380 --> 15:38:40,370
+this is going to kick off a transaction, 
+这就会直接开启一次交易
+
+15405
+15:38:40,370 --> 15:38:43,160
+because hard had knows Oh, okay, it's a public function, they're clearly trying to send a transaction here. 
+因为 hardhat 知道，哦，这是一个 "public" 函数，显然是要发送一笔交易了
+
+15406
+15:38:43,160 --> 15:38:46,850
+If this was a public view function, it wouldn't, it would return that view. 
+如果这是一个 "public view" 函数，就不会了，它会返回 "view" 
+
+15407
+15:38:46,880 --> 15:38:49,760
+But the thing is, I don't really want to send a transaction. 
+但问题是，我并不想真的发送交易
+
+15408
+15:38:49,760 --> 15:38:52,520
+But I want to simulate sending this transaction and seeing what this upkeep needed would return. 
+我想要模拟发送交易，然后看一下 "upkeepNeeded" 会返回什么
+
+15409
+15:38:52,520 --> 15:38:56,120
+Well, I can actually get that by using something called call static, 
+我可以通过 "callStatic" 来实现这一操作
+
+15410
+15:38:56,150 --> 15:38:59,690
+I can simulate calling this transaction and seeing what it will respond. 
+我可以模拟调用这笔交易，然后看它会有什么回应
+
+15411
+15:38:59,690 --> 15:39:03,290
+So instead of raffle dot, check upkeep, I can do raffle dot cost static, that check upkeep. 
+所以我不再使用 "raffle.checkUpkeep" 而是要用 `raffle.callStatic.checkUpkeep` 
+
+15412
+15:39:03,290 --> 15:39:06,710
+And this will give me the return of upkeep needed and the bytes perform data, 
+它会返回给我 "upkeepNeeded" 以及 "bytes performData"
+
+15413
+15:39:06,740 --> 15:39:11,780
+I can extrapolate just the upkeep needed out of this return 
+我们可以从这个的返回中提取出 "upkeepNeeded"
+
+15414
+15:39:11,780 --> 15:39:16,250
+or writing const upkeep needed equals this, 
+也就是写 `const { upkeepNeeded }` 等于这个
+
+15415
+15:39:16,490 --> 15:39:19,880
+and then I can do assert not upkeep needed,
+然后再执行 `assert(!upkeepNeeded)`
+
+15416
+15:39:19,880 --> 15:39:25,760
+because right now upkeep needed to return false. 
+因为现在 "upkeepNeeded" 返回的是 false 
+
+15417
+15:39:26,840 --> 15:39:33,950
+So we'll say assert, not false, which is true. 
+所以我们写 "assert(!false)" 也就是 true 
+
+15418
+15:39:34,280 --> 15:39:38,480
+If upkeep needed was true, then this would be false. And this would break. 
+如果 "upkeepNeeded" 是 true 它就会是 false，然后就会中断
+
+15419
+15:39:38,510 --> 15:39:42,740
+So that's what we want to do. 
+这就是我们想要的效果
+
+15420
+15:39:42,740 --> 15:39:44,840
+So let's go ahead, we'll run this, see if it worked. 
+让我们继续，运行一下，看看能否工作
+
+15421
+15:39:44,840 --> 15:39:48,200
+Our hat test, dash dash grep. 
+`hh test --grep`
+
+15422
+15:39:48,200 --> 15:39:54,590
+And we're in passing, we are in business. 
+我们通过了，一切正常
+
+15423
+15:39:54,590 --> 15:40:00,620
+Awesome. So this is working perfectly. 
+好极了，它的运行简直完美
