@@ -105,102 +105,104 @@ And perfect. That's also working correctly.
 
 15444
 15:41:38,900 --> 15:41:41,900
-Great. Now I'm going to skip over these
-
+Great. Now I'm going to skip over these next two tests, 
+好的，现在我们要跳过接下来的两个测试
 
 15445
 15:41:41,900 --> 15:41:44,660
-next two tests, because we haven't really learned anything
-
+because we haven't really learned anything from them. 
+因为我们还没有了解过它们
 
 15446
 15:41:44,660 --> 15:41:47,570
-from them. So I'm just going to copy paste them from the GitHub,
-
+So I'm just going to copy paste them from the GitHub,
+我会直接从 GitHub 上把它们复制粘贴过来
 
 15447
 15:41:47,600 --> 15:41:50,870
-we're going to return false if enough time hasn't passed. And
-
+we're going to return false if enough time hasn't passed. 
+它们是 `returns false if enough time hasn't passed`
+(如果时间还没达到要求就返回 false)
 
 15448
 15:41:50,870 --> 15:41:54,020
-we're going to return true. If enough time has passed, we have
-
+And we're going to return true. If enough time has passed, we have players Eve and is open. 
+以及 `returns true if enough time has passed, has players, eth, and is open`
+(如果时间达到要求且有玩家，有以太币，而且状态为打开则返回 true)
 
 15449
 15:41:54,020 --> 15:41:58,430
-players Eve and is open. So we're just asserting true down
-
+So we're just asserting true down here. And we're starting not true up here, 
+所以下面这里是 `assert(true)` 而上面则是 `assert(!true)`
 
 15450
 15:41:58,430 --> 15:42:00,980
-here. And we're starting not true up here, you want to pause
-
+you want to pause the video and copy paste these and write these out, you absolutely can 
+你可以先暂停视频，照着这里的内容写一遍
 
 15451
 15:42:00,980 --> 15:42:03,590
-the video and copy paste these and write these out, you
-
+copy paste them from the GitHub repo, you absolutely can't like I said, 
+也可以从 GitHub 仓库中复制粘贴
 
 15452
 15:42:03,590 --> 15:42:05,930
-absolutely can copy paste them from the GitHub repo, you
-
+going through this and making yourself write these and making yourself understand these tests is going to make you a substantially better coder. 
+就像我说的，仔细编写并理解这些测试会让你成为一个更好的程序员
 
 15453
 15:42:05,930 --> 15:42:09,170
-absolutely can't like I said, going through this and making
-
+And let's just test that it all looks good with hh test. 
+让我们测试一下，看看它是否正常 `hh test`
 
 15454
 15:42:09,170 --> 15:42:11,870
-yourself write these and making yourself understand these tests
-
+Now, as I was recording this, I just realized that for all of our describe blocks, I've been making them async functions
+在我录现在这个视频的时候，我突然意识到，我们所有的 "describe" 用的都是 "async" 函数
 
 15455
 15:42:11,870 --> 15:42:14,660
-is going to make you a substantially better coder. And
-
+describe blocks actually don't realize and can't recognize and can't work with promises. 
+"describe" 里其实是不能实现，也不能识别和处理 "promise" 的
 
 15456
 15:42:14,660 --> 15:42:18,920
-let's just test that it all looks good with hh test. Now, as
-
+So having the be async actually doesn't do anything. 
+所以把它们声明为 "async" 实际上并没有任何作用
 
 15457
 15:42:18,920 --> 15:42:21,560
-I was recording this, I just realized that for all of our
+So in your describe block, we want to get rid of the async word because it's actually not helping us at all. 
 
 
 15458
 15:42:21,560 --> 15:42:24,620
-describe blocks, I've been making them async functions
+
 
 
 15459
 15:42:24,650 --> 15:42:28,820
-describe blocks actually don't realize and can't recognize and
+
 
 
 15460
 15:42:28,820 --> 15:42:31,880
-can't work with promises. So having the be async actually
+
 
 
 15461
 15:42:31,880 --> 15:42:34,700
-doesn't do anything. So in your describe block, we want to get
+
 
 
 15462
 15:42:34,700 --> 15:42:37,910
-rid of the async word because it's actually not helping us at
+
 
 
 15463
 15:42:37,910 --> 15:42:40,610
-all. In fact, it's just an extra word, and it looks kind of
+In fact, it's just an extra word, and it looks kind of
 
 
 15464
