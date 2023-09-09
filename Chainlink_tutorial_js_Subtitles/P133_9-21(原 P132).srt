@@ -51,7 +51,7 @@ So we'll have everything in here be true except for the fact that nobody's enter
 15396
 15:37:49,970 --> 15:37:53,630
 So we'll do a weight network dot provider dot send EVM increase time, comma interval.to number plus one
-所以我们执行 `await network.provider.send("evn_increaseTime", [interval.toNumber() +1])
+所以我们执行 `await network.provider.send("evm_increaseTime", [interval.toNumber() +1])
 
 15397
 15:37:53,630 --> 15:37:57,920
