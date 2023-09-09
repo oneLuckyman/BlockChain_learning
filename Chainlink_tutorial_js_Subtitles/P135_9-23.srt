@@ -173,231 +173,232 @@ So having the be async actually doesn't do anything.
 15457
 15:42:18,920 --> 15:42:21,560
 So in your describe block, we want to get rid of the async word because it's actually not helping us at all. 
-
+所以我们要把 "describe" 中的 "async" 都去掉，因为它对我们来说没有任何作用
 
 15458
 15:42:21,560 --> 15:42:24,620
-
-
+In fact, it's just an extra word, and it looks kind of gross. 
+事实上，它就是一个多余的词，只会让人看着很烦
 
 15459
 15:42:24,650 --> 15:42:28,820
-
-
+So now all of our describe blocks, we're gonna get rid of that async keyword, 
+所以我们要把所有 "describe" 里的 "async" 关键字都去掉
 
 15460
 15:42:28,820 --> 15:42:31,880
-
-
+and just have them be functions. 
+并把它们直接设置成 "function"
 
 15461
 15:42:31,880 --> 15:42:34,700
-
-
+Of course, all of our it's, though, are going to be using asynchronous functions, which is what we want. 
+当然，对于所有的 "it" 来说，还是要使用异步函数，这是必要的
 
 15462
 15:42:34,700 --> 15:42:37,910
-
-
+So we've written some tests for a checkup keep. Now let's go ahead to perform upkeep.
+我们已经写了不少 "checkUpkeep" 的测试，现在该轮到 "performUpkeep" 了
 
 15463
 15:42:37,910 --> 15:42:40,610
-In fact, it's just an extra word, and it looks kind of
-
+Let's create a new describe, block, 
+让我们创建一个新的 "describe" 代码块
 
 15464
 15:42:40,610 --> 15:42:43,190
-gross. So now all of our describe blocks, we're gonna get
-
+ascribe or perform upkeep. This is going to be a regular function. 
+`describe("performUpkeep")` 然后这里是一个普通函数
 
 15465
 15:42:43,190 --> 15:42:46,910
-rid of that async keyword, and just have them be functions. Of
-
+And in here, we're going to start and say it can only run if check upkeep is true. 
+接下来在这里，我们要写 `it("it can only run if checkUpkeep is true")`
+(“只有当 checkUpkeep 为 true 时才会运行”)
 
 15466
 15:42:46,910 --> 15:42:49,460
-course, all of our it's, though, are going to be using
-
+And this will be an async function. 
+这里是一个 `async function`
 
 15467
 15:42:49,490 --> 15:42:52,250
-asynchronous functions, which is what we want. So we've written
-
+Because we only want to perform keep to work if checkup keep is indeed true. 
+我们只有在 "checkUpkeep" 确实为 true 时才会想要运行 "performUpkeep" 
 
 15468
 15:42:52,250 --> 15:42:56,060
-some tests for a checkup keep. Now let's go ahead to perform
-
+So we'll say await raffle dot enter. raffle we'll send it some value, raffle entrance fee, 
+我们写 `await raffle.enterRaffle("value: raffleEntranceFee")`
 
 15469
 15:42:56,060 --> 15:42:56,510
-upkeep.
-
+I'm sorry, there should be curly braces instead. 
+抱歉，这里应该用花括号替代
 
 15470
 15:42:56,630 --> 15:43:01,250
-Let's create a new describe, block, ascribe or perform
-
+And we'll do a weight network dot provider that send EVM increase time inter vol.to number plus one 
+接下来是 `await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])`
 
 15471
 15:43:01,340 --> 15:43:05,720
-upkeep. This is going to be a regular function. And in here,
-
+await network dot provider that send UVM mine an empty array there to
+`await network.provider.send("evm_mine", [])`
 
 15472
 15:43:05,720 --> 15:43:10,940
-we're going to start and say it can only run if check upkeep is
-
+the reason that we're moving time forward and moving our block forward, 
+我们推动时间和区块的原因当然和上面一样的
 
 15473
 15:43:10,940 --> 15:43:14,240
-true. And this will be an async function. Because we only want
-
+of course is gonna be the same thing as above, we want our check upkeep to return true. 
+我们希望 "checkUpkeep" 能够返回 true 
 
 15474
 15:43:14,240 --> 15:43:18,140
-to perform keep to work if checkup keep is indeed true. So
-
+And then we're gonna say const X or transaction equals await raffel dot perform upkeep. 
+接下来我们要写 `const tx = await raffle.performUpkeep()`
 
 15475
 15:43:18,170 --> 15:43:22,730
-we'll say await raffle dot enter. raffle we'll send it some
-
+We can either do a blank array, or we could do 0x Doesn't matter. 
+我们可以放一个空数组，或是使用 `"0x"`，这都是可以的
 
 15476
 15:43:22,730 --> 15:43:27,530
-value, raffle entrance fee, I'm sorry, there should be curly
-
+And we can assert the X. 
+现在我们可以执行 `assert(tx)`
 
 15477
 15:43:27,530 --> 15:43:32,930
-braces instead. And we'll do a weight network dot provider that
-
+Now if TX doesn't work, or this error is out or something, this will fail. 
+如果 "tx" 不起作用，或是发生了报错之类的其他问题，这里就会失败
 
 15478
 15:43:32,930 --> 15:43:43,310
-send EVM increase time inter vol.to number plus one await
-
+Right. So that's how we know that this actually can work. 
+这就是我们判断它是否运行正常的方式
 
 15479
 15:43:43,370 --> 15:43:51,050
-network dot provider that send UVM mine an empty array there to
-
+So let's test this out. We want this only to work if checkup keep is true. 
+让我们来测试一下，我们希望只有当 "checkUpkeep" 为 true 时这些才会被执行
 
 15480
 15:43:51,170 --> 15:43:53,660
-the reason that we're moving time forward and moving our
-
+And we made checkup keep true by all the stuff that we did above. 
+而我们通过上面所做的操作使 "checkUpkeep" 保持为 true 
 
 15481
 15:43:53,660 --> 15:43:55,940
-block forward, of course is gonna be the same thing as
-
+So now we'll do yarn hardhat test dash dash grep with our IT block here. 
+现在我们来执行 `hh test --grep` 后面是我们 "it" 里的内容
 
 15482
 15:43:55,940 --> 15:43:58,850
-above, we want our check upkeep to return true. And then we're
-
+And I spelled perform upkeep wrong perform upkeep. 
+"performUpkeep" 拼错了，应该是 `performUpkeep`
 
 15483
 15:43:58,850 --> 15:44:04,730
-gonna say const X or transaction equals await raffel dot perform
-
+Let's try spelling things correctly. And let's run that test again. 
+现在拼对了，我们来再试一次
 
 15484
 15:44:04,820 --> 15:44:11,030
-upkeep. We can either do a blank array, or we could do 0x Doesn't
-
+And great. That's working. I will What else do we want to do? 
+很好，一切正常，我们还需要做些什么
 
 15485
 15:44:11,030 --> 15:44:15,830
-matter. And we can assert the X. Now if TX doesn't work, or this
-
+We want it to revert with raffel. upkeep not needed if checkup keep is false. 
+我们还要在 "checkUpkeep" 为 false 时使用 "Raffle__UpkeepNotNeeded" 进行回滚
 
 15486
 15:44:15,860 --> 15:44:19,460
-error is out or something, this will fail. Right. So that's how
-
+So in here we're gonna say it reverts. When check up keep is false. 
+所以我们在这里写 `it("reverts when checkUpkeep is false")`
 
 15487
 15:44:19,460 --> 15:44:22,880
-we know that this actually can work. So let's test this out. We
-
+This will be an async function. 
+这里也是 `async function`
 
 15488
 15:44:22,880 --> 15:44:26,300
-want this only to work if checkup keep is true. And we
-
+And we're going to do that same syntax await expect raffle dot perform upkeep empty bytes object 
+接下来就是相同的语法 `await expect(raffle.performUpkeep())` 一个空字节对象
 
 15489
 15:44:26,330 --> 15:44:30,080
-made checkup keep true by all the stuff that we did above. So
-
+that to.be reverted with.
+`.to.be.revertedWith()`
 
 15490
 15:44:30,080 --> 15:44:35,390
-now we'll do yarn hardhat test dash dash grep with our IT block
-
+And what do we want it to be reverted with? 
+我们要用什么进行 "revertedWith" 呢？
 
 15491
 15:44:35,390 --> 15:44:40,610
-here. And I spelled perform upkeep wrong perform upkeep.
-
+Or hoping it's reverted with this with that, 
+我们要用这个进行回滚
 
 15492
 15:44:40,610 --> 15:44:43,580
-Let's try spelling things correctly. And let's run that
-
+we can run this test here Hardhead test dash dash grep paste that in. And we see that is indeed passing 
+我们运行 `hh test --grep` 粘贴进去，然后我们看到它确实通过了
 
 15493
 15:44:43,580 --> 15:44:47,450
-test again. And great. That's working. I will What else do we
+
 
 
 15494
 15:44:47,450 --> 15:44:52,010
-want to do? We want it to revert with raffel. upkeep not needed
+
 
 
 15495
 15:44:52,100 --> 15:44:57,320
-if checkup keep is false. So in here we're gonna say it reverts.
+
 
 
 15496
 15:44:57,830 --> 15:45:02,990
-When check up keep is false. This will be an async function.
+
 
 
 15497
 15:45:03,530 --> 15:45:08,450
-And we're going to do that same syntax await expect raffle dot
+
 
 
 15498
 15:45:08,480 --> 15:45:16,130
-perform upkeep empty bytes object that to.be reverted with.
+
 
 
 15499
 15:45:16,370 --> 15:45:18,470
-And what do we want it to be reverted with? Or hoping it's
+
 
 
 15500
 15:45:18,470 --> 15:45:24,860
-reverted with this with that, we can run this test here Hardhead
+
 
 
 15501
 15:45:24,860 --> 15:45:29,300
-test dash dash grep paste that in. And we see that is indeed
+
 
 
 15502
 15:45:29,300 --> 15:45:32,000
-passing now something that you'll notice here is that our
+now something that you'll notice here is that our
 
 
 15503
