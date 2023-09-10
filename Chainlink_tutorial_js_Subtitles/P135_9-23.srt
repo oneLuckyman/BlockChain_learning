@@ -353,147 +353,148 @@ we can run this test here Hardhead test dash dash grep paste that in. And we see
 
 15493
 15:44:43,580 --> 15:44:47,450
-
-
+now something that you'll notice here is that 
+你会注意到这里的一个东西是
 
 15494
 15:44:47,450 --> 15:44:52,010
-
-
+our revert actually goes ahead and reverts with all this extra stuff as well. 
+我们的回滚操作同时还要附带这些额外信息一起回滚
 
 15495
 15:44:52,100 --> 15:44:57,320
-
-
+Our test is smart enough to know that if all we do is put the name of the error that is getting reverted with then it's good enough. 
+我们的测试非常智能，只需要知道错误名称就足够它进行回滚了
 
 15496
 15:44:57,830 --> 15:45:02,990
-
-
+If we want to be super specific, we can actually go ahead and make this a string interpolation and add all of these in here. 
+如果想更具体一些，我们可以使用一个字符串插值把它们都添加进来
 
 15497
 15:45:03,530 --> 15:45:08,450
-
-
+So we can add the balance that we expect we can add the players that we expect. And we can add the raffle statement 
+我们可以添加我们所期望的 "balance"，还有 "players" 以及 "raffleState"
 
 15498
 15:45:08,480 --> 15:45:16,130
-
-
+for now we're just going to keep it as we're expecting this 
+但是现在，我们还是会保持对这个的期望
 
 15499
 15:45:16,370 --> 15:45:18,470
-
-
+but if you want to be super specific you can have your tests expect for exactly the specific values that you're looking for. 
+但如果你想要特别具体的话，你可以测试期望确切的这些值
 
 15500
 15:45:18,470 --> 15:45:24,860
-
-
+But alright, what is the last thing we should expect form? 
+好的，我们最后一件要期望的事是什么？
 
 15501
 15:45:24,860 --> 15:45:29,300
-
-
+Well, we should check to see that this actually gets called the raffle state gets changed. And we admit this event. 
+嗯，我们应该检查一下这个是否真的被调用了，"raffleState" 是否发生了变化，以及这个 "event" 是否被触发了
 
 15502
 15:45:29,300 --> 15:45:32,000
-now something that you'll notice here is that our
-
+So let's go ahead and add that. 
+让我们继续，添加一下这部分
 
 15503
 15:45:32,000 --> 15:45:35,360
-revert actually goes ahead and reverts with all this extra
-
+We'll say it updates the raffle state admits an event and calls the VRF coordinator 
+我们要写 `it("updates the raffle state, emits and event, and calls the vrf coordinator")`
+(“更新抽奖状态，触发 event，调用 vrf coordinator”)
 
 15504
 15:45:35,360 --> 15:45:38,930
-stuff as well. Our test is smart enough to know that if all we do
-
+to be an async function as well. Let's do this. 
+这里也是 `async function`，让我们开始吧
 
 15505
 15:45:38,930 --> 15:45:42,740
-is put the name of the error that is getting reverted with
-
+So let's go ahead and let's make checkup keep true, 
+我们继续，先令 "checkUpkeep" 保持为 true 
 
 15506
 15:45:42,770 --> 15:45:45,860
-then it's good enough. If we want to be super specific, we
-
+I'm just going to copy paste these first three lines, since it's going to be exactly the same. 
+我要直接复制粘贴头三行，因为这部分是完全一样的
 
 15507
 15:45:45,860 --> 15:45:49,160
-can actually go ahead and make this a string interpolation and
+
 
 
 15508
 15:45:49,190 --> 15:45:53,150
-add all of these in here. So we can add the balance that we
+
 
 
 15509
 15:45:53,150 --> 15:45:56,150
-expect we can add the players that we expect. And we can add
+
 
 
 15510
 15:45:56,150 --> 15:45:58,970
-the raffle statement for now we're just going to keep it as
+
 
 
 15511
 15:45:59,180 --> 15:46:02,570
-we're expecting this but if you want to be super specific you
+
 
 
 15512
 15:46:02,570 --> 15:46:06,650
-can have your tests expect for exactly the specific values that
+
 
 
 15513
 15:46:06,650 --> 15:46:09,440
-you're looking for. But alright, what is the last thing we should
+
 
 
 15514
 15:46:09,470 --> 15:46:12,920
-expect form? Well, we should check to see that this actually
+
 
 
 15515
 15:46:12,920 --> 15:46:16,310
-gets called the raffle state gets changed. And we admit this
+
 
 
 15516
 15:46:16,340 --> 15:46:21,440
-event. So let's go ahead and add that. We'll say it updates the
+
 
 
 15517
 15:46:21,440 --> 15:46:30,230
-raffle state admits an event and calls the VRF coordinator to be
+
 
 
 15518
 15:46:30,230 --> 15:46:34,790
-an async function as well. Let's do this. So let's go ahead and
+
 
 
 15519
 15:46:34,790 --> 15:46:37,820
-let's make checkup keep true, I'm just going to copy paste
+
 
 
 15520
 15:46:37,820 --> 15:46:40,040
-these first three lines, since it's going to be exactly the
+
 
 
 15521
 15:46:40,040 --> 15:46:42,590
-same. We're going to enter the raffle we're going to increase
+We're going to enter the raffle we're going to increase
 
 
 15522
