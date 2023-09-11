@@ -424,464 +424,320 @@ I'm just going to copy paste these first three lines, since it's going to be exa
 
 15507
 15:45:45,860 --> 15:45:49,160
-
-
+We're going to enter the raffle we're going to increase the time we're going to mind a new block, 
+我们要进入抽奖，要增加时间，还要挖出一个新区块
 
 15508
 15:45:49,190 --> 15:45:53,150
-
-
+then we're going to call perform upkeep. 
+然后我们要调用 "performUpkeep"
 
 15509
 15:45:53,150 --> 15:45:56,150
-
-
+So we're going to say const, TX response equals await raffle dot perform upkeep with an empty bytes object, 
+所以我们要写 `const txResponse = await raffle.performUpkeep()` 里面是一个空字节对象
 
 15510
 15:45:56,150 --> 15:45:58,970
-
-
+and we're going to do const TX receipt equals await TX response dot wait for one block. 
+接着是 `const txReceipt = await txResponse.wait()` 等待一个区块
 
 15511
 15:45:59,180 --> 15:46:02,570
-
-
+From this receipt, we're gonna get the request ID, 
+从 "Receipt" 里我们要获取 "requestId" 
 
 15512
 15:46:02,570 --> 15:46:06,650
-
-
+we're gonna say const Request ID equals, 
+我们要写 `const requestId =`
 
 15513
 15:46:06,650 --> 15:46:09,440
-
-
+we can get the request ID. From this omitted event. 
+我们可以从这个 "emit event" 中获取 "requestId"
 
 15514
 15:46:09,470 --> 15:46:12,920
-
-
+However, we should look at our VRF coordinator mock again, 
+然而，我们应该再看一下我们的 "vrfCoordinatorMock" 
 
 15515
 15:46:12,920 --> 15:46:16,310
-
-
+when we call request random words, both in the mock and then in the actual contract, 
+当我们调用 "requestRandomWords" 时，无论是 "mock" 还是实际的合约
 
 15516
 15:46:16,340 --> 15:46:21,440
-
-
+you'll notice that it also emits an event with random words requested. 
+你会注意到，它们都触发了一个名为 "RandomWordsRequest" 的 "event" 
 
 15517
 15:46:21,440 --> 15:46:30,230
-
-
+And if you look in here, the second parameter that it has is indeed the request ID. 
+如果你查看一下这里，就会发现第二个参数正是 "requestId"
 
 15518
 15:46:30,230 --> 15:46:34,790
-
-
+So in reality, US omitting the request ID is redundant, 
+所以实际情况是，触发 "requestId" 是一件多余的事
 
 15519
 15:46:34,790 --> 15:46:37,820
-
-
+we can just use the admitted Request ID from the VRF coordinator 
+我们可以直接从 "vrfCoordinator" 中触发 "requestId"
 
 15520
 15:46:37,820 --> 15:46:40,040
-
-
+for the purpose of this course and showing you what an event looks like. We're going to leave it in there. 
+为了向你们展示 "event" 的形式，我们才把它留在了那里
 
 15521
 15:46:40,040 --> 15:46:42,590
-We're going to enter the raffle we're going to increase
-
+But if you want to go back and refactor this, you would definitely want to remove this omit. 
+但如果你要回去重构这个合约的话，你就有必要删除这个 "emit" 了
 
 15522
 15:46:42,590 --> 15:46:44,960
-the time we're going to mind a new block, then we're going to
-
+But for this test, let's do TX receipt dot events. 
+但在本次测试中，我们还是会执行 `txReceipt.events`
 
 15523
 15:46:44,960 --> 15:46:48,950
-call perform upkeep. So we're going to say const, TX response
-
+And this is going to be the first event instead of the zero with event 
+这是我们第 1 个 "event" 而不是第 0 个
 
 15524
 15:46:49,160 --> 15:46:55,970
-equals await raffle dot perform upkeep with an empty bytes
-
+because before this event gets emitted, this function is going to emit an event. 
+因为在这个 "event" 被触发之前，这个函数就已经触发过一个 "event" 了
 
 15525
 15:46:55,970 --> 15:47:02,480
-object, and we're going to do const TX receipt equals await TX
-
+So instead of the zero with event, this is the first event that gets emitted after this one. 
+所以这里不是 "events[0]" 而是 "events[1]" 它触发于这个之后
 
 15526
 15:47:02,480 --> 15:47:07,790
-response dot wait for one block. From this receipt, we're gonna
-
+So tax receipts dot events of one dot args dot request, ID, 
+所以现在就是 `txReceipt.events[1].args.requestId`
 
 15527
 15:47:07,790 --> 15:47:12,980
-get the request ID, we're gonna say const Request ID equals, we
-
+and then we're gonna say cert request id.to number is greater than zero. 
+然后我们要写 `assert(requestId.toNumber() > 0)`
 
 15528
 15:47:12,980 --> 15:47:17,210
-can get the request ID. From this omitted event. However, we
-
+And then we'll also assert that the raffle state equals equals one. 
+接着我们还要写 `assert(raffleState ==  1)`
 
 15529
 15:47:17,210 --> 15:47:21,230
-should look at our VRF coordinator mock again, when we
-
+So we're gonna do const, raffle state equals await, raffle dot get raffle state. 
+哈，这里还有一句 `const raffleState = await raffle.getRaffleState()`
 
 15530
 15:47:21,230 --> 15:47:25,640
-call request random words, both in the mock and then in the
-
+And this should actually be raffle state.to Number, 
+并且这里应该是 `raffleState.toNumber`
 
 15531
 15:47:25,640 --> 15:47:30,350
-actual contract, you'll notice that it also emits an event with
-
+or to string and then you know, do whatever we want to do. 
+或者是 "toString" 我们可以根据需要进行操作
 
 15532
 15:47:30,350 --> 15:47:33,590
-random words requested. And if you look in here, the second
-
+And this is a very big it, but we're going to copy the whole thing anyways. 
+这真是一个非常大的 "it" 但我们还是要把它整个复制下来
 
 15533
 15:47:33,590 --> 15:47:38,270
-parameter that it has is indeed the request ID. So in reality,
-
+HH test, dash dash grep, paste that in there, 
+`hh test --grep` 粘贴进去
 
 15534
 15:47:38,450 --> 15:47:42,380
-US omitting the request ID is redundant, we can just use the
-
+we run it, excuse me.to string equals equals one, 
+我们运行一下，抱歉，应该是 `.toString == "1"`
 
 15535
 15:47:42,380 --> 15:47:45,920
-admitted Request ID from the VRF coordinator for the purpose of
-
+transformer time and perfect, we are passing Great, 
+再试一次，完美，我们通过了，好极了
 
 15536
 15:47:45,920 --> 15:47:48,410
-this course and showing you what an event looks like. We're going
-
+now it's time for fulfill random words. 
+现在该轮到 "fulfillRandomWords" 了
 
 15537
 15:47:48,410 --> 15:47:50,960
-to leave it in there. But if you want to go back and refactor
-
+And this is where we're going to learn a lot of fantastic stuff here. 
+在这一部分中，我们会学到很多有趣的东西
 
 15538
 15:47:50,960 --> 15:47:54,050
-this, you would definitely want to remove this omit. But for
-
+So we're gonna make a new describe block zoomed out a little bit here. 
+我们先创建一个新的 "describe" 代码块，我们已经把视图缩小了一些
 
 15539
 15:47:54,050 --> 15:47:58,550
-this test, let's do TX receipt dot events. And this is going to
-
+And this is going to be our fulfill random words. 
+这里是 `"fulfillRandomWords"` 
 
 15540
 15:47:58,550 --> 15:48:02,210
-be the first event instead of the zero with event because
-
+It's going to be a function, of course. 
+当然了还有一个 `function` 
 
 15541
 15:48:02,240 --> 15:48:06,170
-before this event gets emitted, this function is going to emit
-
+And in here, we're actually going to add another before each 
+这里我们要添加一个新的 "beforeEach"
 
 15542
 15:48:06,200 --> 15:48:09,710
-an event. So instead of the zero with event, this is the first
-
+want to have somebody have entered the raffle before we run any tests in here. 
+我们希望在这里的测试运行之前，就已经有人进入到抽奖里了
 
 15543
 15:48:09,740 --> 15:48:12,920
-event that gets emitted after this one. So tax receipts dot
-
+So we're going to do a before each, which will be an async. function. 
+所以我们执行一个 `beforeEach(async function)`
 
 15544
 15:48:12,920 --> 15:48:17,360
-events of one dot args dot request, ID, and then we're
-
+And we're just going to run await, raffle that enter raffle with a value of raffle entrance fee. 
+然后我们直接运行 `await raffle.enterRaffle({value: raffleEntranceFee})`
 
 15545
 15:48:17,360 --> 15:48:23,330
-gonna say cert request id.to number is greater than zero. And
-
+And then we're going to do a wait network dot provider dot send EVM increase time of interval, that to number plus one, 
+接下来我们执行 `await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])`
 
 15546
 15:48:23,330 --> 15:48:25,460
-then we'll also assert that the
-
+and then a wait network dot provider dot send EVM mine. Comma. 
+再接下来是 `await network.provider.send("evm_mine", )`
 
 15547
 15:48:26,510 --> 15:48:31,160
-raffle state equals equals one. So we're gonna do const, raffle
-
+Before we've tried to do any testing of or fulfilled random words, 
+在我们尝试执行任何 "fulfillRandomWords" 的测试之前
 
 15548
 15:48:31,160 --> 15:48:37,430
-state equals await, raffle dot get raffle state. And this
-
+we're gonna have somebody enter the lottery. And we're going to have increased the time and mined a new block. 
+我们要先让一些人进入到抽奖中，然后增加一些时间再挖出一个新的区块
 
 15549
 15:48:37,430 --> 15:48:41,990
-should actually be raffle state.to Number, or to string
-
+Okay, cool. So the first thing we want to do is want to see that fulfill random words can only be called so long as there's a request in flight, 
+OK 酷，我们首先要做的就是只有当有一个请求发出时 "fulfillRandomWords" 才能被调用
 
 15550
 15:48:41,990 --> 15:48:44,300
-and then you know, do whatever we want to do. And this is a
-
+so long as there's a requested as long as request random words has been called. 
+也就是 "requestRandomWords" 被调用时
 
 15551
 15:48:44,360 --> 15:48:48,650
-very big it, but we're going to copy the whole thing anyways. HH
-
+So we can actually check that by running it can only be called after perform. This will be an async function. 
+所以我们可以这样检查 `it("can only be called after perform")` 这里是一个 "async function"
 
 15552
 15:48:48,650 --> 15:48:52,670
-test, dash dash grep, paste that in there, we run it, excuse
-
+And in here, we're going to revert on some requests that don't exist. 
+这里我们要让请求不存在时发生回滚
 
 15553
 15:48:52,670 --> 15:48:59,810
-me.to string equals equals one, transformer time and perfect, we
-
+So we'll do await, expect the RF core didn't a tour be to mock dot fulfill random words. 
+所以我们要执行 `await expect(vrfCoordinatorV2Mock.fulfillRandomWords())`
 
 15554
 15:48:59,810 --> 15:49:03,440
-are passing Great, now it's time for fulfill random words. And
-
+And if we look at our V RF, coordinator v2 Mark 
+如果我们查看一下我们的 "vrfCoordinatorV2Mock" 
 
 15555
 15:49:03,440 --> 15:49:06,380
-this is where we're going to learn a lot of fantastic stuff
-
+in here has the fulfill random words function, which is what the chain link node actually calls 
+在这里有一个 "fulfillRandomWords" 函数，这是 "Chainlink" 节点实际调用的函数
 
 15556
 15:49:06,380 --> 15:49:09,140
-here. So we're gonna make a new describe block zoomed out a
-
+and inside Add this function in the actual contract calls another contract that does the random number verification. 
+而在这个函数内部，实际的合约会调用另一个合约进行随机数验证
 
 15557
 15:49:09,140 --> 15:49:15,470
-little bit here. And this is going to be our fulfill random
-
+So we're basically checking this part right here. 
+所以我们基本上就是在检查这一部分
 
 15558
 15:49:15,470 --> 15:49:20,060
-words. It's going to be a function, of course. And in
-
+If the request doesn't exist, we're going to get this non existent request here. 
+如果请求不存在，我们就会得到这里的 "nonexistent request" 
 
 15559
 15:49:20,060 --> 15:49:23,210
-here, we're actually going to add another before each want to
-
+And as you can see, it needs a request ID and a consumer address. 
+如你所见，它需要一个 "requestId" 以及一个用户地址
 
 15560
 15:49:23,210 --> 15:49:26,990
-have somebody have entered the raffle before we run any tests
-
+So we're going to guess zero. And the consumer addresses, of course, it's gonna be raffled out at address, 
+所以这里是 `0`，而用户地址则当然就是 `raffle.address`
 
 15561
 15:49:26,990 --> 15:49:31,010
-in here. So we're going to do a before each, which will be an
-
+we're going to expect this to be reverted, with non existent request. 
+我们期望它是 `.to.be.revertedWith("nonexistent request")`
 
 15562
 15:49:31,040 --> 15:49:37,160
-async. function. And we're just going to run await, raffle that
-
+And then we're going to do this exact same thing with a different Request ID or request ID one. 
+然后我们要使用不同的 "requestId" 进行一次完全相同的操作，"requestId" 是 1
 
 15563
 15:49:37,160 --> 15:49:44,600
-enter raffle with a value of raffle entrance fee. And then
-
+And hopefully, we're also going to get non existent requests. 
+同样，我们希望它也会得到 "nonexistent request"
 
 15564
 15:49:44,600 --> 15:49:50,330
-we're going to do a wait network dot provider dot send EVM
-
+Now ideally, no request here would ever allow this fulfill random words to go through. 
+理想情况下，这里不应该有任何请求会允许 "fulfillRandomWords" 被执行
 
 15565
 15:49:50,570 --> 15:49:58,880
-increase time of interval, that to number plus one, and then a
-
+Now, it obviously would be really hard for us to test every single possible Request ID, 
+但是显然，我们很难测试 "requestId" 的每一种可能
 
 15566
 15:49:58,880 --> 15:50:06,260
-wait network dot provider dot send EVM mine. Comma. Before
-
+we're going to see a way in the future to actually test for a ton of these variables with something called fuzz testing. 
+将来，我们会见到一种可以测试大量此类变量的方法，它被称作 "fuzz testing"(“模糊测试”)
 
 15567
 15:50:06,260 --> 15:50:09,020
-we've tried to do any testing of or fulfilled random words, we're
-
+But we'll get to that in the future. 
+但我们在之后才会学习它
 
 15568
 15:50:09,020 --> 15:50:11,600
-gonna have somebody enter the lottery. And we're going to have
-
+And I spelt the scribe wrong, let's let's actually spelled the scribe correctly, 
+我把这个 "describe" 拼错了，让我们把 "describe" 拼对
 
 15569
 15:50:11,600 --> 15:50:15,020
-increased the time and mined a new block. Okay, cool. So the
-
+go ahead and run this hh test dash dash grep. 
+我们继续，运行 `hh test --grep`
 
 15570
 15:50:15,020 --> 15:50:17,930
-first thing we want to do is want to see that fulfill random
-
-
-15571
-15:50:17,930 --> 15:50:22,520
-words can only be called so long as there's a request in flight,
-
-
-15572
-15:50:22,550 --> 15:50:26,030
-so long as there's a requested as long as request random words
-
-
-15573
-15:50:26,060 --> 15:50:28,490
-has been called. So we can actually check that by running
-
-
-15574
-15:50:28,520 --> 15:50:34,760
-it can only be called after perform. This will be an async
-
-
-15575
-15:50:34,760 --> 15:50:38,930
-function. And in here, we're going to revert on some requests
-
-
-15576
-15:50:38,930 --> 15:50:44,420
-that don't exist. So we'll do await, expect the RF core didn't
-
-
-15577
-15:50:44,420 --> 15:50:51,500
-a tour be to mock dot fulfill random words. And if we look at
-
-
-15578
-15:50:51,500 --> 15:50:57,440
-our V RF, coordinator v2 Mark in here has the fulfill random
-
-
-15579
-15:50:57,440 --> 15:51:00,470
-words function, which is what the chain link node actually
-
-
-15580
-15:51:00,470 --> 15:51:03,590
-calls and inside Add this function in the actual contract
-
-
-15581
-15:51:03,590 --> 15:51:06,560
-calls another contract that does the random number verification.
-
-
-15582
-15:51:06,620 --> 15:51:09,740
-So we're basically checking this part right here. If the request
-
-
-15583
-15:51:09,740 --> 15:51:13,130
-doesn't exist, we're going to get this non existent request
-
-
-15584
-15:51:13,130 --> 15:51:16,610
-here. And as you can see, it needs a request ID and a
-
-
-15585
-15:51:16,610 --> 15:51:20,690
-consumer address. So we're going to guess zero. And the consumer
-
-
-15586
-15:51:20,690 --> 15:51:23,780
-addresses, of course, it's gonna be raffled out at address, we're
-
-
-15587
-15:51:23,780 --> 15:51:31,580
-going to expect this to be reverted, with non existent
-
-
-15588
-15:51:31,820 --> 15:51:35,690
-request. And then we're going to do this exact same thing with a
-
-
-15589
-15:51:35,720 --> 15:51:39,320
-different Request ID or request ID one. And hopefully, we're
-
-
-15590
-15:51:39,320 --> 15:51:42,050
-also going to get non existent requests. Now ideally, no
-
-
-15591
-15:51:42,050 --> 15:51:45,830
-request here would ever allow this fulfill random words to go
-
-
-15592
-15:51:45,830 --> 15:51:49,010
-through. Now, it obviously would be really hard for us to test
-
-
-15593
-15:51:49,040 --> 15:51:52,100
-every single possible Request ID, we're going to see a way in
-
-
-15594
-15:51:52,100 --> 15:51:56,360
-the future to actually test for a ton of these variables with
-
-
-15595
-15:51:56,360 --> 15:51:58,940
-something called fuzz testing. But we'll get to that in the
-
-
-15596
-15:51:58,940 --> 15:52:01,730
-future. And I spelt the scribe wrong, let's let's actually
-
-
-15597
-15:52:01,730 --> 15:52:05,210
-spelled the scribe correctly, go ahead and run this hh test dash
-
-
-15598
-15:52:05,210 --> 15:52:05,930
-dash grep.
-
-
-15599
-15:52:07,970 --> 15:52:13,970
 And great it passed. 
+很好，它通过了
