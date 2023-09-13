@@ -1,101 +1,102 @@
 15599
 15:52:07,970 --> 15:52:13,970
-Now I'm going to make just one more test here, 
-
+Now I'm going to make just one more test here, that's gonna be way too big. 
+现在我要再做一个测试，它的规模很大
 
 15600
 15:52:13,970 --> 15:52:17,450
-that's gonna be way too big. But right now the test that
-
+But right now the test that we're about to write is going to be it's going to be a really big test. 
+现在我们要写的测试会是一个很大的测试
 
 15601
 15:52:17,450 --> 15:52:19,820
-we're about to write is going to be it's going to be a really big
-
+And we probably want to split it up into different sections, 
+我们可能需要把它分为几个不同的部分
 
 15602
 15:52:19,820 --> 15:52:22,250
-test. And we probably want to split it up into different
-
+but actually figured that this was actually the best way to show this section. 
+我认为这是展示这部分内容的最佳方式
 
 15603
 15:52:22,250 --> 15:52:25,190
-sections, but actually figured that this was actually the best
-
+And it's going to be exactly what we're going to do. When we get to our staging test, 
+当我们要进行 "Staging" 测试的时候，这些事是肯定要做的
 
 15604
 15:52:25,190 --> 15:52:27,500
-way to show this section. And it's going to be exactly what
-
+we're going to write this test literally almost exactly the same. 
+我们将几乎以完全相同的方式来编写这个测试
 
 15605
 15:52:27,500 --> 15:52:30,350
-we're going to do. When we get to our staging test, we're going
-
+So let's write it, 
+那么，让我们开始写吧
 
 15606
 15:52:30,350 --> 15:52:33,680
-to write this test literally almost exactly the same. So
-
+this is basically going to be the test that puts everything together. 
+这基本上就是把所有内容整合到一起的测试
 
 15607
 15:52:33,860 --> 15:52:37,790
-let's write it, this is basically going to be the test
-
+So we're going to test that this indeed, so winner resets the lottery, and sends money, 
+所以，我们要测试的就是 `picks a winner, resets the lottery, and sends money`
+(“选出一个优胜者，重置抽奖，发送奖金”)
 
 15608
 15:52:37,790 --> 15:52:40,970
-that puts everything together. So we're going to test that this
-
+which is kind of a lot for a single it, 
+这对于单个 "it" 来说有点多了
 
 15609
 15:52:40,970 --> 15:52:47,240
-indeed, so winner resets the lottery, and sends money, which
-
+we probably would want to split those into their own pieces. 
+我们可能会把它分割为几个各自不同的部分
 
 15610
 15:52:47,240 --> 15:52:50,210
-is kind of a lot for a single it, we probably would want to
-
+But for this, we're just going to put them all into one, 
+但现在我们先把它们全都整合成一个
 
 15611
 15:52:50,210 --> 15:52:53,390
-split those into their own pieces. But for this, we're just
-
+and it's going to be an async function. 
+这里还有一个 "async function"
 
 15612
 15:52:53,390 --> 15:52:55,580
-going to put them all into one, and it's going to be an async
-
+Now we are going to learn a couple of new tricks here. So definitely be sure to follow along. 
+现在我们要学习一些新的技巧，所以请一定要跟紧了
 
 15613
 15:52:55,700 --> 15:52:59,390
-function. Now we are going to learn a couple of new tricks
-
+Now for this one, we're also going to add in some additional entrances 
+在这个测试中，我们要给它添加一些额外的参与者
 
 15614
 15:52:59,390 --> 15:53:02,630
-here. So definitely be sure to follow along. Now for this one,
-
+additional people who are entering this lottery. 
+一些额外参与抽奖的人
 
 15615
 15:53:02,630 --> 15:53:05,780
-we're also going to add in some additional entrances additional
-
+So we'll say const, additional, and trance equals great. 
+所以我们要写 `const additionalEntrants = 3`
 
 15616
 15:53:05,780 --> 15:53:08,480
-people who are entering this lottery. So we'll say const,
-
+We're gonna have some more of those fake accounts from ethers enter our lottery here.
+我们需要从 "ethers" 中额外获取一些虚拟账户来参与到我们的抽奖中来
 
 15617
 15:53:08,870 --> 15:53:14,210
-additional, and trance equals great. We're gonna have some
+
 
 
 15618
 15:53:14,210 --> 15:53:17,930
-more of those fake accounts from ethers enter our lottery here.
+
 
 
 15619
