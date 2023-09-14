@@ -72,7 +72,7 @@ Now we are going to learn a couple of new tricks here. So definitely be sure to 
 15613
 15:52:55,700 --> 15:52:59,390
 Now for this one, we're also going to add in some additional entrances 
-在这个测试中，我们要给它添加一些额外的参与者
+对于这个测试来说，我们需要添加一些额外的参与者
 
 15614
 15:52:59,390 --> 15:53:02,630
@@ -87,196 +87,196 @@ So we'll say const, additional, and trance equals great.
 15616
 15:53:05,780 --> 15:53:08,480
 We're gonna have some more of those fake accounts from ethers enter our lottery here.
-我们需要从 "ethers" 中额外获取一些虚拟账户来参与到我们的抽奖中来
+我们需要从 "ethers" 中获取一些额外的虚拟账户来参与到我们的抽奖中来
 
 15617
 15:53:08,870 --> 15:53:14,210
-
-
+So we're gonna say const. Starting account, index equals to, 
+所以我们要写 `const startingAccountIndex = 2`
 
 15618
 15:53:14,210 --> 15:53:17,930
-
-
+since deployer equals zero, excuse me equals one, 
+因为 "deployer = 0"，抱歉，应该是等于 1 
 
 15619
 15:53:17,960 --> 15:53:23,180
-So we're gonna say const. Starting account, index equals
-
+since the player is zero, 
+因为 "deployer" 是 0 
 
 15620
 15:53:23,300 --> 15:53:27,950
-to, since deployer equals zero, excuse me equals one, since the
-
+so we're going to have new accounts start from index one. 
+所以我们就有了一个新的账户，从索引 1 开始
 
 15621
 15:53:27,950 --> 15:53:30,740
-player is zero, so we're going to have new accounts start from
-
+And we're going to do a little for loop or let i equals starting count index, 
+然后我们执行一个循环 `for(let i = startingAccountIndex)`
 
 15622
 15:53:30,770 --> 15:53:34,910
-index one. And we're going to do a little for loop or let i
-
+i is less than the starting count, index, plus additional and trend sees 
+`i < startingAccountIndex + additionalEntrances`
 
 15623
 15:53:35,090 --> 15:53:44,150
-equals starting count index, i is less than the starting count,
-
+there's gonna be entrance. 
+抱歉，应该是 `Entrants` 
 
 15624
 15:53:45,080 --> 15:53:51,470
-index, plus additional and trend sees there's gonna be entrance.
-
+i plus plus, 
+`i++`
 
 15625
 15:53:52,580 --> 15:53:56,690
-i plus plus, we're gonna do a little loop and connect our
-
+we're gonna do a little loop and connect our raffle contract to these new accounts. 
+我们要通过这个循环，把我们的 "Raffle" 合约与这些新账户连接起来
 
 15626
 15:53:56,720 --> 15:53:59,150
-raffle contract to these new accounts. And then we're going
-
+And then we're going to have these new accounts, enter our raffle 
+然后我们就能让这些新账户进入到我们的抽奖中了
 
 15627
 15:53:59,150 --> 15:54:04,700
-to have these new accounts, enter our raffle contest. Count,
-
+contest. Count, connected raffle equals raffle dot connect accounts of i 
+`const accountConnectedRaffle = raffle.connect(accounts[i])`
 
 15628
 15:54:05,090 --> 15:54:13,070
-connected raffle equals raffle dot connect accounts of i and do
-
+and do we have accounts defined somewhere 
+我们在哪里定义过 "accounts" 么？
 
 15629
 15:54:13,070 --> 15:54:16,190
-we have accounts defined somewhere we don't. So let's get
-
+we don't. So let's get accounts to find somewhere. 
+没有，所以让我们先找个地方获取一下 "accounts" 
 
 15630
 15:54:16,190 --> 15:54:20,600
-accounts to find somewhere. We'll say const accounts equals
-
+We'll say const accounts equals await ethers dot get signers. 
+这样写 `const accounts = await ethers.getSigners()`
 
 15631
 15:54:20,660 --> 15:54:24,980
-await ethers dot get signers. And then we're going to do a
-
+And then we're going to do a weight account connected raffle dot enter. raffle 
+接着我们执行 `await accountConnectedRaffle.enterRaffle()
 
 15632
 15:54:24,980 --> 15:54:31,190
-weight account connected raffle dot enter. raffle with a value
-
+with a value of course of raffle entrance fee,
+当然，还有 `value: raffleEntranceFee`
 
 15633
 15:54:31,220 --> 15:54:34,100
-of course of raffle entrance fee,
-
+we're going to connect three additional entrance to our raffle. 
+我们要连接三个额外的参与者到我们的抽奖中来
 
 15634
 15:54:34,220 --> 15:54:37,550
-we're going to connect three additional entrance to our
-
+So we're going to have a total of four people connect into this raffle. 
+所以我们总共有 4 个人连接到了这个抽奖上
 
 15635
 15:54:37,550 --> 15:54:41,000
-raffle. So we're going to have a total of four people connect
-
+Now that we have them in here, we're going to keep note of our starting timestamp. 
+现在我们已经有了他们，接着我们要记录下开始时的时间戳
 
 15636
 15:54:41,030 --> 15:54:43,970
-into this raffle. Now that we have them in here, we're going
-
+So we're gonna do const starting timestamp equals await, raffle dot get last timestamp. 
+我们要执行 `const startingTimeStamp = await raffle.getLastTimeStamp`
 
 15637
 15:54:43,970 --> 15:54:47,060
-to keep note of our starting timestamp. So we're gonna do
-
+And here's where we're going to get a little bit tricky. 
+这里我们要用到一个小技巧
 
 15638
 15:54:47,060 --> 15:54:53,750
-const starting timestamp equals await, raffle dot get last
-
+What we want to do is a couple of things 
+我们想做的就是这么几件事
 
 15639
 15:54:54,320 --> 15:54:56,660
-timestamp. And here's where we're going to get a little bit
-
+we want to we want to perform upkeep, which is going to mock being chainlink keepers, 
+我们想要执行 "performUpkeep"，它用于模拟 "Chainlink Keepers" 
 
 15640
 15:54:56,660 --> 15:55:00,800
-tricky. What we want to do is a couple of things we want to we
-
+which will kick off the chain link, which will kick off calling fulfill random words. 
+它会启动调用 "fulfillRandomWords" 
 
 15641
 15:55:00,800 --> 15:55:05,420
-want to perform upkeep, which is going to mock being chainlink
-
+And we're going to mock doing that as well. Mock being the chain link VRF. 
+同样是模拟做一些事情，模拟 "Chainlink VRF" 
 
 15642
 15:55:05,420 --> 15:55:09,620
-keepers, which will kick off the chain link, which will kick off
-
+Once we do that, we can of course just check to see okay, 
+一旦做完了这些，我们当然就可以开始检查了
 
 15643
 15:55:09,620 --> 15:55:14,360
-calling fulfill random words. And we're going to mock doing
-
+did the recent winner get recorded the raffle get reset just play as we said as the timestamp is everything reset. 
+"recentWinner" 是否被记录了，抽奖是否重置了，"players" 是否重置了，时间戳是否重置了
 
 15644
 15:55:14,360 --> 15:55:19,340
-that as well. Mock being the chain link VRF. Once we do that,
-
+But we want to do this in a specific way. 
+但我们要用一种特殊的方式来执行这些操作
 
 15645
 15:55:19,340 --> 15:55:22,520
-we can of course just check to see okay, did the recent winner
-
+If we're doing this on a test net after we call fulfill random words, 
+如果我们是在一个测试网上进行的这些操作，那么在调用 "fulfillRandomWords" 之后
 
 15646
 15:55:22,520 --> 15:55:26,180
-get recorded the raffle get reset just play as we said as
-
+we will have to wait for the fulfill random words to be called. 
+我们需要等待 "fulfillRandomWords" 调用完毕
 
 15647
 15:55:26,180 --> 15:55:29,450
-the timestamp is everything reset. But we want to do this in
-
+Now since we're working with a hardhat local chain, we don't really need to wait for anything, 
+但由于我们是在 hardhat 本地链上，所以我们并不需要真的去等待什么
 
 15648
 15:55:29,450 --> 15:55:33,140
-a specific way. If we're doing this on a test net after we call
-
+right because we can just say okay, boom, snap our fingers and adjust our blockchain to do whatever we want. 
+因为我们可以随意做出改变，就像打响指一样，随心所欲地调整我们的区块链
 
 15649
 15:55:33,140 --> 15:55:37,130
-fulfill random words, we will have to wait for the fulfill
+
 
 
 15650
 15:55:37,280 --> 15:55:40,640
-random words to be called. Now since we're working with a
+
 
 
 15651
 15:55:40,640 --> 15:55:43,430
-hardhat local chain, we don't really need to wait for
+
 
 
 15652
 15:55:43,430 --> 15:55:46,400
-anything, right because we can just say okay, boom, snap our
+
 
 
 15653
 15:55:46,400 --> 15:55:48,800
-fingers and adjust our blockchain to do whatever we
+
 
 
 15654
 15:55:48,800 --> 15:55:51,680
-want. But we're going to simulate that we do need to wait
+But we're going to simulate that we do need to wait
 
 
 15655
