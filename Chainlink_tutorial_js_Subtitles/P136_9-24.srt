@@ -251,162 +251,162 @@ right because we can just say okay, boom, snap our fingers and adjust our blockc
 
 15649
 15:55:33,140 --> 15:55:37,130
-
-
+But we're going to simulate that we do need to wait for that event to be called. 
+但我们需要模拟我们确实等待 "event" 被调用了
 
 15650
 15:55:37,280 --> 15:55:40,640
-
-
+So in order for us to simulate waiting for that event, we once again need to set up a listener.
+所以为了模拟等待 "event"，我们又一次需要配置 "listener"
 
 15651
 15:55:40,640 --> 15:55:43,430
-
-
+Now if we set up a listener we don't want this to Just to finish before the listener has is done listening, 
+如果我们配置了 "listener" 我们就不希望测试在 "listener" 完成监听前就结束
 
 15652
 15:55:43,430 --> 15:55:46,400
-
-
+so we need to once again create a new promise. 
+所以我们又需要创建一个新的 "promise" 
 
 15653
 15:55:46,400 --> 15:55:48,800
-
-
+And this is going to be incredibly important, especially for our staging tests. 
+这一点非常重要，尤其是对于 "staging" 测试来说
 
 15654
 15:55:48,800 --> 15:55:51,680
-But we're going to simulate that we do need to wait
-
+So we're going to do await, new promise. 
+所以我们执行 `await new Promise()`
 
 15655
 15:55:51,920 --> 15:55:55,010
-for that event to be called. So in order for us to simulate
-
+And this is going to be exactly the same as we set it up before, 
+它就和我们之前的做法完全相同
 
 15656
 15:55:55,010 --> 15:55:59,240
-waiting for that event, we once again need to set up a listener.
-
+it's going to be an async function that's going to take resolve and reject as parameters. 
+这里是一个 `async` 函数，接收 `resolve` 以及 `reject` 作为参数
 
 15657
 15:55:59,300 --> 15:56:02,300
-Now if we set up a listener we don't want this to Just to
-
+And we're going to use this little arrow syntax here saying, this is an async function, basically, 
+然后我们用一个箭头语法表明这里是一个 "async" 函数
 
 15658
 15:56:02,300 --> 15:56:06,650
-finish before the listener has is done listening, so we need to
-
+and we're going to set up once again, that once syntax, 
+接着我们要再次配置 "once" 语法
 
 15659
 15:56:06,650 --> 15:56:09,800
-once again create a new promise. And this is going to be
-
+we're gonna say raffle that once, what's the event name, winner picked. 
+我们要写的是 `raffle.once()`，"event" 的名字是 "WinnerPicked" 
 
 15660
 15:56:09,800 --> 15:56:13,250
-incredibly important, especially for our staging tests. So we're
-
+So we're gonna say, Listen, for this winner picked event, 
+所以我们的意思就是，监听这个 "WinnerPicked" 事件
 
 15661
 15:56:13,250 --> 15:56:17,510
-going to do await, new promise. And this is going to be exactly
-
+we're gonna say raffle dot once winner picks happens, do some stuff.
+我们要做的就是一旦 "raffle.once("WinnerPicked")" 发生了，就要做些什么
 
 15662
 15:56:17,510 --> 15:56:20,570
-the same as we set it up before, it's going to be an async
-
+And again, this is just an anonymous function. 
+这里也是一个匿名函数
 
 15663
 15:56:20,570 --> 15:56:24,860
-function that's going to take resolve and reject as
-
+So we're gonna say raffle dot once the winner picked event gets emitted, do some stuff. 
+所以我们的意思就是，一旦 "raffle.once(WinnerPicked)" 事件被触发，就要去做某些事了
 
 15664
 15:56:24,860 --> 15:56:27,080
-parameters. And we're going to use this little arrow syntax
-
+So we're setting this up. 
+我们正在做的就是这么一件事
 
 15665
 15:56:27,080 --> 15:56:30,920
-here saying, this is an async function, basically, and we're
-
+Now it's in this function, we're going to add all of our certs and everything 
+在这个函数中，我们要添加各种 "assert" 之类的东西
 
 15666
 15:56:30,920 --> 15:56:34,520
-going to set up once again, that once syntax, we're gonna say
-
+because we want to wait for winter to get picked.
+因为我们要等待优胜者被选出来
 
 15667
 15:56:34,520 --> 15:56:39,350
-raffle that once, what's the event name, winner picked. So
-
+Now before the event gets fired, though, we of course, need to actually call perform and call fulfill random words. 
+在这个 "event" 被触发之前，我们当然还需要调用 "fulfillRandomWords"
 
 15668
 15:56:39,350 --> 15:56:42,230
-we're gonna say, Listen, for this winner picked event, we're
-
+So this is going to seem like it's a little bit backwards. 
+这看起来好像是反过来了
 
 15669
 15:56:42,230 --> 15:56:46,070
-gonna say raffle dot once winner picks happens, do some stuff.
+But that's because we want to set up our listeners so that when we do fire, the methods that will fire the event, 
 
 
 15670
 15:56:46,100 --> 15:56:49,100
-And again, this is just an anonymous function. So we're
+our listener is activated and is waiting for it. 
 
 
 15671
 15:56:49,100 --> 15:56:51,950
-gonna say raffle dot once the winner picked event gets
+
 
 
 15672
 15:56:51,950 --> 15:56:56,060
-emitted, do some stuff. So we're setting this up. Now it's in
+
 
 
 15673
 15:56:56,060 --> 15:56:58,400
-this function, we're going to add all of our certs and
+
 
 
 15674
 15:56:58,400 --> 15:57:01,910
-everything because we want to wait for winter to get picked.
+
 
 
 15675
 15:57:01,970 --> 15:57:05,180
-Now before the event gets fired, though, we of course, need to
+
 
 
 15676
 15:57:05,180 --> 15:57:08,870
-actually call perform and call fulfill random words. So this is
+
 
 
 15677
 15:57:08,870 --> 15:57:11,540
-going to seem like it's a little bit backwards. But that's
+
 
 
 15678
 15:57:11,540 --> 15:57:14,780
-because we want to set up our listeners so that when we do
+
 
 
 15679
 15:57:14,810 --> 15:57:19,040
-fire, the methods that will fire the event, our listener is
+
 
 
 15680
 15:57:19,040 --> 15:57:22,550
-activated and is waiting for it. So we're going to put all of our
+So we're going to put all of our
 
 
 15681
