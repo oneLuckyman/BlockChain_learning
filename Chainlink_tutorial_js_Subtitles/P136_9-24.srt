@@ -267,7 +267,7 @@ Now if we set up a listener we don't want this to Just to finish before the list
 15652
 15:55:43,430 --> 15:55:46,400
 so we need to once again create a new promise. 
-所以我们又需要创建一个新的 "promise" 
+所以我们又需要创建一个新的 "Promise" 
 
 15653
 15:55:46,400 --> 15:55:48,800
@@ -352,176 +352,176 @@ So this is going to seem like it's a little bit backwards.
 15669
 15:56:42,230 --> 15:56:46,070
 But that's because we want to set up our listeners so that when we do fire, the methods that will fire the event, 
-
+这是因为我们想要配置 "listener"，当我们执行触发 "event" 的方法时
 
 15670
 15:56:46,100 --> 15:56:49,100
 our listener is activated and is waiting for it. 
-
+我们的 "listener" 会被激活并开始等待
 
 15671
 15:56:49,100 --> 15:56:51,950
-
-
+So we're going to put all of our code inside of this promise. Now, 
+所以我们现在要把我们所有的代码都放到 "Promise" 的内部
 
 15672
 15:56:51,950 --> 15:56:56,060
-
-
+because we put it outside of the promise, we put all the code outside of the promise, 
+因为如果我们把代码放到 "Promise" 的外面的话
 
 15673
 15:56:56,060 --> 15:56:58,400
-
-
+this promise will never get resolved, because the listener will never fire into vent. 
+"Promise" 就不可能得到解决，因为 "listener" 无法触发到 "event" 
 
 15674
 15:56:58,400 --> 15:57:01,910
-
-
+So if down here, you know we call fulfill random words with something, 
+所以如果我们拉到下面这里，调用 "fulfillRandomWords" 
 
 15675
 15:57:01,970 --> 15:57:05,180
-
-
+you know which the spelling is bad. 
+这个拼写有问题
 
 15676
 15:57:05,180 --> 15:57:08,870
-
-
+But let's say we call the down here, this piece of code will never reach this fulfill random words, 
+总之，如果我们在下面这里调用，这部分代码就永远抵达不了 "fulfillRandomWords" 了
 
 15677
 15:57:08,870 --> 15:57:11,540
-
-
+because it's always going to be waiting for this wants to get resolved. 
+因为它总是要等待这里的代码得到解决
 
 15678
 15:57:11,540 --> 15:57:14,780
-
-
+So we need to add all of our code inside the promise. 
+所以我们需要把我们的代码全都添加到 "Promise" 内部
 
 15679
 15:57:14,810 --> 15:57:19,040
-
-
+But outside this raffle dot once 
+但要位于这个 "raffle.once" 的外部
 
 15680
 15:57:19,040 --> 15:57:22,550
-So we're going to put all of our
-
+now we don't want to wait forever, right? Maybe there is an issue here. 
+不过我们不想永远就这么等着，对吧？也许这里会出现问题
 
 15681
 15:57:22,550 --> 15:57:27,050
-code inside of this promise. Now, because we put it outside
-
+And we want to be able to reject this, if there's an issue. 
+并且我们希望，如果出现问题的话能够返回 "reject"
 
 15682
 15:57:27,050 --> 15:57:28,910
-of the promise, we put all the code outside of the promise,
-
+Now what we can do is in our heart hat dot config, we can add a timeout. 
+现在我们可以做的是，在我们的 "hardhat.config" 中添加一个超时时间
 
 15683
 15:57:28,940 --> 15:57:31,610
-this promise will never get resolved, because the listener
-
+So we can add this mocha section, we can give ourselves a timeout of 200,000 milliseconds, 
+我们可以添加一个 "mocha" 部分，给我们自己一个 `timeout` 200000 毫秒
 
 15684
 15:57:31,790 --> 15:57:34,790
-will never fire into vent. So if down here, you know we call
-
+which is going to be 200 seconds max, 
+也就是最大 200 秒
 
 15685
 15:57:34,790 --> 15:57:37,910
-fulfill random words with something, you know which the
-
+if this event doesn't get fired in 200 seconds, this will be considered a failure and this test will fail, 
+如果这个 "event" 花了 200 秒都没有被触发的话，就会被视为失败，这次测试也就失败了
 
 15686
 15:57:37,910 --> 15:57:40,820
-spelling is bad. But let's say we call the down here, this
-
+which is what we want. 
+这正是我们想要的
 
 15687
 15:57:40,820 --> 15:57:43,700
-piece of code will never reach this fulfill random words,
-
+And I typically like to just wrap this in a try catch 
+我通常喜欢把它包在一个 "try-catch" 内
 
 15688
 15:57:43,940 --> 15:57:47,060
-because it's always going to be waiting for this wants to get
-
+because if something fails, it'll cause you a whole bunch of headache 
+因为一旦有些事情失败了，那么它很可能会让你很头疼
 
 15689
 15:57:47,060 --> 15:57:51,290
-resolved. So we need to add all of our code inside the promise.
-
+catch E. And if anything fails, we'll also reject, 
+`catch(e)` 如果有什么东西失败了，同样执行 `reject()`
 
 15690
 15:57:51,500 --> 15:57:55,190
-But outside this raffle dot once now we don't want to wait
-
+there's an issue with us calling some function, we'll just say, Hey, okay, that's a failure. 
+当我们调用某些函数出了问题时，我们就会说“嘿，这里有一处失败了”
 
 15691
 15:57:55,190 --> 15:57:58,640
-forever, right? Maybe there is an issue here. And we want to be
-
+But you fail, 
+嘭，失败了
 
 15692
 15:57:58,640 --> 15:58:02,300
-able to reject this, if there's an issue. Now what we can do is
-
+that way, our promise can get resolved in a timely manner, 
+这样，我们的 "Promise" 就可以得到及时的解决
 
 15693
 15:58:02,300 --> 15:58:06,830
-in our heart hat dot config, we can add a timeout. So we can add
+
 
 
 15694
 15:58:06,830 --> 15:58:13,190
-this mocha section, we can give ourselves a timeout of 200,000
+
 
 
 15695
 15:58:13,190 --> 15:58:17,750
-milliseconds, which is going to be 200 seconds max, if this
+
 
 
 15696
 15:58:17,780 --> 15:58:21,620
-event doesn't get fired in 200 seconds, this will be considered
+
 
 
 15697
 15:58:21,650 --> 15:58:24,980
-a failure and this test will fail, which is what we want. And
+
 
 
 15698
 15:58:24,980 --> 15:58:27,770
-I typically like to just wrap this in a try catch because if
+
 
 
 15699
 15:58:27,770 --> 15:58:31,550
-something fails, it'll cause you a whole bunch of headache catch
+
 
 
 15700
 15:58:31,910 --> 15:58:35,840
-E. And if anything fails, we'll also reject, there's an issue
+
 
 
 15701
 15:58:35,840 --> 15:58:38,030
-with us calling some function, we'll just say, Hey, okay,
+
 
 
 15702
 15:58:38,030 --> 15:58:41,150
-that's a failure. But you fail, that way, our promise can get
+
 
 
 15703
 15:58:41,150 --> 15:58:43,910
-resolved in a timely manner, we're going to add this code in
+we're going to add this code in
 
 
 15704
