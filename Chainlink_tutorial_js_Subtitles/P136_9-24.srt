@@ -332,7 +332,7 @@ So we're setting this up.
 15665
 15:56:27,080 --> 15:56:30,920
 Now it's in this function, we're going to add all of our certs and everything 
-在这个函数中，我们要添加各种 "assert" 之类的东西
+在这个函数中，我们要添加所有的 "assert" 
 
 15666
 15:56:30,920 --> 15:56:34,520
@@ -471,319 +471,240 @@ that way, our promise can get resolved in a timely manner,
 
 15693
 15:58:02,300 --> 15:58:06,830
-
-
+we're going to add this code in a little bit. But let's keep going. 
+我们还会在这里添加一些代码，但让我们先继续前进
 
 15694
 15:58:06,830 --> 15:58:13,190
-
-
+Let's keep going. And excuse me, the trycatch should be in the ones, 
+让我们继续前进，抱歉 "try-catch" 应该位于 "once" 的内部
 
 15695
 15:58:13,190 --> 15:58:17,750
-
-
+the ones above the results, excuse me, 
+在 "once" 的 "resolve" 上面，抱歉
 
 15696
 15:58:17,780 --> 15:58:21,620
-
-
+because this is the listener. So sorry, we want the trycatch to be inside the ones 
+因为这是一个 "listener"，真是抱歉，我们希望 "try-catch" 在 "once" 的内部
 
 15697
 15:58:21,650 --> 15:58:24,980
-
-
+if this takes too long, we want to just go ahead and throw an error.
+如果它花费了过长的时间，我们就希望它能直接抛出一个错误
 
 15698
 15:58:24,980 --> 15:58:27,770
-
-
+Otherwise, we're going to resolve 
+否则的话，我们就返回 "resolve" 
 
 15699
 15:58:27,770 --> 15:58:31,550
-
-
+now outside the listener, but inside of the promise, we're going to do this bit here, 
+现在，在 "listener" 的外部 "Promise" 的内部，我们要做一点其他事情
 
 15700
 15:58:31,910 --> 15:58:35,840
-
-
+where we go const TX equals await raffle dot perform upkeep, and we'll pass it the empty bytes object, 
+我们运行 `const tx = await raffle.performUpkeep` 并且传入一个空字节对象
 
 15701
 15:58:35,840 --> 15:58:38,030
-
-
+we'll get const TX receipt equals await TX dot weight of one block.
+再执行 `const txReceipt = await tx.wait(1)` 等待一个区块
 
 15702
 15:58:38,030 --> 15:58:41,150
-
-
+And then we're going to do a weight VRF core didn't a tour be to mock dot fulfill random words, 
+接着我们执行 `await vrfCoordinatorV2Mock.fulfillRandomWords()`
 
 15703
 15:58:41,150 --> 15:58:43,910
-we're going to add this code in
-
+CX receipt dot events of one dot args dot Request ID come a raffle that address. 
+`txReceipt.events[1].args.requestId, raffle.address`
 
 15704
 15:58:43,910 --> 15:58:47,240
-a little bit. But let's keep going. Let's keep going. And
-
+So then the final thing that we're going to do is we're going to get this veer off coordinator be to mock 
+所以我们的最后一件事就是获取这个 "vrfCoordinatorV2Mock" 
 
 15705
 15:58:47,300 --> 15:58:50,960
-excuse me, the trycatch should be in the ones, the ones above
-
+we're going to have it call fulfill random words, which takes the request ID and the consumer address. 
+我们要让它调用 "fulfillRandomWords"，它接收 "requestId" 以及 "consumer" 地址
 
 15706
 15:58:50,960 --> 15:58:54,020
-the results, excuse me, because this is the listener. So sorry,
-
+So we're going to mock it, give it the request ID which we get from the transaction receipt, 
+所以我们运行了 "mock" 给了它 "requestId"，这是从 "txReceipt" 中获取的
 
 15707
 15:58:54,050 --> 15:58:56,990
-we want the trycatch to be inside the ones if this takes
-
+and the consumer address here. 
+并且在这里还提供了 "consumer" 地址
 
 15708
 15:58:56,990 --> 15:58:59,600
-too long, we want to just go ahead and throw an error.
-
+All inside this promise, we're setting up a listener for this winner picked event. 
+这就是 "Promise" 中的全部内容，我们为 "WinnerPicked" 事件配置了一个 "listener" 
 
 15709
 15:58:59,810 --> 15:59:01,880
-Otherwise, we're going to resolve now outside the
-
+And then we're mocking the channeling keepers and then we're mocking the chainlink VRF. 
+然后我们模拟了 "Chainlink Keepers" 接着又模拟了 "Chainlink VRF" 
 
 15710
 15:59:01,880 --> 15:59:04,640
-listener, but inside of the promise, we're going to do this
-
+And once this function gets called this function should emit a winner picked event. 
+一旦这个函数被调用了，它就会触发一个 "WinnerPicked" 事件
 
 15711
 15:59:04,640 --> 15:59:11,480
-bit here, where we go const TX equals await raffle dot perform
-
+So this raffle that was set up that was listening for this to get emitted 
+这样，这个配置过的 "raffle" 就会监听到这个触发
 
 15712
 15:59:11,990 --> 15:59:15,470
-upkeep, and we'll pass it the empty bytes object, we'll get
-
+will pick up and go Ah okay, I found it I found the winner picked event. 
+它会获取到，然后说，啊，我找到 "WinnerPicked" 事件了
 
 15713
 15:59:15,470 --> 15:59:21,650
-const TX receipt equals await TX dot weight of one block.
-
+Now we can go ahead and do some stuff. 
+现在我们可以继续做一些后续操作了
 
 15714
 15:59:21,889 --> 15:59:27,409
-And then we're going to do a weight VRF core didn't a tour be
-
+So once the winner picked event gets fired, we'll do a little console dot log 
+一旦 "WinnerPicked" 事件被触发，我们就执行一个 `console.log()`
 
 15715
 15:59:27,409 --> 15:59:35,059
-to mock dot fulfill random words, CX receipt dot events of
-
+found the event like this 
+`"Found the event!"` 就像这样
 
 15716
 15:59:35,059 --> 15:59:41,569
-one dot args dot Request ID come a raffle that address. So then
-
+and we'll jump into our try catch 
+然后我们就进入到 "try-catch" 中
 
 15717
 15:59:41,569 --> 15:59:43,639
-the final thing that we're going to do is we're going to get this
-
+and this trycatch is going to be basically us doing all these asserts in here. 
+这个 "try-catch" 基本上就是我们执行所有 "assert" 的地方
 
 15718
 15:59:43,639 --> 15:59:46,639
-veer off coordinator be to mock we're going to have it call
-
+So first we want to say const recent winner equals await raffle dot get recent winner 
+所以首先，我们要写的是 `const recentWinner = await raffle.getRecentWinner()`
 
 15719
 15:59:47,239 --> 15:59:50,869
-fulfill random words, which takes the request ID and the
-
+and we're going to be checking just everything in this raffle right
+然后我们就要检查这次抽奖内的所有内容，对吧？
 
 15720
 15:59:50,869 --> 15:59:53,869
-consumer address. So we're going to mock it, give it the request
-
+we're gonna be checking that the recent winners right 
+我们要检查这个 "recentWinner" 是否正确
 
 15721
 15:59:53,869 --> 15:59:56,539
-ID which we get from the transaction receipt, and the
-
+that that the raffle state's been reset the players have reversed, you know, 
+"raffleState" 是否已经重置，还有 "players" 你懂得
 
 15722
 15:59:56,539 --> 15:59:59,539
-consumer address here. All inside this promise, we're
-
+players has been reset, etc, etc. 
+"players" 是否已经重置，等等等等
 
 15723
 15:59:59,539 --> 16:00:02,809
-setting up a listener for this winner picked event. And then
-
+So we'll say const raffle state equals awaits raffle dot get raffle state
+所以我们要写 `const raffleState = await raffle.getRaffleState()`
 
 15724
 16:00:02,809 --> 16:00:05,809
-we're mocking the channeling keepers and then we're mocking
-
+we'll say const. Ending timestamp equals await, raffle dot get last timestamp. 
+接着写 `const endingTimeStamp = await raffle.getLastTimeStamp()`
 
 15725
 16:00:05,839 --> 16:00:09,949
-the chainlink VRF. And once this function gets called this
-
+And let's start doing some asserts.
+现在让我们来开始做一些 "assert" 
 
 15726
 16:00:09,949 --> 16:00:14,629
-function should emit a winner picked event. So this raffle
-
+So first we should assert that this es players array has been reset to zero. 
+首先我们要 "assert" 的是，这个 "s_players" 数组应该被重置为 0 
 
 15727
 16:00:14,659 --> 16:00:18,139
-that was set up that was listening for this to get
-
+So if we call get number of players it should be zero. 
+所以如果我们调用 "getNumberOfPlayers" 的话，它应该返回的是 0 
 
 15728
 16:00:18,169 --> 16:00:22,159
-emitted will pick up and go Ah okay, I found it I found the
-
+So we can do const num players equals await raffle dot get number of players like so. 
+那么我们可以执行 `const numPlayers = await raffle.getNumberOfPlayers()`
 
 15729
 16:00:22,159 --> 16:00:26,209
-winner picked event. Now we can go ahead and do some stuff. So
-
+And we can do assert dot equal nine players.to string is going to be zero. 
+接着我们可以执行 `assert.equal(numPlayers.toString(), "0")`
 
 15730
 16:00:26,209 --> 16:00:29,539
-once the winner picked event gets fired, we'll do a little
-
+What else can we assert? 
+我们还要 "assert" 什么？
 
 15731
 16:00:29,539 --> 16:00:35,149
-console dot log found the event like this and we'll jump into
-
+Well, we can assert dot equal raffle state should be back to being open. 
+嗯，我们还可以 `assert.equal(raffleState)` 它应该回到开放状态
 
 15732
 16:00:35,149 --> 16:00:38,329
-our try catch and this trycatch is going to be basically us
-
+So raffle state.to string should be zero,
+也就是 `raffleState.toString` 应该为 `"0"`
 
 15733
 16:00:38,359 --> 16:00:41,659
-doing all these asserts in here. So first we want to say const
-
+we should assert that the ending timestamp is now greater than the starting timestamp. 
+我们还应该 `assert(endingTimeStamp > startingTimeStamp)`
 
 15734
 16:00:42,199 --> 16:00:48,349
-recent winner equals await raffle dot get recent winner and
-
+Because the last timestamp should have been updated. 
+因为上一次的时间戳应该更新一下才对
 
 15735
 16:00:48,349 --> 16:00:50,749
-we're going to be checking just everything in this raffle right
-
+We also want to make sure our recent winner is correct. 
+我们还需要确保 "recentWinner" 是正确的
 
 15736
 16:00:50,749 --> 16:00:53,119
-we're gonna be checking that the recent winners right that that
-
+But we'll do console dot log recent winner. 
+所以我们执行 `console.log(recentWinner)`
 
 15737
 16:00:53,119 --> 16:00:55,519
-the raffle state's been reset the players have reversed, you
-
+Now we can go to the VRF coordinator mock. 
+现在我们可以前往 "VRFCoordinatorMock" 
 
 15738
 16:00:55,519 --> 16:00:59,239
-know, players has been reset, etc, etc. So we'll say const
-
+And we could simulate this and try to figure out who the random winner is 
+我们可以模拟这个函数，然后算出谁才是那个随机的优胜者
 
 15739
 16:00:59,689 --> 16:01:05,599
-raffle state equals awaits raffle dot get raffle state
-
+to console dot log accounts to. 
+并把它打印出来 `console.log(accounts[2])`
 
 15740
 16:01:06,799 --> 16:01:12,499
-we'll say const. Ending timestamp equals await, raffle
-
-
-15741
-16:01:12,499 --> 16:01:17,539
-dot get last timestamp. And let's start doing some asserts.
-
-
-15742
-16:01:17,569 --> 16:01:21,859
-So first we should assert that this es players array has been
-
-
-15743
-16:01:21,889 --> 16:01:25,489
-reset to zero. So if we call get number of players it should be
-
-
-15744
-16:01:25,519 --> 16:01:32,719
-zero. So we can do const num players equals await raffle dot
-
-
-15745
-16:01:32,749 --> 16:01:39,289
-get number of players like so. And we can do assert dot equal
-
-
-15746
-16:01:40,069 --> 16:01:45,289
-nine players.to string is going to be zero. What else can we
-
-
-15747
-16:01:45,289 --> 16:01:52,279
-assert? Well, we can assert dot equal raffle state should be
-
-
-15748
-16:01:52,279 --> 16:01:58,969
-back to being open. So raffle state.to string should be zero,
-
-
-15749
-16:01:59,029 --> 16:02:04,459
-we should assert that the ending timestamp is now greater than
-
-
-15750
-16:02:04,459 --> 16:02:09,649
-the starting timestamp. Because the last timestamp should have
-
-
-15751
-16:02:09,649 --> 16:02:12,439
-been updated. We also want to make sure our recent winner is
-
-
-15752
-16:02:12,439 --> 16:02:16,489
-correct. But we'll do console dot log recent winner. Now we
-
-
-15753
-16:02:16,489 --> 16:02:20,389
-can go to the VRF coordinator mock. And we could simulate this
-
-
-15754
-16:02:20,389 --> 16:02:22,939
-and try to figure out who the random winner is to console dot
-
-
-15755
-16:02:22,939 --> 16:02:27,349
-log accounts to. And then just to show a bunch of them, we'll
-
-
-15756
-16:02:27,349 --> 16:02:35,389
-do 01 and three 
+And then just to show a bunch of them, we'll do 01 and three 
+然后把它们全都展示出来，我们把这里改成 `0, 1` 以及 `3`
