@@ -1,0 +1,413 @@
+15756
+16:02:27,349 --> 16:02:35,389
+a raffle dot once this needs to be an async
+
+
+15757
+16:02:35,389 --> 16:02:38,449
+function, not just a regular function. Let's try that one
+
+
+15758
+16:02:38,449 --> 16:02:42,319
+more time, get latest timestamp is the correct function. So
+
+
+15759
+16:02:42,319 --> 16:02:45,709
+let's update this with the correct latest. Let's put latest
+
+
+15760
+16:02:45,709 --> 16:02:49,159
+in there. Because I'm spelling something's wrong. I sure am
+
+
+15761
+16:02:49,279 --> 16:02:52,699
+looks like we're printing out recent winner here when we
+
+
+15762
+16:02:52,699 --> 16:02:55,279
+haven't even initialized it. So let's move it up. And then we'll
+
+
+15763
+16:02:55,279 --> 16:02:59,659
+do console dot log recent winner. So I know this is a
+
+
+15764
+16:02:59,659 --> 16:03:03,019
+massive test here. But let's give it a try and see if
+
+
+15765
+16:03:03,049 --> 16:03:05,419
+everything kind of does what we think it should do. And it's
+
+
+15766
+16:03:05,419 --> 16:03:08,959
+slowing down here, which is good because we're doing a lot of
+
+
+15767
+16:03:08,959 --> 16:03:13,279
+stuff. And uh huh, we finally get this passing thing to come
+
+
+15768
+16:03:13,279 --> 16:03:17,029
+out. And we did a ton of console dot logging so so there's a lot
+
+
+15769
+16:03:17,029 --> 16:03:19,789
+of stuff in here of the signers are getting printed out. So
+
+
+15770
+16:03:19,789 --> 16:03:22,339
+let's just make this a little easier to read. We'll add dot
+
+
+15771
+16:03:22,339 --> 16:03:27,079
+address to all these, we can see who the winner is. So it looks
+
+
+15772
+16:03:27,079 --> 16:03:30,289
+like the winner is going to be account number one, which is
+
+
+15773
+16:03:30,289 --> 16:03:33,079
+great. So what we can do now that we know account number one
+
+
+15774
+16:03:33,079 --> 16:03:35,659
+is going to be the winner, we can get that winners starting
+
+
+15775
+16:03:35,659 --> 16:03:40,159
+balance way down here before we call fulfill random words. So
+
+
+15776
+16:03:40,159 --> 16:03:47,449
+we'll say const winner, starting balance equals await accounts
+
+
+15777
+16:03:47,479 --> 16:03:51,739
+one dot get balance, yes, you can just call get balance right
+
+
+15778
+16:03:51,739 --> 16:03:55,399
+like that. And now that we have the winner starting balance back
+
+
+15779
+16:03:55,399 --> 16:04:01,249
+in our tests, we can say const winner, ending balance equals
+
+
+15780
+16:04:01,279 --> 16:04:07,729
+await ounce one dot get balance. And we can make sure that this
+
+
+15781
+16:04:07,729 --> 16:04:11,869
+winner got paid what they need. So now we're going to do a big
+
+
+15782
+16:04:11,869 --> 16:04:14,419
+assert with some money stuff, just trust me, this is what the
+
+
+15783
+16:04:14,419 --> 16:04:18,229
+math is. So we're going to do assert dot equal winner
+
+
+15784
+16:04:18,229 --> 16:04:20,179
+balance.to string,
+
+
+15785
+16:04:21,140 --> 16:04:25,460
+excuse me winter ending balance.to string should equal
+
+
+15786
+16:04:26,150 --> 16:04:34,430
+the winner starting balance dot add the raffle entrance fee that
+
+
+15787
+16:04:34,430 --> 16:04:41,600
+multiplied by the additional and trance that add the raffle
+
+
+15788
+16:04:41,600 --> 16:04:45,410
+entrance fee that we paid.to string. So this math is
+
+
+15789
+16:04:45,410 --> 16:04:49,940
+basically saying the winner should end with a balance of all
+
+
+15790
+16:04:50,000 --> 16:04:53,030
+of the money that everybody else added to this contract. And
+
+
+15791
+16:04:53,030 --> 16:04:57,110
+that's it. So we can run this test one more time. And Gosh,
+
+
+15792
+16:04:57,110 --> 16:05:00,410
+darn it, it passed. Okay, so there was a lot of code here.
+
+
+15793
+16:05:00,470 --> 16:05:03,170
+And this might have been one of the hardest pieces of this
+
+
+15794
+16:05:03,170 --> 16:05:06,290
+entire course is going to be this part right here. So if you
+
+
+15795
+16:05:06,290 --> 16:05:08,630
+struggled a little bit with this, don't let that bog you
+
+
+15796
+16:05:08,630 --> 16:05:11,780
+down. This is probably one of the more difficult sections of
+
+
+15797
+16:05:11,780 --> 16:05:15,440
+this course, let's do a quick refresher of just this test that
+
+
+15798
+16:05:15,440 --> 16:05:18,170
+we're doing. And then we'll see in an action when we do it. In
+
+
+15799
+16:05:18,170 --> 16:05:21,410
+our staging test. What we did is we're picking a winner resetting
+
+
+15800
+16:05:21,410 --> 16:05:23,180
+the lottery and we're sending money. Basically what we're
+
+
+15801
+16:05:23,180 --> 16:05:26,420
+doing is we're testing that this fulfill random words thing does
+
+
+15802
+16:05:26,420 --> 16:05:29,030
+what we want it to do a random winner wins and they get the
+
+
+15803
+16:05:29,030 --> 16:05:31,700
+money. So how do we actually do that? Well, we first started off
+
+
+15804
+16:05:31,700 --> 16:05:34,460
+by having a bunch of random people enter the lottery. Great.
+
+
+15805
+16:05:34,490 --> 16:05:38,510
+Sounds good. Now what we wanted to do was we want to call
+
+
+15806
+16:05:38,510 --> 16:05:42,080
+perform upkeep and fulfill random words, we want to pretend
+
+
+15807
+16:05:42,080 --> 16:05:45,110
+that the random number was drawn. And that's what this code
+
+
+15808
+16:05:45,110 --> 16:05:48,770
+down here does is it calls that random number but and what we
+
+
+15809
+16:05:48,770 --> 16:05:51,170
+could have done was we could have had all these assert and
+
+
+15810
+16:05:51,170 --> 16:05:54,800
+checked all the variables. After we did this, right. We could
+
+
+15811
+16:05:54,800 --> 16:05:58,370
+have totally done that. However, on a test net where we don't
+
+
+15812
+16:05:58,400 --> 16:06:00,980
+always know exactly when a transaction is going to finish.
+
+
+15813
+16:06:01,010 --> 16:06:03,980
+We have to wait If we have to listen for an event to be fired,
+
+
+15814
+16:06:04,250 --> 16:06:07,550
+before, we could call the transactions that would end this
+
+
+15815
+16:06:07,550 --> 16:06:10,670
+whole thing, we needed to set something up to listen for that
+
+
+15816
+16:06:10,670 --> 16:06:14,330
+event to be fired. And we said, hey, only once this event is
+
+
+15817
+16:06:14,330 --> 16:06:18,710
+fired only once this transaction is called, can we do our testing
+
+
+15818
+16:06:18,770 --> 16:06:22,160
+now for our local network, we are mocking the VRF
+
+
+15819
+16:06:22,160 --> 16:06:24,860
+coordinators, we have control, we know exactly when this is
+
+
+15820
+16:06:24,860 --> 16:06:28,460
+going to run. But on a test net, we don't. So you'll see in our
+
+
+15821
+16:06:28,460 --> 16:06:31,790
+staging tests, we won't have any of this here. And we'll have to
+
+
+15822
+16:06:31,790 --> 16:06:37,040
+rely on setting up a listener to listen for the channeling VRF
+
+
+15823
+16:06:37,040 --> 16:06:40,280
+and the keepers to fire their events. And that's why the
+
+
+15824
+16:06:40,280 --> 16:06:43,010
+staging test is going to be so important to make sure that
+
+
+15825
+16:06:43,010 --> 16:06:45,440
+we're doing everything correct. And that's why we set up our
+
+
+15826
+16:06:45,440 --> 16:06:48,800
+local tests like this, so that it mimics what we're going to be
+
+
+15827
+16:06:48,800 --> 16:06:51,080
+doing on our statement test what we're going to be doing on a
+
+
+15828
+16:06:51,110 --> 16:06:54,560
+real network here. And again, we're setting up this listener
+
+
+15829
+16:06:54,560 --> 16:06:58,370
+and we're saying, Ah, once we do here, this event, then we're
+
+
+15830
+16:06:58,370 --> 16:07:01,730
+going to try to actually check all of the balances and check
+
+
+15831
+16:07:01,730 --> 16:07:04,550
+that everything is working as intended. And if we don't see
+
+
+15832
+16:07:04,550 --> 16:07:07,130
+it, we're going to reject. And if there's a timeout, if it
+
+
+15833
+16:07:07,130 --> 16:07:09,590
+takes more than 200 seconds, we're going to say okay,
+
+
+15834
+16:07:09,680 --> 16:07:11,930
+something went wrong, we're going to cancel it. And
+
+
+15835
+16:07:11,930 --> 16:07:13,790
+actually, I'm going to bump this up to 300 seconds, because I
+
+
+15836
+16:07:13,790 --> 16:07:17,180
+think 200 seconds is not going to be enough. And depending on
+
+
+15837
+16:07:17,180 --> 16:07:19,970
+how quick the rink B test that is, you might have to bump this
+
+
+15838
+16:07:19,970 --> 16:07:27,320
+up even bigger. So just keep that in mind. 
