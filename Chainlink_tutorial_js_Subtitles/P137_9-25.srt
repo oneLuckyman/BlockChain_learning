@@ -1,413 +1,344 @@
 15756
 16:02:27,349 --> 16:02:35,389
-a raffle dot once this needs to be an async
-
+a raffle dot once this needs to be an async function, not just a regular function. 
+"raffle.once" 它需要一个 `async` 函数，而不是一般函数
 
 15757
 16:02:35,389 --> 16:02:38,449
-function, not just a regular function. Let's try that one
-
+Let's try that one more time, get latest timestamp is the correct function. 
+让我们来再试一次， "getLatestTimeStamp" 才是正确的函数 
 
 15758
 16:02:38,449 --> 16:02:42,319
-more time, get latest timestamp is the correct function. So
-
+So let's update this with the correct latest. Let's put latest in there. 
+让我们更新为正确的 "Latest"，把 "Latest" 放进去
 
 15759
 16:02:42,319 --> 16:02:45,709
-let's update this with the correct latest. Let's put latest
-
+Because I'm spelling something's wrong. I sure am 
+好像还有一些拼写错误，改一下
 
 15760
 16:02:45,709 --> 16:02:49,159
-in there. Because I'm spelling something's wrong. I sure am
-
+looks like we're printing out recent winner here when we haven't even initialized it. 
+我们在这里打印了 "recentWinner"，它此处还没有被初始化
 
 15761
 16:02:49,279 --> 16:02:52,699
-looks like we're printing out recent winner here when we
-
+So let's move it up. And then we'll do console dot log recent winner. 
+我们把这里移上去，接下来我们运行 `console.log(recentWinner)`
 
 15762
 16:02:52,699 --> 16:02:55,279
-haven't even initialized it. So let's move it up. And then we'll
-
+So I know this is a massive test here. But let's give it a try 
+这里已经有很多测试了，让我们来试一下
 
 15763
 16:02:55,279 --> 16:02:59,659
-do console dot log recent winner. So I know this is a
-
+and see if everything kind of does what we think it should do. 
+看看它是否能按照我们所设想的那样正常运行
 
 15764
 16:02:59,659 --> 16:03:03,019
-massive test here. But let's give it a try and see if
-
+And it's slowing down here, which is good because we're doing a lot of stuff. 
+这次运行会比较慢，这很正常，因为我们要执行的东西太多了
 
 15765
 16:03:03,049 --> 16:03:05,419
-everything kind of does what we think it should do. And it's
-
+And uh huh, we finally get this passing thing to come out. 
+啊哈，我们终于让所有这些测试都通过了
 
 15766
 16:03:05,419 --> 16:03:08,959
-slowing down here, which is good because we're doing a lot of
-
+And we did a ton of console dot logging so so there's a lot of stuff in here 
+我们打印了一大堆东西，所以这里有很多内容
 
 15767
 16:03:08,959 --> 16:03:13,279
-stuff. And uh huh, we finally get this passing thing to come
-
+of the signers are getting printed out. 
+"signer" 的所有信息都被打印了出来
 
 15768
 16:03:13,279 --> 16:03:17,029
-out. And we did a ton of console dot logging so so there's a lot
-
+So let's just make this a little easier to read. We'll add dot address to all these, 
+让我们把它变得更易读一些，给它们都添上 `.address`
 
 15769
 16:03:17,029 --> 16:03:19,789
-of stuff in here of the signers are getting printed out. So
-
+we can see who the winner is. 
+这样就可以看到优胜者是谁了
 
 15770
 16:03:19,789 --> 16:03:22,339
-let's just make this a little easier to read. We'll add dot
-
+So it looks like the winner is going to be account number one, 
+看起来优胜者是序号为 1 的账户
 
 15771
 16:03:22,339 --> 16:03:27,079
-address to all these, we can see who the winner is. So it looks
-
+which is great. So what we can do now that we know account number one is going to be the winner, 
+很好，现在我们就已经知道账号 1 是优胜者了
 
 15772
 16:03:27,079 --> 16:03:30,289
-like the winner is going to be account number one, which is
-
+we can get that winners starting balance way down here before we call fulfill random words. 
+我们可以获取优胜者的初始余额，就在我们调用 "fulfillRandomWords" 之前
 
 15773
 16:03:30,289 --> 16:03:33,079
-great. So what we can do now that we know account number one
-
+So we'll say const winner, starting balance equals await accounts one dot get balance, 
+所以我们要写 `const winnerStartingBalance = await accounts[1].getBalance()`
 
 15774
 16:03:33,079 --> 16:03:35,659
-is going to be the winner, we can get that winners starting
-
+yes, you can just call get balance right like that. 
+没错，你可以像这样直接调用 "getBalance"
 
 15775
 16:03:35,659 --> 16:03:40,159
-balance way down here before we call fulfill random words. So
-
+And now that we have the winner starting balance back in our tests, 
+现在我们有了优胜者的初始余额，就可以回到我们的测试中
 
 15776
 16:03:40,159 --> 16:03:47,449
-we'll say const winner, starting balance equals await accounts
-
+we can say const winner, ending balance equals await ounce one dot get balance. 
+我们可以运行 `const winnerEndingBalance = await accounts[1].getBalance()`
 
 15777
 16:03:47,479 --> 16:03:51,739
-one dot get balance, yes, you can just call get balance right
-
+And we can make sure that this winner got paid what they need. 
+我们要确保这个优胜者得到他应得的报酬
 
 15778
 16:03:51,739 --> 16:03:55,399
-like that. And now that we have the winner starting balance back
-
+So now we're going to do a big assert with some money stuff, just trust me, this is what the math is. 
+现在我们要运行一大块关于资金的 "assert"，相信我，这就是一点数学问题
 
 15779
 16:03:55,399 --> 16:04:01,249
-in our tests, we can say const winner, ending balance equals
-
+So we're going to do assert dot equal winner balance.to string,
+所以我们要执行 `assert.equal(winnerBalance.toString())`
 
 15780
 16:04:01,279 --> 16:04:07,729
-await ounce one dot get balance. And we can make sure that this
-
+excuse me winter ending balance.to string 
+抱歉，应该是 `winnerEndingBalance.toString()`
 
 15781
 16:04:07,729 --> 16:04:11,869
-winner got paid what they need. So now we're going to do a big
-
+should equal the winner starting balance dot add the raffle entrance fee 
+它应该等于 `winnerStartingBalance.add(raffleEntranceFee)`
 
 15782
 16:04:11,869 --> 16:04:14,419
-assert with some money stuff, just trust me, this is what the
-
+that multiplied by the additional and trance that add the raffle entrance fee that we paid.to string. 
+.mul(additionalEntrants).add(raffleEntranceFee).toString()`
 
 15783
 16:04:14,419 --> 16:04:18,229
-math is. So we're going to do assert dot equal winner
-
+So this math is basically saying the winner should end with a balance of all of the money that everybody else added to this contract. 
+这里的意思就是，优胜者最后的余额应该等同于所有人在合约中投入的资金
 
 15784
 16:04:18,229 --> 16:04:20,179
-balance.to string,
-
+And that's it. So we can run this test one more time. 
+就是这样，现在我们可以再运行一次测试
 
 15785
 16:04:21,140 --> 16:04:25,460
-excuse me winter ending balance.to string should equal
-
+And Gosh, darn it, it passed. 
+哦，天呐，它通过了
 
 15786
 16:04:26,150 --> 16:04:34,430
-the winner starting balance dot add the raffle entrance fee that
-
+Okay, so there was a lot of code here.
+OK，这里的代码已经很多了
 
 15787
 16:04:34,430 --> 16:04:41,600
-multiplied by the additional and trance that add the raffle
-
+And this might have been one of the hardest pieces of this entire course is going to be this part right here. 
+整个课程最难得部分可能就是这一部分了
 
 15788
 16:04:41,600 --> 16:04:45,410
-entrance fee that we paid.to string. So this math is
-
+So if you struggled a little bit with this, don't let that bog you down. 
+所以如果你在这里遇到了一些困难的话，不要让它阻碍你前进的步伐
 
 15789
 16:04:45,410 --> 16:04:49,940
-basically saying the winner should end with a balance of all
-
+This is probably one of the more difficult sections of this course, 
+这应该是属于本课程里比较难的一部分了
 
 15790
 16:04:50,000 --> 16:04:53,030
-of the money that everybody else added to this contract. And
-
+let's do a quick refresher of just this test that we're doing. 
+让我们快速地回顾一下我们所做的这些测试
 
 15791
 16:04:53,030 --> 16:04:57,110
-that's it. So we can run this test one more time. And Gosh,
-
+And then we'll see in an action when we do it. In our staging test. 
+随后我们将看一下 "staging" 测试中具体操作
 
 15792
 16:04:57,110 --> 16:05:00,410
-darn it, it passed. Okay, so there was a lot of code here.
-
+What we did is we're picking a winner resetting the lottery and we're sending money. 
+我们完成了选取优胜者，重置抽奖，以及发送资金
 
 15793
 16:05:00,470 --> 16:05:03,170
-And this might have been one of the hardest pieces of this
-
+Basically what we're doing is we're testing that this fulfill random words thing 
+我们基本上测试的就是这个 "fulfillRandomWords" 里的内容
 
 15794
 16:05:03,170 --> 16:05:06,290
-entire course is going to be this part right here. So if you
-
+does what we want it to do a random winner wins and they get the money. 
+我们要做的就是，随机选取以一个优胜者，然后把钱给他
 
 15795
 16:05:06,290 --> 16:05:08,630
-struggled a little bit with this, don't let that bog you
-
+So how do we actually do that? 
+那么我们实际上是怎么操作的呢？
 
 15796
 16:05:08,630 --> 16:05:11,780
-down. This is probably one of the more difficult sections of
-
+Well, we first started off by having a bunch of random people enter the lottery. 
+首先，我们让数个随机用户进入到了抽奖中
 
 15797
 16:05:11,780 --> 16:05:15,440
-this course, let's do a quick refresher of just this test that
-
+Great. Sounds good. 
+很好，听起来不错
 
 15798
 16:05:15,440 --> 16:05:18,170
-we're doing. And then we'll see in an action when we do it. In
-
+Now what we wanted to do was we want to call perform upkeep and fulfill random words, 
+接下来，我们要做的就是调用 "performUpkeep" 以及 "fulfillRandomWords" 
 
 15799
 16:05:18,170 --> 16:05:21,410
-our staging test. What we did is we're picking a winner resetting
-
+we want to pretend that the random number was drawn. 
+我们要假装自己抽了一个随机数
 
 15800
 16:05:21,410 --> 16:05:23,180
-the lottery and we're sending money. Basically what we're
-
+And that's what this code down here does is it calls that random number 
+下面这段代码所做的就是调取一个随机数
 
 15801
 16:05:23,180 --> 16:05:26,420
-doing is we're testing that this fulfill random words thing does
-
+but and what we could have done was we could have had all these assert and checked all the variables. After we did this, 
+但在我们执行所有 "assert" 以及检查所有变量之前，我们要先执行这个
 
 15802
 16:05:26,420 --> 16:05:29,030
-what we want it to do a random winner wins and they get the
-
+right. We could have totally done that. 
+对吧，我们就是这么做的
 
 15803
 16:05:29,030 --> 16:05:31,700
-money. So how do we actually do that? Well, we first started off
-
+However, on a test net where we don't always know exactly when a transaction is going to finish.
+然而，在测试网上我们无法随时确定交易是否已经完成
 
 15804
 16:05:31,700 --> 16:05:34,460
-by having a bunch of random people enter the lottery. Great.
-
+We have to wait If we have to listen for an event to be fired, 
+我们必须等待，直到我们监听到了 "event" 的触发
 
 15805
 16:05:34,490 --> 16:05:38,510
-Sounds good. Now what we wanted to do was we want to call
-
+before, we could call the transactions that would end this whole thing, 
+在我们完成交易结束这一切之前
 
 15806
 16:05:38,510 --> 16:05:42,080
-perform upkeep and fulfill random words, we want to pretend
-
+we needed to set something up to listen for that event to be fired. 
+我们需要设置一些东西来监听 "event" 的触发
 
 15807
 16:05:42,080 --> 16:05:45,110
-that the random number was drawn. And that's what this code
-
+And we said, hey, only once this event is fired only once this transaction is called, 
+然后我们说的就是，嘿，只有当这个 "event" 被触发，只有当这个交易被调用的时候
 
 15808
 16:05:45,110 --> 16:05:48,770
-down here does is it calls that random number but and what we
-
+can we do our testing
+我们才可以执行我们的测试
 
 15809
 16:05:48,770 --> 16:05:51,170
-could have done was we could have had all these assert and
-
+now for our local network, we are mocking the VRF coordinators, 
+在我们的本地网络中，我们模拟了 "VRFCoordinator" 
 
 15810
 16:05:51,170 --> 16:05:54,800
-checked all the variables. After we did this, right. We could
-
+we have control, we know exactly when this is going to run. 
+我们有控制权，知道它运行时的确切情况
 
 15811
 16:05:54,800 --> 16:05:58,370
-have totally done that. However, on a test net where we don't
-
+But on a test net, we don't. 
+但在测试网上，我们是做不到的
 
 15812
 16:05:58,400 --> 16:06:00,980
-always know exactly when a transaction is going to finish.
-
+So you'll see in our staging tests, we won't have any of this here. 
+所以你将会看到，在我们的 "staging" 测试中，就没有这些东西了
 
 15813
 16:06:01,010 --> 16:06:03,980
-We have to wait If we have to listen for an event to be fired,
-
+And we'll have to rely on setting up a listener to listen for the channeling VRF and the keepers to fire their events.  
+到时我们将不得不设置一个 "listener" 来监听 "Chainlink VRF" 以及 "Keepers" 对这些 "event" 的触发
 
 15814
 16:06:04,250 --> 16:06:07,550
-before, we could call the transactions that would end this
-
+And that's why the staging test is going to be so important to make sure that we're doing everything correct. 
+这就是为什么 "staging" 测试如此的重要，它能确保我们所做的一切都是正确的
 
 15815
 16:06:07,550 --> 16:06:10,670
-whole thing, we needed to set something up to listen for that
-
+And that's why we set up our local tests like this, 
+这也是为什么我们会把本地测试设置成这样
 
 15816
 16:06:10,670 --> 16:06:14,330
-event to be fired. And we said, hey, only once this event is
-
+so that it mimics what we're going to be doing on our statement test what we're going to be doing on a real network here. 
+这样它就能模仿我们在 "staging" 测试和真实网络中的所作所为
 
 15817
 16:06:14,330 --> 16:06:18,710
-fired only once this transaction is called, can we do our testing
-
+And again, we're setting up this listener and we're saying, Ah, once we do here, this event, 
+再解释一遍，我们设置的这个 "listener" 就相当于是在说，啊，一旦我们触发了这个 "event" 
 
 15818
 16:06:18,770 --> 16:06:22,160
-now for our local network, we are mocking the VRF
-
+then we're going to try to actually check all of the balances and check that everything is working as intended. 
+我们就会尝试检查余额以及其它工作是否是我们所预期的那样
 
 15819
 16:06:22,160 --> 16:06:24,860
-coordinators, we have control, we know exactly when this is
-
+And if we don't see it, we're going to reject. 
+如果我们没看到触发，我们就返回 "reject" 
 
 15820
 16:06:24,860 --> 16:06:28,460
-going to run. But on a test net, we don't. So you'll see in our
-
+And if there's a timeout, if it takes more than 200 seconds, 
+如果发生了超时，也就是如果它花费了超过 200 秒的时间
 
 15821
 16:06:28,460 --> 16:06:31,790
-staging tests, we won't have any of this here. And we'll have to
-
+we're going to say okay, something went wrong, we're going to cancel it. 
+我们就会说，好吧，某些地方出错了，我们将撤销这次操作
 
 15822
 16:06:31,790 --> 16:06:37,040
-rely on setting up a listener to listen for the channeling VRF
-
+And actually, I'm going to bump this up to 300 seconds, because I think 200 seconds is not going to be enough. 
+不过实际上，我会把它增加为 300 秒，因为我认为 200 秒的时间不太够
 
 15823
 16:06:37,040 --> 16:06:40,280
-and the keepers to fire their events. And that's why the
-
+And depending on how quick the rink B test that is, 
+这具体取决于 Rinkeby 测试网的速度能有多快
 
 15824
 16:06:40,280 --> 16:06:43,010
-staging test is going to be so important to make sure that
-
-
-15825
-16:06:43,010 --> 16:06:45,440
-we're doing everything correct. And that's why we set up our
-
-
-15826
-16:06:45,440 --> 16:06:48,800
-local tests like this, so that it mimics what we're going to be
-
-
-15827
-16:06:48,800 --> 16:06:51,080
-doing on our statement test what we're going to be doing on a
-
-
-15828
-16:06:51,110 --> 16:06:54,560
-real network here. And again, we're setting up this listener
-
-
-15829
-16:06:54,560 --> 16:06:58,370
-and we're saying, Ah, once we do here, this event, then we're
-
-
-15830
-16:06:58,370 --> 16:07:01,730
-going to try to actually check all of the balances and check
-
-
-15831
-16:07:01,730 --> 16:07:04,550
-that everything is working as intended. And if we don't see
-
-
-15832
-16:07:04,550 --> 16:07:07,130
-it, we're going to reject. And if there's a timeout, if it
-
-
-15833
-16:07:07,130 --> 16:07:09,590
-takes more than 200 seconds, we're going to say okay,
-
-
-15834
-16:07:09,680 --> 16:07:11,930
-something went wrong, we're going to cancel it. And
-
-
-15835
-16:07:11,930 --> 16:07:13,790
-actually, I'm going to bump this up to 300 seconds, because I
-
-
-15836
-16:07:13,790 --> 16:07:17,180
-think 200 seconds is not going to be enough. And depending on
-
-
-15837
-16:07:17,180 --> 16:07:19,970
-how quick the rink B test that is, you might have to bump this
-
-
-15838
-16:07:19,970 --> 16:07:27,320
-up even bigger. So just keep that in mind. 
+you might have to bump this up even bigger. So just keep that in mind. 
+你可能会需要把它增加为更大的数值，请记住这一点
