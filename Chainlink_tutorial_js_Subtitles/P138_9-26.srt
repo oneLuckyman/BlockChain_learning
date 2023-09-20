@@ -1,0 +1,19 @@
+15838
+16:07:19,970 --> 16:07:27,320
+But who, okay, we have just built some fantastic tests. 
+呜呼！OK，我们刚刚构建了一些非常棒的测试
+
+15839
+16:07:27,320 --> 16:07:30,920
+Let's go ahead, and let's just run h h test to see if all of our tests are going to pass.
+让我们继续，运行 `hh test` 来看一下我们的测试是否都能顺利通过
+
+15840
+16:07:30,920 --> 16:07:35,240
+And well, 14 passing, everything is passing here we are looking good.
+嗯，通过了 14 个，也就是全都通过了，看起来不错
+
+15841
+16:07:36,470 --> 16:07:40,580
+This is fantastic. 
+真是太棒了
