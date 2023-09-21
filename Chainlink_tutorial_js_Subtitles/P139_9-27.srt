@@ -1,0 +1,863 @@
+15843
+16:07:41,330 --> 16:07:46,460
+Alright, so now that we have our unit tests, let's go ahead and create a staging test. 
+好的，现在我们已经完成了 "unit" 测试，让我们继续创建一个 "staging" 测试
+
+15844
+16:07:46,460 --> 16:07:50,270
+Our staging test is going to look really similar to that massive test that we just created down here. 
+我们的 "staging" 测试和我们刚刚创建的这一大堆测试很像
+
+15845
+16:07:50,300 --> 16:07:53,510
+And the reason we set up our unit test to do this a weight promise thing with the raffle dot once
+这也是我们设置 "unit" 测试执行这个 `await Promise raffle.once` 的原因
+
+15846
+16:07:53,510 --> 16:07:56,660
+was because this is actually how we're going to need to wait on a test net or main net for a winner to be picked. 
+因为这实际上才是我们在测试网或主网上等待优胜者被选出来的方式
+
+15847
+16:07:56,660 --> 16:07:59,780
+We cannot on an actual test net, pretend to be the chain link V REF, 
+我们无法在一个实际的测试网上假装成一个 "Chainlink VRF" 
+
+15848
+16:07:59,840 --> 16:08:02,480
+we can pretend to be the chain link keepers if we want. 
+如果我们愿意，我们可以假装成一个 "Chainlink Keepers" 
+
+15849
+16:08:02,480 --> 16:08:06,020
+But we're not going to make sure that the 10 the keepers is actually working. 
+但我们没办法确保这个 "Chainlink Keepers" 能实际运行起来
+
+15850
+16:08:06,050 --> 16:08:09,560
+But we are going to be doing this because we want to listen for that event to be fired, 
+但我们仍然会这样做，这是因为我们要监听 "event" 的触发
+
+15851
+16:08:09,560 --> 16:08:11,930
+we want to listen for the chain link VRF to respond with the winner. 
+我们希望能监听到 "Chainlink VRF" 对优胜者的回应
+
+15852
+16:08:11,930 --> 16:08:14,810
+So let's create a staging test. 
+好了，让我们来开始创建 "staging" 测试
+
+15853
+16:08:14,810 --> 16:08:17,300
+And this is a test that we're going to run on an actual test net here. 
+这次测试我们就要在一个真实的测试网上运行了
+
+15854
+16:08:17,300 --> 16:08:21,380
+Okay, so we're going to create a new test called raffle dot staging dot test dot Jas 
+我们来创建一个新的测试，名字就叫 `Raffle.staging.test.js`
+
+15855
+16:08:21,380 --> 16:08:25,760
+and this is where we're going to put our staging test. 
+这里就是我们放置 "staging" 测试的地方
+
+15856
+16:08:25,760 --> 16:08:29,180
+Now we can actually code this pretty quickly because most of our staging tests is gonna look real similar to our raffle test here. 
+我们写代码的速度可以很快，因为大多数 "staging" 测试的内容和 "Raffle.test" 的内容很相似
+
+15857
+16:08:29,210 --> 16:08:33,650
+So for now, let's just grab this whole first part, 
+现在，让我们先获取整个的第一部分
+
+15858
+16:08:33,650 --> 16:08:38,090
+and then we'll adjust it as we need. 
+然后我们会根据需要进行调整
+
+15859
+16:08:38,090 --> 16:08:41,150
+And then we'll close it off. 
+把这里闭合好
+
+15860
+16:08:41,150 --> 16:08:44,210
+Because we're definitely gonna need a raffle, we're not going to need a VRF coordinator mock 
+我们肯定是需要 "raffle" 的，但我们不再需要 "vrfCoordinatorMock" 了
+
+15861
+16:08:44,210 --> 16:08:47,660
+because again, we're not going to be using a mock. Since we're on an actual test net, 
+因为我们不会用到 "mock"，我们是在一个真实的测试网上
+
+15862
+16:08:47,660 --> 16:08:51,290
+we will need the raffle entrance fee, we will need Deployer, 
+我们需要 "raffleEntranceFee"，我们需要 "deployer"
+
+15863
+16:08:51,290 --> 16:08:54,200
+we will need a Deployer. And we might need the interval. 
+我们需要一个 "deployer"，我们可能还会需要 "interval"
+
+15864
+16:08:54,200 --> 16:08:57,320
+But let's delete it for now 
+但我们暂时先把它删掉
+
+15865
+16:08:57,320 --> 16:09:00,080
+we probably won't need the chain ID. So let's delete that as well. Awesome. 
+我们大概也不需要 "chainId" 了，所以让我们把它也删掉，很好
+
+15866
+16:09:00,080 --> 16:09:02,510
+Something that we want to keep in mind is that when it comes to our staging tests, 
+我们要记住的是，当我们进行 "staging" 测试的时候
+
+15867
+16:09:02,510 --> 16:09:06,020
+we only want our steam test to run when we're on a test. Net, 
+我们只希望 "staging" 测试在测试网上运行
+
+15868
+16:09:06,020 --> 16:09:08,660
+we don't need to run our unit tests because our unit tests aren't checking that compatibility with a test net, 
+我们不需要再运行 "unit" 测试，因为我们的 "unit" 测试没有检查与测试网的兼容性
+
+15869
+16:09:08,660 --> 16:09:11,120
+we want our unit tests to only run on a local network. 
+我们希望我们的 "unit" 测试只在本地网络上运行
+
+15870
+16:09:11,120 --> 16:09:14,090
+And we want our staging tests to only run on a test network. 
+而 "staging" 测试我们只希望它运行在测试网上
+
+15871
+16:09:14,090 --> 16:09:17,060
+This is where again, in our test, we're going to check to make sure what type of chain we're on. 
+又一次，在我们测试中，我们需要检查并确认我们是在什么类型的链上
+
+15872
+16:09:17,060 --> 16:09:19,670
+And oops, it looks like I already imported the development changes here. 
+哦，看起来我们已经把 "developmentChains" 给导入进来了
+
+15873
+16:09:19,670 --> 16:09:22,280
+So we're actually in our staging tests, we're going to check before we run any test what kind of network we're on. 
+所以在 "staging" 测试中，我们在运行任何测试之前都需要检查一下我们在什么类型的网络上
+
+15874
+16:09:22,280 --> 16:09:25,460
+So we're gonna say, if our development chains that includes network dot name, 
+所以我们要写，如果我们在 `developmentChains.includes(network.name)`
+
+15875
+16:09:25,460 --> 16:09:29,120
+we're gonna say if our development chains includes network to name, 
+我们会说，如果我们的 "developmentChains" 包含 "network.name" 
+
+15876
+16:09:29,120 --> 16:09:32,420
+so if the chain we're on is in the development chains, 
+或者说，如果我们所在的链在 "developmentChains" 中
+
+15877
+16:09:32,420 --> 16:09:35,930
+and again, we're going to use this ternary operator 
+对了，我们会再次使用三元运算符
+
+15878
+16:09:35,930 --> 16:09:38,480
+where we say, if we're on a development chain, do something. 
+我们说的就是，如果我们在 "developmentChains" 上就做某些事
+
+15879
+16:09:38,480 --> 16:09:41,150
+And then if we're not on a development chain, do something else. 
+而如果我们不在 "developmentChains" 上，就做另一些事
+
+15880
+16:09:41,150 --> 16:09:44,870
+If we are on a development chain, what are we going to do? 
+如果我们在 "developmentChains" 上，我们该做些什么？
+
+15881
+16:09:44,900 --> 16:09:49,490
+Well want to skip this 
+我们会想要跳过这一部分
+
+15882
+16:09:49,700 --> 16:09:52,730
+and we can actually skip this by putting in this describe dot skip. 
+我们可以通过把这个 "describe.skip" 放进这里来实现跳过的功能 
+
+15883
+16:09:52,730 --> 16:09:55,760
+And this will skip this whole section here. 
+这样就会把这一整个部分都跳过去
+
+15884
+16:09:55,760 --> 16:09:58,490
+And then we can say, if we are the development chain, go ahead and do our thing. 
+然后我们可以说，如果我们不在 "developmentChains" 上，就继续执行这些内容
+
+15885
+16:09:58,490 --> 16:10:01,430
+So this is some really nice syntax that allows us to skip our staging tests if we're on a local network. 
+这是一种非常好用的语法，如果我们在本地网络上，我们就会跳过 "staging" 测试
+
+15886
+16:10:01,430 --> 16:10:03,680
+And additionally, we can grab this syntax, go into our raffle dot test dot j s 
+不止如此，我们还可以获取这部分语法，前往我们的 "Raffle.test.js"
+
+15887
+16:10:03,680 --> 16:10:06,860
+where we have our unit tests and add the bang operator, which is the knot and hit Save. 
+在我们的 "unit" 测试中，添加一个否定符号，也就是“非”，再保存一下
+
+15888
+16:10:06,860 --> 16:10:09,500
+And now we're saying if we're not on a development chain, skip it 
+现在我们说的就是，如果我们不在 "developmentChains" 上，就跳过
+
+15889
+16:10:09,500 --> 16:10:13,730
+and only run this if we aren't in development chain. 
+只有当我们在 "developmentChains" 上时，才运行这些内容
+
+15890
+16:10:13,760 --> 16:10:17,000
+So this says run this only on a test net or main net. 
+所以这个意思就是，只有在测试网和主网上才往下运行
+
+15891
+16:10:17,000 --> 16:10:20,120
+And then this has run this only on a local network. 
+而这个意思就是只有在本地网络上的时候才往下运行
+
+15892
+16:10:20,120 --> 16:10:23,930
+Great. So we have a deployer which we're going to need. 
+很好，我们获取了 "deployer"，这正是我们需要的
+
+15893
+16:10:23,930 --> 16:10:27,140
+We are not going to need to deploy any fixtures 
+我们不再需要 "fixture" 进行部署了
+
+15894
+16:10:27,140 --> 16:10:30,740
+because we're going to run our deploy script and our contracts should already be deployed. 
+因为我们会自己运行部署脚本，而我们合约应该已经部署好了
+
+15895
+16:10:30,740 --> 16:10:34,520
+We will need a raffle we won't need a VRF coordinator mocks we can delete that 
+我们需要一个 "raffle"，但不需要 "vrfCoordinatorMock" 了，我们可以删掉它
+
+15896
+16:10:34,520 --> 16:10:38,000
+We will need the entrance fee, and we probably won't need the interval. 
+我们需要 "entranceFee"，但不一定需要 "interval" 了
+
+15897
+16:10:38,000 --> 16:10:41,120
+So we can go ahead and delete that too. 
+所以我们同样把它删掉
+
+15898
+16:10:41,120 --> 16:10:44,090
+Alright, awesome. So we have our describe, we have our before each, let's make our tests. 
+好的，现在我们有了 "describe" 还有了 "beforeEach"，让我们开始创建测试吧
+
+15899
+16:10:44,120 --> 16:10:47,660
+And I'm just going to make one giant test to test kind of everything end to end. 
+我们要做一个特别大的测试，完整的测试这里所有的内容
+
+15900
+16:10:47,660 --> 16:10:50,300
+And you can add more tests later on yourself, if you want to 
+如果你想的话，可以之后自行添加更多的测试
+
+15901
+16:10:50,300 --> 16:10:54,020
+our staging test is going to be really similar to this massive test that we made down here. 
+我们的 "staging" 测试和我们在这里做的这个大测试很像
+
+15902
+16:10:54,020 --> 16:10:57,320
+And in fact, we're going to use most of this code here as our boilerplate. 
+事实上，我们会大量使用这里的代码来作为我们的样板
+
+15903
+16:10:57,320 --> 16:11:00,740
+So let's create a describe. And we'll say, 
+我们来创建一个 "describe" 然后我们说
+
+15904
+16:11:00,740 --> 16:11:03,530
+and we'll actually just copy this describe the four random words and paste it in here. 
+我们直接复制这里的 `describe("fulfillRandomWords")`，并把它粘贴到这里
+
+15905
+16:11:03,530 --> 16:11:05,780
+Because again, we're going to be using a lot of the same code in our staging tests here. 
+我们会在 "staging" 测试这里大量复用代码
+
+15906
+16:11:05,780 --> 16:11:08,390
+Great. So now we'll say it works with live chain link keepers and chain link VRF, 
+好的，现在我们写 `it("works with live Chainlink Keepers and Chainlink VRF")`
+
+15907
+16:11:08,390 --> 16:11:11,360
+we get a random winner, acing function. 
+`"we get a random winner", async funciton()`
+
+15908
+16:11:11,360 --> 16:11:15,650
+So this is going to be our test in here.
+这就是我们在这里的测试了
+
+15909
+16:11:15,650 --> 16:11:18,620
+So in this test, we of course, we want to enter the raffle. 
+在这个测试中，我们当然是，先进入抽奖
+
+15910
+16:11:18,620 --> 16:11:22,100
+And we shouldn't have to do anything else except for enter this raffle. 
+我们什么都不用做，只要进入抽奖就可以了
+
+15911
+16:11:22,100 --> 16:11:25,190
+Because the chain the keepers and the only VRF are going to be the ones to actually kick off this lottery for us, 
+因为 "Chainlink Keepers" 以及 "VRF" 才是为我们开奖的存在
+
+15912
+16:11:25,190 --> 16:11:27,890
+we'll do a quick grabbing of the starting timestamp to have it before all this kicks off. 
+在这一切开始之前，我们会快速获取一下初始的时间戳
+
+15913
+16:11:27,890 --> 16:11:31,190
+So we'll say const starting timestamp equals await raffle dot get last to me get latest timestamp, get latest timestamp, 
+我们写 `const startingTimeStamp = await raffle.getLatestTimeStamp`
+
+15914
+16:11:31,190 --> 16:11:34,340
+we're gonna grab this because later on, we're going to test to see if the timestamp has indeed moved forward, 
+我们需要获取这个，因为一会儿我们要测试一下时间戳是否确实往前移动了
+
+15915
+16:11:34,340 --> 16:11:36,920
+we want to enter the lottery, right, we want to run the command we've been running over here all the time, 
+我们要进入抽奖，并且要运行我们一直在运行的这些指令
+
+15916
+16:11:36,920 --> 16:11:42,050
+we want to do you know await raffle dot enter raffle, 
+我们要做的是，就是`await raffle.enterRaffle()`
+
+15917
+16:11:42,290 --> 16:11:48,590
+but we don't want to call it yet. 
+但我们暂时还不想调用它
+
+15918
+16:11:48,650 --> 16:11:53,390
+Because same as what we did over here, we want to set up our listener first. 
+因为就和我们在这里做的一样，我们要先设置我们的 "listener" 
+
+15919
+16:11:53,450 --> 16:11:57,680
+Now in here, we probably should have set up our listener before we entered the raffle. 
+在这里，我们应该在进入抽奖之前就把我们的 "listener" 设置好
+
+15920
+16:11:57,680 --> 16:12:01,310
+However, we controlled the blockchain. So putting it in that order was is was okay. 
+然而，这里我们控制住了区块链，所以按这个顺序是可以的
+
+15921
+16:12:01,310 --> 16:12:03,890
+But we want to set up the listener before we enter the raffle 
+但现在我们要在进入抽奖之前就把 "listener" 给设置好
+
+15922
+16:12:03,890 --> 16:12:06,710
+just in case the blockchain moves really fast. 
+以防区块链运行的太快了
+
+15923
+16:12:06,740 --> 16:12:10,040
+
+
+
+15924
+16:12:10,040 --> 16:12:13,430
+
+
+
+15925
+16:12:13,430 --> 16:12:19,700
+
+
+
+15926
+16:12:20,540 --> 16:12:23,780
+
+
+
+15927
+16:12:23,780 --> 16:12:26,240
+
+
+
+15928
+16:12:26,300 --> 16:12:29,030
+
+
+
+15929
+16:12:29,030 --> 16:12:31,730
+
+
+
+15930
+16:12:31,760 --> 16:12:35,840
+
+
+
+15931
+16:12:35,840 --> 16:12:39,020
+
+
+
+15932
+16:12:39,020 --> 16:12:43,580
+
+
+
+15933
+16:12:43,580 --> 16:12:46,580
+
+
+
+15934
+16:12:46,580 --> 16:12:50,030
+
+
+
+15935
+16:12:50,030 --> 16:12:53,930
+
+
+
+15936
+16:12:54,050 --> 16:12:58,670
+
+
+
+15937
+16:12:58,760 --> 16:13:01,520
+And we're going to set up the listener the exact
+
+
+15938
+16:13:01,520 --> 16:13:05,090
+same way, we did it over here. So we're gonna say await new
+
+
+15939
+16:13:05,090 --> 16:13:08,210
+promise. And it's going to be an async function that takes a
+
+
+15940
+16:13:08,210 --> 16:13:11,840
+resolve and a reject. And we're going to use a little arrow
+
+
+15941
+16:13:11,840 --> 16:13:14,450
+notation here. And in here, we're going to set up the
+
+
+15942
+16:13:14,450 --> 16:13:18,170
+listener, we're gonna say raffle dot once, once that winner is
+
+
+15943
+16:13:18,170 --> 16:13:21,890
+picked, we're going to do another async function using
+
+
+15944
+16:13:21,890 --> 16:13:22,730
+that Arrow.
+
+
+15945
+16:13:24,289 --> 16:13:29,389
+Arrow function syntax, we'll say console dot log winner picked
+
+
+15946
+16:13:30,469 --> 16:13:35,359
+the event fired. And only once we get this winner picked, can
+
+
+15947
+16:13:35,359 --> 16:13:38,959
+we start doing our asserts in here, can we start making sure
+
+
+15948
+16:13:38,989 --> 16:13:42,349
+that there's a winner, there's a verifiably random winner, it's
+
+
+15949
+16:13:42,349 --> 16:13:44,749
+been picked, the money has been moved, etc. This is where we'll
+
+
+15950
+16:13:44,749 --> 16:13:49,549
+do our try catch. And if there's any error, we're just going to
+
+
+15951
+16:13:49,579 --> 16:13:52,519
+automatically reject, we're going to reject the promise. And
+
+
+15952
+16:13:52,519 --> 16:13:56,029
+if all goes well, of course, we're going to resolve the
+
+
+15953
+16:13:56,029 --> 16:13:58,609
+promise. So our listener has been set up here. We haven't
+
+
+15954
+16:13:58,609 --> 16:14:01,579
+added our asserts here. But we will, let's just go ahead and
+
+
+15955
+16:14:01,579 --> 16:14:04,699
+write the rest of the test. And then we'll go back and we'll
+
+
+15956
+16:14:04,729 --> 16:14:08,089
+update this listener so so our listener has been added. And
+
+
+15957
+16:14:08,089 --> 16:14:10,789
+inside here is actually where we're going to enter the raffle.
+
+
+15958
+16:14:10,819 --> 16:14:17,329
+So inside here, await, raffle dot enter raffle value is going
+
+
+15959
+16:14:17,329 --> 16:14:23,539
+to be raffle entrance fee. And really that's it. Right? So
+
+
+15960
+16:14:23,539 --> 16:14:26,509
+we're setting up the listener, setting up the listener, then
+
+
+15961
+16:14:26,539 --> 16:14:33,079
+entering the raffle. And this code won't complete until our
+
+
+15962
+16:14:33,079 --> 16:14:37,009
+listener has finished listening because again, this whole SEC is
+
+
+15963
+16:14:37,009 --> 16:14:40,579
+in a wait. So we're gonna say okay, cool setup, the listener,
+
+
+15964
+16:14:40,669 --> 16:14:43,309
+wait for this to finish. And then when it gets here, it goes
+
+
+15965
+16:14:43,339 --> 16:14:46,519
+out okay, this is the end of the code Are we all done executing
+
+
+15966
+16:14:46,579 --> 16:14:50,359
+Oh, no resolve or reject hasn't been called yet. And that's
+
+
+15967
+16:14:50,359 --> 16:14:52,219
+because we're still waiting for the listener to finish
+
+
+15968
+16:14:52,219 --> 16:14:56,179
+listening. Now, once we get this winner picked event emitted in
+
+
+15969
+16:14:56,179 --> 16:14:58,999
+here, we're going to get that recent winner so we'll say const
+
+
+15970
+16:14:59,509 --> 16:15:04,939
+recent winner equals await raffle dot get recent winner
+
+
+15971
+16:15:05,749 --> 16:15:09,979
+will get the raffle state we'll say const. raffle state equals
+
+
+15972
+16:15:10,009 --> 16:15:14,509
+await raffle dot get raffle state, we'll get the winners
+
+
+15973
+16:15:14,509 --> 16:15:19,999
+balance. So we'll say const. Winner balance equals await
+
+
+15974
+16:15:21,139 --> 16:15:25,339
+recent winner. And since we're only entering with our Deployer
+
+
+15975
+16:15:25,369 --> 16:15:28,849
+we should check to see the deployers balance at the end and
+
+
+15976
+16:15:28,849 --> 16:15:31,909
+we can't do it right with this deployer object here. So we'll
+
+
+15977
+16:15:31,909 --> 16:15:37,999
+have to do the player account equals await ethers dot get
+
+
+15978
+16:15:38,059 --> 16:15:42,259
+signers, no wrap this actually actually will just say this is
+
+
+15979
+16:15:43,069 --> 16:15:46,459
+accounts here like that. And then we'll just do a count of
+
+
+15980
+16:15:46,459 --> 16:15:49,369
+zero because it counts as zero is going to be our Deployer. So
+
+
+15981
+16:15:49,369 --> 16:15:52,369
+our winner balance is going to be accounts a zero dot get
+
+
+15982
+16:15:52,369 --> 16:15:57,259
+balance. And then we're going to do const ending timestamp equals
+
+
+15983
+16:15:57,289 --> 16:16:04,429
+a weight raffle dot get latest To timestamp, and we should also
+
+
+15984
+16:16:04,429 --> 16:16:08,179
+get the starting balance. So we'll say winner ending balance,
+
+
+15985
+16:16:08,419 --> 16:16:12,409
+we should also get the starting balance right after we enter. So
+
+
+15986
+16:16:12,409 --> 16:16:17,839
+we'll say const. Winner, starting balance equals await
+
+
+15987
+16:16:18,019 --> 16:16:23,569
+accounts. Zero dot get balance, so that now we can do some
+
+
+15988
+16:16:23,569 --> 16:16:26,569
+comparisons. All right, great. Let's do the comparisons now. So
+
+
+15989
+16:16:26,569 --> 16:16:30,439
+we should first expect the raffle to be reset. So we can do
+
+
+15990
+16:16:30,439 --> 16:16:34,129
+this a few different ways. Down here. We did number of players.
+
+
+15991
+16:16:34,429 --> 16:16:43,039
+We can also say, await, expect raffle dot get player 0.2 dot v
+
+
+15992
+16:16:43,069 --> 16:16:48,109
+dot reverted, right because Get Player zero should get reverted
+
+
+15993
+16:16:48,109 --> 16:16:50,749
+because there's not even going to be an object at zero. So
+
+
+15994
+16:16:50,749 --> 16:16:53,449
+that's another way we can check to see if our players array has
+
+
+15995
+16:16:53,449 --> 16:16:57,919
+been reset. Next, we can do assert dot equal recent
+
+
+15996
+16:16:57,949 --> 16:17:04,609
+winner.to string, this should equal our account zero dot
+
+
+15997
+16:17:04,609 --> 16:17:08,989
+address. Okay, our Deployer What else can we do? We will assert
+
+
+15998
+16:17:09,079 --> 16:17:14,539
+dot equal raffle state to zero. We want this email to go back to
+
+
+15999
+16:17:14,539 --> 16:17:17,629
+open after we're done. And then we finally want to make sure
+
+
+16000
+16:17:17,629 --> 16:17:19,879
+that the money has been transferred correctly. So we'll
+
+
+16001
+16:17:19,879 --> 16:17:25,669
+do assert dot equal, this should be a winner ending balance. That
+
+
+16002
+16:17:25,669 --> 16:17:32,329
+to string should be equal to winner starting balance, add
+
+
+16003
+16:17:34,219 --> 16:17:38,929
+raffle entrance fee.to string. So if we look down here, they
+
+
+16004
+16:17:38,929 --> 16:17:42,139
+enter the raffle we check their starting balance right after
+
+
+16005
+16:17:42,139 --> 16:17:45,109
+they enter. And they basically should just get that raffle
+
+
+16006
+16:17:45,109 --> 16:17:48,529
+entrance fee back right because they are the only ones who have
+
+
+16007
+16:17:48,529 --> 16:17:51,049
+entered this raffle. And then we can do one more assert, do
+
+
+16008
+16:17:51,049 --> 16:17:56,209
+assert that the ending timestamp is greater than the starting
+
+
+16009
+16:17:56,239 --> 16:18:00,709
+timestamp. And then we'll of course, say resolve. So this all
+
+
+16010
+16:18:00,709 --> 16:18:04,759
+goes well, we resolve. If there's an issue with any of
+
+
+16011
+16:18:04,759 --> 16:18:07,129
+these asserts, we're going to catch those errors and we're
+
+
+16012
+16:18:07,129 --> 16:18:09,949
+going to reject and this is going to be false. And this
+
+
+16013
+16:18:09,949 --> 16:18:12,679
+whole test is gonna go ah, there was an issue, we now have a
+
+
+16014
+16:18:12,679 --> 16:18:15,799
+staging test that looks really good here. Let's try
+
+
+16015
+16:18:15,800 --> 16:18:22,940
+this out. 
