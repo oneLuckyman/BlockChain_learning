@@ -400,222 +400,222 @@ just in case the blockchain moves really fast.
 
 15923
 16:12:06,740 --> 16:12:10,040
-
-
+And we're going to set up the listener the exact same way, we did it over here. 
+我们会以与之前完全相同的方式来设置 "listener" 
 
 15924
 16:12:10,040 --> 16:12:13,430
-
-
+So we're gonna say await new promise. And it's going to be an async function that takes a resolve and a reject. 
+所以我们写 `await new Promise(async (resolve, reject))`
 
 15925
 16:12:13,430 --> 16:12:19,700
-
-
+And we're going to use a little arrow notation here. 
+然后我们要在这里使用箭头符号 `=>`
 
 15926
 16:12:20,540 --> 16:12:23,780
-
-
+And in here, we're going to set up the listener, 
+我们就在这里设置 "listener" 
 
 15927
 16:12:23,780 --> 16:12:26,240
-
-
+we're gonna say raffle dot once, once that winner is picked, 
+我们写 `raffle.once("WinnerPicked")`
 
 15928
 16:12:26,300 --> 16:12:29,030
-
-
+we're going to do another async function using that Arrow. Arrow function syntax, 
+这里又是一个 `async` 函数，使用箭头函数语法
 
 15929
 16:12:29,030 --> 16:12:31,730
-
-
+we'll say console dot log winner picked the event fired. 
+我们接着写 `console.log("WinnerPicked event fired!")`
 
 15930
 16:12:31,760 --> 16:12:35,840
-
-
+And only once we get this winner picked, can we start doing our asserts in here, 
+只有当我们获取到了这个 "WinnerPicked"，我们才开始执行这里的 "assert" 
 
 15931
 16:12:35,840 --> 16:12:39,020
-
-
+can we start making sure that there's a winner, there's a verifiably random winner, it's been picked, the money has been moved, etc. 
+我们要确保已经有一个优胜者，被验证过的优胜者，被选了出来，资金才会发生转移等等
 
 15932
 16:12:39,020 --> 16:12:43,580
-
-
+This is where we'll do our try catch. 
+这里我们再执行 `try-catch`
 
 15933
 16:12:43,580 --> 16:12:46,580
-
-
+And if there's any error, we're just going to automatically reject, we're going to reject the promise. 
+只要出现任何错误，我们就自动返回 `reject` 这样就会拒绝这个 "Promise"
 
 15934
 16:12:46,580 --> 16:12:50,030
-
-
+And if all goes well, of course, we're going to resolve the promise. 
+而如果一切运行良好，我们当然就会 `resolve` 这个 "Promise"
 
 15935
 16:12:50,030 --> 16:12:53,930
-
-
+So our listener has been set up here. We haven't added our asserts here. 
+我们这里的 "listener" 已经设置好了，但还没有添加相应的 "assert" 
 
 15936
 16:12:54,050 --> 16:12:58,670
-
-
+But we will, let's just go ahead and write the rest of the test. 
+我们之后会添加的，不过让我们先继续编写测试的剩余部分
 
 15937
 16:12:58,760 --> 16:13:01,520
-And we're going to set up the listener the exact
-
+And then we'll go back and we'll update this listener so 
+之后我们会返回来，然后再更新这里的 "listener"
 
 15938
 16:13:01,520 --> 16:13:05,090
-same way, we did it over here. So we're gonna say await new
-
+so our listener has been added. 
+这样我们的 "listener" 就已经添加好了
 
 15939
 16:13:05,090 --> 16:13:08,210
-promise. And it's going to be an async function that takes a
-
+And inside here is actually where we're going to enter the raffle.
+并且这里就是我们进入抽奖的地方
 
 15940
 16:13:08,210 --> 16:13:11,840
-resolve and a reject. And we're going to use a little arrow
-
+So inside here, await, raffle dot enter raffle value is going to be raffle entrance fee. 
+所以这里就是 `await raffle.enterRaffle({value: raffleEntranceFee})`
 
 15941
 16:13:11,840 --> 16:13:14,450
-notation here. And in here, we're going to set up the
-
+And really that's it. Right? 
+这就搞定了，对吧？
 
 15942
 16:13:14,450 --> 16:13:18,170
-listener, we're gonna say raffle dot once, once that winner is
-
+So we're setting up the listener, setting up the listener, then entering the raffle. 
+我们设置了 "listener"，设置了 "listener"，然后进入了抽奖
 
 15943
 16:13:18,170 --> 16:13:21,890
-picked, we're going to do another async function using
-
+And this code won't complete until our listener has finished listening 
+并且直到我们的 "listener" 完成监听，代码才会完成
 
 15944
 16:13:21,890 --> 16:13:22,730
-that Arrow.
-
+because again, this whole SEC is in a wait. 
+因为这一整个部分都处于等待状态
 
 15945
 16:13:24,289 --> 16:13:29,389
-Arrow function syntax, we'll say console dot log winner picked
-
+So we're gonna say okay, cool setup, the listener, wait for this to finish. 
+我们就像是在说，OK 设置 "listener"，等待这个完成
 
 15946
 16:13:30,469 --> 16:13:35,359
-the event fired. And only once we get this winner picked, can
-
+And then when it gets here, it goes out okay, this is the end of the code 
+当它抵达这里的时候就说，OK 这里就是代码的结尾
 
 15947
 16:13:35,359 --> 16:13:38,959
-we start doing our asserts in here, can we start making sure
-
+Are we all done executing Oh, no resolve or reject hasn't been called yet. 
+但我们完成运行了么？不，还没有，"resolve" 或者 "reject" 都还没有被调用呢
 
 15948
 16:13:38,989 --> 16:13:42,349
-that there's a winner, there's a verifiably random winner, it's
+
 
 
 15949
 16:13:42,349 --> 16:13:44,749
-been picked, the money has been moved, etc. This is where we'll
+
 
 
 15950
 16:13:44,749 --> 16:13:49,549
-do our try catch. And if there's any error, we're just going to
+
 
 
 15951
 16:13:49,579 --> 16:13:52,519
-automatically reject, we're going to reject the promise. And
+
 
 
 15952
 16:13:52,519 --> 16:13:56,029
-if all goes well, of course, we're going to resolve the
+
 
 
 15953
 16:13:56,029 --> 16:13:58,609
-promise. So our listener has been set up here. We haven't
+
 
 
 15954
 16:13:58,609 --> 16:14:01,579
-added our asserts here. But we will, let's just go ahead and
+
 
 
 15955
 16:14:01,579 --> 16:14:04,699
-write the rest of the test. And then we'll go back and we'll
+
 
 
 15956
 16:14:04,729 --> 16:14:08,089
-update this listener so so our listener has been added. And
+
 
 
 15957
 16:14:08,089 --> 16:14:10,789
-inside here is actually where we're going to enter the raffle.
+
 
 
 15958
 16:14:10,819 --> 16:14:17,329
-So inside here, await, raffle dot enter raffle value is going
+
 
 
 15959
 16:14:17,329 --> 16:14:23,539
-to be raffle entrance fee. And really that's it. Right? So
+
 
 
 15960
 16:14:23,539 --> 16:14:26,509
-we're setting up the listener, setting up the listener, then
+
 
 
 15961
 16:14:26,539 --> 16:14:33,079
-entering the raffle. And this code won't complete until our
+
 
 
 15962
 16:14:33,079 --> 16:14:37,009
-listener has finished listening because again, this whole SEC is
+
 
 
 15963
 16:14:37,009 --> 16:14:40,579
-in a wait. So we're gonna say okay, cool setup, the listener,
+
 
 
 15964
 16:14:40,669 --> 16:14:43,309
-wait for this to finish. And then when it gets here, it goes
+
 
 
 15965
 16:14:43,339 --> 16:14:46,519
-out okay, this is the end of the code Are we all done executing
+
 
 
 15966
 16:14:46,579 --> 16:14:50,359
-Oh, no resolve or reject hasn't been called yet. And that's
+And that's
 
 
 15967
