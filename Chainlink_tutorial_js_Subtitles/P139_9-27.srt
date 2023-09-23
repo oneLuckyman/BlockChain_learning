@@ -521,343 +521,209 @@ And then when it gets here, it goes out okay, this is the end of the code
 15947
 16:13:35,359 --> 16:13:38,959
 Are we all done executing Oh, no resolve or reject hasn't been called yet. 
-但我们完成运行了么？不，还没有，"resolve" 或者 "reject" 都还没有被调用呢
+但我们完成运行了么？不，还没有，"resolve" 或 "reject" 都还没有被调用呢
 
 15948
 16:13:38,989 --> 16:13:42,349
-
-
+And that's because we're still waiting for the listener to finish listening. 
+因为我们仍然在等待 "listener" 完成监听
 
 15949
 16:13:42,349 --> 16:13:44,749
-
-
+Now, once we get this winner picked event emitted in here, we're going to get that recent winner 
+现在，一旦我们得知这里的 "WinnerPicked" 被触发了，我们就获取 "recentWinner"
 
 15950
 16:13:44,749 --> 16:13:49,549
-
-
+so we'll say const recent winner equals await raffle dot get recent winner
+所以我们要写 `const recentWinner = await raffle.getRecentWinner()`
 
 15951
 16:13:49,579 --> 16:13:52,519
-
-
+will get the raffle state we'll say const. raffle state equals await raffle dot get raffle state, 
+我们还要获取抽奖状态，这样写 `const raffleState = await raffle.getRaffleState()`
 
 15952
 16:13:52,519 --> 16:13:56,029
-
-
+we'll get the winners balance. So we'll say const. Winner balance equals await recent winner. 
+还有优胜者的余额，也就是 `const winnerBalance = await recentWinner`
 
 15953
 16:13:56,029 --> 16:13:58,609
-
-
+And since we're only entering with our Deployer
+由于我们只是用 "deployer" 进入了抽奖
 
 15954
 16:13:58,609 --> 16:14:01,579
-
-
+we should check to see the deployers balance at the end 
+所以我们应该检查 "deployer" 结束时的余额
 
 15955
 16:14:01,579 --> 16:14:04,699
-
-
+and we can't do it right with this deployer object here. 
+但我们无法直接应用这里的 "deployer" 对象
 
 15956
 16:14:04,729 --> 16:14:08,089
-
-
+So we'll have to do the player account equals await ethers dot get signers, 
+所以我们必须这样做 `const deployerAccount = await ethers.getSigners()`
 
 15957
 16:14:08,089 --> 16:14:10,789
-
-
+no wrap this actually actually will just say this is accounts here like that. 
+其实没有这个括号，并且这里应该是 `accounts`
 
 15958
 16:14:10,819 --> 16:14:17,329
-
-
+And then we'll just do a count of zero because it counts as zero is going to be our Deployer. 
+接着我们在这里执行 `accounts[0]`，因为 "accounts[0]" 就是我们的 "deployer" 
 
 15959
 16:14:17,329 --> 16:14:23,539
-
-
+So our winner balance is going to be accounts a zero dot get balance. 
+所以 "winnerBalance" 就是 `accounts[0].getBalance()`
 
 15960
 16:14:23,539 --> 16:14:26,509
-
-
+And then we're going to do const ending timestamp equals a weight raffle dot get latest To timestamp, 
+接着我们执行 `const endingTimeStamp = await raffle.getLatestTimeStamp()`
 
 15961
 16:14:26,539 --> 16:14:33,079
-
-
+and we should also get the starting balance. 
+我们还应该获取初始余额
 
 15962
 16:14:33,079 --> 16:14:37,009
-
-
+So we'll say winner ending balance,
+所以这里要改成 `winnerEndingBalance`
 
 15963
 16:14:37,009 --> 16:14:40,579
-
-
+we should also get the starting balance right after we enter. 
+同时，我们应该在进入抽奖之后就记录初始余额
 
 15964
 16:14:40,669 --> 16:14:43,309
-
-
+So we'll say const. Winner, starting balance equals await accounts. Zero dot get balance, 
+所以我们写 `const winnerStartingBalance = await accounts[0].getBalance()`
 
 15965
 16:14:43,339 --> 16:14:46,519
-
-
+so that now we can do some comparisons. All right, great. Let's do the comparisons now. 
+现在我们就可以进行比较了，那么就让我们开始比较吧
 
 15966
 16:14:46,579 --> 16:14:50,359
-And that's
-
+So we should first expect the raffle to be reset. 
+首先我们应该预期抽奖已经被重置了
 
 15967
 16:14:50,359 --> 16:14:52,219
-because we're still waiting for the listener to finish
-
+So we can do this a few different ways. Down here. We did number of players.
+我们有几种不同的方法可以使用，拉到下面，这里有一个 "numPlayers"
 
 15968
 16:14:52,219 --> 16:14:56,179
-listening. Now, once we get this winner picked event emitted in
-
+We can also say, await, expect raffle dot get player 0.2 dot v dot reverted, right 
+我们可以这样写 `await expect(raffle.getPlayer(0)).to.be.reverted` 对吧？
 
 15969
 16:14:56,179 --> 16:14:58,999
-here, we're going to get that recent winner so we'll say const
-
+because Get Player zero should get reverted
+因为 "getPlayer(0)" 应该已经被回滚了
 
 15970
 16:14:59,509 --> 16:15:04,939
-recent winner equals await raffle dot get recent winner
-
+because there's not even going to be an object at zero. 
+因为 0 处不应该有任何对象了
 
 15971
 16:15:05,749 --> 16:15:09,979
-will get the raffle state we'll say const. raffle state equals
-
+So that's another way we can check to see if our players array has been reset. 
+还有另一种方式可以检查我们的 "players" 数组是否已经被重置了
 
 15972
 16:15:10,009 --> 16:15:14,509
-await raffle dot get raffle state, we'll get the winners
-
+Next, we can do assert dot equal recent winner.to string, 
+我们可以执行 `assert.equal(recentWinner.toString())` 
 
 15973
 16:15:14,509 --> 16:15:19,999
-balance. So we'll say const. Winner balance equals await
-
+this should equal our account zero dot address. Okay, our Deployer 
+它应该等于我们的 `accounts[0].address`，也就是我们的 "deployer"
 
 15974
 16:15:21,139 --> 16:15:25,339
-recent winner. And since we're only entering with our Deployer
-
+What else can we do? 
+我们还可以怎么做？
 
 15975
 16:15:25,369 --> 16:15:28,849
-we should check to see the deployers balance at the end and
-
+We will assert dot equal raffle state to zero. 
+我们可以 `assert.equal(raffleState, 0)`
 
 15976
 16:15:28,849 --> 16:15:31,909
-we can't do it right with this deployer object here. So we'll
-
+We want this email to go back to open after we're done. 
+我们希望这个枚举值在运行完之后重回开放状态
 
 15977
 16:15:31,909 --> 16:15:37,999
-have to do the player account equals await ethers dot get
-
+And then we finally want to make sure that the money has been transferred correctly. 
+最后我们想要确保一下资金已经被正确转账了
 
 15978
 16:15:38,059 --> 16:15:42,259
-signers, no wrap this actually actually will just say this is
-
+So we'll do assert dot equal, this should be a winner ending balance. That to string 
+所以我们要执行 `assert.equal(winnerEndingBalance.toString())`
 
 15979
 16:15:43,069 --> 16:15:46,459
-accounts here like that. And then we'll just do a count of
-
+should be equal to winner starting balance, add raffle entrance fee.to string. 
+它应该等于 `winnerStartingBalance.add(raffleEntranceFee).toString()`
 
 15980
 16:15:46,459 --> 16:15:49,369
-zero because it counts as zero is going to be our Deployer. So
-
+So if we look down here, they enter the raffle we check their starting balance right after they enter. 
+我们拉到下面这里，他们进入抽奖，我们检查他们在进入之后的初始余额
 
 15981
 16:15:49,369 --> 16:15:52,369
-our winner balance is going to be accounts a zero dot get
-
+And they basically should just get that raffle entrance fee back right 
+它们应该能直接把 "raffleEntranceFee" 给收回来，对吧？
 
 15982
 16:15:52,369 --> 16:15:57,259
-balance. And then we're going to do const ending timestamp equals
-
+because they are the only ones who have entered this raffle. 
+因为其实只有一个人进入到了这个抽奖中
 
 15983
 16:15:57,289 --> 16:16:04,429
-a weight raffle dot get latest To timestamp, and we should also
-
+And then we can do one more assert, do assert that the ending timestamp is greater than the starting timestamp. 
+接下来我们可以再执行一个 `assert(endingTimeStamp > startingTimeStamp)`
 
 15984
 16:16:04,429 --> 16:16:08,179
-get the starting balance. So we'll say winner ending balance,
-
+And then we'll of course, say resolve. 
+然后，当然就是 `resolve()`
 
 15985
 16:16:08,419 --> 16:16:12,409
-we should also get the starting balance right after we enter. So
-
+So this all goes well, we resolve. 
+也就是这些全部都满足，我们就返回 "resolve"
 
 15986
 16:16:12,409 --> 16:16:17,839
-we'll say const. Winner, starting balance equals await
-
+If there's an issue with any of these asserts, we're going to catch those errors and we're going to reject 
+如果这里面有任何一个 "assert" 出了问题，我们就 "catch" 这个错误并返回 "reject" 
 
 15987
 16:16:18,019 --> 16:16:23,569
-accounts. Zero dot get balance, so that now we can do some
-
+and this is going to be false. And this whole test is gonna go ah, there was an issue, 
+接着这里就会收到 false 并且整个测试都会收到，啊，这里出现问题了
 
 15988
 16:16:23,569 --> 16:16:26,569
-comparisons. All right, great. Let's do the comparisons now. So
-
-
-15989
-16:16:26,569 --> 16:16:30,439
-we should first expect the raffle to be reset. So we can do
-
-
-15990
-16:16:30,439 --> 16:16:34,129
-this a few different ways. Down here. We did number of players.
-
-
-15991
-16:16:34,429 --> 16:16:43,039
-We can also say, await, expect raffle dot get player 0.2 dot v
-
-
-15992
-16:16:43,069 --> 16:16:48,109
-dot reverted, right because Get Player zero should get reverted
-
-
-15993
-16:16:48,109 --> 16:16:50,749
-because there's not even going to be an object at zero. So
-
-
-15994
-16:16:50,749 --> 16:16:53,449
-that's another way we can check to see if our players array has
-
-
-15995
-16:16:53,449 --> 16:16:57,919
-been reset. Next, we can do assert dot equal recent
-
-
-15996
-16:16:57,949 --> 16:17:04,609
-winner.to string, this should equal our account zero dot
-
-
-15997
-16:17:04,609 --> 16:17:08,989
-address. Okay, our Deployer What else can we do? We will assert
-
-
-15998
-16:17:09,079 --> 16:17:14,539
-dot equal raffle state to zero. We want this email to go back to
-
-
-15999
-16:17:14,539 --> 16:17:17,629
-open after we're done. And then we finally want to make sure
-
-
-16000
-16:17:17,629 --> 16:17:19,879
-that the money has been transferred correctly. So we'll
-
-
-16001
-16:17:19,879 --> 16:17:25,669
-do assert dot equal, this should be a winner ending balance. That
-
-
-16002
-16:17:25,669 --> 16:17:32,329
-to string should be equal to winner starting balance, add
-
-
-16003
-16:17:34,219 --> 16:17:38,929
-raffle entrance fee.to string. So if we look down here, they
-
-
-16004
-16:17:38,929 --> 16:17:42,139
-enter the raffle we check their starting balance right after
-
-
-16005
-16:17:42,139 --> 16:17:45,109
-they enter. And they basically should just get that raffle
-
-
-16006
-16:17:45,109 --> 16:17:48,529
-entrance fee back right because they are the only ones who have
-
-
-16007
-16:17:48,529 --> 16:17:51,049
-entered this raffle. And then we can do one more assert, do
-
-
-16008
-16:17:51,049 --> 16:17:56,209
-assert that the ending timestamp is greater than the starting
-
-
-16009
-16:17:56,239 --> 16:18:00,709
-timestamp. And then we'll of course, say resolve. So this all
-
-
-16010
-16:18:00,709 --> 16:18:04,759
-goes well, we resolve. If there's an issue with any of
-
-
-16011
-16:18:04,759 --> 16:18:07,129
-these asserts, we're going to catch those errors and we're
-
-
-16012
-16:18:07,129 --> 16:18:09,949
-going to reject and this is going to be false. And this
-
-
-16013
-16:18:09,949 --> 16:18:12,679
-whole test is gonna go ah, there was an issue, we now have a
-
-
-16014
-16:18:12,679 --> 16:18:15,799
-staging test that looks really good here. Let's try
-
-
-16015
-16:18:15,800 --> 16:18:22,940
-this out. 
+staging test that looks really good here. Let's try this out. 
+目前 "staging" 测试看起来一切良好，让我们来试试它吧
