@@ -1,0 +1,1133 @@
+16015
+16:18:15,800 --> 16:18:22,940
+Let's try our staging test out from start to finish.
+
+
+16016
+16:18:23,000 --> 16:18:27,350
+So now in order for us to test this staging test, from end to
+
+
+16017
+16:18:27,350 --> 16:18:30,440
+end, you first going to need to get our sub ID for the
+
+
+16018
+16:18:30,440 --> 16:18:32,600
+channeling fear F then we're going to need to deploy our
+
+
+16019
+16:18:32,600 --> 16:18:35,960
+contract using the sub ID, we're going to need to register the
+
+
+16020
+16:18:35,960 --> 16:18:39,560
+contract with chain link VRF. And it's somebody we're going to
+
+
+16021
+16:18:39,590 --> 16:18:42,260
+then need to register it with chain link keepers. And then of
+
+
+16022
+16:18:42,260 --> 16:18:45,140
+course, we're going to run the staging tests. So let's do it.
+
+
+16023
+16:18:45,350 --> 16:18:48,200
+So first thing we're going to need to do is what? Get our sub
+
+
+16024
+16:18:48,200 --> 16:18:51,110
+ID for chain link VRF. Okay, great. So we're going to come
+
+
+16025
+16:18:51,110 --> 16:18:54,920
+over to VRF dot chain dot link. And we're going to need to
+
+
+16026
+16:18:54,920 --> 16:18:58,850
+create a new subscription. If we don't have enough rink B eath.
+
+
+16027
+16:18:58,940 --> 16:19:02,540
+Let's we want to head over to the full blockchain solidity
+
+
+16028
+16:19:02,540 --> 16:19:05,030
+course, here, we're going to scroll down. And we're going to
+
+
+16029
+16:19:05,030 --> 16:19:08,030
+look for the recommended test and here, which is ranked v. And
+
+
+16030
+16:19:08,030 --> 16:19:11,120
+we're going to use the faucets link to get some Rigby link, run
+
+
+16031
+16:19:11,120 --> 16:19:15,410
+Fosses dot chain dot link, let's switch over from COVID to a
+
+
+16032
+16:19:15,410 --> 16:19:18,890
+cerium. Rigby, we know we're going to need some link and some
+
+
+16033
+16:19:18,920 --> 16:19:23,900
+eath. So let's just go ahead and get both. Alright, great now
+
+
+16034
+16:19:23,900 --> 16:19:26,780
+that our transaction has gone through, let's just double check
+
+
+16035
+16:19:26,780 --> 16:19:30,230
+our wallet here. And it looks like we do indeed have Ethereum
+
+
+16036
+16:19:30,230 --> 16:19:33,140
+here. And if you don't see the link, you can head over to link
+
+
+16037
+16:19:33,140 --> 16:19:35,960
+token contracts, Link token contracts in the chain link
+
+
+16038
+16:19:35,960 --> 16:19:39,140
+documentation. We'll scroll down to Rigby, we'll grab this
+
+
+16039
+16:19:39,140 --> 16:19:43,730
+contract address import tokens and we'll paste it in here. Add
+
+
+16040
+16:19:43,730 --> 16:19:48,050
+Custom tokens, import tokens. Great. Now I can see my eath and
+
+
+16041
+16:19:48,050 --> 16:19:51,440
+my link here, perfect. We have some eath we have some link,
+
+
+16042
+16:19:51,560 --> 16:19:53,720
+let's head over to V REF subscription management. And
+
+
+16043
+16:19:53,720 --> 16:19:56,420
+we're going to create a new subscription. Again, we could
+
+
+16044
+16:19:56,420 --> 16:19:58,550
+totally do this programmatically, because the
+
+
+16045
+16:19:58,550 --> 16:20:02,090
+user interface here is only helping us facilitate call
+
+
+16046
+16:20:02,090 --> 16:20:05,450
+contracts to the registration contract that's completely
+
+
+16047
+16:20:05,450 --> 16:20:07,790
+decentralized and on chain. So let's go ahead and create
+
+
+16048
+16:20:07,790 --> 16:20:10,850
+subscription will create subscription will confirm the
+
+
+16049
+16:20:10,850 --> 16:20:14,780
+transaction and Metamask on the Rinkeby network will do a little
+
+
+16050
+16:20:14,780 --> 16:20:17,540
+bit of wading in great once it's gone through, you can go ahead
+
+
+16051
+16:20:17,540 --> 16:20:20,150
+and click the add funds button. I'm going to show you what it
+
+
+16052
+16:20:20,150 --> 16:20:23,360
+looks like if you accidentally refresh and jump off though. So
+
+
+16053
+16:20:23,360 --> 16:20:26,690
+if you refresh and you go back to veer off the chain dot link,
+
+
+16054
+16:20:26,840 --> 16:20:29,870
+you should have a new active subscription. And you'll see
+
+
+16055
+16:20:29,870 --> 16:20:33,410
+this number here. If you click on it, this is your subscription
+
+
+16056
+16:20:33,440 --> 16:20:38,120
+ID great. So we can actually take this, come back to our code
+
+
+16057
+16:20:38,210 --> 16:20:41,900
+into our helper Hardhead config. And we can paste our
+
+
+16058
+16:20:41,900 --> 16:20:45,830
+subscription ID under subscription ID for our Rinkeby
+
+
+16059
+16:20:45,860 --> 16:20:49,040
+network here. Awesome. Now that we have a subscription we can
+
+
+16060
+16:20:49,040 --> 16:20:52,280
+see it's not funded with any link. So we don't have any
+
+
+16061
+16:20:52,280 --> 16:20:55,970
+Oracle gas here. And we don't have any consumers. Right our
+
+
+16062
+16:20:55,970 --> 16:20:59,600
+consumer is going to be a raffle or a lottery contract. So let's
+
+
+16063
+16:20:59,600 --> 16:21:02,240
+add some funds first and we don't need to add A whole lot
+
+
+16064
+16:21:02,240 --> 16:21:05,060
+because we're only going to be testing once. So let's go just
+
+
+16065
+16:21:05,060 --> 16:21:08,240
+go ahead and add to link here, this number might change
+
+
+16066
+16:21:08,240 --> 16:21:10,970
+depending on different costs of the test nets and how much link
+
+
+16067
+16:21:10,970 --> 16:21:13,520
+token there's available. So if you're actually working on a
+
+
+16068
+16:21:13,520 --> 16:21:16,580
+main net, be sure to head over Doc's touching that link EVM
+
+
+16069
+16:21:16,580 --> 16:21:20,210
+chains contract addresses, you can read more about the costs
+
+
+16070
+16:21:20,240 --> 16:21:22,700
+some of these different chains, so you can figure out exactly
+
+
+16071
+16:21:22,700 --> 16:21:25,340
+how much to put in here. And if you go to the full blockchain
+
+
+16072
+16:21:25,340 --> 16:21:29,480
+solidity course, Jas, we can scroll down to Lesson Nine,
+
+
+16073
+16:21:29,510 --> 16:21:32,990
+there's a recommended link amounts or rinky saving tests
+
+
+16074
+16:21:33,080 --> 16:21:35,180
+for chain link VRF. For now we're going to put two for
+
+
+16075
+16:21:35,180 --> 16:21:37,490
+keepers, we're going to put eight, but feel free to refer to
+
+
+16076
+16:21:37,490 --> 16:21:40,160
+here so you know how much to put in. So let's go ahead and
+
+
+16077
+16:21:40,160 --> 16:21:43,340
+confirm, we're going to approve adding funds here, go ahead and
+
+
+16078
+16:21:43,340 --> 16:21:47,270
+confirm. And we're now funding our subscription to so we can
+
+
+16079
+16:21:47,270 --> 16:21:50,300
+pay that Oracle gas to get our random numbers. Great. And once
+
+
+16080
+16:21:50,300 --> 16:21:53,390
+we're funded, we can close it, we'll do a little refresh. And
+
+
+16081
+16:21:53,390 --> 16:21:56,720
+we can see the balance is now to link when we don't have any
+
+
+16082
+16:21:56,720 --> 16:22:00,980
+consumers perfect. So we've got our sub ID, we funded it. Now
+
+
+16083
+16:22:01,010 --> 16:22:05,120
+let's go ahead and deploy our contract. And we already know
+
+
+16084
+16:22:05,450 --> 16:22:08,570
+that we should be all good for deploying our contract, we go to
+
+
+16085
+16:22:08,570 --> 16:22:12,290
+our Dotty and V will need to add all of those same parameters
+
+
+16086
+16:22:12,320 --> 16:22:14,840
+from our previous projects, we'll need to shrink the RPC
+
+
+16087
+16:22:14,840 --> 16:22:18,770
+URL, we'll need our private key. If we want to verify we'll need
+
+
+16088
+16:22:18,770 --> 16:22:22,040
+our ether scan API key. And if we want to do gas output, we'll
+
+
+16089
+16:22:22,040 --> 16:22:25,100
+need our coin market cap API key. So let's make sure we have
+
+
+16090
+16:22:25,100 --> 16:22:28,070
+all that. And we'll look at our deploy script. Once again, just
+
+
+16091
+16:22:28,070 --> 16:22:31,220
+real quick look at our helper hardcat config just real quick,
+
+
+16092
+16:22:31,220 --> 16:22:34,040
+and it looks like we do indeed have everything in here. And we
+
+
+16093
+16:22:34,040 --> 16:22:36,260
+should just be able to deploy it in one command.
+
+
+16094
+16:22:40,369 --> 16:22:44,659
+So we should be able to do yarn, hard hat or just h h again,
+
+
+16095
+16:22:44,839 --> 16:22:51,139
+ploy, dash dash network Rinkeby. Let's go try this out. All
+
+
+16096
+16:22:51,139 --> 16:22:53,569
+right, it looks like we've compiled successfully, we've
+
+
+16097
+16:22:53,569 --> 16:22:57,259
+deployed it successfully. And we've even verified it, we can
+
+
+16098
+16:22:57,259 --> 16:23:00,829
+go and open it up on Rinku ether scan. And we can see our code
+
+
+16099
+16:23:00,829 --> 16:23:04,309
+here has been verified. And it's looking beautiful. We can read
+
+
+16100
+16:23:04,309 --> 16:23:07,009
+from it, which is great. We can see all these commands here now
+
+
+16101
+16:23:07,009 --> 16:23:09,709
+that it's verified. And if we look at the Git raffle state, we
+
+
+16102
+16:23:09,709 --> 16:23:12,319
+should indeed see that it's open, right, and it's going to
+
+
+16103
+16:23:12,319 --> 16:23:16,009
+stay open until somebody ends the raffle and updates the
+
+
+16104
+16:23:16,009 --> 16:23:19,189
+amount of eath that the contract actually has. Now that we've
+
+
+16105
+16:23:19,189 --> 16:23:22,369
+deployed a contract using that sub ID, we need to register the
+
+
+16106
+16:23:22,369 --> 16:23:25,639
+contract with chain link V REF. And with chain link keepers. So
+
+
+16107
+16:23:25,639 --> 16:23:29,659
+we need to add this consumer does tell chinley VRF. Hey, this
+
+
+16108
+16:23:29,659 --> 16:23:31,789
+is the contract that you're looking for now. So we're gonna
+
+
+16109
+16:23:31,789 --> 16:23:34,909
+go back to V REF dot chain dot link, and we're going to grab
+
+
+16110
+16:23:34,909 --> 16:23:38,089
+this contract address, and we're going to add it as a consumer,
+
+
+16111
+16:23:38,149 --> 16:23:40,639
+your subscription is ready, you can now add consumers we're
+
+
+16112
+16:23:40,639 --> 16:23:43,909
+gonna add consumer. And again, this website is just here to
+
+
+16113
+16:23:43,909 --> 16:23:47,059
+help facilitate us interacting with the contract. So we're
+
+
+16114
+16:23:47,059 --> 16:23:49,729
+going to approve that user, we'll go ahead and confirm and
+
+
+16115
+16:23:49,729 --> 16:23:52,189
+the transaction is going through. While we wait for this
+
+
+16116
+16:23:52,189 --> 16:23:56,689
+to go through, we can go to keepers dot chain dot link, and
+
+
+16117
+16:23:56,689 --> 16:23:59,779
+do the same thing work with the user interface to register a new
+
+
+16118
+16:23:59,779 --> 16:24:04,369
+upkeep. So we'll go ahead and add our email Hardhead free code
+
+
+16119
+16:24:04,369 --> 16:24:09,949
+camp@gmail.com. We'll call this raffle upkeep. We'll paste our
+
+
+16120
+16:24:09,949 --> 16:24:13,249
+upkeep address in here we have our admin address, and you can
+
+
+16121
+16:24:13,249 --> 16:24:16,129
+ignore this bit right here. For gas limit, this is going to be
+
+
+16122
+16:24:16,129 --> 16:24:19,399
+the gas limit of the PErforM upkeep function. If we did our
+
+
+16123
+16:24:19,429 --> 16:24:22,399
+gas estimator, we could just check to see how much that
+
+
+16124
+16:24:22,429 --> 16:24:25,069
+perform upkeep costs. But for now, I'm just going to put
+
+
+16125
+16:24:25,099 --> 16:24:29,269
+500,000 That's probably overkill, but that's fine. Check
+
+
+16126
+16:24:29,269 --> 16:24:32,419
+data, we're going to keep blank because again, our checkup keep
+
+
+16127
+16:24:32,419 --> 16:24:35,239
+doesn't take anything. And then starting balance, we're going to
+
+
+16128
+16:24:35,239 --> 16:24:38,479
+put as eight. And if you forget to put a starting balance here,
+
+
+16129
+16:24:38,479 --> 16:24:41,749
+you can always find it later. So let's go ahead and register,
+
+
+16130
+16:24:42,559 --> 16:24:45,649
+we're gonna get a Metamask pop up, we're gonna go ahead and hit
+
+
+16131
+16:24:45,649 --> 16:24:50,029
+Confirm. And we can go back to our VRF and see that it's indeed
+
+
+16132
+16:24:50,029 --> 16:24:53,359
+been added and awesome, we now have a consumer on our VRF. So
+
+
+16133
+16:24:53,359 --> 16:24:55,819
+now let's just wait for our keepers to go through upkeep
+
+
+16134
+16:24:55,819 --> 16:24:59,539
+registration requests submitted successfully on domain net, you
+
+
+16135
+16:24:59,539 --> 16:25:02,239
+might actually have to wait a little bit for your request to
+
+
+16136
+16:25:02,239 --> 16:25:04,819
+go through, but I'll test that it should automatically go
+
+
+16137
+16:25:04,819 --> 16:25:08,509
+through. Now if we go back to keepers dot chain dot link, we
+
+
+16138
+16:25:08,509 --> 16:25:12,409
+should now see we now if we scroll down to my upkeeps We
+
+
+16139
+16:25:12,409 --> 16:25:15,859
+have a raffle upkeep here and I have to because I accidentally
+
+
+16140
+16:25:15,919 --> 16:25:18,439
+use the same account that I tested on, you can ignore the
+
+
+16141
+16:25:18,439 --> 16:25:21,169
+two you'll have one but this is the one that we just created.
+
+
+16142
+16:25:21,289 --> 16:25:24,589
+And we can actually see what our balances and then what the
+
+
+16143
+16:25:24,589 --> 16:25:26,809
+minimum balance for this actually is. So it looks like
+
+
+16144
+16:25:26,839 --> 16:25:30,499
+eight Link was a little bit too low. So let's go back to Fosses
+
+
+16145
+16:25:30,499 --> 16:25:35,959
+dot chain dot link slash rinky. Now that we have some more link,
+
+
+16146
+16:25:35,989 --> 16:25:38,899
+we can come back to our raffle upkeep. And we go ahead and hit
+
+
+16147
+16:25:38,899 --> 16:25:43,009
+add funds. And we'll add just three. And we'll go ahead and
+
+
+16148
+16:25:43,009 --> 16:25:47,239
+confirm we first need to give permission to spend. We approved
+
+
+16149
+16:25:47,239 --> 16:25:50,179
+our link transfer now let's actually transfer the link to
+
+
+16150
+16:25:50,179 --> 16:25:53,569
+the contract and alright funds added successfully. So now let's
+
+
+16151
+16:25:53,569 --> 16:25:56,659
+do a little refresh. Now we no longer see that message saying
+
+
+16152
+16:25:56,659 --> 16:25:59,539
+that it's underfunded and we have our balance and we can see
+
+
+16153
+16:25:59,539 --> 16:26:02,359
+that it's more than the minimum balance. We have See the history
+
+
+16154
+16:26:02,359 --> 16:26:05,509
+that we just funded this twice. Once this actually kicks off,
+
+
+16155
+16:26:05,539 --> 16:26:09,079
+we'll see activity type will be like perform upkeep or something
+
+
+16156
+16:26:09,109 --> 16:26:12,259
+got our sub ID, we've deployed the contract, we've registered
+
+
+16157
+16:26:12,259 --> 16:26:14,389
+with chain link V REF, we've registered it with chain link
+
+
+16158
+16:26:14,389 --> 16:26:18,079
+keepers. Now all we need to do is run the staging tests. Now
+
+
+16159
+16:26:18,079 --> 16:26:20,899
+running our staging test is essentially going to be the same
+
+
+16160
+16:26:20,989 --> 16:26:24,589
+as us calling this enter script, right, because all we're doing
+
+
+16161
+16:26:24,679 --> 16:26:27,349
+in our staging test is entering the lottery. And then we just
+
+
+16162
+16:26:27,349 --> 16:26:29,839
+have a whole bunch of validators that we're running to make sure
+
+
+16163
+16:26:29,839 --> 16:26:33,409
+that things are doing as we expect, since our contract is
+
+
+16164
+16:26:33,409 --> 16:26:37,069
+actually verified, what we could do on Rigby ether scan is we can
+
+
+16165
+16:26:37,069 --> 16:26:39,739
+actually go to this right contract section of the
+
+
+16166
+16:26:39,739 --> 16:26:44,659
+contract. And we could even connect our wallets to it. And
+
+
+16167
+16:26:44,659 --> 16:26:48,079
+once this turns from red to green, after a little refresh,
+
+
+16168
+16:26:48,139 --> 16:26:51,409
+we'll now see that it's green, it's connected, we can even call
+
+
+16169
+16:26:51,409 --> 16:26:55,279
+functions on this contract ourself, so we could enter the
+
+
+16170
+16:26:55,279 --> 16:26:58,309
+raffle ourself, we would add, you know, however much eath to
+
+
+16171
+16:26:58,309 --> 16:27:01,069
+enter the raffle, and that would kick off the keepers in the VRF,
+
+
+16172
+16:27:01,069 --> 16:27:03,889
+as well. So we could call it via ether scan, we could obviously
+
+
+16173
+16:27:03,889 --> 16:27:06,559
+call it via our staging tests here, we could call it via our
+
+
+16174
+16:27:06,559 --> 16:27:09,109
+scripts, we could call it via the console, there's a ton of
+
+
+16175
+16:27:09,109 --> 16:27:12,949
+ways to actually do this. But moment of truth here, we're
+
+
+16176
+16:27:12,949 --> 16:27:15,949
+gonna run our staging tests, which is going to have us enter
+
+
+16177
+16:27:15,949 --> 16:27:19,609
+the lottery, and set up a listener to make sure that
+
+
+16178
+16:27:19,609 --> 16:27:23,089
+everything works correctly. And additionally, we'll see on our
+
+
+16179
+16:27:23,089 --> 16:27:26,839
+raffle upkeep history, we'll see a transaction go through, and
+
+
+16180
+16:27:26,839 --> 16:27:30,769
+then we'll see a transaction on our chain like VRF as well. Are
+
+
+16181
+16:27:30,769 --> 16:27:32,719
+you ready? I sure am.
+
+
+16182
+16:27:32,900 --> 16:27:40,250
+Let's do this. So we'll do h h, test, dash dash network, rink B.
+
+
+16183
+16:27:40,400 --> 16:27:43,220
+And that should be all we need to do. In our state and tests,
+
+
+16184
+16:27:43,220 --> 16:27:46,040
+we probably should have added some console dot logs in here to
+
+
+16185
+16:27:46,040 --> 16:27:49,160
+tell us hey, to tell us what steps that we're on with each.
+
+
+16186
+16:27:49,400 --> 16:27:52,640
+But we forgot to. So if you follow along with the repo
+
+
+16187
+16:27:52,640 --> 16:27:55,160
+associated with this, we've added the console dot logs in
+
+
+16188
+16:27:55,160 --> 16:27:58,700
+the test there. But all right, if we go to the ether scan for
+
+
+16189
+16:27:58,700 --> 16:28:01,580
+this contract, we go back to the rink the ether scan for this, we
+
+
+16190
+16:28:01,580 --> 16:28:04,730
+paste in that address, the first step that we're doing in this
+
+
+16191
+16:28:04,730 --> 16:28:08,210
+test, of course, while we're setting up this listener, the
+
+
+16192
+16:28:08,210 --> 16:28:11,210
+first transaction is going to be entering the raffle that's going
+
+
+16193
+16:28:11,210 --> 16:28:13,970
+to kick everything off. Right. So if we refresh a little bit on
+
+
+16194
+16:28:13,970 --> 16:28:17,720
+ether scan, we do indeed see we've entered the raffle. And
+
+
+16195
+16:28:17,720 --> 16:28:22,400
+we've updated the balance of the raffle. Okay, awesome. So raffle
+
+
+16196
+16:28:22,400 --> 16:28:26,600
+has been entered. Now then what happens? Well, if the raffle has
+
+
+16197
+16:28:26,600 --> 16:28:30,140
+been entered, if we go to raffle dot soul, if it's open, if
+
+
+16198
+16:28:30,140 --> 16:28:32,540
+enough time has passed, if there's players and it has a
+
+
+16199
+16:28:32,540 --> 16:28:36,110
+balance, which we just checked does, this will get kicked off
+
+
+16200
+16:28:36,110 --> 16:28:39,530
+by the keepers. So if we go to the keepers, and we do a little
+
+
+16201
+16:28:39,530 --> 16:28:43,190
+refresh here, after a little bit, we do indeed see checkup
+
+
+16202
+16:28:43,190 --> 16:28:46,280
+key passed and we see a perform upkeep having gone through
+
+
+16203
+16:28:46,670 --> 16:28:50,960
+great, what does perform upkeep to well perform upkeep calls the
+
+
+16204
+16:28:50,960 --> 16:28:55,220
+chainlink VRF. So now if we go over to chainlink, VRF, we do a
+
+
+16205
+16:28:55,220 --> 16:28:59,900
+refresh here, go down to history, we do indeed see one of
+
+
+16206
+16:28:59,900 --> 16:29:02,060
+the transactions has gone through we can see the
+
+
+16207
+16:29:02,060 --> 16:29:05,030
+transaction hash, the link spent, etc. And now if we go
+
+
+16208
+16:29:05,030 --> 16:29:08,480
+back to our tests, we do indeed see raffle unit tests for friend
+
+
+16209
+16:29:08,510 --> 16:29:12,830
+fulfill random request winner pick event fired. And this means
+
+
+16210
+16:29:12,830 --> 16:29:16,460
+that we just went through this entire process of having a
+
+
+16211
+16:29:16,460 --> 16:29:20,090
+perfectly truly decentralized raffle work on an actual
+
+
+16212
+16:29:20,090 --> 16:29:22,460
+Testament with our integration tests working correctly.
+
+
+16213
+16:29:22,490 --> 16:29:25,130
+Absolutely massive, huge congratulations if you've made
+
+
+16214
+16:29:25,130 --> 16:29:27,230
+it this far. And if you just walk through the integration
+
+
+16215
+16:29:27,230 --> 16:29:30,320
+test with me now bounce over contract has now been reset to
+
+
+16216
+16:29:30,320 --> 16:29:33,560
+zero because our wallet address just won the lottery right and
+
+
+16217
+16:29:33,560 --> 16:29:36,890
+got the money back. Now you might be wondering, Hey, I see
+
+
+16218
+16:29:36,890 --> 16:29:40,580
+the Create raffle function. And I see enter raffle but I don't
+
+
+16219
+16:29:40,580 --> 16:29:43,550
+see didn't the chain link nodes just call perform upkeep and
+
+
+16220
+16:29:43,550 --> 16:29:46,880
+fulfill random words, I'll come no matter how often I refresh, I
+
+
+16221
+16:29:46,880 --> 16:29:49,430
+don't see those transactions here. Well, those are actually
+
+
+16222
+16:29:49,430 --> 16:29:52,730
+going to be considered internal transactions fulfill random
+
+
+16223
+16:29:52,730 --> 16:29:55,910
+words, it's actually called through the VRF coordinator and
+
+
+16224
+16:29:55,910 --> 16:29:59,510
+the VRF coordinator contract then calls for full randomness.
+
+
+16225
+16:29:59,840 --> 16:30:03,320
+So we can go to internal transactions. And one of these
+
+
+16226
+16:30:03,320 --> 16:30:06,110
+transactions is going to be the transaction to the VRF
+
+
+16227
+16:30:06,110 --> 16:30:10,220
+coordinator contract, which calls our contract. Same thing
+
+
+16228
+16:30:10,220 --> 16:30:13,580
+with perform upkeep. Perform upkeep, the chain link nodes
+
+
+16229
+16:30:13,580 --> 16:30:16,190
+actually call through the registry contract and then the
+
+
+16230
+16:30:16,190 --> 16:30:19,370
+registry contract calls perform upkeep. That's what we see here.
+
+
+16231
+16:30:19,550 --> 16:30:22,070
+And if we go through the internal transactions, we'll see
+
+
+16232
+16:30:22,070 --> 16:30:25,490
+him there. Now let's look at this enter raffle as well. And
+
+
+16233
+16:30:25,490 --> 16:30:28,880
+since we've learned about events and logs, we can actually go to
+
+
+16234
+16:30:28,910 --> 16:30:33,680
+the logs section now. And we can see our log or event being
+
+
+16235
+16:30:33,710 --> 16:30:37,190
+emitted here we can see the name raffle, enter, we can see the
+
+
+16236
+16:30:37,190 --> 16:30:40,610
+topic zero which is going to identify this entire event. And
+
+
+16237
+16:30:40,610 --> 16:30:44,600
+then we also see this number here which is what which is
+
+
+16238
+16:30:44,600 --> 16:30:48,170
+index topic, one address player and then there's no data
+
+
+16239
+16:30:48,170 --> 16:30:50,780
+associated with this right because we only have index
+
+
+16240
+16:30:50,780 --> 16:30:54,770
+parameters which again show up as topics so this is absolutely
+
+
+16241
+16:30:54,770 --> 16:31:01,370
+phenomenal. 
