@@ -1,226 +1,226 @@
 16015
 16:18:15,800 --> 16:18:22,940
 Let's try our staging test out from start to finish.
-
+让我们从头到尾地尝试一下我们的 "staging" 测试
 
 16016
 16:18:23,000 --> 16:18:27,350
-So now in order for us to test this staging test, from end to
-
+So now in order for us to test this staging test, from end to end, 
+现在，为了从头到尾地进行 "staging" 测试
 
 16017
 16:18:27,350 --> 16:18:30,440
-end, you first going to need to get our sub ID for the
-
+you first going to need to get our sub ID for the channeling fear F 
+首先你需要获取 "Chainlink VRF" 的 "SubId" 
 
 16018
 16:18:30,440 --> 16:18:32,600
-channeling fear F then we're going to need to deploy our
-
+then we're going to need to deploy our contract using the sub ID, 
+接着我们再用这个 "SubId" 部署我们的合约
 
 16019
 16:18:32,600 --> 16:18:35,960
-contract using the sub ID, we're going to need to register the
-
+we're going to need to register the contract with chain link VRF. And it's somebody 
+我们需要在 "Chainlink VRF" 上注册合约以及它的 "SubId" 
 
 16020
 16:18:35,960 --> 16:18:39,560
-contract with chain link VRF. And it's somebody we're going to
-
+we're going to then need to register it with chain link keepers. And then of course, we're going to run the staging tests. 
+然后我们需要注册 "Chainlink Keepers"，再然后当然就是运行 "staging" 测试了
 
 16021
 16:18:39,590 --> 16:18:42,260
-then need to register it with chain link keepers. And then of
-
+So let's do it.
+那么，让我们开始吧
 
 16022
 16:18:42,260 --> 16:18:45,140
-course, we're going to run the staging tests. So let's do it.
-
+So first thing we're going to need to do is what? 
+首先我们需要做的是什么呢？
 
 16023
 16:18:45,350 --> 16:18:48,200
-So first thing we're going to need to do is what? Get our sub
-
+Get our sub ID for chain link VRF. Okay, great. 
+获取 "Chainlink VRF" 的 "SubId"，好的
 
 16024
 16:18:48,200 --> 16:18:51,110
-ID for chain link VRF. Okay, great. So we're going to come
-
+So we're going to come over to VRF dot chain dot link. 
+我们来到 "vrf.chain.link" 
 
 16025
 16:18:51,110 --> 16:18:54,920
-over to VRF dot chain dot link. And we're going to need to
-
+And we're going to need to create a new subscription. 
+然后我们需要创建一个新的订阅
 
 16026
 16:18:54,920 --> 16:18:58,850
-create a new subscription. If we don't have enough rink B eath.
-
+If we don't have enough rink B eath.
+如果我们没有足够的 "Rinkeby ETH"
 
 16027
 16:18:58,940 --> 16:19:02,540
-Let's we want to head over to the full blockchain solidity
-
+Let's we want to head over to the full blockchain solidity course, 
+我们就前往 "full-blockchain-solidity-course"
 
 16028
 16:19:02,540 --> 16:19:05,030
-course, here, we're going to scroll down. And we're going to
-
+here, we're going to scroll down. And we're going to look for the recommended test and here, which is ranked v. 
+在这里，我们往下拉，找到我们在这里推荐的测试网，也就是 "Rinkeby" 
 
 16029
 16:19:05,030 --> 16:19:08,030
-look for the recommended test and here, which is ranked v. And
-
+And we're going to use the faucets link to get some Rigby link, 
+接着我们用 "faucets link" 来获取一些 "Rinkeby" 和 "Link"
 
 16030
 16:19:08,030 --> 16:19:11,120
-we're going to use the faucets link to get some Rigby link, run
-
+run Fosses dot chain dot link, let's switch over from COVID to a cerium. Rigby, 
+运行 "faucets.chain.link"，并且从 "Kovan" 切换到 "Ethereum Rinkeby"
 
 16031
 16:19:11,120 --> 16:19:15,410
-Fosses dot chain dot link, let's switch over from COVID to a
-
+we know we're going to need some link and some eath. So let's just go ahead and get both. 
+我们既需要一些 "Link" 也需要一些 "ETH"，所以我们把它们都选上
 
 16032
 16:19:15,410 --> 16:19:18,890
-cerium. Rigby, we know we're going to need some link and some
-
+Alright, great now that our transaction has gone through, 
+很好，我们的交易已经通过了
 
 16033
 16:19:18,920 --> 16:19:23,900
-eath. So let's just go ahead and get both. Alright, great now
-
+let's just double check our wallet here. 
+让我们再次检查一下我们的钱包
 
 16034
 16:19:23,900 --> 16:19:26,780
-that our transaction has gone through, let's just double check
-
+And it looks like we do indeed have Ethereum here. 
+看来我们确实已经获得一些 "Ethereum" 了
 
 16035
 16:19:26,780 --> 16:19:30,230
-our wallet here. And it looks like we do indeed have Ethereum
-
+And if you don't see the link, you can head over to link token contracts, 
+如果你看不到 "Link"，就前往 "link token contracts"
 
 16036
 16:19:30,230 --> 16:19:33,140
-here. And if you don't see the link, you can head over to link
-
+Link token contracts in the chain link documentation. 
+"LINK Token Contracts" 就在 "Chainlink" 的文档里
 
 16037
 16:19:33,140 --> 16:19:35,960
-token contracts, Link token contracts in the chain link
-
+We'll scroll down to Rigby, we'll grab this contract address 
+往下拉到 "Rinkeby"，获取这个合约的地址
 
 16038
 16:19:35,960 --> 16:19:39,140
-documentation. We'll scroll down to Rigby, we'll grab this
-
+import tokens and we'll paste it in here. 
+点击 "import tokens"，并且把它粘贴到这里
 
 16039
 16:19:39,140 --> 16:19:43,730
-contract address import tokens and we'll paste it in here. Add
-
+Add Custom tokens, import tokens. Great. 
+点击 "Add Custom Token" 以及 "Import Tokens"，很好
 
 16040
 16:19:43,730 --> 16:19:48,050
-Custom tokens, import tokens. Great. Now I can see my eath and
-
+Now I can see my eath and my link here, perfect. 
+现在我就可以看到我的 "ETH" 以及 "Link" 了，完美
 
 16041
 16:19:48,050 --> 16:19:51,440
-my link here, perfect. We have some eath we have some link,
-
+We have some eath we have some link, 
+现在我们有了一些 "ETH" 以及 "Link"
 
 16042
 16:19:51,560 --> 16:19:53,720
-let's head over to V REF subscription management. And
-
+let's head over to V REF subscription management. And we're going to create a new subscription. 
+让我们转到 "VRF" 的订阅管理，并创建一个新的订阅
 
 16043
 16:19:53,720 --> 16:19:56,420
-we're going to create a new subscription. Again, we could
-
+Again, we could totally do this programmatically, 
+再次强调，我们完全可以使用程序化的方式
 
 16044
 16:19:56,420 --> 16:19:58,550
-totally do this programmatically, because the
-
+because the user interface here is only helping us facilitate call contracts to the registration contract that's completely decentralized and on chain. 
+因为用户界面只是帮助我们简化对链上去中心化合约的调用和注册
 
 16045
 16:19:58,550 --> 16:20:02,090
-user interface here is only helping us facilitate call
-
+So let's go ahead and create subscription 
+现在让我们继续，创建订阅
 
 16046
 16:20:02,090 --> 16:20:05,450
-contracts to the registration contract that's completely
-
+will create subscription will confirm the transaction and Metamask on the Rinkeby network 
+我们点击 "Create subscription"，在 MetaMask 中确认交易，并且是在 "Rinkeby" 网络上
 
 16047
 16:20:05,450 --> 16:20:07,790
-decentralized and on chain. So let's go ahead and create
-
+will do a little bit of wading in great once it's gone through, you can go ahead and click the add funds button. 
+稍微等一下，很好，通过之后你就可以点击 "Add funds" 按钮继续了
 
 16048
 16:20:07,790 --> 16:20:10,850
-subscription will create subscription will confirm the
-
+I'm going to show you what it looks like if you accidentally refresh and jump off though. 
+我会向你展示一下，如果你不小心刷新并跳了出来会怎么样
 
 16049
 16:20:10,850 --> 16:20:14,780
-transaction and Metamask on the Rinkeby network will do a little
-
+So if you refresh and you go back to veer off the chain dot link,
+如果你点了刷新，就需要返回到 "vrf.chain.link" 
 
 16050
 16:20:14,780 --> 16:20:17,540
-bit of wading in great once it's gone through, you can go ahead
-
+you should have a new active subscription. 
+这时你应该会有一个新的活跃("Active")订阅
 
 16051
 16:20:17,540 --> 16:20:20,150
-and click the add funds button. I'm going to show you what it
-
+And you'll see this number here. If you click on it, this is your subscription ID great. 
+如果你看一下这里的数字，点击一下，这其实就是你的 "subscriptionId"
 
 16052
 16:20:20,150 --> 16:20:23,360
-looks like if you accidentally refresh and jump off though. So
-
+So we can actually take this, come back to our code into our helper Hardhead config. 
+这样我们就可以获取这个数字，回到我们的 "hepler-hardhat-config" 的代码中
 
 16053
 16:20:23,360 --> 16:20:26,690
-if you refresh and you go back to veer off the chain dot link,
-
+And we can paste our subscription ID under subscription ID for our Rinkeby network here. Awesome. 
+现在我们就可以把我们的 "subscriptionId" 粘贴到我们的 "rinkeby" 网络这里了，干得好
 
 16054
 16:20:26,840 --> 16:20:29,870
-you should have a new active subscription. And you'll see
+
 
 
 16055
 16:20:29,870 --> 16:20:33,410
-this number here. If you click on it, this is your subscription
+
 
 
 16056
 16:20:33,440 --> 16:20:38,120
-ID great. So we can actually take this, come back to our code
+
 
 
 16057
 16:20:38,210 --> 16:20:41,900
-into our helper Hardhead config. And we can paste our
+
 
 
 16058
 16:20:41,900 --> 16:20:45,830
-subscription ID under subscription ID for our Rinkeby
+
 
 
 16059
 16:20:45,860 --> 16:20:49,040
-network here. Awesome. Now that we have a subscription we can
+Now that we have a subscription we can
 
 
 16060
