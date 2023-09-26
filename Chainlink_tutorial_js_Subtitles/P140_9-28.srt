@@ -195,512 +195,512 @@ And we can paste our subscription ID under subscription ID for our Rinkeby netwo
 
 16054
 16:20:26,840 --> 16:20:29,870
-
-
+Now that we have a subscription we can see it's not funded with any link. 
+现在我们在 "Subscription" 里看到，这里还没有注入任何 "LINK"
 
 16055
 16:20:29,870 --> 16:20:33,410
-
-
+So we don't have any Oracle gas here. And we don't have any consumers. 
+所以我们现在还没有预言机 "gas"，也没有任何 "consumers" 
 
 16056
 16:20:33,440 --> 16:20:38,120
-
-
+Right our consumer is going to be a raffle or a lottery contract. 
+对于我们来说，"consumers" 就是抽奖或者说彩票合约
 
 16057
 16:20:38,210 --> 16:20:41,900
-
-
+So let's add some funds first and we don't need to add A whole lot because we're only going to be testing once. 
+让我们先注入一些资金，我们不需要往里面加很多，因为我们打算只测试一次而已
 
 16058
 16:20:41,900 --> 16:20:45,830
-
-
+So let's go just go ahead and add to link here, 
+让我们继续，给它添加一些 "Link"
 
 16059
 16:20:45,860 --> 16:20:49,040
-Now that we have a subscription we can
-
+this number might change depending on different costs of the test nets and how much link token there's available. 
+这个数字可能会根据不同测试网的不同花费以及可用 "Link" 的多少而改变
 
 16060
 16:20:49,040 --> 16:20:52,280
-see it's not funded with any link. So we don't have any
-
+So if you're actually working on a main net, 
+如果你是在主网上运行
 
 16061
 16:20:52,280 --> 16:20:55,970
-Oracle gas here. And we don't have any consumers. Right our
-
+be sure to head over Doc's touching that link EVM chains contract addresses, 
+就一定要点击 "docs.chain.link - EVN Chains - Contract Addresses" 
 
 16062
 16:20:55,970 --> 16:20:59,600
-consumer is going to be a raffle or a lottery contract. So let's
-
+you can read more about the costs some of these different chains, 
+你可以在这里阅读到更多有关不同链上的价格信息
 
 16063
 16:20:59,600 --> 16:21:02,240
-add some funds first and we don't need to add A whole lot
-
+so you can figure out exactly how much to put in here. 
+这样你就能搞清楚到底该放进去多少资金了
 
 16064
 16:21:02,240 --> 16:21:05,060
-because we're only going to be testing once. So let's go just
-
+And if you go to the full blockchain solidity course, Jas, we can scroll down to Lesson Nine,
+如果你前往 "full-blockchain-solidity-course-js"，可以往下拉到 "Lesson 9"
 
 16065
 16:21:05,060 --> 16:21:08,240
-go ahead and add to link here, this number might change
-
+there's a recommended link amounts or rinky saving tests
+这里有一个针对 "Rinkeby Staging" 测试的 "LINK" 推荐数额 
 
 16066
 16:21:08,240 --> 16:21:10,970
-depending on different costs of the test nets and how much link
-
+for chain link VRF. For now we're going to put two 
+对于 "Chainlink VRF" 我们建议填 "2"
 
 16067
 16:21:10,970 --> 16:21:13,520
-token there's available. So if you're actually working on a
-
+for keepers, we're going to put eight, 
+对于 "Keepers" 我们建议填 "8"
 
 16068
 16:21:13,520 --> 16:21:16,580
-main net, be sure to head over Doc's touching that link EVM
-
+but feel free to refer to here so you know how much to put in. 
+请自由参考这里的数值，这样你就能知道该填多少了
 
 16069
 16:21:16,580 --> 16:21:20,210
-chains contract addresses, you can read more about the costs
-
+So let's go ahead and confirm, we're going to approve adding funds here, 
+让我们继续，点击 "Confirm"，然后就来到了 "Approve add funds" 界面
 
 16070
 16:21:20,240 --> 16:21:22,700
-some of these different chains, so you can figure out exactly
-
+go ahead and confirm. 
+继续点击 "Confirm"
 
 16071
 16:21:22,700 --> 16:21:25,340
-how much to put in here. And if you go to the full blockchain
-
+And we're now funding our subscription to 
+现在我们就为我们的订阅注入了资金
 
 16072
 16:21:25,340 --> 16:21:29,480
-solidity course, Jas, we can scroll down to Lesson Nine,
-
+so we can pay that Oracle gas to get our random numbers. 
+这样我们就可以支付获取随机数所需的预言机 "gas" 了
 
 16073
 16:21:29,510 --> 16:21:32,990
-there's a recommended link amounts or rinky saving tests
-
+Great. And once we're funded, we can close it, we'll do a little refresh. 
+好的，注资完成后，我们就可以关掉它了，再刷新一下
 
 16074
 16:21:33,080 --> 16:21:35,180
-for chain link VRF. For now we're going to put two for
-
+And we can see the balance is now to link 
+并且我们看到 "Balance" 现在是 "2 LINK" 了
 
 16075
 16:21:35,180 --> 16:21:37,490
-keepers, we're going to put eight, but feel free to refer to
-
+when we don't have any consumers 
+不过我们还没有 "consumers" 
 
 16076
 16:21:37,490 --> 16:21:40,160
-here so you know how much to put in. So let's go ahead and
-
+perfect. So we've got our sub ID, we funded it. 
+完美，我们已经获取了我们的 "SubId"，并注入了资金
 
 16077
 16:21:40,160 --> 16:21:43,340
-confirm, we're going to approve adding funds here, go ahead and
-
+Now let's go ahead and deploy our contract. 
+现在让我们继续部署我们的合约
 
 16078
 16:21:43,340 --> 16:21:47,270
-confirm. And we're now funding our subscription to so we can
-
+And we already know that we should be all good for deploying our contract, 
+不过我们知道，我们应该已经部署好我们的合约了
 
 16079
 16:21:47,270 --> 16:21:50,300
-pay that Oracle gas to get our random numbers. Great. And once
-
+we go to our Dotty and V will need to add all of those same parameters from our previous projects, 
+前往我们的 ".env" 我们需要添加与上次项目中完全相同的参数
 
 16080
 16:21:50,300 --> 16:21:53,390
-we're funded, we can close it, we'll do a little refresh. And
-
+we'll need to shrink the RPC URL, we'll need our private key. 
+我们需要 "RINKEBY_RPC_URL"，以及我们的 "PRIVATE_KEY" 
 
 16081
 16:21:53,390 --> 16:21:56,720
-we can see the balance is now to link when we don't have any
-
+If we want to verify we'll need our ether scan API key. 
+如果我们想要验证的话，就还需要我们的 "ETHERSCAN_API_KEY" 
 
 16082
 16:21:56,720 --> 16:22:00,980
-consumers perfect. So we've got our sub ID, we funded it. Now
-
+And if we want to do gas output, we'll need our coin market cap API key. 
+以及，如果我们想要获取 "gas" 输出的话，那就还需要我们的 "COINMARKETCAP_API_KEY" 
 
 16083
 16:22:01,010 --> 16:22:05,120
-let's go ahead and deploy our contract. And we already know
-
+So let's make sure we have all that. 
+让我们来确认一下这里的所有内容
 
 16084
 16:22:05,450 --> 16:22:08,570
-that we should be all good for deploying our contract, we go to
-
+And we'll look at our deploy script. Once again, just real quick 
+查看一下我们的部署脚本，快速的看一下
 
 16085
 16:22:08,570 --> 16:22:12,290
-our Dotty and V will need to add all of those same parameters
-
+look at our helper hardcat config just real quick,
+再看一下我们的 "helper-hardhat-config.js"，同样是快速看一下
 
 16086
 16:22:12,320 --> 16:22:14,840
-from our previous projects, we'll need to shrink the RPC
-
+and it looks like we do indeed have everything in here. 
+看来我们这里确实已经具备所有的内容了
 
 16087
 16:22:14,840 --> 16:22:18,770
-URL, we'll need our private key. If we want to verify we'll need
-
+And we should just be able to deploy it in one command.
+然后我们就应该用一行命令部署它了
 
 16088
 16:22:18,770 --> 16:22:22,040
-our ether scan API key. And if we want to do gas output, we'll
-
+So we should be able to do yarn, hard hat or just h h again,
+我们应该运行 `yarn hardhat` 又或者是 `hh` 
 
 16089
 16:22:22,040 --> 16:22:25,100
-need our coin market cap API key. So let's make sure we have
-
+ploy, dash dash network Rinkeby. 
+`deploy --network rinkeby`
 
 16090
 16:22:25,100 --> 16:22:28,070
-all that. And we'll look at our deploy script. Once again, just
-
+Let's go try this out. 
+来试一下吧
 
 16091
 16:22:28,070 --> 16:22:31,220
-real quick look at our helper hardcat config just real quick,
-
+All right, it looks like we've compiled successfully, we've deployed it successfully. And we've even verified it, 
+很好，看起来已经编译成功并且部署成功，而且还验证完了
 
 16092
 16:22:31,220 --> 16:22:34,040
-and it looks like we do indeed have everything in here. And we
-
+we can go and open it up on Rinku ether scan. 
+我们可以打开一下 "rinkeby.etherscan"
 
 16093
 16:22:34,040 --> 16:22:36,260
-should just be able to deploy it in one command.
-
+And we can see our code here has been verified. And it's looking beautiful. 
+可以看到我们的代码已经通过了验证，看起来非常漂亮
 
 16094
 16:22:40,369 --> 16:22:44,659
-So we should be able to do yarn, hard hat or just h h again,
-
+We can read from it, which is great. We can see all these commands here now that it's verified. 
+我们可以从中读取信息，好极了，还可以在这里看到所有的指令，并且都已经被验证了
 
 16095
 16:22:44,839 --> 16:22:51,139
-ploy, dash dash network Rinkeby. Let's go try this out. All
-
+And if we look at the Git raffle state, we should indeed see that it's open, right, 
+如果我们看一下这个 "getRaffleState"，应该能看到它是开放的，对吧？
 
 16096
 16:22:51,139 --> 16:22:53,569
-right, it looks like we've compiled successfully, we've
-
+and it's going to stay open until somebody ends the raffle and updates the amount of eath that the contract actually has. 
+并且它将一直保持开放，直到有人结束了抽奖并更新了合约实际拥有的以太币金额
 
 16097
 16:22:53,569 --> 16:22:57,259
-deployed it successfully. And we've even verified it, we can
-
+Now that we've deployed a contract using that sub ID, 
+我们已经完成了使用 "SubId" 部署合约的任务
 
 16098
 16:22:57,259 --> 16:23:00,829
-go and open it up on Rinku ether scan. And we can see our code
-
+we need to register the contract with chain link V REF. And with chain link keepers. 
+现在我们需要为合约注册 "Chainlink VRF" 以及 "Chainlink keepers" 
 
 16099
 16:23:00,829 --> 16:23:04,309
-here has been verified. And it's looking beautiful. We can read
-
+So we need to add this consumer does tell chinley VRF. 
+所以我们需要把它添加为 "consumer" 并告诉 "Chainlink VRF"
 
 16100
 16:23:04,309 --> 16:23:07,009
-from it, which is great. We can see all these commands here now
-
+Hey, this is the contract that you're looking for now. 
+嘿，这就是你现在要找的合约了
 
 16101
 16:23:07,009 --> 16:23:09,709
-that it's verified. And if we look at the Git raffle state, we
-
+So we're gonna go back to V REF dot chain dot link, 
+所以我们要回到 "vrf.chain.link"
 
 16102
 16:23:09,709 --> 16:23:12,319
-should indeed see that it's open, right, and it's going to
-
+and we're going to grab this contract address, and we're going to add it as a consumer,
+我们要获取这个合约的地址，并将其添加为一个 "consumer" 
 
 16103
 16:23:12,319 --> 16:23:16,009
-stay open until somebody ends the raffle and updates the
-
+your subscription is ready, you can now add consumers we're gonna add consumer. 
+你的订阅已经准备好了，现在可以添加 "consumer" 了，我们点击 "Add consumer"
 
 16104
 16:23:16,009 --> 16:23:19,189
-amount of eath that the contract actually has. Now that we've
-
+And again, this website is just here to help facilitate us interacting with the contract. 
+再提醒一下，这个网站只是为了帮助我们更便捷地与合同进行交互而已
 
 16105
 16:23:19,189 --> 16:23:22,369
-deployed a contract using that sub ID, we need to register the
-
+So we're going to approve that user, we'll go ahead and confirm and the transaction is going through. 
+这样我们就来到了用户批准环节，继续点击 "Confirm" 然后交易就正在进行了
 
 16106
 16:23:22,369 --> 16:23:25,639
-contract with chain link V REF. And with chain link keepers. So
-
+While we wait for this to go through, we can go to keepers dot chain dot link, 
+当我们等待通过的时候，我们可以前往 "keepers.chain.link"
 
 16107
 16:23:25,639 --> 16:23:29,659
-we need to add this consumer does tell chinley VRF. Hey, this
-
+and do the same thing work with the user interface to register a new upkeep. 
+并在用户界面中使用同样的操作注册一个新的 "Upkeep" 
 
 16108
 16:23:29,659 --> 16:23:31,789
-is the contract that you're looking for now. So we're gonna
-
+So we'll go ahead and add our email Hardhead free code camp@gmail.com. 
+我们继续，添加我们的 Email: "hardhatfreecodecamp@gmail.com"
 
 16109
 16:23:31,789 --> 16:23:34,909
-go back to V REF dot chain dot link, and we're going to grab
-
+We'll call this raffle upkeep. 
+我们把它命名为 "Raffle Upkeep" 
 
 16110
 16:23:34,909 --> 16:23:38,089
-this contract address, and we're going to add it as a consumer,
-
+We'll paste our upkeep address in here 
+把我们的 "Upkeep address" 粘贴到这里
 
 16111
 16:23:38,149 --> 16:23:40,639
-your subscription is ready, you can now add consumers we're
-
+we have our admin address, and you can ignore this bit right here. 
+我们有一个 "Admin address"，你可以忽略这里的内容
 
 16112
 16:23:40,639 --> 16:23:43,909
-gonna add consumer. And again, this website is just here to
-
+For gas limit, this is going to be the gas limit of the PErforM upkeep function. 
+"Gas limit" 指的是 "performUpkeep" 函数的 gas 上限
 
 16113
 16:23:43,909 --> 16:23:47,059
-help facilitate us interacting with the contract. So we're
-
+If we did our gas estimator, we could just check to see how much that perform upkeep costs. 
+如果我们执行了 "gas estimator"，就能知道 "performUpkeep" 会消耗多少 gas 
 
 16114
 16:23:47,059 --> 16:23:49,729
-going to approve that user, we'll go ahead and confirm and
-
+But for now, I'm just going to put 500,000 That's probably overkill, but that's fine. 
+但暂时我们先直接填上 `500000`，可能有点多了，不过没关系
 
 16115
 16:23:49,729 --> 16:23:52,189
-the transaction is going through. While we wait for this
-
+Check data, we're going to keep blank because again, our checkup keep doesn't take anything. 
+"Check data" 这里我们会保持留白，因为我们的 "checkUpkeep" 没有接收任何参数
 
 16116
 16:23:52,189 --> 16:23:56,689
-to go through, we can go to keepers dot chain dot link, and
-
+And then starting balance, we're going to put as eight. 
+而 "Starting balance" 我们就填入 `8`
 
 16117
 16:23:56,689 --> 16:23:59,779
-do the same thing work with the user interface to register a new
-
+And if you forget to put a starting balance here, you can always find it later. 
+如果你忘了填写这里的 "Starting balance"，可以之后随时填上
 
 16118
 16:23:59,779 --> 16:24:04,369
-upkeep. So we'll go ahead and add our email Hardhead free code
-
+So let's go ahead and register,
+那么让我们继续，点击 "Register"
 
 16119
 16:24:04,369 --> 16:24:09,949
-camp@gmail.com. We'll call this raffle upkeep. We'll paste our
-
+we're gonna get a Metamask pop up, we're gonna go ahead and hit Confirm. 
+我们的 MetaMask 弹了出来，继续点击 "Confirm"
 
 16120
 16:24:09,949 --> 16:24:13,249
-upkeep address in here we have our admin address, and you can
-
+And we can go back to our VRF and see that it's indeed been added 
+然后我们可以回到 "VRF" 这里，并且能看到它确实已经被添加了
 
 16121
 16:24:13,249 --> 16:24:16,129
-ignore this bit right here. For gas limit, this is going to be
-
+and awesome, we now have a consumer on our VRF. 
+好极了，现在我们的 "VRF" 上就有了一个 "consumer" 了
 
 16122
 16:24:16,129 --> 16:24:19,399
-the gas limit of the PErforM upkeep function. If we did our
-
+So now let's just wait for our keepers to go through 
+现在就让我们等一下 "Keepers" 的通过吧
 
 16123
 16:24:19,429 --> 16:24:22,399
-gas estimator, we could just check to see how much that
-
+upkeep registration requests submitted successfully 
+"Upkeep" 注册请求提交成功
 
 16124
 16:24:22,429 --> 16:24:25,069
-perform upkeep costs. But for now, I'm just going to put
-
+on domain net, you might actually have to wait a little bit for your request to go through, 
+在主网上，你可能需要多等待一段时间请求才能通过
 
 16125
 16:24:25,099 --> 16:24:29,269
-500,000 That's probably overkill, but that's fine. Check
-
+but I'll test that it should automatically go through. 
+但在测试网上它应该自动就通过了
 
 16126
 16:24:29,269 --> 16:24:32,419
-data, we're going to keep blank because again, our checkup keep
-
+Now if we go back to keepers dot chain dot link, 
+现在，如果我们回到 "keepers.chain.link"
 
 16127
 16:24:32,419 --> 16:24:35,239
-doesn't take anything. And then starting balance, we're going to
-
+we should now see we now if we scroll down to my upkeeps We have a raffle upkeep here 
+我们现在应该能看到，点开 "My upkeeps"，这里已经有了一个 "Raffle Upkeep" 了
 
 16128
 16:24:35,239 --> 16:24:38,479
-put as eight. And if you forget to put a starting balance here,
-
+and I have to because I accidentally use the same account that I tested on, 
+我有两个，因为我之前不小心用了相同的账号进行了测试
 
 16129
 16:24:38,479 --> 16:24:41,749
-you can always find it later. So let's go ahead and register,
-
+you can ignore the two you'll have one but this is the one that we just created.
+你可以忽略这两个，有一个就行了，这一个才是我们刚刚创建的那个
 
 16130
 16:24:42,559 --> 16:24:45,649
-we're gonna get a Metamask pop up, we're gonna go ahead and hit
-
+And we can actually see what our balances and then what the minimum balance for this actually is. 
+我们可以看到我们的 "Balance" 以及 "Minimum Balance" 分别是多少 
 
 16131
 16:24:45,649 --> 16:24:50,029
-Confirm. And we can go back to our VRF and see that it's indeed
-
+So it looks like eight Link was a little bit too low. 
+看起来 8 "LINK" 还有一点不够
 
 16132
 16:24:50,029 --> 16:24:53,359
-been added and awesome, we now have a consumer on our VRF. So
-
+So let's go back to Fosses dot chain dot link slash rinky. 
+所以让我们回到 "faucets.chain.link/rinkeby" 
 
 16133
 16:24:53,359 --> 16:24:55,819
-now let's just wait for our keepers to go through upkeep
-
+Now that we have some more link, we can come back to our raffle upkeep. 
+现在我们有了更多 "Link"，就可以回到我们的 "Raffle Upkeep" 
 
 16134
 16:24:55,819 --> 16:24:59,539
-registration requests submitted successfully on domain net, you
-
+And we go ahead and hit add funds. 
+我们继续，点击 "Add funds"
 
 16135
 16:24:59,539 --> 16:25:02,239
-might actually have to wait a little bit for your request to
-
+And we'll add just three. And we'll go ahead and confirm 
+我就添加 `3` 吧，继续点击 "Confirm"
 
 16136
 16:25:02,239 --> 16:25:04,819
-go through, but I'll test that it should automatically go
-
+we first need to give permission to spend. 
+首先我们需要得到花费许可
 
 16137
 16:25:04,819 --> 16:25:08,509
-through. Now if we go back to keepers dot chain dot link, we
-
+We approved our link transfer now let's actually transfer the link to the contract 
+我们批准了 "Link" 转移，现在让我们把 "Link" 实际转移到合约内
 
 16138
 16:25:08,509 --> 16:25:12,409
-should now see we now if we scroll down to my upkeeps We
-
+and alright funds added successfully. So now let's do a little refresh. 
+好的，资金添加成功，现在让我们刷新一下
 
 16139
 16:25:12,409 --> 16:25:15,859
-have a raffle upkeep here and I have to because I accidentally
-
+Now we no longer see that message saying that it's underfunded and we have our balance 
+现在我们就不会看到资金不足的消息了，这是我们的余额
 
 16140
 16:25:15,919 --> 16:25:18,439
-use the same account that I tested on, you can ignore the
-
+and we can see that it's more than the minimum balance. 
+并且我们可以看到，它是多于最小余额的
 
 16141
 16:25:18,439 --> 16:25:21,169
-two you'll have one but this is the one that we just created.
-
+We have See the history that we just funded this twice. 
+我们可以在历史("History")中看到，刚刚我们注资了两次
 
 16142
 16:25:21,289 --> 16:25:24,589
-And we can actually see what our balances and then what the
-
+Once this actually kicks off, we'll see activity type will be like perform upkeep or something
+一旦这里被实际启动了，我们就能看到 "Activity type" 会变成 "performUpkeep" 之类的东西了
 
 16143
 16:25:24,589 --> 16:25:26,809
-minimum balance for this actually is. So it looks like
+
 
 
 16144
 16:25:26,839 --> 16:25:30,499
-eight Link was a little bit too low. So let's go back to Fosses
+
 
 
 16145
 16:25:30,499 --> 16:25:35,959
-dot chain dot link slash rinky. Now that we have some more link,
+
 
 
 16146
 16:25:35,989 --> 16:25:38,899
-we can come back to our raffle upkeep. And we go ahead and hit
+
 
 
 16147
 16:25:38,899 --> 16:25:43,009
-add funds. And we'll add just three. And we'll go ahead and
+
 
 
 16148
 16:25:43,009 --> 16:25:47,239
-confirm we first need to give permission to spend. We approved
+
 
 
 16149
 16:25:47,239 --> 16:25:50,179
-our link transfer now let's actually transfer the link to
+
 
 
 16150
 16:25:50,179 --> 16:25:53,569
-the contract and alright funds added successfully. So now let's
+
 
 
 16151
 16:25:53,569 --> 16:25:56,659
-do a little refresh. Now we no longer see that message saying
+
 
 
 16152
 16:25:56,659 --> 16:25:59,539
-that it's underfunded and we have our balance and we can see
+
 
 
 16153
 16:25:59,539 --> 16:26:02,359
-that it's more than the minimum balance. We have See the history
+
 
 
 16154
 16:26:02,359 --> 16:26:05,509
-that we just funded this twice. Once this actually kicks off,
+
 
 
 16155
 16:26:05,539 --> 16:26:09,079
-we'll see activity type will be like perform upkeep or something
+
 
 
 16156
