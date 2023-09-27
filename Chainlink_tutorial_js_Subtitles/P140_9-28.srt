@@ -846,7 +846,7 @@ So if we go to the keepers, and we do a little refresh here,
 16184
 16:27:43,220 --> 16:27:46,040
 after a little bit, we do indeed see checkup key passed and we see a perform upkeep having gone through
-片刻过后，哦，我们看到 "checkUpkeep" 确实通过了，并且 "performUpkeep" 也通过了
+片刻过后，哦，我们看到 "checkUpkeep" 确实通过了，并且 "performUpkeep" 也通过了！
 
 16185
 16:27:46,040 --> 16:27:49,160
@@ -860,274 +860,160 @@ well perform upkeep calls the chainlink VRF.
 
 16187
 16:27:52,640 --> 16:27:55,160
-
-
+So now if we go over to chainlink, VRF, we do a refresh here, 
+所以现在，如果我们前往 "Chainlink VRF"，在这里刷新一下
 
 16188
 16:27:55,160 --> 16:27:58,700
-
-
+go down to history, we do indeed see one of the transactions has gone through 
+来到下面的 "History"，我们看到交易确实已经通过了！
 
 16189
 16:27:58,700 --> 16:28:01,580
-
-
+we can see the transaction hash, the link spent, etc. 
+我们能看到 "Transcation Hash" 以及消耗的 "LINK" 数，等等等等
 
 16190
 16:28:01,580 --> 16:28:04,730
-
-
+And now if we go back to our tests, 
+现在如果我们回到测试
 
 16191
 16:28:04,730 --> 16:28:08,210
-
-
+we do indeed see raffle unit tests for friend fulfill random request winner pick event fired. 
+我们看到了 "Raffle Unit Tests", "fulfillRandomWords", "WinnerPicked event fired"
 
 16192
 16:28:08,210 --> 16:28:11,210
-
-
+And this means that we just went through this entire process of having a perfectly truly decentralized raffle 
+这意味着，我们刚刚经历了一个完整的，真正去中心化的抽奖过程
 
 16193
 16:28:11,210 --> 16:28:13,970
-
-
+work on an actual Testament with our integration tests working correctly.
+并且我们在一个实际的测试网上，正确地执行了我们的集成测试
 
 16194
 16:28:13,970 --> 16:28:17,720
-
-
+Absolutely massive, huge congratulations if you've made it this far. 
+如果你走到了这一步，那真的是非常的了不起
 
 16195
 16:28:17,720 --> 16:28:22,400
-
-
+And if you just walk through the integration test with me 
+恭喜你，刚刚和我一起完成了集成测试
 
 16196
 16:28:22,400 --> 16:28:26,600
-
-
+now bounce over contract has now been reset to zero 
+现在，合约的余额已经被重置为了 0 
 
 16197
 16:28:26,600 --> 16:28:30,140
-
-
+because our wallet address just won the lottery right and got the money back. 
+因为我们的钱包刚刚已经赢得了抽奖，并且获得了相应的金钱
 
 16198
 16:28:30,140 --> 16:28:32,540
-
-
+Now you might be wondering, Hey, I see the Create raffle function. And I see enter raffle 
+你可能会感到有一些奇怪，我看到了 "Create: Raffle" 函数，还看到了 "Enter Raffle"
 
 16199
 16:28:32,540 --> 16:28:36,110
-
-
+but I don't see didn't the chain link nodes just call perform upkeep and fulfill random words, 
+但我没看到 "Chainlink" 节点调用 "performUpkeep" 以及 "fulfillRandomWords"
 
 16200
 16:28:36,110 --> 16:28:39,530
-
-
+I'll come no matter how often I refresh, I don't see those transactions here. 
+无论我在这里刷新多少次，都无法在这里看到那些交易
 
 16201
 16:28:39,530 --> 16:28:43,190
-
-
+Well, those are actually going to be considered internal transactions 
+嗯，他们实际上被当成了内部交易
 
 16202
 16:28:43,190 --> 16:28:46,280
-
-
+fulfill random words, it's actually called through the VRF coordinator 
+"fulfillRandomWords" 实际上是通过 "VRFCoordinator" 调用的
 
 16203
 16:28:46,670 --> 16:28:50,960
-
-
+and the VRF coordinator contract then calls for full randomness.
+是 "VRFCoordinator" 合约调用了 "fulfillRandomWords" 
 
 16204
 16:28:50,960 --> 16:28:55,220
-So now if we go over to chainlink, VRF, we do a
-
+So we can go to internal transactions. 
+所以，我们可以到 "Internal Txns" 中 
 
 16205
 16:28:55,220 --> 16:28:59,900
-refresh here, go down to history, we do indeed see one of
-
+And one of these transactions is going to be the transaction to the VRF coordinator contract, which calls our contract. 
+这些交易的其中之一就是 "VRFCoordinator" 合约，是它调用了我们的合约
 
 16206
 16:28:59,900 --> 16:29:02,060
-the transactions has gone through we can see the
-
+Same thing with perform upkeep. 
+"performUpkeep" 也是同样的道理
 
 16207
 16:29:02,060 --> 16:29:05,030
-transaction hash, the link spent, etc. And now if we go
-
+Perform upkeep, the chain link nodes actually call through the registry contract 
+"performUpkeep" 其实是 "Chainlink" 节点通过注册的合约调用的
 
 16208
 16:29:05,030 --> 16:29:08,480
-back to our tests, we do indeed see raffle unit tests for friend
-
+and then the registry contract calls perform upkeep. That's what we see here.
+是这个注册合约调用了 "performUpkeep"，这就是我们所看到的
 
 16209
 16:29:08,510 --> 16:29:12,830
-fulfill random request winner pick event fired. And this means
-
+And if we go through the internal transactions, we'll see him there. 
+我们到 "Internal Txns" 里就能看到它了 
 
 16210
 16:29:12,830 --> 16:29:16,460
-that we just went through this entire process of having a
-
+Now let's look at this enter raffle as well. 
+现在，让我们再来看看这个 "Enter Raffle"
 
 16211
 16:29:16,460 --> 16:29:20,090
-perfectly truly decentralized raffle work on an actual
-
+And since we've learned about events and logs, we can actually go to the logs section now. 
+既然我们已经学过了 "event" 和 "log"，那我们就可以到这个 "Logs" 里看看了
 
 16212
 16:29:20,090 --> 16:29:22,460
-Testament with our integration tests working correctly.
-
+And we can see our log or event being emitted here 
+可以看到，我们的 "log" 或者 "event" 在这里显示被触发了
 
 16213
 16:29:22,490 --> 16:29:25,130
-Absolutely massive, huge congratulations if you've made
-
+we can see the name raffle, enter, we can see the topic zero which is going to identify this entire event. 
+我们可以看到 "Name RaffleEnter"，可以看到 "Topics 0"，它用来标识整个 "event" 
 
 16214
 16:29:25,130 --> 16:29:27,230
-it this far. And if you just walk through the integration
-
+And then we also see this number here which is what 
+我们还可以看到，这里的这个数字，它是什么呢？
 
 16215
 16:29:27,230 --> 16:29:30,320
-test with me now bounce over contract has now been reset to
-
+which is index topic, one address player 
+它就是 "index_topic_1 address player"
 
 16216
 16:29:30,320 --> 16:29:33,560
-zero because our wallet address just won the lottery right and
-
+and then there's no data associated with this right 
+然后 "Data" 这里是空的，对吧
 
 16217
 16:29:33,560 --> 16:29:36,890
-got the money back. Now you might be wondering, Hey, I see
-
+because we only have index parameters which again show up as topics 
+因为我们只有 "index" 参数，它会在 "Topics" 中显示出来
 
 16218
 16:29:36,890 --> 16:29:40,580
-the Create raffle function. And I see enter raffle but I don't
-
-
-16219
-16:29:40,580 --> 16:29:43,550
-see didn't the chain link nodes just call perform upkeep and
-
-
-16220
-16:29:43,550 --> 16:29:46,880
-fulfill random words, I'll come no matter how often I refresh, I
-
-
-16221
-16:29:46,880 --> 16:29:49,430
-don't see those transactions here. Well, those are actually
-
-
-16222
-16:29:49,430 --> 16:29:52,730
-going to be considered internal transactions fulfill random
-
-
-16223
-16:29:52,730 --> 16:29:55,910
-words, it's actually called through the VRF coordinator and
-
-
-16224
-16:29:55,910 --> 16:29:59,510
-the VRF coordinator contract then calls for full randomness.
-
-
-16225
-16:29:59,840 --> 16:30:03,320
-So we can go to internal transactions. And one of these
-
-
-16226
-16:30:03,320 --> 16:30:06,110
-transactions is going to be the transaction to the VRF
-
-
-16227
-16:30:06,110 --> 16:30:10,220
-coordinator contract, which calls our contract. Same thing
-
-
-16228
-16:30:10,220 --> 16:30:13,580
-with perform upkeep. Perform upkeep, the chain link nodes
-
-
-16229
-16:30:13,580 --> 16:30:16,190
-actually call through the registry contract and then the
-
-
-16230
-16:30:16,190 --> 16:30:19,370
-registry contract calls perform upkeep. That's what we see here.
-
-
-16231
-16:30:19,550 --> 16:30:22,070
-And if we go through the internal transactions, we'll see
-
-
-16232
-16:30:22,070 --> 16:30:25,490
-him there. Now let's look at this enter raffle as well. And
-
-
-16233
-16:30:25,490 --> 16:30:28,880
-since we've learned about events and logs, we can actually go to
-
-
-16234
-16:30:28,910 --> 16:30:33,680
-the logs section now. And we can see our log or event being
-
-
-16235
-16:30:33,710 --> 16:30:37,190
-emitted here we can see the name raffle, enter, we can see the
-
-
-16236
-16:30:37,190 --> 16:30:40,610
-topic zero which is going to identify this entire event. And
-
-
-16237
-16:30:40,610 --> 16:30:44,600
-then we also see this number here which is what which is
-
-
-16238
-16:30:44,600 --> 16:30:48,170
-index topic, one address player and then there's no data
-
-
-16239
-16:30:48,170 --> 16:30:50,780
-associated with this right because we only have index
-
-
-16240
-16:30:50,780 --> 16:30:54,770
-parameters which again show up as topics so this is absolutely
-
-
-16241
-16:30:54,770 --> 16:31:01,370
-phenomenal. 
+so this is absolutely phenomenal. 
+嗯，这可真是太了不起了
