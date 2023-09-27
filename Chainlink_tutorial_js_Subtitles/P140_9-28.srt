@@ -640,312 +640,312 @@ Once this actually kicks off, we'll see activity type will be like perform upkee
 
 16143
 16:25:24,589 --> 16:25:26,809
-
-
+got our sub ID, we've deployed the contract, 
+我们已经获取了 "SubId"，已经部署完了合约
 
 16144
 16:25:26,839 --> 16:25:30,499
-
-
+we've registered with chain link V REF, we've registered it with chain link keepers. 
+我们已经注册好了 "Chainlink VRF"，也注册好了 "Chainlink Keepers"
 
 16145
 16:25:30,499 --> 16:25:35,959
-
-
+Now all we need to do is run the staging tests. 
+现在我们就需要运行 "staging" 测试了
 
 16146
 16:25:35,989 --> 16:25:38,899
-
-
+Now running our staging test is essentially going to be the same as us calling this enter script, right, 
+运行 "staging" 测试本质上和调用这个 "enter" 脚本是一样的，对吧
 
 16147
 16:25:38,899 --> 16:25:43,009
-
-
+because all we're doing in our staging test is entering the lottery. 
+因为我们在 "staging" 测试中所做的事就是进入抽奖
 
 16148
 16:25:43,009 --> 16:25:47,239
-
-
+And then we just have a whole bunch of validators that we're running to make sure that things are doing as we expect, 
+然后用一大堆验证器来确保所有事情都能按我们预期的那样执行
 
 16149
 16:25:47,239 --> 16:25:50,179
-
-
+since our contract is actually verified, what we could do on Rigby ether scan 
+因为我们的合约都已经被验证了，那么我们就能到 "rinkeby etherscan" 上
 
 16150
 16:25:50,179 --> 16:25:53,569
-
-
+is we can actually go to this right contract section of the contract. 
+点开这里的 "Contract" 部分中的 "Write Contract" 
 
 16151
 16:25:53,569 --> 16:25:56,659
-
-
+And we could even connect our wallets to it. 
+我们甚至可以把它和我们的钱包连接起来
 
 16152
 16:25:56,659 --> 16:25:59,539
-
-
+And once this turns from red to green, after a little refresh,
+一旦这个开关从红色变为绿色，我们刷新一下
 
 16153
 16:25:59,539 --> 16:26:02,359
-
-
+we'll now see that it's green, it's connected, 
+现在我们看到它是绿色的了，表示已经连接上了
 
 16154
 16:26:02,359 --> 16:26:05,509
-
-
+we can even call functions on this contract ourself, 
+我们甚至可以自己在这个合约上调用函数
 
 16155
 16:26:05,539 --> 16:26:09,079
-
-
+so we could enter the raffle ourself, 
+所以我们可以自己进入到抽奖中
 
 16156
 16:26:09,109 --> 16:26:12,259
-got our sub ID, we've deployed the contract, we've registered
-
+we would add, you know, however much eath to enter the raffle, 
+我们添加，总之，随便用一些 ETH 进入抽奖
 
 16157
 16:26:12,259 --> 16:26:14,389
-with chain link V REF, we've registered it with chain link
-
+and that would kick off the keepers in the VRF, as well. 
+这同样会使 "Keepers" 和 "VRF" 启动起来
 
 16158
 16:26:14,389 --> 16:26:18,079
-keepers. Now all we need to do is run the staging tests. Now
-
+So we could call it via ether scan, we could obviously call it via our staging tests here, 
+也就是说，我们可以通过 etherscan 调用，也可以通过这里的 "staging" 测试调用
 
 16159
 16:26:18,079 --> 16:26:20,899
-running our staging test is essentially going to be the same
-
+we could call it via our scripts, we could call it via the console, 
+也可以通过我们的脚本调用，也可以通过控制台进行调用
 
 16160
 16:26:20,989 --> 16:26:24,589
-as us calling this enter script, right, because all we're doing
-
+there's a ton of ways to actually do this. 
+有很多方法可以完成这一操作
 
 16161
 16:26:24,679 --> 16:26:27,349
-in our staging test is entering the lottery. And then we just
-
+But moment of truth here, we're gonna run our staging tests, 
+那么，关键时刻到了，我们要开始运行 "staging" 测试了
 
 16162
 16:26:27,349 --> 16:26:29,839
-have a whole bunch of validators that we're running to make sure
-
+which is going to have us enter the lottery, and set up a listener to make sure that everything works correctly. 
+我们将进入到抽奖中，并设置一个 "listener" 以确保一切都能正常工作
 
 16163
 16:26:29,839 --> 16:26:33,409
-that things are doing as we expect, since our contract is
-
+And additionally, we'll see on our raffle upkeep history, 
+此外，我们会在 "Raffle Upkeep" 的 "History" 中看到
 
 16164
 16:26:33,409 --> 16:26:37,069
-actually verified, what we could do on Rigby ether scan is we can
-
+we'll see a transaction go through, 
+我们会看到一笔交易通过了
 
 16165
 16:26:37,069 --> 16:26:39,739
-actually go to this right contract section of the
-
+and then we'll see a transaction on our chain like VRF as well. 
+接着，我们同样会在 "Chainlink VRF" 中看到一笔交易
 
 16166
 16:26:39,739 --> 16:26:44,659
-contract. And we could even connect our wallets to it. And
-
+Are you ready? I sure am. Let's do this. 
+你准备好了么？我准备好了，让我们开始吧
 
 16167
 16:26:44,659 --> 16:26:48,079
-once this turns from red to green, after a little refresh,
-
+So we'll do h h, test, dash dash network, rink B.
+我们执行 "hh test --network rinkeby"
 
 16168
 16:26:48,139 --> 16:26:51,409
-we'll now see that it's green, it's connected, we can even call
-
+And that should be all we need to do. 
+这就是我们全部要做的事情了
 
 16169
 16:26:51,409 --> 16:26:55,279
-functions on this contract ourself, so we could enter the
-
+In our state and tests, we probably should have added some console dot logs in here 
+在我们的 "staging" 测试中，我们大概还应该添加一些 "console.log" 语句
 
 16170
 16:26:55,279 --> 16:26:58,309
-raffle ourself, we would add, you know, however much eath to
-
+to tell us hey, to tell us what steps that we're on with each.
+来告诉我们进行到哪一步了
 
 16171
 16:26:58,309 --> 16:27:01,069
-enter the raffle, and that would kick off the keepers in the VRF,
-
+But we forgot to. 
+不过我们给忘了
 
 16172
 16:27:01,069 --> 16:27:03,889
-as well. So we could call it via ether scan, we could obviously
-
+So if you follow along with the repo associated with this, we've added the console dot logs in the test there. But all right, 
+如果你是跟着关联仓库在做的话，我们已经在那里把 "console.log" 语句添加进测试里了，不过影响不大
 
 16173
 16:27:03,889 --> 16:27:06,559
-call it via our staging tests here, we could call it via our
-
+if we go to the ether scan for this contract, 
+如果我们前往这个合约的 etherscan 
 
 16174
 16:27:06,559 --> 16:27:09,109
-scripts, we could call it via the console, there's a ton of
-
+we go back to the rink the ether scan for this, we paste in that address, 
+我们回到 Rinkeby etherscan 里，把地址粘贴进去
 
 16175
 16:27:09,109 --> 16:27:12,949
-ways to actually do this. But moment of truth here, we're
-
+the first step that we're doing in this test, of course, while we're setting up this listener, 
+我们在测试里做的第一步，当然就是设置这个 "listener" 
 
 16176
 16:27:12,949 --> 16:27:15,949
-gonna run our staging tests, which is going to have us enter
-
+the first transaction is going to be entering the raffle that's going to kick everything off. 
+第一笔交易则是进入到抽奖中，是它启动了所有的东西
 
 16177
 16:27:15,949 --> 16:27:19,609
-the lottery, and set up a listener to make sure that
-
+Right. So if we refresh a little bit on ether scan, we do indeed see we've entered the raffle. 
+那么，如果我们在 etherscan 中刷新一下，就能看到我们确实进入到抽奖中了
 
 16178
 16:27:19,609 --> 16:27:23,089
-everything works correctly. And additionally, we'll see on our
-
+And we've updated the balance of the raffle. Okay, awesome. 
+并且我们更新了抽奖中的余额，好极了
 
 16179
 16:27:23,089 --> 16:27:26,839
-raffle upkeep history, we'll see a transaction go through, and
-
+So raffle has been entered. Now then what happens? 
+所以我们已经入到抽奖里了，那么接下来会发生什么？
 
 16180
 16:27:26,839 --> 16:27:30,769
-then we'll see a transaction on our chain like VRF as well. Are
-
+Well, if the raffle has been entered, if we go to raffle dot soul, 
+嗯，如果已经进入到抽奖里了，我们来到 "Raffle.sol" 这里
 
 16181
 16:27:30,769 --> 16:27:32,719
-you ready? I sure am.
-
+if it's open, if enough time has passed, if there's players and it has a balance, which we just checked does, 
+如果它是开放的，如果时间足够长，如果有玩家有余额，总之全部都已经检查过了
 
 16182
 16:27:32,900 --> 16:27:40,250
-Let's do this. So we'll do h h, test, dash dash network, rink B.
-
+this will get kicked off by the keepers. 
+那么它就会启动 "Keepers" 
 
 16183
 16:27:40,400 --> 16:27:43,220
-And that should be all we need to do. In our state and tests,
-
+So if we go to the keepers, and we do a little refresh here, 
+所以如果来到 "Keepers" 这里，并且刷新一下
 
 16184
 16:27:43,220 --> 16:27:46,040
-we probably should have added some console dot logs in here to
-
+after a little bit, we do indeed see checkup key passed and we see a perform upkeep having gone through
+片刻过后，哦，我们看到 "checkUpkeep" 确实通过了，并且 "performUpkeep" 也通过了
 
 16185
 16:27:46,040 --> 16:27:49,160
-tell us hey, to tell us what steps that we're on with each.
-
+great, what does perform upkeep to 
+很好，那么 "performUpkeep" 做了些什么呢？
 
 16186
 16:27:49,400 --> 16:27:52,640
-But we forgot to. So if you follow along with the repo
-
+well perform upkeep calls the chainlink VRF. 
+嗯，"performUpkeep" 调用了 "Chainlink VRF" 
 
 16187
 16:27:52,640 --> 16:27:55,160
-associated with this, we've added the console dot logs in
+
 
 
 16188
 16:27:55,160 --> 16:27:58,700
-the test there. But all right, if we go to the ether scan for
+
 
 
 16189
 16:27:58,700 --> 16:28:01,580
-this contract, we go back to the rink the ether scan for this, we
+
 
 
 16190
 16:28:01,580 --> 16:28:04,730
-paste in that address, the first step that we're doing in this
+
 
 
 16191
 16:28:04,730 --> 16:28:08,210
-test, of course, while we're setting up this listener, the
+
 
 
 16192
 16:28:08,210 --> 16:28:11,210
-first transaction is going to be entering the raffle that's going
+
 
 
 16193
 16:28:11,210 --> 16:28:13,970
-to kick everything off. Right. So if we refresh a little bit on
+
 
 
 16194
 16:28:13,970 --> 16:28:17,720
-ether scan, we do indeed see we've entered the raffle. And
+
 
 
 16195
 16:28:17,720 --> 16:28:22,400
-we've updated the balance of the raffle. Okay, awesome. So raffle
+
 
 
 16196
 16:28:22,400 --> 16:28:26,600
-has been entered. Now then what happens? Well, if the raffle has
+
 
 
 16197
 16:28:26,600 --> 16:28:30,140
-been entered, if we go to raffle dot soul, if it's open, if
+
 
 
 16198
 16:28:30,140 --> 16:28:32,540
-enough time has passed, if there's players and it has a
+
 
 
 16199
 16:28:32,540 --> 16:28:36,110
-balance, which we just checked does, this will get kicked off
+
 
 
 16200
 16:28:36,110 --> 16:28:39,530
-by the keepers. So if we go to the keepers, and we do a little
+
 
 
 16201
 16:28:39,530 --> 16:28:43,190
-refresh here, after a little bit, we do indeed see checkup
+
 
 
 16202
 16:28:43,190 --> 16:28:46,280
-key passed and we see a perform upkeep having gone through
+
 
 
 16203
 16:28:46,670 --> 16:28:50,960
-great, what does perform upkeep to well perform upkeep calls the
+
 
 
 16204
 16:28:50,960 --> 16:28:55,220
-chainlink VRF. So now if we go over to chainlink, VRF, we do a
+So now if we go over to chainlink, VRF, we do a
 
 
 16205
