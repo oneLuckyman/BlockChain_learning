@@ -1,8 +1,8 @@
 Arguments: 
-  /home/jxl/.nvm/versions/node/v18.15.0/bin/node /home/jxl/.cache/node/corepack/yarn/1.22.19/bin/yarn.js add --dev @nomiclabs/hardhat-verify
+  /home/jxl/.nvm/versions/node/v18.15.0/bin/node /home/jxl/.cache/node/corepack/yarn/1.22.19/bin/yarn.js add --dev hardhat-gas-reporter
 
 PATH: 
-  /home/jxl/.vscode-server/bin/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/bin/remote-cli:/home/jxl/.nvm/versions/node/v18.15.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Wolfram Research/WolframScript/:/mnt/d/other/Git/cmd:/mnt/d/other/NetSarang/Xshell 7/:/mnt/d/other/NetSarang/Xftp 7/:/mnt/c/Program Files/dotnet/:/mnt/d/mingw64/bin:/mnt/d/other/MySQL/MySQL Server 8.0/bin/:/mnt/d/anaconda3:/mnt/d/anaconda3/Scripts:/mnt/d/anaconda3/Library/bin:/mnt/d/anaconda3/Library/user/bin:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/d/other/MySQL/MySQL Server 8.0/bin/:/mnt/d/Microsoft VS Code/bin:/mnt/c/Program Files/Bandizip/:/mnt/d/Graphviz/bin:/mnt/d/Ubuntu/cmder:/mnt/d/other/QQGameTempest/Hall.57938/:/snap/bin
+  /home/jxl/.vscode-server/bin/fdb98833154679dbaa7af67a5a29fe19e55c2b73/bin/remote-cli:/home/jxl/.nvm/versions/node/v18.15.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Wolfram Research/WolframScript/:/mnt/d/other/Git/cmd:/mnt/d/other/NetSarang/Xshell 7/:/mnt/d/other/NetSarang/Xftp 7/:/mnt/c/Program Files/dotnet/:/mnt/d/mingw64/bin:/mnt/d/other/MySQL/MySQL Server 8.0/bin/:/mnt/d/anaconda3:/mnt/d/anaconda3/Scripts:/mnt/d/anaconda3/Library/bin:/mnt/d/anaconda3/Library/user/bin:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/d/other/MySQL/MySQL Server 8.0/bin/:/mnt/d/Microsoft VS Code/bin:/mnt/c/Program Files/Bandizip/:/mnt/d/Graphviz/bin:/mnt/d/Ubuntu/cmder:/mnt/d/other/QQGameTempest/Hall.57938/:/snap/bin
 
 Yarn version: 
   1.22.19
@@ -14,17 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@nomiclabs%2fhardhat-verify: Not found
-      at params.callback [as _callback] (/home/jxl/.cache/node/corepack/yarn/1.22.19/lib/cli.js:66145:18)
-      at self.callback (/home/jxl/.cache/node/corepack/yarn/1.22.19/lib/cli.js:140890:22)
-      at Request.emit (node:events:513:28)
-      at Request.<anonymous> (/home/jxl/.cache/node/corepack/yarn/1.22.19/lib/cli.js:141862:10)
-      at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (/home/jxl/.cache/node/corepack/yarn/1.22.19/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: connect ECONNREFUSED 104.16.26.34:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
 
 npm manifest: 
   {
@@ -36,7 +27,7 @@ npm manifest:
       "@nomicfoundation/hardhat-ethers": "^3.0.0",
       "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
       "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-      "@nomicfoundation/hardhat-verify": "^1.0.0",
+      "@nomicfoundation/hardhat-verify": "^1.1.1",
       "@nomiclabs/hardhat-etherscan": "^3.1.7",
       "@typechain/ethers-v6": "^0.4.0",
       "@typechain/hardhat": "^8.0.0",
@@ -44,10 +35,10 @@ npm manifest:
       "dotenv": "^16.3.1",
       "ethers": "^6.4.0",
       "hardhat": "^2.17.4",
-      "hardhat-gas-reporter": "^1.0.8",
+      "hardhat-gas-reporter": "^1.0.9",
       "prettier": "^3.0.3",
       "prettier-plugin-solidity": "^1.1.3",
-      "solidity-coverage": "^0.8.0",
+      "solidity-coverage": "^0.8.5",
       "typechain": "^8.1.0"
     }
   }
@@ -685,7 +676,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@nomicfoundation/hardhat-toolbox/-/hardhat-toolbox-3.0.0.tgz#83e2c28a745aa4eb1236072166367b0de68b4c76"
     integrity sha512-MsteDXd0UagMksqm9KvcFG6gNKYNa3GGNCy73iQ6bEasEgg2v8Qjl6XA5hjs8o5UD5A3153B6W2BIVJ8SxYUtA==
   
-  "@nomicfoundation/hardhat-verify@^1.0.0":
+  "@nomicfoundation/hardhat-verify@^1.1.1":
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/@nomicfoundation/hardhat-verify/-/hardhat-verify-1.1.1.tgz#6a433d777ce0172d1f0edf7f2d3e1df14b3ecfc1"
     integrity sha512-9QsTYD7pcZaQFEA3tBb/D/oCStYDiEVDN7Dxeo/4SCyHRSm86APypxxdOMEPlGmXsAvd+p1j/dTODcpxb8aztA==
@@ -2644,7 +2635,7 @@ Lockfile:
       ajv "^6.12.3"
       har-schema "^2.0.0"
   
-  hardhat-gas-reporter@^1.0.8:
+  hardhat-gas-reporter@^1.0.9:
     version "1.0.9"
     resolved "https://registry.yarnpkg.com/hardhat-gas-reporter/-/hardhat-gas-reporter-1.0.9.tgz#9a2afb354bc3b6346aab55b1c02ca556d0e16450"
     integrity sha512-INN26G3EW43adGKBNzYWOlI3+rlLnasXTwW79YNnUhXPDa+yHESgt639dJEs37gCjhkbNKcRRJnomXEuMFBXJg==
@@ -4283,7 +4274,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/solidity-comments-extractor/-/solidity-comments-extractor-0.0.7.tgz#99d8f1361438f84019795d928b931f4e5c39ca19"
     integrity sha512-wciNMLg/Irp8OKGrh3S2tfvZiZ0NEyILfcRCXCD4mp7SgK/i9gzLfhY2hY7VMCQJ3kH9UB9BzNdibIVMchzyYw==
   
-  solidity-coverage@^0.8.0:
+  solidity-coverage@^0.8.5:
     version "0.8.5"
     resolved "https://registry.yarnpkg.com/solidity-coverage/-/solidity-coverage-0.8.5.tgz#64071c3a0c06a0cecf9a7776c35f49edc961e875"
     integrity sha512-6C6N6OV2O8FQA0FWA95FdzVH+L16HU94iFgg5wAFZ29UpLFkgNI/DRR2HotG1bC0F4gAc/OMs2BJI44Q/DYlKQ==
