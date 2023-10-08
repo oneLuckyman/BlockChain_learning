@@ -12,6 +12,7 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key"
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
+  solidity: "0.8.8",
   defaultNetwork: "hardhat",
   networks: {
     sepolia: {
@@ -24,7 +25,6 @@ module.exports = {
       chainId: 31337,
     }
   },
-  solidity: "0.8.8",
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
   },
