@@ -30,11 +30,16 @@ module.exports = async ({getNamedAccounts, deployments}) => {
 
     // well what happens when we want to change chains?
     // when going for localhost or hardhat network we want to use a mock
+    const args = [ethUsdPriceFeedAddress]
     const fundMe = await deploy("FundMe", {
         from: deployer,
-        args: [ethUsdPriceFeedAddress],
+        args: args,
         log: true,
     })
+
+    if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY){
+        await verify(fundMe.address, args)
+    }
     log("-------------------------------------------------")
 }
 module.exports.tags = ["all", "fundme"]
