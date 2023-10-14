@@ -6,7 +6,6 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     const {deployer} = await getNamedAccounts()
     
     if (developmentChains.includes(network.name)) {
-        console.log("*****************************")
         log("Local network detected! Deploying mocks...")
         await deploy("MockV3Aggregator", {
             contract: "MockV3Aggregator",
