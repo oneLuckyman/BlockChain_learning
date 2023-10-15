@@ -1,10 +1,11 @@
 const {deployments, ethers, getNamedAccounts} = require("hardhat")
-const {assert} = require("chai")
+const {assert, expect} = require("chai")
 
 describe("FundMe", async function() {
     let fundMe
     let deployer
     let mockV3Aggregator
+    const sendValue = ethers.parseEther("1") // 1 ETH
     beforeEach(async function() {
         // deploy our fundMe contract
         // using Hardhat-deploy
@@ -23,9 +24,30 @@ describe("FundMe", async function() {
         })
     })
 
-    // describe("fund", async function() {
-    //     it("Fails if you don't send enough ETH", async function () {
+    describe("fund", async function() {
+        it("Fails if you don't send enough ETH", async function () {
+            await expect(fundMe.fund()).to.be.revertedWith("You need to spend more ETH!")
+        })
+        it("updated the amount funded data structure", async function (){
+            await fundMe.fund({value: sendValue})
+            const response = await fundMe.addressToAmountFunded(deployer)
+            assert.equal(response.toString(), sendValue.toString())
+        })
+        it("Adds funder to array of funders", async function() {
+            await fundMe.fund({value: sendValue})
+            const funder = await fundMe.funders(0)
+            assert.equal(funder, deployer)
+        })
+    })
+    describe("withdraw", async function() {
+        beforeEach(async function() {
+            await fundMe.fund({ value: sendValue })
+        })
 
-    //     })
-    // })
+        it("withdraw ETH from a single founder", async function() {
+            // Arrange
+            // Act
+            // Assert
+        })
+    })
 })
