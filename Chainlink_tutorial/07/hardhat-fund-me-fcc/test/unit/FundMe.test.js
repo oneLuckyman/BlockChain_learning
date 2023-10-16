@@ -46,8 +46,17 @@ describe("FundMe", async function() {
 
         it("withdraw ETH from a single founder", async function() {
             // Arrange
+            const stratingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
+            const startingDeployerBalance = await fundMe.provider.getBalance(deployer)
             // Act
+            const transactionResponse = await fundMe.withdraw()
+            const transactionReceipt = await transactionResponse.wait(1)
+            
+            const endingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
+            const endingDeployerBalance = await fundMe.provider.getBalance(deployer)
             // Assert
+            assert.equal(endingDeployerBalance, 0)
+            assert.equal(startingDeployerBalance.add(startingDeployerBalance).toString(), endingDeployerBalance.add(gasCost).toString())
         })
     })
 })
