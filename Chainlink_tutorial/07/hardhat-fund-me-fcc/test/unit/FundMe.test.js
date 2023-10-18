@@ -46,19 +46,19 @@ describe("FundMe", async function() {
 
         it("withdraw ETH from a single founder", async function() {
             // Arrange
-            const stratingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
-            const startingDeployerBalance = await fundMe.provider.getBalance(deployer)
+            const stratingFundMeBalance = await ethers.provider.getBalance(fundMe.target)
+            const startingDeployerBalance = await ethers.provider.getBalance(deployer)
             // Act
             const transactionResponse = await fundMe.withdraw()
             const transactionReceipt = await transactionResponse.wait(1)
-            const {gasUsed, effectiveGasPrice} = transactionReceipt
-            const gasCost = gasUsed.mul(effectiveGasPrice)
+            const {gasUsed, gasPrice} = transactionReceipt
+            const gasCost = gasUsed * gasPrice
 
-            const endingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
-            const endingDeployerBalance = await fundMe.provider.getBalance(deployer)
+            const endingFundMeBalance = await ethers.provider.getBalance(fundMe.target)
+            const endingDeployerBalance = await ethers.provider.getBalance(deployer)
             // Assert
-            assert.equal(endingDeployerBalance, 0)
-            assert.equal(startingDeployerBalance.add(startingDeployerBalance).toString(), endingDeployerBalance.add(gasCost).toString())
+            assert.equal(endingFundMeBalance, 0)
+            assert.equal((stratingFundMeBalance + startingDeployerBalance).toString(), (endingDeployerBalance + gasCost).toString())
         })
     })
 })
