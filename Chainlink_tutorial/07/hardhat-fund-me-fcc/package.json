@@ -1,4 +1,7 @@
 {
+  "name": "hardhat-fund-me",
+  "auther": "luckyman",
+  "version": "1.0.0",
   "devDependencies": {
     "@chainlink/contracts": "^0.8.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
@@ -23,5 +26,13 @@
     "solhint": "^3.6.2",
     "solidity-coverage": "^0.8.5",
     "typechain": "^8.1.0"
+  },
+  "scripts": {
+    "test": "yarn hardhat test",
+    "test:staging": "yarn hardhat test --network sepolia",
+    "lint": "yarn solhint 'contracts/*.sol'",
+    "lint:fix": "yarn solhint 'contracts/*.sol' --fix",
+    "format": "yarn prettier --write .",
+    "coverage": "yarn hardhat coverage"
   }
 }
