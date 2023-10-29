@@ -28,7 +28,9 @@ async function fund(ethAmount) {
         // signer / wallet / someone with some gas
         // contract that we are interaction with
         // ^ ABI & Address
-        
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        console.log(signer)
     }
 }
 
