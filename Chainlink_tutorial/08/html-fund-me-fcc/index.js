@@ -4,6 +4,7 @@
 // in front-end javascript you can't use require
 // import
 import {ethers} from "./ethers-5.6.esm.min.js"
+import {abi} from "./constants.js"
 
 const connectButton = document.getElementById("connectButton")
 const fundButton = document.getElementById("fundButton")
@@ -31,6 +32,7 @@ async function fund(ethAmount) {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
         console.log(signer)
+        const contract = "" // ?
     }
 }
 
