@@ -22,7 +22,8 @@ async function connect(){
     }
 }
 
-async function fund(ethAmount) {
+async function fund() {
+    const ethAmount = "0.1"
     console.log(`Funding with ${ethAmount}...`)
     if (typeof window.ethereum !== "undefined"){
         // provider / connection to the blockchain
@@ -33,7 +34,9 @@ async function fund(ethAmount) {
         const signer = provider.getSigner()
         console.log(signer)
         const contract = new ethers.Contract(contractAddress, abi, signer)
+        try {
         const transactionResponse = await contract.fund({value: ethers.utils.parseEther(ethAmount)})
+        } catch(error)
     }
 }
 
