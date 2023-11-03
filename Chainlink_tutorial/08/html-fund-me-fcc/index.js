@@ -38,6 +38,7 @@ async function fund() {
         const transactionResponse = await contract.fund({value: ethers.utils.parseEther(ethAmount)})
         // hey, wait for this TX to finish
         await listenForTransactionMine(transactionResponse, provider)
+        console.log("Done!")
         } catch(error) {
             console.log(error)
         }
@@ -47,7 +48,12 @@ async function fund() {
 function listenForTransactionMine(transactionResponse, provider){
     console.log(`Mining ${transactionResponse.hash}...`)
     // listen for this transaction to finish
-    provider.once(transactionResponse.hash, () => {})
+    return new Promise((resolve, reject) => {
+        provider.once(transactionResponse.hash, (transactionReceipt) => {
+            console.log(`Completed with ${transactionReceipt.confirmations} confirmations`)
+            resolve()
+        })
+    })
 }
 
 // fund function
