@@ -9,6 +9,7 @@ pragma solidity ^0.8.7;
 
 import "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/";
 
 error Raffle__NotEnoughETHEntered();
 error Raffle__TransferFailed();
@@ -47,6 +48,10 @@ contract Raffle is VRFConsumerBaseV2 {
         // Emit an event when we update a dynamic array or mapping
         // Named events with the function name reversed
         emit RaffleEnter(msg.sender);
+    }
+
+    function checkUpkeep() external override returns () {
+        
     }
 
     function requestRandominner() external {
