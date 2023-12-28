@@ -49,6 +49,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatible {
     event RequestedRaffleWinner(uint256 indexed requestId);
     event WinnerPicked(address indexed winner);
     
+    /* Functions */
     constructor(address vrfCoordinatorV2, uint256 entranceFee, bytes32 gasLane, 
                 uint64 subscriptionId, uint32 callbackGasLimit, uint256 interval) VRFConsumerBaseV2(vrfCoordinatorV2) {
         i_entranceFee = entranceFee;
@@ -82,7 +83,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatible {
      * 3. Our subscription is funded with LINK
      * 4. The lottery should be in an "open" state.
      */
-    function checkUpkeep(bytes calldata /* checkData */) public override returns (bool upkeepNeeded, bytes memory /* performData */) {
+    function checkUpkeep(bytes memory /* checkData */) public override returns (bool upkeepNeeded, bytes memory /* performData */) {
         bool isOpen = (RaffleState.OPEN == s_raffleState);
         bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
         bool hasPlayers = (s_players.length > 0);
@@ -131,5 +132,25 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatible {
 
     function getRecentWinner() public view returns(address) {
         return s_recentWinner;
+    }
+
+    function getRaffleState() public view returns(RaffleState) {
+        return s_raffleState;
+    }
+
+    function getNumWords() public pure returns(uint256) {
+        return NUM_WORDS;
+    }
+
+    function getNumberOfPlayers() public view return(uint256) {
+        return s_players.length;
+    }
+
+    function getLatestTimeStamp() public view return(uint256) {
+        return s_lastTimeStamp;
+    }
+
+    function getRequestConfirmations() public pure return(uint256){
+        return REQUEST_CONFIRMATIONS;
     }
 }
