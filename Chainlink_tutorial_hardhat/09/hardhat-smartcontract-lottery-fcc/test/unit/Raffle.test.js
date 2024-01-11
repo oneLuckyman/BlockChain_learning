@@ -105,4 +105,16 @@ const { toNumber } = require("ethers")
                 assert(raffleState.toString() == "1")
             })
         })
+
+        describe("fulfillRandomWords", function() {
+            beforeEach(async function() {
+                await raffle.enterRaffle({value: enterRaffle})
+                await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
+                await network.provider.request({method: "evm_mine", params: []})
+            })
+            it("can only be called after performUpkeep", async function() {
+                await expect(vrfCoordinatorV2Mock.fulfillRanfomWords(0, raffle.address)).to.be.revertedWith("nonexistent reques")
+                await expect(vrfCoordinatorV2Mock.fulfillRanfomWords(1, raffle.address)).to.be.revertedWith("nonexistent reques")
+            })
+        })
     })
