@@ -124,24 +124,34 @@ const { toNumber } = require("ethers")
                     const accountConnectedRaffle = raffle.connect(accounts[i])
                     await accountConnectedRaffle.enterRaffle({value: raffleEntranceFee})
                 }
-                const startingTimeStamp = await raffle.getLastTimeStamp()
+                const startingTimeStamp = await raffle.getLatestTimeStamp()
                 
                 await new Promise(async (resolve, reject) => {
-                    raffle.once("WinnerPicked", () => {
+                    raffle.once("WinnerPicked", async () => {
                         console.log("Found the event!")
                         try {
+                            const recentWinner = raffle.getRecentWinner()
                             console.log(recentWinner)
-                            console.log(accounts[0])
-                            console.log(accounts[1])
-                            console.log(accounts[2])
-                            console.log(accounts[3])
-                            const recentWinner = await raffle.getRecentWinner()
+                            console.log(accounts[0].address)
+                            console.log(accounts[1].address)
+                            console.log(accounts[2].address)
+                            console.log(accounts[3].address)
                             const raffleState = await raffle.getRaffleState()
-                            const endingTimeStamp = await raffle.getLastTimeStamp()
+                            const endingTimeStamp = await raffle.getLatestTimeStamp()
                             const numPlayers = await raffle.getNumberOfPlayers()
+                            const winnerEndingBalance = await await accounts[1].getBalance()
                             assert.equal(numPlayers.toString(), "0")
                             assert.equal(raffleState.toString(), "0")
                             assert(endingTimeStamp > startingTimeStamp)
+
+                            assert.equal(winnerEndingBalance.toString(), 
+                                        winnerStartingBalance.add(
+                                            raffleEntranceFee
+                                                .mul(additionalEntrants)
+                                                .add(raffleEntranceFee)
+                                                .toString()
+                                        )
+                                    )
                         } catch (e) {
                             reject(e)
                         }
@@ -149,6 +159,7 @@ const { toNumber } = require("ethers")
                     })
                     const tx = await raffle.performUpkeep([])
                     const txReceipt = await tx.wait(1)
+                    const winnerStartingBalance = await accounts[1].getBalance()
                     await vrfCoordinatorV2Mock.fulfillRanfomWords(txReceipt.events[1].args.requestId, raffle.address)
                 })
             })
