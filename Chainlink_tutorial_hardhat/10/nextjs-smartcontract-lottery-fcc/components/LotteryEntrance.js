@@ -1,5 +1,6 @@
 // have a function to enter the lottery
 import { useWeb3Contract } from "react-moralis"
+import {abi, contractAddresses} from "../constants"
 
 export default function LotteryEntrace() {
 

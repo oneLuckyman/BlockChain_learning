@@ -8,7 +8,13 @@ module.export = async function () {
     if(process.env.UPDATE_FRONT_END) {
         console.log("Updating front end")
         updateContractAddresses()
+        updateAbi()
     }
+}
+
+async function updateAbi() {
+    const raffle = await ethers.getContract("Raffle")
+    fs.writeFileSync(FRONT_END_ABI_FILE, raffle.interface.format(ethers.utils.FormatTypes.json))
 }
 
 async function updateContractAddresses() {
