@@ -16,7 +16,7 @@ export default function LotteryEntrace() {
         contractAddress: raffleAddress,
         functionName: "enterRaffle",
         params: {},
-        msgValue: ,
+        msgValue: entranceFee,
     })
 
     const {runContractFunction: getEntranceFee} = useWeb3Contract({
@@ -30,11 +30,28 @@ export default function LotteryEntrace() {
         if (isWeb3Enabled) {
             async function updateUI() {
                 const entranceFeeFromcall = (await getEntranceFee()).toString()
-                setEntranceFee(ethers.utils.formatUnits(entranceFeeFromcall, "ether"))
+                setEntranceFee(entranceFeeFromcall)
             }
             updateUI()
         }
     }, [isWeb3Enabled])
 
-    return <div>Hi from lottery entrance!</div> <div>Entrance Fee: {entranceFee} ETH</div>
+    return (
+        <div>Hi from lottery entrance!
+            { raffleAddress ? (
+                <div>
+                    <button 
+                        onClick={async function (){
+                            await enterRaffle()
+                        }}
+                    >
+                        Enter Raffle
+                    </button>
+                    Entrance Fee: {ethers.utils.formatUnits(entranceFeeFromcall, "ether")} ETH</div>
+            ) : (
+                <div> No Raffle Address Detected</div>
+            )}
+            
+        </div>
+    )
 }
