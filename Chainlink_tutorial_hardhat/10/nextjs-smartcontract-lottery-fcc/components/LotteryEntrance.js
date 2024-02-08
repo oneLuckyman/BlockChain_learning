@@ -16,7 +16,7 @@ export default function LotteryEntrace() {
 
     const dispatch = useNotification()
     
-    const {runContractFunction: enterRaffle} = useWeb3Contract({
+    const {runContractFunction: enterRaffle, isLoading, isFetching} = useWeb3Contract({
         abi: abi,
         contractAddress: raffleAddress,
         functionName: "enterRaffle",
@@ -77,16 +77,19 @@ export default function LotteryEntrace() {
     }
 
     return (
-        <div>Hi from lottery entrance!
+        <div className="p-5">
+            Hi from lottery entrance!
             { raffleAddress ? (
-                <div>
+                <div className="">
                     <button 
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
                         onClick={async function (){
                             await enterRaffle({
                                 onSuccess: handleSuccess,
                                 onError: (error) => console.log(error),
                             })
                         }}
+                        disabled={isLoading || isFetching}
                     >
                         Enter Raffle
                     </button>
