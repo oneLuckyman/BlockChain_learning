@@ -91,7 +91,7 @@ export default function LotteryEntrace() {
                         }}
                         disabled={isLoading || isFetching}
                     >
-                        Enter Raffle
+                        {isLoading || isFetching ? <div>className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"</div> : <div></div>}
                     </button>
                     Entrance Fee: {ethers.utils.formatUnits(entranceFeeFromcall, "ether")} ETH
                     Number Of Players: {numPlayers}
