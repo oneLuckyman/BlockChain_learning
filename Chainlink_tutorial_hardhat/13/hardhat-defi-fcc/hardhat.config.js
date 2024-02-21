@@ -21,7 +21,9 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 31337,
-      blockConfirmations: 1,
+      forking: {
+        url: MATNNET_RPC_URL
+      }
     },
     sepolia: {
       chainId: 11155111,
