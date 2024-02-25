@@ -7,6 +7,11 @@ async function main(){
     const { deployer } = await getNamedAccounts()
     const lendingPool = await getLendingPool(deployer)
     console.log(`LendingPool address ${lendingPool.address}`)
+
+    // deposit!
+    const wethTokenAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    // approve
+
 }
 
 async function getLendingPool(account) {
@@ -16,6 +21,13 @@ async function getLendingPool(account) {
     const lendingPoolAddress = await lendingPoolAddressProvider.getLendingPool()
     const lendingPool = await ethers.getContractAt("ILendingPool", lendingPoolAddress, account)
 
+}
+
+async function approveErc20(erc20Address, spenderAddress, amountToSpend, account){
+    const erc20Token = await ethers.getContractAt("IERC20", erc20Address, account)
+    const tx = await erc20Token.approve(spenderAddress, amountToSpend)
+    await tx.wait(1)
+    console.log("Approved!")
 }
 
 main()
