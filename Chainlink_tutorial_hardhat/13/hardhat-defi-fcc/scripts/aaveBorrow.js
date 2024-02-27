@@ -15,6 +15,14 @@ async function main(){
     console.log("Depositing...")
     await lendingPool.deposit(wethTokenAddress, AMOUNT, deployer, 0)
     console.log("Deposited!")
+    
+    // Borrow Time！
+    // how much we have borrowed, how much we have in collateral, how much we can borrow
+}
+
+async function getBorrowUserData(lendingPool, account){
+    const {totalCollateralETH, totalDebtETH, availableBorrowETH} = 
+        await lendingPool.getUserAccountData(account)
 }
 
 async function getLendingPool(account) {
