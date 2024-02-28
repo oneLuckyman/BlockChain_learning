@@ -23,6 +23,10 @@ async function main(){
 async function getBorrowUserData(lendingPool, account){
     const {totalCollateralETH, totalDebtETH, availableBorrowETH} = 
         await lendingPool.getUserAccountData(account)
+    console.log(`You have ${totalCollateralETH} worth of ETH deposited.`)
+    console.log(`You have ${totalDebtETH} worth of ETH borrowed.`)
+    console.log(`You can borrow ${availableBorrowETH} worth of ETH.`)
+    return { availableBorrowETH, totalDebtETH }
 }
 
 async function getLendingPool(account) {
