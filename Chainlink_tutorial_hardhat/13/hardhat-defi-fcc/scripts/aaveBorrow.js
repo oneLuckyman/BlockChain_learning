@@ -15,7 +15,7 @@ async function main(){
     console.log("Depositing...")
     await lendingPool.deposit(wethTokenAddress, AMOUNT, deployer, 0)
     console.log("Deposited!")
-    
+    let {availableBorrowETH, totalDebtETH} = await getBorrowUserData(lendingPool, deployer)
     // Borrow Time！
     // how much we have borrowed, how much we have in collateral, how much we can borrow
 }
