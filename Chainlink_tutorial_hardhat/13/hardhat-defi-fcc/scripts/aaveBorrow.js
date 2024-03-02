@@ -17,6 +17,11 @@ async function main(){
     console.log("Deposited!")
     let {availableBorrowETH, totalDebtETH} = await getBorrowUserData(lendingPool, deployer)
     const daiPrice = await getDaiPrice()
+    const amountDaiToBorrow = availableBorrowETH.toString() * 0.95 * (1 / daiPrice.toNumber())
+    console.log(`You can borrow ${amountDaiToBorrow} DAI`)
+
+    // availabBorrowsETH ?? What the conversion rate on DAI is?
+    
     // Borrow Time！
     // how much we have borrowed, how much we have in collateral, how much we can borrow
 }
