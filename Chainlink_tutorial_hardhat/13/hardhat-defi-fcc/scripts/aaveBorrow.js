@@ -19,6 +19,7 @@ async function main(){
     const daiPrice = await getDaiPrice()
     const amountDaiToBorrow = availableBorrowETH.toString() * 0.95 * (1 / daiPrice.toNumber())
     console.log(`You can borrow ${amountDaiToBorrow} DAI`)
+    const amountDaiToBorrowWei = ethers.parseEther(amountDaiToBorrow.toString())
 
     // availabBorrowsETH ?? What the conversion rate on DAI is?
     
