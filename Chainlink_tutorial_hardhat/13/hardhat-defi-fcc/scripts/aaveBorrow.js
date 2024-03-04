@@ -27,6 +27,17 @@ async function main(){
     // how much we have borrowed, how much we have in collateral, how much we can borrow
 }
 
+async function borrowDai(
+    daiAddress,
+    lendingPool,
+    amountDaiToBorrow,
+    account
+) {
+    const borrowTx = await lendingPool.borrow(daiAddress, amountDaiToBorrow, 1, 0, account)
+    await borrowTx.wait(1)
+    console.log("You've borrowed!")
+}
+
 async function getDaiPrice() {
     const daiEthPriceFeed = await ethers.getContractAt(
         "AggregatorV3Interface", 
