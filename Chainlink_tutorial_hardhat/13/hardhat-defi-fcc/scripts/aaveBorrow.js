@@ -19,12 +19,11 @@ async function main(){
     const daiPrice = await getDaiPrice()
     const amountDaiToBorrow = availableBorrowETH.toString() * 0.95 * (1 / daiPrice.toNumber())
     console.log(`You can borrow ${amountDaiToBorrow} DAI`)
-    const amountDaiToBorrowWei = ethers.parseEther(amountDaiToBorrow.toString())
-
-    // availabBorrowsETH ?? What the conversion rate on DAI is?
-    
+    const amountDaiToBorrowWei = ethers.parseEther(amountDaiToBorrow.toString())    
     // Borrow Time！
     // how much we have borrowed, how much we have in collateral, how much we can borrow
+    const daiTokenAddress = "0x6b175474e89094c44da98b954eedeac495271d0f"
+    await borrowDai(daiTokenAddress, lendingPool, amountDaiToBorrowWei, deployer)
 }
 
 async function borrowDai(
