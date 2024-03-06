@@ -26,6 +26,10 @@ async function main(){
     await borrowDai(daiTokenAddress, lendingPool, amountDaiToBorrowWei, deployer)
 }
 
+async function repay(amount, daiAddress, lendingPool, account) {
+    await approveErc20(daiAddress, lendingPool.address, amount, account)
+}
+
 async function borrowDai(
     daiAddress,
     lendingPool,
