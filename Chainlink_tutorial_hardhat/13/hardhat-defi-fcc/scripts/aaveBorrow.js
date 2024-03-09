@@ -25,6 +25,7 @@ async function main(){
     const daiTokenAddress = "0x6b175474e89094c44da98b954eedeac495271d0f"
     await borrowDai(daiTokenAddress, lendingPool, amountDaiToBorrowWei, deployer)
     await repay(amountDaiToBorrowWei, daiTokenAddress, lendingPool, deployer)
+    await getBorrowUserData(lendingPool, deployer)
 }
 
 async function repay(amount, daiAddress, lendingPool, account) {
