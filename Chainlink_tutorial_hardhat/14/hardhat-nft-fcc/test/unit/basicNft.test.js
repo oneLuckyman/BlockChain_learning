@@ -13,4 +13,15 @@ const { developmentChains } = require("../../helper-hardhat-config")
             await deployments.fixture(["basicnft"])
             basicNft = await ethers.getContract("BasicNft")
         })
+
+        describe("Constructor", () => {
+            it("Initializes the NFT Correctly.", async() => {
+                const name = await basicNft.name()
+                const symbol = await basicNft.symbol()
+                const tokenCounter = await basicNft.getTokenCounter()
+                assert.equal(name, "Dogie")
+                assert.equal(symbol, "DOG")
+                assert.equal(tokenCounter.toString(),"0")
+            })
+        })
     })
