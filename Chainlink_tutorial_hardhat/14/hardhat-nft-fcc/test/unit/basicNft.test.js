@@ -31,4 +31,11 @@ const { developmentChains } = require("../../helper-hardhat-config")
                 await txResponse.wait(1)
             })
         })
+        it("Allows users to mint an NFT, and updates appropriately", async function() {
+            const tokenURI = await basicNft.tokenURI(0)
+            const tokenCounter = await basicNft.getTokenCounter()
+
+            assert.equal(tokenCounter.toString(), "1")
+            assert.equal(tokenURI, await basicNft.TOKEN_URI())
+        })
     })
