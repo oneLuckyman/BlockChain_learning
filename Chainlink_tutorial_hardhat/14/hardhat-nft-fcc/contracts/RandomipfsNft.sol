@@ -5,7 +5,12 @@ import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 
 contract RandomIpfsNft is VRFConsumerBaseV2 {
-    
+
+    VRFCoordinatorV2Interface private immutable i_vrfCoordinator;
+
+    constructor(address vrfCoordinatorV2) VRFConsumerBaseV2(vrfCoordinatorV2) {
+        i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinatorV2);
+    }
 
     function requestNft() public {}
 
