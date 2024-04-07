@@ -16,6 +16,9 @@ contract RandomIpfsNft is VRFConsumerBaseV2 {
 
     constructor(address vrfCoordinatorV2, uint64 subscriptionId, bytes32 gasLane, uint32 callbackGasLimit) VRFConsumerBaseV2(vrfCoordinatorV2) {
         i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinatorV2);
+        i_subscriptionId = subscriptionId;
+        i_gasLane = gasLane;
+        i_callbackGasLimit = callbackGasLimit;
     }
 
     function requestNft() public {}
