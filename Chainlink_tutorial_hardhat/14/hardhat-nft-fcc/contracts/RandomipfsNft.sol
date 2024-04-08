@@ -21,7 +21,15 @@ contract RandomIpfsNft is VRFConsumerBaseV2 {
         i_callbackGasLimit = callbackGasLimit;
     }
 
-    function requestNft() public {}
+    function requestNft() public returns (uint256 requestId) {
+        requestId = i_vrfCoordinator.requestRandomWords(
+            i_gasLane,
+            i_subscriptionId,
+            REQUEST_CONFIRMATIONS,
+            i_callbackGasLimit,
+            NUM_WORDS
+        );
+    }
 
     function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override {}
 
