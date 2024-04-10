@@ -20,6 +20,7 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721 {
 
     // NFT Variables
     uint256 public s_tokenCounter;
+    uint256 internal constant MAX_CHANCE_VALUE = 100
 
 
     constructor(
@@ -46,6 +47,10 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721 {
         address dogOwner = s_requestIdToSender[requestId];
         uint256 newTokenId = s_tokenCounter;
         _safeMint(dogOwner, newTokenId);
+    }
+
+    function getChanceArray() public pure returns (uint256[3] memory) {
+        return [10, 30, MAX_CHANCE_VALUE];
     }
 
     function tokenURI(uint256) public view override returns (string memory) {}
