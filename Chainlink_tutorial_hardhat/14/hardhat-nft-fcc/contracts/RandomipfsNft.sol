@@ -7,6 +7,13 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract RandomIpfsNft is VRFConsumerBaseV2, ERC721 {
 
+    // Type Declaration
+    enum Breed {
+        PUG,
+        SHIBA_INU,
+        ST_BERNARD
+    }
+
     // Chainlink VRF Variables
     VRFCoordinatorV2Interface private immutable i_vrfCoordinator;
     uint64 private immutable i_subscriptionId;
@@ -56,6 +63,20 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721 {
         // 45 -> St. Bernard
         
         // getBreedFromModdedRng()
+    }
+
+    function getBreedFromModdedRng(uint256 moddedRng) public pure returns (Breed) {
+        uint256 cumulativeSum = 0;
+        uint256[3] memory chanceArray = getChanceArray();
+        // moddedRng = 25
+        // i = 1
+        // cumulativeSum = 10
+        for (uint256 i=0; i<chanceArray.length; i++) {
+            if (moddedRng >= cumulativeSum && moddedRng < cumulativeSum + chanceArray[i]) {
+                return Breed[i];
+            }
+            cumulativeSum += chanceArray[i];
+        }
     }
 
     function getChanceArray() public pure returns (uint256[3] memory) {
