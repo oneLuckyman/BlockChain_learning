@@ -6,6 +6,16 @@ module.exports = async function({getNamedAccounts, developments}) {
     const {deploy, log} = deployments
     const {deployer} = await getNamedAccounts()
     const chainId = network.config.chainId
+    let tokenUris
+    // get the IPFS hashes of out images
+    if (process.env.UPLOAD_TO_PINATA == "true"){
+        tokenUris = await handleTokenUris()
+    }
+
+    // 1. With our own IPFS node. https://docs.ipfs.io/
+    // 2. pinata https://www.pinata.cloud/
+    // 3. nft.storage https://nft.storage/
+
 
     let vrfCoordinatorV2Address, subscriptionId
 
@@ -27,4 +37,12 @@ module.exports = async function({getNamedAccounts, developments}) {
         networkConfig[chainId].gasLane,
         networkConfig[chainId].mintFee,
         networkConfig[chainId].callbackGasLimit]
+}
+
+async function handleTokenUris() {
+    tokenUris = []
+    // store the Image in IPFS
+    // store the metadata in IPFS
+
+    return tokenUris
 }
