@@ -6,6 +6,18 @@ const { storeImages } = require("../utils/uploadToPinata")
 
 const imagesLocation = "./images/randomNft"
 
+const metadataTemplate = {
+    name: "",
+    description: "",
+    image: "",
+    attributes: [
+        {
+            trait_type: "Cuteness",
+            value: 100,
+        }
+    ]
+}
+
 module.exports = async function({getNamedAccounts, developments}) {
     const {deploy, log} = deployments
     const {deployer} = await getNamedAccounts()
@@ -54,4 +66,10 @@ async function handleTokenUris() {
     return tokenUris
 }
 
+async function storeTokenUriMetadata(metadata) {
+    tokenUris = []
+    // store the Image in IPFS
+    // Store the metadata in IPFS
+    const {response: imageUploadResponses, files} = await storeImages(imageLocation)
+}
 module.exports.tags = ["all", "randomipfs", "main"]
