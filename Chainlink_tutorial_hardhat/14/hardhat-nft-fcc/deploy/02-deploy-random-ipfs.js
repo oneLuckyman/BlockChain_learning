@@ -62,6 +62,16 @@ async function handleTokenUris() {
     tokenUris = []
     // store the Image in IPFS
     // store the metadata in IPFS
+    const {response: imageUploadResponses, files} = await storeImages(imagesLocation)
+    for (imageUploadResponseIndex in imageUploadResponses) {
+        // create metadata
+        // upload the metadata
+        let tokenUriMetadata = {...metadataTemplate}
+        // pug.png, st-bernard.png
+        tokenUriMetadata.name = files[imageUploadResponseIndex].replace(".png", "")
+        tokenUriMetadata.description = `An adorable ${tokenUriMetadata.name} pub!`
+        tokenUriMetadata.image = `ipfs://${imageUploadResponses[imageUploadResponseIndex].IpfsHash}`
+    }
 
     return tokenUris
 }
