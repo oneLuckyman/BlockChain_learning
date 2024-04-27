@@ -1,4 +1,4 @@
-const { network } = require("hardhat")
+const { network, deployments } = require("hardhat")
 const { developmentChains, networkConfig } = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
 const { storeImages } = require("../utils/uploadToPinata")
@@ -48,14 +48,26 @@ module.exports = async function({getNamedAccounts, developments}) {
 
     log("---------------------------------")
     await storeImages(imagesLocation)
-    // const args = [
-    //     vrfCoordinatorV2Address,
-    //     subscriptionId,
-    //     networkConfig[chainId].gasLane,
-    //     networkConfig[chainId].callbackGasLimit,
-    //     // tokenuris,
-    //     networkConfig[chainId].mintFee,
-    // ]
+    const args = [
+        vrfCoordinatorV2Address,
+        subscriptionId,
+        networkConfig[chainId].gasLane,
+        networkConfig[chainId].callbackGasLimit,
+        // tokenuris,
+        networkConfig[chainId].mintFee,
+    ]
+
+    const randomipfsNft = await deploy("RandomIpfsNft", {
+        from: deployer,
+        args: args,
+        log: true,
+        waitConfirmations: network.config.blockConfirmations || 1,
+    })
+    log("---------------------------------")
+    if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY){
+        log("Verifying...")
+        await verify(randomipfsNft.address, args)
+    }
 }
 
 async function handleTokenUris() {
