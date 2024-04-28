@@ -18,11 +18,18 @@ const metadataTemplate = {
     ]
 }
 
+let tokenUris = [
+    "https://uri1",
+    "https://uri2",
+    "https://uri3"
+]
+
+const FUND_AMOUNT = "1000000000000000000000" // 10 LINK ethers.parseUnit
+
 module.exports = async function({getNamedAccounts, developments}) {
     const {deploy, log} = deployments
     const {deployer} = await getNamedAccounts()
     const chainId = network.config.chainId
-    let tokenUris
     // get the IPFS hashes of out images
     if (process.env.UPLOAD_TO_PINATA == "true"){
         tokenUris = await handleTokenUris()
@@ -41,6 +48,7 @@ module.exports = async function({getNamedAccounts, developments}) {
         const tx = await vrfCoordinatorV2Mock.createSubscription()
         const txReceipt = await tx.wait(1)
         subscriptionId = txReceipt.events[0].args.subId
+        await vrfCoordinatorV2Mock.fundSubscription(subscriptionId, FUND_AMOUNT)
     } else {
         vrfCoordinatorV2Address = networkConfig[chainId].vrfCoordinatorV2
         subscriptionId = networkConfig[chainId].subscriptionId
@@ -53,7 +61,7 @@ module.exports = async function({getNamedAccounts, developments}) {
         subscriptionId,
         networkConfig[chainId].gasLane,
         networkConfig[chainId].callbackGasLimit,
-        // tokenuris,
+        tokenuris,
         networkConfig[chainId].mintFee,
     ]
 
